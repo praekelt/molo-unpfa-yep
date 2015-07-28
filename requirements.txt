@@ -1,1 +1,1 @@
-molo.core==2.3.3
+molo.core==2.3.5

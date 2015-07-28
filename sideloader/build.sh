@@ -2,5 +2,4 @@
 
 cp -a $REPO ./build/$NAME
 
-${PIP} install -r $REPO/tuneme/requirements.txt
-
+${PIP} install -r $REPO/requirements.txt
