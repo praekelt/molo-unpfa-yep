@@ -2,6 +2,7 @@ buildscript: sideloader/build.sh
 postinstall: sideloader/postinstall.sh
 pip:
  - gunicorn
+ - psycopg2
 dependencies:
  - nginx
  - postgresql-server-dev-all
