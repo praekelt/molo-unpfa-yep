@@ -1,1 +1,2 @@
 molo.core==2.3.5
+psycopg2
