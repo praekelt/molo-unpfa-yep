@@ -1,5 +1,5 @@
-cd "${INSTALLDIR}/${NAME}/tuneme/"
-manage="${VENV}/bin/python ${INSTALLDIR}/${NAME}/tuneme/manage.py"
+cd "${INSTALLDIR}/${NAME}/"
+manage="${VENV}/bin/python ${INSTALLDIR}/${NAME}/manage.py"
 
 $manage migrate --settings=tuneme.settings.production
 
