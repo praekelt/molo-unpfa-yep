@@ -12,14 +12,14 @@ with open(os.path.join(here, 'requirements.txt')) as f:
 with open(os.path.join(here, 'VERSION')) as f:
     version = f.read().strip()
 
-setup(name='unpfayep',
+setup(name='tuneme',
       version=version,
-      description='unpfayep',
+      description='tuneme',
       long_description=README,
       classifiers=[
-      "Programming Language :: Python",
-      "Topic :: Internet :: WWW/HTTP",
-      "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
+          "Programming Language :: Python",
+          "Topic :: Internet :: WWW/HTTP",
+          "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
       ],
       author='Praekelt Foundation',
       author_email='dev@praekelt.com',

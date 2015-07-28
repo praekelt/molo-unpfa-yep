@@ -1,5 +1,5 @@
 """
-Django settings for base unpfayep.
+Django settings for base tuneme.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -61,7 +61,7 @@ INSTALLED_APPS = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
 
-    'unpfayep',
+    'tuneme',
     'molo.core',
     'raven.contrib.django.raven_compat',
 )
@@ -79,8 +79,8 @@ MIDDLEWARE_CLASSES = (
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 )
 
-ROOT_URLCONF = 'unpfayep.urls'
-WSGI_APPLICATION = 'unpfayep.wsgi.application'
+ROOT_URLCONF = 'tuneme.urls'
+WSGI_APPLICATION = 'tuneme.wsgi.application'
 
 
 # Database
