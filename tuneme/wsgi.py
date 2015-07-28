@@ -1,5 +1,5 @@
 """
-WSGI config for base unpfayep.
+WSGI config for base tuneme.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 
 import os
 os.environ.setdefault(
-    "DJANGO_SETTINGS_MODULE", "unpfayep.settings.production")
+    "DJANGO_SETTINGS_MODULE", "tuneme.settings.production")
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()

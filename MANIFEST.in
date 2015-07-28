@@ -3,4 +3,4 @@ include README.rst
 include VERSION
 include requirements.txt
 include requirements-dev.txt
-recursive-include unpfayep *.py *.txt *.scss *.js *.html
+recursive-include tuneme *.py *.txt *.scss *.js *.html

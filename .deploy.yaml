@@ -1,5 +1,5 @@
-buildscript: unpfayep/sideloader/build.sh
-postinstall: unpfayep/sideloader/postinstall.sh
+buildscript: sideloader/build.sh
+postinstall: sideloader/postinstall.sh
 pip:
  - gunicorn
 dependencies:

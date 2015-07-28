@@ -9,8 +9,8 @@ install:
   - pip install -r requirements-dev.txt
   - pip install -e .
 script:
-  - flake8 unpfayep
-  - py.test --ds=project.settings --verbose --cov unpfayep unpfayep
+  - flake8 tuneme
+  - py.test --ds=project.settings --verbose --cov tuneme tuneme
 after_success:
   - coveralls
 deploy:
