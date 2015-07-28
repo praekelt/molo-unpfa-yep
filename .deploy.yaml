@@ -1,0 +1,14 @@
+buildscript: unpfayep/sideloader/build.sh
+postinstall: unpfayep/sideloader/postinstall.sh
+pip:
+ - gunicorn
+dependencies:
+ - nginx
+ - postgresql-server-dev-all
+ - libpq-dev
+ - libffi-dev
+ - postgresql
+ - redis-server
+ - libjpeg-dev
+ - zlib1g-dev
+ - gettext
