@@ -39,6 +39,7 @@ logs/*.log
 
 local.py
 /*/static/
+static/
 db.sqlite3
 docs/_build
 .DS_Store
