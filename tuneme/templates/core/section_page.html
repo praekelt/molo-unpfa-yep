@@ -10,22 +10,38 @@
       {% endif %}
     </div>
     <h6>{{self.title}}</h6>
-    </div>
+</div>
 
+<div class="block {{self.get_effective_extra_style_hints}}">
 {% for section in self.sections %}
-    <h5>{{section.title}}</h5>
-    
-  <div class="block {{self.get_effective_extra_style_hints}}">  
+  <h5>{{section.title}}</h5>
+  {% with page=section.featured_articles|first %}
+    {% if page %}
+      <h4>{{page.title}}</h4>
+      <p>{{page.subtitle}}</p>
+      {% if page.image %}{% image page.image width-240 %}{% endif %}     
       <div class="comments-count"><a href=""><span>comments</span></a></div>
-      <a href="" class="button">Read on</a>
-      <a href="" class="button inverted">View Similar</a>
-  </div>
-{% endfor %}
+      <a href="{% pageurl page %}" class="button">Read on</a>
+      <a href="{% pageurl section %}" class="button inverted">View Similar</a>
+      <hr>
+    {% endif %}
+  {% endwith %} 
+  {% for page in section.featured_articles|slice:"1:3" %}
+    <hr/>
+    <h2><a href="{% pageurl page %}">{{page.title}}</a></h2>
+    <p>{{page.subtitle}}</p>
+  {% endfor %}
+{% endfor %} 
+{% for page in self.articles|slice:"0:" %}
+  <h4>{{page.title}}</h4>
+  <p>{{page.subtitle}}</p>
+  <a href="{% pageurl page %}" class="button">Read on</a>
+{% endfor %} 
+</div>
 
 <div class="block {{self.get_effective_extra_style_hints}}">  
     <a href="" class="button">Load more</a>
-    <a href="javascript:history.back();" class="button inverted">Back</a>
-    
+    <a href="javascript:history.back();" class="button inverted">Back</a>   
 </div>
 
 {% endblock %}

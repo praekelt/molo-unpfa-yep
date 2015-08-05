@@ -6,33 +6,35 @@
 <div class="header" id="top">
 
     <a href="/"><img src="{% static 'img/logo.png' %}" alt="{% trans "TuneMe" %}" class="logo"></a>
-
+    
     <div class="search-icon">
         <a href="#search-form">Search</a>      
     </div>
 
-    <!-- <div class="menuItem hide" id="login">
-            <span class="menuIcon">Login</span>
+    <div class="menuItem hide" id="login">
+        <span class="menuIcon">Login</span>
     </div>
-    <div >
-        <div class="menuItem hide" id="pages">
-            <span class="menuIcon">Menu</span>
-        </div>
-    </div> -->
+           
+    <div class="menuItem hide" id="pages">
+        <span>Menu</span>
+    </div>        
 
-</div><!-- /header -->
+</div>
 {% endblock %}
 
 
 
 {% block search %}
+
     <div id="search-form">
         <input placeholder="{% trans "Search" %}" type="search">
         <input type="submit" value="{% trans "Search"%}">   
     </div>
+
 {% endblock %}
 
 {% block footer %}
+
 <div class="footer">
     {% if languages %}
       <ul>
@@ -53,4 +55,5 @@
     {% trans "Al rights reserved." %}
     </p>
 </div>
+
 {% endblock %}
