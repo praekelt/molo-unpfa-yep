@@ -1,38 +1,31 @@
-
-{% extends "base.html" %}
-
-{% load static core_tags %}
-{% load wagtailcore_tags wagtailimages_tags %}
-
-{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+{% extends "core/_section_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags i18n %}
 
 {% block content %}
-    <div class="articles nav">
-      <h2 class="list-header">
-        {{self.title}}
-      </h2>
-      {% for page in self.sections %}
-      <ul class="list-block">
-        <li>
-          {% if page.image %}
-          <a href="{% pageurl page %}">{% image page.image width-60 %}</a>
-          {% endif %}
-          <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
-          {% if page.description %}<p>{{page.description}}</p>{% endif %}
-        </li>
-      </ul>
-      {% endfor %}
-      {% for page in self.articles %}
-      <ul class="list-block">
-        <li>
-          {% if page.image %}
-          <a href="{% pageurl page %}">{% image page.image width-60 %}</a>
-          {% endif %}
-          <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
-          <p>{{page.subtitle}}</p>
-        </li>
-      </ul>
-      {% endfor %}
+
+<div class="title {{self.get_effective_extra_style_hints}}">
+    <div class="icon">
+      {% if self.image %}
+          {% image self.image width-98 %}
+      {% endif %}
     </div>
+    <h6>{{self.title}}</h6>
+</div>  
+
+<!-- <div class="block {{self.get_effective_extra_style_hints}}">  
+
+    <div class="comments-count"><a href=""><span>comments</span></a></div>
+    <a href="" class="button">Read on</a>
+    <a href="" class="button inverted">View Similar</a>
+      
+</div> -->
+
+<div class="block {{self.get_effective_extra_style_hints}}">  
+ 
+    <a href="" class="button">Load more</a>
+    <a href="javascript:history.back();" class="button inverted">Back</a>
+    
+</div>
+
 {% endblock %}
 
