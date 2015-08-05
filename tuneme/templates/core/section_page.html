@@ -4,24 +4,25 @@
 {% block content %}
 
 <div class="title {{self.get_effective_extra_style_hints}}">
-    <div class="icon">
+  <div class="icon">
       {% if self.image %}
           {% image self.image width-98 %}
       {% endif %}
     </div>
     <h6>{{self.title}}</h6>
-</div>  
+    </div>
 
-<!-- <div class="block {{self.get_effective_extra_style_hints}}">  
-
-    <div class="comments-count"><a href=""><span>comments</span></a></div>
-    <a href="" class="button">Read on</a>
-    <a href="" class="button inverted">View Similar</a>
-      
-</div> -->
+{% for section in self.sections %}
+    <h5>{{section.title}}</h5>
+    
+  <div class="block {{self.get_effective_extra_style_hints}}">  
+      <div class="comments-count"><a href=""><span>comments</span></a></div>
+      <a href="" class="button">Read on</a>
+      <a href="" class="button inverted">View Similar</a>
+  </div>
+{% endfor %}
 
 <div class="block {{self.get_effective_extra_style_hints}}">  
- 
     <a href="" class="button">Load more</a>
     <a href="javascript:history.back();" class="button inverted">Back</a>
     
