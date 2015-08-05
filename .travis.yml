@@ -9,8 +9,8 @@ install:
   - pip install -r requirements-dev.txt
   - pip install -e .
 script:
-  - flake8 tuneme
-  - py.test --ds=project.settings --verbose --cov tuneme tuneme
+  - flake8
+  - py.test
 after_success:
   - coveralls
 deploy:
