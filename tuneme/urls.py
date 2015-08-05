@@ -20,11 +20,11 @@ urlpatterns = patterns(
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'', include('molo.core.urls')),
+
+    url(r'', include('molo.profiles.urls', namespace='molo.profiles')),
+
     url(r'', include(wagtail_urls)),
 
-    url(r'', include('molo.profiles.urls',
-                namespace='molo.profiles'))
-                
 )
 
 
