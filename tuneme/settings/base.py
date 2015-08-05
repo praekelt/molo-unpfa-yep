@@ -64,6 +64,7 @@ INSTALLED_APPS = (
     'tuneme',
     'molo.core',
     'raven.contrib.django.raven_compat',
+    'molo.profiles',
 )
 
 MIDDLEWARE_CLASSES = (
