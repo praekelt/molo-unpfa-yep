@@ -21,7 +21,8 @@ urlpatterns = patterns(
 
     url(r'', include('molo.core.urls')),
 
-    url(r'^profiles/', include('molo.profiles.urls', namespace='molo.profiles')),
+    url(r'^profiles/', include('molo.profiles.urls',
+                               namespace='molo.profiles')),
 
     url(r'', include(wagtail_urls)),
 
