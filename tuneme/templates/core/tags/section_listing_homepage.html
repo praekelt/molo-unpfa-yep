@@ -3,21 +3,15 @@
 
 {% if sections %}
 {% for section in sections %}
-<div class="articles nav {{section.get_effective_extra_style_hints}}">
-  <h2 class="list-header">
-    <a href="{% pageurl section %}">{{section.title}}</a>
-  </h2>
-  {% for page in section.featured_articles %}
-  <ul class="list-block">
-    <li>
-      {% if page.image %}
-      <a href="{% pageurl page %}">{% image page.image width-60 %}</a>
+<div class="block {{section.get_effective_extra_style_hints}}">
+  <div class="title">
+    <div class="icon">
+      {% if section.image %}
+          {% image section.image width-80 %}
       {% endif %}
-      <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
-      <p>{{page.subtitle}}</p>
-    </li>
-  </ul>
-  {% endfor %}
+    </div>
+    <h6><a href="{% pageurl section %}">{{section.title}}</a></h6>
+  </div>
 </div>
 {% endfor%}
 {% endif %}

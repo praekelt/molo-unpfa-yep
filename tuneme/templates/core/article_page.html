@@ -1,21 +1,27 @@
-
-{% extends "base.html" %}
-
-{% load static core_tags %}
+{% extends "core/_article_page.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
-
 {% block content %}
-<div class="articles nav {{self.get_parent_section.get_effective_extra_style_hints}}">
-  <h3 class="article-title">{{self.title}}</h3>
-  <p>{{self.subtitle}}</p>
-  {% if self.image %}
-  <div class="banner">{% image self.image width-240 %}</div>
-  {% endif %}
 
-<article>
-  {% for block in self.body %}
+<div class="title {{self.get_parent_section.get_effective_extra_style_hints}}">
+  <div class="icon">
+      {% if self.image %}
+        {% image self.image width-98 %}
+      {% else %}
+        {% image self.get_parent.image width-98 %}<!-- ??????? -->
+      {% endif %}
+  </div>
+     <h6>{{get_parent_section.title}}</h6><!-- ??????? -->
+    {%  with parent=self.get_ancestors.last %}
+      <h6>{{parent.title}}</h6>
+    {% endwith %}  
+</div>
+
+<div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">
+<h4>{{self.title}}</h4>
+
+<div class="article-copy">
+    {% for block in self.body %}
       {% if block.block_type == 'heading' %}
           <h1>{{ block.value }}</h1>
       {% else %}
@@ -34,7 +40,13 @@
       {% endif %}
       {% endif %}
   {% endfor %}
-</article>
-</div>
-{% endblock %}
+  <div class="author">{{self.first_published_at|date:"j F Y"}}</div> <!-- need author -->
 
+</div>
+    {%  with parent=self.get_ancestors.last %}
+    <a href="javascript:history.back();" class="button inverted">Back</a>
+    <a href="{% pageurl parent %}" class="button inverted">View Similar</a>
+    {% endwith %}
+</div>
+
+{% endblock %}
