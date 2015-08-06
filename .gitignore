@@ -38,8 +38,8 @@ logs/*.log
 *.pid
 
 local.py
-static/
-media/
+/static/
+/media/
 db.sqlite3
 docs/_build
 .DS_Store
