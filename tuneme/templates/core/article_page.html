@@ -42,7 +42,24 @@
       {% endif %}
     {% endfor %}
     <div class="author">By {{self.owner}} {{self.first_published_at|date:"j F Y"}}</div> <!-- need author -->
+    <div class="comments-count"><a href="#">12 <span>comments</span></a></div>
+    <div class="post-comment">
+			<p><textarea rows="5"></textarea></p>
+			<a href="#" class="button">Comment</a>
+			<a href="#" class="button">ADD anonymously</a>
+		</div>
   </div>
 </div>
 <hr>
+<div class="comment {{self.get_parent_section.get_effective_extra_style_hints}}">
+	<p class="by"><strong>Display Name</strong> <span class="date">14:02 Mar 2015</span></p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed tincidunt ex. Nullam commodo rutrum velit eu hendrerit. </p>
+	<p><a href="#" class="report">Report +</a></p>
+</div>
+<hr>
+<div class="comment {{self.get_parent_section.get_effective_extra_style_hints}}">
+	<p class="by"><strong>Display Name</strong> <span class="date">14:02 Mar 2015</span></p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed tincidunt ex. Nullam commodo rutrum velit eu hendrerit. </p>
+	<p><a href="#" class="report">Report +</a></p>
+</div>
 {% endblock %}
