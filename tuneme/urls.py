@@ -23,6 +23,8 @@ urlpatterns = patterns(
 
     url(r'^profiles/', include('molo.profiles.urls',
                                namespace='molo.profiles')),
+    url(r'^comments/', include('molo.comments.urls',
+                               namespace='molo.comments')),
 
     url(r'', include(wagtail_urls)),
 

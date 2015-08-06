@@ -61,10 +61,17 @@ INSTALLED_APPS = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
 
-    'tuneme',
-    'molo.core',
     'raven.contrib.django.raven_compat',
+    'tuneme',
+
+    'molo.core',
     'molo.profiles',
+
+    # These are for molo.comments
+    'threadedcomments',
+    'django_comments',
+    'django.contrib.sites',
+
 )
 
 MIDDLEWARE_CLASSES = (
