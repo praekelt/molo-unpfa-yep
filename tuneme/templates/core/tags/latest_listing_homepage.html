@@ -2,19 +2,31 @@
 {% load wagtailcore_tags wagtailimages_tags i18n %}
 
 {% if articles %}
-<div class="articles nav">
+
   <h2 class="list-header">{% trans "Latest" %}</h2>
   {% for page in articles %}
-  <ul class="list-block">
-    <li>
-      {% if page.image %}
+  <div class="block {{page.get_parent_section.get_effective_extra_style_hints}}">
+  <div class="title">
+    <div class="icon">
+      {% if section.image %}
+          {% image section.image width-80 %}
+      {% endif %}
+    </div>
+    <!-- <h6>{{page.get_parent_section.title}}</h6> -->
+    </div>
+    
+    {% if page.image %}
       <a href="{% pageurl page %}">{% image page.image width-60 %}</a>
       {% endif %}
-      <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
+      <h3>{{page.title}}</h3>
       <p>{{page.subtitle}}</p>
-    </li>
-  </ul>
+      <div class="comments-count"><a href=""><span>comments</span></a></div>
+      <a href="{% pageurl page %}" class="button">Read on</a>
+      <a href="{% pageurl page.get_parent_section %}" class="button inverted">View Similar</a>
+  </div>
+  </div>
+  
   {% endfor %}
-</div>
+
 {% endif %}
 
