@@ -18,6 +18,14 @@
 </div>
 
 <div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+
   <h5></h5>
   <h4>{{self.title}}</h4>
   <blockquote>{{self.subtitle}}</blockquote>
@@ -59,7 +67,7 @@
 <div class="comment {{self.get_parent_section.get_effective_extra_style_hints}} {% if node.user.is_staff %}staff{% endif %}">
   <p class="by"><strong>{{node.user.profile.alias}}</strong> <span class="date">{{node.submit_date|date:"j F Y"}}</span></p>
   <p>{{node.comment}}</p>
-  {# <p><a href="{% url 'TODO' %}" class="report">Report +</a></p>#}
+  <p><a href="{% url 'comments-report' node.pk %}" class="report">Report +</a></p>
 </div>
 {# recursion! children of a given comment #}
 {% if not node.is_leaf_node %}
