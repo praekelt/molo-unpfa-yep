@@ -38,7 +38,6 @@ logs/*.log
 *.pid
 
 local.py
-/*/static/
 static/
 media/
 db.sqlite3
