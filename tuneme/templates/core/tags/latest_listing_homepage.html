@@ -5,15 +5,21 @@
 <div class="articles nav">
   <h2 class="list-header">{% trans "Latest" %}</h2>
   {% for page in articles %}
-  <ul class="list-block">
-    <li>
-      {% if page.image %}
+  <div class="block {{section.get_effective_extra_style_hints}}">
+  <div class="title">
+    <div class="icon">
+      {% if section.image %}
+          {% image section.image width-80 %}
+      {% endif %}
+    </div>
+    <h6><a href="">{{section.title}}</a></h6>
+    {% if page.image %}
       <a href="{% pageurl page %}">{% image page.image width-60 %}</a>
       {% endif %}
       <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
       <p>{{page.subtitle}}</p>
-    </li>
-  </ul>
+  </div>
+  </div>
   {% endfor %}
 </div>
 {% endif %}
