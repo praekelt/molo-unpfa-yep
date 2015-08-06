@@ -1,4 +1,4 @@
 molo.core==2.4.0
 molo.profiles
-molo.comments
+molo.commenting
 django-extensions
