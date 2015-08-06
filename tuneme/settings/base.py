@@ -70,6 +70,7 @@ INSTALLED_APPS = (
     'mptt',
     'django_comments',
     'molo.commenting',
+    'django_extensions',
 )
 
 COMMENTS_APP = 'molo.commenting'

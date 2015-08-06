@@ -1,0 +1,24 @@
+{% load comments i18n wagtailcore_tags wagtailimages_tags %}
+
+
+<form action="{% comment_form_target %}" method="post">
+    {% csrf_token %}
+
+    {{form.comment.as_p}}
+    <p><textarea name="comment" rows="5"></textarea></p>
+    <input type="submit" name="submit" value="Comment">
+    {# <input type="submit" name="submit_anonymously" value="Add anonymously">#}
+    {{ form.object_pk }}
+
+    {{ form.content_type }}
+
+    {{ form.timestamp }}
+
+    {{ form.security_hash }}
+
+    <input type="hidden" name="next" value="{% pageurl self %}" />
+
+    {% if node.id %}
+        <input type="hidden" name="parent" id="parent_id" value="{{ node.id }}" />
+    {% endif %}
+</form>

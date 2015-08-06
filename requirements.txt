@@ -1,2 +1,3 @@
 molo.core==2.4.0
 molo.profiles
+django-extensions

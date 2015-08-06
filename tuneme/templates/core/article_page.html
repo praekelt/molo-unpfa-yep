@@ -1,5 +1,5 @@
 {% extends "core/_article_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags comments mptt_tags %}
+{% load wagtailcore_tags wagtailimages_tags comments mptt_tags molo_commenting_tags %}
 
 {% block content %}
 
@@ -45,14 +45,15 @@
     {% get_comment_count for self as comment_count %}
     <div class="comments-count"><a href="#">{{comment_count}} <span>comment{{comment_count|pluralize}}</span></a></div>
     <div class="post-comment">
-			<p><textarea rows="5"></textarea></p>
-			<a href="#" class="button">Comment</a>
-			<a href="#" class="button">ADD anonymously</a>
+      {% if request.user.is_authenticated %}
+        {% render_comment_form for self %}
+      {% else %}
+        <p>Please <a href="{% url 'molo.profiles:auth_login' %}">log in</a> to leave a comment.</p>
+      {% endif %}
 		</div>
-    {# {% render_comment_form for self %}#}
   </div>
 </div>
-{% get_comment_list for self as comment_list %}
+{% get_molo_comments for self as comment_list limit 5 %}
 {% recursetree comment_list %}
 <hr>
 <div class="comment {{self.get_parent_section.get_effective_extra_style_hints}} {% if node.user.is_staff %}staff{% endif %}">
