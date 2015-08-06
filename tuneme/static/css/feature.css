@@ -1,0 +1,76 @@
+body {font:14px Arial, Helvetica, sans-serif; background:white; color:black;} 
+
+
+/* Fonts */
+h1 {text-transform:uppercase; font-size:125%; line-height:100%;}
+h3 {padding:10px 0; font-size:200%;} 
+    .turq h3 {color:#21e0d8;}
+    .purple h3 {color:#d127fc;}
+    .pink h3 {color:#f82353;}
+    .orange h3 {color:#ff7c44;}
+    .yellow h3 {color:#fad400;}
+    .grey h3 {color:#828282;}   
+h6 {padding:5px 0;} 
+    h6 a {color:black;}
+p {padding:0px 0 15px;}
+hr {display:none;}
+
+
+
+
+/* Header */
+.header {float:left; width:100%; background:black;}
+    .header .logo {float:left; width:100px; padding:15px;}
+    .menu, .search-icon {display:none;}
+    
+    /* Links to Menu */
+    .feature-menu {float:right; padding:12px 14px 0; text-transform:uppercase; font-weight:bold;}
+        .feature-menu a {padding:5px; display:inline-block; color:white;}
+    
+    /* Main Menu */
+    #feature-menu {padding:15px; text-transform:uppercase; border-bottom:1px solid #ddd;} 
+        #feature-menu li {padding:3px 0; display:block; font-weight:bold; font-size:125%;}
+        #feature-menu a {display:block;}        
+        #feature-menu li.turq a {color:#21e0d8;}
+        #feature-menu li.purple a {color:#d127fc;}
+        #feature-menu li.pink a {color:#f82353;}
+        #feature-menu li.orange a {color:#ff7c44;}
+        #feature-menu li.yellow a {color:#fad400;}
+        #feature-menu li.grey a {color:black;}  
+        
+    .backtotop {display:block; clear:both; text-transform:uppercase; padding:15px; margin-top:-1px; font-weight:bold; border-top:1px solid #ddd; border-bottom:1px solid #ddd;}
+
+
+
+/* Titles */
+.title {padding:15px; display:block; clear:both; border-bottom:1px solid #ddd;}
+.block .title {padding:0 0 5px; border:0;}
+    .title .icon {display:block; max-width:25%;}    
+    .block .title h6 {font-size:100%;}  
+    .turq .title h6, .title.turq h6, .title.turq h6 a {color:#21e0d8;}
+    .purple .title h6, .title.purple h6, .title.purple h6 a {color:#d127fc;}    
+    .pink .title h6, .title.pink h6, .title.pink h6 a {color:#f82353;}
+    .orange .title h6, .title.orange h6, .title.orange h6 a {color:#ff7c44;}
+    .yellow .title h6, .title.yellow h6, .title.yellow h6 a {color:#fad400;}
+    .grey .title h6, .title.grey h6, .title.grey h6 a {color:#828282;}  
+    
+    /* search Pages */
+    .title.search, .title.search h3 {border:0; margin:0; padding-bottom:0;}
+
+
+/* Content Blocks */
+.block {border-bottom:1px solid #ddd;}
+
+
+
+/* Comments */
+.comments-count a {font-weight:bold; display:block; padding:0 0 15px;}
+.turq .comments-count a {color:#21e0d8;}
+.purple .comments-count a {color:#d127fc;}
+.pink .comments-count a {color:#f82353;}
+.orange .comments-count a {color:#ff7c44;}
+.yellow .comments-count a {color:#fad400;}
+
+
+
+
