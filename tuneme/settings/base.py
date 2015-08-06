@@ -74,6 +74,8 @@ INSTALLED_APPS = (
 
 )
 
+COMMENTS_APP = 'threadedcomments'
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
