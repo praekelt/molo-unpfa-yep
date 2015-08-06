@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'compressor',
     'taggit',
@@ -66,15 +67,13 @@ INSTALLED_APPS = (
 
     'molo.core',
     'molo.profiles',
-
-    # These are for molo.comments
-    'threadedcomments',
+    'mptt',
     'django_comments',
-    'django.contrib.sites',
-
+    'molo.commenting',
 )
 
-COMMENTS_APP = 'threadedcomments'
+COMMENTS_APP = 'molo.commenting'
+SITE_ID = 1
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

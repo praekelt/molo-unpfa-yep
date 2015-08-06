@@ -11,6 +11,10 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 
 
+def todo(request):
+    from django.http import HttpResponse
+    return HttpResponse('TODO!')
+
 urlpatterns = patterns(
     '',
     url(r'^django-admin/', include(admin.site.urls)),
@@ -19,15 +23,15 @@ urlpatterns = patterns(
     url(r'^search/', include(wagtailsearch_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
 
+    url('^todo/.*$', todo, name='TODO'),
     url(r'', include('molo.core.urls')),
 
     url(r'^profiles/', include('molo.profiles.urls',
                                namespace='molo.profiles')),
-    url(r'^comments/', include('molo.comments.urls',
-                               namespace='molo.comments')),
+    url(r'^comments/', include('molo.commenting.urls',
+                               namespace='molo.commenting')),
 
     url(r'', include(wagtail_urls)),
-
 )
 
 

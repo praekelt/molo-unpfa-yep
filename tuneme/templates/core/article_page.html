@@ -1,5 +1,5 @@
 {% extends "core/_article_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags comments mptt_tags %}
 
 {% block content %}
 
@@ -42,24 +42,28 @@
       {% endif %}
     {% endfor %}
     <div class="author">By {{self.owner}} {{self.first_published_at|date:"j F Y"}}</div> <!-- need author -->
-    <div class="comments-count"><a href="#">12 <span>comments</span></a></div>
+    {% get_comment_count for self as comment_count %}
+    <div class="comments-count"><a href="#">{{comment_count}} <span>comment{{comment_count|pluralize}}</span></a></div>
     <div class="post-comment">
 			<p><textarea rows="5"></textarea></p>
 			<a href="#" class="button">Comment</a>
 			<a href="#" class="button">ADD anonymously</a>
 		</div>
+    {# {% render_comment_form for self %}#}
   </div>
 </div>
+{% get_comment_list for self as comment_list %}
+{% recursetree comment_list %}
 <hr>
-<div class="comment {{self.get_parent_section.get_effective_extra_style_hints}}">
-	<p class="by"><strong>Display Name</strong> <span class="date">14:02 Mar 2015</span></p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed tincidunt ex. Nullam commodo rutrum velit eu hendrerit. </p>
-	<p><a href="#" class="report">Report +</a></p>
+<div class="comment {{self.get_parent_section.get_effective_extra_style_hints}} {% if node.user.is_staff %}staff{% endif %}">
+  <p class="by"><strong>{{node.user.profile.alias}}</strong> <span class="date">{{node.submit_date|date:"j F Y"}}</span></p>
+  <p>{{node.comment}}</p>
+  {# <p><a href="{% url 'TODO' %}" class="report">Report +</a></p>#}
 </div>
-<hr>
-<div class="comment {{self.get_parent_section.get_effective_extra_style_hints}}">
-	<p class="by"><strong>Display Name</strong> <span class="date">14:02 Mar 2015</span></p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed tincidunt ex. Nullam commodo rutrum velit eu hendrerit. </p>
-	<p><a href="#" class="report">Report +</a></p>
-</div>
+{# recursion! children of a given comment #}
+{% if not node.is_leaf_node %}
+  {{ children }}
+{% endif %}
+{% endrecursetree %}
+
 {% endblock %}
