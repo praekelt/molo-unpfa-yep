@@ -1,5 +1,5 @@
 {% extends "core/_article_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags comments mptt_tags molo_commenting_tags %}
 
 {% block content %}
 
@@ -14,13 +14,22 @@
      <h6>{{get_parent_section.title}}</h6><!-- ??????? -->
     {%  with parent=self.get_ancestors.last %}
       <h6>{{parent.title}}</h6>
-    {% endwith %}  
+    {% endwith %}
 </div>
 
 <div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">
-<h4>{{self.title}}</h4>
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
 
-<div class="article-copy">
+  <h5></h5>
+  <h4>{{self.title}}</h4>
+  <blockquote>{{self.subtitle}}</blockquote>
+  <div class="article-copy">
     {% for block in self.body %}
       {% if block.block_type == 'heading' %}
           <h1>{{ block.value }}</h1>
@@ -39,14 +48,31 @@
       {% endif %}
       {% endif %}
       {% endif %}
-  {% endfor %}
-  <div class="author">{{self.first_published_at|date:"j F Y"}}</div> <!-- need author -->
-
+    {% endfor %}
+    <div class="author">By {{self.owner}} {{self.first_published_at|date:"j F Y"}}</div> <!-- need author -->
+    {% get_comment_count for self as comment_count %}
+    <div class="comments-count"><a href="#">{{comment_count}} <span>comment{{comment_count|pluralize}}</span></a></div>
+    <div class="post-comment">
+      {% if request.user.is_authenticated %}
+        {% render_comment_form for self %}
+      {% else %}
+        <p>Please <a href="{% url 'molo.profiles:auth_login' %}">log in</a> to leave a comment.</p>
+      {% endif %}
+		</div>
+  </div>
 </div>
-    {%  with parent=self.get_ancestors.last %}
-    <a href="javascript:history.back();" class="button inverted">Back</a>
-    <a href="{% pageurl parent %}" class="button inverted">View Similar</a>
-    {% endwith %}
+{% get_molo_comments for self as comment_list limit 5 %}
+{% recursetree comment_list %}
+<hr>
+<div class="comment {{self.get_parent_section.get_effective_extra_style_hints}} {% if node.user.is_staff %}staff{% endif %}">
+  <p class="by"><strong>{{node.user.profile.alias}}</strong> <span class="date">{{node.submit_date|date:"j F Y"}}</span></p>
+  <p>{{node.comment}}</p>
+  <p><a href="{% url 'comments-report' node.pk %}" class="report">Report +</a></p>
 </div>
+{# recursion! children of a given comment #}
+{% if not node.is_leaf_node %}
+  {{ children }}
+{% endif %}
+{% endrecursetree %}
 
 {% endblock %}

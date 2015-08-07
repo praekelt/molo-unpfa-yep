@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'compressor',
     'taggit',
@@ -61,11 +62,19 @@ INSTALLED_APPS = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
 
-    'tuneme',
-    'molo.core',
     'raven.contrib.django.raven_compat',
+    'tuneme',
+
+    'molo.core',
     'molo.profiles',
+    'mptt',
+    'django_comments',
+    'molo.commenting',
+    'django_extensions',
 )
+
+COMMENTS_APP = 'molo.commenting'
+SITE_ID = 1
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -166,9 +175,11 @@ COMPRESS_PRECOMPILERS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
     'molo.core.context_processors.locale',
 )
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Wagtail settings
 
