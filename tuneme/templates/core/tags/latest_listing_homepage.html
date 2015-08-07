@@ -12,7 +12,7 @@
           {% image page.get_parent_section.get_ancestors.last.sectionpage.image width-80 %}
       {% endif %}
     </div>
-    <h6>{{page.get_parent_section.get_ancestors.last.sectionpage.title}}</h6>
+    <h6><a href="{% pageurl page.get_parent_section.get_ancestors.last.sectionpage %}">{{page.get_parent_section.get_ancestors.last.sectionpage.title}}</a></h6>
     </div>
 
     {% if page.image %}
