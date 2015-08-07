@@ -6,13 +6,13 @@
   <h2 class="list-header">{% trans "Latest" %}</h2>
   {% for page in articles %}
   <div class="block {{page.get_parent_section.get_effective_extra_style_hints}}">
-  <div class="title">
+  <div class="title {{page.get_parent_section.get_effective_extra_style_hints}}">
     <div class="icon">
-      {% if section.image %}
-          {% image section.image width-80 %}
+      {% if page.get_parent_section.get_ancestors.last.sectionpage.image %}
+          {% image page.get_parent_section.get_ancestors.last.sectionpage.image width-80 %}
       {% endif %}
     </div>
-    <!-- <h6>{{page.get_parent_section.title}}</h6> -->
+    <h6><a href="{% pageurl page.get_parent_section.get_ancestors.last.sectionpage %}">{{page.get_parent_section.get_ancestors.last.sectionpage.title}}</a></h6>
     </div>
 
     {% if page.image %}
