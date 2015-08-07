@@ -4,17 +4,23 @@
 {% block content %}
 
 <div class="title {{self.get_parent_section.get_effective_extra_style_hints}}">
-  <div class="icon">
+  
+  {% with parent_section=self.get_parent_section ancestor=self.get_parent_section.get_ancestors.last %}
+
+    <div class="icon">
       {% if self.image %}
         {% image self.image width-98 %}
+      {% elif parent_section.image %}
+        {% image parent_section.image width-98 %}
       {% else %}
-        {% image self.get_parent.image width-98 %}<!-- ??????? -->
+        {% image ancestor.sectionpage.image width-98 %}
       {% endif %}
-  </div>
-     <h6>{{get_parent_section.title}}</h6><!-- ??????? -->
-    {%  with parent=self.get_ancestors.last %}
-      <h6>{{parent.title}}</h6>
-    {% endwith %}
+    </div>
+    <h6>{{ancestor.sectionpage.title}}</h6>
+    <h6>{{parent_section.title}}</h6>
+    
+  {% endwith %}
+
 </div>
 
 <div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">
@@ -49,7 +55,7 @@
       {% endif %}
       {% endif %}
     {% endfor %}
-    <div class="author">By {{self.owner}} {{self.first_published_at|date:"j F Y"}}</div> <!-- need author -->
+    <p class="author">By {{self.owner}} {{self.first_published_at|date:"j F Y"}}</p>
     {% get_comment_count for self as comment_count %}
     <div class="comments-count"><a href="#">{{comment_count}} <span>comment{{comment_count|pluralize}}</span></a></div>
     <div class="post-comment">
