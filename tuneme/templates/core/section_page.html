@@ -19,28 +19,23 @@
     {% if page %}
       <h4>{{page.title}}</h4>
       <p>{{page.subtitle}}</p>
-      {% if page.image %}{% image page.image width-240 %}{% endif %}     
       <div class="comments-count"><a href=""><span>comments</span></a></div>
       <a href="{% pageurl page %}" class="button">Read on</a>
       <a href="{% pageurl section %}" class="button inverted">View Similar</a>
       <hr>
     {% endif %}
   {% endwith %} 
-  {% for page in section.featured_articles|slice:"1:3" %}
-    <hr/>
-    <h2><a href="{% pageurl page %}">{{page.title}}</a></h2>
-    <p>{{page.subtitle}}</p>
-  {% endfor %}
 {% endfor %} 
+
 {% for page in self.articles|slice:"0:" %}
   <h4>{{page.title}}</h4>
   <p>{{page.subtitle}}</p>
   <a href="{% pageurl page %}" class="button">Read on</a>
+  <hr>
 {% endfor %} 
 </div>
 
 <div class="block {{self.get_effective_extra_style_hints}}">  
-    <a href="" class="button">Load more</a>
     <a href="javascript:history.back();" class="button inverted">Back</a>   
 </div>
 
