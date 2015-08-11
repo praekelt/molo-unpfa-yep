@@ -22,26 +22,23 @@
   			<span class="menuIcon">Login</span>
   			<div class="content join">
 
-          <div class="signin-form">
-
-
-
-          </div><!-- /signin-form -->
+          {# <div class="signin-form"></div>#}
+          <!-- /signin-form -->
   			</div><!-- /content -->
   	    </div><!-- /menuItem -->
       {% endif %}
-  	    <div class="menuItem hide" id="pages">
-  	      <span class="menuIcon">2Menu</span>
+  	    <div class="menuItem" id="pages">
+  	      <span class="menuIcon">Menu</span>
   	      <div class="content">
     				<ul>
               {% for section in language_page.sections %}
               <li class="{{section.get_effective_extra_style_hints}}">
-                <a href="{% pageurl section %}">{{section.title|upper}}</a>
+                <a href="{% pageurl section %}">{{section.title}}</a>
               </li>
               {% endfor %}
               {% if user.is_authenticated %}
-                  <li><a href="">{% trans "My profile"|upper %}</a></li>
-                  <li><a href="">{% trans "Log out"|upper %}</a></li>
+                  <li><a href="">{% trans "Your Profile" %}</a></li>
+
               {% endif %}
     				</ul>
   	      </div>
@@ -52,19 +49,17 @@
 </div><!-- /header -->
 {% endblock %}
 
-
 <div id="feature-menu">
     <p class="backtotop"><a href="#top">&lt; {% trans "Back to top" %}</a></p>
     <ul>
         <li>{% trans "Menu" %}</li>
         {% for section in language_page.sections %}
         <li class="{{section.get_effective_extra_style_hints}}">
-          <a href="{% pageurl section %}">{{section.title|upper}}</a>
+          <a href="{% pageurl section %}">{{section.title}}</a>
         </li>
         {% endfor %}
         {% if user.is_authenticated %}
-            <li class="turq"><a href="{% url 'view_my_profile' %}">{% trans "My profile"|upper %}</a></li>
-            <li><a href="{% url 'auth_logout' %}">{% trans "Log out"|upper %}</a></li>
+            <li class="turq"><a href="{% url 'view_my_profile' %}">{% trans "Your Profile"|upper %}</a></li>
         {% endif %}
     </ul>
 </div><!-- /feature-menu -->
