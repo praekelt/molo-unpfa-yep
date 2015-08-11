@@ -18,7 +18,7 @@ h4 {font-size:200%; font-weight:bold; padding:15px 0px;}
 	.pink h4 {color:#f82353;}
 	.orange h4 {color:#ff7c44;}
 	.yellow h4 {color:#fad400;}
-	.grey h4 {color:#828282;}
+	.grey h4 {color:#666;}
 h6 {font-size:100%; font-weight:bold;}
 p {font-size:100%;}
 
@@ -49,8 +49,8 @@ img {max-width:100%;}
 
 /* Buttons/Links */
 a {color:black;}
-input[type='submit'], a.button {cursor:pointer; outline:none; text-decoration:none; padding:10px; display:inline-block; border:0; margin:5px 0; font-weight:bold; text-transform:uppercase; color:white; background:#828282; -webkit-appearance:none;}
-a.button.inverted {color:#828282; background:white; padding:9px; border:1px solid #828282;}	
+input[type='submit'], a.button {cursor:pointer; outline:none; text-decoration:none; padding:10px; display:inline-block; border:0; margin:5px 0; font-weight:bold; text-transform:uppercase; color:white; background:#666; -webkit-appearance:none;}
+a.button.inverted {color:#666; background:white; padding:9px; border:1px solid #666;}	
 input[type='submit']:focus, a.button:focus {opacity:0.5;}
 
 	/* Button Colours */
@@ -64,8 +64,8 @@ input[type='submit']:focus, a.button:focus {opacity:0.5;}
 		.orange a.button.inverted {color:#ff7c44; background:white; border-color:#ff7c44;}
 	.yellow input[type='submit'], .yellow a.button {background-color:#fad400; border-color:#fad400; color:white;}
 		.yellow a.button.inverted {color:#fad400; background:white; border-color:#fad400;}
-	.grey input[type='submit'], .grey a.button {background-color:#828282; border-color:#828282; color:white;}
-		.grey a.button.inverted {color:#828282; background:white; border-color:#828282;}
+	.grey input[type='submit'], .grey a.button {background-color:#666; border-color:#666; color:white;}
+		.grey a.button.inverted {color:#666; background:white; border-color:#666;}
 
 
 
@@ -87,7 +87,7 @@ input[type='submit']:focus, a.button:focus {opacity:0.5;}
 			.search-result.pink h3 {color:#f82353;}
 			.search-result.orange h3 {color:#ff7c44;}
 			.search-result.yellow h3 {color:#fad400;}
-			.search-result.grey h3 {color:#828282;}
+			.search-result.grey h3 {color:#666;}
 		.search-result p {padding:0; font-size:100%;} 
 
 
@@ -100,14 +100,15 @@ textarea {width:94%; font-size:100%; padding:10px; display:block;}
 label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
 
 	/* Radios */
-	input[type='radio'] {width:auto; padding:0px; margin:0 5px 0 0; font-size:15px;}	
-	.radios label { font-size:15px; min-width:75px; font-weight:normal;}	
+	.radios div {}
+	input[type='radio'] {width:auto; padding:0px; margin:0 5px 0 20px; font-size:15px; display:inline-block; vertical-align:middle; text-align:left;}	
+	.radios label { font-size:17px; width:80%; display:inline-block;  vertical-align:middle; font-weight:normal; text-align:left;}	
 		.turq .radios input[type="radio"]:checked + label {color:#21e0d8;}
 		.purple .radios input[type="radio"]:checked + label {color:#d127fc;}
 		.pink .radios input[type="radio"]:checked + label {color:#f82353;}
 		.orange .radios input[type="radio"]:checked + label {color:#ff7c44;}
 		.yellow .radios input[type="radio"]:checked + label {color:#fad400;}
-		.grey .radios input[type="radio"]:checked + label {color:#828282;}
+		.grey .radios input[type="radio"]:checked + label {color:#666;}
 
 
 
@@ -139,7 +140,7 @@ label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
 		.pink .article-copy blockquote, .comment.pink .by strong, .comment.pink .report {color:#f82353;}
 		.orange .article-copy blockquote, .comment.orange .by strong, .comment.orange .report {color:#ff7c44;}
 		.yellow .article-copy blockquote, .comment.yellow .by strong, .comment.yellow .report {color:#fad400;}
-		.grey .article-copy blockquote, .comment.grey .by strong, .comment.grey .report {color:#828282;}
+		.grey .article-copy blockquote, .comment.grey .by strong, .comment.grey .report {color:#666;}
 
 
 
