@@ -6,29 +6,70 @@
 <div class="header" id="top">
 
     <a href="/"><img src="{% static 'img/logo.png' %}" alt="{% trans "TuneMe" %}" class="logo"></a>
-    
+
+    <div class="feature-menu">
+        <a href="">{% trans "Profile" %}</a>
+        <a href="#feature-menu">{% trans "Menu" %}</a>
+    </div>
+
     <div class="search-icon">
-        <a href="#search-form">Search</a>      
-    </div>
+		<a href="#search-form">{% trans "Search" %}</a>
+    </div><!-- /search-icon -->
 
-    <div class="menuItem hide" id="login">
-        <span class="menuIcon">Login</span>
-    </div>
-           
-    <div class="menuItem hide" id="pages">
-        <span>Menu</span>
-    </div>        
+  	<div class="menu">
+    {% if not user.is_authenticated %}
+  		<div class="menuItem hide" id="login">
+  			<span class="menuIcon">Login</span>
+  			<div class="content join">
 
-</div>
+          {# <div class="signin-form"></div>#}
+          <!-- /signin-form -->
+  			</div><!-- /content -->
+  	    </div><!-- /menuItem -->
+      {% endif %}
+  	    <div class="menuItem" id="pages">
+  	      <span class="menuIcon">Menu</span>
+  	      <div class="content">
+    				<ul>
+              {% for section in language_page.sections %}
+              <li class="{{section.get_effective_extra_style_hints}}">
+                <a href="{% pageurl section %}">{{section.title}}</a>
+              </li>
+              {% endfor %}
+              {% if user.is_authenticated %}
+                  <li><a href="">{% trans "Your Profile" %}</a></li>
+
+              {% endif %}
+    				</ul>
+  	      </div>
+  	    </div><!-- /menuItem -->
+
+  	</div><!-- /menu -->
+
+</div><!-- /header -->
 {% endblock %}
 
+<div id="feature-menu">
+    <p class="backtotop"><a href="#top">&lt; {% trans "Back to top" %}</a></p>
+    <ul>
+        <li>{% trans "Menu" %}</li>
+        {% for section in language_page.sections %}
+        <li class="{{section.get_effective_extra_style_hints}}">
+          <a href="{% pageurl section %}">{{section.title}}</a>
+        </li>
+        {% endfor %}
+        {% if user.is_authenticated %}
+            <li class="turq"><a href="{% url 'view_my_profile' %}">{% trans "Your Profile"|upper %}</a></li>
+        {% endif %}
+    </ul>
+</div><!-- /feature-menu -->
 
 
 {% block search %}
 
     <div id="search-form">
-        <input placeholder="{% trans "Search" %}" type="search">
-        <input type="submit" value="{% trans "Search"%}">   
+        <input placeholder="{% trans "Looking for something?" %}" type="search">
+        <input type="submit" value="{% trans "Search"%}">
     </div>
 
 {% endblock %}
