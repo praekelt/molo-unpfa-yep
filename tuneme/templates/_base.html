@@ -32,14 +32,11 @@
           // Grab the accordion items from the page
           var divs = document.getElementsByTagName( 'div' );
           for ( var i = 0; i < divs.length; i++ ) {
-            // console.log(divs[i].className);
             if ( divs[i].className == 'menuItem' ) menuItems.push( divs[i] );
           }
           // Assign onclick events to the accordion item headings
-          // console.log(menuItems)
           for ( var i = 0; i < menuItems.length; i++ ) {
             var span = getFirstChildWithTagName( menuItems[i], 'SPAN' );
-            // console.log("hello");
             span.onclick = toggleItem;
           }
 
