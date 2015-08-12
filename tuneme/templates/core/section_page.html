@@ -15,23 +15,25 @@
 <div class="block {{self.get_effective_extra_style_hints}}">
 {% for section in self.sections %}
   <h5>{{section.title}}</h5>
-  {% with page=section.featured_articles|first recent_article=section.articles|first %}
-    {% if page %}
+  {% if section.feature_articles.exists %}
+    {% with page=section.featured_articles|first %}
       <h4>{{page.title}}</h4>
       <p>{{page.subtitle}}</p>
       <div class="comments-count"><a href=""><span>comments</span></a></div>
       <a href="{% pageurl page %}" class="button">Read on</a>
       <a href="{% pageurl section %}" class="button inverted">View Similar</a>
       <hr>
-    {% else %}
+    {% endwith %}
+  {% else %}
+    {% with recent_article=section.articles|first %}
       <h4>{{recent_article.title}}</h4>
       <p>{{recent_article.subtitle}}</p>
       <div class="comments-count"><a href=""><span>comments</span></a></div>
       <a href="{% pageurl recent_article %}" class="button">Read on</a>
       <a href="{% pageurl section %}" class="button inverted">View Similar</a>
       <hr>
-    {% endif %}
-  {% endwith %}
+    {% endwith %}
+  {% endif %}
 {% endfor %}
 
 {% for page in self.articles|slice:"0:" %}
