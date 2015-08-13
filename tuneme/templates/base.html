@@ -18,27 +18,34 @@
 
   	<div class="menu">
     {% if not user.is_authenticated %}
-  		<div class="menuItem hide" id="login">
+  		<div class="menuItem" id="login">
   			<span class="menuIcon">Login</span>
   			<div class="content join">
-
-          {# <div class="signin-form"></div>#}
-          <!-- /signin-form -->
+          <div class="title">
+  					<h3>Sign in</h3>
+  				</div>
+  				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div class="block turq">
+          <div class="signin-form">
+              <input type="submit" value="{% trans 'Sign in' %}">
+    					<a href="{% url 'molo.profiles:user_register' %}" class="button inverted">Not a member yet</a>
+    					<a href="" class="button inverted">Forgot password?</a>
+  				</div>
+          </div><!-- /signin-form -->
   			</div><!-- /content -->
-  	    </div><!-- /menuItem -->
-      {% endif %}
+  	  </div><!-- /menuItem -->
+    {% endif %}
   	    <div class="menuItem" id="pages">
   	      <span class="menuIcon">Menu</span>
   	      <div class="content">
     				<ul>
               {% for section in language_page.sections %}
-              <li class="{{section.get_effective_extra_style_hints}}">
-                <a href="{% pageurl section %}">{{section.title}}</a>
-              </li>
+                <li class="{{section.get_effective_extra_style_hints}}">
+                  <a href="{% pageurl section %}">{{section.title}}</a>
+                </li>
               {% endfor %}
               {% if user.is_authenticated %}
-                  <li><a href="">{% trans "Your Profile" %}</a></li>
-
+                  <li><a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Your Profile" %}</a></li>
               {% endif %}
     				</ul>
   	      </div>
@@ -54,12 +61,12 @@
     <ul>
         <li>{% trans "Menu" %}</li>
         {% for section in language_page.sections %}
-        <li class="{{section.get_effective_extra_style_hints}}">
-          <a href="{% pageurl section %}">{{section.title}}</a>
-        </li>
+          <li class="{{section.get_effective_extra_style_hints}}">
+            <a href="{% pageurl section %}">{{section.title}}</a>
+          </li>
         {% endfor %}
         {% if user.is_authenticated %}
-            <li class="turq"><a href="{% url 'view_my_profile' %}">{% trans "Your Profile"|upper %}</a></li>
+            <li><a href="{% url 'view_my_profile' %}">{% trans "Your Profile" %}</a></li>
         {% endif %}
     </ul>
 </div><!-- /feature-menu -->

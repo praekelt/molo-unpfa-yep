@@ -2,21 +2,24 @@
 {% load i18n %}
 {% load static core_tags %}
 {% block content %}
-
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-<div class="form-wrap">
+<div class="title profile">
+    <h3></h3>
+</div>
+<div class="block turq">
+  <div class="signin-form">
+    {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+      </ul>
+    {% endif %}
     <form method="post" action="{% url 'molo.profiles:user_register' %}">{% csrf_token %}
-        <table border="0">
+        {# <table border="0">#}
             {{ form.as_table }}
-        </table>
+        {# </table>#}
         <input type="submit" class="registerSubmit" value='{% trans "Register" %}' />
     </form>
+  </div>
 </div>
 {% endblock %}
