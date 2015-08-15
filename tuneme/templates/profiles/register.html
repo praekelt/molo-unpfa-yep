@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% load i18n %}
-{% load static core_tags %}
+{% load i18n static core_tags %}
+
 {% block content %}
 <div class="title profile">
     <h3></h3>
@@ -15,9 +15,10 @@
       </ul>
     {% endif %}
     <form method="post" action="{% url 'molo.profiles:user_register' %}">{% csrf_token %}
-        {# <table border="0">#}
-            {{ form.as_table }}
-        {# </table>#}
+        {{ registration_form.username }}
+        {{ registration_form.password }}<br>
+        <label>{% trans "Date of birth:" %}</label>
+        {{ form.date_of_birth }}
         <input type="submit" class="registerSubmit" value='{% trans "Register" %}' />
     </form>
   </div>
