@@ -24,7 +24,7 @@ class EditProfileForm(forms.Form):
     }))
 
 class ProfilePasswordChangeForm(forms.Form):
-    old_password = forms.CharField(widget=forms.TextInput(attrs={
+    old_password = forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': _('Old Password'),
     }))
     new_password = forms.CharField(widget=forms.PasswordInput(attrs={
