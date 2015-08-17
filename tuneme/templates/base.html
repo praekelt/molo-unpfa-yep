@@ -19,12 +19,12 @@
     <div class="menu">
     {% if not user.is_authenticated %}
     <div class="menuItem" id="login">
-        <span class="menuIcon">Login</span>
+        <span class="menuIcon">{% trans "Login" %}</span>
         <div class="content join">
           <div class="title">
             <h3>{% trans "Sign in" %}</h3>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit." %}</p>
           <div class="block turq">
           <div class="signin-form">
               <form method="post" action="{% url 'molo.profiles:auth_login' %}">{% csrf_token %}
@@ -44,22 +44,22 @@
       </div><!-- /menuItem -->
       {% else %}
       <div class="menuItem" id="login">
-        <span class="menuIcon">Login</span>
+        <span class="menuIcon">{% trans "Login" %}</span>
         <div class="content join">
           <div class="title">
-            <h3>Sign out</h3>
+            <h3>{% trans "Sign out" %}</h3>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit." %}</p>
           <div class="block turq">
           <div class="signin-form">
-            <a href="{% url 'molo.profiles:auth_logout' %}" class="button inverted">sign out</a>
+            <a href="{% url 'molo.profiles:auth_logout' %}" class="button inverted">{% trans "sign out" %}</a>
           </div>
           </div><!-- /signin-form -->
         </div><!-- /content -->
       </div><!-- /menuItem -->
     {% endif %}
         <div class="menuItem" id="pages">
-          <span class="menuIcon">Menu</span>
+          <span class="menuIcon">{% trans "Menu" %}</span>
           <div class="content">
             <ul>
               {% for section in language_page.sections %}
