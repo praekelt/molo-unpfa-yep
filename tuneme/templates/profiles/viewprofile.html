@@ -6,13 +6,16 @@
     <h3>Your Profile</h3>
 </div>
 <div class="signin-form">
-  <h4>{{ username }}</h4>
+  <h3>
+  <label class="label-wide">{% trans "Hello " %}
+    {{ username }}
   <label class="label-wide">{% trans "Display Name:" %}
     {{ alias }}
   </label>
   <label class="label-wide">{% trans "Date of Birth:" %}
     {{ date_of_birth | date:"M d, Y" }}
   </label>
+</h3>
     <p>
     <a href="{% url 'molo.profiles:edit_my_profile' %}" class="button inverted">{% trans "Edit My Profile" %}</a>
     <a href="{% url 'molo.profiles:profile_password_change' %}" class="button inverted">{% trans "Change My Password" %}</a>

@@ -20,6 +20,7 @@
         <label>{% trans "Date of birth:" %}</label>
         {{ form.date_of_birth }}
         <input type="submit" class="registerSubmit" value='{% trans "Register" %}' />
+        <input type="hidden" name="next" value="{% url 'molo.profiles:auth_login' %}" />
     </form>
   </div>
 </div>
