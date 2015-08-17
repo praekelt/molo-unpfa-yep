@@ -184,7 +184,7 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Wagtail settings
 
-LOGIN_URL = 'wagtailadmin_login'
+LOGIN_URL = 'auth_login'
 LOGIN_REDIRECT_URL = 'wagtailadmin_home'
 
 WAGTAIL_SITE_NAME = "base"
