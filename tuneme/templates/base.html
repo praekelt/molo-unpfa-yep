@@ -28,9 +28,13 @@
           <div class="block turq">
           <div class="signin-form">
               <form method="post" action="{% url 'molo.profiles:auth_login' %}">{% csrf_token %}
+                {% if login_form.errors %}
+                    <p class="error errorlist">{% trans "Your username and password does not match. Please try again." %}</p>
+                {% endif %}
                 {{login_form.username}}
                 {{login_form.password}}
                 <input type="submit" value="{% trans 'Sign in' %}">
+                <input type="hidden" name="next" value="{{request.site.root_page.url}}" />
                 <a href="{% url 'molo.profiles:user_register' %}" class="button inverted">{% trans "Not a member yet" %}</a>
                 <a href="" class="button inverted">{% trans "Forgot password?" %}</a>
             </form>
