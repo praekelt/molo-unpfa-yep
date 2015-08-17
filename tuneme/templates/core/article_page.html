@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="title {{self.get_parent_section.get_effective_extra_style_hints}}">
-  
+
   {% with parent_section=self.get_parent_section ancestor=self.get_parent_section.get_ancestors.last %}
 
     <div class="icon">
@@ -18,7 +18,7 @@
     </div>
     <h6>{{ancestor.sectionpage.title}}</h6>
     <h6>{{parent_section.title}}</h6>
-    
+
   {% endwith %}
 
 </div>
@@ -57,12 +57,12 @@
     {% endfor %}
     <p class="author">By {{self.owner}} {{self.first_published_at|date:"j F Y"}}</p>
     {% get_comment_count for self as comment_count %}
-    <div class="comments-count"><a href="#">{{comment_count}} <span>comment{{comment_count|pluralize}}</span></a></div>
+    <div class="comments-count"><a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
     <div class="post-comment">
       {% if request.user.is_authenticated %}
         {% render_comment_form for self %}
       {% else %}
-        <p>Please <a href="{% url 'molo.profiles:auth_login' %}">log in</a> to leave a comment.</p>
+        <p>{% trans "Please" %} <a href="{% url 'molo.profiles:auth_login' %}">{% trans "log in" %}</a>{% trans " to leave a comment." %}</p>
       {% endif %}
 		</div>
   </div>
@@ -73,7 +73,7 @@
 <div class="comment {{self.get_parent_section.get_effective_extra_style_hints}} {% if node.user.is_staff %}staff{% endif %}">
   <p class="by"><strong>{{node.user_name}}</strong> <span class="date">{{node.submit_date|date:"j F Y"}}</span></p>
   <p>{{node.comment}}</p>
-  <p><a href="{% url 'molo-comments-report' node.pk %}" class="report">Report +</a></p>
+  <p><a href="{% url 'molo-comments-report' node.pk %}" class="report">{% trans "Report +" %}</a></p>
 </div>
 {# recursion! children of a given comment #}
 {% if not node.is_leaf_node %}
