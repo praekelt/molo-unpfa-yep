@@ -177,6 +177,7 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
     'molo.core.context_processors.locale',
+    'molo.profiles.context_processors.get_profile_data',
     'tuneme.context_processors.default_forms',
 )
 
