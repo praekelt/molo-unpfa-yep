@@ -33,7 +33,7 @@ body {background:white; position:relative; text-align:center;}
             .join p {padding:15px;}
             .signin-form {padding:10px 20px; text-align:center;}
             .signin-form label {display:block; padding:10px 0;}
-            .signin-form input[type='submit'], a.button {margin:auto; text-align:center;}
+            .signin-form input[type='submit'], a.button {width:90%; margin:auto; text-align:center;}
             .signin-form input.error {border:2px solid red;}
             .signin-form label.error {color:red;}
             .signin-form a.button {width:90%;}
