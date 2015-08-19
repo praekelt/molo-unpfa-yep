@@ -1,7 +1,8 @@
 from django.test import TestCase, RequestFactory
 from tuneme.context_processors import default_forms
-from tuneme.forms import LoginForm, RegistrationForm, EditProfileForm
-from tuneme.forms import ProfilePasswordChangeForm
+from tuneme.forms import LoginForm
+from molo.profiles.forms import RegistrationForm
+from molo.profiles.forms import EditProfileForm, ProfilePasswordChangeForm
 
 
 class ContextProcessorsTest(TestCase):
