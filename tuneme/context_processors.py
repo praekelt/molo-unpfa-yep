@@ -1,5 +1,6 @@
-from tuneme.forms import LoginForm, RegistrationForm, EditProfileForm
-from tuneme.forms import ProfilePasswordChangeForm
+# from tuneme.forms import LoginForm
+from molo.profiles.forms import LoginForm, RegistrationForm
+from molo.profiles.forms import EditProfileForm, ProfilePasswordChangeForm
 
 
 def default_forms(request):
