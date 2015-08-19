@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 from os.path import abspath, dirname, join
 from django.conf import global_settings
 from django.utils.translation import ugettext_lazy as _
+import djcelery
+djcelery.setup_loader()
 
 # Absolute filesystem path to the Django project directory:
 PROJECT_ROOT = dirname(dirname(dirname(abspath(__file__))))
@@ -65,6 +67,9 @@ INSTALLED_APPS = (
     'raven.contrib.django.raven_compat',
     'tuneme',
 
+    'google_analytics',
+    'djcelery',
+
     'molo.core',
     'molo.profiles',
     'mptt',
@@ -87,6 +92,8 @@ MIDDLEWARE_CLASSES = (
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+
+    'google_analytics.middleware.GoogleAnalyticsMiddleware',
 )
 
 ROOT_URLCONF = 'tuneme.urls'
@@ -182,6 +189,18 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
+# Google Analytics
+
+GOOGLE_ANALYTICS = {
+    'google_analytics_id': '',
+}
+GOOGLE_ANALYTICS_IGNORE_PATH = ['/health/', ]
+
+
+# Celery
+
+CELERY_IMPORTS = ('google_analytics.tasks',)
 
 # Wagtail settings
 
