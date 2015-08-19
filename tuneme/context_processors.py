@@ -1,5 +1,5 @@
-# from tuneme.forms import LoginForm
-from molo.profiles.forms import LoginForm, RegistrationForm
+from tuneme.forms import LoginForm
+from molo.profiles.forms import RegistrationForm
 from molo.profiles.forms import EditProfileForm, ProfilePasswordChangeForm
 
 
