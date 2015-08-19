@@ -31,6 +31,8 @@ urlpatterns = patterns(
     url(r'^comments/', include('molo.commenting.urls')),
 
     url(r'', include(wagtail_urls)),
+
+    url(r'^djga/', include('google_analytics.urls')),
 )
 
 
