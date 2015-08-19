@@ -13,38 +13,67 @@
     </div>
 
     <div class="search-icon">
-		<a href="#search-form">{% trans "Search" %}</a>
+      <a href="#search-form">{% trans "Search" %}</a>
     </div><!-- /search-icon -->
 
-  	<div class="menu">
+    <div class="menu">
     {% if not user.is_authenticated %}
-  		<div class="menuItem hide" id="login">
-  			<span class="menuIcon">Login</span>
-  			<div class="content join">
-
-          {# <div class="signin-form"></div>#}
-          <!-- /signin-form -->
-  			</div><!-- /content -->
-  	    </div><!-- /menuItem -->
-      {% endif %}
-  	    <div class="menuItem" id="pages">
-  	      <span class="menuIcon">Menu</span>
-  	      <div class="content">
-    				<ul>
+    <div class="menuItem" id="login">
+        <span class="menuIcon">{% trans "Login" %}</span>
+        <div class="content join">
+          <div class="title">
+            <h3>{% trans "Sign in" %}</h3>
+          </div>
+          <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit." %}</p>
+          <div class="block turq">
+          <div class="signin-form">
+              <form method="post" action="{% url 'molo.profiles:auth_login' %}">{% csrf_token %}
+                {% if login_form.errors %}
+                    <p class="error errorlist">{% trans "Your username and password does not match. Please try again." %}</p>
+                {% endif %}
+                {{login_form.username}}
+                {{login_form.password}}
+                <input type="submit" value="{% trans 'Sign in' %}">
+                <input type="hidden" name="next" value="{{request.site.root_page.url}}" />
+                <a href="{% url 'molo.profiles:user_register' %}" class="button inverted">{% trans "Not a member yet" %}</a>
+                <a href="" class="button inverted">{% trans "Forgot password?" %}</a>
+            </form>
+          </div>
+          </div><!-- /signin-form -->
+        </div><!-- /content -->
+      </div><!-- /menuItem -->
+      {% else %}
+      <div class="menuItem" id="login">
+        <span class="menuIcon">{% trans "Login" %}</span>
+        <div class="content join">
+          <div class="title">
+            <h3>{% trans "Sign out" %}</h3>
+          </div>
+          <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit." %}</p>
+          <div class="block turq">
+          <div class="signin-form">
+            <a href="{% url 'molo.profiles:auth_logout' %}" class="button inverted">{% trans "sign out" %}</a>
+          </div>
+          </div><!-- /signin-form -->
+        </div><!-- /content -->
+      </div><!-- /menuItem -->
+    {% endif %}
+        <div class="menuItem" id="pages">
+          <span class="menuIcon">{% trans "Menu" %}</span>
+          <div class="content">
+            <ul>
               {% for section in language_page.sections %}
-              <li class="{{section.get_effective_extra_style_hints}}">
-                <a href="{% pageurl section %}">{{section.title}}</a>
-              </li>
+                <li class="{{section.get_effective_extra_style_hints}}">
+                  <a href="{% pageurl section %}">{{section.title}}</a>
+                </li>
               {% endfor %}
               {% if user.is_authenticated %}
-                  <li><a href="">{% trans "Your Profile" %}</a></li>
-
+                  <li><a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Your Profile" %}</a></li>
               {% endif %}
-    				</ul>
-  	      </div>
-  	    </div><!-- /menuItem -->
-
-  	</div><!-- /menu -->
+            </ul>
+          </div>
+        </div><!-- /menuItem -->
+      </div><!-- /menu -->
 
 </div><!-- /header -->
 {% endblock %}
@@ -54,12 +83,12 @@
     <ul>
         <li>{% trans "Menu" %}</li>
         {% for section in language_page.sections %}
-        <li class="{{section.get_effective_extra_style_hints}}">
-          <a href="{% pageurl section %}">{{section.title}}</a>
-        </li>
+          <li class="{{section.get_effective_extra_style_hints}}">
+            <a href="{% pageurl section %}">{{section.title}}</a>
+          </li>
         {% endfor %}
         {% if user.is_authenticated %}
-            <li class="turq"><a href="{% url 'view_my_profile' %}">{% trans "Your Profile"|upper %}</a></li>
+            <li><a href="{% url 'view_my_profile' %}">{% trans "Your Profile" %}</a></li>
         {% endif %}
     </ul>
 </div><!-- /feature-menu -->
@@ -79,13 +108,12 @@
 <div class="footer">
     {% if languages %}
       <ul>
-      <strong>Site Language:</strong>
+      <strong>{% trans "Site Language:" %}</strong>
       {% for language in languages %}
       <a href="{% url 'locale_set' language.code %}">{{language.title}}</a>
       {% endfor %}
       </ul>
     {% endif %}
-
     {% for page in language_page.footers %}
     <a href="{% pageurl page %}">{{page.title}}</a>
     {% endfor %}
