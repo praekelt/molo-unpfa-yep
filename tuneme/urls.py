@@ -6,9 +6,10 @@ from django.conf import settings
 from django.contrib import admin
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
-from wagtail.wagtailsearch import urls as wagtailsearch_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
+
+from tuneme.views import search
 
 
 def todo(request):
@@ -20,7 +21,6 @@ urlpatterns = patterns(
     url(r'^django-admin/', include(admin.site.urls)),
 
     url(r'^admin/', include(wagtailadmin_urls)),
-    url(r'^search/', include(wagtailsearch_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url('^todo/.*$', todo, name='TODO'),
@@ -29,7 +29,7 @@ urlpatterns = patterns(
     url(r'^profiles/', include('molo.profiles.urls',
                                namespace='molo.profiles')),
     url(r'^comments/', include('molo.commenting.urls')),
-
+    url(r'search/$', search, name='search'),
     url(r'', include(wagtail_urls)),
 
     url(r'^djga/', include('google_analytics.urls')),
