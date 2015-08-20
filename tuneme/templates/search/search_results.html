@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags comments i18n%}
+
+{% block title %}{% trans "Search" %}{% endblock %}
+
+{% block content %}
+<div class="title grey">
+	<h1>{% trans "You searched for " %}'{{search_query}}'</h1>
+</div><!-- /header -->
+{% if search_results %}
+    {% for page in search_results %}
+        {% get_comment_count for page as comment_count %}
+        <div class="block {{page.get_parent_section.get_effective_extra_style_hints}} search-result">
+        	<h6><a href="{% pageurl page %}">{{page.title}}</h6>
+        	<a href="" class="comments-count">{{comment_count}}</a>
+        </div><!-- /block -->
+    {% endfor %}
+
+    <div class="search-result pagination">
+        <div class="step-links">
+        {% if search_results.has_previous %}
+            <a href="?p={{ search_results.previous_page_number }}&amp;q={{search_query}}">&larr;</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}
+        </span>
+
+        {% if search_results.has_next %}
+            <a href="?p={{ search_results.next_page_number }}&amp;q={{search_query}}">&rarr;</a>
+        {% endif %}
+        </div>
+    </div>
+{% else %}
+    <p>{% trans "No search results for " %}{{search_query}}.</p>
+{% endif %}
+{% endblock %}
