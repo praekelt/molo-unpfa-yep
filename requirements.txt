@@ -4,3 +4,4 @@ molo.commenting<1.0.0,>=0.2.0
 django-extensions
 django-google-analytics-app
 django-celery
+redis
