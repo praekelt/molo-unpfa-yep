@@ -9,3 +9,6 @@ $manage collectstatic --noinput --settings=tuneme.settings.production
 
 # compile i18n strings
 $manage compilemessages --settings=tuneme.settings.production
+
+# Update the search index
+$manage update_index
