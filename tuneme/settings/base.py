@@ -216,13 +216,15 @@ WAGTAIL_SITE_NAME = "base"
 # http://wagtail.readthedocs.org/en/latest/howto/performance.html#search
 # http://wagtail.readthedocs.org/en/latest/core_components/search/backends.html#elasticsearch-backend  # noqa
 #
-# WAGTAILSEARCH_BACKENDS = {
-#     'default': {
-#         'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',  # noqa
-#         'INDEX': 'base',
-#     },
-# }
-
+WAGTAILSEARCH_RESULTS_TEMPLATE = 'search/search_results.html'
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': (
+            'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch'),
+        'INDEX': 'tuneme',
+        'AUTO_UPDATE': True,
+    },
+}
 
 # Whether to use face/feature detection to improve image cropping - requires OpenCV  # noqa
 WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False

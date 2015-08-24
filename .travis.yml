@@ -2,6 +2,9 @@ language: python
 python:
   - "2.7"
   - "pypy"
+services:
+  - elasticsearch
+  - redis-server
 install:
   - pip install --upgrade pip
   - pip install coveralls
@@ -10,7 +13,6 @@ install:
   - pip install -e .
 script:
   - flake8
-  - python manage.py test -v1 --settings=test_settings
   - py.test
 after_success:
   - coveralls

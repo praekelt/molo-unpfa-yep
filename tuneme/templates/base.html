@@ -97,8 +97,10 @@
 {% block search %}
 
     <div id="search-form">
-        <input placeholder="{% trans "Looking for something?" %}" type="search">
+      <form action="{% url 'search' %}">
+        <input placeholder="{% trans "Looking for something?" %}" name="q" type="search">
         <input type="submit" value="{% trans "Search"%}">
+      </form>
     </div>
 
 {% endblock %}

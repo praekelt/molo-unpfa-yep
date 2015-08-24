@@ -72,7 +72,7 @@ input[type='submit']:focus, a.button:focus {opacity:0.5;}
 
 /* search Black Box */
 #search-form {display:block; clear:both; background:black; padding:15px;}
-    #search-form input {background:black; border:1px solid white;}
+    #search-form input {background:black; border:1px solid white; color:white;}
     #search-form input[type='submit'] {width:auto; padding:10px 25px; border:0; color:black; background:white;}
 
     /* search Results */
@@ -95,7 +95,7 @@ input[type='submit']:focus, a.button:focus {opacity:0.5;}
 /* Form Elements */
 input {width:90%; padding:10px; margin:5px 0; display:inline-block; font-size:125%; background:#f7f7f7; border:1px solid #ddd;}
 select {min-width:90%; margin:0 0 10px; display:inline-block; font-size:125%; text-align:center;}
-input:focus {background:#eee; color:black; }
+input:focus {background:#eee; color:white; }
 textarea {width:94%; font-size:100%; padding:10px; display:block;}
 label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
 
