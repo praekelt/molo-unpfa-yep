@@ -4,6 +4,7 @@ python:
   - "pypy"
 services:
   - elasticsearch
+  - redis-server
 install:
   - pip install --upgrade pip
   - pip install coveralls
