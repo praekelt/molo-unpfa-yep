@@ -19,7 +19,6 @@ urlpatterns = patterns(
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
 
-    url('^todo/.*$', todo, name='TODO'),
     url(r'', include('molo.core.urls')),
 
     url(r'^profiles/', include('molo.profiles.urls',
