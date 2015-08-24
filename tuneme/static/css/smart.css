@@ -41,21 +41,14 @@ body {background:white; position:relative; text-align:center;}
         /* Pages Menu */
         #pages ul {font-size:140%;}
             #pages ul li { display:block; font-weight:bold;}
-            #pages ul li a {display:block; padding:15px; color:white; text-decoration:none; vertical-align:middle;}
-                #pages ul li a:before {content:""; display:inline-block; vertical-align:middle; margin-right:20px; width:40px; height:50px; background-size:40px; background-position:center center; background-repeat:no-repeat;}
-            #pages ul li:nth-child(1) a { background-color:#21e0d8;}
-                #pages ul li:nth-child(1) a:before {background-image:url(../img/pie.png);}
-            #pages ul li:nth-child(2) a {background-color:#d127fc;}
-                #pages ul li:nth-child(2) a:before {background-image:url(../img/house.png);}
-            #pages ul li:nth-child(3) a {background-color:#f82353}
-                #pages ul li:nth-child(3) a:before {background-image:url(../img/pack-white.png); background-size:38px;}
-            #pages ul li:nth-child(4) a {background-color:#ff7c44;}
-                #pages ul li:nth-child(4) a:before {background-image:url(../img/heart.png);}
-            #pages ul li:nth-child(5) a {background-color:#fad400;}
-                #pages ul li:nth-child(5) a:before {background-image:url(../img/burger.png);}
-            #pages ul li:nth-child(6) a {background-color:#828282;}
-                #pages ul li:nth-child(6) a:before {background-image:url(../img/profile.png); background-size:38px;}
+            #pages ul li a {display:block; padding:15px; color:white; text-decoration:none; vertical-align:top;}
 
+        li.turq {background-color:#21e0d8;}
+        li.purple {background-color:#d127fc;}
+        li.pink {background-color:#f82353;}
+        li.orange {background-color:#ff7c44;}
+        li.yellow {background-color:#fad400;}
+        li.grey {background-color:#828282;}
     /* Hide Feature Menu */
     #feature-menu, .feature-menu {display:none;}
 
