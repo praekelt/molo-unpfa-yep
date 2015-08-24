@@ -1,6 +1,6 @@
 {% extends "_base.html" %}
 
-{% load wagtailcore_tags compress static i18n %}
+{% load wagtailcore_tags wagtailimages_tags compress static i18n %}
 
 {% block header %}
 <div class="header" id="top">
@@ -64,11 +64,11 @@
             <ul>
               {% for section in language_page.sections %}
                 <li class="{{section.get_effective_extra_style_hints}}">
-                  <a href="{% pageurl section %}">{{section.title}}</a>
+                    <a href="{% pageurl section %}">{% image section.image width-40 %} {{section.title}}</a>
                 </li>
               {% endfor %}
               {% if user.is_authenticated %}
-                  <li><a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Your Profile" %}</a></li>
+                  <li class="grey"><a href="{% url 'molo.profiles:view_my_profile' %}"><img src="{% static 'img/profile.png' %}" width="35"> {% trans "Your Profile" %}</a></li>
               {% endif %}
             </ul>
           </div>
