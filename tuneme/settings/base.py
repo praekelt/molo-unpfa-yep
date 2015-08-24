@@ -149,6 +149,7 @@ LANGUAGES = global_settings.LANGUAGES + (
     ('ss', _('Swati')),
     ('nr', _('Ndebele')),
     ('bem', _('Bemba')),
+    ('nya', _('Nyanja')),
 )
 
 LOCALE_PATHS = (
