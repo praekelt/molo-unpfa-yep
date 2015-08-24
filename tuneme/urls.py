@@ -12,10 +12,6 @@ from wagtail.wagtailcore import urls as wagtail_urls
 from tuneme.views import search
 
 
-def todo(request):
-    from django.http import HttpResponse
-    return HttpResponse('TODO!')
-
 urlpatterns = patterns(
     '',
     url(r'^django-admin/', include(admin.site.urls)),
