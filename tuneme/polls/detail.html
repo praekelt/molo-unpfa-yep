@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% load static core_tags %}
+
+{% block content %}
+
+<div class="title turq">
+	<div class="image"><img src="{% static 'img/speak.png' %}" alt="SPEAK OUT"></div>
+	<h1><a href="">{% trans "SPEAK OUT" %}</a></h1>
+</div><!-- /title -->
+
+
+<div class="block turq">
+	<!-- <img src="{% static 'img/condom.png' %}" alt="Condom" class="right"> -->
+	<h2>{{ question.title }}</h2>
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	<div class="radios">
+			<form action="{% url 'vote' question.id %}" method="post">
+				{% csrf_token %}
+				{% for choice in question.choices %}
+					<div>
+					    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+					    <label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
+					</div>
+				{% endfor %}
+				<div>
+					<input type="submit" value="{% trans "Vote" %}" />
+				</div>
+			</form>
+			<a href="{% url 'results' question.id %}">{% trans "See Results" %}</a>
+		</div><!-- /radios -->
+	<p class="back"><a href="javascript: history.go(-1)">&lt; {% trans "Back" %}</a></p>
+</div><!-- /block -->
+{% endblock %}
