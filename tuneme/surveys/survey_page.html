@@ -1,0 +1,16 @@
+{% load i18n %}
+{% block content %}
+	{% if questions %}
+		{% for question in questions %}
+			<div class="clear-block">
+				<h1>{{ question.survey_text }}</h1>
+				{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+				<form action="{% url 'survey' question.id %}" method="post">
+					{% csrf_token %}
+					    <input type="text" name="answer" id="answer" value="" /><br />
+					<input class="m0" type="submit" value='{% trans "Post" %}' />
+				</form>
+			</div>
+		{% endfor %}
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,8 @@
+{% load i18n %}
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+		<li><a href="{% url 'detail' question.id %}">{{ question.answer_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
