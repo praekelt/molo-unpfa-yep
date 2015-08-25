@@ -1,0 +1,265 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-24 13:50+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: tuneme/forms.py:7
+msgid "Username"
+msgstr ""
+
+#: tuneme/forms.py:10
+msgid "4 Digit PIN"
+msgstr ""
+
+#: tuneme/settings/base.py:143
+msgid "Zulu"
+msgstr ""
+
+#: tuneme/settings/base.py:144
+msgid "Xhosa"
+msgstr ""
+
+#: tuneme/settings/base.py:145
+msgid "Sotho"
+msgstr ""
+
+#: tuneme/settings/base.py:146
+msgid "Venda"
+msgstr ""
+
+#: tuneme/settings/base.py:147
+msgid "Tswana"
+msgstr ""
+
+#: tuneme/settings/base.py:148
+msgid "Tsonga"
+msgstr ""
+
+#: tuneme/settings/base.py:149
+msgid "Swati"
+msgstr ""
+
+#: tuneme/settings/base.py:150
+msgid "Ndebele"
+msgstr ""
+
+#: tuneme/settings/base.py:151
+msgid "Bemba"
+msgstr ""
+
+#: tuneme/templates/404.html:8
+msgid "Page not found"
+msgstr ""
+
+#: tuneme/templates/404.html:10
+msgid "Sorry, this page could not be found."
+msgstr ""
+
+#: tuneme/templates/500.html:12 tuneme/templates/500.html.py:16
+msgid "Internal server error"
+msgstr ""
+
+#: tuneme/templates/500.html:18
+msgid "Sorry, there seems to be an error. Please try again soon."
+msgstr ""
+
+#: tuneme/templates/base.html:8
+msgid "TuneMe"
+msgstr ""
+
+#: tuneme/templates/base.html:11
+msgid "Profile"
+msgstr ""
+
+#: tuneme/templates/base.html:12 tuneme/templates/base.html.py:62
+#: tuneme/templates/base.html:84
+msgid "Menu"
+msgstr ""
+
+#: tuneme/templates/base.html:16 tuneme/templates/base.html.py:102
+#: tuneme/templates/search/search_results.html:49
+msgid "Search"
+msgstr ""
+
+#: tuneme/templates/base.html:22 tuneme/templates/base.html.py:47
+msgid "Login"
+msgstr ""
+
+#: tuneme/templates/base.html:25 tuneme/templates/base.html.py:36
+#: tuneme/templates/registration/login.html:6
+#: tuneme/templates/registration/login.html:17
+msgid "Sign in"
+msgstr ""
+
+#: tuneme/templates/base.html:27 tuneme/templates/base.html.py:52
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+msgstr ""
+
+#: tuneme/templates/base.html:32 tuneme/templates/registration/login.html:13
+msgid "Your username and password does not match. Please try again."
+msgstr ""
+
+#: tuneme/templates/base.html:38 tuneme/templates/registration/login.html:19
+msgid "Not a member yet"
+msgstr ""
+
+#: tuneme/templates/base.html:39 tuneme/templates/registration/login.html:20
+msgid "Forgot password?"
+msgstr ""
+
+#: tuneme/templates/base.html:50
+msgid "Sign out"
+msgstr ""
+
+#: tuneme/templates/base.html:55
+msgid "sign out"
+msgstr ""
+
+#: tuneme/templates/base.html:71 tuneme/templates/base.html.py:91
+#: tuneme/templates/profiles/viewprofile.html:6
+msgid "Your Profile"
+msgstr ""
+
+#: tuneme/templates/base.html:82
+msgid "Back to top"
+msgstr ""
+
+#: tuneme/templates/base.html:101
+msgid "Looking for something?"
+msgstr ""
+
+#: tuneme/templates/base.html:113
+msgid "Site Language:"
+msgstr ""
+
+#: tuneme/templates/base.html:124
+msgid "UNFPA, Ford Foundation"
+msgstr ""
+
+#: tuneme/templates/base.html:126
+msgid "Al rights reserved."
+msgstr ""
+
+#: tuneme/templates/comments/form.html:7
+msgid "Please correct the error below"
+msgid_plural ""
+"Please correct the\n"
+"        errors below"
+msgstr[0] ""
+msgstr[1] ""
+
+#: tuneme/templates/core/article_page.html:60
+msgid "comment"
+msgstr ""
+
+#: tuneme/templates/core/article_page.html:65
+msgid "Please"
+msgstr ""
+
+#: tuneme/templates/core/article_page.html:65
+msgid "log in"
+msgstr ""
+
+#: tuneme/templates/core/article_page.html:65
+msgid " to leave a comment."
+msgstr ""
+
+#: tuneme/templates/core/article_page.html:76
+msgid "Report +"
+msgstr ""
+
+#: tuneme/templates/core/section_page.html:22
+#: tuneme/templates/core/section_page.html:31
+msgid "comments"
+msgstr ""
+
+#: tuneme/templates/core/section_page.html:23
+#: tuneme/templates/core/section_page.html:32
+#: tuneme/templates/core/section_page.html:42
+#: tuneme/templates/core/tags/latest_listing_homepage.html:25
+#: tuneme/templates/core/tags/section_listing_homepage.html:26
+msgid "Read on"
+msgstr ""
+
+#: tuneme/templates/core/section_page.html:24
+#: tuneme/templates/core/section_page.html:33
+#: tuneme/templates/core/tags/latest_listing_homepage.html:26
+#: tuneme/templates/core/tags/section_listing_homepage.html:27
+msgid "View Similar"
+msgstr ""
+
+#: tuneme/templates/core/section_page.html:48
+msgid "Back"
+msgstr ""
+
+#: tuneme/templates/core/tags/breadcrumbs.html:6
+msgid "Home"
+msgstr ""
+
+#: tuneme/templates/core/tags/latest_listing_homepage.html:6
+#: tuneme/templates/core/tags/section_listing_homepage.html:5
+msgid "Latest"
+msgstr ""
+
+#: tuneme/templates/core/tags/latest_listing_homepage.html:24
+#: tuneme/templates/core/tags/section_listing_homepage.html:25
+msgid " comment"
+msgstr ""
+
+#: tuneme/templates/profiles/change_password.html:43
+msgid "Change Password"
+msgstr ""
+
+#: tuneme/templates/profiles/editprofile.html:13
+msgid "Update profile"
+msgstr ""
+
+#: tuneme/templates/profiles/register.html:20
+msgid "Date of birth:"
+msgstr ""
+
+#: tuneme/templates/profiles/register.html:22
+msgid "Register"
+msgstr ""
+
+#: tuneme/templates/profiles/viewprofile.html:10
+msgid "Hello "
+msgstr ""
+
+#: tuneme/templates/profiles/viewprofile.html:12
+msgid "Display Name:"
+msgstr ""
+
+#: tuneme/templates/profiles/viewprofile.html:15
+msgid "Date of Birth:"
+msgstr ""
+
+#: tuneme/templates/profiles/viewprofile.html:20
+msgid "Edit My Profile"
+msgstr ""
+
+#: tuneme/templates/profiles/viewprofile.html:21
+msgid "Change My Password"
+msgstr ""
+
+#: tuneme/templates/registration/login.html:8
+msgid "We’re excited to have you..."
+msgstr ""
+
+#: tuneme/templates/search/search_results.html:51
+msgid "No search results for "
+msgstr ""
