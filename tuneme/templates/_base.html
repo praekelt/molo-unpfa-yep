@@ -15,10 +15,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {% compress css %}
-
-            <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-            <link rel="stylesheet" type="text/css" href="{% static 'css/feature.css' %}">
-            <link rel="stylesheet" type="text/css" media="screen and (min-width: 20em)" href="{% static 'css/smart.css' %}">
+            <link rel="stylesheet" type="text/css" media="screen,projection" href="{% static 'css/styles.css' %}">
+            <link rel="stylesheet" type="text/css" media="screen,projection" href="{% static 'css/feature.css' %}">
+            <link rel="stylesheet" type="text/css" media="screen and (min-width:420px)" href="{% static 'css/smart.css' %}">
         {% endcompress %}
 
         {% block extra_css %}

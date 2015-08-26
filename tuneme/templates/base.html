@@ -8,7 +8,11 @@
     <a href="/"><img src="{% static 'img/logo.png' %}" alt="{% trans "TuneMe" %}" class="logo"></a>
 
     <div class="feature-menu">
-        <a href="">{% trans "Profile" %}</a>
+        {% if not user.is_authenticated %}
+        <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
+        {% else %}
+        <a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Profile" %}</a>
+        {% endif %}
         <a href="#feature-menu">{% trans "Menu" %}</a>
     </div>
 
@@ -78,24 +82,8 @@
 </div><!-- /header -->
 {% endblock %}
 
-<div id="feature-menu">
-    <p class="backtotop"><a href="#top">&lt; {% trans "Back to top" %}</a></p>
-    <ul>
-        <li>{% trans "Menu" %}</li>
-        {% for section in language_page.sections %}
-          <li class="{{section.get_effective_extra_style_hints}}">
-            <a href="{% pageurl section %}">{{section.title}}</a>
-          </li>
-        {% endfor %}
-        {% if user.is_authenticated %}
-            <li><a href="{% url 'view_my_profile' %}">{% trans "Your Profile" %}</a></li>
-        {% endif %}
-    </ul>
-</div><!-- /feature-menu -->
-
-
 {% block search %}
-
+    <p class="backtotop"><a href="#top">{% trans "Back to top" %}</a></p>
     <div id="search-form">
       <form action="{% url 'search' %}">
         <input placeholder="{% trans "Looking for something?" %}" name="q" type="search">
@@ -106,6 +94,17 @@
 {% endblock %}
 
 {% block footer %}
+
+<div id="feature-menu">
+    <ul>
+        <li><a href="/">{% trans "HOME" %}</a></li>
+        {% for section in language_page.sections %}
+          <li class="{{section.get_effective_extra_style_hints}}">
+            <a href="{% pageurl section %}">{{section.title}}</a>
+          </li>
+        {% endfor %}
+    </ul>
+</div><!-- /feature-menu -->
 
 <div class="footer">
     {% if languages %}
