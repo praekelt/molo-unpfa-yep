@@ -2,33 +2,50 @@
 {% load wagtailcore_tags wagtailimages_tags comments i18n %}
 
 {% if sections %}
-<h2 class="list-header">{% trans "Latest" %}</h2>
-{% for section in sections %}
-  <div class="title {{section.get_effective_extra_style_hints}}">
-    <div class="icon">
-      {% if section.image %}
-          {% image section.image width-80 %}
-      {% endif %}
-    </div>
-    <h6><a href="{% pageurl section %}">{{section.title}}</a></h6>
-  </div>
-    {% for sub_section in section.sections %}
+
+  <h2 class="list-header">{% trans "Latest" %}</h2>
+  {% for section in sections %}
     <div class="block {{section.get_effective_extra_style_hints}}">
-      {% for article in sub_section.articles %}
-        {% if article.featured_in_latest %}
-          {% if article.image %}
-            <a href="{% pageurl article %}">{% image article.image width-60 %}</a>
-          {% endif %}
-          <h3>{{article.title}}</h3>
-          <p>{{article.subtitle}}</p>
-          {% get_comment_count for article as comment_count %}
-          <div class="comments-count"><a href="">{{ comment_count }}{% trans " comment" %}{{ comment_count|pluralize }}<span></span></a></div>
-          <a href="{% pageurl article %}" class="button">{% trans "Read on" %}</a>
-          <a href="{% pageurl article.get_parent_section %}" class="button inverted">{% trans "View Similar" %}</a>
-          {% if not forloop.first %}<hr>{% endif %}
-        {% endif %}
-      {% endfor %}
-    </div>
+    {% for page in section.latest_articles_in_homepage %}
+        <h3>{{page.title}}</h3>
+        <p>{{page.subtitle}}</p>
+        {% get_comment_count for page as comment_count %}
+        <div class="comments-count"><a href="">{{ comment_count }}{% trans " comment" %}{{ comment_count|pluralize }}<span></span></a></div>
+        <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
+        <a href="{% pageurl page.get_parent_section %}" class="button inverted">{% trans "View Similar" %}</a>
     {% endfor%}
-{% endfor%}
+    {% if not forloop.last %}<hr>{% endif %}
+    </div>
+  {% endfor%}
+
+  <h2 class="list-header">{% trans "Sections" %}</h2>
+  {% for section in sections %}
+    {% if section.featured_articles_in_homepage %}
+    <div class="block {{section.get_effective_extra_style_hints}}">
+      <div class="title">
+        <div class="icon">
+          {% if section.image %}
+            {% image section.image width-80 as tmp_photo %}
+            <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/>
+          {% endif %}
+        </div>
+        <h6><a href="{% pageurl section %}">{{section.title}}</a></h6>
+      </div>
+
+      {% for page in section.featured_articles_in_homepage %}
+        {% if page.featured_in_latest %}
+          <h3>{{page.title}}</h3>
+          <p>{{page.subtitle}}</p>
+          {% get_comment_count for page as comment_count %}
+          <div class="comments-count"><a href="">{{ comment_count }}{% trans " comment" %}{{ comment_count|pluralize }}<span></span></a></div>
+          <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
+          <a href="{% pageurl page.get_parent_section %}" class="button inverted">{% trans "View Similar" %}</a>
+          {% if not forloop.last %}<hr>{% endif %}
+        {% endif %}
+      {% endfor%}
+
+    </div>
+    {% endif %}
+  {% endfor%}
+
 {% endif %}
