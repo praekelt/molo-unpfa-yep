@@ -83,14 +83,7 @@
 {% endblock %}
 
 {% block search %}
-    <p class="backtotop"><a href="#top">{% trans "Back to top" %}</a></p>
-    <div id="search-form">
-      <form action="{% url 'search' %}">
-        <input placeholder="{% trans "Looking for something?" %}" name="q" type="search">
-        <input type="submit" value="{% trans "Search"%}">
-      </form>
-    </div>
-
+  {% include "search/search_block.html" %}
 {% endblock %}
 
 {% block footer %}

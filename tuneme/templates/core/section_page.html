@@ -6,14 +6,16 @@
 <div class="title {{self.get_effective_extra_style_hints}}">
   <div class="icon">
       {% if self.image %}
-          {% image self.image width-98 %}
+          {% image self.image width-98 as tmp_photo %}
+          <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/>
       {% endif %}
     </div>
     <h6>{{self.title}}</h6>
 </div>
 
-<div class="block {{self.get_effective_extra_style_hints}}">
+
 {% for section in self.sections %}
+  <div class="block {{self.get_effective_extra_style_hints}}">
   <h5>{{section.title}}</h5>
   {% if section.feature_articles.exists %}
     {% with page=section.featured_articles|first %}
@@ -34,15 +36,19 @@
       <hr>
     {% endwith %}
   {% endif %}
+  </div>
 {% endfor %}
 
-{% for page in self.articles|slice:"0:" %}
+
+{% for page in self.articles %}
+  <div class="block {{self.get_effective_extra_style_hints}}">
   <h4>{{page.title}}</h4>
   <p>{{page.subtitle}}</p>
   <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
   <hr>
+  </div>
 {% endfor %}
-</div>
+
 
 <div class="block {{self.get_effective_extra_style_hints}}">
     <a href="javascript:history.back();" class="button inverted">{% trans "Back" %}</a>
