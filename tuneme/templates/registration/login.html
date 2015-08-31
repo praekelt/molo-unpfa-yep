@@ -5,20 +5,20 @@
 	<div class="title profile">
 		<h3>{% trans "Sign in" %}</h3>
 	</div>
-	<h4>{% trans "We’re excited to have you..." %}</h4>
+
 	<div class="block turq">
-	<div class="signin-form">
-        <form method="post" action=".">{% csrf_token %}
-            {% if form.errors %}
-                <p class="error errorlist">{% trans "Your username and password does not match. Please try again." %}</p>
-            {% endif %}
-						{{login_form.username}}
-						{{login_form.password}}
-						<input type="submit" value="{% trans 'Sign in' %}">
-						<input type="hidden" name="next" value="{{request.site.root_page.url}}" />
-						<a href="{% url 'molo.profiles:user_register' %}" class="button inverted">{% trans "Not a member yet" %}</a>
-						<a href="" class="button inverted">{% trans "Forgot password?" %}</a>
-        </form>
-	</div><!-- /block -->
+		<div class="signin-form">
+			<p>{% trans "We’re excited to have you..." %}</p>
+	    <form method="post" action=".">{% csrf_token %}
+	        {% if form.errors %}
+	            <p class="error errorlist">{% trans "Your username and password does not match. Please try again." %}</p>
+	        {% endif %}
+					{{login_form.username}}
+					{{login_form.password}}
+					<input type="submit" value="{% trans 'Sign in' %}">
+					<input type="hidden" name="next" value="{{request.site.root_page.url}}" />
+					<a href="{% url 'molo.profiles:user_register' %}" class="button inverted">{% trans "Not a member yet" %}</a>
+	    </form>
+		</div>
 	</div>
 {% endblock %}

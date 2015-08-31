@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="title profile">
-    <h3></h3>
+    <h3>{% trans "Join" %}</h3>
 </div>
 <div class="block turq">
   <div class="signin-form">
@@ -17,8 +17,6 @@
     <form method="post" action="{% url 'molo.profiles:user_register' %}">{% csrf_token %}
         {{ registration_form.username }}
         {{ registration_form.password }}<br>
-        <label>{% trans "Date of birth:" %}</label>
-        {{ form.date_of_birth }}
         <input type="submit" class="registerSubmit" value='{% trans "Register" %}' />
         <input type="hidden" name="next" value="{% url 'molo.profiles:auth_login' %}" />
     </form>
