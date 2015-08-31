@@ -5,22 +5,7 @@
 
   <h2 class="list-header">{% trans "Latest" %}</h2>
   {% for section in sections %}
-    <div class="block {{section.get_effective_extra_style_hints}}">
-    {% for page in section.latest_articles_in_homepage %}
-        <h3>{{page.title}}</h3>
-        <p>{{page.subtitle}}</p>
-        {% get_comment_count for page as comment_count %}
-        <div class="comments-count"><a href="">{{ comment_count }}{% trans " comment" %}{{ comment_count|pluralize }}<span></span></a></div>
-        <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
-        <a href="{% pageurl page.get_parent_section %}" class="button inverted">{% trans "View Similar" %}</a>
-    {% endfor%}
-    {% if not forloop.last %}<hr>{% endif %}
-    </div>
-  {% endfor%}
-
-  <h2 class="list-header">{% trans "Sections" %}</h2>
-  {% for section in sections %}
-    {% if section.featured_articles_in_homepage %}
+    {% if section.latest_articles_in_homepage %}
     <div class="block {{section.get_effective_extra_style_hints}}">
       <div class="title">
         <div class="icon">
@@ -32,7 +17,7 @@
         <h6><a href="{% pageurl section %}">{{section.title}}</a></h6>
       </div>
 
-      {% for page in section.featured_articles_in_homepage %}
+      {% for page in section.latest_articles_in_homepage %}
         {% if page.featured_in_latest %}
           <h3>{{page.title}}</h3>
           <p>{{page.subtitle}}</p>
