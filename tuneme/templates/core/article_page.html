@@ -9,15 +9,21 @@
 
     <div class="icon">
       {% if self.image %}
-        {% image self.image width-98 %}
+        {% image self.image width-98 as tmp_photo %}
+        <img src="{{ tmp_photo.url }}" alt="{{ self.image.title }}"/>
       {% elif parent_section.image %}
-        {% image parent_section.image width-98 %}
+        {% image parent_section.image width-98 as tmp_photo %}
+        <img src="{{ tmp_photo.url }}" alt="{{ parent_section.title }}"/>
       {% else %}
-        {% image ancestor.sectionpage.image width-98 %}
+        {% image ancestor.sectionpage.image width-98 as tmp_photo %}
+        <img src="{{ tmp_photo.url }}" alt="{{ ancestor.sectionpage.image.title }}"/>
       {% endif %}
     </div>
-    <h6>{{ancestor.sectionpage.title}}</h6>
-    <h6>{{parent_section.title}}</h6>
+    <h6>
+      {{ancestor.sectionpage.title}}
+      <br>
+      {{parent_section.title}}
+    </h6>
 
   {% endwith %}
 

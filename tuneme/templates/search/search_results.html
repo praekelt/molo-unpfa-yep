@@ -12,7 +12,8 @@
 	        <a href="{% pageurl page %}" class="search-result {{page.get_parent_section.get_effective_extra_style_hints}}">
 	        	<div class="icon">
 							{% if ancestor.sectionpage.image %}
-				          {% image ancestor.sectionpage.image width-52 %}
+				          {% image ancestor.sectionpage.image width-98 as tmp_photo %}
+				          <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/>
 									</div>
 									<div class="copy">
 										<h6>{{ancestor.title}}</h6>
@@ -48,6 +49,25 @@
 			<div class="title search">
 				<h3>{% trans "Search" %}</h3>
 			</div>
-	    <p>{% trans "No search results for " %}{{search_query}}.</p>
+
+			<div class="block turq">
+				<p>{% trans "No search results for " %}{{search_query}}.</p>
+				<div class="signin-form">
+					<form action="{% url 'search' %}">
+		        <input placeholder="{% trans "I am looking for" %}" name="q" type="search">
+		        <input type="submit" value="{% trans "Search"%}">
+		      </form>
+
+				</div>
+
+			</div>
+			<hr>
 	{% endif %}
+{% endblock %}
+
+{% block search %}
+{% if search_results %}
+	{% include "search/search_block.html" %}
+{% endif %}
+
 {% endblock %}
