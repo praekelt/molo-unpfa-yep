@@ -23,7 +23,9 @@
           <h3>{{page.title}}</h3>
           <p>{{page.subtitle}}</p>
           {% get_comment_count for page as comment_count %}
-          <div class="comments-count"><a href="">{{ comment_count }}{% trans " comment" %}{{ comment_count|pluralize }}<span></span></a></div>
+          {% if comment_count > 0 %}
+            <div class="comments-count"><a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
+          {% endif %}
           <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
           <a href="{% pageurl page.get_parent_section %}" class="button inverted">{% trans "View Similar" %}</a>
           {% if not forloop.last %}<hr>{% endif %}
