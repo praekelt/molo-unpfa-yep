@@ -63,7 +63,9 @@
     {% endfor %}
     <p class="author">By {{self.owner}} {{self.first_published_at|date:"j F Y"}}</p>
     {% get_comment_count for self as comment_count %}
-    <div class="comments-count"><a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
+    {% if comment_count > 0 %}
+      <div class="comments-count"><a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
+    {% endif %}
     <div class="post-comment">
       {% if request.user.is_authenticated %}
         {% render_comment_form for self %}

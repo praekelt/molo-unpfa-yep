@@ -1,5 +1,5 @@
 {% extends "core/_section_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags i18n %}
+{% load wagtailcore_tags wagtailimages_tags comments i18n %}
 
 {% block content %}
 
@@ -21,7 +21,10 @@
     {% with page=section.featured_articles|first %}
       <h4>{{page.title}}</h4>
       <p>{{page.subtitle}}</p>
-      <div class="comments-count"><a href=""><span>{% trans "comments" %}</span></a></div>
+      {% get_comment_count for page as comment_count %}
+      {% if comment_count > 0 %}
+        <div class="comments-count"><a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
+      {% endif %}
       <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
       <a href="{% pageurl section %}" class="button inverted">{% trans "View Similar" %}</a>
       <hr>
@@ -30,7 +33,10 @@
     {% with recent_article=section.articles|first %}
       <h4>{{recent_article.title}}</h4>
       <p>{{recent_article.subtitle}}</p>
-      <div class="comments-count"><a href=""><span>{% trans "comments" %}</span></a></div>
+      {% get_comment_count for recent_article as comment_count %}
+      {% if comment_count > 0 %}
+        <div class="comments-count"><a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
+      {% endif %}
       <a href="{% pageurl recent_article %}" class="button">{% trans "Read on" %}</a>
       <a href="{% pageurl section %}" class="button inverted">{% trans "View Similar" %}</a>
       <hr>
