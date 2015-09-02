@@ -34,7 +34,10 @@
           // Grab the accordion items from the page
           var divs = document.getElementsByTagName( 'div' );
           for ( var i = 0; i < divs.length; i++ ) {
-            if ( divs[i].className == 'menuItem' ) menuItems.push( divs[i] );
+            if ( divs[i].className == 'menuItem' ||
+                divs[i].className == 'menuItem hide') {
+                  menuItems.push( divs[i] );
+            }
           }
           // Assign onclick events to the accordion item headings
           for ( var i = 0; i < menuItems.length; i++ ) {
@@ -42,10 +45,6 @@
             span.onclick = toggleItem;
           }
 
-    	  // Hide all accordion item bodies except the first
-          for ( var i = 0; i < menuItems.length; i++ ) {
-            menuItems[i].className = 'menuItem hide';
-          }
         }
         function toggleItem() {
           var itemClass = this.parentNode.className;
