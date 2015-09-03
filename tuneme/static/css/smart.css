@@ -137,6 +137,8 @@ blockquote {padding:10px 20px;}
     .yellow .article-copy blockquote {color:#fad400;}
     .grey .article-copy blockquote {color:#828282;}
 
+    .article-copy ul, .article-copy ol {margin:5px 35px;}
+
     .article-image {padding:10px 15px;}
         .article-image p {display:block; padding:10px 0 0; font-size:85%;}
         .turq .article-image p {color:#21e0d8;}
