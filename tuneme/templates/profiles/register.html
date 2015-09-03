@@ -7,8 +7,8 @@
 </div>
 <div class="block turq">
   <div class="signin-form">
-    <h5>{% trans "JOIN THE COMMUNITY!" %}</h5>
-    <p>{% trans "We’re excited to meet you..." %}</p>
+    <h5>{% trans "Welcome to TuneMe!" %}</h5>
+    <p>{% trans "Not a member yet? Join us by signing up below." %}</p>
     {% if messages %}
       <ul class="messages">
           {% for message in messages %}
@@ -26,6 +26,8 @@
         <input type="submit" class="registerSubmit" value='{% trans "Register" %}' />
         <input type="hidden" name="next" value="{% url 'molo.profiles:auth_login' %}" />
     </form>
+    <br>
+    <p>{% trans "Already signed-up? Then " %}<a href="{% url 'molo.profiles:auth_login' %}">{% trans "sign in" %}</a></p>
   </div>
 </div>
 {% endblock %}
