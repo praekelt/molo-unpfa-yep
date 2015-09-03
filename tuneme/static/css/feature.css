@@ -15,7 +15,11 @@ h6 {padding:5px 0;}
 p {padding:0px 0 15px;}
 hr {display:none;}
 
-
+/* Article lists*/
+.article-copy ul {list-style-type:disc; margin:0px 15px;}
+	.article-copy ul li {list-style-type:disc; padding:5px 0;}
+.article-copy ol {list-style-type:decimal; margin:0px 15px;}
+	.article-copy ol li {list-style-type:decimal; padding:5px 0;}
 
 
 /* Header */
