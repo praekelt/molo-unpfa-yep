@@ -8,12 +8,15 @@
 
 	<div class="block turq">
 		<div class="signin-form">
+			<h5>{% trans "LOGIN TO YOUR ACCOUNT!" %}</h5>
 			<p>{% trans "We’re excited to have you..." %}</p>
 	    <form method="post" action=".">{% csrf_token %}
 	        {% if form.errors %}
 	            <p class="error errorlist">{% trans "Your username and password does not match. Please try again." %}</p>
 	        {% endif %}
+					<p>{% trans "Username" %}</p>
 					{{login_form.username}}
+					<p>{% trans "Password" %}</p>
 					{{login_form.password}}
 					<input type="submit" value="{% trans 'Sign in' %}">
 					<input type="hidden" name="next" value="{{request.site.root_page.url}}" />

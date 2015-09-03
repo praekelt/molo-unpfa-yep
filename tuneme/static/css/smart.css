@@ -37,6 +37,8 @@ body {background:white; position:relative; text-align:center;}
             .signin-form input.error {border:2px solid red;}
             .signin-form label.error {color:red;}
             .signin-form a.button {width:90%;}
+            .signin-form p {text-align:left; padding:10px 0px 10px 5px; color:black;}
+            .signin-form h5 {text-align:left; padding:10px 0px 10px 5px;}
 
         /* Pages Menu */
         #pages ul {font-size:140%;}

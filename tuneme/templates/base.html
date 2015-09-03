@@ -28,19 +28,22 @@
           <div class="title">
             <h3>{% trans "Sign in" %}</h3>
           </div>
-          <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit." %}</p>
+
           <div class="block turq">
           <div class="signin-form">
+              <h5>{% trans "LOGIN TO YOUR ACCOUNT!" %}</h5>
+              <p>{% trans "We’re excited to have you..." %}</p>
               <form method="post" action="{% url 'molo.profiles:auth_login' %}">{% csrf_token %}
                 {% if login_form.errors %}
                     <p class="error errorlist">{% trans "Your username and password does not match. Please try again." %}</p>
                 {% endif %}
-                {{login_form.username}}
-                {{login_form.password}}
+                <p>{% trans "Username" %}</p>
+      					{{login_form.username}}
+      					<p>{% trans "Password" %}</p>
+      					{{login_form.password}}
                 <input type="submit" value="{% trans 'Sign in' %}">
                 <input type="hidden" name="next" value="{{request.site.root_page.url}}" />
                 <a href="{% url 'molo.profiles:user_register' %}" class="button inverted">{% trans "Not a member yet" %}</a>
-                <a href="" class="button inverted">{% trans "Forgot password?" %}</a>
             </form>
           </div>
           </div><!-- /signin-form -->
@@ -53,9 +56,10 @@
           <div class="title">
             <h3>{% trans "Sign out" %}</h3>
           </div>
-          <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit." %}</p>
+
           <div class="block turq">
           <div class="signin-form">
+            <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit." %}</p>
             <a href="{% url 'molo.profiles:auth_logout' %}" class="button inverted">{% trans "sign out" %}</a>
           </div>
           </div><!-- /signin-form -->
