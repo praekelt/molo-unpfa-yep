@@ -29,7 +29,7 @@ blockquote {padding:0 0 15px 0; background:white; color:black; font-size:115%; l
 
 /* Images */
 img {max-width:100%;}
-.banner img {display: inherit}
+.banner img {display: block}
 
 
 /* Header */
