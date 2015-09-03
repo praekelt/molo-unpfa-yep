@@ -2,9 +2,15 @@
 {% block content %}
 	{% if questions %}
 		{% for question in questions %}
-			<div class="block grey">
-				<h6 class="speak"><a href="">{% trans "SPEAK OUT" %}</a></h6>
-				<h2>{{ question.title }}</h2>
+		<div class="block turq">
+
+			<div class="title">
+				<div class="icon"><img src="img/pie.png" alt="Image Title"></div>
+				<h6><a href="">{% trans "Have your say" %}</a></h6>
+			</div>
+
+			<h3><a href="speak-out.html">{{ question.title }}</a></h3>
+
 				{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 				<div class="radios">
 
