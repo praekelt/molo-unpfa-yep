@@ -3,10 +3,12 @@
 
 {% block content %}
 <div class="title profile">
-    <h3></h3>
+    <h3>{% trans "Sign up" %}</h3>
 </div>
 <div class="block turq">
   <div class="signin-form">
+    <h5>{% trans "Welcome to TuneMe!" %}</h5>
+    <p>{% trans "Not a member yet? Join us by signing up below." %}</p>
     {% if messages %}
       <ul class="messages">
           {% for message in messages %}
@@ -15,13 +17,17 @@
       </ul>
     {% endif %}
     <form method="post" action="{% url 'molo.profiles:user_register' %}">{% csrf_token %}
+        <p>{% trans "Username" %}</p>
         {{ registration_form.username }}
-        {{ registration_form.password }}<br>
-        <label>{% trans "Date of birth:" %}</label>
+        <p>{% trans "Password" %}</p>
+        {{ registration_form.password }}
+        <p>{% trans "Date of birth:" %}</p>
         {{ form.date_of_birth }}
         <input type="submit" class="registerSubmit" value='{% trans "Register" %}' />
         <input type="hidden" name="next" value="{% url 'molo.profiles:auth_login' %}" />
     </form>
+    <br>
+    <p>{% trans "Already signed-up? Then " %}<a href="{% url 'molo.profiles:auth_login' %}">{% trans "sign in" %}</a></p>
   </div>
 </div>
 {% endblock %}
