@@ -1,19 +1,16 @@
-{% load i18n %}
+{% load i18n static %}
 {% block content %}
 	{% if questions %}
 		{% for question in questions %}
+		<h2>{% trans "What's your opinion?" %}"</h2>
 		<div class="block turq">
-
 			<div class="title">
-				<div class="icon"><img src="img/pie.png" alt="Image Title"></div>
-				<h6><a href="">{% trans "Have your say" %}</a></h6>
+				<div class="icon"><img src="{% static 'img/pie.png' %}" alt="Image Title"></div>
+				<h6><a href="">{% trans "Have Your Say" %}</a></h6>
 			</div>
-
-			<h3><a href="speak-out.html">{{ question.title }}</a></h3>
-
+			<h3>{{ question.title }}</h3>
 				{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 				<div class="radios">
-
 					<form action="{% url 'vote' question.id %}" method="post">
 						{% csrf_token %}
 						{% for choice in question.choices %}
@@ -22,12 +19,10 @@
 							    <label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
 							</div>
 						{% endfor %}
-						<div>
 							<input type="submit" value="{% trans "Vote" %}" />
-						</div>
 					</form>
-				</div><!-- /radios -->
-		</div><!-- /block -->
+				</div>
+		</div>
 		{% endfor %}
 	{% endif %}
 {% endblock %}

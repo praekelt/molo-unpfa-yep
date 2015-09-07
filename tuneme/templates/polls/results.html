@@ -3,31 +3,28 @@
 
 {% load static core_tags %}
 
-
-
 {% block content %}
 
 <div class="title turq">
-	<div class="image"><img src="{% static 'img/speak.png' %}" alt="SPEAK OUT"></div>
-	<h1><a href="">{% trans "SPEAK OUT" %}</a></h1>
+		<div class="icon"><img src="{% static 'img/pie.png' %}" alt="Image Title"></div>
+		<h6><a href="">{% trans "Have Your Say" %}</a></h6>
 </div>
 
-
 <div class="block turq">
-	<!-- <img src="{% static 'img/condom.png' %}" alt="Condom" class="right"> -->
-	<h2>{{ question.title }}</h2>
-
-	<h4>{{total}} {% trans "people voted" %}</h4>
-
+	<h4>{{ question.title }}</h4>
 	{% for choice in choices %}
 		<div class="poll-result">
-			<p>{{ choice.title }}</p>
-			<div class="bar {{choice.color}}" style="width:{{ choice.percentage }}%">
-        <span>{{ choice.percentage }}%</span>
-      </div>
+			<div class="result-line winner">
+			<span class="option">{{ choice.title }}</span>
+			<span class="bar">
+        <span style="width:{{ choice.percentage }}%"></span>
+				{{ choice.percentage }}%
+      </span>
+			</div>
 		</div>
 	{% endfor %}
- 	<p class="back"><a href="javascript: history.go(-1)">&lt; {% trans "Back" %}</a></p>
-
+	<a href="{% url 'vote' question.id %}" class="button">{% trans "Vote" %}</a>
+	<hr>
+  <a href="javascript:history.back();" class="button inverted">{% trans "Back" %}</a>
 </div>
 {% endblock %}
