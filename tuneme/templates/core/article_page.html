@@ -75,18 +75,14 @@
 		</div>
   </div>
 </div>
-{% get_molo_comments for self as comment_list limit 5 %}
-{% recursetree comment_list %}
+{% get_molo_comments for self as comment_list %}
+{% for node in comment_list|slice:":5" %}
 <hr>
 <div class="comment {{self.get_parent_section.get_effective_extra_style_hints}} {% if node.user.is_staff %}staff{% endif %}">
   <p class="by"><strong>{{node.user_name}}</strong> <span class="date">{{node.submit_date|date:"j F Y"}}</span></p>
   <p>{{node.comment}}</p>
   <p><a href="{% url 'molo-comments-report' node.pk %}" class="report">{% trans "Report +" %}</a></p>
 </div>
-{# recursion! children of a given comment #}
-{% if not node.is_leaf_node %}
-  {{ children }}
-{% endif %}
-{% endrecursetree %}
+{% endfor %}
 
 {% endblock %}
