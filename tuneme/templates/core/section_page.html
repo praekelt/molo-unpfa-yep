@@ -13,12 +13,10 @@
     <h6>{{self.title}}</h6>
 </div>
 
-
 {% for section in self.sections %}
+  {% for page in section.featured_articles %}
   <div class="block {{self.get_effective_extra_style_hints}}">
-  <h5>{{section.title}}</h5>
-  {% if section.feature_articles.exists %}
-    {% with page=section.featured_articles|first %}
+      <h5>{{section.title}}</h5>
       <h4>{{page.title}}</h4>
       <p>{{page.subtitle}}</p>
       {% get_comment_count for page as comment_count %}
@@ -28,23 +26,9 @@
       <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
       <a href="{% pageurl section %}" class="button inverted">{% trans "View Similar" %}</a>
       <hr>
-    {% endwith %}
-  {% else %}
-    {% with recent_article=section.articles|first %}
-      <h4>{{recent_article.title}}</h4>
-      <p>{{recent_article.subtitle}}</p>
-      {% get_comment_count for recent_article as comment_count %}
-      {% if comment_count > 0 %}
-        <div class="comments-count"><a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
-      {% endif %}
-      <a href="{% pageurl recent_article %}" class="button">{% trans "Read on" %}</a>
-      <a href="{% pageurl section %}" class="button inverted">{% trans "View Similar" %}</a>
-      <hr>
-    {% endwith %}
-  {% endif %}
   </div>
+  {% endfor %}
 {% endfor %}
-
 
 {% for page in self.articles %}
   <div class="block {{self.get_effective_extra_style_hints}}">
@@ -54,7 +38,6 @@
   <hr>
   </div>
 {% endfor %}
-
 
 <div class="block {{self.get_effective_extra_style_hints}}">
     <a href="javascript:history.back();" class="button inverted">{% trans "Back" %}</a>
