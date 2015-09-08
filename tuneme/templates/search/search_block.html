@@ -3,7 +3,7 @@
 <p class="backtotop"><a href="#top">{% trans "Back to top" %}</a></p>
 <div id="search-form">
   <form action="{% url 'search' %}">
-    <input placeholder="{% trans "Looking for something?" %}" name="q" type="search" value="{{search_query}}">
+    <input placeholder="{% trans "Looking for something?" %}" name="q" type="text" value="{{search_query}}">
     <input type="submit" value="{% trans "Search"%}">
   </form>
 </div>
