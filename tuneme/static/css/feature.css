@@ -24,7 +24,7 @@ hr {display:none;}
 
 /* Header */
 .header {float:left; width:100%; background:black;}
-    .header .logo {float:left; width:100px; display:none;}
+    .header .logo {float:left; width:100px; display:none; margin: -8px 5px}
     .header .logo.white {display:block !important;}
     .menu, .search-icon {display:none;}
     

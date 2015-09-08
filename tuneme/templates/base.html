@@ -2,18 +2,10 @@
 
 {% load wagtailcore_tags wagtailimages_tags compress static i18n %}
 
-{% block extra_css %}
-<style type="text/css">
-  .header .logo {
-    margin-top: -7px;
-    margin-left: 12px;
-  }
-</style>
-{% endblock %}
 {% block header %}
 <div class="header" id="top">
 
-    <a href="/"><img src="{% static 'img/logo.png' %}" alt="{% trans "TuneMe" %}" class="logo">
+    <a href="/"><img src="{% static 'img/logo-black.png' %}" alt="{% trans "TuneMe" %}" class="logo">
       <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo white"></a>	
     <div class="feature-menu">
         {% if not user.is_authenticated %}
