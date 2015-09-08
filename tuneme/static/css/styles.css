@@ -29,7 +29,7 @@ blockquote {padding:0 0 15px 0; background:white; color:black; font-size:115%; l
 
 /* Images */
 img {max-width:100%;}
-.banner img {display: block}
+.banner img {width: 100%; margin-bottom: -3px}
 
 
 /* Header */
@@ -40,7 +40,7 @@ img {max-width:100%;}
 .radios {}
     .radios div {display:block; padding:5px 0 5px 35px; text-align: left; }
     .radios input[type="radio"]:checked + label {font-weight:bold;}
-    .radios label {display:inline-block; text-align:left; font-weight:bold;}
+    .radios label {text-align:left; font-weight:bold;}
 
 
 /* Content Blocks */
