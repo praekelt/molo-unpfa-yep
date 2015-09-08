@@ -10,7 +10,7 @@ body {background:white; position:relative; text-align:center;}
 .header {background:none; height:0px;}
     .menu, .search-icon {display:inline-block;}
     .header .logo {position:absolute; z-index:12; width:110px; display:block !important; margin: -8px 5px}
-    .header .logo.white {display:none !important;}
+    .header .logo.hide {display:none !important;}
     /* Main Menu */
     .menu {text-align:left;}
     .menuItem div.content {position:absolute; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; background:black; z-index:10; padding-top:60px;}

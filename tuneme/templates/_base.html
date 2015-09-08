@@ -58,6 +58,17 @@
           if ( itemClass == 'menuItem hide' ) {
             this.parentNode.className = 'menuItem';
           }
+          
+          if ( this.parentNode.id == "pages") {
+            var logos = document.getElementsByClassName("logo");
+            for (var i = 0; i < logos.length; i++) {
+              if (logos[i].className == "logo") {
+                logos[i].className = "logo hide";
+              } else {
+                logos[i].className = "logo";
+              }
+            }
+          }
         }
         function getFirstChildWithTagName( element, tagName ) {
           for ( var i = 0; i < element.childNodes.length; i++ ) {
