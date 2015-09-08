@@ -38,7 +38,7 @@ img {max-width:100%;}
 
 /* Radios */
 .radios {}
-    .radios div {display:block; padding:5px 0;}
+    .radios div {display:block; padding:5px 0 5px 35px; text-align: left; }
     .radios input[type="radio"]:checked + label {font-weight:bold;}
     .radios label {display:inline-block; text-align:left; font-weight:bold;}
 
