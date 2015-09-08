@@ -14,12 +14,12 @@
 	<h4>{{ question.title }}</h4>
 	{% for choice in choices %}
 		<div class="poll-result">
-			<div class="result-line winner">
-			<span class="option">{{ choice.title }}</span>
-			<span class="bar">
-        <span style="width:{{ choice.percentage }}%"></span>
-				{{ choice.percentage }}%
-      </span>
+				<div class="result-line {% if forloop.first %}winner{% endif %}">
+				<span class="option">{{ choice.title }}</span>
+				<span class="bar">
+	        <span style="width:{{ choice.percentage }}%"></span>
+					{{ choice.percentage }}%
+	      </span>
 			</div>
 		</div>
 	{% endfor %}

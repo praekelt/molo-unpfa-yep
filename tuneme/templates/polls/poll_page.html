@@ -10,18 +10,18 @@
 			</div>
 			<h3>{{ question.title }}</h3>
 				{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-				<div class="radios">
 					<form action="{% url 'vote' question.id %}" method="post">
 						{% csrf_token %}
+				<div class="radios">
 						{% for choice in question.choices %}
 							<div>
 							    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
 							    <label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
 							</div>
 						{% endfor %}
+				</div>
 							<input type="submit" value="{% trans "Vote" %}" />
 					</form>
-				</div>
 		</div>
 		{% endfor %}
 	{% endif %}
