@@ -61,7 +61,6 @@
       {% endif %}
       {% endif %}
     {% endfor %}
-    <p class="author">By {{self.owner}} {{self.first_published_at|date:"j F Y"}}</p>
     {% get_comment_count for self as comment_count %}
     {% if comment_count > 0 %}
       <div class="comments-count"><a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
