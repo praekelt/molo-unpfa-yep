@@ -8,9 +8,8 @@ body {background:white; position:relative; text-align:center;}
 
 /* Header */
 .header {background:none; height:0px;}
-.header .logo {padding:0px;}
     .menu, .search-icon {display:inline-block;}
-    .header .logo {position:absolute; z-index:12; width:110px; display:block !important;}
+    .header .logo {position:absolute; z-index:12; width:110px; display:block !important; margin: -8px 5px}
     .header .logo.white {display:none !important;}
     /* Main Menu */
     .menu {text-align:left;}
