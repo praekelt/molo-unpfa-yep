@@ -5,10 +5,12 @@
 {% for homepage in homepages %}
 <div class="banner">
   {% if homepage.banner %}
+    {% image homepage.banner width-320 as tmp_photo %}
+
     {% if homepage.banner_link_page %}
-    <a href="{% pageurl homepage %}">{% image homepage.banner width-320 %}</a>
+    <a href="{% pageurl homepage %}"><img src="{{ tmp_photo.url }}" alt="{{ homepage.banner.title }}"/></a>
     {% else %}
-    {% image homepage.banner width-320 %}
+    <img src="{{ tmp_photo.url }}" alt="{{ homepage.banner.title }}"/>
     {% endif %}
   {% endif %}
 </div>
