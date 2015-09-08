@@ -14,13 +14,23 @@
 	<h4>{{ question.title }}</h4>
 	{% for choice in choices %}
 		<div class="poll-result">
-			<div class="result-line winner">
-			<span class="option">{{ choice.title }}</span>
-			<span class="bar">
-        <span style="width:{{ choice.percentage }}%"></span>
-				{{ choice.percentage }}%
-      </span>
-			</div>
+			{% if forloop.first %}
+				<div class="result-line winner">
+				<span class="option">{{ choice.title }}</span>
+				<span class="bar">
+	        <span style="width:{{ choice.percentage }}%"></span>
+					{{ choice.percentage }}%
+	      </span>
+				</div>
+			{% else %}
+				<div class="result-line">
+				<span class="option">{{ choice.title }}</span>
+				<span class="bar">
+					<span style="width:{{ choice.percentage }}%"></span>
+					{{ choice.percentage }}%
+				</span>
+				</div>
+			{% endif %}
 		</div>
 	{% endfor %}
 	<a href="{% url 'vote' question.id %}" class="button">{% trans "Vote" %}</a>

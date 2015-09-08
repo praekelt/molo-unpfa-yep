@@ -38,7 +38,7 @@ def poll_results(request, poll_id):
     context = {
         'question': question,
         'total': total_votes,
-        'choices': choices
+        'choices': sorted(choices, key=lambda x: x.percentage, reverse=True)
     }
     return render(request, 'polls/results.html', context,)
 
