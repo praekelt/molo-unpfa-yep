@@ -8,7 +8,8 @@
     {% if homepage.banner_link_page %}
     <a href="{% pageurl homepage %}">{% image homepage.banner width-320 %}</a>
     {% else %}
-    {% image homepage.banner width-320 %}
+    {% image homepage.banner width-560 as tmp_photo %}
+    <img src="{{ tmp_photo.url }}" alt="{{ homepage.banner.title }}"/> 
     {% endif %}
   {% endif %}
 </div>
