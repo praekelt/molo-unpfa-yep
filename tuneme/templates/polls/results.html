@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% load static core_tags %}
+
+{% block content %}
+
+<div class="title turq">
+		<div class="icon"><img src="{% static 'img/pie.png' %}" alt="Have Your Say"></div>
+		<h6><a href="">{% trans "Have Your Say" %}</a></h6>
+</div>
+
+<div class="block turq">
+	<h4>{{ question.title }}</h4>
+	{% for choice in choices %}
+		<div class="poll-result">
+			<div class="result-line winner">
+			<span class="option">{{ choice.title }}</span>
+			<span class="bar">
+        <span style="width:{{ choice.percentage }}%"></span>
+				{{ choice.percentage }}%
+      </span>
+			</div>
+		</div>
+	{% endfor %}
+	<a href="{% url 'vote' question.id %}" class="button">{% trans "Vote" %}</a>
+	<hr>
+  <a href="javascript:history.back();" class="button inverted">{% trans "Back" %}</a>
+</div>
+{% endblock %}

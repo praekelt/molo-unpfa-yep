@@ -21,6 +21,7 @@ urlpatterns = patterns(
 
     url(r'', include('molo.core.urls')),
 
+    url(r'^polls/', include('polls.urls')),
     url(r'^profiles/', include('molo.profiles.urls',
                                namespace='molo.profiles')),
     url(r'^comments/', include('molo.commenting.urls')),

@@ -66,7 +66,7 @@ INSTALLED_APPS = (
 
     'raven.contrib.django.raven_compat',
     'tuneme',
-
+    'polls',
     'google_analytics',
     'djcelery',
 
