@@ -21,10 +21,8 @@
         {{ registration_form.username }}
         <p>{% trans "Password" %}</p>
         {{ registration_form.password }}
-        <p>{% trans "Date of birth:" %}</p>
-        {{ form.date_of_birth }}
         <input type="submit" class="registerSubmit" value='{% trans "Register" %}' />
-        <input type="hidden" name="next" value="{% url 'molo.profiles:auth_login' %}" />
+        <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
     </form>
     <br>
     <p>{% trans "Already signed-up? Then " %}<a href="{% url 'molo.profiles:auth_login' %}">{% trans "sign in" %}</a></p>
