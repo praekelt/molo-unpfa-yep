@@ -6,7 +6,7 @@
 <div class="header" id="top">
 
     <a href="/"><img src="{% static 'img/logo-black.png' %}" alt="{% trans "TuneMe" %}" class="logo">
-      <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo hide white"></a>	
+      <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo hide white"></a>
     <div class="feature-menu">
         {% if not user.is_authenticated %}
         <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
@@ -20,68 +20,30 @@
       <a href="#search-form">{% trans "Search" %}</a>
     </div><!-- /search-icon -->
 
-    <div class="menu">
-    {% if not user.is_authenticated %}
+  <div class="menu">
     <div class="menuItem hide" id="login">
-        <span class="menuIcon">{% trans "Login" %}</span>
-        <div class="content join">
-          <div class="title">
-            <h3>{% trans "Sign in" %}</h3>
-          </div>
-
-          <div class="block turq">
-          <div class="signin-form">
-              <h5>{% trans "LOGIN TO YOUR ACCOUNT!" %}</h5>
-              <p>{% trans "We’re excited to have you..." %}</p>
-              <form method="post" action="{% url 'molo.profiles:auth_login' %}">{% csrf_token %}
-                {% if login_form.errors %}
-                    <p class="error errorlist">{% trans "Your username and password does not match. Please try again." %}</p>
-                {% endif %}
-                <p>{% trans "Username" %}</p>
-      					{{login_form.username}}
-      					<p>{% trans "Password" %}</p>
-      					{{login_form.password}}
-                <input type="submit" value="{% trans 'Sign in' %}">
-                <input type="hidden" name="next" value="{{request.site.root_page.url}}" />
-                <a href="{% url 'molo.profiles:user_register' %}" class="button inverted">{% trans "Not a member yet" %}</a>
-            </form>
-          </div>
-          </div><!-- /signin-form -->
-        </div><!-- /content -->
-      </div><!-- /menuItem -->
+      {% if not user.is_authenticated %}
+        <a href="{% url 'molo.profiles:auth_login' %}"><span >{% trans "Login" %}</span ></a>
       {% else %}
-      <div class="menuItem hide" id="login">
-        <span class="menuIcon">{% trans "Login" %}</span>
-        <div class="content join">
-          <div class="title">
-            <h3>{% trans "Sign out" %}</h3>
-          </div>
-
-          <div class="block turq">
-          <div class="signin-form">
-            <p>{% trans "Thanks for spending time with us. See you soon!" %}</p>
-            <a href="{% url 'molo.profiles:auth_logout' %}" class="button inverted">{% trans "sign out" %}</a>
-          </div>
-          </div><!-- /signin-form -->
-        </div><!-- /content -->
-      </div><!-- /menuItem -->
-    {% endif %}
-        <div class="menuItem hide" id="pages">
-          <span class="menuIcon">{% trans "Menu" %}</span>
-          <div class="content">
-            <ul>
-              {% for section in language_page.sections %}
-                <li class="{{section.get_effective_extra_style_hints}}">
-                    <a href="{% pageurl section %}">{% image section.image width-40 %} {{section.title}}</a>
-                </li>
-              {% endfor %}
-              {% if user.is_authenticated %}
-                  <li class="grey"><a href="{% url 'molo.profiles:view_my_profile' %}"><img src="{% static 'img/profile.png' %}" width="35"> {% trans "Your Profile" %}</a></li>
-              {% endif %}
-            </ul>
-          </div>
-        </div><!-- /menuItem -->
-      </div><!-- /menu -->
+        <a href="{% url 'molo.profiles:view_my_profile' %}"><span >{% trans "Profile" %}</span ></a>
+      {% endif %}
+    </div>
+    <div class="mainMenu menuItem hide" id="pages">
+      <span class="menuIcon">{% trans "Menu" %}</span>
+      <div class="content">
+        <ul>
+          {% for section in language_page.sections %}
+            <li class="{{section.get_effective_extra_style_hints}}">
+                <a href="{% pageurl section %}">{% image section.image width-40 %} {{section.title}}</a>
+            </li>
+          {% endfor %}
+          {% if user.is_authenticated %}
+              <li class="grey"><a href="{% url 'molo.profiles:view_my_profile' %}"><img src="{% static 'img/profile.png' %}" width="35"> {% trans "Your Profile" %}</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div><!-- /menuItem -->
+  </div><!-- /menu -->
 
 </div><!-- /header -->
 {% endblock %}
