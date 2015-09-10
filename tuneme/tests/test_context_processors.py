@@ -1,7 +1,6 @@
 from django.test import TestCase, RequestFactory
 
 from tuneme.context_processors import default_forms
-from tuneme.forms import LoginForm
 
 from molo.profiles.forms import RegistrationForm
 from molo.profiles.forms import EditProfileForm, ProfilePasswordChangeForm
@@ -13,10 +12,6 @@ class ContextProcessorsTest(TestCase):
         self.factory = RequestFactory()
 
     def test_default_forms(self):
-        request = self.factory.get('/profiles/login/')
-        result = default_forms(request)
-        self.assertTrue(
-            isinstance(result['login_form'], LoginForm))
         request = self.factory.get('/profiles/register/')
         result = default_forms(request)
         self.assertTrue(

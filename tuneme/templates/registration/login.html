@@ -15,9 +15,9 @@
 	            <p class="error errorlist">{% trans "Your username and password does not match. Please try again." %}</p>
 	        {% endif %}
 					<p>{% trans "Username" %}</p>
-					{{login_form.username}}
+					{{form.username}}
 					<p>{% trans "Password" %}</p>
-					{{login_form.password}}
+					{{form.password}}
 					<input type="submit" value="{% trans 'Sign in' %}">
 					<input type="hidden" name="next" value="{{request.site.root_page.url}}" />
 					<a href="{% url 'molo.profiles:user_register' %}" class="button inverted">{% trans "Not a member yet" %}</a>

@@ -34,8 +34,8 @@
           // Grab the accordion items from the page
           var divs = document.getElementsByTagName( 'div' );
           for ( var i = 0; i < divs.length; i++ ) {
-            if ( divs[i].className == 'menuItem' ||
-                divs[i].className == 'menuItem hide') {
+            if ( divs[i].className == 'mainMenu' ||
+                divs[i].className == 'mainMenu menuItem hide') {
                   menuItems.push( divs[i] );
             }
           }
@@ -51,14 +51,14 @@
 
     	  // Hide all items
           for ( var i = 0; i < menuItems.length; i++ ) {
-            menuItems[i].className = 'menuItem hide';
+            menuItems[i].className = 'mainMenu menuItem hide';
           }
 
     	  // Show this item if it was previously hidden
-          if ( itemClass == 'menuItem hide' ) {
-            this.parentNode.className = 'menuItem';
+          if ( itemClass == 'mainMenu menuItem hide' ) {
+            this.parentNode.className = 'mainMenu menuItem';
           }
-          
+
           if ( this.parentNode.id == "pages") {
             var logos = document.getElementsByClassName("logo");
             for (var i = 0; i < logos.length; i++) {
