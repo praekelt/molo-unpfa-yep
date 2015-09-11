@@ -23,7 +23,7 @@
 			</div>
 		</div>
 	{% endfor %}
-	<a href="{% url 'vote' question.id %}" class="button">{% trans "Vote" %}</a>
+	<a href="{% url 'molo.polls:vote' question.id %}" class="button">{% trans "Vote" %}</a>
 	<hr>
   <a href="javascript:history.back();" class="button inverted">{% trans "Back" %}</a>
 </div>

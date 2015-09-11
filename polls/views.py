@@ -55,4 +55,5 @@ def vote(request, question_id):
         })
     else:
         selected_choice.update(votes=F('votes') + 1)
-        return HttpResponseRedirect(reverse('results', args=(question.id,)))
+        return HttpResponseRedirect(reverse('molo.polls:results',
+                                            args=(question.id,)))

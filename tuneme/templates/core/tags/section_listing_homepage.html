@@ -10,8 +10,10 @@
       <div class="title">
         <div class="icon">
           {% if section.image %}
+            <a href="{% pageurl section %}">
             {% image section.image width-80 as tmp_photo %}
             <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/>
+            </a>
           {% endif %}
         </div>
         <h6><a href="{% pageurl section %}">{{section.title}}</a></h6>
@@ -20,7 +22,7 @@
       {% for page in section.latest_articles_in_homepage %}
         {% if page.featured_in_latest %}
         <div class="block {{section.get_effective_extra_style_hints}}">
-          <h3>{{page.title}}</h3>
+          <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
           <p>{{page.subtitle}}</p>
           {% get_comment_count for page as comment_count %}
           {% if comment_count > 0 %}

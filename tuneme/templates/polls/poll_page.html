@@ -5,12 +5,12 @@
 		<h2>{% trans "What's your opinion?" %}</h2>
 		<div class="block orange">
 			<div class="title">
-				<div class="icon"><img src="{% static 'img/pie.png' %}" alt="Have Your Say"></div>
-				<h6><a href="">{% trans "Have Your Say" %}</a></h6>
+				<div class="icon"><a href="{% url 'molo.polls:results' question.id %}"><img src="{% static 'img/pie.png' %}" alt="Have Your Say"></a></div>
+				<h6><a href="{% url 'molo.polls:results' question.id %}">{% trans "Have Your Say" %}</a></h6>
 			</div>
 			<h3>{{ question.title }}</h3>
 				{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-					<form action="{% url 'vote' question.id %}" method="post">
+					<form action="{% url 'molo.polls:vote' question.id %}" method="post">
 						{% csrf_token %}
 				<div class="radios">
 						{% for choice in question.choices %}

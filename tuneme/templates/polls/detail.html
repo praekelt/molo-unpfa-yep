@@ -13,7 +13,7 @@
 <div class="block orange">
 	<h3>{{ question.title }}</h3>
 	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-			<form action="{% url 'vote' question.id %}" method="post">
+			<form action="{% url 'molo.polls:vote' question.id %}" method="post">
 				{% csrf_token %}
 	<div class="radios">
 				{% for choice in question.choices %}
