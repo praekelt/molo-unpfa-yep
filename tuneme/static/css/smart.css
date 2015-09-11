@@ -208,8 +208,8 @@ a.white-link {color:white; padding:20px 0; display:inline-block; }
 .poll-result {padding:15px}
 .result-line {padding:5px 0;}
 .result-line .option {text-align:left; width:25%; display:inline-block; margin-right:-5px; vertical-align:middle;}
-.result-line .bar { opacity:0.4; font-weight:bold; text-align:left; width:75%; margin-right:-5px; display:inline-block; vertical-align:middle; height:27px; font-size:18px; color:#21e0d8;}
-.result-line .bar span {text-align:center; display:inline-block; vertical-align:middle; height:27px; line-height:27px; margin-right:5px; background:#21e0d8;}
+.result-line .bar { opacity:0.4; font-weight:bold; text-align:left; width:75%; margin-right:-5px; display:inline-block; vertical-align:middle; height:27px; font-size:18px; color:#ff7c44;}
+.result-line .bar span {text-align:center; display:inline-block; vertical-align:middle; height:27px; line-height:27px; margin-right:5px; background:#ff7c44;}
     .result-line.winner .bar {opacity:1;}
 
 

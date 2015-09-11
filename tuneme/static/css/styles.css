@@ -120,7 +120,7 @@ label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
 .result-line .bar {text-align:left; width:49%; margin-right:-5px; display:inline-block; vertical-align:middle;}
     .result-line {padding:1px 0;}
     .result-line.winner {font-weight:bold;}
-    .result-line.winner {color:#21e0d8;}
+    .result-line.winner {color:#ff7c44;}
 
 
 
