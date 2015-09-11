@@ -20,9 +20,9 @@
       {% endif %}
     </div>
     <h6>
-      {{ancestor.sectionpage.title}}
+      <a href="{% pageurl ancestor.sectionpage %}">{{ancestor.sectionpage.title}}</a>
       <br>
-      {{parent_section.title}}
+      <a href="{% pageurl parent_section %}">{{parent_section.title}}</a>
     </h6>
 
   {% endwith %}

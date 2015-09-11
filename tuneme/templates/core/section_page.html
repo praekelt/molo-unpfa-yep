@@ -16,8 +16,8 @@
 {% for section in self.sections %}
   {% for page in section.featured_articles %}
   <div class="block {{self.get_effective_extra_style_hints}}">
-      <h5>{{section.title}}</h5>
-      <h4>{{page.title}}</h4>
+      <h5><a href="{% pageurl section %}">{{section.title}}</a></h5>
+      <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
       <p>{{page.subtitle}}</p>
       {% get_comment_count for page as comment_count %}
       {% if comment_count > 0 %}
@@ -32,7 +32,7 @@
 
 {% for page in self.articles %}
   <div class="block {{self.get_effective_extra_style_hints}}">
-  <h4>{{page.title}}</h4>
+  <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
   <p>{{page.subtitle}}</p>
   <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
   <hr>
