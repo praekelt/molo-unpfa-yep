@@ -130,13 +130,20 @@ blockquote {padding:10px 20px;}
 /* Articles */
 .article-copy {text-align:left; padding:0;}
     .article-copy .comments-count {margin:10px 15px;}
+    .article-copy a {padding:10px 15px;}
     .article-copy blockquote {text-align:left; padding:15px; font-weight:bold;}
     .turq .article-copy blockquote {color:#21e0d8;}
+    .turq .article-copy a {color:#21e0d8; font-weight: bold; text-decoration: none;}
     .purple .article-copy blockquote {color:#d127fc;}
+    .purple .article-copy a {color:#d127fc; font-weight: bold; text-decoration: none;}
     .pink .article-copy blockquote {color:#f82353;}
+    .pink .article-copy a {color:#f82353; font-weight: bold; text-decoration: none;}
     .orange .article-copy blockquote {color:#ff7c44;}
+    .orange .article-copy a {color:#ff7c44; font-weight: bold; text-decoration: none;}
     .yellow .article-copy blockquote {color:#fad400;}
+    .yellow .article-copy a {color:#fad400; font-weight: bold; text-decoration: none;}
     .grey .article-copy blockquote {color:#828282;}
+    .grey .article-copy a {color:#828282; font-weight: bold; text-decoration: none;}
 
     .article-copy ul, .article-copy ol {margin:5px 35px;}
 
@@ -149,7 +156,11 @@ blockquote {padding:10px 20px;}
         .yellow .article-image p {color:#fad400;}
         .grey .article-image p {color:#828282;}
 
-
+.readmore {text-align: left; padding: 0 ;
+           padding: 10px 15px;
+           color: black;
+           font-weight: bold;
+            }
 
 
 
@@ -174,15 +185,15 @@ h5 a {color:black; text-decoration:none;}
     .comments-count a {position:relative; text-decoration:none; display:inline-block; height:25px; width:30px; padding:0; line-height:25px; text-align:center; background:#828282; color:white; -webkit-border-radius:2px; border-radius:2px;}
         .comments-count span {display:none;}
         .comments-count a:after {top:100%; left:65%; border:solid transparent; content:" "; position:absolute; border-top-color:#828282; border-width:4px; margin-left:-4px;}
-        .turq .comments-count a {background:#21e0d8; color:white;}
+        .turq .comments-count a {background:#21e0d8; color:white; float: right;}
             .turq .comments-count a:after {border-top-color:#21e0d8;}
-        .purple .comments-count a {background:#d127fc; color:white;}
+        .purple .comments-count a {background:#d127fc; color:white; float: right;}
             .purple .comments-count a:after {border-top-color:#d127fc;}
-        .pink .comments-count a {background:#f82353; color:white;}
+        .pink .comments-count a {background:#f82353; color:white; float: right;}
             .pink .comments-count a:after {border-top-color:#f82353;}
-        .orange .comments-count a {background:#ff7c44; color:white;}
+        .orange .comments-count a {background:#ff7c44; color:white; float: right;}
             .orange .comments-count a:after {border-top-color:#ff7c44;}
-        .yellow .comments-count a {background:#fad400; color:white;}
+        .yellow .comments-count a {background:#fad400; color:white; float: right;}
             .yellow .comments-count a:after {border-top-color:#fad400;}
 
 

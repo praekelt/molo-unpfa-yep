@@ -46,6 +46,13 @@
       {% if block.block_type == 'heading' %}
           <h1>{{ block.value }}</h1>
       {% else %}
+      <hr>
+      {% if block.block_type == 'page' %}
+
+          <div class="readmore">You may want to read:</div>
+          {{ block }}
+
+      {% else %}
       {% if block.block_type == 'image' %}
         {% image block.value width-240 %}
       {% else %}
@@ -57,13 +64,16 @@
         </ol>
       {% else %}
           {{ block }}
+
+      {% endif %}
       {% endif %}
       {% endif %}
       {% endif %}
     {% endfor %}
+ <hr>
     {% get_comment_count for self as comment_count %}
     {% if comment_count > 0 %}
-      <div class="comments-count"><a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
+     <h5><div class="comments-count">Comment<a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div></h5>
     {% endif %}
     <div class="post-comment">
       {% if request.user.is_authenticated %}
