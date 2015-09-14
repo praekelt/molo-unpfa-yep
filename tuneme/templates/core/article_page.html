@@ -49,7 +49,7 @@
       <hr>
       {% if block.block_type == 'page' %}
 
-          <div class="readmore">You may want to read:</div>
+          <div class="readmore">{% trans "You may want to read:" %}</div>
           {{ block }}
 
       {% else %}
@@ -73,7 +73,7 @@
  <hr>
     {% get_comment_count for self as comment_count %}
     {% if comment_count > 0 %}
-     <h5><div class="comments-count">Comment<a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div></h5>
+     <h5><div class="comments-count">{% trans "Comment" %}<a href="#" class="pull-right">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div></h5>
     {% endif %}
     <div class="post-comment">
       {% if request.user.is_authenticated %}
