@@ -4,29 +4,13 @@
 {% block content %}
 
 <div class="title {{self.get_parent_section.get_effective_extra_style_hints}}">
-
-  {% with parent_section=self.get_parent_section ancestor=self.get_parent_section.get_ancestors.last %}
-
-    <div class="icon">
-      {% if self.image %}
-        {% image self.image width-98 as tmp_photo %}
-        <img src="{{ tmp_photo.url }}" alt="{{ self.image.title }}"/>
-      {% elif parent_section.image %}
-        {% image parent_section.image width-98 as tmp_photo %}
-        <img src="{{ tmp_photo.url }}" alt="{{ parent_section.title }}"/>
-      {% else %}
-        {% image ancestor.sectionpage.image width-98 as tmp_photo %}
-        <img src="{{ tmp_photo.url }}" alt="{{ ancestor.sectionpage.image.title }}"/>
-      {% endif %}
-    </div>
-    <h6>
-      <a href="{% pageurl ancestor.sectionpage %}">{{ancestor.sectionpage.title}}</a>
-      <br>
-      <a href="{% pageurl parent_section %}">{{parent_section.title}}</a>
-    </h6>
-
-  {% endwith %}
-
+  <div class="icon">
+    {% if self.get_parent_section.get_effective_image %}
+      {% image self.get_parent_section.get_effective_image width-98 as tmp_photo %}
+      <img src="{{ tmp_photo.url }}" alt="{{ self.get_effective_image.title }}"/>
+    {% endif %}
+  </div>
+  <h6><a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a></h6>
 </div>
 
 <div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">
@@ -38,7 +22,10 @@
   </ul>
   {% endif %}
 
-  <h5></h5>
+  {% if self.image %}
+    {% image self.image width-98 as tmp_photo %}
+    <img src="{{ tmp_photo.url }}" alt="{{ self.image.title }}"/>
+  {% endif %}
   <h4>{{self.title}}</h4>
   <blockquote>{{self.subtitle}}</blockquote>
   <div class="article-copy">
@@ -91,4 +78,3 @@
 {% endfor %}
 </div>
 {% endblock %}
-
