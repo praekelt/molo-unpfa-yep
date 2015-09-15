@@ -3,17 +3,15 @@
 
 {% block content %}
   <div class="title profile">
-      <h3>{% trans "Your Profile" %}</h3>
+      <h3>{% trans "Hello " %}{{ username }}</h3>
   </div>
   <div class="block turq">
-    <div class="signin-form">
-      <h5>{% trans "Hello " %}{{ username }}</h5>
       <a href="{% url 'molo.profiles:auth_logout' %}" class="button inverted">{% trans "log out" %}</a>
-      <br>
+    <div class="signin-form">
       <h5>{% trans "Display Name: " %}{{ alias }}</h5>
   		<form method="post" id="frmProfileEdit" action="{% url 'molo.profiles:edit_my_profile' %}">{% csrf_token %}
   		  {{ edit_profile_form.alias }}
-  		  <input type="submit" value='{% trans "Update profile" %}' class="btn btn-wide">
+  		  <input type="submit" value='{% trans "Update profile" %}'>
   		</form>
       <br>
       <h5>{% trans "Change Your Password:" %}</h5>

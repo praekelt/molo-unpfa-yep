@@ -80,7 +80,7 @@ input[type='submit']:focus, a.button:focus {opacity:0.5;}
 /* search Black Box */
 #search-form {display:block; clear:both; background:black; padding:15px;}
     #search-form input {background:black; border:1px solid white; color:white;}
-    #search-form input[type='submit'] {width:auto; padding:10px 25px; border:0; color:black; background:white;}
+    #search-form input[type='submit'] { padding:10px 25px; border:0; color:black; background:white;}
 
     /* search Results */
     .search-result {padding:15px; display:block; clear:both; text-decoration:none; text-align:left;  border-bottom:1px solid #ddd;}
