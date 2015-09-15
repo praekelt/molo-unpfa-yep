@@ -20,8 +20,8 @@
 					{{form.password}}
 					<input type="submit" value="{% trans 'Sign in' %}">
 					<input type="hidden" name="next" value="{{request.site.root_page.url}}" />
-					<a href="{% url 'molo.profiles:user_register' %}" class="button inverted">{% trans "Not a member yet" %}</a>
 	    </form>
 		</div>
+		<a href="{% url 'molo.profiles:user_register' %}" class="button inverted">{% trans "Not a member yet" %}</a>
 	</div>
 {% endblock %}
