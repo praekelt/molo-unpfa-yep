@@ -26,7 +26,7 @@
           <p>{{page.subtitle}}</p>
           {% get_comment_count for page as comment_count %}
           {% if comment_count > 0 %}
-            <div class="comments-count"><a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
+            <div class="comments-count"><a href="{% pageurl page %}">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
           {% endif %}
           <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
           <a href="{% pageurl page.get_parent_section %}" class="button inverted">{% trans "View Similar" %}</a>
