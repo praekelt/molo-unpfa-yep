@@ -84,9 +84,11 @@
 		</div>
   </div>
 </div>
+<div id="comments-list">
 {% get_molo_comments for self as comment_list %}
 {% for node in comment_list|slice:":5" %}
   {% include "comments/comment.html" %}
 {% endfor %}
-
+</div>
 {% endblock %}
+
