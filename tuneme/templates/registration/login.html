@@ -14,9 +14,9 @@
 	        {% if form.errors %}
 	            <p class="error errorlist">{% trans "Your username and password does not match. Please try again." %}</p>
 	        {% endif %}
-					<p>{% trans "Username" %}</p>
+					<p><strong>{% trans "Username" %}</strong></p>
 					{{form.username}}
-					<p>{% trans "Password" %}</p>
+					<p><strong>{% trans "4-digit pin" %}</strong></p>
 					{{form.password}}
 					<input type="submit" value="{% trans 'Sign in' %}">
 					<input type="hidden" name="next" value="{{request.site.root_page.url}}" />
