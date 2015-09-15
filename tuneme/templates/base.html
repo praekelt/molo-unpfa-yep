@@ -9,7 +9,7 @@
       <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo hide white"></a>
     <div class="feature-menu">
         {% if not user.is_authenticated %}
-        <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
+        <a href="{% url 'molo.profiles:user_register' %}">{% trans "Join" %}</a>
         {% else %}
         <a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Profile" %}</a>
         {% endif %}
@@ -23,7 +23,7 @@
   <div class="menu">
     <div class="menuItem hide" id="login">
       {% if not user.is_authenticated %}
-        <a href="{% url 'molo.profiles:auth_login' %}"><span >{% trans "Login" %}</span ></a>
+        <a href="{% url 'molo.profiles:user_register' %}"><span >{% trans "Join" %}</span ></a>
       {% else %}
         <a href="{% url 'molo.profiles:view_my_profile' %}"><span >{% trans "Profile" %}</span ></a>
       {% endif %}

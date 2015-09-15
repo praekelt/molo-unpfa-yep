@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load i18n static core_tags %}
 
+
 {% block content %}
 <div class="title profile">
-    <h3>{% trans "Sign up" %}</h3>
+    <h3>{% trans "Join" %}</h3>
 </div>
 <div class="block turq">
   <div class="signin-form">
-    <h5>{% trans "Welcome to TuneMe!" %}</h5>
     <p>{% trans "Not a member yet? Join us by signing up below." %}</p>
     {% if messages %}
       <ul class="messages">
@@ -17,15 +17,14 @@
       </ul>
     {% endif %}
     <form method="post" action="{% url 'molo.profiles:user_register' %}">{% csrf_token %}
-        <p>{% trans "Username" %}</p>
+        <p><strong>{% trans "Choose a username" %}</strong></p>
         {{ registration_form.username }}
-        <p>{% trans "Password" %}</p>
+        <p><strong>{% trans "Choose a 4-digit pin" %}</strong></p>
         {{ registration_form.password }}
-        <input type="submit" class="registerSubmit" value='{% trans "Register" %}' />
+        <input type="submit" class="registerSubmit" value='{% trans "JOIN" %}' />
         <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
     </form>
-    <br>
-    <p>{% trans "Already signed-up? Then " %}<a href="{% url 'molo.profiles:auth_login' %}">{% trans "sign in" %}</a></p>
   </div>
+    <a href="{% url 'molo.profiles:auth_login' %}" class="button inverted">{% trans "already joined?" %}</a>
 </div>
 {% endblock %}
