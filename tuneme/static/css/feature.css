@@ -46,7 +46,7 @@ hr {display:none;}
     .backtotop {display:block; clear:both; text-transform:uppercase; padding:15px; margin-top:-1px; font-weight:bold; border-top:1px solid #ddd; border-bottom:1px solid #ddd;}
 
 /* Buttons */
-input[type='submit'] {width:auto}
+input[type='submit'] {margin-top: 20px; width:auto}
 
 /* Titles */
 .title {padding:15px; display:block; clear:both; border-bottom:1px solid #ddd;}
@@ -67,7 +67,8 @@ input[type='submit'] {width:auto}
 /* Content Blocks */
 .block {border-bottom:1px solid #ddd;}
 
-
+/* Radios */
+.radios div { padding:5px 5px 5px 0px; }
 
 /* Comments */
 .comments-count a {font-weight:bold; display:block; padding:0 0 15px;}
