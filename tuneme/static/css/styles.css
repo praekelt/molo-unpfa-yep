@@ -75,7 +75,7 @@ input[type='submit']:focus, a.button:focus {opacity:0.5;}
         .grey a.button.inverted {color:#828282; background:white; border-color:#828282;}
 
 
-.decoration {text-decoration: none;}
+.step-links a {text-decoration: none;}
 
 
 /* search Black Box */

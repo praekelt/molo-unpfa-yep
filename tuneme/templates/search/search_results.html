@@ -40,15 +40,16 @@
   <div class="search-result pagination">
   <div class="step-links">
     {% if search_results.has_previous %}
-        <a class="decoration" href="?p={{ search_results.previous_page_number }}&amp;q={{search_query}}">&larr;</a>
+        <a href="?p={{ search_results.previous_page_number }}&amp;q={{search_query}}">&larr;</a>
     {% endif %}
+        <a href="">&larr;</a>
 
     <span class="current">
         Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}
     </span>
 
     {% if search_results.has_next %}
-        <a class="decoration" href="?p={{ search_results.next_page_number }}&amp;q={{search_query}}">&rarr;</a>
+        <a href="?p={{ search_results.next_page_number }}&amp;q={{search_query}}">&rarr;</a>
     {% endif %}
   </div>
   </div>
