@@ -40,7 +40,7 @@
   <div class="search-result pagination">
   <div class="step-links">
     {% if search_results.has_previous %}
-        <a href="?p={{ search_results.previous_page_number }}&amp;q={{search_query}}">&larr;</a>
+        <a class="decoration" href="?p={{ search_results.previous_page_number }}&amp;q={{search_query}}">&larr;</a>
     {% endif %}
 
     <span class="current">
@@ -48,7 +48,7 @@
     </span>
 
     {% if search_results.has_next %}
-        <a href="?p={{ search_results.next_page_number }}&amp;q={{search_query}}">&rarr;</a>
+        <a class="decoration" href="?p={{ search_results.next_page_number }}&amp;q={{search_query}}">&rarr;</a>
     {% endif %}
   </div>
   </div>
