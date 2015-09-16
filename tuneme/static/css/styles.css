@@ -79,7 +79,7 @@ input[type='submit']:focus, a.button:focus {opacity:0.5;}
 
 /* search Black Box */
 #search-form {display:block; clear:both; background:black; padding:15px;}
-    #search-form input {width:79%; background:black; border:1px solid white; color:white; font:normal 15px 'Quicksilver', Arial, Helvetica, sans-serif;}
+    #search-form input {width:79%; background:black; border:1px solid white; color:white; font:bold 15px 'Quicksand', Arial, Helvetica, sans-serif;}
     #search-form input[type='submit'] { width:86%; padding:10px 25px; border:0; color:black; background:white;}
 
     /* search Results */
