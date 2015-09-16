@@ -67,7 +67,8 @@ input[type='submit'] {width:auto}
 /* Content Blocks */
 .block {border-bottom:1px solid #ddd;}
 
-
+/* Radios */
+.radios div { padding:5px 5px 5px 0px; }
 
 /* Comments */
 .comments-count a {font-weight:bold; display:block; padding:0 0 15px;}

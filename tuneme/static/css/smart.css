@@ -53,7 +53,8 @@ body {background:white; position:relative; text-align:center;}
     /* Hide Feature Menu */
     #feature-menu, .feature-menu {display:none;}
 
-
+/* Radios */
+.radios div {padding:5px 25px 5px 25px;}
 
 
 /* Banners */
