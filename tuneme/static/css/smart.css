@@ -114,8 +114,8 @@ body {background:white; position:relative; text-align:center;}
 body {font:normal 17px 'Quicksand', Arial, Helvetica, sans-serif; color:#828282;}
 h1 { color:white; font-size:200%; }
     h2 a {color:white; text-decoration:none;}
-h3 {padding:10px 15px; line-height:1;}
-h4 {padding:10px 15px; line-height:1;}
+h3 {padding:10px 15px; line-height:1em;}
+h4 {padding:10px 15px; line-height:1em;}
 h5 {font-size:100%; padding:10px 15px; font-weight:bold; color:black; }
 h6 {padding:10px 15px; color:white;}
     h6 a {color:white; text-decoration:none;}
