@@ -38,7 +38,7 @@ img {max-width:100%;}
 
 /* Radios */
 .radios {}
-    .radios div {display:block; padding:5px 0 5px 35px; text-align: left; }
+    .radios div {display:block; padding:5px 25px 5px 25px; text-align: left; }
     .radios input[type="radio"]:checked + label {font-weight:bold;}
     .radios label {text-align:left; font-weight:bold;}
 
@@ -108,7 +108,7 @@ label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
 
     /* Radios */
     input[type='radio'] {width:auto; padding:0px; margin:0 5px 0 0; font-size:15px;}
-    .radios label { font-size:15px; min-width:75px; font-weight:normal;}
+    .radios label { font-size:15px; min-width:75px; font-weight:normal; display: inline-flex; width: 90%;}
         .turq .radios input[type="radio"]:checked + label {color:#21e0d8;}
         .purple .radios input[type="radio"]:checked + label {color:#d127fc;}
         .pink .radios input[type="radio"]:checked + label {color:#f82353;}
