@@ -2,15 +2,14 @@
 {% load i18n %}
 
 {% block content %}
-  <div class="title profile">
-  </div>
-  <h5>{% trans "Thank you for joining!" %}<br/></h5>
-  <h5>{% trans "let us know your birthday to get access to exclusive content." %}<br/></h5>
-  <div class="block turq">
-      <form method="post" action="{% url 'molo.profiles:registration_done' %}">{% csrf_token %}
-            {{ form.date_of_birth }}
-          <input type="submit" value='{% trans "Update" %}' />
-          <a href="/" class="button inverted">{% trans "Skip" %}</a>
-      </form>
-  </div>
+  <div class="title profile"></div>
+<div class="block turq">
+  <h5>{% trans "Thank you for joining!" %}</h5>
+  <h5>{% trans "Let us know your birthday to get access to exclusive content." %}</h5><br>
+  <form method="post" action="{% url 'molo.profiles:registration_done' %}">{% csrf_token %}
+      {{ form.date_of_birth }}
+      <input type="submit" value='{% trans "Update" %}' />
+      <a href="/" class="button inverted">{% trans "Skip" %}</a>
+  </form>
+</div>
 {% endblock %}

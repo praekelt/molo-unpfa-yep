@@ -73,7 +73,8 @@ body {background:white; position:relative; text-align:center;}
     border-radius: 100%;
 }
 
-
+/* Form Elements */
+select {min-width:0%;}
 
 /* Titles */
 .title {padding:80px 0 0; margin-bottom:10px; border:0;}
