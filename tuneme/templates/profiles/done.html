@@ -5,7 +5,7 @@
   <div class="title profile"></div>
 <div class="block turq">
   <h5>{% trans "Thank you for joining!" %}</h5>
-  <h5>{% trans "Let us know your birthday to get access to exclusive content." %}</h5>
+  <h5>{% trans "Let us know your birthday to get access to exclusive content." %}</h5><br>
   <form method="post" action="{% url 'molo.profiles:registration_done' %}">{% csrf_token %}
       {{ form.date_of_birth }}
       <input type="submit" value='{% trans "Update" %}' />
