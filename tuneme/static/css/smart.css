@@ -20,9 +20,9 @@ body {background:white; position:relative; text-align:center;}
         .search-icon a, .menuItem span {position:absolute; z-index:5; top:10px; right:0px; width:35px; height:35px; cursor:pointer; z-index:9; -webkit-border-radius:25px; border-radius:25px; color:white; background:black;}
         .search-icon a {right:130px; background:black url(../img/search.png) center center no-repeat; background-size:15px; text-indent:-999em;}
         .menuItem#login span {right:10px; background:black url(../img/close.png) center center no-repeat; background-size:15px; text-indent:-999em; z-index:12;}
-            .menuItem.hide#login span {right:90px; background-image:url(../img/user.png); z-index:9;}
-        .menuItem#pages span {right:10px; width:35px; text-align:center; line-height:35px; font-weight:bold; text-transform:uppercase; font-size:15px; z-index:12; text-indent:-9999px; background:black url(../img/close.png) center center no-repeat; background-size:15px;}
-            .menuItem.hide#pages span {z-index:9; width:75px; text-indent:0; background:black;}
+            .menuItem.hide#login span {right:90px; background-image:url(../img/user.png); z-index:12;}
+        .menuItem#pages span {right:10px; width:75px; text-align:center; line-height:35px; font-weight:bold; text-transform:uppercase; font-size:15px; z-index:12; color:black; background:white; background-size:15px;}
+            .menuItem.hide#pages span {color:white; background:black;}
 
         /* Join Drop-Down */
         .menuItem div.content.join {background:white; padding:0;}
