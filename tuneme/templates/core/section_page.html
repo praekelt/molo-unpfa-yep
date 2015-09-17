@@ -39,7 +39,7 @@
   <div class="block {{self.get_effective_extra_style_hints}}">
     {% if page.image %}
         {% image page.image width-98 as tmp_photo %}
-        <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" />
+        <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="img-circle" />
     {% endif %}
   <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
   <p>{{page.subtitle}}</p>
