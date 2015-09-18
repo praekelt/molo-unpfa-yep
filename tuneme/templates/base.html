@@ -34,11 +34,19 @@
         <ul>
           {% for section in language_page.sections %}
             <li class="{{section.get_effective_extra_style_hints}}">
-                <a href="{% pageurl section %}">{% image section.image width-40 %} {{section.title}}</a>
+                <a href="{% pageurl section %}">
+                  {% image section.image width-40 %}
+                  <div>{{section.title}}</div>
+                </a>
             </li>
           {% endfor %}
           {% if user.is_authenticated %}
-              <li class="grey"><a href="{% url 'molo.profiles:view_my_profile' %}"><img src="{% static 'img/profile.png' %}" width="35"> {% trans "Your Profile" %}</a></li>
+              <li class="grey">
+              <a href="{% url 'molo.profiles:view_my_profile' %}">
+                <img src="{% static 'img/profile.png' %}" width="40">
+                <div>{% trans "Your Profile" %}</div>
+              </a>
+              </li>
           {% endif %}
         </ul>
         <div class="search-form">
