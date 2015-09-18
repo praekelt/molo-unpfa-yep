@@ -83,6 +83,10 @@ input[type='submit']:focus, a.button:focus {opacity:0.5;}
     #search-form input {width:79%; background:black; border:1px solid white; color:white; font:bold 15px 'Quicksand', Arial, Helvetica, sans-serif;}
     #search-form input[type='submit'] { width:86%; padding:10px 25px; border:0; color:black; background:white;}
 
+.search-form {display:block; clear:both; background:black; padding:15px 5px 0px 40px;}
+    .search-form input {width:79%; background:black; border:1px solid white; color:white; font:bold 15px 'Quicksand', Arial, Helvetica, sans-serif;}
+    .search-form input[type='submit'] { margin-top:10px; width:86%; padding:10px 25px; border:0; color:black; background:white;}
+
     /* search Results */
     .search-result {padding:15px; display:block; clear:both; text-decoration:none; text-align:left;  border-bottom:1px solid #ddd;}
         .search-result .icon {display:block;}
