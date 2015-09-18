@@ -27,7 +27,7 @@ body {background:white; position:relative; text-align:center;}
             .menuItem.hide#pages span {color:white; background:black;}
 
         .mainMenu ul li a img {float: left;}
-        .mainMenu ul li a div {vertical-align: middle; display: inline-block; line-height: 60px; margin-left: 20px;}
+        .mainMenu ul li a div {font-size: 17px; vertical-align: middle; display: inline-block; line-height: 40px; margin-left: 30px;}
 
         /* Join Drop-Down */
         .menuItem div.content.join {background:white; padding:0;}
