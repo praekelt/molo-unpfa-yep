@@ -72,8 +72,8 @@ input[type='submit'] {margin-top: 20px; width:auto}
 
 /* Comments */
 .comments-count a {font-weight:bold; display:block; padding:0 0 15px;}
-.turq .comments-count a {color:#21e0d8;}
-.purple .comments-count a {color:#d127fc;}
-.pink .comments-count a {color:#f82353;}
-.orange .comments-count a {color:#ff7c44;}
-.yellow .comments-count a {color:#fad400;}
+.turq .comments-count a {color:#21e0d8; visibility: hidden;}
+.purple .comments-count a {color:#d127fc; visibility: hidden;}
+.pink .comments-count a {color:#f82353; visibility: hidden;}
+.orange .comments-count a {color:#ff7c44; visibility: hidden;}
+.yellow .comments-count a {color:#fad400; visibility: hidden;}
