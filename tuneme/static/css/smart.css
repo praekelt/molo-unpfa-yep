@@ -194,15 +194,15 @@ input[type='submit'] {width:86%}
     .comments-count a {position:relative; text-decoration:none; display:inline-block; height:25px; width:30px; padding:0; line-height:25px; text-align:center; background:#828282; color:white; -webkit-border-radius:2px; border-radius:2px;}
         .comments-count span {display:none;}
         .comments-count a:after {top:100%; left:65%; border:solid transparent; content:" "; position:absolute; border-top-color:#828282; border-width:4px; margin-left:-4px;}
-        .turq .comments-count a {background:#21e0d8; color:white; }
+        .turq .comments-count a {background:#21e0d8; color:white; visibility: visible;}
             .turq .comments-count a:after {border-top-color:#21e0d8;}
-        .purple .comments-count a {background:#d127fc; color:white;}
+        .purple .comments-count a {background:#d127fc; color:white; visibility: visible;}
             .purple .comments-count a:after {border-top-color:#d127fc;}
-        .pink .comments-count a {background:#f82353; color:white;}
+        .pink .comments-count a {background:#f82353; color:white; visibility: visible;}
             .pink .comments-count a:after {border-top-color:#f82353;}
-        .orange .comments-count a {background:#ff7c44; color:white;}
+        .orange .comments-count a {background:#ff7c44; color:white; visibility: visible;}
             .orange .comments-count a:after {border-top-color:#ff7c44;}
-        .yellow .comments-count a {background:#fad400; color:white;}
+        .yellow .comments-count a {background:#fad400; color:white; visibility: visible;}
             .yellow .comments-count a:after {border-top-color:#fad400;}
 
 .pull-right {float: right;}
