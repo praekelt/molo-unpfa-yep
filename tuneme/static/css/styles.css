@@ -105,7 +105,7 @@ input[type='submit']:focus, a.button:focus {opacity:0.5;}
 
 
 /* Form Elements */
-input {width:90%; padding:10px; margin:5px 0; display:inline-block; font-size:125%; background:#f7f7f7; border:1px solid #ddd;}
+input {width:90%; padding:10px; margin:5px 0; display:inline-block; font-size:95%; background:#f7f7f7; border:1px solid #ddd;}
 select {min-width:90%; margin:0 0 10px; display:inline-block; font-size:125%; text-align:center;}
 input:focus {background:#eee; color:black; }
 textarea {width:94%; font-size:100%; padding:10px; display:block;}
