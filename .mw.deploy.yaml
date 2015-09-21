@@ -1,5 +1,6 @@
 buildscript: sideloader/build.sh
 postinstall: sideloader/postinstall.sh
+virtualenv_prefix: mw
 pip:
  - gunicorn
  - psycopg2
