@@ -175,7 +175,7 @@ blockquote {padding:10px 20px;}
 
 /* Buttons/Links */
 input[type='submit'], a.button {width:80%; font:bold 15px 'Quicksand', Arial, Helvetica, sans-serif; margin:30px 0px 0px; -webkit-border-radius:25px; border-radius:25px; -webkit-appearance:none;}
-a.button.inverted {color:#828282; background:white; margin:10px 10px; padding:9px; border:1px solid #828282;}
+a.button.inverted {color:#828282; background:white; margin:10px 0px 10px 0px; padding:9px; border:1px solid #828282;}
 input[type='submit']:focus, a.button:focus {opacity:0.5;}
 h3 a {text-decoration:none;}
 h5 a {color:black; text-decoration:none;}

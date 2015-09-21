@@ -23,8 +23,8 @@
         {{ registration_form.password }}
         <input type="submit" class="registerSubmit" value='{% trans "JOIN" %}' />
         <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
+        <a href="{% url 'molo.profiles:auth_login' %}" class="button inverted">{% trans "already joined?" %}</a>
     </form>
   </div>
-    <a href="{% url 'molo.profiles:auth_login' %}" class="button inverted">{% trans "already joined?" %}</a>
 </div>
 {% endblock %}
