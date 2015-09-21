@@ -10,9 +10,10 @@ h3 {padding:10px 0; font-size:200%;}
     .orange h3 {color:#ff7c44;}
     .yellow h3 {color:#fad400;}
     .grey h3 {color:#828282;}
+h5 {font-size:125%; padding:10px 0px; font-weight:bold; color:black; }
 h6 {padding:5px 0;}
     h6 a {color:black;}
-p {padding:0px 0 15px;}
+/*p {padding:0px 0 15px;}*/
 hr {display:none;}
 
 /* Article lists*/
@@ -46,7 +47,10 @@ hr {display:none;}
     .backtotop {display:block; clear:both; text-transform:uppercase; padding:15px; margin-top:-1px; font-weight:bold; border-top:1px solid #ddd; border-bottom:1px solid #ddd;}
 
 /* Buttons */
-input[type='submit'] {margin-top: 20px; width:auto}
+input[type='submit'] {width:auto}
+
+/* Form Elements */
+input {margin:5px 0 15px 0 }
 
 /* Titles */
 .title {padding:15px; display:block; clear:both; border-bottom:1px solid #ddd;}
