@@ -37,7 +37,7 @@ urlpatterns = patterns(
     ),
     url(r'^profiles/', include('molo.profiles.urls',
                                namespace='molo.profiles')),
-    url(r'^comments/reported/',
+    url(r'^comments/reported/(\d+)',
         TemplateView.as_view(template_name="comments/report-message.html"),
         name='report-message'),
     url(r'^comments/', include('molo.commenting.urls')),
