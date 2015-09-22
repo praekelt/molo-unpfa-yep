@@ -9,10 +9,9 @@ from django.contrib.auth.decorators import login_required
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
-from django.views.generic import TemplateView
 
 from molo.profiles.views import RegistrationDone
-from tuneme.views import search
+from tuneme.views import search, report_message
 from tuneme.forms import DateOfBirthForm
 
 
@@ -38,7 +37,7 @@ urlpatterns = patterns(
     url(r'^profiles/', include('molo.profiles.urls',
                                namespace='molo.profiles')),
     url(r'^comments/reported/(\d+)',
-        TemplateView.as_view(template_name="comments/report-message.html"),
+        report_message,
         name='report-message'),
     url(r'^comments/', include('molo.commenting.urls')),
     url(r'search/$', search, name='search'),
