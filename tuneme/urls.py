@@ -11,7 +11,7 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 
 from molo.profiles.views import RegistrationDone
-from tuneme.views import search, report_message
+from tuneme.views import search, report_response
 from tuneme.forms import DateOfBirthForm
 
 
@@ -36,7 +36,7 @@ urlpatterns = patterns(
     ),
     url(r'^profiles/', include('molo.profiles.urls',
                                namespace='molo.profiles')),
-    url(r'^comments/reported/(\d+)', report_message, name='report-message'),
+    url(r'^comments/reported/(\d+)', report_response, name='report_response'),
     url(r'^comments/', include('molo.commenting.urls')),
     url(r'search/$', search, name='search'),
     url(r'', include(wagtail_urls)),
