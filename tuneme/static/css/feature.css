@@ -74,7 +74,7 @@ input {margin:5px 0 15px 0 }
 .radios div { padding:5px 5px 5px 0px; }
 
 /* Comments */
-.comments-count a {font-weight:bold; display:block; padding:0 0 15px;}
+.comments-count a {font-weight:bold;}
 .turq .comments-count a {color:#21e0d8; visibility: hidden;}
 .purple .comments-count a {color:#d127fc; visibility: hidden;}
 .pink .comments-count a {color:#f82353; visibility: hidden;}
