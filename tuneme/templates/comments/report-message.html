@@ -7,12 +7,14 @@
 
 </div>
 
-<div class="block">
-  <h4 class="left">Thanks</h4>
+  <h4 class="left">Thanks!</h4>
+  
+<div class="block {{article.get_parent_section.get_effective_extra_style_hints}}">
   <div class="article-copy">
     <p><strong>This comment has been reported.</strong>
-    Someone from the Tune Me team will review the comment and remove it if
-    it contravenes our Terms of Use</p>
+    This comment has been reported. It will be reviewed by the Tune Me team 
+    and may be removed if it breaks our Platform Rules</p>
   </div>
+  <a href="javascript:history.back();" class="button">{% trans "Back" %}</a>
 </div>
 {% endblock %}
