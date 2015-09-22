@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
+from django.views.generic import TemplateView
 
 from molo.profiles.views import RegistrationDone
 from tuneme.views import search
@@ -36,6 +37,9 @@ urlpatterns = patterns(
     ),
     url(r'^profiles/', include('molo.profiles.urls',
                                namespace='molo.profiles')),
+    url(r'^comments/reported/',
+        TemplateView.as_view(template_name="comments/report-message.html"),
+        name='report-message'),
     url(r'^comments/', include('molo.commenting.urls')),
     url(r'search/$', search, name='search'),
     url(r'', include(wagtail_urls)),
