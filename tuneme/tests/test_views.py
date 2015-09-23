@@ -42,7 +42,7 @@ class ViewsTestCase(TestCase):
             site=Site.objects.get_current(), user=self.user,
             comment='comment 1', submit_date=datetime.now())
         response = client.get(reverse('report_response',
-                                      kwargs={'comment_pk':comment.id}))
+                                      args=(comment.id,)))
         self.assertContains(
             response,
             "This comment has been reported."
