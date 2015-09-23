@@ -11,9 +11,8 @@
   
 <div class="block {{article.get_parent_section.get_effective_extra_style_hints}}">
   <div class="article-copy">
-    <p><strong>This comment has been reported.</strong>
-    It will be reviewed by the Tune Me team 
-    and may be removed if it breaks our Platform rules</p>
+    <p><strong>{% trans "This comment has been reported." %}</strong>
+    {% trans "It will be reviewed by the Tune Me team and may be removed if it breaks our Platform rules" %}</p>
   </div>
   <a href="javascript:history.back();" class="button">{% trans "Back" %}</a>
 </div>
