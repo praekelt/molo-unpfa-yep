@@ -32,6 +32,7 @@ def search(request, results_per_page=10):
         'results': results,
     })
 
+
 def report_response(request, comment_pk):
     comment = MoloComment.objects.get(pk=comment_pk)
     language_page = LanguagePage.objects.get(code=get_locale_code())
