@@ -51,6 +51,7 @@ class ViewsTestCase(TestCase):
 
     def test_commenting_closed(self):
         client = Client()
+        client.login(username='tester', password='tester')
         article = ArticlePage.objects.create(
             title='article 1', depth=1,
             subtitle='article 1 subtitle',
@@ -69,6 +70,7 @@ class ViewsTestCase(TestCase):
 
     def test_commenting_open(self):
         client = Client()
+        client.login(username='tester', password='tester')
         article = ArticlePage.objects.create(
             title='article 1', depth=1,
             subtitle='article 1 subtitle',
