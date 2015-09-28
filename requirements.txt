@@ -1,4 +1,4 @@
-molo.core<3.0.0,>=2.4.4
+molo.core<3.0.0,>=2.5.0
 molo.profiles<1.0.0,>=0.1.4
 molo.commenting<1.0.0,>=0.2.4
 django-extensions
