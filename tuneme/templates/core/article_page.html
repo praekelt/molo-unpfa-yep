@@ -63,7 +63,7 @@
 <div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">
     {% get_comment_count for self as comment_count %}
     {% if comment_count > 0 %}
-     <h5><div class="comments-count">{% trans "Comment" %}<a href="#" class="pull-right">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div></h5>
+     <h5><div class="comments-count align-left">{% trans "Comment" %}<a href="#" class="pull-right">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div></h5>
     {% endif %}
     <div class="post-comment {{self.get_parent_section.get_effective_extra_style_hints}}">
       {% if request.user.is_authenticated %}
