@@ -57,7 +57,6 @@ class ViewsTestCase(TestCase):
             subtitle='article 1 subtitle',
             slug='article-1', path=[1], commenting_state='C')
         article.save()
-        print article
         data = MoloCommentForm(self.user, {}).generate_security_data()
         data.update({
             'comment': "This is another comment",
@@ -65,7 +64,6 @@ class ViewsTestCase(TestCase):
             'content_type': type(article)
         })
         response = client.post(reverse('molo-comments-post'), data)
-        print response
         self.assertEqual(response.status_code, 400)
 
     def test_commenting_open(self):
