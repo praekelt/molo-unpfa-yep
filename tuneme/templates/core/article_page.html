@@ -61,7 +61,7 @@
 </div>
 </div>
 
-{% if self.commenting_state != 'D' %}
+{% if self.is_commenting_enabled %}
 <div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">
     {% if self.allow_commenting %}
       {% get_comment_count for self as comment_count %}
