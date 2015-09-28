@@ -7,6 +7,7 @@ from django.test.client import Client
 
 from molo.core.models import ArticlePage
 from molo.commenting.models import MoloComment
+from molo.commenting.forms import MoloCommentForm
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 
@@ -55,8 +56,9 @@ class ViewsTestCase(TestCase):
             subtitle='article 1 subtitle',
             slug='article-1', path=[1], commenting_state='C')
         article.save()
-        data = self.getValidData(article)
+        data = MoloCommentForm(self.user, {}).generate_security_data()
         data["comment"] = "This is another comment"
+        data["object_pk"] = article.id
         response = client.post("/post/", data)
         self.assertEqual(response.status_code, 400)
 
@@ -67,7 +69,8 @@ class ViewsTestCase(TestCase):
             subtitle='article 1 subtitle',
             slug='article-1', path=[1], commenting_state='O')
         article.save()
-        data = self.getValidData(article)
+        data = MoloCommentForm(self.user, {}).generate_security_data()
         data["comment"] = "This is another comment"
+        data["object_pk"] = article.id
         response = client.post("/post/", data)
         self.assertEqual(response.status_code, 302)
