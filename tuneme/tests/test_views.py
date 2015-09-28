@@ -57,8 +57,11 @@ class ViewsTestCase(TestCase):
             slug='article-1', path=[1], commenting_state='C')
         article.save()
         data = MoloCommentForm(self.user, {}).generate_security_data()
-        data["comment"] = "This is another comment"
-        data["object_pk"] = article.id
+        data.update({
+            'comment': "This is another comment",
+            'object_pk': article.id,
+            'content_type': type(article)
+        })
         response = client.post(reverse('molo-comments-post'), data)
         self.assertEqual(response.status_code, 400)
 
@@ -70,7 +73,10 @@ class ViewsTestCase(TestCase):
             slug='article-1', path=[1], commenting_state='O')
         article.save()
         data = MoloCommentForm(self.user, {}).generate_security_data()
-        data["comment"] = "This is another comment"
-        data["object_pk"] = article.id
+        data.update({
+            'comment': "This is another comment",
+            'object_pk': article.id,
+            'content_type': type(article)
+        })
         response = client.post(reverse('molo-comments-post'), data)
         self.assertEqual(response.status_code, 302)
