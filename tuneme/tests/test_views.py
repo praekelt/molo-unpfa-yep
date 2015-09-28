@@ -59,7 +59,7 @@ class ViewsTestCase(TestCase):
         data = MoloCommentForm(self.user, {}).generate_security_data()
         data["comment"] = "This is another comment"
         data["object_pk"] = article.id
-        self.client.post(reverse('molo-comments-post'), data)
+        response = client.post(reverse('molo-comments-post'), data)
         self.assertEqual(response.status_code, 400)
 
     def test_commenting_open(self):
@@ -72,5 +72,5 @@ class ViewsTestCase(TestCase):
         data = MoloCommentForm(self.user, {}).generate_security_data()
         data["comment"] = "This is another comment"
         data["object_pk"] = article.id
-        self.client.post(reverse('molo-comments-post'), data)
+        response = client.post(reverse('molo-comments-post'), data)
         self.assertEqual(response.status_code, 302)
