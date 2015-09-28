@@ -191,7 +191,7 @@ input[type='submit'] {width:86%}
 
 
 /* Comments Count */
-.comments-count {display:block; font-weight:bold; text-align: left;}
+.comments-count {display:block; font-weight:bold; }
     .comments-count a {position:relative; text-decoration:none; display:inline-block; height:25px; width:30px; padding:0; line-height:25px; text-align:center; background:#828282; color:white; -webkit-border-radius:2px; border-radius:2px;}
         .comments-count span {display:none;}
         .comments-count a:after {top:100%; left:65%; border:solid transparent; content:" "; position:absolute; border-top-color:#828282; border-width:4px; margin-left:-4px;}
@@ -207,7 +207,7 @@ input[type='submit'] {width:86%}
             .yellow .comments-count a:after {border-top-color:#fad400;}
 
 .pull-right {float: right;}
-
+.align-left {text-align: left;}
 
 /* Comments */
 .post-comment {text-align:center;}
