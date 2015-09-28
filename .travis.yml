@@ -1,7 +1,11 @@
+sudo: false  # Force container-based builds.
 language: python
 python:
   - "2.7"
   - "pypy"
+cache:
+  directories:
+    - $HOME/.cache/pip
 services:
   - elasticsearch
   - redis-server
