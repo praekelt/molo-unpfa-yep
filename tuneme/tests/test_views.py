@@ -55,11 +55,11 @@ class ViewsTestCase(TestCase):
             subtitle='article 1 subtitle',
             slug='article-1', path=[1], commenting_state='C')
         article.save()
-        data = self.getValidData(a)
+        data = self.getValidData(article)
         data["comment"] = "This is another comment"
         response = client.post("/post/", data)
         self.assertEqual(response.status_code, 400)
-    
+
     def test_commenting_open(self):
         client = Client()
         article = ArticlePage.objects.create(
@@ -67,7 +67,7 @@ class ViewsTestCase(TestCase):
             subtitle='article 1 subtitle',
             slug='article-1', path=[1], commenting_state='O')
         article.save()
-        data = self.getValidData(a)
+        data = self.getValidData(article)
         data["comment"] = "This is another comment"
         response = client.post("/post/", data)
-        self.assertEqual(self.response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
