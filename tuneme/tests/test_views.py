@@ -7,6 +7,7 @@ from django.test.client import Client
 
 from molo.core.models import ArticlePage
 from molo.commenting.models import MoloComment
+from molo.commenting.forms import MoloCommentForm
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 
@@ -47,3 +48,43 @@ class ViewsTestCase(TestCase):
             response,
             "This comment has been reported."
         )
+
+    def test_commenting_closed(self):
+        client = Client()
+        client.login(username='tester', password='tester')
+        article = ArticlePage.objects.create(
+            title='article 1', depth=1,
+            subtitle='article 1 subtitle',
+            slug='article-1', path=[1], commenting_state='C')
+        article.save()
+        initial = {
+            'object_pk': article.id,
+            'content_type': "core.articlepage"
+        }
+        data = MoloCommentForm(article, {},
+                               initial=initial).generate_security_data()
+        data.update({
+            'comment': "This is another comment"
+        })
+        response = client.post(reverse('molo-comments-post'), data)
+        self.assertEqual(response.status_code, 400)
+
+    def test_commenting_open(self):
+        client = Client()
+        client.login(username='tester', password='tester')
+        article = ArticlePage.objects.create(
+            title='article 1', depth=1,
+            subtitle='article 1 subtitle',
+            slug='article-1', path=[1], commenting_state='O')
+        article.save()
+        initial = {
+            'object_pk': article.id,
+            'content_type': "core.articlepage"
+        }
+        data = MoloCommentForm(article, {},
+                               initial=initial).generate_security_data()
+        data.update({
+            'comment': "This is a second comment",
+        })
+        response = client.post(reverse('molo-comments-post'), data)
+        self.assertEqual(response.status_code, 302)
