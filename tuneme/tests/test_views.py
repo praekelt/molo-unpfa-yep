@@ -81,4 +81,5 @@ class ViewsTestCase(TestCase):
             'content_type': "core.articlepage"
         })
         response = client.post(reverse('molo-comments-post'), data)
+        print response
         self.assertEqual(response.status_code, 302)
