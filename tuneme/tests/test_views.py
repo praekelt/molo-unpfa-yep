@@ -61,7 +61,8 @@ class ViewsTestCase(TestCase):
             'object_pk': article.id,
             'content_type': "core.articlepage"
         }
-        data = MoloCommentForm(self.user, {}, initial=initial).generate_security_data()
+        data = MoloCommentForm(self.user, {},
+                               initial=initial).generate_security_data()
         data.update({
             'comment': "This is another comment",
             'object_pk': article.id,
@@ -82,7 +83,8 @@ class ViewsTestCase(TestCase):
             'object_pk': article.id,
             'content_type': "core.articlepage"
         }
-        data = MoloCommentForm(self.user, {}, initial=initial).generate_security_data()
+        data = MoloCommentForm(self.user, {},
+                               initial=initial).generate_security_data()
         data.update({
             'comment': "This is a second comment",
         })
