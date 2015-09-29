@@ -61,7 +61,6 @@ class ViewsTestCase(TestCase):
         data.update({
             'comment': "This is another comment",
             'object_pk': article.id,
-            'content_type': type(article)
         })
         response = client.post(reverse('molo-comments-post'), data)
         self.assertEqual(response.status_code, 400)
@@ -78,7 +77,6 @@ class ViewsTestCase(TestCase):
         data.update({
             'comment': "This is another comment",
             'object_pk': article.id,
-            'content_type': type(article)
         })
         response = client.post(reverse('molo-comments-post'), data)
         self.assertEqual(response.status_code, 302)
