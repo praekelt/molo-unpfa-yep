@@ -72,7 +72,8 @@
       {% if request.user.is_authenticated %}
         {% render_comment_form for self %}
       {% else %}
-        <p>{% trans "Please" %} <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}">{% trans "log in" %}</a>{% trans " to leave a comment." %}</p>
+        <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="button inverted">{% trans "Log in to comment" %}</a>
+        <hr>
       {% endif %}
     {% else %}
       <p>{% trans "Commenting on this article is currently disabled" %}</p>
