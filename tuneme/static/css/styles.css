@@ -20,6 +20,7 @@ h4 {font-size:200%; font-weight:bold; padding:15px 0px;}
     .yellow h4 {color:#fad400;}
     .grey h4 {color:#828282;}
 h6 {font-size:100%; font-weight:bold;}
+
 p {font-size:100%;}
 
 
@@ -127,7 +128,7 @@ label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
 
 /* Poll Results */
 .poll-result {padding:0 0 15px}
-.result-line .option {text-align:left; width:49%; display:inline-block; margin-right:-5px; vertical-align:middle;}
+.result-line .option {text-align:left;  display:inline-block; margin-right:-5px; vertical-align:middle;}
 .result-line .bar {text-align:left; width:49%; margin-right:-5px; display:inline-block; vertical-align:middle;}
     .result-line {padding:1px 0;}
     .result-line.winner {font-weight:bold;}
