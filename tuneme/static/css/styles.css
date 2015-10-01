@@ -161,7 +161,7 @@ label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
         .grey .article-copy blockquote, .comment.grey .by strong, .comment.grey .report {color:#828282;}
 
 
-
+.pagination {padding:15px; text-align: left}
 
 /* Footer */
 .footer {padding:15px; font-size:85%; clear:both; display:block;}
