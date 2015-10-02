@@ -41,9 +41,9 @@
             </li>
           {% endfor %}
           {% if user.is_authenticated %}
-              <li class="grey">
+              <li class="pgrey">
               <a href="{% url 'molo.profiles:view_my_profile' %}">
-                <img src="{% static 'img/profile.png' %}" width="40">
+                <img src="{% static 'img/profile.png' %}" width="30">
                 <div>{% trans "Your Profile" %}</div>
               </a>
               </li>
