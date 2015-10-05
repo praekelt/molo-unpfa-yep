@@ -6,28 +6,28 @@
 {% block content %}
 
 <div class="title orange">
-	<div class="icon"><img src="{% static 'img/pie.png' %}" alt="Have Your Say"></div>
+	<div class="icon"><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></div>
 	<h6><a href="">{% trans "Have Your Say" %}</a></h6>
 </div>
 
 <div class="block orange">
 	<h3>{{ question.title }}</h3>
 	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-			<form action="{% url 'molo.polls:vote' question.id %}" method="post">
-				{% csrf_token %}
-	<div class="radios">
-				{% for choice in question.choices %}
-					<div>
-					    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-					    <label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
-					</div>
-				{% endfor %}
-	</div>
+		<form action="{% url 'molo.polls:vote' question.id %}" method="post">
+			{% csrf_token %}
+				<div class="radios">
+					{% for choice in question.choices %}
+						<div>
+						    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+						    <label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
+						</div>
+					{% endfor %}
+				</div>
 				<div>
 					<input type="submit" value="{% trans "Vote" %}"/>
+					<hr>
+  				<a href="javascript:history.back();" class="button inverted">{% trans "Back" %}</a>
 				</div>
-			</form>
-	<hr>
-  <a href="javascript:history.back();" class="button inverted">{% trans "Back" %}</a>
+		</form>
 </div>
 {% endblock %}

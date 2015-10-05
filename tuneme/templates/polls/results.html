@@ -6,16 +6,18 @@
 {% block content %}
 
 <div class="title orange">
-		<div class="icon"><img src="{% static 'img/pie.png' %}" alt="Have Your Say"></div>
+		<div class="icon"><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></div>
 		<h6><a href="">{% trans "Have Your Say" %}</a></h6>
 </div>
 
 <div class="block orange">
 	<h4>{{ question.title }}</h4>
+	<p class="grey">{% trans "Your answers" %}</p>
 	{% for choice in choices %}
 		<div class="poll-result">
 				<div class="result-line {% if forloop.first %}winner{% endif %}">
 				<span class="option">{{ choice.title }}</span>
+				<br>
 				<span class="bar">
 	        <span style="width:{{ choice.percentage }}%"></span>
 					{{ choice.percentage }}%

@@ -1,5 +1,5 @@
 html {height:100%; width:100%; position:relative;}
-body {background:white; position:relative; text-align:center;}
+body {background:white; position:relative; text-align:center; margin-bottom: 0px;}
 
 
 
@@ -14,7 +14,7 @@ body {background:white; position:relative; text-align:center;}
     /* Main Menu */
     .menu {text-align:left;}
     .menuItem div.content li:first-child:before{content:""; height:10px; width:100%; display:block; background:url(../img/black-wave.png) 0 bottom repeat-x; background-size:20px;}
-    .menuItem div.content li:last-child:after{content:""; height:10px; width:100%; display:block; background:url(../img/black-wave.png) 0 0 repeat-x; background-size:20px;}
+    .menuItem div.content li:last-child:after{ height:10px; width:100%; display:block; background:url(../img/black-wave.png) 0 0 repeat-x; background-size:20px;}
     .menuItem div.content {position:absolute; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; background:black; z-index:10; padding-top:60px;}
         .menuItem.hide div.content {display:none;}
 
@@ -27,7 +27,7 @@ body {background:white; position:relative; text-align:center;}
             .menuItem.hide#pages span {color:white; background:black;}
 
         .mainMenu ul li a img {float: left;}
-        .mainMenu ul li a div {font-size: 17px; vertical-align: middle; display: inline-block; line-height: 40px; margin-left: 30px;}
+        .mainMenu ul li a div {font-size: 17px; vertical-align: top; display: inline-block; line-height: 40px; margin-left: 30px;}
 
         /* Join Drop-Down */
         .menuItem div.content.join {background:white; padding:0;}
@@ -54,7 +54,7 @@ body {background:white; position:relative; text-align:center;}
         li.pink {background-color:#f82353;}
         li.orange {background-color:#ff7c44;}
         li.yellow {background-color:#fad400;}
-        li.grey {background-color:#828282;}
+        li.pgrey {background-color:#828282;}
     /* Hide Feature Menu */
     #feature-menu, .feature-menu {display:none;}
 
@@ -123,6 +123,7 @@ h1 { color:white; font-size:200%; }
     h2 a {color:white; text-decoration:none;}
 h3 {padding:10px 15px; line-height:1em;}
 h4 {padding:10px 15px; line-height:1em;}
+    h4.left{text-align: left}
 h5 {font-size:100%; padding:10px 15px; font-weight:bold; color:black; }
 h6 {padding:10px 15px; color:white;}
     h6 a {color:white; text-decoration:none;}
@@ -190,7 +191,7 @@ input[type='submit'] {width:86%}
 
 
 /* Comments Count */
-.comments-count {display:block; padding:0 0 20px; font-weight:bold;}
+.comments-count {display:block; font-weight:bold; }
     .comments-count a {position:relative; text-decoration:none; display:inline-block; height:25px; width:30px; padding:0; line-height:25px; text-align:center; background:#828282; color:white; -webkit-border-radius:2px; border-radius:2px;}
         .comments-count span {display:none;}
         .comments-count a:after {top:100%; left:65%; border:solid transparent; content:" "; position:absolute; border-top-color:#828282; border-width:4px; margin-left:-4px;}
@@ -206,7 +207,7 @@ input[type='submit'] {width:86%}
             .yellow .comments-count a:after {border-top-color:#fad400;}
 
 .pull-right {float: right;}
-
+.align-left {text-align: left;}
 
 /* Comments */
 .post-comment {text-align:center;}
@@ -227,9 +228,10 @@ a.white-link {color:white; padding:20px 0; display:inline-block; }
 
 /* Poll Results */
 .poll-result {padding:15px}
+.grey {font-size:200%; font-weight:bold; color: grey; padding: 0px 0 10px 0 ;}
 .result-line {padding:5px 0;}
-.result-line .option {text-align:left; width:25%; display:inline-block; margin-right:-5px; vertical-align:middle;}
-.result-line .bar { opacity:0.4; font-weight:bold; text-align:left; width:75%; margin-right:-5px; display:inline-block; vertical-align:middle; height:27px; font-size:18px; color:#ff7c44;}
+.result-line .option {text-align:left; display:block; margin-right:-5px; vertical-align:middle;}
+.result-line .bar { opacity:0.4; font-weight:bold; text-align:left; width:75%; margin-right:-5px; display:block; vertical-align:middle; height:27px; font-size:18px; color:#ff7c44;}
 .result-line .bar span {text-align:center; display:inline-block; vertical-align:middle; height:27px; line-height:27px; margin-right:5px; background:#ff7c44;}
     .result-line.winner .bar {opacity:1;}
 

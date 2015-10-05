@@ -13,13 +13,14 @@ body {background:white;}
 h2 {font-size:150%; padding:15px; font-weight:bold; color:white; background:black; }
 h3 {font-size:150%; font-weight:bold; color:black; }
 h4 {font-size:200%; font-weight:bold; padding:15px 0px;}
-    .turq h4 {color:#21e0d8;}
+    .turq h4 {color:#21e0d8u;}
     .purple h4 {color:#d127fc;}
     .pink h4 {color:#f82353;}
     .orange h4 {color:#ff7c44;}
     .yellow h4 {color:#fad400;}
     .grey h4 {color:#828282;}
 h6 {font-size:100%; font-weight:bold;}
+
 p {font-size:100%;}
 
 
@@ -127,7 +128,7 @@ label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
 
 /* Poll Results */
 .poll-result {padding:0 0 15px}
-.result-line .option {text-align:left; width:49%; display:inline-block; margin-right:-5px; vertical-align:middle;}
+.result-line .option {text-align:left;  display:inline-block; margin-right:-5px; vertical-align:middle;}
 .result-line .bar {text-align:left; width:49%; margin-right:-5px; display:inline-block; vertical-align:middle;}
     .result-line {padding:1px 0;}
     .result-line.winner {font-weight:bold;}
@@ -139,11 +140,18 @@ label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
 
 /* Comments */
 .post-comment {font-weight:normal; }
+.post-comment input[type='submit'], a.button {margin: 10px 0 0 0;}
 .post-comment textarea {width:90%; font-size:100%; padding:10px; outline:none; margin:0 auto;}
     .post-comment a {font-weight:bold; }
+    .post-comment.turq  a {color:#21e0d8;}
+    .post-comment.purple a {color:#d127fc;}
+    .post-comment.pink a {color:#f82353;}
+    .post-comment.orange a {color:#ff7c44;}
+    .post-comment.yellow a {color:#fad400;}
+
     .post-comment a.anon {color:white; margin-left:10px;}
 .comment {text-align:left; font-weight:normal; padding:15px; border-bottom:1px solid #ddd;}
-    .comment .by .date {font-weight:normal; font-size:85%; font-style:italic; padding:0 0 0 5px;}
+    .comment .by .date {font-weight:normal; font-size:85%; font-style:italic; }
     .comment p {padding:5px 0;}
         .comment a {color:#21e0d8;}
         .turq .article-copy blockquote, .comment.turq .by strong, .comment.turq .report {color:#21e0d8;}
@@ -154,7 +162,7 @@ label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
         .grey .article-copy blockquote, .comment.grey .by strong, .comment.grey .report {color:#828282;}
 
 
-
+.pagination {padding:15px; text-align: left}
 
 /* Footer */
 .footer {padding:15px; font-size:85%; clear:both; display:block;}

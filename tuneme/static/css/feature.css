@@ -1,4 +1,4 @@
-body {font:14px Arial, Helvetica, sans-serif; background:white; color:black;}
+body {font:14px Arial, Helvetica, sans-serif; background:white; color:black; margin-bottom: 205px;}
 
 
 /* Fonts */
@@ -14,6 +14,8 @@ h5 {font-size:125%; padding:10px 0px; font-weight:bold; color:black; }
 h6 {padding:5px 0;}
     h6 a {color:black;}
 hr {display:none;}
+
+.grey {padding: 0 0 10px 0;}
 
 /* Article lists*/
 .article-copy ul {list-style-type:disc; margin:0px 15px;}
@@ -74,9 +76,14 @@ input {margin:5px 0 15px 0 }
 .radios div { padding:5px 5px 5px 0px; }
 
 /* Comments */
-.comments-count a {font-weight:bold; display:block; padding:0 0 15px;}
+.comments-count a {font-weight:bold;}
 .turq .comments-count a {color:#21e0d8; visibility: hidden;}
 .purple .comments-count a {color:#d127fc; visibility: hidden;}
 .pink .comments-count a {color:#f82353; visibility: hidden;}
 .orange .comments-count a {color:#ff7c44; visibility: hidden;}
 .yellow .comments-count a {color:#fad400; visibility: hidden;}
+
+/* search Black Box */
+#search-form {padding:0px; margin-top:-1px; text-align:center;}
+#search-form input {margin:15px 0; text-align:center;}
+#search-form input[type='submit'] {margin:0 0 20px; }
