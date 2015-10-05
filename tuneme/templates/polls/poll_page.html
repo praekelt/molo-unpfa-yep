@@ -5,7 +5,7 @@
 		<h2>{% trans "What's your opinion?" %}</h2>
 		<div class="block orange">
 			<div class="title">
-				<div class="icon"><a href="{% url 'molo.polls:results' question.id %}"><img src="{% static 'img/pie.png' %}" alt="Have Your Say"></a></div>
+				<div class="icon"><a href="{% url 'molo.polls:results' question.id %}"><img src="{% static 'img/poll.png' %}" alt="Have Your Say"></a></div>
 				<h6><a href="{% url 'molo.polls:results' question.id %}">{% trans "Have Your Say" %}</a></h6>
 			</div>
 			<h3>{{ question.title }}</h3>
