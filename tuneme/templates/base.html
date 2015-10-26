@@ -91,12 +91,6 @@
     {% for page in language_page.footers %}
     <a href="{% pageurl page %}">{{page.title}}</a>
     {% endfor %}
-    <br>
-    <br>
-    <p>&copy; {% now "Y" %} {% trans "UNFPA, Ford Foundation" %}
-    <br>
-    {% trans "All rights reserved." %}
-    </p>
 </div>
 
 {% endblock %}
