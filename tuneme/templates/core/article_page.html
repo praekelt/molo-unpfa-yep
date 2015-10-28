@@ -31,9 +31,9 @@
   <div class="article-copy">
     {% for block in self.body %}
       {% if block.block_type == 'heading' %}
-          <h1>{{ block.value }}</h1>
+        <hr>
+        <p class="bold">{{ block.value }}</p>
       {% else %}
-      <hr>
       {% if block.block_type == 'page' %}
 
           <div class="readmore">{% trans "You may want to read:" %}</div>
