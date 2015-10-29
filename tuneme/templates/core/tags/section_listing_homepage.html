@@ -9,7 +9,7 @@
       {% for page in section.featured_articles_in_homepage %}
         {% if page.featured_in_homepage %}
         <div class="block {{section.get_effective_extra_style_hints}}">
-          <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
+          <h3 class="small-font"><a href="{% pageurl page %}">{{page.title}}</a></h3>
           <p>{{page.subtitle}}</p>
         </div>
         {% endif %}
