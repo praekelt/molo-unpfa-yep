@@ -16,7 +16,6 @@
 {% for section in self.sections %}
   <div class="block {{self.get_effective_extra_style_hints}}">
     <h5><a href="{% pageurl section %}">{{section.title}}</a></h5>
-    <br>
     {% for page in section.featured_articles %}
         {% if page.image %}
           {% image page.image width-98 as tmp_photo %}
