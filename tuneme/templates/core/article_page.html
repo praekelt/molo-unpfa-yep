@@ -23,8 +23,9 @@
   {% endif %}
 
   {% if self.image %}
-    {% image self.image width-620 as tmp_photo %}
-    <img src="{{ tmp_photo.url }}" alt="{{ self.image.title }}"/>
+  {% image self.image width-98 as tmp_photo_small %}
+  {% image self.image width-620 as tmp_photo_large %}
+    <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
   {% endif %}
   <h4>{{self.title}}</h4>
   <blockquote>{{self.subtitle}}</blockquote>
@@ -41,8 +42,9 @@
 
       {% else %}
       {% if block.block_type == 'image' %}
-        {% image block.value width-620 as tmp_photo %}
-        <img src="{{ tmp_photo.url }}" alt="{{ self.image.title }}"/>
+      {% image block.value width-98 as tmp_photo_small %}
+      {% image block.value width-620 as tmp_photo_large %}
+        <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
       {% else %}
       {% if block.block_type == 'numbered_list' %}
         <ol>
