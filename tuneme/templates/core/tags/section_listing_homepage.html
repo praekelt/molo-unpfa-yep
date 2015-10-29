@@ -3,6 +3,21 @@
 
 {% if sections %}
 
+  <h2 class="list-header">{% trans "Featured" %}</h2>
+  <br>
+  {% for section in sections %}
+      {% for page in section.featured_articles_in_homepage %}
+        {% if page.featured_in_homepage %}
+        <div class="block {{section.get_effective_extra_style_hints}}">
+          <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
+          <p>{{page.subtitle}}</p>
+        </div>
+        {% endif %}
+          {% if not forloop.last %}<hr>{% endif %}
+      {% endfor%}
+          {% if not forloop.last %}<hr>{% endif %}
+  {% endfor%}
+
   <h2 class="list-header">{% trans "Latest" %}</h2>
   {% for section in sections %}
     {% if section.latest_articles_in_homepage %}
