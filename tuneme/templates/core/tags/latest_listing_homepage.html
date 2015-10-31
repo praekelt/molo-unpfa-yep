@@ -3,30 +3,16 @@
 
 {% if articles %}
 
-  <h2 class="list-header">{% trans "Latest" %}</h2>
-  {% for page in articles %}
-  <div class="block {{page.get_parent_section.get_effective_extra_style_hints}}">
-  <div class="title {{page.get_parent_section.get_effective_extra_style_hints}}">
-    <div class="icon">
-      {% if page.get_parent_section.get_ancestors.last.sectionpage.image %}
-          {% image page.get_parent_section.get_ancestors.last.sectionpage.image width-80 %}
+<h2 class="list-header">{% trans "Latest" %}</h2>
+<br>
+{% for article in articles %}
+      {% if article.featured_in_latest %}
+      <div class="block {{article.get_parent_section.get_effective_extra_style_hints}}">
+        <h3 class="small-font"><a href="{% pageurl article %}">{{article.title}}</a></h3>
+        <p>{{article.subtitle}}</p>
+      </div>
       {% endif %}
-    </div>
-    <h6><a href="{% pageurl page.get_parent_section.get_ancestors.last.sectionpage %}">{{page.get_parent_section.get_ancestors.last.sectionpage.title}}</a></h6>
-    </div>
-
-    {% if page.image %}
-      <a href="{% pageurl page %}">{% image page.image width-60 %}</a>
-      {% endif %}
-      <h3>{{page.title}}</h3>
-      <p>{{page.subtitle}}</p>
-      {% get_comment_count for page as comment_count %}
-      <div class="comments-count"><a href="">{{ comment_count }}{% trans " comment" %}{{ comment_count|pluralize }}<span></span></a></div>
-      <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
-      <a href="{% pageurl page.get_parent_section %}" class="button inverted">{% trans "View Similar" %}</a>
-  </div>
-  </div>
-
-  {% endfor %}
+        {% if not forloop.last %}<hr>{% endif %}
+{% endfor%}
 
 {% endif %}
