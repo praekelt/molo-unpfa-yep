@@ -213,7 +213,7 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 LOGIN_URL = 'molo.profiles:auth_login'
 LOGIN_REDIRECT_URL = 'wagtailadmin_home'
 
-WAGTAIL_SITE_NAME = "base"
+WAGTAIL_SITE_NAME = "TuneMe"
 
 # Use Elasticsearch as the search backend for extra performance and
 # better search results:
