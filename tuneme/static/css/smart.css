@@ -272,7 +272,11 @@ a.white-link {color:white; padding:20px 0; display:inline-block; }
 /* Back to top link */
 .backtotop {display:none;}
 
-
+.yourwords {display: block; text-align: left; clear: both; padding: 10px 20px;}
+  .yourwords input {width: 90%; margin: 10px 0; display: inline-block; font-size: 95%; background: white; border: 2px solid #ddd;}
+  .yourwords input[type="submit"] {width: 99%;}
+  .yourwords input[type="checkbox"] {width: auto;}
+  .yourwords textarea {width: 90%; border: 2px solid #ddd; margin: 10px 0 20px 0;}
 
 
 /* Footer */
