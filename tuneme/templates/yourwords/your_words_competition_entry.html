@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static core_tags i18n %}
+
+{% block content %}
+
+<div class="icon">
+  {% if self.get_parent_page.get_effective_image %}
+    {% image self.get_parent_page.get_effective_image width-320 as tmp_photo %}
+    <img src="{{ tmp_photo.url }}" alt="{{ self.get_parent_page.get_effective_image.title }}"/>
+  {% endif %}
+</div>
+
+<div class="block {{self.get_effective_extra_style_hints}}">
+  <br>
+  <h3>{{self.title}}</h3>
+  <p>{{self.description}}</p>
+  <div class="yourwords">
+    <p>{{self.content}}</p>
+    <br>
+    <form method="post">{% csrf_token %}
+        <label>{% trans "Title of your story (max 60 characters)" %}</label>
+        {{ form.story_name }}
+        <label>{% trans "Tell us your story here" %}</label>
+        {{ form.story_text }}
+        <div >
+          {{ form.terms_or_conditions_approved }}
+          <label>{% trans "I accept the Terms and Conditions" %}</label>
+        </div>
+        <div >
+          {{ form.hide_real_name }}
+          <label>{% trans "Share my story anonymously" %}</label>
+        </div>
+        <input type="submit" value="Share Your Story" />
+    </form>
+    {# <a href="{% pageurl YourWordsCompetition %}" class="button inverted">{% trans "BACK" %}</a>#}
+  </div>
+</div>
+{% endblock %}

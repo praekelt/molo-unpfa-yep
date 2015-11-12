@@ -4,25 +4,22 @@
 {% block content %}
 
 <div class="icon ">
-    {% image self.get_parent_page.get_effective_image width-320 as tmp_photo %}
+  {% if competition.thank_you_page.get_parent_page.get_effective_image %}
+    {% image competition.thank_you_page.get_parent_page.get_effective_image width-320 as tmp_photo %}
     <img src="{{ tmp_photo.url }}" alt="{{ self.get_parent_page.get_effective_image.title }}"/>
+  {% endif %}
 </div>
 
-<div class="block {{self.get_parent_page.get_effective_extra_style_hints}}">
-  {% if self.title %}
-    <h3>{{self.title}}</h3>
-  {% else %}
-    <p>{% trans "" %}</p>
-  {% endif %}
-
-  {% if self.subtitle %}
-    <p>{{self.subtitle}}</p>
-  {% else %}
-    <p>{% trans "" %}</p>
-  {% endif %}
+<div class="block {{competition.thank_you_page.get_parent_page.get_effective_extra_style_hints}}">
+    {% if competition.thank_you_page %}
+    <h3>{{competition.thank_you_page.title}}</h3>
+    <p>{{competition.thank_you_page.subtitle}}</p>
+    {% else %}
+    <h3>{% trans 'Thank you!' %}</h3>
+    <p>{% trans 'You will be notified if you have won!' %}</p>
+    {% endif %}
 
   <a href="{{request.site.root_page.url}}" class="button inverted">{% trans "HOME" %}</a>
-
 </div>
 
 {% endblock %}
