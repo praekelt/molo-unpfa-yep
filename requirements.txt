@@ -1,6 +1,7 @@
 molo.core<3.0.0,>=2.5.2
 molo.profiles<1.0.0,>=0.1.4
 molo.commenting<1.0.0,>=0.2.5
+molo.yourwords<1.0.0,>=0.0.1
 django-extensions
 django-google-analytics-app
 django-celery
