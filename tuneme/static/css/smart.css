@@ -55,6 +55,7 @@ body {background:white; position:relative; text-align:center; margin-bottom: 0px
         li.orange {background-color:#ff7c44;}
         li.yellow {background-color:#fad400;}
         li.pgrey {background-color:#828282;}
+        li.magenta {background-color:#e60382;}
     /* Hide Feature Menu */
     #feature-menu, .feature-menu {display:none;}
 
@@ -70,6 +71,7 @@ body {background:white; position:relative; text-align:center; margin-bottom: 0px
     .banner.orange {background-color:#ff7c44;}
     .banner.yellow {background-color:#fad400;}
     .banner.grey {background-color:#828282;}
+    .banner.magenta {background-color:#e60382;}
 
 
 
@@ -91,6 +93,7 @@ select {min-width:0%;}
         .title.pink h6,
         .title.orange h6,
         .title.yellow h6,
+        .title.magenta h6,
         .title.grey h6 {color:white; font-size:125%;}
          {color:#828282;}
     .block .title {padding:20px 0 0;}
@@ -102,6 +105,7 @@ select {min-width:0%;}
     .orange .title, .title.orange {background-color:#ff7c44;}
     .yellow .title, .title.yellow {background-color:#fad400;}
     .grey .title, .title.grey {background-color:#828282;}
+    .magenta .title, .title.magenta {background-color:#e60382;}
     .title:after {content:""; height:10px; width:100%; display:block; background:url(../img/white-wave.png) 0 0px repeat-x; background-size:20px;}
 
     .title-image {position:relative;}
@@ -158,6 +162,8 @@ blockquote {padding:10px 20px;}
     .yellow .article-copy a {color:#fad400; font-weight: bold; text-decoration: none;}
     .grey .article-copy blockquote {color:#828282;}
     .grey .article-copy a {color:#828282; font-weight: bold; text-decoration: none;}
+    .magenta .article-copy blockquote {color:#e60382;}
+    .magenta .article-copy a {color:#e60382; font-weight: bold; text-decoration: none;}
 
     .article-copy ul, .article-copy ol {margin:5px 35px;}
 
@@ -169,6 +175,7 @@ blockquote {padding:10px 20px;}
         .orange .article-image p {color:#ff7c44;}
         .yellow .article-image p {color:#fad400;}
         .grey .article-image p {color:#828282;}
+        .magenta .article-image p {color:#e60382;}
 
 .readmore {text-align: left; padding: 10px 15px; color: black; font-weight: bold;}
 .feature-image {margin-bottom: -10px;}
@@ -205,6 +212,8 @@ input[type='submit'] {width:86%}
             .orange .comments-count a:after {border-top-color:#ff7c44;}
         .yellow .comments-count a {background:#fad400; color:white; visibility: visible;}
             .yellow .comments-count a:after {border-top-color:#fad400;}
+        .magenta .comments-count a {background:#e60382; color:white; visibility: visible;}
+            .magenta .comments-count a:after {border-top-color:#e60382;}
 
 .pull-right {float: right;}
 .align-left {text-align: left;}
