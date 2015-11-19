@@ -19,6 +19,7 @@ h4 {font-size:200%; font-weight:bold; padding:15px 0px;}
     .orange h4 {color:#ff7c44;}
     .yellow h4 {color:#fad400;}
     .grey h4 {color:#828282;}
+    .magenta h4 {color:#e60382;}
 h6 {font-size:100%; font-weight:bold;}
 
 p {font-size:100%;}
@@ -59,6 +60,7 @@ a {color:black;}
     .orange h3 a {color:#ff7c44;}
     .yellow h3 a {color:#fad400;}
     .grey h3 a {color:#828282;}
+    .magenta h3 a {color:#e60382;}
 input[type='submit'], a.button {cursor:pointer; outline:none; text-decoration:none; padding:8px; display:inline-block; border:0; margin:5px 0; font-weight:bold; text-transform:uppercase; color:white; background:#828282; -webkit-appearance:none;}
 a.button.inverted {color:#828282; background:white; padding:9px; border:1px solid #828282;}
 input[type='submit']:focus, a.button:focus {opacity:0.5;}
@@ -76,6 +78,8 @@ input[type='submit']:focus, a.button:focus {opacity:0.5;}
         .yellow a.button.inverted {color:#fad400; background:white; border-color:#fad400;}
     .grey input[type='submit'], .grey a.button {background-color:#828282; border-color:#828282; color:white;}
         .grey a.button.inverted {color:#828282; background:white; border-color:#828282;}
+    .magenta input[type='submit'], .magenta a.button {background-color:#e60382; border-color:#e60382; color:white;}
+        .magenta a.button.inverted {color:#e60382; background:white; border-color:#e60382;}
 
 
 .step-links a {text-decoration: none;}
@@ -103,6 +107,7 @@ input[type='submit']:focus, a.button:focus {opacity:0.5;}
             .search-result.orange h3 {color:#ff7c44;}
             .search-result.yellow h3 {color:#fad400;}
             .search-result.grey h3 {color:#828282;}
+            .search-result.magenta h3 {color:#e60382;}
         .search-result p {padding:0; font-size:100%;}
 
 
@@ -123,6 +128,7 @@ label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
         .orange .radios input[type="radio"]:checked + label {color:#ff7c44;}
         .yellow .radios input[type="radio"]:checked + label {color:#fad400;}
         .grey .radios input[type="radio"]:checked + label {color:#828282;}
+        .magenta .radios input[type="radio"]:checked + label {color:#e60382;}
 
 
 
@@ -150,6 +156,7 @@ label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
     .post-comment.pink a {color:#f82353;}
     .post-comment.orange a {color:#ff7c44;}
     .post-comment.yellow a {color:#fad400;}
+    .post-comment.magenta a {color:#e60382;}
 
     .post-comment a.anon {color:white; margin-left:10px;}
 .comment {text-align:left; font-weight:normal; padding:15px; border-bottom:1px solid #ddd;}
@@ -162,6 +169,7 @@ label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
         .orange .article-copy blockquote, .comment.orange .by strong, .comment.orange .report {color:#ff7c44;}
         .yellow .article-copy blockquote, .comment.yellow .by strong, .comment.yellow .report {color:#fad400;}
         .grey .article-copy blockquote, .comment.grey .by strong, .comment.grey .report {color:#828282;}
+        .magenta .article-copy blockquote, .comment.magenta .by strong, .comment.magenta .report {color:#e60382;}
 
 
 .pagination {padding:15px; text-align: left}
