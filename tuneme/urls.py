@@ -36,6 +36,10 @@ urlpatterns = patterns(
     ),
     url(r'^profiles/', include('molo.profiles.urls',
                                namespace='molo.profiles')),
+
+    url(r'^yourwords/', include('molo.yourwords.urls',
+                                namespace='molo.yourwords')),
+
     url(r'^comments/reported/(?P<comment_pk>\d+)/$',
         report_response, name='report_response'),
     url(r'^comments/', include('molo.commenting.urls')),

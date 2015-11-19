@@ -87,3 +87,21 @@ input {margin:5px 0 15px 0 }
 #search-form {padding:0px; margin-top:-1px; text-align:center;}
 #search-form input {margin:15px 0; text-align:center;}
 #search-form input[type='submit'] {margin:0 0 20px; }
+
+/* Your Words */
+
+.yourwords {display: block; text-align: left; clear: both; padding: 10px 0;}
+  .yourwords input {width: 90%; margin: 10px 0 20px 0; display: inline-block; font-size: 95%; background: white; border: 2px solid #ddd; }
+  .yourwords input[type="submit"] {width: auto;}
+  .yourwords input[type="checkbox"] {width: auto; margin: 10px 0;}
+  .yourwords textarea {width: 90%; border: 2px solid #ddd; margin: 10px 0 20px 0;}
+  .yourwords ul {list-style-type: square;}
+  .yourwords ol {list-style-type: decimal}
+
+.centent h5 {padding: 10px 0;}
+.centent p {padding: 10px 0;}
+.centent ul {padding: 10px 20px;}
+.centent ol {padding: 10px 20px;}
+.centent li {padding: 10px 0;}
+
+.alert-error {color:red; padding: 0; font-style: italic;}

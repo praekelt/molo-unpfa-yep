@@ -76,6 +76,7 @@ INSTALLED_APPS = (
     'django_comments',
     'molo.commenting',
     'django_extensions',
+    'molo.yourwords'
 )
 
 COMMENTS_APP = 'molo.commenting'
