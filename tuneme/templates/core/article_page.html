@@ -36,10 +36,9 @@
         <p class="bold">{{ block.value }}</p>
       {% else %}
       {% if block.block_type == 'page' %}
-
-          <div class="readmore">{% trans "You may want to read:" %}</div>
-          {{ block }}
-
+          <hr>
+            <div class="readmore">{% trans "You may want to read:" %}</div>
+            {{ block }}
       {% else %}
       {% if block.block_type == 'image' %}
       {% image block.value width-98 as tmp_photo_small %}
