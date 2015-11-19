@@ -53,7 +53,8 @@ hr {display:none;}
 input[type='submit'] {width:auto}
 
 /* Form Elements */
-input {margin:5px 0 15px 0 }
+input {margin:5px 0 15px 0;}
+select {min-width:0%;}
 
 /* Titles */
 .title {padding:15px; display:block; clear:both; border-bottom:1px solid #ddd;}
