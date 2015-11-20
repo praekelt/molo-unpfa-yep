@@ -2,7 +2,7 @@
 {% load wagtailcore_tags wagtailimages_tags comments mptt_tags molo_commenting_tags i18n %}
 
 {% block content %}
-<div class="title turq align-left">
+<div class="title {{self.get_parent_section.get_effective_extra_style_hints}} align-left">
 <h6>{% trans "Comments" %}</h6>
 </div>
 <div id="comments-list">
