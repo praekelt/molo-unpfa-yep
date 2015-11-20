@@ -61,7 +61,7 @@ a {color:black;}
     .yellow h3 a {color:#fad400;}
     .grey h3 a {color:#828282;}
     .magenta h3 a {color:#e60382;}
-input[type='submit'], a.button {cursor:pointer; outline:none; text-decoration:none; padding:8px; display:inline-block; border:0; margin:5px 0; font-weight:bold; text-transform:uppercase; color:white; background:#828282; -webkit-appearance:none;}
+input[type='submit'], a.button {cursor:pointer; outline:none; text-decoration:none; padding:10px; display:inline-block; border:0; margin:5px 0; font-weight:bold; text-transform:uppercase; color:white; background:#828282; -webkit-appearance:none;}
 a.button.inverted {color:#828282; background:white; padding:9px; border:1px solid #828282;}
 input[type='submit']:focus, a.button:focus {opacity:0.5;}
 
