@@ -24,7 +24,12 @@ hr {display:none;}
 .article-copy ol {list-style-type:decimal; margin:0px 15px;}
 	.article-copy ol li {list-style-type:decimal; padding:5px 0;}
 
-
+  .readmore {
+      text-align: left;
+      padding: 10px 0;
+      color: black;
+      font-weight: bold;
+  }
 /* Header */
 .header {float:left; width:100%; background:black;}
     .header .logo {float:left; width:100px; display:none; margin: -8px 5px}
