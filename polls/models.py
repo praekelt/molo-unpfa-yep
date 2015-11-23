@@ -1,7 +1,6 @@
 from django.db import models
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailadmin.edit_handlers import FieldPanel
-
 from molo.core.models import HomePage, LanguagePage, ArticlePage
 
 HomePage.subpage_types += ['polls.Question']
@@ -17,8 +16,16 @@ class Question(Page):
 
 
 class Choice(Page):
-    votes = models.IntegerField(default=0)
+    vote_count = models.IntegerField(default=0)
+    votes = models.ManyToManyField('PollVote', related_name='set_vote',
+                                   null=True, blank=True)
 
     promote_panels = Page.promote_panels + [
-        FieldPanel('votes'),
+        FieldPanel('vote_count'),
     ]
+
+
+class PollVote(models.Model):
+    user = models.ForeignKey('auth.User', related_name='poll_votes')
+    choice = models.ForeignKey('Choice')
+    question = models.ForeignKey('Question')
