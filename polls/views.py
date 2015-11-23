@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils.translation import ugettext_lazy as _
-from polls.models import Choice, Question
+from polls.models import Choice, Question, PollVote
 from django.db.models import F
 
 
@@ -24,13 +24,13 @@ class DetailView(generic.DetailView):
 def poll_results(request, poll_id):
     question = get_object_or_404(Question, pk=poll_id)
     choices = list(question.choices())
-    total_votes = sum(c.votes for c in choices)
+    total_votes = sum(c.vote_count for c in choices)
     choice_color = ['orange', 'purple', 'turq']
     index = 0
     for choice in choices:
         if index >= len(choice_color):
             index = 0
-        vote_percentage = int(choice.votes * 100.0 / total_votes)
+        vote_percentage = int(choice.vote_count * 100.0 / total_votes)
         choice.percentage = vote_percentage
         choice.color = choice_color[index]
         index += 1
@@ -54,6 +54,9 @@ def vote(request, question_id):
             'error_message': _("You didn't select a choice."),
         })
     else:
-        selected_choice.update(votes=F('votes') + 1)
+        selected_choice.update(vote_count=F('vote_count') + 1)
+        PollVote.objects.create(user=request.user,
+                                choice=selected_choice[0],
+                                question=question)
         return HttpResponseRedirect(reverse('molo.polls:results',
                                             args=(question.id,)))
