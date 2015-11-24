@@ -55,8 +55,6 @@ def vote(request, question_id):
         })
     else:
         selected_choice.update(votes=F('votes') + 1)
-        print 'helloooo'
-        print selected_choice[0].votes
         PollVote.objects.create(user=request.user,
                                 choice=selected_choice[0],
                                 question=question)

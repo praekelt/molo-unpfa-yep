@@ -1,11 +1,9 @@
 from polls.models import Choice, Question, PollVote
-from polls.views import vote
 from django.test import TestCase
 from django.contrib.auth.models import User
 from molo.core.models import LanguagePage, Main
 from django.contrib.contenttypes.models import ContentType
 from wagtail.wagtailcore.models import Site, Page
-from django.http import HttpRequest
 from django.test.client import Client
 from django.core.urlresolvers import reverse
 
@@ -71,9 +69,9 @@ class ModelsTestCase(TestCase):
         # make a vote
         client = Client()
         client.login(username='tester', password='tester')
-        client.post(reverse('vote'), choice1)
-        print question.id
-        print 'codieeee'
+        client.post(reverse('molo.polls:vote',
+                    kwargs={'question_id': question.id}),
+                    {'choice': choice1.id})
         # should automatically create the poll vote
         # test poll vote
         vote_count = PollVote.objects.all()[0].choice.votes
