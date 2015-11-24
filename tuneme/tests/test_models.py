@@ -1,4 +1,4 @@
-from polls.models import Choice, Question
+from polls.models import Choice, Question, PollVote
 from polls.views import vote
 from django.test import TestCase
 from django.contrib.auth.models import User
@@ -6,6 +6,8 @@ from molo.core.models import LanguagePage, Main
 from django.contrib.contenttypes.models import ContentType
 from wagtail.wagtailcore.models import Site, Page
 from django.http import HttpRequest
+from django.test.client import Client
+from django.core.urlresolvers import reverse
 
 
 class ModelsTestCase(TestCase):
@@ -67,9 +69,12 @@ class ModelsTestCase(TestCase):
         self.english.add_child(instance=question)
         question.add_child(instance=choice1)
         # make a vote
-        request = HttpRequest()
-        request.POST['choice'] = choice1
-        vote(request, question.id)
+        client = Client()
+        client.login(username='tester', password='tester')
+        client.post(reverse('vote'), choice1)
+        print question.id
+        print 'codieeee'
         # should automatically create the poll vote
         # test poll vote
-        self.assertEquals(choice1.votes, 1)
+        vote_count = PollVote.objects.all()[0].choice.votes
+        self.assertEquals(vote_count, 1)
