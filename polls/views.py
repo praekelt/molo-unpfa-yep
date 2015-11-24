@@ -54,9 +54,16 @@ def vote(request, question_id):
             'error_message': _("You didn't select a choice."),
         })
     else:
-        selected_choice.update(votes=F('votes') + 1)
-        PollVote.objects.create(user=request.user,
-                                choice=selected_choice[0],
-                                question=question)
-        return HttpResponseRedirect(reverse('molo.polls:results',
-                                            args=(question.id,)))
+        obj, created = PollVote.objects.get_or_create(
+            user=request.user,
+            question=question,
+            defaults={'choice': selected_choice[0]})
+        if created is True:
+            selected_choice.update(votes=F('votes') + 1)
+            return HttpResponseRedirect(reverse('molo.polls:results',
+                                                args=(question.id,)))
+        else:
+            return render(request, 'polls/detail.html', {
+                'question': question,
+                'error_message': _("You are only allowed to vote once."),
+            })
