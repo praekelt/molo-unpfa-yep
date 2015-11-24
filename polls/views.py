@@ -54,7 +54,7 @@ def vote(request, question_id):
             'error_message': _("You didn't select a choice."),
         })
     else:
-        selected_choice.update(vote_count=F('vote_count') + 1)
+        selected_choice.update(vote_count=F('votes') + 1)
         PollVote.objects.create(user=request.user,
                                 choice=selected_choice[0],
                                 question=question)
