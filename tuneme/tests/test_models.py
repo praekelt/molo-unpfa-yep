@@ -61,9 +61,9 @@ class ModelsTestCase(TestCase):
 
     def test_poll_vote(self):
         # make choices
-        choice1 = Choice(title='yes', depth=2)
+        choice1 = Choice(title='yes')
         # make a question
-        question = Question.objects.create(title='is this a test', depth=1)
+        question = Question(title='is this a test')
         self.english.add_child(instance=question)
         question.add_child(instance=choice1)
         # make a vote
