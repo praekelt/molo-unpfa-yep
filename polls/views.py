@@ -65,6 +65,6 @@ def vote(request, question_id):
         else:
             return render(request, 'polls/detail.html', {
                 'question': question,
-                'user_has_voted': True,
+                'user_has_voted': question.can_vote(request.user),
                 'error_message': _("You are only allowed to vote once."),
             })

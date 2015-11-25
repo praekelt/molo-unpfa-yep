@@ -11,6 +11,12 @@ ArticlePage.subpage_types += ['polls.Question']
 class Question(Page):
     subpage_types = ['polls.Choice']
 
+    def can_vote(user):
+        if PollVote.objects.filter(user=user) == []:
+            return True
+        else:
+            return False
+
     def choices(self):
         return Choice.objects.live().child_of(self)
 
