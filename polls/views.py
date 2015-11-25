@@ -58,7 +58,7 @@ def vote(request, question_id):
             user=request.user,
             question=question,
             defaults={'choice': selected_choice[0]})
-        if created is True:
+        if created:
             selected_choice.update(votes=F('votes') + 1)
             return HttpResponseRedirect(reverse('molo.polls:results',
                                                 args=(question.id,)))

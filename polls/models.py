@@ -17,8 +17,8 @@ class Question(Page):
 
 class Choice(Page):
     votes = models.IntegerField(default=0)
-    pollVotes = models.ManyToManyField('PollVote', related_name='set_vote',
-                                       null=True, blank=True)
+    poll_votes = models.ManyToManyField('PollVote', related_name='set_vote',
+                                        null=True, blank=True)
 
     promote_panels = Page.promote_panels + [
         FieldPanel('votes'),
