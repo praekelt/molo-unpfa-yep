@@ -1,5 +1,5 @@
-from polls.models import PollVote, Choice
+from polls.models import ChoiceVote, Choice
 from django.contrib import admin
 
-admin.site.register(PollVote)
+admin.site.register(ChoiceVote)
 admin.site.register(Choice)

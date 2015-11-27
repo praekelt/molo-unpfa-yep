@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils.translation import ugettext_lazy as _
-from polls.models import Choice, Question, PollVote
+from polls.models import Choice, Question, ChoiceVote
 from django.db.models import F
 
 
@@ -54,7 +54,7 @@ def vote(request, question_id):
             'error_message': _("You didn't select a choice."),
         })
     else:
-        obj, created = PollVote.objects.get_or_create(
+        obj, created = ChoiceVote.objects.get_or_create(
             user=request.user,
             question=question,
             defaults={'choice': selected_choice[0]})
@@ -65,6 +65,5 @@ def vote(request, question_id):
         else:
             return render(request, 'polls/detail.html', {
                 'question': question,
-                'user_has_voted': question.can_vote(request.user),
                 'error_message': _("You are only allowed to vote once."),
             })

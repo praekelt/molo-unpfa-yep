@@ -17,3 +17,9 @@ def poll_page(context, pk=None, page=None):
         if page else Question.objects.none()
     })
     return context
+
+
+@register.assignment_tag(takes_context=True)
+def can_vote(context, question):
+    request = context['request']
+    return question.can_vote(request.user)

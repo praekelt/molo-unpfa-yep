@@ -11,11 +11,10 @@ ArticlePage.subpage_types += ['polls.Question']
 class Question(Page):
     subpage_types = ['polls.Choice']
 
-    def can_vote(user):
-        if PollVote.objects.filter(user=user) == []:
-            return True
-        else:
-            return False
+    def can_vote(self, user):
+        self.choicevote_set.filter(user=user)
+        return not (ChoiceVote.objects.filter(
+            user=user, question__id=self.id).exists())
 
     def choices(self):
         return Choice.objects.live().child_of(self)
@@ -23,15 +22,15 @@ class Question(Page):
 
 class Choice(Page):
     votes = models.IntegerField(default=0)
-    poll_votes = models.ManyToManyField('PollVote', related_name='set_vote',
-                                        null=True, blank=True)
+    choice_votes = models.ManyToManyField('ChoiceVote', related_name='set_vote',
+                                          null=True, blank=True)
 
     promote_panels = Page.promote_panels + [
         FieldPanel('votes'),
     ]
 
 
-class PollVote(models.Model):
+class ChoiceVote(models.Model):
     user = models.ForeignKey('auth.User', related_name='poll_votes')
     choice = models.ForeignKey('Choice')
     question = models.ForeignKey('Question')
