@@ -77,7 +77,7 @@ class ModelsTestCase(TestCase):
         vote_count = ChoiceVote.objects.all()[0].choice.votes
         self.assertEquals(vote_count, 1)
         self.assertEquals(
-            ChoiceVote.objects.all()[0].choice.votes, 1)
+            ChoiceVote.objects.all()[0].choice.choice_votes.count(), 1)
         # vote again and test that it does not add to vote_count
         client.post(reverse('molo.polls:vote',
                     kwargs={'question_id': question.id}),
