@@ -32,6 +32,6 @@ class Choice(Page):
 
 
 class ChoiceVote(models.Model):
-    user = models.ForeignKey('auth.User', related_name='poll_votes')
+    user = models.ForeignKey('auth.User', related_name='choice_votes')
     choice = models.ForeignKey('Choice')
     question = models.ForeignKey('Question')
