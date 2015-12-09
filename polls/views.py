@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils.translation import ugettext_lazy as _
-from polls.models import Choice, Question
+from polls.models import Choice, Question, ChoiceVote
 from django.db.models import F
 
 
@@ -46,7 +46,7 @@ def poll_results(request, poll_id):
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
-        selected_choice = Choice.objects.filter(pk=request.POST['choice'])
+        selected_choice = Choice.objects.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the question voting form.
         return render(request, 'polls/detail.html', {
@@ -54,6 +54,18 @@ def vote(request, question_id):
             'error_message': _("You didn't select a choice."),
         })
     else:
-        selected_choice.update(votes=F('votes') + 1)
-        return HttpResponseRedirect(reverse('molo.polls:results',
-                                            args=(question.id,)))
+        obj, created = ChoiceVote.objects.get_or_create(
+            user=request.user,
+            question=question,
+            defaults={'choice': selected_choice})
+        if created:
+            selected_choice.votes = F('votes') + 1
+            selected_choice.choice_votes.add(obj)
+            selected_choice.save()
+            return HttpResponseRedirect(reverse('molo.polls:results',
+                                                args=(question.id,)))
+        else:
+            return render(request, 'polls/detail.html', {
+                'question': question,
+                'error_message': _("You are only allowed to vote once."),
+            })

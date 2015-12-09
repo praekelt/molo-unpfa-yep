@@ -1,4 +1,4 @@
-{% load i18n static %}
+{% load i18n static poll_votings %}
 {% block content %}
 	{% if questions %}
 		{% for question in questions %}
@@ -12,15 +12,24 @@
 				{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 					<form action="{% url 'molo.polls:vote' question.id %}" method="post">
 						{% csrf_token %}
-				<div class="radios">
-						{% for choice in question.choices %}
-							<div>
-							    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-							    <label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
-							</div>
-						{% endfor %}
-				</div>
+						<div class="radios">
+								{% for choice in question.choices %}
+									<div>
+									    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+									    <label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
+									</div>
+								{% endfor %}
+						</div>
+						{% if request.user.is_authenticated %}
+							{% can_vote question as user_can_vote %}
+							{% if user_can_vote %}
 							<input type="submit" value="{% trans "Vote" %}" />
+							{% else %}
+							<a href="{% url 'molo.polls:results' question.id %}" class="button">{% trans "Show Results" %}</a>
+							{% endif %}
+						{% else %}
+							<a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="button">{% trans "Log in to vote" %}</a>
+						{% endif %}
 					</form>
 		</div>
 		{% endfor %}
