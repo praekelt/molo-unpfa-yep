@@ -1,4 +1,4 @@
-from polls.models import Choice, Question, PollVote
+from polls.models import Choice, Question, ChoiceVote
 from django.test import TestCase
 from django.contrib.auth.models import User
 from molo.core.models import LanguagePage, Main
@@ -74,5 +74,5 @@ class ModelsTestCase(TestCase):
                     {'choice': choice1.id})
         # should automatically create the poll vote
         # test poll vote
-        vote_count = PollVote.objects.all()[0].choice.votes
+        vote_count = ChoiceVote.objects.all()[0].choice.votes
         self.assertEquals(vote_count, 1)
