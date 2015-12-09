@@ -72,6 +72,9 @@ class ModelsTestCase(TestCase):
         client.login(username='tester', password='tester')
         response = client.get('/')
         self.assertContains(response, 'is this a test')
+        response = client.post(reverse('molo.polls:vote',
+                               kwargs={'question_id': question.id}))
+        self.assertContains(response, "You didn&#39;t select a choice")
         client.post(reverse('molo.polls:vote',
                     kwargs={'question_id': question.id}),
                     {'choice': choice1.id})
@@ -89,3 +92,7 @@ class ModelsTestCase(TestCase):
         # test poll vote
         vote_count = ChoiceVote.objects.all()[0].choice.votes
         self.assertEquals(vote_count, 1)
+        response = client.get(reverse(
+            'molo.polls:results',
+            kwargs={'poll_id': question.id}))
+        self.assertContains(response, '100%')
