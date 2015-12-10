@@ -17,7 +17,7 @@ class Question(Page):
             user=user, question__id=self.id).exists())
 
     def choices(self):
-        return Choice.objects.live().child_of(self)
+        return Choice.objects.live().child_of(self).order_by('?')
 
 
 class Choice(Page):
