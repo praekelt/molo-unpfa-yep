@@ -96,5 +96,5 @@ class ModelsTestCase(TestCase):
         self.assertEqual(choices.get(title='yes'), choice1)
         self.assertEqual(choices.get(title='no'), choice2)
         self.assertEqual(choices.get(title='maybe'), choice3)
-        self.assertEqual(choices.get(title='definitley'), choice4)
+        self.assertEqual(choices.get(title='definitely'), choice4)
         self.assertEqual(choices.get(title='idk'), choice5)
