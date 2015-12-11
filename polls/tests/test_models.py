@@ -76,3 +76,30 @@ class ModelsTestCase(TestCase):
         # test poll vote
         vote_count = ChoiceVote.objects.all()[0].choice.votes
         self.assertEquals(vote_count, 1)
+
+    def test_question_choices(self):
+        choice1 = Choice(title='yes')
+        choice2 = Choice(title='no')
+        choice3 = Choice(title='maybe')
+        choice4 = Choice(title='definitely')
+        choice5 = Choice(title='idk')
+
+        question = Question(title='is this a test', randomise_options=True)
+        self.english.add_child(instance=question)
+        question.add_child(instance=choice1)
+        question.add_child(instance=choice2)
+        question.add_child(instance=choice3)
+        question.add_child(instance=choice4)
+        question.add_child(instance=choice5)
+
+        choices = question.choices()
+        self.assertEqual(choices.get(title='yes'), choice1)
+        self.assertEqual(choices.get(title='no'), choice2)
+        self.assertEqual(choices.get(title='maybe'), choice3)
+        self.assertEqual(choices.get(title='definitely'), choice4)
+        self.assertEqual(choices.get(title='idk'), choice5)
+
+        question.randomise_options = False
+        choices = question.choices()
+        self.assertEqual(choices.all().first(), choice1)
+        self.assertEqual(choices.all().last(), choice5)
