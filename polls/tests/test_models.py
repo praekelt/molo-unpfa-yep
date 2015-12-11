@@ -98,3 +98,8 @@ class ModelsTestCase(TestCase):
         self.assertEqual(choices.get(title='maybe'), choice3)
         self.assertEqual(choices.get(title='definitely'), choice4)
         self.assertEqual(choices.get(title='idk'), choice5)
+
+        question.randomise_options = False
+        choices = question.choices()
+        self.assertEqual(choices.all().first(), choice1)
+        self.assertEqual(choices.all().last(), choice5)
