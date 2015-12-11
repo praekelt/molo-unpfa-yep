@@ -84,7 +84,7 @@ class ModelsTestCase(TestCase):
         choice4 = Choice(title='definitely')
         choice5 = Choice(title='idk')
 
-        question = Question(title='is this a test')
+        question = Question(title='is this a test', randomise_options=True)
         self.english.add_child(instance=question)
         question.add_child(instance=choice1)
         question.add_child(instance=choice2)
