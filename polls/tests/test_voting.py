@@ -104,7 +104,8 @@ class ModelsTestCase(TestCase):
         choice2 = Choice(title='no')
         # make a question
         question = Question(
-            title='is this a test', allow_multiple_choice=True)
+            title='is this a test',
+            allow_multiple_choice=True, show_results=False)
         self.english.add_child(instance=question)
         question.add_child(instance=choice1)
         question.add_child(instance=choice2)
@@ -122,6 +123,8 @@ class ModelsTestCase(TestCase):
         self.assertEquals(vote_count1, 1)
         vote_count2 = ChoiceVote.objects.all()[0].choice.all()[1].votes
         self.assertEquals(vote_count2, 1)
+        response = client.get('/')
+        self.assertContains(response, 'You voted: yes, no')
 
     def test_results_as_total(self):
         # make choices
