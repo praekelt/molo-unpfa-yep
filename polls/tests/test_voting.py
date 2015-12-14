@@ -96,3 +96,53 @@ class ModelsTestCase(TestCase):
             'molo.polls:results',
             kwargs={'poll_id': question.id}))
         self.assertContains(response, '100%')
+
+    def test_results_as_percentage(self):
+        # make choices
+        choice1 = Choice(title='yes')
+        # make a question
+        question = Question(
+            title='is this a test', result_as_percentage=False)
+        self.english.add_child(instance=question)
+        question.add_child(instance=choice1)
+        question.save_revision().publish()
+        # make a vote
+        client = Client()
+        client.login(username='tester', password='tester')
+        response = client.get('/')
+        self.assertContains(response, 'is this a test')
+
+        client.post(reverse('molo.polls:vote',
+                    kwargs={'question_id': question.id}),
+                    {'choice': choice1.id})
+
+        client.login(username='tester2', password='tester2')
+        client.post(reverse('molo.polls:vote',
+                    kwargs={'question_id': question.id}),
+                    {'choice': choice1.id})
+        response = client.get(reverse(
+            'molo.polls:results',
+            kwargs={'poll_id': question.id}))
+        self.assertContains(response, '2')
+
+    def test_show_results(self):
+        # make choices
+        choice1 = Choice(title='yes')
+        # make a question
+        question = Question(
+            title='is this a test', show_results=False)
+        self.english.add_child(instance=question)
+        question.add_child(instance=choice1)
+        question.save_revision().publish()
+        # make a vote
+        client = Client()
+        client.login(username='tester', password='tester')
+        response = client.get('/')
+        self.assertContains(response, 'is this a test')
+        client.post(reverse('molo.polls:vote',
+                    kwargs={'question_id': question.id}),
+                    {'choice': choice1.id})
+        response = client.get(reverse(
+            'molo.polls:results',
+            kwargs={'poll_id': question.id}))
+        self.assertContains(response, 'Thank you for voting!')
