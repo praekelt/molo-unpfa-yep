@@ -147,4 +147,4 @@ class ModelsTestCase(TestCase):
             kwargs={'poll_id': question.id}))
         self.assertContains(response, 'Thank you for voting!')
         response = client.get('/')
-        self.assertContains(response, 'You voted: ')
+        self.assertContains(response, 'You voted: yes')
