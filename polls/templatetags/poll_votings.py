@@ -23,3 +23,9 @@ def poll_page(context, pk=None, page=None):
 def can_vote(context, question):
     request = context['request']
     return question.can_vote(request.user)
+
+
+@register.assignment_tag(takes_context=True)
+def user_choice(context, question):
+    request = context['request']
+    return question.user_choice(request.user)
