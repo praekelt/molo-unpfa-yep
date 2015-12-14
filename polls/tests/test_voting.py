@@ -80,22 +80,48 @@ class ModelsTestCase(TestCase):
                     {'choice': choice1.id})
         # should automatically create the poll vote
         # test poll vote
-        vote_count = ChoiceVote.objects.all()[0].choice.votes
+        vote_count = ChoiceVote.objects.all()[0].choice.all()[0].votes
         self.assertEquals(vote_count, 1)
         self.assertEquals(
-            ChoiceVote.objects.all()[0].choice.choice_votes.count(), 1)
+            ChoiceVote.objects.all()[0].choice.all()[
+                0].choice_votes.count(), 1)
         # vote again and test that it does not add to vote_count
         client.post(reverse('molo.polls:vote',
                     kwargs={'question_id': question.id}),
                     {'choice': choice1.id})
         # should automatically create the poll vote
         # test poll vote
-        vote_count = ChoiceVote.objects.all()[0].choice.votes
+        vote_count = ChoiceVote.objects.all()[0].choice.all()[0].votes
         self.assertEquals(vote_count, 1)
         response = client.get(reverse(
             'molo.polls:results',
             kwargs={'poll_id': question.id}))
         self.assertContains(response, '100%')
+
+    def test_multiple_options(self):
+        # make choices
+        choice1 = Choice(title='yes')
+        choice2 = Choice(title='no')
+        # make a question
+        question = Question(
+            title='is this a test', allow_multiple_choice=True)
+        self.english.add_child(instance=question)
+        question.add_child(instance=choice1)
+        question.add_child(instance=choice2)
+        question.save_revision().publish()
+        # make a vote
+        client = Client()
+        client.login(username='tester', password='tester')
+
+        client.post(reverse('molo.polls:vote',
+                    kwargs={'question_id': question.id}),
+                    {'choice': [choice1.id, choice2.id]})
+        # should automatically create the poll vote
+        # test poll vote
+        vote_count1 = ChoiceVote.objects.all()[0].choice.all()[0].votes
+        self.assertEquals(vote_count1, 1)
+        vote_count2 = ChoiceVote.objects.all()[0].choice.all()[1].votes
+        self.assertEquals(vote_count2, 1)
 
     def test_results_as_total(self):
         # make choices
@@ -143,4 +169,4 @@ class ModelsTestCase(TestCase):
             kwargs={'poll_id': question.id}))
         self.assertContains(response, 'Thank you for voting!')
         response = client.get('/')
-        self.assertContains(response, 'You voted: yes')
+        self.assertContains(response, 'You voted')

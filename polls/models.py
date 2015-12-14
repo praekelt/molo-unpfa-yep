@@ -13,7 +13,7 @@ class Question(Page):
     subpage_types = ['polls.Choice']
     show_results = models.BooleanField(
         default=True,
-        help_text=_("This option allows the users to see the results")
+        help_text=_("This option allows the users to see the results.")
     )
     randomise_options = models.BooleanField(
         default=False,
@@ -26,15 +26,21 @@ class Question(Page):
             "If not checked, the results will be shown as a total" +
             " instead of a percentage.")
     )
+    allow_multiple_choice = models.BooleanField(
+        default=False,
+        help_text=_(
+            "Allows the user to choose more than one option.")
+    )
     content_panels = Page.content_panels + [MultiFieldPanel([
         FieldPanel('show_results'),
         FieldPanel('randomise_options'),
-        FieldPanel('result_as_percentage')], heading="Question Settings",)]
+        FieldPanel('result_as_percentage'),
+        FieldPanel('allow_multiple_choice')], heading="Question Settings",)]
 
     def user_choice(self, user):
         self.choicevote_set.filter(user=user)
         return ChoiceVote.objects.get(
-            user=user, question__id=self.id).choice.title
+            user=user, question__id=self.id).choice
 
     def can_vote(self, user):
         self.choicevote_set.filter(user=user)
@@ -61,5 +67,5 @@ class Choice(Page):
 
 class ChoiceVote(models.Model):
     user = models.ForeignKey('auth.User', related_name='choice_votes')
-    choice = models.ForeignKey('Choice')
+    choice = models.ManyToManyField('Choice', null=True, blank=True)
     question = models.ForeignKey('Question')

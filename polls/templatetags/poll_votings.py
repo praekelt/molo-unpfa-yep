@@ -28,4 +28,11 @@ def can_vote(context, question):
 @register.assignment_tag(takes_context=True)
 def user_choice(context, question):
     request = context['request']
-    return question.user_choice(request.user)
+    choice = question.user_choice(request.user)
+    if choice.all().count() == 1:
+        return choice
+    else:
+        choice_text = ''
+        for c in choice.all():
+            choice_text += str(c.title) + ', '
+        return choice_text[:-2]
