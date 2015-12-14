@@ -146,3 +146,5 @@ class ModelsTestCase(TestCase):
             'molo.polls:results',
             kwargs={'poll_id': question.id}))
         self.assertContains(response, 'Thank you for voting!')
+        response = client.get('/')
+        self.assertContains(response, 'You voted: ')
