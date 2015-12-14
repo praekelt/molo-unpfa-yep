@@ -9,7 +9,7 @@ h3 {padding:10px 0; font-size:200%;}
     .pink h3 {color:#f82353;}
     .orange h3 {color:#ff7c44;}
     .yellow h3 {color:#fad400;}
-    .grey h3 {color:#828282;}
+    .grey h3 {color:#666666;}
     .magenta h3 {color:#e60382;}
 h5 {font-size:125%; padding:10px 0px; font-weight:bold; color:black; }
 h6 {padding:5px 0;}
@@ -71,7 +71,7 @@ select {min-width:0%;}
     .pink .title h6, .title.pink h6, .title.pink h6 a {color:#f82353;}
     .orange .title h6, .title.orange h6, .title.orange h6 a {color:#ff7c44;}
     .yellow .title h6, .title.yellow h6, .title.yellow h6 a {color:#fad400;}
-    .grey .title h6, .title.grey h6, .title.grey h6 a {color:#828282;}
+    .grey .title h6, .title.grey h6, .title.grey h6 a {color:#666666;}
     .magenta .title h6, .title.magenta h6, .title.magenta h6 a {color:#e60382;}
 
     /* search Pages */
