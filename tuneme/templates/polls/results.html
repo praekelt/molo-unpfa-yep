@@ -11,20 +11,29 @@
 </div>
 
 <div class="block orange">
+	{% if question.show_results%}
 	<h4>{{ question.title }}</h4>
 	<p class="grey">{% trans "Your answers" %}</p>
-	{% for choice in choices %}
-		<div class="poll-result">
-				<div class="result-line {% if forloop.first %}winner{% endif %}">
-				<span class="option">{{ choice.title }}</span>
-				<br>
-				<span class="bar">
-	        <span style="width:{{ choice.percentage }}%"></span>
-					{{ choice.percentage }}%
-	      </span>
+		{% for choice in choices %}
+			<div class="poll-result">
+					<div class="result-line {% if forloop.first %}winner{% endif %}">
+					<span class="option">{{ choice.title }}</span>
+					<br>
+					<span class="bar">
+						{% if question.result_as_percentage %}
+			        <span style="width:{{ choice.percentage }}%"></span>
+							{{ choice.percentage }}%
+						{% else %}
+							<span style="width:{{ choice.percentage }}%"></span>
+							{{ choice.votes }}
+						{% endif %}
+		      </span>
+				</div>
 			</div>
-		</div>
-	{% endfor %}
+		{% endfor %}
+		{% else %}
+		<h4>{% trans "Thank you for voting!" %}</h4>
+	{% endif %}
 	<hr>
   <a href="{{request.site.root_page.url}}" class="button inverted">{% trans "Home" %}</a>
 </div>
