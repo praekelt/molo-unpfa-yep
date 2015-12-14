@@ -97,7 +97,7 @@ class ModelsTestCase(TestCase):
             kwargs={'poll_id': question.id}))
         self.assertContains(response, '100%')
 
-    def test_results_as_percentage(self):
+    def test_results_as_total(self):
         # make choices
         choice1 = Choice(title='yes')
         # make a question
@@ -116,14 +116,10 @@ class ModelsTestCase(TestCase):
                     kwargs={'question_id': question.id}),
                     {'choice': choice1.id})
 
-        client.login(username='tester2', password='tester2')
-        client.post(reverse('molo.polls:vote',
-                    kwargs={'question_id': question.id}),
-                    {'choice': choice1.id})
         response = client.get(reverse(
             'molo.polls:results',
             kwargs={'poll_id': question.id}))
-        self.assertContains(response, '2')
+        self.assertContains(response, '1 vote')
 
     def test_show_results(self):
         # make choices

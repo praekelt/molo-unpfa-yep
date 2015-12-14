@@ -25,7 +25,11 @@
 							{{ choice.percentage }}%
 						{% else %}
 							<span style="width:{{ choice.percentage }}%"></span>
-							{{ choice.votes }}
+							{% if choice.votes = 1%}
+								{{ choice.votes }} vote
+							{% else %}
+								{{ choice.votes }} votes
+							{% endif %}
 						{% endif %}
 		      </span>
 				</div>

@@ -13,7 +13,7 @@ class Question(Page):
     subpage_types = ['polls.Choice']
     show_results = models.BooleanField(
         default=True,
-        help_text=_("This option allows the results to be shown")
+        help_text=_("This option allows the users to see the results")
     )
     randomise_options = models.BooleanField(
         default=False,
