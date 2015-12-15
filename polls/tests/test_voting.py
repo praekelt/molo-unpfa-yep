@@ -144,3 +144,32 @@ class ModelsTestCase(TestCase):
         self.assertContains(response, 'Thank you for voting!')
         response = client.get('/')
         self.assertContains(response, 'You voted: yes')
+
+    def test_home_page_when_not_logged_in(self):
+        # make choices
+        choice1 = Choice(title='yes')
+        # make a question
+        question = Question(
+            title='is this a test', show_results=False)
+        self.english.add_child(instance=question)
+        question.add_child(instance=choice1)
+        question.save_revision().publish()
+        # make a vote
+        client = Client()
+        client.login(username='tester', password='tester')
+        response = client.get('/')
+        self.assertContains(response, 'is this a test')
+        client.post(reverse('molo.polls:vote',
+                    kwargs={'question_id': question.id}),
+                    {'choice': choice1.id})
+        response = client.get(reverse(
+            'molo.polls:results',
+            kwargs={'poll_id': question.id}))
+        self.assertContains(response, 'Thank you for voting!')
+        response = client.get('/')
+        self.assertContains(response, 'You voted: yes')
+
+        # logging out after voting
+        client.logout()
+        response = client.get('/')
+        self.assertContains(response, 'is this a test')
