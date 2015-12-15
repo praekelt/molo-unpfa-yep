@@ -11,7 +11,7 @@
 </div>
 
 <div class="block orange">
-	{% if question.show_results%}
+	{% if question.show_results and not question.freetextquestion%}
 	<h4>{{ question.title }}</h4>
 	<p class="grey">{% trans "Your answers" %}</p>
 		{% for choice in choices %}

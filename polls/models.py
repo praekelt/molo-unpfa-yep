@@ -4,9 +4,9 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
 from molo.core.models import HomePage, LanguagePage, ArticlePage
 from django.utils.translation import ugettext_lazy as _
 
-HomePage.subpage_types += ['polls.Question']
-LanguagePage.subpage_types += ['polls.Question']
-ArticlePage.subpage_types += ['polls.Question']
+HomePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
+LanguagePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
+ArticlePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
 
 
 class Question(Page):
@@ -43,7 +43,6 @@ class Question(Page):
             user=user, question__id=self.id).choice
 
     def can_vote(self, user):
-        self.choicevote_set.filter(user=user)
         return not (ChoiceVote.objects.filter(
             user=user, question__id=self.id).exists())
 
@@ -52,6 +51,19 @@ class Question(Page):
             return Choice.objects.live().child_of(self).order_by('?')
         else:
             return Choice.objects.live().child_of(self)
+
+
+class FreeTextQuestion(Question):
+    subpage_types = []
+    content_panels = Page.content_panels
+
+    def __init__(self, *args, **kwargs):
+        super(FreeTextQuestion, self).__init__(*args, **kwargs)
+        self.show_results = False
+
+    def can_vote(self, user):
+        return not (FreeTextVote.objects.filter(
+            user=user, question__id=self.id).exists())
 
 
 class Choice(Page):
@@ -69,3 +81,8 @@ class ChoiceVote(models.Model):
     user = models.ForeignKey('auth.User', related_name='choice_votes')
     choice = models.ManyToManyField('Choice', null=True, blank=True)
     question = models.ForeignKey('Question')
+
+
+class FreeTextVote(models.Model):
+    user = models.ForeignKey('auth.User', related_name='text_votes')
+    question = models.ForeignKey('FreeTextQuestion')

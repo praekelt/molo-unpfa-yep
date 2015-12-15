@@ -3,8 +3,9 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils.translation import ugettext_lazy as _
-from polls.models import Choice, Question, ChoiceVote
-from django.db.models import F
+from polls.models import (Choice, Question, FreeTextVote, ChoiceVote,
+                          FreeTextQuestion)
+from django .db.models import F
 
 
 class IndexView(generic.ListView):
@@ -74,3 +75,18 @@ def vote(request, question_id):
                 'question': question,
                 'error_message': _("You are only allowed to vote once."),
             })
+
+
+def free_text_vote(request, question_id):
+    question = get_object_or_404(FreeTextQuestion, pk=question_id)
+    obj, created = FreeTextVote.objects.get_or_create(
+        user=request.user,
+        question=question)
+    if created:
+        return HttpResponseRedirect(reverse('molo.polls:results',
+                                            args=(question.id,)))
+    else:
+        return render(request, 'polls/detail.html', {
+            'question': question,
+            'error_message': _("You are only allowed to vote once."),
+        })
