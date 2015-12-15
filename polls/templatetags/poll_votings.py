@@ -32,7 +32,6 @@ def user_choice(context, question):
     if choice.all().count() == 1:
         return choice
     else:
-        choice_text = ''
-        for c in choice.all():
-            choice_text += str(c.title) + ', '
-        return choice_text[:-2]
+        choice_titles = [c.title for c in choice.all()]
+
+        return ", ".join(choice_titles)
