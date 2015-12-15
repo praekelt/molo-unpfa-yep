@@ -74,7 +74,7 @@ class ModelsTestCase(TestCase):
                     {'choice': choice1.id})
         # should automatically create the poll vote
         # test poll vote
-        vote_count = ChoiceVote.objects.all()[0].choice.votes
+        vote_count = ChoiceVote.objects.all()[0].choice.all()[0].votes
         self.assertEquals(vote_count, 1)
 
     def test_question_choices(self):

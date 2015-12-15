@@ -18,8 +18,13 @@
 				<div class="radios">
 					{% for choice in question.choices %}
 						<div>
-						    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-						    <label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
+							{% if question.allow_multiple_choice%}
+								<input type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+								<label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
+							{% else %}
+								<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+								<label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
+							{% endif %}
 						</div>
 					{% endfor %}
 				</div>

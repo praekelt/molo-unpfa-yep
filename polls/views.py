@@ -28,9 +28,11 @@ def poll_results(request, poll_id):
     choice_color = ['orange', 'purple', 'turq']
     index = 0
     for choice in choices:
+        vote_percentage = 0
         if index >= len(choice_color):
             index = 0
-        vote_percentage = int(choice.votes * 100.0 / total_votes)
+        if choice.votes > 0:
+            vote_percentage = int(choice.votes * 100.0 / total_votes)
         choice.percentage = vote_percentage
         choice.color = choice_color[index]
         index += 1
@@ -56,12 +58,15 @@ def vote(request, question_id):
     else:
         obj, created = ChoiceVote.objects.get_or_create(
             user=request.user,
-            question=question,
-            defaults={'choice': selected_choice})
+            question=question)
         if created:
-            selected_choice.votes = F('votes') + 1
-            selected_choice.choice_votes.add(obj)
-            selected_choice.save()
+            selected_choice = request.POST.getlist('choice')
+            for choice in selected_choice:
+                choice = Choice.objects.get(pk=choice)
+                obj.choice.add(choice)
+                choice.votes = F('votes') + 1
+                choice.choice_votes.add(obj)
+                choice.save()
             return HttpResponseRedirect(reverse('molo.polls:results',
                                                 args=(question.id,)))
         else:
