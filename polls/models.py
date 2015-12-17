@@ -86,3 +86,4 @@ class ChoiceVote(models.Model):
 class FreeTextVote(models.Model):
     user = models.ForeignKey('auth.User', related_name='text_votes')
     question = models.ForeignKey('FreeTextQuestion')
+    answer = models.TextField(blank=True, null=True)

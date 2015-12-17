@@ -1,4 +1,5 @@
-from polls.models import Choice, Question, ChoiceVote
+from polls.models import (Choice, Question, ChoiceVote, FreeTextQuestion,
+                          FreeTextVote)
 from django.test import TestCase
 from django.contrib.auth.models import User
 from molo.core.models import LanguagePage, Main
@@ -173,3 +174,24 @@ class ModelsTestCase(TestCase):
         self.assertContains(response, 'Thank you for voting!')
         response = client.get('/')
         self.assertContains(response, 'You voted')
+
+    def test_free_text_vote(self):
+        question = FreeTextQuestion(
+            title='is this a test')
+        self.english.add_child(instance=question)
+        question.save_revision().publish()
+        client = Client()
+        client.login(username='tester', password='tester')
+        response = client.get('/')
+        self.assertContains(response, 'is this a test')
+        client.post(reverse('molo.polls:free_text_vote',
+                    kwargs={'question_id': question.id}),
+                    {'answer': 'this is an answer'})
+        response = client.get(reverse(
+            'molo.polls:results',
+            kwargs={'poll_id': question.id}))
+        votes = FreeTextVote.objects.all().count()
+        self.assertEquals(votes, 1)
+        self.assertContains(response, 'Thank you for voting!')
+        response = client.get('/')
+        self.assertContains(response, 'Thank you!')
