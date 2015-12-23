@@ -1,4 +1,4 @@
-from polls.models import Choice, Question, ChoiceVote, FreeTextQuestion
+from polls.models import Choice, Question, ChoiceVote
 from django.test import TestCase
 from django.contrib.auth.models import User
 from molo.core.models import LanguagePage, Main
@@ -103,8 +103,3 @@ class ModelsTestCase(TestCase):
         choices = question.choices()
         self.assertEqual(choices.all().first(), choice1)
         self.assertEqual(choices.all().last(), choice5)
-
-    def test_free_text_question(self):
-        question = FreeTextQuestion(title='is this a test',)
-        self.english.add_child(instance=question)
-        self.assertEqual(FreeTextQuestion.objects.all().count(), 1)

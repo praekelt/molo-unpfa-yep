@@ -180,20 +180,24 @@ class ModelsTestCase(TestCase):
             title='is this a test')
         self.english.add_child(instance=question)
         question.save_revision().publish()
+
         client = Client()
         client.login(username='tester', password='tester')
         response = client.get('/')
         self.assertContains(response, 'is this a test')
+
         client.post(reverse('molo.polls:free_text_vote',
                     kwargs={'question_id': question.id}),
                     {'answer': 'this is an answer'})
         response = client.get(reverse(
             'molo.polls:results',
             kwargs={'poll_id': question.id}))
-        votes = FreeTextVote.objects.all()
-        self.assertEquals(votes.count(), 1)
-        self.assertEquals(votes[0].answer, 'this is an answer')
+
+        self.assertEquals(FreeTextVote.objects.all().count(), 1)
+        self.assertEquals(
+            FreeTextVote.objects.all()[0].answer, 'this is an answer')
         self.assertContains(response, 'Thank you for voting!')
+
         response = client.get('/')
         self.assertContains(response, 'already been submitted.')
 
@@ -202,10 +206,12 @@ class ModelsTestCase(TestCase):
             title='is this a test')
         self.english.add_child(instance=question)
         question.save_revision().publish()
+
         client = Client()
         client.login(username='tester', password='tester')
         response = client.get('/')
         self.assertContains(response, 'is this a test')
+
         client.post(reverse('molo.polls:free_text_vote',
                     kwargs={'question_id': question.id}),
                     {'answer': 'this is an answer'})
@@ -215,6 +221,7 @@ class ModelsTestCase(TestCase):
         self.assertEquals(FreeTextVote.objects.all().count(), 1)
         self.assertEquals(
             FreeTextVote.objects.all()[0].answer, 'this is an answer')
+
         response = client.post(reverse(
             'molo.polls:free_text_vote',
             kwargs={'question_id': question.id}),
@@ -230,15 +237,17 @@ class ModelsTestCase(TestCase):
             title='is this a test')
         self.english.add_child(instance=question)
         question.save_revision().publish()
+
         client = Client()
         client.login(username='tester', password='tester')
         response = client.get('/')
         self.assertContains(response, 'is this a test')
+
         response = client.post(reverse(
             'molo.polls:free_text_vote',
             kwargs={'question_id': question.id}))
         self.assertContains(response, 'field is required')
-        votes = FreeTextVote.objects.all()
-        self.assertEquals(votes.count(), 0)
+        self.assertEquals(FreeTextVote.objects.all().count(), 0)
+
         response = client.get('/')
         self.assertNotContains(response, 'already been submitted.')

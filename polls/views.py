@@ -86,7 +86,8 @@ class FreeTextVoteView(FormView):
     template_name = 'polls/free_text_detail.html'
 
     def get_context_data(self, *args, **kwargs):
-        context = super(FreeTextVoteView, self).get_context_data(*args, **kwargs)
+        context = super(
+            FreeTextVoteView, self).get_context_data(*args, **kwargs)
         question_id = self.kwargs.get('question_id')
         question = get_object_or_404(Question, pk=question_id)
         context.update({'question': question})
