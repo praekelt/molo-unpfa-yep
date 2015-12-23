@@ -6,6 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 from polls.models import (Choice, Question, FreeTextVote, ChoiceVote,
                           FreeTextQuestion)
 from django .db.models import F
+from django.views.generic.edit import FormView
+from forms import TextVoteForm
+from django.contrib.auth.decorators import login_required
 
 
 class IndexView(generic.ListView):
@@ -46,6 +49,7 @@ def poll_results(request, poll_id):
     return render(request, 'polls/results.html', context,)
 
 
+@login_required
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
@@ -77,16 +81,27 @@ def vote(request, question_id):
             })
 
 
-def free_text_vote(request, question_id):
-    question = get_object_or_404(FreeTextQuestion, pk=question_id)
-    obj, created = FreeTextVote.objects.get_or_create(
-        user=request.user,
-        question=question)
-    if created:
-        return HttpResponseRedirect(reverse('molo.polls:results',
-                                            args=(question.id,)))
-    else:
-        return render(request, 'polls/detail.html', {
-            'question': question,
-            'error_message': _("You are only allowed to vote once."),
-        })
+class FreeTextVoteView(FormView):
+
+    form_class = TextVoteForm
+    template_name = 'polls/free_text_detail.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(FreeTextVoteView, self).get_context_data(*args, **kwargs)
+        question_id = self.kwargs.get('question_id')
+        question = get_object_or_404(Question, pk=question_id)
+        context.update({'question': question})
+        return context
+
+    def form_valid(self, form, *args, **kwargs):
+        question_id = self.kwargs.get('question_id')
+        question = get_object_or_404(FreeTextQuestion, pk=question_id)
+        obj, created = FreeTextVote.objects.get_or_create(
+            user=self.request.user,
+            question=question,
+            defaults={
+                'answer': form.cleaned_data['answer']
+            })
+        if created:
+            return HttpResponseRedirect(reverse('molo.polls:results',
+                                                args=(question.id,)))

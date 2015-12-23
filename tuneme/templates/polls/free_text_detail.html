@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% load static core_tags %}
+
+{% block content %}
+
+<div class="title orange">
+	<div class="icon"><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></div>
+	<h6><a href="">{% trans "Have Your Say" %}</a></h6>
+</div>
+
+<div class="block orange">
+	<h3>{{ question.title }}</h3>
+		<form action="{% url 'molo.polls:vote' question.id %}" method="post">
+			{% csrf_token %}
+			{{form.answer}}
+				<div>
+					<input type="submit" value="{% trans "Vote" %}"/>
+					<hr>
+  				<a href="{{request.site.root_page.url}}" class="button inverted">{% trans "Home" %}</a>
+				</div>
+		</form>
+</div>
+{% endblock %}

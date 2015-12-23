@@ -190,8 +190,9 @@ class ModelsTestCase(TestCase):
         response = client.get(reverse(
             'molo.polls:results',
             kwargs={'poll_id': question.id}))
-        votes = FreeTextVote.objects.all().count()
-        self.assertEquals(votes, 1)
+        votes = FreeTextVote.objects.all()
+        self.assertEquals(votes.count(), 1)
+        self.assertEquals(votes[0].answer, 'this is an answer')
         self.assertContains(response, 'Thank you for voting!')
         response = client.get('/')
-        self.assertContains(response, 'Thank you!')
+        self.assertContains(response, 'already been submitted.')

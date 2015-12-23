@@ -10,6 +10,6 @@ urlpatterns = [
         name='results'
     ),
     url(r'^(?P<question_id>\d+)/vote/$', views.vote, name='vote'),
-    url(r'^(?P<question_id>\d+)/freetextvote/$', views.free_text_vote,
+    url(r'^(?P<question_id>\d+)/freetextvote/$', views.FreeTextVoteView.as_view(),
         name='free_text_vote'),
 ]

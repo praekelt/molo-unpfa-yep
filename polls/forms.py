@@ -2,8 +2,8 @@ from django import forms
 
 
 class TextVoteForm(forms.Form):
-    answer = forms.TextField(required=True)
+    answer = forms.CharField(required=True)
 
 
 class VoteForm(forms.Form):
-    choice = forms.TextField(required=True)
+    choice = forms.IntegerField(required=True)

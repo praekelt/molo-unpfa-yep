@@ -6,7 +6,7 @@
   {% if request.user.is_authenticated%}
     {% can_vote question as user_can_vote %}
       {% if user_can_vote %}
-        <input type="text" name="vote" id="1" value="" />
+        <input type="text" name="answer" id="id_answer" value="" />
         <input type="submit" value="{% trans "Submit" %}" />
       {% else %}
             <h5 style="color: #666666">Thank you! Your repsonse has already been submitted.<h5>
