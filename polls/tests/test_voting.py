@@ -197,6 +197,34 @@ class ModelsTestCase(TestCase):
         response = client.get('/')
         self.assertContains(response, 'already been submitted.')
 
+    def test_free_text_vote_resubmission(self):
+        question = FreeTextQuestion(
+            title='is this a test')
+        self.english.add_child(instance=question)
+        question.save_revision().publish()
+        client = Client()
+        client.login(username='tester', password='tester')
+        response = client.get('/')
+        self.assertContains(response, 'is this a test')
+        client.post(reverse('molo.polls:free_text_vote',
+                    kwargs={'question_id': question.id}),
+                    {'answer': 'this is an answer'})
+        response = client.get(reverse(
+            'molo.polls:results',
+            kwargs={'poll_id': question.id}))
+        self.assertEquals(FreeTextVote.objects.all().count(), 1)
+        self.assertEquals(
+            FreeTextVote.objects.all()[0].answer, 'this is an answer')
+        response = client.post(reverse(
+            'molo.polls:free_text_vote',
+            kwargs={'question_id': question.id}),
+            {'answer': 'this is not an answer'})
+        self.assertRedirects(response, reverse(
+            'molo.polls:results', args=(question.id,)))
+        self.assertEquals(FreeTextVote.objects.all().count(), 1)
+        self.assertEquals(
+            FreeTextVote.objects.all()[0].answer, 'this is an answer')
+
     def test_free_text_vote_blank_answer(self):
         question = FreeTextQuestion(
             title='is this a test')

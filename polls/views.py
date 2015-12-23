@@ -102,6 +102,6 @@ class FreeTextVoteView(FormView):
             defaults={
                 'answer': form.cleaned_data['answer']
             })
-        if created:
-            return HttpResponseRedirect(reverse('molo.polls:results',
-                                                args=(question.id,)))
+
+        return HttpResponseRedirect(
+            reverse('molo.polls:results', args=(question.id,)))

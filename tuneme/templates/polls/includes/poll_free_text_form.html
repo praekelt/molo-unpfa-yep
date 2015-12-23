@@ -9,7 +9,14 @@
         <input type="text" name="answer" id="id_answer" value="" />
         <input type="submit" value="{% trans "Submit" %}" />
       {% else %}
-            <h5 style="color: #666666">Thank you! Your repsonse has already been submitted.<h5>
+        {% if messages %}
+          <ul class="errorlist">
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+          </ul>
+        {% endif %}
+        <h5 style="color: #666666">Thank you! Your repsonse has already been submitted.<h5>
       {% endif %}
   {% else %}
       <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="button">{% trans "Log in to vote" %}</a>
