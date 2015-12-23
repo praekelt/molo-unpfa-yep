@@ -1,4 +1,5 @@
-from polls.models import Choice, Question, ChoiceVote
+from polls.models import (Choice, Question, ChoiceVote, FreeTextQuestion,
+                          FreeTextVote)
 from django.test import TestCase
 from django.contrib.auth.models import User
 from molo.core.models import LanguagePage, Main
@@ -173,3 +174,80 @@ class ModelsTestCase(TestCase):
         self.assertContains(response, 'Thank you for voting!')
         response = client.get('/')
         self.assertContains(response, 'You voted')
+
+    def test_free_text_vote_successful(self):
+        question = FreeTextQuestion(
+            title='is this a test')
+        self.english.add_child(instance=question)
+        question.save_revision().publish()
+
+        client = Client()
+        client.login(username='tester', password='tester')
+        response = client.get('/')
+        self.assertContains(response, 'is this a test')
+
+        client.post(reverse('molo.polls:free_text_vote',
+                    kwargs={'question_id': question.id}),
+                    {'answer': 'this is an answer'})
+        response = client.get(reverse(
+            'molo.polls:results',
+            kwargs={'poll_id': question.id}))
+
+        self.assertEquals(FreeTextVote.objects.all().count(), 1)
+        self.assertEquals(
+            FreeTextVote.objects.all()[0].answer, 'this is an answer')
+        self.assertContains(response, 'Thank you for voting!')
+
+        response = client.get('/')
+        self.assertContains(response, 'already been submitted.')
+
+    def test_free_text_vote_resubmission(self):
+        question = FreeTextQuestion(
+            title='is this a test')
+        self.english.add_child(instance=question)
+        question.save_revision().publish()
+
+        client = Client()
+        client.login(username='tester', password='tester')
+        response = client.get('/')
+        self.assertContains(response, 'is this a test')
+
+        client.post(reverse('molo.polls:free_text_vote',
+                    kwargs={'question_id': question.id}),
+                    {'answer': 'this is an answer'})
+        response = client.get(reverse(
+            'molo.polls:results',
+            kwargs={'poll_id': question.id}))
+        self.assertEquals(FreeTextVote.objects.all().count(), 1)
+        self.assertEquals(
+            FreeTextVote.objects.all()[0].answer, 'this is an answer')
+
+        response = client.post(reverse(
+            'molo.polls:free_text_vote',
+            kwargs={'question_id': question.id}),
+            {'answer': 'this is not an answer'})
+        self.assertRedirects(response, reverse(
+            'molo.polls:results', args=(question.id,)))
+        self.assertEquals(FreeTextVote.objects.all().count(), 1)
+        self.assertEquals(
+            FreeTextVote.objects.all()[0].answer, 'this is an answer')
+
+    def test_free_text_vote_blank_answer(self):
+        question = FreeTextQuestion(
+            title='is this a test')
+        self.english.add_child(instance=question)
+        question.save_revision().publish()
+
+        client = Client()
+        client.login(username='tester', password='tester')
+        response = client.get('/')
+        self.assertContains(response, 'is this a test')
+
+        response = client.post(reverse(
+            'molo.polls:free_text_vote',
+            kwargs={'question_id': question.id}))
+        self.assertContains(response, 'field is required')
+        self.assertEquals(FreeTextVote.objects.all().count(), 0)
+
+        response = client.get('/')
+        self.assertNotContains(response, 'already been submitted.')

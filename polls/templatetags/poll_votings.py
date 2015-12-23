@@ -22,6 +22,8 @@ def poll_page(context, pk=None, page=None):
 @register.assignment_tag(takes_context=True)
 def can_vote(context, question):
     request = context['request']
+    if hasattr(question, 'freetextquestion'):
+        return question.freetextquestion.can_vote(request.user)
     return question.can_vote(request.user)
 
 
