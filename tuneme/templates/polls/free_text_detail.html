@@ -12,6 +12,7 @@
 
 <div class="block orange">
 	<h3>{{ question.title }}</h3>
+	{% if form.answer.errors %}<p><strong>{{form.answer.errors|join:", " }}</strong></p>{% endif %}
 		<form action="{% url 'molo.polls:vote' question.id %}" method="post">
 			{% csrf_token %}
 			{{form.answer}}

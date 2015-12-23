@@ -175,7 +175,7 @@ class ModelsTestCase(TestCase):
         response = client.get('/')
         self.assertContains(response, 'You voted')
 
-    def test_free_text_vote(self):
+    def test_free_text_vote_successful(self):
         question = FreeTextQuestion(
             title='is this a test')
         self.english.add_child(instance=question)
@@ -196,3 +196,21 @@ class ModelsTestCase(TestCase):
         self.assertContains(response, 'Thank you for voting!')
         response = client.get('/')
         self.assertContains(response, 'already been submitted.')
+
+    def test_free_text_vote_blank_answer(self):
+        question = FreeTextQuestion(
+            title='is this a test')
+        self.english.add_child(instance=question)
+        question.save_revision().publish()
+        client = Client()
+        client.login(username='tester', password='tester')
+        response = client.get('/')
+        self.assertContains(response, 'is this a test')
+        response = client.post(reverse(
+            'molo.polls:free_text_vote',
+            kwargs={'question_id': question.id}))
+        self.assertContains(response, 'field is required')
+        votes = FreeTextVote.objects.all()
+        self.assertEquals(votes.count(), 0)
+        response = client.get('/')
+        self.assertNotContains(response, 'already been submitted.')
