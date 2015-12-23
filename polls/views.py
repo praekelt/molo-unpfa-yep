@@ -82,7 +82,6 @@ def vote(request, question_id):
 
 
 class FreeTextVoteView(FormView):
-
     form_class = TextVoteForm
     template_name = 'polls/free_text_detail.html'
 
@@ -96,7 +95,7 @@ class FreeTextVoteView(FormView):
     def form_valid(self, form, *args, **kwargs):
         question_id = self.kwargs.get('question_id')
         question = get_object_or_404(FreeTextQuestion, pk=question_id)
-        obj, created = FreeTextVote.objects.get_or_create(
+        FreeTextVote.objects.get_or_create(
             user=self.request.user,
             question=question,
             defaults={
