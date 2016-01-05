@@ -11,7 +11,8 @@ class VoteForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(VoteForm, self).__init__(*args, **kwargs)
-        self.fields['choice'].choices = [(c.pk, c.title) for c in Choice.objects.all()]
+        self.fields['choice'].choices = [(
+            c.pk, c.title) for c in Choice.objects.all()]
 
     def clean_choice(self):
         selected_choice = self.cleaned_data['choice']
