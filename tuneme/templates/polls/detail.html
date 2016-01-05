@@ -9,7 +9,7 @@
 	<div class="icon"><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></div>
 	<h6><a href="">{% trans "Have Your Say" %}</a></h6>
 </div>
-
+{{form.errors}}
 <div class="block orange">
 	<h3>{{ question.title }}</h3>
 	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
