@@ -15,5 +15,4 @@ class VoteForm(forms.Form):
             c.pk, c.title) for c in Choice.objects.all()]
 
     def clean_choice(self):
-        selected_choice = self.cleaned_data['choice']
-        return selected_choice
+        return self.cleaned_data['choice']
