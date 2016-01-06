@@ -1,5 +1,6 @@
 from django import forms
 from models import Choice
+from django.utils.translation import ugettext_lazy as _
 
 
 class TextVoteForm(forms.Form):
@@ -9,7 +10,7 @@ class TextVoteForm(forms.Form):
 class VoteForm(forms.Form):
     choice = forms.MultipleChoiceField(
         required=True,
-        error_messages={'required': "You didn't select a choice"})
+        error_messages={'required': _("You didn't select a choice")})
 
     def __init__(self, *args, **kwargs):
         super(VoteForm, self).__init__(*args, **kwargs)
