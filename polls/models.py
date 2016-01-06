@@ -35,7 +35,7 @@ class Question(Page):
         FieldPanel('show_results'),
         FieldPanel('randomise_options'),
         FieldPanel('result_as_percentage'),
-        FieldPanel('allow_multiple_choice')], heading="Question Settings",)]
+        FieldPanel('allow_multiple_choice')], heading=_("Question Settings",))]
 
     def user_choice(self, user):
         self.choicevote_set.filter(user=user)
@@ -62,7 +62,7 @@ class FreeTextQuestion(Question):
             "When selected, this question will allow numerical data only")
     )
     content_panels = Page.content_panels + [MultiFieldPanel([
-        FieldPanel('numerical')], heading="Question Settings",)]
+        FieldPanel('numerical')], heading=_("Question Settings",))]
 
     def __init__(self, *args, **kwargs):
         super(FreeTextQuestion, self).__init__(*args, **kwargs)
