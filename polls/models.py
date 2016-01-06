@@ -56,6 +56,13 @@ class Question(Page):
 class FreeTextQuestion(Question):
     subpage_types = []
     content_panels = Page.content_panels
+    numerical = models.BooleanField(
+        default=False,
+        help_text=_(
+            "When selected, this question will allow numerical data only")
+    )
+    content_panels = Page.content_panels + [MultiFieldPanel([
+        FieldPanel('numerical')], heading="Question Settings",)]
 
     def __init__(self, *args, **kwargs):
         super(FreeTextQuestion, self).__init__(*args, **kwargs)

@@ -9,6 +9,7 @@ from django .db.models import F
 from django.views.generic.edit import FormView
 from forms import TextVoteForm
 from django.contrib.auth.decorators import login_required
+import numbers
 
 
 class IndexView(generic.ListView):
@@ -96,6 +97,11 @@ class FreeTextVoteView(FormView):
     def form_valid(self, form, *args, **kwargs):
         question_id = self.kwargs.get('question_id')
         question = get_object_or_404(FreeTextQuestion, pk=question_id)
+        if question.numerical and isinstance(
+                form.cleaned_data['answer'], numbers.Number) is False:
+                    raise ValidationError(
+                        _('Invalid value: %(value)s'),
+                        code='invalid',)
         FreeTextVote.objects.get_or_create(
             user=self.request.user,
             question=question,
@@ -104,4 +110,4 @@ class FreeTextVoteView(FormView):
             })
 
         return HttpResponseRedirect(
-            reverse('molo.polls:results', args=(question.id,)))
+            reverse('molo.polls:results', args=(question.id, {'error_message': _("You are only allowed to vote once."}))))
