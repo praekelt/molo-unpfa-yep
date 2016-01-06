@@ -7,6 +7,13 @@ class TextVoteForm(forms.Form):
     answer = forms.CharField(required=True)
 
 
+class NumericalTextVoteForm(forms.Form):
+    answer = forms.IntegerField(
+        required=True, error_messages={
+            'invalid':
+                "You did not enter a numerical value. Please try again."})
+
+
 class VoteForm(forms.Form):
     choice = forms.MultipleChoiceField(
         required=True,
