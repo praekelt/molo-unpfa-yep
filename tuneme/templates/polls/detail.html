@@ -11,7 +11,7 @@
 </div>
 <div class="block orange">
 	<h3>{{ question.title }}</h3>
-		{% if form.choice.errors %}<p>You didn't select a choice</p>{% endif %}
+	{% if form.choice.errors %}<p><strong>{{form.choice.errors|join:", " }}</strong></p>{% endif %}
 		<form action="{% url 'molo.polls:vote' question.id %}" method="post">
 			{% csrf_token %}
 				<div class="radios">
