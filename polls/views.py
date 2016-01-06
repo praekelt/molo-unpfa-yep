@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
-# from django.utils.translation import ugettext_lazy as _
 from polls.models import (Choice, Question, FreeTextVote, ChoiceVote,
                           FreeTextQuestion)
 from django .db.models import F
@@ -56,12 +55,10 @@ class VoteView(FormView):
         context = super(
             VoteView, self).get_context_data(*args, **kwargs)
         question_id = self.kwargs.get('question_id')
+
         question = get_object_or_404(Question, pk=question_id)
         context.update({'question': question})
         return context
-
-    def form_invalid(self, form, *args, **kwargs):
-        return super(VoteView, self).form_invalid(form, *args, **kwargs)
 
     def form_valid(self, form, *args, **kwargs):
         question_id = self.kwargs.get('question_id')
