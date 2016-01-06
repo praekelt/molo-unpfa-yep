@@ -2,14 +2,11 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
-from polls.models import (Choice, Question, FreeTextVote, ChoiceVote,
-                          FreeTextQuestion)
+from polls.models import (
+    Choice, Question, FreeTextVote, ChoiceVote, FreeTextQuestion)
 from django .db.models import F
 from django.views.generic.edit import FormView
-from forms import TextVoteForm
-from django.contrib.auth.decorators import login_required
-import numbers
-from forms import TextVoteForm, VoteForm
+from polls.forms import TextVoteForm, VoteForm, NumericalTextVoteForm
 
 
 class IndexView(generic.ListView):
@@ -83,31 +80,33 @@ class VoteView(FormView):
 
 
 class FreeTextVoteView(FormView):
-    form_class = TextVoteForm
     template_name = 'polls/free_text_detail.html'
+
+    def dispatch(self, *args, **kwargs):
+        question_id = kwargs.get('question_id')
+        question = get_object_or_404(FreeTextQuestion, pk=question_id)
+        if question.numerical:
+            self.form_class = NumericalTextVoteForm
+        else:
+            self.form_class = TextVoteForm
+        return super(FreeTextVoteView, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, *args, **kwargs):
         context = super(
             FreeTextVoteView, self).get_context_data(*args, **kwargs)
         question_id = self.kwargs.get('question_id')
-        question = get_object_or_404(Question, pk=question_id)
+        question = get_object_or_404(FreeTextQuestion, pk=question_id)
         context.update({'question': question})
         return context
 
     def form_valid(self, form, *args, **kwargs):
         question_id = self.kwargs.get('question_id')
         question = get_object_or_404(FreeTextQuestion, pk=question_id)
-        if question.numerical and isinstance(
-                form.cleaned_data['answer'], numbers.Number) is False:
-                    raise ValidationError(
-                        _('Invalid value: %(value)s'),
-                        code='invalid',)
         FreeTextVote.objects.get_or_create(
             user=self.request.user,
             question=question,
             defaults={
                 'answer': form.cleaned_data['answer']
             })
-
-        return HttpResponseRedirect(
-            reverse('molo.polls:results', args=(question.id, {'error_message': _("You are only allowed to vote once."}))))
+        return HttpResponseRedirect(reverse('molo.polls:results',
+                                            args=(question.id,)))
