@@ -75,7 +75,7 @@ class ModelsTestCase(TestCase):
         self.assertContains(response, 'is this a test')
         response = client.post(reverse('molo.polls:vote',
                                kwargs={'question_id': question.id}))
-        self.assertContains(response, "You didn&#39;t select a choice")
+        self.assertContains(response, "select a choice")
         client.post(reverse('molo.polls:vote',
                     kwargs={'question_id': question.id}),
                     {'choice': choice1.id})

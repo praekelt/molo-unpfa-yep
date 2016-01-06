@@ -11,7 +11,9 @@ urlpatterns = [
         views.poll_results,
         name='results'
     ),
-    url(r'^(?P<question_id>\d+)/vote/$', views.vote, name='vote'),
+    url(r'^(?P<question_id>\d+)/vote/$',
+        login_required(views.VoteView.as_view()),
+        name='vote'),
     url(r'^(?P<question_id>\d+)/freetextvote/$',
         login_required(views.FreeTextVoteView.as_view()),
         name='free_text_vote'),

@@ -9,10 +9,9 @@
 	<div class="icon"><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></div>
 	<h6><a href="">{% trans "Have Your Say" %}</a></h6>
 </div>
-
 <div class="block orange">
 	<h3>{{ question.title }}</h3>
-	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	{% if form.choice.errors %}<p><strong>{{form.choice.errors|join:", " }}</strong></p>{% endif %}
 		<form action="{% url 'molo.polls:vote' question.id %}" method="post">
 			{% csrf_token %}
 				<div class="radios">

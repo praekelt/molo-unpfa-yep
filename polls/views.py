@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
-from django.utils.translation import ugettext_lazy as _
 from polls.models import (Choice, Question, FreeTextVote, ChoiceVote,
                           FreeTextQuestion)
 from django .db.models import F
@@ -10,6 +9,7 @@ from django.views.generic.edit import FormView
 from forms import TextVoteForm
 from django.contrib.auth.decorators import login_required
 import numbers
+from forms import TextVoteForm, VoteForm
 
 
 class IndexView(generic.ListView):
@@ -50,36 +50,36 @@ def poll_results(request, poll_id):
     return render(request, 'polls/results.html', context,)
 
 
-@login_required
-def vote(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    try:
-        selected_choice = Choice.objects.get(pk=request.POST['choice'])
-    except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
-        return render(request, 'polls/detail.html', {
-            'question': question,
-            'error_message': _("You didn't select a choice."),
-        })
-    else:
+class VoteView(FormView):
+    form_class = VoteForm
+    template_name = 'polls/detail.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(
+            VoteView, self).get_context_data(*args, **kwargs)
+        question_id = self.kwargs.get('question_id')
+
+        question = get_object_or_404(Question, pk=question_id)
+        context.update({'question': question})
+        return context
+
+    def form_valid(self, form, *args, **kwargs):
+        question_id = self.kwargs.get('question_id')
+        question = get_object_or_404(Question, pk=question_id)
         obj, created = ChoiceVote.objects.get_or_create(
-            user=request.user,
-            question=question)
+            user=self.request.user,
+            question=question,)
+
         if created:
-            selected_choice = request.POST.getlist('choice')
-            for choice in selected_choice:
-                choice = Choice.objects.get(pk=choice)
+            selected_choice = form.cleaned_data['choice']
+            for choice_pk in selected_choice:
+                choice = Choice.objects.get(pk=choice_pk)
                 obj.choice.add(choice)
                 choice.votes = F('votes') + 1
                 choice.choice_votes.add(obj)
                 choice.save()
-            return HttpResponseRedirect(reverse('molo.polls:results',
-                                                args=(question.id,)))
-        else:
-            return render(request, 'polls/detail.html', {
-                'question': question,
-                'error_message': _("You are only allowed to vote once."),
-            })
+        return HttpResponseRedirect(
+            reverse('molo.polls:results', args=(question_id,)))
 
 
 class FreeTextVoteView(FormView):
