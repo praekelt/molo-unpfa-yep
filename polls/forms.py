@@ -1,8 +1,6 @@
 from django import forms
 from models import Choice
 from django.utils.translation import ugettext_lazy as _
-import numbers
-from django.core.exceptions import ValidationError
 
 
 class TextVoteForm(forms.Form):
@@ -10,14 +8,10 @@ class TextVoteForm(forms.Form):
 
 
 class NumericalTextVoteForm(forms.Form):
-    answer = forms.IntegerField(required=True)
-
-    def clean_answer(self):
-        selected_answer = self.cleaned_data['answer']
-        if not isinstance(selected_answer, numbers.Number):
-            raise ValidationError(
-                _("You did not enter a numerical value. Please try again."))
-        return selected_answer
+    answer = forms.IntegerField(
+        required=True, error_messages={
+            'invalid':
+                "You did not enter a numerical value. Please try again."})
 
 
 class VoteForm(forms.Form):

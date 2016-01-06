@@ -243,7 +243,7 @@ class ModelsTestCase(TestCase):
             kwargs={'question_id': question.id}),
             {'answer': 'text answer'})
         self.assertEquals(FreeTextVote.objects.all().count(), 0)
-        self.assertContains(response, 'whole number')
+        self.assertContains(response, 'You did not enter a numerical value')
 
         response = client.get('/')
         self.assertNotContains(response, 'already been submitted.')
