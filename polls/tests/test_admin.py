@@ -88,7 +88,8 @@ class ModelsTestCase(TestCase):
                                    Question.objects.all())
         date = str(datetime.datetime.now().date())
         expected_output = ('Content-Type: text/csv\r\nContent-Disposition:'
-                           ' attachment;filename=export.csv\r\n\r\n'
+                           ' attachment;filename=questions-' + date +
+                           '.csv\r\n\r\n'
                            'title,date_submitted,user,answer'
                            '\r\nis this a test,'
                            + date + ',tester,'
@@ -114,7 +115,8 @@ class ModelsTestCase(TestCase):
                                    Question.objects.all())
         date = str(datetime.datetime.now().date())
         expected_output = ('Content-Type: text/csv\r\nContent-Disposition:'
-                           ' attachment;filename=export.csv\r\n\r\n'
+                           ' attachment;filename=questions-' + date +
+                           '.csv\r\n\r\n'
                            'title,date_submitted,user,answer'
                            '\r\nis this a test,'
                            + date + ',tester,'
