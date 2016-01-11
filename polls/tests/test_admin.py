@@ -59,7 +59,7 @@ class ModelsTestCase(TestCase):
 
         # Create a site with the new homepage set as the root
         Site.objects.all().delete()
-        Site.objects.create(
+        self.site = Site.objects.create(
             hostname='localhost', root_page=main, is_default_site=True)
 
     def test_download_csv_question(self):
@@ -83,7 +83,7 @@ class ModelsTestCase(TestCase):
                     {'choice': [choice1.id, choice2.id]})
         # should automatically create the poll vote
         # test poll vote
-        response = download_as_csv(QuestionAdmin,
+        response = download_as_csv(QuestionAdmin(Question, self.site),
                                    None,
                                    Question.objects.all())
         date = str(datetime.datetime.now().date())
@@ -110,7 +110,7 @@ class ModelsTestCase(TestCase):
         client.post(reverse('molo.polls:free_text_vote',
                     kwargs={'question_id': question.id}),
                     {'answer': 'this is an answer'})
-        response = download_as_csv(QuestionAdmin,
+        response = download_as_csv(QuestionAdmin(Question, self.site),
                                    None,
                                    Question.objects.all())
         date = str(datetime.datetime.now().date())
