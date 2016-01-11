@@ -88,9 +88,17 @@ class ChoiceVote(models.Model):
     user = models.ForeignKey('auth.User', related_name='choice_votes')
     choice = models.ManyToManyField('Choice', null=True, blank=True)
     question = models.ForeignKey('Question')
+    submission_date = models.DateField(null=True, blank=True,
+                                       auto_now_add=True)
+
+    @property
+    def answer(self):
+        return ','.join(self.choice.all().values_list('title', flat=True))
 
 
 class FreeTextVote(models.Model):
     user = models.ForeignKey('auth.User', related_name='text_votes')
     question = models.ForeignKey('FreeTextQuestion')
     answer = models.TextField(blank=True, null=True)
+    submission_date = models.DateField(null=True, blank=True,
+                                       auto_now_add=True)
