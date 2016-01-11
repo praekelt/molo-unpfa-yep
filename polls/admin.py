@@ -1,5 +1,8 @@
 from django.contrib import admin
 from django.core.urlresolvers import reverse
+from django.http import HttpResponse
+
+import csv
 
 from polls.models import Question, Choice
 
@@ -30,7 +33,34 @@ class ParentListFilter(admin.SimpleListFilter):
         return queryset
 
 
+def download_as_csv(QuestionAdmin, request, queryset):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment;filename=export.csv'
+    writer = csv.writer(response)
+
+    field_names = ['title', 'date_submitted', 'user', 'answer']
+
+    writer.writerow(field_names)
+
+    for question in queryset:
+        if hasattr(question, 'choicevote_set'):
+            for choice in question.choicevote_set.all():
+                writer.writerow([
+                    choice.question, choice.submission_date, choice.user,
+                    choice.user, choice.answer])
+
+        elif hasattr(question, 'freetextvote_set'):
+            for choice in question.freetextvote_set.all():
+                writer.writerow([
+                    choice.question, choice.submission_date, choice.user,
+                    choice.user, choice.answer])
+
+    return response
+download_as_csv.short_description = "Download selected as csv"
+
+
 class QuestionAdmin(admin.ModelAdmin):
+    actions = [download_as_csv]
     list_display = ('entries', 'live')
     fieldsets = (
         (
