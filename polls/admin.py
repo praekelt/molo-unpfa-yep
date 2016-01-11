@@ -43,14 +43,14 @@ def download_as_csv(QuestionAdmin, request, queryset):
     writer.writerow(field_names)
 
     for question in queryset:
-        if hasattr(question, 'choicevote_set'):
+        if not hasattr(question, 'freetextquestion'):
             for choice in question.choicevote_set.all():
                 writer.writerow([
                     choice.question, choice.submission_date, choice.user,
                     choice.user, choice.answer])
 
-        elif hasattr(question, 'freetextvote_set'):
-            for choice in question.freetextvote_set.all():
+        else:
+            for choice in question.freetextquestion.freetextvote_set.all():
                 writer.writerow([
                     choice.question, choice.submission_date, choice.user,
                     choice.user, choice.answer])
