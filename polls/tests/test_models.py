@@ -81,7 +81,6 @@ class ModelsTestCase(TestCase):
         self.assertEquals(section.get_effective_extra_style_hints(), 'purple')
         self.assertEquals(question.get_effective_extra_style_hints(), 'purple')
 
-
     def test_poll_vote(self):
         # make choices
         choice1 = Choice(title='yes')
