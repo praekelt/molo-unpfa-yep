@@ -1,8 +1,10 @@
 from django.db import models
 from wagtail.wagtailcore.models import Page
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.wagtailadmin.edit_handlers import (
+    FieldPanel, MultiFieldPanel, FieldRowPanel)
 from molo.core.models import LanguagePage, ArticlePage, SectionPage
 from django.utils.translation import ugettext_lazy as _
+
 
 LanguagePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
 SectionPage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
@@ -71,6 +73,13 @@ class Question(Page):
                 return self.extra_style_hints or \
                     parent_article  .get_effective_extra_style_hints()
         return self.extra_style_hints
+
+Question.settings_panels = [
+    MultiFieldPanel(
+        [FieldRowPanel(
+            [FieldPanel('extra_style_hints')], classname="label-above")],
+        "Meta")
+]
 
 
 class FreeTextQuestion(Question):
