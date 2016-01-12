@@ -77,6 +77,7 @@ class ModelsTestCase(TestCase):
         response = self.client.get(
             '/english/section/')
         self.assertContains(response, "is this a test")
+        self.assertEquals(section.get_effective_extra_style_hints(), '')
 
     def test_poll_vote(self):
         # make choices
