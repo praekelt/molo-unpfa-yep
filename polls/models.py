@@ -1,16 +1,24 @@
 from django.db import models
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
-from molo.core.models import HomePage, LanguagePage, ArticlePage
+from molo.core.models import LanguagePage, ArticlePage, SectionPage
 from django.utils.translation import ugettext_lazy as _
 
-HomePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
 LanguagePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
+SectionPage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
 ArticlePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
 
 
 class Question(Page):
     subpage_types = ['polls.Choice']
+
+    extra_style_hints = models.TextField(
+        default='',
+        null=True, blank=True,
+        help_text=_(
+            "Styling options that can be applied to this section "
+            "and all its descendants"))
+
     show_results = models.BooleanField(
         default=True,
         help_text=_("This option allows the users to see the results.")
@@ -51,6 +59,18 @@ class Question(Page):
             return Choice.objects.live().child_of(self).order_by('?')
         else:
             return Choice.objects.live().child_of(self)
+
+    def get_effective_extra_style_hints(self):
+        parent_section = SectionPage.objects.all().ancestor_of(self).last()
+        if parent_section:
+            return self.extra_style_hints or \
+                parent_section.get_effective_extra_style_hints()
+        else:
+            parent_article = ArticlePage.objects.all().ancestor_of(self).last()
+            if parent_article:
+                return self.extra_style_hints or \
+                    parent_article  .get_effective_extra_style_hints()
+        return self.extra_style_hints
 
 
 class FreeTextQuestion(Question):

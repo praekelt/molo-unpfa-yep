@@ -1,5 +1,5 @@
 {% extends "core/_section_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags comments i18n %}
+{% load wagtailcore_tags wagtailimages_tags comments poll_votings i18n %}
 
 {% block content %}
 
@@ -50,5 +50,7 @@
 <div class="block {{self.get_effective_extra_style_hints}}">
     <a href="{{request.site.root_page.url}}" class="button inverted">{% trans "Home" %}</a>
 </div>
+
+{% poll_page_in_section page=self %}
 
 {% endblock %}

@@ -2,14 +2,11 @@
 {% block content %}
 	{% if questions %}
 		{% for question in questions %}
-		{% if forloop.first%}
-			<h2>{% trans "What's your opinion?" %}</h2>
-			{% endif %}
-			<div class="block orange">
+			<div class="block {{self.get_effective_extra_style_hints}}">
 				{% if forloop.first %}
 				<div class="title">
 					<div class="icon"><a href="{% url 'molo.polls:results' question.id %}"><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></a></div>
-					<h6><a href="{% url 'molo.polls:results' question.id %}">{% trans "Have Your Say" %}</a></h6>
+						<h6><a href="{% url 'molo.polls:results' question.id %}">{% trans "Have Your Say" %}</a></h6>
 				</div>
 				{% endif %}
 				<h3>{{ question.title }}</h3>
