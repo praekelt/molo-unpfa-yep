@@ -79,6 +79,8 @@ class ModelsTestCase(TestCase):
             '/english/section/')
         self.assertContains(response, "is this a test")
         self.assertEquals(section.get_effective_extra_style_hints(), 'purple')
+        self.assertEquals(question.get_effective_extra_style_hints(), 'purple')
+
 
     def test_poll_vote(self):
         # make choices
