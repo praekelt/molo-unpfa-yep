@@ -1,7 +1,7 @@
 from polls.models import Choice, Question, ChoiceVote
 from django.test import TestCase
 from django.contrib.auth.models import User
-from molo.core.models import LanguagePage, Main
+from molo.core.models import LanguagePage, Main, SectionPage
 from django.contrib.contenttypes.models import ContentType
 from wagtail.wagtailcore.models import Site, Page
 from django.test.client import Client
@@ -58,6 +58,28 @@ class ModelsTestCase(TestCase):
         Site.objects.all().delete()
         Site.objects.create(
             hostname='localhost', root_page=main, is_default_site=True)
+
+    def test_section_page_question(self):
+        self.english.save_revision().publish()
+
+        section = SectionPage(
+            title='section', slug='section', extra_style_hints='purple')
+        self.english.add_child(instance=section)
+        section.save_revision().publish()
+
+        question = Question(title='is this a test')
+        section.add_child(instance=question)
+        question.save_revision().publish()
+        # make a vote
+        client = Client()
+        client.login(username='tester', password='tester')
+        response = client.get('/')
+        self.assertContains(response, 'section')
+        response = self.client.get(
+            '/english/section/')
+        self.assertContains(response, "is this a test")
+        self.assertEquals(section.get_effective_extra_style_hints(), 'purple')
+        self.assertEquals(question.get_effective_extra_style_hints(), 'purple')
 
     def test_poll_vote(self):
         # make choices

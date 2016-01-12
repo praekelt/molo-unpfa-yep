@@ -19,6 +19,22 @@ def poll_page(context, pk=None, page=None):
     return context
 
 
+@register.inclusion_tag('polls/poll_page_in_section.html',
+                        takes_context=True)
+def poll_page_in_section(context, pk=None, page=None):
+    context = copy(context)
+    context.update({
+        'questions': Question.objects.live().child_of(page)
+        if page else Question.objects.none()
+    })
+    return context
+
+
+@register.assignment_tag(takes_context=True)
+def has_questions(context, page):
+    return Question.objects.live().child_of(page).exists()
+
+
 @register.assignment_tag(takes_context=True)
 def can_vote(context, question):
     request = context['request']
