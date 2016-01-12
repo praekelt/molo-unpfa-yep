@@ -62,7 +62,8 @@ class ModelsTestCase(TestCase):
     def test_section_page_question(self):
         self.english.save_revision().publish()
 
-        section = SectionPage(title='section', slug='section')
+        section = SectionPage(
+            title='section', slug='section', extra_style_hints='purple')
         self.english.add_child(instance=section)
         section.save_revision().publish()
 
@@ -77,7 +78,7 @@ class ModelsTestCase(TestCase):
         response = self.client.get(
             '/english/section/')
         self.assertContains(response, "is this a test")
-        self.assertEquals(section.get_effective_extra_style_hints(), '')
+        self.assertEquals(section.get_effective_extra_style_hints(), 'purple')
 
     def test_poll_vote(self):
         # make choices
