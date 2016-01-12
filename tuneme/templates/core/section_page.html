@@ -1,5 +1,5 @@
 {% extends "core/_section_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags comments poll_votings i18n %}
+{% load wagtailcore_tags wagtailimages_tags comments poll_votings static i18n %}
 
 {% block content %}
 
@@ -47,10 +47,19 @@
   </div>
 {% endfor %}
 
+{% has_questions self as questions %}
+{% if questions %}
+<div class="block {{self.get_effective_extra_style_hints|default:"orange"}}">
+  <div class="title">
+    <div class="icon"><a href=""><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></a></div>
+      <h6><a href="">{% trans "Have Your Say" %}</a></h6>
+  </div>
+  {% poll_page_in_section page=self %}
+  <hr>
+</div>
+{% endif %}
+
 <div class="block {{self.get_effective_extra_style_hints}}">
     <a href="{{request.site.root_page.url}}" class="button inverted">{% trans "Home" %}</a>
 </div>
-
-{% poll_page_in_section page=self %}
-
 {% endblock %}

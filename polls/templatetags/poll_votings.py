@@ -31,6 +31,11 @@ def poll_page_in_section(context, pk=None, page=None):
 
 
 @register.assignment_tag(takes_context=True)
+def has_questions(context, page):
+    return Question.objects.live().child_of(page).exists()
+
+
+@register.assignment_tag(takes_context=True)
 def can_vote(context, question):
     request = context['request']
     if hasattr(question, 'freetextquestion'):
