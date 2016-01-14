@@ -13,7 +13,10 @@ ArticlePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
 
 class Question(Page):
     subpage_types = ['polls.Choice']
-
+    short_name = models.TextField(
+        null=True, blank=True,
+        help_text=_("The short name is used when downloading the question and answer")
+    )
     extra_style_hints = models.TextField(
         default='',
         null=True, blank=True,
@@ -41,11 +44,13 @@ class Question(Page):
         help_text=_(
             "Allows the user to choose more than one option.")
     )
-    content_panels = Page.content_panels + [MultiFieldPanel([
-        FieldPanel('show_results'),
-        FieldPanel('randomise_options'),
-        FieldPanel('result_as_percentage'),
-        FieldPanel('allow_multiple_choice')], heading=_("Question Settings",))]
+    content_panels = Page.content_panels + [FieldPanel('short_name')] + [
+        MultiFieldPanel([
+            FieldPanel('show_results'),
+            FieldPanel('randomise_options'),
+            FieldPanel('result_as_percentage'),
+            FieldPanel('allow_multiple_choice')], heading=_(
+                "Question Settings",))]
 
     def user_choice(self, user):
         self.choicevote_set.filter(user=user)

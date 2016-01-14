@@ -120,3 +120,29 @@ class ModelsTestCase(TestCase):
                            '\r\nis this a test,' + date + ',tester,'
                            'this is an answer\r\n')
         self.assertEquals(str(response), expected_output)
+
+    def test_download_csv_free_text_question_short_name(self):
+        question = FreeTextQuestion(
+            title='is this a test', short_name='short')
+        self.english.add_child(instance=question)
+        question.save_revision().publish()
+
+        client = Client()
+        client.login(username='tester', password='tester')
+        response = client.get('/')
+        self.assertContains(response, 'is this a test')
+
+        client.post(reverse('molo.polls:free_text_vote',
+                    kwargs={'question_id': question.id}),
+                    {'answer': 'this is an answer'})
+        response = download_as_csv(QuestionAdmin(Question, self.site),
+                                   None,
+                                   Question.objects.all())
+        date = str(datetime.datetime.now().date())
+        expected_output = ('Content-Type: text/csv\r\nContent-Disposition:'
+                           ' attachment;filename=questions-' + date +
+                           '.csv\r\n\r\n'
+                           'title,date_submitted,user,answer'
+                           '\r\nshort,' + date + ',tester,'
+                           'this is an answer\r\n')
+        self.assertEquals(str(response), expected_output)
