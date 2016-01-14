@@ -1,16 +1,26 @@
 from django.db import models
 from wagtail.wagtailcore.models import Page
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
-from molo.core.models import HomePage, LanguagePage, ArticlePage
+from wagtail.wagtailadmin.edit_handlers import (
+    FieldPanel, MultiFieldPanel, FieldRowPanel)
+from molo.core.models import LanguagePage, ArticlePage, SectionPage
 from django.utils.translation import ugettext_lazy as _
 
-HomePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
+
 LanguagePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
+SectionPage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
 ArticlePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
 
 
 class Question(Page):
     subpage_types = ['polls.Choice']
+
+    extra_style_hints = models.TextField(
+        default='',
+        null=True, blank=True,
+        help_text=_(
+            "Styling options that can be applied to this section "
+            "and all its descendants"))
+
     show_results = models.BooleanField(
         default=True,
         help_text=_("This option allows the users to see the results.")
@@ -52,6 +62,25 @@ class Question(Page):
         else:
             return Choice.objects.live().child_of(self)
 
+    def get_effective_extra_style_hints(self):
+        parent_section = SectionPage.objects.all().ancestor_of(self).last()
+        if parent_section:
+            return self.extra_style_hints or \
+                parent_section.get_effective_extra_style_hints()
+        else:
+            parent_article = ArticlePage.objects.all().ancestor_of(self).last()
+            if parent_article:
+                return self.extra_style_hints or \
+                    parent_article  .get_effective_extra_style_hints()
+        return self.extra_style_hints
+
+Question.settings_panels = [
+    MultiFieldPanel(
+        [FieldRowPanel(
+            [FieldPanel('extra_style_hints')], classname="label-above")],
+        "Meta")
+]
+
 
 class FreeTextQuestion(Question):
     subpage_types = []
@@ -88,9 +117,17 @@ class ChoiceVote(models.Model):
     user = models.ForeignKey('auth.User', related_name='choice_votes')
     choice = models.ManyToManyField('Choice', null=True, blank=True)
     question = models.ForeignKey('Question')
+    submission_date = models.DateField(null=True, blank=True,
+                                       auto_now_add=True)
+
+    @property
+    def answer(self):
+        return ','.join(self.choice.all().values_list('title', flat=True))
 
 
 class FreeTextVote(models.Model):
     user = models.ForeignKey('auth.User', related_name='text_votes')
     question = models.ForeignKey('FreeTextQuestion')
     answer = models.TextField(blank=True, null=True)
+    submission_date = models.DateField(null=True, blank=True,
+                                       auto_now_add=True)

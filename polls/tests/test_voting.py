@@ -136,6 +136,7 @@ class ModelsTestCase(TestCase):
         self.english.add_child(instance=question)
         question.add_child(instance=choice1)
         question.save_revision().publish()
+        choice1.save_revision().publish()
         # make a vote
         client = Client()
         client.login(username='tester', password='tester')
