@@ -91,8 +91,7 @@ class ModelsTestCase(TestCase):
                            ' attachment;filename=questions-' + date +
                            '.csv\r\n\r\n'
                            'title,date_submitted,user,answer'
-                           '\r\nis this a test,'
-                           + date + ',tester,'
+                           '\r\nis this a test,' + date + ',tester,'
                            '"yes,no"\r\n')
         self.assertEquals(str(response), expected_output)
 
@@ -118,7 +117,6 @@ class ModelsTestCase(TestCase):
                            ' attachment;filename=questions-' + date +
                            '.csv\r\n\r\n'
                            'title,date_submitted,user,answer'
-                           '\r\nis this a test,'
-                           + date + ',tester,'
+                           '\r\nis this a test,' + date + ',tester,'
                            'this is an answer\r\n')
         self.assertEquals(str(response), expected_output)
