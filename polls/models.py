@@ -13,7 +13,11 @@ ArticlePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
 
 class Question(Page):
     subpage_types = ['polls.Choice']
-
+    short_name = models.TextField(
+        null=True, blank=True,
+        help_text="The short name will replace the title when "
+        "downloading your results. e.g 'How old are you' would be "
+        "replaced by 'Age' in the title column.")
     extra_style_hints = models.TextField(
         default='',
         null=True, blank=True,
@@ -41,11 +45,13 @@ class Question(Page):
         help_text=_(
             "Allows the user to choose more than one option.")
     )
-    content_panels = Page.content_panels + [MultiFieldPanel([
-        FieldPanel('show_results'),
-        FieldPanel('randomise_options'),
-        FieldPanel('result_as_percentage'),
-        FieldPanel('allow_multiple_choice')], heading=_("Question Settings",))]
+    content_panels = Page.content_panels + [FieldPanel('short_name')] + [
+        MultiFieldPanel([
+            FieldPanel('show_results'),
+            FieldPanel('randomise_options'),
+            FieldPanel('result_as_percentage'),
+            FieldPanel('allow_multiple_choice')], heading=_(
+                "Question Settings",))]
 
     def user_choice(self, user):
         self.choicevote_set.filter(user=user)
@@ -107,8 +113,13 @@ class Choice(Page):
     choice_votes = models.ManyToManyField('ChoiceVote',
                                           related_name='choices',
                                           null=True, blank=True)
+    short_name = models.TextField(
+        null=True, blank=True,
+        help_text="The short name will replace the title when "
+        "downloading your results. e.g '10 years old' would be "
+        "replaced by '10' in the title column.")
 
-    promote_panels = Page.promote_panels + [
+    promote_panels = Page.promote_panels + [FieldPanel('short_name')] + [
         FieldPanel('votes'),
     ]
 
@@ -122,7 +133,7 @@ class ChoiceVote(models.Model):
 
     @property
     def answer(self):
-        return ','.join(self.choice.all().values_list('title', flat=True))
+        return ','.join([c.short_name or c.title for c in self.choice.all()])
 
 
 class FreeTextVote(models.Model):
