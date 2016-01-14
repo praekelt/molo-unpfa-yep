@@ -95,6 +95,70 @@ class ModelsTestCase(TestCase):
                            '"yes,no"\r\n')
         self.assertEquals(str(response), expected_output)
 
+    def test_choice_short_name(self):
+        # make choices
+        choice1 = Choice(title='yes', short_name='y')
+        choice2 = Choice(title='no', short_name='n')
+        # make a question
+        question = Question(
+            title='is this a test',
+            allow_multiple_choice=True, show_results=False)
+        self.english.add_child(instance=question)
+        question.add_child(instance=choice1)
+        question.add_child(instance=choice2)
+        question.save_revision().publish()
+        # make a vote
+        client = Client()
+        client.login(username='tester', password='tester')
+
+        client.post(reverse('molo.polls:vote',
+                    kwargs={'question_id': question.id}),
+                    {'choice': [choice1.id, choice2.id]})
+        # should automatically create the poll vote
+        # test poll vote
+        response = download_as_csv(QuestionAdmin(Question, self.site),
+                                   None,
+                                   Question.objects.all())
+        date = str(datetime.datetime.now().date())
+        expected_output = ('Content-Type: text/csv\r\nContent-Disposition:'
+                           ' attachment;filename=questions-' + date +
+                           '.csv\r\n\r\n'
+                           'title,date_submitted,user,answer'
+                           '\r\nis this a test,' + date + ',tester,'
+                           '"y,n"\r\n')
+        self.assertEquals(str(response), expected_output)
+
+    def test_choice_short_name_single_choice(self):
+        # make choices
+        choice1 = Choice(title='yes', short_name='y')
+        # make a question
+        question = Question(
+            title='is this a test',
+            allow_multiple_choice=True, show_results=False)
+        self.english.add_child(instance=question)
+        question.add_child(instance=choice1)
+        question.save_revision().publish()
+        # make a vote
+        client = Client()
+        client.login(username='tester', password='tester')
+
+        client.post(reverse('molo.polls:vote',
+                    kwargs={'question_id': question.id}),
+                    {'choice': choice1.id})
+        # should automatically create the poll vote
+        # test poll vote
+        response = download_as_csv(QuestionAdmin(Question, self.site),
+                                   None,
+                                   Question.objects.all())
+        date = str(datetime.datetime.now().date())
+        expected_output = ('Content-Type: text/csv\r\nContent-Disposition:'
+                           ' attachment;filename=questions-' + date +
+                           '.csv\r\n\r\n'
+                           'title,date_submitted,user,answer'
+                           '\r\nis this a test,' + date + ',tester,'
+                           'y\r\n')
+        self.assertEquals(str(response), expected_output)
+
     def test_download_csv_free_text_question(self):
         question = FreeTextQuestion(
             title='is this a test')
