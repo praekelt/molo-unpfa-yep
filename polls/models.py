@@ -15,7 +15,7 @@ class Question(Page):
     subpage_types = ['polls.Choice']
     short_name = models.TextField(
         null=True, blank=True,
-        help_text="The short name will replace the title when"
+        help_text="The short name will replace the title when "
         "downloading your results. e.g 'How old are you' would be "
         "replaced by 'Age' in the title column.")
     extra_style_hints = models.TextField(
