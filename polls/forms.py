@@ -9,7 +9,7 @@ class TextVoteForm(forms.Form):
 
 class NumericalTextVoteForm(forms.Form):
     answer = forms.RegexField(
-        "^[0-9]", required=True, error_messages={
+        "^[0-9]+$", required=True, error_messages={
             'invalid':
                 "You did not enter a numerical value. Please try again."})
 
