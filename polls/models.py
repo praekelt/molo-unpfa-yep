@@ -15,8 +15,8 @@ class Question(Page):
     subpage_types = ['polls.Choice']
     short_name = models.TextField(
         null=True, blank=True,
-        help_text=_("The short name is used when downloading the question and answer")
-    )
+        help_text="The short name will be used as the copy for the download. "
+        "E.g I am unemployed could be stored as unemployed")
     extra_style_hints = models.TextField(
         default='',
         null=True, blank=True,
