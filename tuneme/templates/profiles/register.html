@@ -9,17 +9,17 @@
 <div class="block turq">
   <div class="signin-form">
     <p>{% trans "Not a member yet? Join us by signing up below." %}</p>
-    {% if messages %}
-      <ul class="messages">
-          {% for message in messages %}
-          <li>{{ message }}</li>
-          {% endfor %}
-      </ul>
-    {% endif %}
+
     <form method="post" action="{% url 'molo.profiles:user_register' %}">{% csrf_token %}
         <p><strong>{% trans "Choose a username" %}</strong></p>
+        {% if form.username.errors %}
+          <li>{{ form.username.errors}}</li>
+        {% endif %}
         {{ registration_form.username }}
         <p><strong>{% trans "Choose a 4-digit pin" %}</strong></p>
+        {% if form.password.errors %}
+          <li>{{ form.password.errors}}</li>
+        {% endif %}
         {{ registration_form.password }}
         <input type="submit" class="registerSubmit" value='{% trans "JOIN" %}' />
         <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
