@@ -15,12 +15,12 @@
         {% if form.username.errors %}
           <li>{{ form.username.errors}}</li>
         {% endif %}
-        {{ registration_form.username }}
+        {{ form.username }}
         <p><strong>{% trans "Choose a 4-digit pin" %}</strong></p>
         {% if form.password.errors %}
           <li>{{ form.password.errors}}</li>
         {% endif %}
-        {{ registration_form.password }}
+        {{ form.password }}
         <input type="submit" class="registerSubmit" value='{% trans "JOIN" %}' />
         <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
         <a href="{% url 'molo.profiles:auth_login' %}" class="button inverted">{% trans "already joined?" %}</a>
