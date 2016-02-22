@@ -1,5 +1,5 @@
 from datetime import datetime
-
+from bs4 import BeautifulSoup
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
@@ -19,6 +19,17 @@ class ViewsTestCase(TestCase):
             username='tester',
             email='tester@example.com',
             password='tester')
+
+    def create_comment(self, article, comment, parent=None):
+        return MoloComment.objects.create(
+            content_type=ContentType.objects.get_for_model(article),
+            object_pk=article.pk,
+            content_object=article,
+            site=Site.objects.get_current(),
+            user=self.user,
+            comment=comment,
+            parent=parent,
+            submit_date=datetime.now())
 
     def test_default_dob_in_registration_done(self):
         client = Client()
@@ -88,3 +99,25 @@ class ViewsTestCase(TestCase):
         })
         response = client.post(reverse('molo-comments-post'), data)
         self.assertEqual(response.status_code, 302)
+
+    def test_comment_reply(self):
+        article = ArticlePage.objects.create(
+            title='article 1', depth=1,
+            subtitle='article 1 subtitle',
+            slug='article-1', path=[1], commenting_state='O')
+        article.save()
+
+        comment1 = self.create_comment(article, 'test comment1 text')
+        comment2 = self.create_comment(article, 'test comment2 text')
+        comment3 = self.create_comment(article, 'test comment3 text')
+        reply = self.create_comment(article,
+                                    'test reply text', parent=comment2)
+        response = self.client.get(
+            reverse('more-comments', args=(article.pk,)))
+
+        html = BeautifulSoup(response.content, 'html.parser')
+        [c3row, c2row, replyrow, c1row] = html.find_all(class_='comment')
+        self.assertTrue(comment3.comment in c3row.prettify())
+        self.assertTrue(comment2.comment in c2row.prettify())
+        self.assertTrue(reply.comment in replyrow.prettify())
+        self.assertTrue(comment1.comment in c1row.prettify())

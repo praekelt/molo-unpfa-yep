@@ -1,5 +1,6 @@
 {% extends "core/_article_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags comments mptt_tags molo_commenting_tags i18n %}
+
+{% load wagtailcore_tags wagtailimages_tags comments molo_commenting_tags i18n mptt_tags %}
 
 {% block content %}
 <div class="title {{self.get_parent_section.get_effective_extra_style_hints}} align-left">
@@ -7,20 +8,23 @@
 </div>
 <div id="comments-list">
       {% for node in comments %}
-        {% include "comments/comment.html" %}
+        {% recursetree node %}
+            {% include "comments/comment.html" %}
+            {{ children }}
+        {% endrecursetree %}
       {% endfor %}
 </div>
 
 <div class="pagination">
     <span class="step-links">
-        {% if comments.has_previous %}
-            <a href="?p={{ comments.previous_page_number }}">&larr;</a>
+        {% if page.has_previous %}
+            <a href="?p={{ page.previous_page_number }}">&larr;</a>
         {% endif %}
         <span class="current">
-            Page {{ comments.number }} of {{ comments.paginator.num_pages }}
+            Page {{ page.number }} of {{ page.paginator.num_pages }}
         </span>
-        {% if comments.has_next %}
-            <a href="?p={{ comments.next_page_number }}">&rarr;</a>
+        {% if page.has_next %}
+            <a href="?p={{ page.next_page_number }}">&rarr;</a>
         {% endif %}
     </span>
     <br>
