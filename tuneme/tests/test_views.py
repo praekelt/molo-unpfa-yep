@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.test.client import Client
-
+from molo.core.tests.base import MoloTestCaseMixin
 from molo.core.models import ArticlePage
 from molo.commenting.models import MoloComment
 from molo.commenting.forms import MoloCommentForm
@@ -12,7 +12,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 
 
-class ViewsTestCase(TestCase):
+class ViewsTestCase(TestCase, MoloTestCaseMixin):
 
     def setUp(self):
         self.user = User.objects.create_user(
@@ -121,3 +121,25 @@ class ViewsTestCase(TestCase):
         self.assertTrue(comment2.comment in c2row.prettify())
         self.assertTrue(reply.comment in replyrow.prettify())
         self.assertTrue(comment1.comment in c1row.prettify())
+
+    def test_comment_reply_in_article(self):
+            self.mk_main()
+            self.yourmind = self.mk_section(
+                self.main, title='Your mind')
+            article = self.mk_article(self.yourmind, title='article 1',
+                                      subtitle='article 1 subtitle',
+                                      slug='article-1')
+
+            comment1 = self.create_comment(article, 'test comment1 text')
+            comment2 = self.create_comment(article, 'test comment2 text')
+            comment3 = self.create_comment(article, 'test comment3 text')
+            reply = self.create_comment(article,
+                                        'test reply text', parent=comment2)
+            response = self.client.get('/your-mind/article-1/')
+            print response
+            html = BeautifulSoup(response.content, 'html.parser')
+            [c3row, c2row, replyrow, c1row] = html.find_all(class_='comment')
+            self.assertTrue(comment3.comment in c3row.prettify())
+            self.assertTrue(comment2.comment in c2row.prettify())
+            self.assertTrue(reply.comment in replyrow.prettify())
+            self.assertTrue(comment1.comment in c1row.prettify())
