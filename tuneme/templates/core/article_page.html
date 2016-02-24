@@ -98,7 +98,10 @@
   {% get_comment_count for self as comment_count %}
     {% get_molo_comments for self as comment_list %}
       {% for node in comment_list %}
-        {% include "comments/comment.html" %}
+          {% recursetree node %}
+            {% include "comments/comment.html" %}
+            {{ children }}
+          {% endrecursetree %}
       {% endfor %}
   {% if comment_count > 5 %}
     <div class="pagination">
