@@ -200,7 +200,8 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 GOOGLE_ANALYTICS = {
     'google_analytics_id': '',
 }
-GOOGLE_ANALYTICS_IGNORE_PATH = ['/health/', ]
+GOOGLE_ANALYTICS_IGNORE_PATH = [
+    '/health/', '/favicon.ico', '/robots.txt', '/admin/', '/django-admin/']
 
 
 # Celery
