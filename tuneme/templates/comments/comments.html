@@ -24,7 +24,8 @@
             Page {{ page.number }} of {{ page.paginator.num_pages }}
         </span>
         {% if page.has_next %}
-            <a href="?p={{ page.next_page_number }}">&gt; &ndash; &ndash;
+            <a href="?p={{ page.next_page_number }}">&gt; &ndash; &ndash;</a>
+        {% endif %}
     </span>
     <br>
     <br>
