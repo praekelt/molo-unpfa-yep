@@ -49,7 +49,7 @@ img {max-width:100%;}
 
 /* Content Blocks */
 .block {display:block; clear:both; overflow:hidden; padding:15px;}
-.current span{padding:15px; text-align: center;}
+.current {padding:100px; text-align: center;}
 
 
 /* Buttons/Links */
