@@ -49,7 +49,7 @@ img {max-width:100%;}
 
 /* Content Blocks */
 .block {display:block; clear:both; overflow:hidden; padding:15px;}
-
+.current span{padding:15px; text-align: center;}
 
 
 /* Buttons/Links */
@@ -183,7 +183,7 @@ label {font:normal 15px 'Quicksand', Arial, Helvetica, sans-serif;}
         .magenta .article-copy blockquote, .comment.magenta .by strong, .comment.magenta .report {color:#e60382;}
 
 
-.pagination {padding:15px; text-align: center;}
+.pagination {padding:15px; text-align: left;}
 
 /* Footer */
 .footer {padding:15px; font-size:85%; clear:both; display:block;}
