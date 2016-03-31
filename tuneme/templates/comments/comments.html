@@ -15,20 +15,18 @@
       {% endfor %}
 </div>
 
-<div class="pagination">
-    <span class="step-links">
-        {% if page.has_previous %}
-            <a href="?p={{ page.previous_page_number }}">&larr;</a>
-        {% endif %}
-        <span class="current">
-            Page {{ page.number }} of {{ page.paginator.num_pages }}
-        </span>
-        {% if page.has_next %}
-            <a href="?p={{ page.next_page_number }}">&rarr;</a>
-        {% endif %}
+<div class="navigator">
+    {% if page.has_previous %}
+        <a href="?p={{ page.previous_page_number }}">&lt;&ndash;&ndash;&ndash;</a>
+    {% endif %}
+    <span class="padding">
+        {{ page.number }} of {{ page.paginator.num_pages }}
     </span>
-    <br>
-    <br>
+    {% if page.has_next %}
+        <a href="?p={{ page.next_page_number }}">&ndash;&ndash;&ndash;&gt;</a>
+    {% endif %}
+</div>
+<div class="pagination">
     <a href="{% pageurl self %}">{% trans "Back to article" %}</a>
 </div>
 
