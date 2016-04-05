@@ -53,6 +53,7 @@ body {background:white; position:relative; text-align:center; margin-bottom: 0px
         li.purple {background-color:#d127fc;}
         li.pink {background-color:#f82353;}
         li.orange {background-color:#ff7c44;}
+        li.servicedirectory {background-color:#FF8E1E;}
         li.yellow {background-color:#fad400;}
         li.pgrey {background-color:#666666;}
         li.magenta {background-color:#e60382;}
@@ -119,6 +120,7 @@ select {min-width:0%;}
 .block {display:block; clear:both; overflow:hidden; padding:0 0 15px; border:0;}
 
 
+.block.servicedirectory {display: none}
 
 
 /* Fonts */
@@ -275,6 +277,65 @@ a.white-link {color:white; padding:20px 0; display:inline-block; }
     .search-result .copy {display:inline-block; width:75%; padding-left:5%; vertical-align:top;}
     .search-result h6 {padding:0; font-size:100%; color:black;}
     .search-result h3 {padding:0; font-size:125%;}
+
+
+/* Service Directory */
+.sd-heading.category-grouping a {color:#FF8E1E; text-decoration: underline; font: bold 20px 'Quicksand', Arial, Helvetica, sans-serif; text-transform: none}
+.sd-heading.category-grouping a.sd-cat-keyword {font-size: 18px; text-decoration: none; font-weight: normal;}
+.sd-banner {background: #FF8E1E; padding: 70px 0 0 0}
+.sd-banner:after {content:""; height:10px; width:100%; display:block; background:url(../img/white-wave.png) 0 0 repeat-x; background-size:20px;}
+h1.sd-heading.find-a-service {color: white; text-decoration: none; font: bold 125% 'Quicksand', Arial, Helvetica, sans-serif; text-transform: none; padding: 10px 20px 20px}
+.sd-img-container {background: no-repeat center/35% url(../img/Find-a-clinic.png); height: 100px;}
+.sd-search-form input[type="text"] {width: 82%; color: #FF8E1E; font: bold 100% 'Quicksand', Arial, Helvetica, sans-serif; height: auto;}
+.sd-search-form input[type="submit"] {color: #fff; width: 90%; margin: 0 0 15px 0; background-color: #FF8E1E; text-decoration: none; padding: 10px 0; font: bold 15px 'Quicksand', Arial, Helvetica, sans-serif;}
+.sd-search-form input[type="text"]::-webkit-input-placeholder {color: #FF8E1E; font: bold 100% 'Quicksand', Arial, Helvetica, sans-serif;}
+.sd-search-form input[type="text"]:-moz-placeholder {color: #FF8E1E; font: bold 125% 'Quicksand', Arial, Helvetica, sans-serif;}
+.sd-search-form input[type="text"]::-moz-placeholder {color: #FF8E1E; font: bold 125% 'Quicksand', Arial, Helvetica, sans-serif;}
+.sd-search-form input[type="text"]:-ms-input-placeholder {color: #FF8E1E; font: bold 125% 'Quicksand', Arial, Helvetica, sans-serif;}
+.sd-categories {padding: 0 10px 15px 10px;}
+h1.sd-heading.category-grouping {padding-left: 8px; margin-bottom: 5px;}
+.sd-back {text-align: left; font-weight: bold; padding: 15px 0 0 10px; font-size: 100%;}
+.sd-back a {text-decoration: none;}
+h6.sd-heading.choose-location {color: #FF8E1E; font: bold 125% 'Quicksand', Arial, Helvetica, sans-serif; text-align: left; padding: 10px 15px;}
+ul.sd-search-results {padding: 0 15px 15px;}
+ul.sd-search-results li {text-align: left; padding: 5px 0}
+.sd-current-address {text-align: left; color: #FF8E1E; font: bold 100% 'Quicksand', Arial, Helvetica, sans-serif;}
+a.sd-change-area {display: block; padding-left: 15px; text-align: left; font-weight: bold; font-size: 100%;}
+a.sd-service-result {text-decoration: none;}
+a.sd-service-result h1 {text-align: left; color: #FF8E1E; font: bold 100% 'Quicksand', Arial, Helvetica, sans-serif; padding: 15px 15px 0;}
+p.sd-service-keywords {text-align: left; padding-bottom: 0}
+p.sd-service-location {float: left; width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+p.sd-service-location span {text-align: right;}
+p.sd-service-distance {float: right; padding: 10px 15px 0;}
+
+button.smiley.sad {margin-left: 0;}
+
+p.sd-org-contact, p.sd-service-tradinghours, p.sd-heading.search, p.sd-help-text.search, p.sd-org-address, p.sd-self-sms
+{text-align: left; padding-top: 5px;}
+
+h1.sd-heading.svc-org-name, h1.sd-heading.service-keywords, h1.sd-heading.org-contact, h1.sd-heading.service-tradinghours,
+h1.sd-heading.org-address, h1.sd-heading.service-rating, h1.sd-heading.report-info, h1.sd-heading.send-sms
+{text-align: left; color: #FF8E1E; font: bold 100% 'Quicksand', Arial, Helvetica, sans-serif; padding: 10px 15px 0;}
+
+h1.sd-heading.service-rating {margin-bottom: 15px;}
+a.sd-report-link {text-align: left; display: block; padding-left: 15px; margin-bottom: 10px;}
+
+.sd-service-categories {text-align: left; padding-left: 15px;}
+a.sd-sms-button {display: block; color:white; padding:15px; text-decoration: none; width: 80%; margin: 15px auto;
+    background-color: #FF8E1E; font: bold 15px 'Quicksand', Arial, Helvetica, sans-serif;  -webkit-border-radius: 25px; border-radius: 25px;}
+
+.sd-msg {margin: 15px;}
+
+.sd-input, .sd-option {padding: 5px 15px;}
+.sd-option label {text-align: left; display: block; padding-left: 15px;}
+
+.sd-input label, span.sd-input-sub {text-align: left; display: block;}
+
+label.other_detail {text-align: left; display: block; padding: 5px 0 5px 15px;}
+textarea#other_detail {width: 85%; display: block; margin: 0 auto;}
+
+.sd-report-btn, .sd-sms-btn {display: block; color:white; padding:15px; text-decoration: none; width: 90%; margin: 15px auto;
+    background-color: #FF8E1E; font: bold 15px 'Quicksand', Arial, Helvetica, sans-serif;  -webkit-border-radius: 25px; border-radius: 25px; -webkit-appearance:none; border: 0}
 
 
 
