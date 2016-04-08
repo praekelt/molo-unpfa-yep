@@ -40,6 +40,8 @@ urlpatterns = patterns(
     url(r'^yourwords/', include('molo.yourwords.urls',
                                 namespace='molo.yourwords')),
 
+    url(r'servicedirectory/', include('molo.servicedirectory.urls')),
+
     url(r'commenting/reply/(?P<parent_id>\d+)/$',
         CommentReplyFormView.as_view(),
         name='comments-reply'),

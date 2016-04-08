@@ -145,17 +145,16 @@ p.sd-org-contact, p.sd-service-tradinghours, p.sd-heading.search, p.sd-help-text
 {text-align: left; padding: 0 15px;}
 
 h1.sd-heading.svc-org-name, h1.sd-heading.service-keywords, h1.sd-heading.org-contact, h1.sd-heading.service-tradinghours,
-h1.sd-heading.org-address, h1.sd-heading.service-rating, h1.sd-heading.report-info, h1.sd-heading.send-sms
-{color:#FF8E1E; text-align: left; font-size: 150%; font-weight: bold; padding: 10px 0 5px 15px; font-family: inherit; text-transform: none;}
+h1.sd-heading.org-address, h1.sd-heading.service-rating, h1.sd-heading.report-info, h1.sd-heading.send-sms, h1.sd-heading.org-services
+{color:#666666; text-align: left; font-size: 150%; font-weight: bold; padding: 10px 0 5px 15px; font-family: inherit; text-transform: none;}
+
+h1.sd-heading.svc-org-name {color: #FF8E1E;}
 
 h1.sd-heading.service-rating {margin-bottom: 15px;}
-a.sd-report-link {text-align: left; display: block; padding: 15px;}
-
-button.smiley.sad {margin-left: 15px;}
+a.sd-report-link {text-align: left; display: block; padding: 15px; font-size: 120%;}
 
 .sd-service-categories {text-align: left; padding-left: 15px;}
-a.sd-sms-button {display: block; color:white; padding:15px; text-decoration: none; width: 65%; margin: 15px;
-    background-color: #FF8E1E; font-size: 100%; font-weight: bold;}
+a.sd-sms-button {display: block; margin: 15px; text-transform: uppercase; color:#FF8E1E;  font-size: 120%; font-weight: bold; text-decoration: underline;}
 
 .sd-msg {margin: 15px;}
 
@@ -167,7 +166,8 @@ a.sd-sms-button {display: block; color:white; padding:15px; text-decoration: non
 label.other_detail {text-align: left; display: block; padding: 5px 0 5px 15px; font-size: 100%; font-family: inherit;}
 textarea#other_detail {width: 85%; display: block; margin: 0 auto; font-size: 100%; font-family: inherit;}
 
-.sd-report-btn, .sd-sms-btn {display: block; color:white; padding:15px; text-decoration: none; width: 65%; margin: 15px;
-    background-color: #FF8E1E; border: 0; font-size: 100%; font-weight: bold;}
+.sd-report-btn, .sd-sms-btn {display: block; margin: 15px; text-transform: uppercase; color:#FF8E1E;  font-size: 120%; font-weight: bold; text-decoration: underline; background: none; border: 0;}
 
 .sd-container hr:last-child {display: none;}
+
+.org-rate-faces span {font-size: 100%; padding-top: 26px; float: left; width: 27%; padding-left: 22px;}
