@@ -11,7 +11,7 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 
 from molo.profiles.views import RegistrationDone
-from tuneme.views import search, report_response
+from tuneme.views import search, report_response, CommentReplyFormView
 from tuneme.forms import DateOfBirthForm
 
 
@@ -41,6 +41,10 @@ urlpatterns = patterns(
                                 namespace='molo.yourwords')),
 
     url(r'servicedirectory/', include('molo.servicedirectory.urls')),
+
+    url(r'commenting/reply/(?P<parent_id>\d+)/$',
+        CommentReplyFormView.as_view(),
+        name='comments-reply'),
 
     url(r'^comments/reported/(?P<comment_pk>\d+)/$',
         report_response, name='report_response'),
