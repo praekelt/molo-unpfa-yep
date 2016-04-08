@@ -313,30 +313,41 @@ button.smiley.sad {margin-left: 0;}
 p.sd-org-contact, p.sd-service-tradinghours, p.sd-heading.search, p.sd-help-text.search, p.sd-org-address, p.sd-self-sms
 {text-align: left; padding-top: 5px;}
 
-h1.sd-heading.svc-org-name, h1.sd-heading.service-keywords, h1.sd-heading.org-contact, h1.sd-heading.service-tradinghours,
-h1.sd-heading.org-address, h1.sd-heading.service-rating, h1.sd-heading.report-info, h1.sd-heading.send-sms
-{text-align: left; color: #FF8E1E; font: bold 100% 'Quicksand', Arial, Helvetica, sans-serif; padding: 10px 15px 0;}
+h1.sd-heading.svc-org-name {text-align: left; color: #FF8E1E; font: bold 100% 'Quicksand', Arial, Helvetica, sans-serif; padding: 10px 15px 0; text-transform: none;}
+
+h1.sd-heading.service-keywords, h1.sd-heading.org-contact, h1.sd-heading.service-tradinghours,
+h1.sd-heading.org-address, h1.sd-heading.service-rating, h1.sd-heading.report-info, h1.sd-heading.send-sms, h1.sd-heading.org-services
+{text-align: left; color: #666666; font: bold 100% 'Quicksand', Arial, Helvetica, sans-serif; padding: 10px 15px 0; text-transform: none;}
+
+h1.sd-heading.send-sms {margin-bottom: 15px;}
 
 h1.sd-heading.service-rating {margin-bottom: 15px;}
-a.sd-report-link {text-align: left; display: block; padding-left: 15px; margin-bottom: 10px;}
+a.sd-report-link {text-align: left; display: block; padding-left: 15px; margin-bottom: 10px; font-size: 100%;}
 
 .sd-service-categories {text-align: left; padding-left: 15px;}
 a.sd-sms-button {display: block; color:white; padding:15px; text-decoration: none; width: 80%; margin: 15px auto;
-    background-color: #FF8E1E; font: bold 15px 'Quicksand', Arial, Helvetica, sans-serif;  -webkit-border-radius: 25px; border-radius: 25px;}
+    background-color: #FF8E1E; font: bold 15px 'Quicksand', Arial, Helvetica, sans-serif;  -webkit-border-radius: 25px; border-radius: 25px; text-transform: none;}
+
+a.sd-sms-button.secondary {background-color: #fff; border: 1px solid #FF8E1E; color: #FF8E1E;}
 
 .sd-msg {margin: 15px;}
 
 .sd-input, .sd-option {padding: 5px 15px;}
 .sd-option label {text-align: left; display: block; padding-left: 15px;}
 
-.sd-input label, span.sd-input-sub {text-align: left; display: block;}
+.sd-input label, span.sd-input-sub {text-align: left; display: block; font-weight: bold;}
+
+span.sd-input-sub {font-weight: normal;}
 
 label.other_detail {text-align: left; display: block; padding: 5px 0 5px 15px;}
 textarea#other_detail {width: 85%; display: block; margin: 0 auto;}
 
-.sd-report-btn, .sd-sms-btn {display: block; color:white; padding:15px; text-decoration: none; width: 90%; margin: 15px auto;
+.sd-report-btn, .sd-sms-btn {display: block; color:white; padding:10px; text-decoration: none; width: 90%; margin: 15px auto;
     background-color: #FF8E1E; font: bold 15px 'Quicksand', Arial, Helvetica, sans-serif;  -webkit-border-radius: 25px; border-radius: 25px; -webkit-appearance:none; border: 0}
 
+
+.org-rate-faces {float: left; margin: 0 15px 15px;}
+.org-rate-faces span {display: block; font-size: 13px; padding: 0; float: none;  width: inherit;}
 
 
 /* Back to top link */
