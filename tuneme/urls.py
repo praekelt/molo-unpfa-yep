@@ -40,6 +40,8 @@ urlpatterns = patterns(
     url(r'^yourwords/', include('molo.yourwords.urls',
                                 namespace='molo.yourwords')),
 
+    url(r'servicedirectory/', include('molo.servicedirectory.urls')),
+
     url(r'^comments/reported/(?P<comment_pk>\d+)/$',
         report_response, name='report_response'),
     url(r'^comments/', include('molo.commenting.urls')),
