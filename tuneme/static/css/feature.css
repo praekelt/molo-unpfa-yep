@@ -115,3 +115,59 @@ select {min-width:0%;}
 .centent li {padding: 10px 0;}
 
 .alert-error {color:red; padding: 0; font-style: italic;}
+
+
+
+
+/* Service Directory */
+.sd-heading.category-grouping a {color:#FF8E1E; text-decoration: underline; font-size: 130%; font-weight: bold; text-transform: none; line-height: 130%;}
+.sd-heading.category-grouping a.sd-cat-keyword {font-size: 18px; text-decoration: none; font-weight: normal;}
+.sd-banner {padding: 70px 0 0 0}
+h1.sd-heading.find-a-service {color: #FF8E1E; text-decoration: none; font-size: 200%; font-weight: bold; text-transform: none; padding: 10px 20px 20px;}
+.sd-img-container {background: no-repeat left/35% url(../img/Find-a-clinic.png); height: 100px;}
+.sd-search-form input[type="text"] {width: 82%; height: 30px; font-size: 120%; color: black; display: block; margin: 9px auto;}
+.sd-search-form input[type="submit"] {background: none; color: #FF8E1E; text-decoration: underline; font-size: 130%; margin: 0 0 15px; padding: 0 15px 15px;}
+.sd-categories {padding: 0 10px 15px 10px;}
+h1.sd-heading.category-grouping {text-align:left; padding-left: 8px; margin-bottom: 15px;}
+.sd-back {text-align: left; font-weight: bold; font-size: 120%; padding: 0 15px 15px;}
+h6.sd-heading.choose-location {color: #FF8E1E; text-decoration: none; font-size: 150%; font-weight: bold; text-transform: none; padding: 0 15px 20px;}
+ul.sd-search-results {padding: 0 15px 15px;}
+ul.sd-search-results li {text-align: left; padding: 8px 0}
+.sd-current-address {color: #FF8E1E; text-decoration: none; font-size: 150%; font-weight: bold; text-transform: none; padding: 0 15px 0;}
+a.sd-change-area {display: block; padding-left: 15px; font-size: 120%; text-align: left; font-weight: bold;}
+a.sd-service-result {text-decoration: none;}
+a.sd-service-result h1 {text-align: left; color: #FF8E1E; font-size: 130%; padding: 15px 15px 0;}
+p.sd-service-keywords {text-align: left; padding-bottom: 0; padding-left: 15px;}
+p.sd-service-location {text-align: left; width: 60%; overflow: hidden; white-space: nowrap; padding-left: 15px;}
+p.sd-service-distance {padding: 0 15px 15px;}
+
+p.sd-org-contact, p.sd-service-tradinghours, p.sd-heading.search, p.sd-help-text.search, p.sd-org-address, p.sd-self-sms
+{text-align: left; padding: 0 15px;}
+
+h1.sd-heading.svc-org-name, h1.sd-heading.service-keywords, h1.sd-heading.org-contact, h1.sd-heading.service-tradinghours,
+h1.sd-heading.org-address, h1.sd-heading.service-rating, h1.sd-heading.report-info, h1.sd-heading.send-sms, h1.sd-heading.org-services
+{color:#666666; text-align: left; font-size: 150%; font-weight: bold; padding: 10px 0 5px 15px; font-family: inherit; text-transform: none;}
+
+h1.sd-heading.svc-org-name {color: #FF8E1E;}
+
+h1.sd-heading.service-rating {margin-bottom: 15px;}
+a.sd-report-link {text-align: left; display: block; padding: 15px; font-size: 120%;}
+
+.sd-service-categories {text-align: left; padding-left: 15px;}
+a.sd-sms-button {display: block; margin: 15px; text-transform: uppercase; color:#FF8E1E;  font-size: 120%; font-weight: bold; text-decoration: underline;}
+
+.sd-msg {margin: 15px;}
+
+.sd-input, .sd-option {padding: 5px 15px;}
+.sd-option label {text-align: left; display: block; padding-left: 15px; font-size: 100%; font-family: inherit;}
+
+.sd-input label, span.sd-input-sub {text-align: left; display: block; font-size: 100%; font-family: inherit;}
+
+label.other_detail {text-align: left; display: block; padding: 5px 0 5px 15px; font-size: 100%; font-family: inherit;}
+textarea#other_detail {width: 85%; display: block; margin: 0 auto; font-size: 100%; font-family: inherit;}
+
+.sd-report-btn, .sd-sms-btn {display: block; margin: 15px; text-transform: uppercase; color:#FF8E1E;  font-size: 120%; font-weight: bold; text-decoration: underline; background: none; border: 0;}
+
+.sd-container hr:last-child {display: none;}
+
+.org-rate-faces span {font-size: 100%; padding-top: 26px; float: left; width: 27%; padding-left: 22px;}
