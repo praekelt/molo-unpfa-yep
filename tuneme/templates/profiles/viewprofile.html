@@ -21,6 +21,7 @@
         {{ edit_profile_form.alias }}
         {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
           <h5>{% trans "Update your mobile number:" %}</h5>
+          <p>{% trans "(e.g. +27900000013)" %}</p>
           <p>{% trans "Your mobile number is:" %}</p>
           <h5>{{ mobile_number }}</h5>
   	      {{ edit_profile_form.mobile_number.errors }}
