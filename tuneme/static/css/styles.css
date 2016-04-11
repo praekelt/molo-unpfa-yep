@@ -209,6 +209,9 @@ button.smiley.happy:before{border: 0!important;}
 /* Footer */
 .footer {padding:15px; font-size:85%; clear:both; display:block;}
 
+.terms_and_conditions { text-align: left; }
+
+
 
 @media screen {
     html {

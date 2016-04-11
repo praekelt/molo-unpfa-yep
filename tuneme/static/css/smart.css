@@ -371,3 +371,5 @@ textarea#other_detail {width: 85%; display: block; margin: 0 auto;}
 
 /* Footer */
 .footer a {text-decoration:underline; padding:0 2px;}
+
+.terms_and_conditions label {display:block; padding:0;}
