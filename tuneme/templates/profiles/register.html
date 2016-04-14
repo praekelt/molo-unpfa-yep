@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% load i18n static core_tags %}
+{% load i18n static core_tags wagtailsettings_tags %}
+{% get_settings %}
 
 
 {% block content %}
@@ -21,6 +22,24 @@
           <li>{{ form.password.errors}}</li>
         {% endif %}
         {{ form.password }}
+        <br>
+        {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
+          <p><strong>{% trans "Enter your mobile number" %}</strong></p>
+          <p>{% trans "(e.g. +260979000001)" %}</p>
+          {% if form.mobile_number.errors %}
+          <p class="alert-error">* {{ form.mobile_number.errors|join:' '}}</p>
+          {% endif %}
+          {{ form.mobile_number }}
+          <br>
+        {% endif %}
+        {% if form.terms_and_conditions.errors %}
+          <p class="alert-error">* {% trans "Please accept the T&Cs in order to complete the registration" %}</p>
+        {% endif %}
+        <div class="terms-and-conditions">
+          {{ form.terms_and_conditions|join:' ' }}
+          <label>{% trans "I accept the Terms and Conditions" %}</label>
+          <br>
+        </div>
         <input type="submit" class="registerSubmit" value='{% trans "JOIN" %}' />
         <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
         <a href="{% url 'molo.profiles:auth_login' %}" class="button inverted">{% trans "already joined?" %}</a>

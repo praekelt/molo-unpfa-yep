@@ -4,10 +4,13 @@ from django.contrib.auth.models import User
 from django.test import TestCase
 from django.test.client import Client
 
+from molo.core.tests.base import MoloTestCaseMixin
 
-class UserProfileValidationTests(TestCase):
+
+class UserProfileValidationTests(TestCase, MoloTestCaseMixin):
     def setUp(self):
         self.client = Client()
+        self.mk_main()
 
     def test_user_profile_validation(self):
 
