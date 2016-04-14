@@ -35,7 +35,7 @@
         {% if form.terms_and_conditions.errors %}
           <p class="alert-error">* {% trans "Please accept the T&Cs in order to complete the registration" %}</p>
         {% endif %}
-        <div class="terms_and_conditions">
+        <div class="terms-and-conditions">
           {{ form.terms_and_conditions|join:' ' }}
           <label>{% trans "I accept the Terms and Conditions" %}</label>
           <br>

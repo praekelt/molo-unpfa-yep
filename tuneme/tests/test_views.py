@@ -12,7 +12,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 
 
-class ViewsTestCase(MoloTestCaseMixin, TestCase):
+class ViewsTestCase(TestCase, MoloTestCaseMixin):
 
     def setUp(self):
         self.user = User.objects.create_user(
