@@ -5,9 +5,12 @@ from django.test.client import Client
 from wagtail.wagtailsearch.backends import get_search_backend
 
 from molo.core.models import ArticlePage
+from molo.core.tests.base import MoloTestCaseMixin
 
 
-class TestSearch(TestCase):
+class TestSearch(TestCase, MoloTestCaseMixin):
+    def setUp(self):
+        self.mk_main()
 
     def test_search(self):
         self.backend = get_search_backend('default')

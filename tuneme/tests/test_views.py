@@ -15,6 +15,7 @@ from django.contrib.sites.models import Site
 class ViewsTestCase(TestCase, MoloTestCaseMixin):
 
     def setUp(self):
+        self.mk_main()
         self.user = User.objects.create_user(
             username='tester',
             email='tester@example.com',
