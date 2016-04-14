@@ -12,14 +12,14 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 
 
-class ViewsTestCase(TestCase, MoloTestCaseMixin):
+class ViewsTestCase(MoloTestCaseMixin, TestCase):
 
     def setUp(self):
-        self.mk_main()
         self.user = User.objects.create_user(
             username='tester',
             email='tester@example.com',
             password='tester')
+        self.mk_main()
 
     def create_comment(self, article, comment, parent=None):
         return MoloComment.objects.create(
@@ -124,7 +124,6 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         self.assertTrue(comment1.comment in c1row.prettify())
 
     def test_comment_reply_in_article(self):
-            self.mk_main()
             self.yourmind = self.mk_section(
                 self.main, title='Your mind')
             article = self.mk_article(self.yourmind, title='article 1',
