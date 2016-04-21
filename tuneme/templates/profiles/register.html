@@ -14,12 +14,12 @@
     <form method="post" action="{% url 'molo.profiles:user_register' %}">{% csrf_token %}
         <p><strong>{% trans "Choose a username" %}</strong></p>
         {% if form.username.errors %}
-          <li>{{ form.username.errors}}</li>
+          {{ form.username.errors}}
         {% endif %}
         {{ form.username }}
         <p><strong>{% trans "Choose a 4-digit pin" %}</strong></p>
         {% if form.password.errors %}
-          <li>{{ form.password.errors}}</li>
+          {{ form.password.errors}}
         {% endif %}
         {{ form.password }}
         <br>
@@ -27,16 +27,16 @@
           <p><strong>{% trans "Enter your mobile number" %}</strong></p>
           <p>{% trans "(e.g. +260979000001)" %}</p>
           {% if form.mobile_number.errors %}
-          <p class="alert-error">* {{ form.mobile_number.errors|join:' '}}</p>
+          {{ form.mobile_number.errors}}
           {% endif %}
           {{ form.mobile_number }}
           <br>
         {% endif %}
         {% if form.terms_and_conditions.errors %}
-          <p class="alert-error">* {% trans "Please accept the T&Cs in order to complete the registration" %}</p>
+          <p class="error">{% trans "Please accept the T&amp;Cs in order to complete the registration" %}</p>
         {% endif %}
-        <div class="terms-and-conditions">
-          {{ form.terms_and_conditions|join:' ' }}
+        <div class="terms_and_conditions">
+          {{ form.terms_and_conditions}}
           <label>{% trans "I accept the Terms and Conditions" %}</label>
           <br>
         </div>
