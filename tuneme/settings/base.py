@@ -12,6 +12,7 @@ from os.path import abspath, dirname, join
 from django.conf import global_settings
 from django.utils.translation import ugettext_lazy as _
 import djcelery
+from celery.schedules import crontab
 djcelery.setup_loader()
 
 # Absolute filesystem path to the Django project directory:
@@ -239,3 +240,14 @@ WAGTAILSEARCH_BACKENDS = {
 
 # Whether to use face/feature detection to improve image cropping - requires OpenCV  # noqa
 WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
+
+SLACK_INCOMING_WEBHOOK_URL = 'https://hooks.slack.com/services/T0CJ9CT7W/\
+    B12T7UCDC/IESYvlHFA69hIyC4vffukje2'  # URL of slack webhook
+
+CELERYBEAT_SCHEDULE = {
+    # Executes every morning at 8:00 A.M GMT+2
+    'add-every-morning': {
+        'task': 'molo.profiles.tasks.send_user_data_to_slack',
+        'schedule': crontab(hour=8)
+    },
+}
