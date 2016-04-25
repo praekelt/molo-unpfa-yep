@@ -11,7 +11,7 @@ $manage compress --settings=tuneme.settings.production
 $manage compilemessages --settings=tuneme.settings.production
 
 # Update the search index
-$manage update_index
+$manage update_index --settings=tuneme.settings.production
 
 
 # Malawi
