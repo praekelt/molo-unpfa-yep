@@ -143,3 +143,23 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             self.assertTrue(comment2.comment in c2row.prettify())
             self.assertTrue(reply.comment in replyrow.prettify())
             self.assertTrue(comment1.comment in c1row.prettify())
+
+    def test_comment_shows_user_display_name(self):
+        self.yourmind = self.mk_section(
+            self.main, title='Your mind')
+        article = self.mk_article(self.yourmind, title='article 1',
+                                  subtitle='article 1 subtitle',
+                                  slug='article-1')
+
+        # check when user doesn't have an alias
+        self.create_comment(article, 'test comment1 text')
+        response = self.client.get('/your-mind/article-1/')
+        self.assertContains(response, "Anonymous")
+
+        # check when user have an alias
+        self.user.profile.alias = 'this is my alias'
+        self.user.profile.save()
+        self.create_comment(article, 'test comment2 text')
+        response = self.client.get('/your-mind/article-1/')
+        self.assertContains(response, "this is my alias")
+        self.assertNotContains(response, "tester")
