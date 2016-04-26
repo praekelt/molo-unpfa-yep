@@ -12,6 +12,7 @@ from os.path import abspath, dirname, join
 from django.conf import global_settings
 from django.utils.translation import ugettext_lazy as _
 import djcelery
+from celery.schedules import crontab
 djcelery.setup_loader()
 
 # Absolute filesystem path to the Django project directory:
@@ -211,7 +212,7 @@ GOOGLE_ANALYTICS_IGNORE_PATH = [
 
 # Celery
 
-CELERY_IMPORTS = ('google_analytics.tasks',)
+CELERY_IMPORTS = ('google_analytics.tasks', 'molo.profiles.task')
 BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
@@ -239,3 +240,12 @@ WAGTAILSEARCH_BACKENDS = {
 
 # Whether to use face/feature detection to improve image cropping - requires OpenCV  # noqa
 WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
+
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
+CELERYBEAT_SCHEDULE = {
+    # Executes every morning at 8:00 A.M GMT+2
+    'add-every-morning': {
+        'task': 'molo.profiles.task.send_user_data_to_slack',
+        'schedule': crontab(hour=8)
+    },
+}
