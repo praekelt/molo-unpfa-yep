@@ -244,6 +244,7 @@ WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
 SLACK_INCOMING_WEBHOOK_URL = 'https://hooks.slack.com/services/T0CJ9CT7W/\
     B12T7UCDC/IESYvlHFA69hIyC4vffukje2'  # URL of slack webhook
 
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 CELERYBEAT_SCHEDULE = {
     # Executes every morning at 8:00 A.M GMT+2
     'add-every-morning': {
