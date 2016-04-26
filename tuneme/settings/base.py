@@ -247,7 +247,7 @@ SLACK_INCOMING_WEBHOOK_URL = 'https://hooks.slack.com/services/T0CJ9CT7W/\
 CELERYBEAT_SCHEDULE = {
     # Executes every morning at 8:00 A.M GMT+2
     'add-every-morning': {
-        'task': 'molo.profiles.tasks.send_user_data_to_slack',
+        'task': 'molo.profiles.task.send_user_data_to_slack',
         'schedule': crontab(hour=8)
     },
 }
