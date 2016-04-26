@@ -8,3 +8,4 @@ django-google-analytics-app
 django-celery
 redis
 elasticsearch
+django-modelcluster>=2.0
