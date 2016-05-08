@@ -246,6 +246,6 @@ CELERYBEAT_SCHEDULE = {
     # Executes every morning at 8:00 A.M GMT+2
     'add-every-morning': {
         'task': 'molo.profiles.task.send_user_data_to_slack',
-        'schedule': crontab(hour=8, minute=0)
+        'schedule': crontab(minute=0, hour=8)
     },
 }
