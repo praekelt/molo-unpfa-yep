@@ -4,7 +4,6 @@ molo.commenting==0.3.2
 molo.yourwords==0.0.3
 molo.servicedirectory==2.1.0
 django-extensions
-django-google-analytics-app
 django-celery
 redis
 elasticsearch

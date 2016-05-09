@@ -163,3 +163,18 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         response = self.client.get('/your-mind/article-1/')
         self.assertContains(response, "this is my alias")
         self.assertNotContains(response, "tester")
+
+
+class TagManagerAccountTestCase(TestCase, MoloTestCaseMixin):
+
+    def setUp(self):
+        self.mk_main()
+        self.client = Client()
+
+    def test_gtm_account(self):
+        response = self.client.get('/')
+        self.assertNotContains(response, 'GTM-XXXXXX')
+
+        with self.settings(GOOGLE_TAG_MANAGER_ACCOUNT='GTM-XXXXXX'):
+            response = self.client.get('/')
+            self.assertContains(response, 'GTM-XXXXXX')
