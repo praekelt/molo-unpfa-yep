@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 from os.path import abspath, dirname, join
+from os import environ
 from django.conf import global_settings
 from django.utils.translation import ugettext_lazy as _
 import djcelery
@@ -70,7 +71,6 @@ INSTALLED_APPS = (
     'raven.contrib.django.raven_compat',
     'tuneme',
     'polls',
-    'google_analytics',
     'djcelery',
 
     'molo.core',
@@ -99,8 +99,6 @@ MIDDLEWARE_CLASSES = (
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-
-    'google_analytics.middleware.GoogleAnalyticsMiddleware',
 )
 
 ROOT_URLCONF = 'tuneme.urls'
@@ -196,23 +194,16 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'molo.profiles.context_processors.get_profile_data',
     'tuneme.context_processors.default_forms',
     'wagtail.contrib.settings.context_processors.settings',
+    'tuneme.context_processors.add_tag_manager_account',
 
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
-# Google Analytics
-
-GOOGLE_ANALYTICS = {
-    'google_analytics_id': '',
-}
-GOOGLE_ANALYTICS_IGNORE_PATH = [
-    '/health/', '/favicon.ico', '/robots.txt', '/admin/', '/django-admin/']
-
 
 # Celery
 
-CELERY_IMPORTS = ('google_analytics.tasks', 'molo.profiles.task')
+CELERY_IMPORTS = ('molo.profiles.task')
 BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
@@ -249,3 +240,5 @@ CELERYBEAT_SCHEDULE = {
         'schedule': crontab(minute=0, hour=8)
     },
 }
+
+GOOGLE_TAG_MANAGER_ACCOUNT = environ.get('GOOGLE_TAG_MANAGER_ACCOUNT')
