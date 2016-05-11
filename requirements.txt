@@ -1,4 +1,4 @@
-molo.core==2.6.13
+molo.core==2.6.15
 molo.profiles==0.2.7
 molo.commenting==0.3.2
 molo.yourwords==0.0.3
