@@ -203,7 +203,7 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Celery
 
-CELERY_IMPORTS = ('molo.profiles.task')
+CELERY_IMPORTS = ('molo.profiles.task', 'tuneme.tasks')
 BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
@@ -238,6 +238,10 @@ CELERYBEAT_SCHEDULE = {
     'add-every-morning': {
         'task': 'molo.profiles.task.send_user_data_to_slack',
         'schedule': crontab(minute=0, hour=8)
+    },
+    'rotate_content': {
+        'task': 'tuneme.tasks.rotate_content',
+        'schedule': crontab(minute=0),
     },
 }
 
