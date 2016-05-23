@@ -1,13 +1,8 @@
-html {height:100%; width:100%; position:relative;}
-body {background:white; position:relative; text-align:center; margin-bottom: 0px;}
-
-
-
 
 
 
 /* Header */
-.header {background:none; height:0px;}
+
     .menu, .search-icon {display:inline-block;}
     .header .logo {position:absolute; z-index:12; width:110px; display:block !important; margin: -8px 5px}
     .header .logo.hide {display:none !important;}

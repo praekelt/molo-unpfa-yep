@@ -1,9 +1,12 @@
 @import "mixins";
 @import "variables";
-@import "h5bp";
 @import "base";
 @import "modules";
 @import "icons";
+
+@import "layout/_layout";
+@import "layout/_header";
+
 
 $colorFirst: #e52d47; // red
 $colorSecond: #27262b; // dark grey
@@ -12,7 +15,6 @@ $colorFourth: #ebebeb; // light grey
 $anotherShadeOfGrey: #67666b;
 
 @include links($colorFirst);
-
 
 a {
   text-decoration: none;

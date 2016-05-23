@@ -1,4 +1,3 @@
-body {font:14px Arial, Helvetica, sans-serif; background:white; color:black; margin-bottom: 205px;}
 
 
 /* Fonts */
@@ -31,7 +30,6 @@ hr {display:none;}
       font-weight: bold;
   }
 /* Header */
-.header {float:left; width:100%; background:black;}
     .header .logo {float:left; width:100px; display:none; margin: -8px 5px}
     .header .logo.white {display:block !important;}
     .menu, .search-icon {display:none;}

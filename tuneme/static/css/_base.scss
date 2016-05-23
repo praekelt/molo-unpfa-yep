@@ -1,7 +1,24 @@
-/* ==|== primary styles ===================================================== */
+
+html, body {
+  background: #fff;
+  position:relative;
+  height:100%;
+  color:black;
+  text-align:center;
+  width: 100%;
+  @media screen and (min-width: 600px) {
+    background: #333;
+  }
+}
+
 
 body {
-  position: relative;
+    font:14px Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    @media screen and (min-width: 600px) {
+       margin-bottom: 205px;
+       max-width: 320px;
+    }
 }
 
 * {
