@@ -27,9 +27,8 @@
                         <a href="#feature-menu">{% trans "Menu" %}</a>
                      </div>
                 </div>
-
                 <div class="tablet-navigation">
-                <ul class="menu-list">
+                    <ul class="menu-list">
                     <li class="menu-list--item">
                         <div class="menuItem hide" id="login">
                             {% if not user.is_authenticated %}
@@ -43,42 +42,39 @@
                             {% endif %}
                         </div>
                     </li>
-
                     <li class="menu-list--item">
                         <div class="mainMenu menuItem hide" id="pages">
-                        <span class="menu-button">{% trans "Menu" %}</span>
-                        <div class="content">
-                            <ul>
-                                {% for section in language_page.sections %}
-                                    <li class="{{ section.get_effective_extra_style_hints }}">
-                                        <a href="{% pageurl section %}">
-                                            {% image section.image width-40 %}
-                                            <div>{{ section.title }}</div>
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                                {% if user.is_authenticated %}
-                                    <li class="pgrey">
-                                        <a href="{% url 'molo.profiles:view_my_profile' %}">
-                                            <img src="{% static 'img/profile.png' %}" width="40">
-                                            <div>{% trans "Your Profile" %}</div>
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                            <div class="search-form">
-                                <form action="{% url 'search' %}">
-                                    <input placeholder="{% trans "Looking for something?" %}" name="q" type="text"
-                                           value="{{ search_query }}">
-                                    <input type="submit" value="{% trans "Search" %}">
-                                </form>
+                            <span class="menu-button">{% trans "Menu" %}</span>
+                            <div class="content">
+                                <ul>
+                                    {% for section in language_page.sections %}
+                                        <li class="{{ section.get_effective_extra_style_hints }}">
+                                            <a href="{% pageurl section %}">
+                                                {% image section.image width-40 %}
+                                                <div>{{ section.title }}</div>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                    {% if user.is_authenticated %}
+                                        <li class="pgrey">
+                                            <a href="{% url 'molo.profiles:view_my_profile' %}">
+                                                <img src="{% static 'img/profile.png' %}" width="40">
+                                                <div>{% trans "Your Profile" %}</div>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                                <div class="search-form">
+                                    <form action="{% url 'search' %}">
+                                        <input placeholder="{% trans "Looking for something?" %}" name="q" type="text"
+                                               value="{{ search_query }}">
+                                        <input type="submit" value="{% trans "Search" %}">
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </li>
                 </ul>
-
-
                 </div>
             </li>
 
