@@ -19,15 +19,33 @@
   text-indent: -999em;
   -webkit-border-radius: 25px;
   border-radius: 25px;
-  display: block;
   z-index: 12;
+
+  text-align: center;
+  line-height: 1.5;
+  font-weight: bold;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-decoration: underline;
 }
 
 .search-icon {
-  background: #000000 url(/static/img/search.png) center center no-repeat;
+
   margin-left: 50px; //Magic number?
-  background-size:15px;
+
+
+  @media screen and (min-width: 600px) {
+    background: #000000 url(/static/img/search.png) center center no-repeat;
+    background-size:15px;
+    display: block;
+  }
 }
+
+
+
+
+
+
 
 .login-icon  {
   background: #000000 url(/static/img/user.png) center center no-repeat;
@@ -122,11 +140,11 @@
 .feature-menu {
   text-transform:uppercase;
   font-weight:bold;
-  background: darkgreen;
 
   a {
     color: white;
     padding:5px;
+    text-decoration: underline;
     display:inline-block;
       @media screen and (min-width: 600px) {
         color: black;

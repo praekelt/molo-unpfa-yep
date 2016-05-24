@@ -1,10 +1,12 @@
   var menuItems = new Array();
+
   function init() {
     // Grab the accordion items from the page
-    var divs = document.getElementsByTagName( 'div' );
+    var divs = document.getElementsByTagName( 'div' ); //Wild card?
     for ( var i = 0; i < divs.length; i++ ) {
       if ( divs[i].className == 'mainMenu' ||
           divs[i].className == 'mainMenu menuItem hide') {
+          //Push div with class names mainMenu menuItems hide into an array
             menuItems.push( divs[i] );
       }
     }
@@ -13,8 +15,8 @@
       var span = getFirstChildWithTagName( menuItems[i], 'SPAN' );
       span.onclick = toggleItem;
     }
-
   }
+
   function toggleItem() {
     var itemClass = this.parentNode.className;
 
@@ -38,7 +40,9 @@
         }
       }
     }
+
   }
+
   function getFirstChildWithTagName( element, tagName ) {
     for ( var i = 0; i < element.childNodes.length; i++ ) {
       if ( element.childNodes[i].nodeName == tagName ) return element.childNodes[i];
