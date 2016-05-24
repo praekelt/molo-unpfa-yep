@@ -5,80 +5,64 @@
 {% block header %}
 <div class="header">
   <ul class="menu-list">
-            <li class="menu-list--item">
-                <a href="/">
-                    <img src="{% static 'img/logo-black.png' %}" alt="{% trans "TuneMe" %}" class="logo">
-                    <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo hide">
-                </a>
+            <li class="menu-list--item menu-list--item-left">
+                <div style="position: relative; z-index: 12;">
+                    <a href="/">
+                        <img src="{% static 'img/logo-black.png' %}" alt="{% trans "TuneMe" %}" class="logo">
+                        <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo hide">
+                    </a>
+                </div>
             </li>
 
             <li class="menu-list--item">
-              <a href="#search-form" class="search-icon">{% trans "Search" %}</a>
+                 <div class="search-block">
+                    <a href="#search-form" class="search-icon">{% trans "Search" %}</a>
+                 </div>
             </li>
-
             <li class="menu-list--item">
-                <div class="mobile-navigation">
+                <div class="mobile-navigation" style="padding-top: 25px;">
                      <div class="feature-menu">
-                        {# {% if not user.is_authenticated %} #}
-                        <!-- <a href="{# {% url 'molo.profiles:user_register' %}">{% trans "Join" %} #}</a> -->
-                        {# {% else %} #}
-                       <!-- <a href="{# {% url 'molo.profiles:view_my_profile' %}">{% trans "Profile" %}#}</a> -->
-                        {# {% endif %} #}
                         <a href="#feature-menu">{% trans "Menu" %}</a>
                      </div>
                 </div>
-                <div class="tablet-navigation">
-                    <ul class="menu-list">
-                    <!--<li class="menu-list--item">
-                        <div class="menuItem hide" id="login">
-                            {# {% if not user.is_authenticated %} #}
-                                <a href="{# {% url 'molo.profiles:user_register' %} #}" class="login-icon">
-                                    <span>{# {% trans "Join" %} #}</span>
-                                </a>
-                            {# {% else %} #}
-                                <a href="{# {% url 'molo.profiles:view_my_profile' %} #}" class="login-icon">
-                                    <span>{# {% trans "Profile" %} #}</span>
-                                </a>
-                            {# {% endif %} #}
-                        </div>
-                    </li>-->
-                    <li class="menu-list--item">
-                        <div class="mainMenu menuItem hide" id="pages">
+            </li>
+            <li class="menu-list--item">
+                  <div class="tablet-navigation" style="padding-top: 25px;">
+                      <div class="mainMenu menuItem hide" id="pages">
                             <span class="menu-button">{% trans "Menu" %}</span>
                             <div class="content">
-                                <ul>
-                                    {% for section in language_page.sections %}
-                                        <li class="{{ section.get_effective_extra_style_hints }}">
-                                            <a href="{% pageurl section %}">
-                                                {% image section.image width-40 %}
-                                                <div>{{ section.title }}</div>
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                    {% if user.is_authenticated %}
-                                        <li class="pgrey">
-                                            <a href="{% url 'molo.profiles:view_my_profile' %}">
-                                                <img src="{% static 'img/profile.png' %}" width="40">
-                                                <div>{% trans "Your Profile" %}</div>
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                </ul>
-                                <div class="search-form">
-                                    <form action="{% url 'search' %}">
-                                        <input placeholder="{% trans "Looking for something?" %}" name="q" type="text"
-                                               value="{{ search_query }}">
-                                        <input type="submit" value="{% trans "Search" %}">
-                                    </form>
-                                </div>
+                            <ul>
+                                {% for section in language_page.sections %}
+                                    <li class="{{ section.get_effective_extra_style_hints }}">
+                                        <a href="{% pageurl section %}">
+                                            {% image section.image width-40 %}
+                                            <div>{{ section.title }}</div>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                                {% if user.is_authenticated %}
+                                    <li class="pgrey">
+                                        <a href="{% url 'molo.profiles:view_my_profile' %}">
+                                            <img src="{% static 'img/profile.png' %}" width="40">
+                                            <div>{% trans "Your Profile" %}</div>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                            <div class="search-form">
+                                <form action="{% url 'search' %}">
+                                    <input placeholder="{% trans "Looking for something?" %}" name="q" type="text"
+                                           value="{{ search_query }}">
+                                    <input type="submit" value="{% trans "Search" %}">
+                                </form>
                             </div>
                         </div>
-                    </li>
-                </ul>
-                </div>
+                      </div>
+                  </div>
             </li>
-        </ul>
+    </ul>
 </div>
+
 {% endblock %}
 
 {% block search %}
@@ -86,13 +70,16 @@
 {% endblock %}
 
 {% block footer %}
+
 <div id="feature-menu">
     <ul>
-        <li><a href="/">{% trans "HOME" %}</a></li>
+        <li>
+            <a href="/">{% trans "HOME" %}</a>
+        </li>
         {% for section in language_page.sections %}
-          <li class="{{section.get_effective_extra_style_hints}}">
+        <li class="{{section.get_effective_extra_style_hints}}">
             <a href="{% pageurl section %}">{{section.title}}</a>
-          </li>
+        </li>
         {% endfor %}
     </ul>
 </div><!-- /feature-menu -->
@@ -100,14 +87,15 @@
 <div class="footer">
     {% if languages %}
       <ul>
-      <strong>{% trans "Site Language:" %}</strong>
-      {% for language in languages %}
-      <a href="{% url 'locale_set' language.code %}">{{language.title}}</a>
-      {% endfor %}
+          <strong>{% trans "Site Language:" %}</strong>
+          {% for language in languages %}
+          <a href="{% url 'locale_set' language.code %}">{{language.title}}</a>
+          {% endfor %}
       </ul>
     {% endif %}
     {% for page in language_page.footers %}
-    <a href="{% pageurl page %}">{{page.title}}</a>
+        <a href="{% pageurl page %}">{{page.title}}</a>
     {% endfor %}
 </div>
+
 {% endblock %}

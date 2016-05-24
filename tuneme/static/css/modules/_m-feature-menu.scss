@@ -1,0 +1,36 @@
+
+#feature-menu {
+   padding: 15px;
+   text-transform: uppercase;
+   border-bottom: 1px solid #ddd;
+}
+
+#feature-menu li {
+  padding:3px 0;
+  display:block;
+  font-weight:bold;
+  font-size:125%;
+}
+
+#feature-menu li.turq a {color:#21e0d8;}
+#feature-menu li.purple a {color:#d127fc;}
+#feature-menu li.pink a {color:#f82353;}
+#feature-menu li.orange a {color:#ff7c44;}
+#feature-menu li.yellow a {color:#fad400;}
+#feature-menu li.grey a {color:black;}
+#feature-menu li.magenta a {color:#e60382;}
+
+.feature-menu {
+  text-transform:uppercase;
+  font-weight:bold;
+
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+
+  @media screen and (min-width: 600px) {
+   display: block;
+  }
+}
+

@@ -1,27 +1,11 @@
 
 
-/* Fonts */
-h1 {text-transform:uppercase; font-size:125%; line-height:100%;}
-h3 {padding:10px 0; font-size:200%;}
-    .turq h3 {color:#21e0d8;}
-    .purple h3 {color:#d127fc;}
-    .pink h3 {color:#f82353;}
-    .orange h3 {color:#ff7c44;}
-    .yellow h3 {color:#fad400;}
-    .grey h3 {color:#666666;}
-    .magenta h3 {color:#e60382;}
-h5 {font-size:125%; padding:10px 0px; font-weight:bold; color:black; }
-h6 {padding:5px 0;}
-    h6 a {color:black;}
-hr {display:none;}
-
-.grey {padding: 0 0 10px 0;}
 
 /* Article lists*/
 .article-copy ul {list-style-type:disc; margin:0px 15px;}
-	.article-copy ul li {list-style-type:disc; padding:5px 0;}
+.article-copy ul li {list-style-type:disc; padding:5px 0;}
 .article-copy ol {list-style-type:decimal; margin:0px 15px;}
-	.article-copy ol li {list-style-type:decimal; padding:5px 0;}
+.article-copy ol li {list-style-type:decimal; padding:5px 0;}
 
   .readmore {
       text-align: left;
@@ -36,13 +20,6 @@ hr {display:none;}
 
 
     .backtotop {display:block; clear:both; text-transform:uppercase; padding:15px; margin-top:-1px; font-weight:bold; border-top:1px solid #ddd; border-bottom:1px solid #ddd;}
-
-/* Buttons */
-input[type='submit'] {width:auto}
-
-/* Form Elements */
-input {margin:5px 0 15px 0;}
-select {min-width:0%;}
 
 /* Titles */
 .title {padding:15px; display:block; clear:both; border-bottom:1px solid #ddd;}
@@ -75,11 +52,6 @@ select {min-width:0%;}
 .orange .comments-count a {color:#ff7c44; visibility: hidden;}
 .yellow .comments-count a {color:#fad400; visibility: hidden;}
 .magenta .comments-count a {color:#e60382; visibility: hidden;}
-
-/* search Black Box */
-#search-form {padding:0px; margin-top:-1px; text-align:center;}
-#search-form input {margin:15px 0; text-align:center;}
-#search-form input[type='submit'] {margin:0 0 20px; }
 
 /* Your Words */
 

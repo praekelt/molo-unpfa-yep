@@ -14,6 +14,7 @@
     for ( var i = 0; i < menuItems.length; i++ ) {
       var span = getFirstChildWithTagName( menuItems[i], 'SPAN' );
       span.onclick = toggleItem;
+      getElementsByClassName('header')
     }
   }
 

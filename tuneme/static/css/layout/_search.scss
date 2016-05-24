@@ -1,5 +1,29 @@
 
 .search-form {
+  padding: 0;
   background:black;
+  text-align: center;
   width: 100%;
+
+  form {
+    padding: 15px 0;
+  }
 }
+
+.search-form input {
+  width:80%;
+  background:black;
+  color: white;
+  text-align: center;
+  margin:0 0 15px;
+}
+
+.search-form input[type='submit'] {
+  width:86%;
+  margin: 0 0 20px;
+  padding:10px 25px;
+  border:0; color:black;
+  background:white;
+}
+
+

@@ -1,12 +1,6 @@
-@import "_logo";
-@import "_header";
-@import "_menu";
-@import "_search";
-
 
 .l-row {
   clear: both;
-  @include clearfix;
 }
 
 .l-half {
@@ -18,3 +12,9 @@
     float: right;
   }
 }
+
+@import "_logo";
+@import "_header";
+@import "_menu";
+@import "_search";
+@import "_l-footer";
