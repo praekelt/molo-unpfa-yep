@@ -2,40 +2,149 @@
 html, body {
   background: #fff;
   position:relative;
-  height:100%;
-  color:black;
   text-align:center;
   width: 100%;
+  -webkit-overflow-scrolling : touch;
+  -webkit-tap-highlight-color : lighten(#333, 75%);
   @media screen and (min-width: 600px) {
     background: #333;
   }
 }
 
-
 body {
-    font:14px Arial, Helvetica, sans-serif;
-    margin: 0 auto;
-    @media screen and (min-width: 600px) {
-       margin-bottom: 205px;
-       max-width: 320px;
-    }
+  background: #fff;
+  font: normal 17px 'Quicksand', Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  color:#666666;
+  line-height: 1.5;
+  max-width: 320px;
+  height: 100%;
+  @media screen and (min-width: 600px) {
+
+  }
 }
 
-* {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+
+h1 {
+  color:white;
+  font-size:200%;
 }
 
-::-moz-selection {
-  background-color: lighten($colorFirst, 65%);
-  color: $colorFirst;
-  text-shadow: none;
+h2 {
+  font-size:150%;
+  padding:15px;
+  font-weight:bold;
+  color:white;
+  background:black;
 }
 
-::selection {
-  background-color: lighten($colorFirst, 65%);
-  color: $colorFirst;
-  text-shadow: none;
+h3 {
+  font-size:150%;
+}
+
+h4 {
+  font-size:200%;
+}
+
+h5 {
+  font-size:100%;
+}
+
+h6 {
+  font-size:100%;
+}
+
+.left{text-align: left}
+
+p {
+  padding:10px 15px;
+}
+
+strong {font-weight:bold;}
+
+.author {
+  font-style:italic;
+  font-size:85%;
+}
+
+hr {
+  height:10px;
+  margin:10px 0 0;
+  width:100%;
+  border:0;
+  display:block; background:url(/static/img/hr.gif) 0 0px repeat-x;
+  background-size:20px;
+}
+
+.turq h4 {color:#21e0d8u;}
+.purple h4 {color:#d127fc;}
+.pink h4 {color:#f82353;}
+.orange h4 {color:#ff7c44;}
+.yellow h4 {color:#fad400;}
+.grey h4 {color:#666666;}
+.magenta h4 {color:#e60382;}
+
+
+.bold {font-weight: bold;}
+
+
+ul,li,ol {
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  padding: 0.5em;
+  font-size: 0.9em;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+}
+
+.error {
+  color: red;
+}
+
+.input-error {
+  border: solid 1px red;
+}
+
+.btn {
+  padding: 0.75em 1em;
+  border: none;
+}
+
+.btn-wide {
+  display: block;
+  text-align: center;
+}
+
+input.btn-wide {
+  width: 100%;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  font-size: 0.9em;
+}
+
+.label-wide, .input-wide {
+  display: block;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+
+
+
+
+
+:not(a):focus {
+  outline: none;
 }
 
 /* Cancels out Firefox Mobile's gradient background */
@@ -99,100 +208,4 @@ canvas, iframe, video, svg {
 
 @viewport {
   width : device-width;
-}
-
-html {
-  -webkit-overflow-scrolling : touch;
-  -webkit-tap-highlight-color : lighten(#333, 75%);
-}
-
-/* ==|== Links ==== */
-
-:not(a):focus {
-  outline: none;
-}
-
-html {
-  font-family: $font-family-sans-serif;
-  line-height: 1.25;
-}
-
-body {
-  @include no-m;
-}
-
-body {
-  a {
-    word-wrap: break-word;
-  }
-}
-
-// Typography
-
-h1, h2, h3, h4 {
-  margin-top: 0;
-}
-
-// layout
-
-.l-row {
-  clear: both;
-  @include clearfix;
-}
-
-.l-half {
-  width: 50%;
-  &:first-child {
-    float: left;
-  }
-  &:last-child {
-    float: right;
-  }
-}
-
-// forms and validation
-
-input {
-  padding: 0.5em;
-  font-size: 0.9em;
-}
-
-input[type="search"] {
-  -webkit-appearance: textfield;
-}
-
-.error {
-  color: red;
-}
-
-.input-error {
-  border: solid 1px red;
-}
-
-.btn {
-  padding: 0.75em 1em;
-  border: none;
-}
-
-.btn-wide {
-  display: block;
-  text-align: center;
-}
-
-input.btn-wide {
-  width: 100%;
-  font-size: 0.9em;
-  cursor: pointer;
-}
-
-textarea {
-  display: block;
-  width: 100%;
-  font-size: 0.9em;
-}
-
-.label-wide, .input-wide {
-  display: block;
-  width: 100%;
-  margin-bottom: 1em;
 }

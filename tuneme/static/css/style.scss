@@ -14,19 +14,6 @@ $colorThird: #1473ad; // blue
 $colorFourth: #ebebeb; // light grey
 $anotherShadeOfGrey: #67666b;
 
-a {
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-body,
-input,
-textarea {
-  font-family: "Exo 2", sans-serif;
-  color: $anotherShadeOfGrey;
-}
 
 // dark grey
 .highlight-primary {
@@ -59,13 +46,4 @@ textarea {
 // light grey
 .highlight-quaternary {
   color: $colorFourth;
-}
-
-
-
-// typography
-
-p {
-  margin: 0;
-  padding-bottom: 1em;
 }

@@ -30,22 +30,13 @@
 }
 
 .search-icon {
-
-  margin-left: 50px; //Magic number?
-
-
+  margin-left: 80px; //Magic number?
   @media screen and (min-width: 600px) {
     background: #000000 url(/static/img/search.png) center center no-repeat;
     background-size:15px;
     display: block;
   }
 }
-
-
-
-
-
-
 
 .login-icon  {
   background: #000000 url(/static/img/user.png) center center no-repeat;
@@ -95,8 +86,11 @@
     width: 100%;
     height: 100%;
     background: black;
-    z-index: 10;
-    padding-top: 60px;
+
+    position: absolute;
+    left: 0;
+    margin: 0 auto;
+    right: 0;
 }
 
 .menuItem.hide div.content {display:none;}

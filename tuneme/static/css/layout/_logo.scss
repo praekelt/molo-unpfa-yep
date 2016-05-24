@@ -3,20 +3,6 @@
    width:110px;
 }
 
-.dark-logo {
-  display: none;
-  @media screen and (min-width: 600px) {
-    display: block;
-  }
-}
-
-.white-logo {
-  display:block;
-  @media screen and (min-width: 600px) {
-      display: none;
-    }
-}
-
 .logo.hide {
   display: none;
 }

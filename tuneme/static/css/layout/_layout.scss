@@ -2,3 +2,19 @@
 @import "_header";
 @import "_menu";
 @import "_search";
+
+
+.l-row {
+  clear: both;
+  @include clearfix;
+}
+
+.l-half {
+  width: 50%;
+  &:first-child {
+    float: left;
+  }
+  &:last-child {
+    float: right;
+  }
+}

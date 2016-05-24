@@ -1,32 +1,5 @@
-/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;margin:0;padding:0}
-
-article,aside,details,figcaption,figure,footer,hgroup,menu,nav,section{display:block}
-body{line-height:1}
-ol,ul{list-style:none}
-blockquote,q{quotes:none}
-blockquote:before,blockquote:after,q:before,q:after{content:none}
-table{border-collapse:collapse;border-spacing:0}
 
 
-/* Fonts */
-body {background:white;}
-h2 {font-size:150%; padding:15px; font-weight:bold; color:white; background:black; }
-h3 {font-size:150%; font-weight:bold; color:black; }
-h4 {font-size:200%; font-weight:bold; padding:15px 0px;}
-    .turq h4 {color:#21e0d8u;}
-    .purple h4 {color:#d127fc;}
-    .pink h4 {color:#f82353;}
-    .orange h4 {color:#ff7c44;}
-    .yellow h4 {color:#fad400;}
-    .grey h4 {color:#666666;}
-    .magenta h4 {color:#e60382;}
-h6 {font-size:100%; font-weight:bold;}
-
-p {font-size:100%;}
-
-.bold {font-weight: bold;}
-.small-font {font-size: 160%;}
 
 /* Blockquotes */
 blockquote {padding:0 0 15px 0; background:white; color:black; font-size:115%; line-height:130%;}
@@ -283,24 +256,3 @@ ul.errorlist {
 .versions .not-installed{
     color: orange;
   }
-
-
-
-
-@media screen {
-    html {
-        background-color: #333;
-        max-width: 35em;
-        margin: 0 auto;
-    }
-}
-@media screen and (min-device-width: 50em) {
-    html {
-        max-width: 20em;
-    }
-}
-@media screen {
-    body {
-        background-color: #fff;
-    }
-}
