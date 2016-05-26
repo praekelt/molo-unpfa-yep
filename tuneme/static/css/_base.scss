@@ -1,148 +1,141 @@
-/* ==|== primary styles ===================================================== */
-
-body {
-  position: relative;
-}
-
-* {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
-
-::-moz-selection {
-  background-color: lighten($colorFirst, 65%);
-  color: $colorFirst;
-  text-shadow: none;
-}
-
-::selection {
-  background-color: lighten($colorFirst, 65%);
-  color: $colorFirst;
-  text-shadow: none;
-}
-
-/* Cancels out Firefox Mobile's gradient background */
-button {
-  background-image: none;
-}
-
-.main {
-  padding: 1em;
-}
-
-// img
-
-img {
-  border-width: 0;
-  vertical-align: middle;
-  -ms-interpolation-mode: bicubic;
-  max-width: 100%;
-  height: auto;
-}
-
-.banner {
-  img {
-    width: 100%;
-    max-width: 100%;
+html, body {
+  background: #fff;
+  position:relative;
+  text-align:center;
+  width: 100%;
+  @media screen and (min-width: 600px) {
+    background: #333;
   }
-}
-
-
-svg:not(:root) {
-  overflow: hidden;
-}
-
-// https://github.com/mrmrs/fluidity
-
-canvas, iframe, video, svg {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Wrap tables or pre elements in a div with this class */
-.overflow-container { overflow-y: scroll; }
-
-// http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
-
-@-webkit-viewport {
-  width : device-width;
-}
-
-@-moz-viewport {
-  width : device-width;
-}
-
-@-ms-viewport {
-  width : device-width;
-}
-
-@-o-viewport {
-  width : device-width;
-}
-
-@viewport {
-  width : device-width;
-}
-
-html {
-  -webkit-overflow-scrolling : touch;
-  -webkit-tap-highlight-color : lighten(#333, 75%);
-}
-
-/* ==|== Links ==== */
-
-:not(a):focus {
-  outline: none;
-}
-
-html {
-  font-family: $font-family-sans-serif;
-  line-height: 1.25;
 }
 
 body {
-  @include no-m;
+  background: #fff;
+  font: normal 17px 'Quicksand', Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  color:#666666;
+  line-height: 1.5;
+  //max-width: 320px;
+  height: 100%;
 }
 
-body {
-  a {
-    word-wrap: break-word;
-  }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
 }
 
-// Typography
-
-h1, h2, h3, h4 {
-  margin-top: 0;
+h1 {
+  color:white;
+  font-size:200%;
 }
 
-// layout
+h2 {
+  font-size:150%;
 
-.l-row {
-  clear: both;
-  @include clearfix;
+  //Leading topics
+  padding:15px;
+  color:white;
+  background:black;
 }
 
-.l-half {
-  width: 50%;
-  &:first-child {
-    float: left;
-  }
-  &:last-child {
-    float: right;
-  }
+h3 {
+  font-size:150%;
 }
 
-// forms and validation
+h4 {
+  font-size:200%;
+}
+
+h5 {
+  font-size:100%;
+}
+
+h6 {
+  font-size:100%;
+}
+
+p {
+  margin: 0;
+}
+
+.grey {padding: 0 0 10px 0;}
+
+strong {font-weight:bold;}
+
+.author {
+  font-style:italic;
+  font-size:85%;
+}
+
+hr {
+  height:10px;
+  margin:10px 0 0;
+  width:100%;
+  border:0;
+  display:block;
+  background:url(/static/img/hr.gif) 0 0 repeat-x;
+  background-size:20px;
+}
+
+ul,li,ol {
+  margin: 0;
+  padding: 0;
+}
 
 input {
-  padding: 0.5em;
+  width:90%;
+  padding:10px;
+  margin:5px 0;
+  display:inline-block;
+  background:#f7f7f7;
   font-size: 0.9em;
+  border:1px solid #ddd;
 }
 
 input[type="search"] {
   -webkit-appearance: textfield;
 }
+
+select {
+  min-width:90%;
+  margin:0 0 10px;
+  display:inline-block;
+  font-size:125%;
+  text-align:center;
+}
+
+input:focus {
+  background:#eee;
+  color:black;
+}
+
+textarea {
+  width:94%;
+  font-size:100%;
+  padding:10px;
+  display:block;
+}
+
+label {
+  font-size: 15px ;
+}
+
+ .turq h3 {color:#21e0d8;}
+    .purple h3 {color:#d127fc;}
+    .pink h3 {color:#f82353;}
+    .orange h3 {color:#ff7c44;}
+    .yellow h3 {color:#fad400;}
+    .grey h3 {color:#666666;}
+    .magenta h3 {color:#e60382;}
+
+.turq h4 {color: #21e0d8;}
+.purple h4 {color:#d127fc;}
+.pink h4 {color:#f82353;}
+.orange h4 {color:#ff7c44;}
+.yellow h4 {color:#fad400;}
+.grey h4 {color:#666666;}
+.magenta h4 {color:#e60382;}
+
+
 
 .error {
   color: red;
@@ -178,4 +171,29 @@ textarea {
   display: block;
   width: 100%;
   margin-bottom: 1em;
+}
+
+blockquote {
+  padding:0 0 15px 0;
+  background:white;
+  color:black;
+  font-size:115%;
+  line-height:130%;
+}
+
+
+img {
+  border-width: 0;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+  max-width: 100%;
+  height: auto;
+}
+
+.banner {
+  img {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: -3px
+  }
 }

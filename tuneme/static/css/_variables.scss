@@ -1,16 +1,19 @@
 // Variables
 
-$bodycolor: #fff;
-$textcolor: #000;
+$white                :           #ffffff;
+$black                :           #000000;
+$grey                 :           #333333;
+$turquoise            :           #32a6a6;
+$green                :           #124f52;
+$yellow               :           #c4d131;
+
+
+
 
 // Typography
 
-$font-family-sans-serif: "Open Sans", Helvetica, Arial, sans-serif;
-$font-family-serif: Georgia, "Times New Roman", Times, serif;
+$open-sans-sans-serif                         :                   "Open Sans", Helvetica, Arial, sans-serif;
+$times-new-roman-serif                        :                   Georgia, "Times New Roman", Times, serif;
 
-// Colour - defaults
 
-$colorFirst: #32a6a6; // turquoise
-$colorSecond: #124f52; // dark turquoise
-$colorThird: #c4d131; // green
-$colorFourth: #333; // black
+

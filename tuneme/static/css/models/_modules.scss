@@ -1,5 +1,9 @@
 @import "../variables";
 
+@import "_m-search";
+@import "_m-menu";
+@import "_m-feature-menu";
+
 .nav {
   a {
     padding: 0.5em;
