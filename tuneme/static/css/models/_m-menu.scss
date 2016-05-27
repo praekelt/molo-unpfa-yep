@@ -1,4 +1,18 @@
 
+.mobile-navigation {
+ display: block;
+ @media screen and (min-width: 600px) {
+      display: none;
+ }
+}
+
+.tablet-navigation {
+ display: none;
+ @media screen and (min-width: 600px) {
+      display: block;
+ }
+}
+
 .menu-list {
   margin: 0;
   padding: 0;
@@ -13,62 +27,37 @@
     float: left;
 }
 
-.logo-block {
-  position: relative;
-  z-index: 12;
-}
-
-.menuItem.hide#pages .menu-button {
-    color:white;
-    background:black;
-}
-
 .menu-button {
   text-align:center;
   line-height:1.5;
   font-weight:bold;
   text-transform:uppercase;
-  font-size:15px;
+  font-size:25px;
   z-index:12;
-  color:black;
-  background:white;
-  background-size:15px;
-  border-radius:25px;
-  padding:5px 15px;
   position: absolute;
+
+  color:white;
   cursor: pointer;
 }
 
-.menuItem div.content li:first-child:before{
-  content:"";
-  height:10px;
-  width:100%;
-  display:block;
-  background:url(/static/img/black-wave.png) 0 bottom repeat-x;
-  background-size:20px;
-}
+//Popup navigation
 
-.menuItem div.content li:last-child:after{
-  height:10px;
-  width:100%;
-  display:block;
-  background:url(/static/img/black-wave.png) 0 0 repeat-x;
-  background-size:20px;
+.menuItem.hide div.content {
+  display:none;
+  background: black;
 }
 
 .menuItem div.content {
   width: 100%;
-    height: 100%;
-    background: black;
-    position: absolute;
-    left: 0;
-    margin: 0 auto;
-    right: 0;
-    top: 0;
-    padding-top: 50px;
+  height: 100%;
+  background: white;
+  position: absolute;
+  left: 0;
+  margin: 0 auto;
+  right: 0;
+  top: 0;
+  padding-top: 9%;
 }
-
-.menuItem.hide div.content {display:none;}
 
 .mainMenu ul li a img {
     float: left;

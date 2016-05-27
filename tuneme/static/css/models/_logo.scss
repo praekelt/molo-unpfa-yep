@@ -1,0 +1,12 @@
+.logo {
+  width:110px;
+}
+
+.logo.hide {
+ display: none;
+}
+
+.logo-block {
+  position: relative;
+  z-index: 12;
+}

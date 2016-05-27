@@ -28,11 +28,11 @@
 .search-block {
   margin: 0 75px 0 -135px;
   position: relative;
-  padding-top: 25px;
+  padding-top: 28px;
   z-index: 12;
 
   @media screen and (min-width: 600px) {
-    margin:0 95px 0 -45px ;
+    margin:0 95px 0 -50px ;
   }
 }
 
@@ -42,14 +42,13 @@
   width: 35px;
   height: 35px;
   cursor: pointer;
-  color: black;
+  color: white;
   text-indent: -999em;
   -webkit-border-radius: 25px;
   border-radius: 25px;
   z-index: 12;
 
   text-align: center;
-
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: underline;
@@ -57,10 +56,8 @@
 
 .search-icon {
   @media screen and (min-width: 600px) {
-    background: #000000 url(/static/img/search.png) center center no-repeat;
-    background-size:15px;
+    background: url(/static/img/search.png) center center no-repeat;
     display: block;
-    color: white;
   }
 }
 
