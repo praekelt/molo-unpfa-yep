@@ -2,7 +2,6 @@
 .menu-list {
   margin: 0;
   padding: 0;
-
 }
 
 .menu-list--item {
@@ -10,9 +9,13 @@
   float: right;
 }
 
-
 .menu-list--item-left {
     float: left;
+}
+
+.logo-block {
+  position: relative;
+  z-index: 12;
 }
 
 .menuItem.hide#pages .menu-button {

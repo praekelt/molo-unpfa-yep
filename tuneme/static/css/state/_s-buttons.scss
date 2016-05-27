@@ -1,0 +1,32 @@
+
+.turq input[type='submit'], .turq a.button, .signin-form a.button {background-color:#21e0d8; border-color:#21e0d8; color:white;}
+.turq a.button.inverted, .signin-form a.button.inverted {color:#21e0d8; background:white; border-color:#21e0d8;}
+.purple input[type='submit'], .purple a.button {background-color:#d127fc; border-color:#d127fc; color:white;}
+.purple a.button.inverted {color:#d127fc; background:white; border-color:#d127fc;}
+.pink input[type='submit'], .pink a.button {background-color:#f82353; border-color:#f82353; color:white;}
+.pink a.button.inverted {color:#f82353; background:white; border-color:#f82353;}
+.orange input[type='submit'], .orange a.button {background-color:#ff7c44; border-color:#ff7c44; color:white;}
+.orange a.button.inverted {color:#ff7c44; background:white; border-color:#ff7c44;}
+.yellow input[type='submit'], .yellow a.button {background-color:#fad400; border-color:#fad400; color:white;}
+.yellow a.button.inverted {color:#fad400; background:white; border-color:#fad400;}
+.grey input[type='submit'], .grey a.button {background-color:#666666; border-color:#666666; color:white;}
+.grey a.button.inverted {color:#666666; background:white; border-color:#666666;}
+.magenta input[type='submit'], .magenta a.button {background-color:#e60382; border-color:#e60382; color:white;}
+.magenta a.button.inverted {color:#e60382; background:white; border-color:#e60382;}
+
+
+/* Service Directory */
+/*Should consider moving some shared styling from feature / smart here as well */
+
+button.smiley.sad {background: url(../img/Not-helpful.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
+button.smiley.sad:hover {background: url(../img/Active-not-helpful.png); background-size: 100%;}
+button.smiley.sad:after{border: 0!important;}
+button.smiley.sad:before{border: 0!important;}
+button.smiley.neutral {background: url(../img/Im-neutral.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
+button.smiley.neutral:hover {background: url(../img/Active-im-neutral.png); background-size: 100%;}
+button.smiley.neutral:after{height: 0!important;}
+button.smiley.neutral:before{border: 0!important;}
+button.smiley.happy {background: url(../img/Very-helpful.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
+button.smiley.happy:hover {background: url(../img/Active-very-helpful.png); background-size: 100%;}
+button.smiley.happy:after{border: 0!important;}
+button.smiley.happy:before{border: 0!important;}

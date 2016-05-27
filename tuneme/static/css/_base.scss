@@ -57,6 +57,10 @@ p {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 .grey {padding: 0 0 10px 0;}
 
 strong {font-weight:bold;}
@@ -66,15 +70,6 @@ strong {font-weight:bold;}
   font-size:85%;
 }
 
-hr {
-  height:10px;
-  margin:10px 0 0;
-  width:100%;
-  border:0;
-  display:block;
-  background:url(/static/img/hr.gif) 0 0 repeat-x;
-  background-size:20px;
-}
 
 ul,li,ol {
   margin: 0;
@@ -119,13 +114,22 @@ label {
   font-size: 15px ;
 }
 
- .turq h3 {color:#21e0d8;}
-    .purple h3 {color:#d127fc;}
-    .pink h3 {color:#f82353;}
-    .orange h3 {color:#ff7c44;}
-    .yellow h3 {color:#fad400;}
-    .grey h3 {color:#666666;}
-    .magenta h3 {color:#e60382;}
+.turq h3 {color:#21e0d8;}
+.purple h3 {color:#d127fc;}
+.pink h3 {color:#f82353;}
+.orange h3 {color:#ff7c44;}
+.yellow h3 {color:#fad400;}
+.grey h3 {color:#666666;}
+.magenta h3 {color:#e60382;}
+
+a {color:black;}
+.turq h3 a {color:#21e0d8;}
+.purple h3 a {color:#d127fc;}
+.pink h3 a {color:#f82353;}
+.orange h3 a {color:#ff7c44;}
+.yellow h3 a {color:#fad400;}
+.grey h3 a {color:#666666;}
+.magenta h3 a {color:#e60382;}
 
 .turq h4 {color: #21e0d8;}
 .purple h4 {color:#d127fc;}
@@ -134,7 +138,6 @@ label {
 .yellow h4 {color:#fad400;}
 .grey h4 {color:#666666;}
 .magenta h4 {color:#e60382;}
-
 
 
 .error {
@@ -196,4 +199,68 @@ img {
     max-width: 100%;
     margin-bottom: -3px
   }
+}
+
+.radios div {
+  display:block;
+  text-align: left;
+  clear: both;
+}
+
+.radios input[type="radio"]:checked + label {
+  font-weight:bold;
+}
+
+.radios label {
+  text-align:left;
+  font-weight:bold;
+}
+
+//To Review - Content blocks
+.block {
+  display:block;
+  clear:both;
+  overflow:hidden;
+  padding:15px;
+  @media screen and (min-width: 600px) {
+    border-bottom:1px solid #ddd;
+  }
+}
+
+hr {
+  display: none;
+  height:10px;
+  margin:10px 0 0; width:100%;
+  border:0;
+  background:url(/static/img/hr.gif) 0 0px repeat-x;
+  background-size:20px;
+}
+
+
+input[type='submit'],
+a.button {
+  cursor:pointer;
+  outline:none;
+  text-decoration:none;
+  padding:10px;
+  display:inline-block;
+  border:0;
+  margin:5px 0;
+  font-weight:bold;
+  text-transform:uppercase;
+  color:white;
+  background:#666666;
+  -webkit-appearance:none;
+}
+
+a.button.inverted {
+  color:#666666;
+  background:white;
+  padding:9px;
+  border:1px solid #666666;
+}
+
+input[type='submit']:focus,
+a.button:focus {
+  opacity:0.5;
 }
