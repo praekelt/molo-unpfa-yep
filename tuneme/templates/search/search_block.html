@@ -1,9 +1,12 @@
 {% load i18n %}
-
-<p class="backtotop"><a href="#top">{% trans "Back to top" %}</a></p>
+<div class="search-container l-indent">
+<p class="backtotop">
+    <h2>Do you have questions on love, sex and relationships</h2>
+    <a href="#top">{% trans "Back to top" %}</a></p>
 <div id="search-form">
   <form action="{% url 'search' %}">
     <input placeholder="{% trans "Looking for something?" %}" name="q" type="text" value="{{search_query}}">
     <input type="submit" value="{% trans "SEARCH"%}">
   </form>
+</div>
 </div>

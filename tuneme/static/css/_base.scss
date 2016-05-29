@@ -3,7 +3,6 @@ html, body {
   position:relative;
   text-align:center;
   width: 100%;
-
   @media screen and (min-width: 600px) {
     background: #333;
   }
@@ -19,39 +18,12 @@ body {
   //max-width: 320px;
 }
 
-
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
 h1 {
   color:white;
-  font-size:200%;
-}
-
-h2 {
-  font-size:150%;
-
-  //Leading topics
-  padding:15px;
-  color:white;
-  background:black;
-}
-
-h3 {
-  font-size:150%;
-}
-
-h4 {
-  font-size:200%;
-}
-
-h5 {
-  font-size:100%;
-}
-
-h6 {
-  font-size:100%;
 }
 
 p {
@@ -60,17 +32,26 @@ p {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
-.grey {padding: 0 0 10px 0;}
+.f-small {
+  font-size:100%;
+}
 
-strong {font-weight:bold;}
+.f-medium {
+  font-size:150%;
+}
+
+.f-large {
+  font-size:200%;
+}
+
 
 .author {
   font-style:italic;
   font-size:85%;
 }
-
 
 ul,li,ol {
   margin: 0;

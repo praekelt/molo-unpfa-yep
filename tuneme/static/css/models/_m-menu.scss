@@ -1,3 +1,4 @@
+//Mobile Navigation
 
 .mobile-navigation {
  display: block;
@@ -6,38 +7,13 @@
  }
 }
 
+//Tablet Navigation
+
 .tablet-navigation {
  display: none;
  @media screen and (min-width: 600px) {
       display: block;
  }
-}
-
-.menu-list {
-  margin: 0;
-  padding: 0;
-}
-
-.menu-list--item {
-  display: block;
-  float: right;
-}
-
-.menu-list--item-left {
-    float: left;
-}
-
-.menu-button {
-  text-align:center;
-  line-height:1.5;
-  font-weight:bold;
-  text-transform:uppercase;
-  font-size:25px;
-  z-index:12;
-  position: absolute;
-
-  color:white;
-  cursor: pointer;
 }
 
 //Popup navigation

@@ -31,11 +31,6 @@ font-weight: bold;
 .yellow .comments-count a {color:#fad400; visibility: hidden;}
 .magenta .comments-count a {color:#e60382; visibility: hidden;}
 
-/* search Black Box */
-#search-form {padding:0px; margin-top:-1px; text-align:center;}
-#search-form input {margin:15px 0; text-align:center;}
-#search-form input[type='submit'] {margin:0 0 20px; }
-
 /* Your Words */
 
 .yourwords {display: block; text-align: left; clear: both; padding: 10px 0;}

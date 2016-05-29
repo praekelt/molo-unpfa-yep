@@ -80,21 +80,22 @@
 
         {% wagtailuserbar %}
 
-
-
         {% block header %}
         {% endblock %}
 
-        {% block content %}
-        {% endblock %}
+            {% block search %}
+            {% endblock %}
 
-        {% block extra_js %}
-        {% endblock %}
 
-        {% block search %}
-        {% endblock %}
+            {% block content %}
+            {% endblock %}
 
-        {% block footer %}
-        {% endblock %}
+
+            {% block extra_js %}
+            {% endblock %}
+
+            {% block footer %}
+            {% endblock %}
+
     </body>
 </html>

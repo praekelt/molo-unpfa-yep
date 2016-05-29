@@ -3,31 +3,28 @@
 {% load wagtailcore_tags wagtailimages_tags compress static i18n %}
 
 {% block header %}
-<div class="header initial-bg">
+<div class="header">
+    <div class="logo-container">
+        <a href="/">
+            <img src="{% static 'img/logo-black.png' %}" alt="{% trans "TuneMe" %}" class="logo hide">
+            <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo">
+        </a>
+    </div>
   <ul class="menu-list">
-            <li class="menu-list--item menu-list--item-left">
-                <div class="logo-block">
-                    <a href="/">
-                        <img src="{% static 'img/logo-black.png' %}" alt="{% trans "TuneMe" %}" class="logo hide">
-                        <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo">
-                    </a>
-                </div>
-            </li>
-
             <li class="menu-list--item">
                  <div class="search-block">
                     <a href="#search-form" class="search-icon">{% trans "Search" %}</a>
                  </div>
             </li>
             <li class="menu-list--item">
-                <div class="mobile-navigation" style="padding-top: 25px;">
+                <div class="mobile-navigation">
                      <div class="feature-menu">
                         <a href="#feature-menu">{% trans "Menu" %}</a>
                      </div>
                 </div>
             </li>
             <li class="menu-list--item">
-                  <div class="tablet-navigation" style="padding-top: 25px;">
+                  <div class="tablet-navigation">
                       <div class="mainMenu menuItem hide" id="pages">
                             <span class="menu-button">{% trans "Menu" %}</span>
                             <div class="content">
