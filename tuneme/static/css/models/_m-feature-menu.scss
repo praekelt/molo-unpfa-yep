@@ -1,0 +1,48 @@
+
+.feature-menu {
+  background: $white;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  @media screen and (min-width: 600px) {
+    background: $black;
+    display: block;
+  }
+}
+
+.feature-menu-list {
+    padding: 10px 0;
+}
+
+
+.feature-menu-list__item {
+  display: block;
+  font-weight: bold;
+  font-size: 125%;
+  margin: 15px 0;
+  padding: 15px;
+
+  @media screen and (min-width: 600px) {
+     border-top-right-radius: 25px;
+     border-bottom-right-radius: 25px;
+     width: 35%;
+  }
+
+  a {
+    color: $black;
+    display: block;
+  }
+}
+
+
+@each $name, $color in $color_list {
+  .feature-menu-list__item--#{$name} {
+    background: transparent;
+    border-bottom: 1px $color solid;
+    @media screen and (min-width: 600px) {
+     background-color: $color;
+     border: none;
+    }
+  }
+}

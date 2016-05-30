@@ -3,11 +3,22 @@
 $white                :           #ffffff;
 $black                :           #000000;
 $grey                 :           #333333;
-$turquoise            :           #32a6a6;
+$turquoise            :           #21e0d8;  //#32a6a6 turquoise
 $green                :           #124f52;
-$yellow               :           #c4d131;
+$gold                 :           #fad400;  //gold
+$violet               :           #d127fc;  //electric violet
+$red                  :           #f82353;  //redical red
+$coral                :           #ff7c44;  //coral
+$rose_pink                :       #e60382;  //coral
 
-
+$color_list: (
+  turquoise : $turquoise,
+  violet    : $violet,
+  red       : $red,
+  orange    : $coral ,
+  pink      : $rose_pink,
+  gold      : $gold
+);
 
 
 // Typography

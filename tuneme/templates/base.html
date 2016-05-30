@@ -68,13 +68,13 @@
 
 {% block footer %}
 
-<div id="feature-menu">
-    <ul>
-        <li>
-            <a href="/">{% trans "HOME" %}</a>
-        </li>
+<div id="feature-menu" class="feature-menu">
+    <ul class="feature-menu-list">
+        <!--<li class="feature-menu-list__item">
+            <a href="/">{#{% trans "HOME" %}  #}</a>
+        </li>-->
         {% for section in language_page.sections %}
-        <li class="{{section.get_effective_extra_style_hints}}">
+        <li class="feature-menu-list__item feature-menu-list__item{{section.get_effective_extra_style_hints}}">
             <a href="{% pageurl section %}">{{section.title}}</a>
         </li>
         {% endfor %}
