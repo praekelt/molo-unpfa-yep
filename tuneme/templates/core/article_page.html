@@ -10,7 +10,9 @@
       <img src="{{ tmp_photo.url }}" alt="{{ self.get_effective_image.title }}"/>
     {% endif %}
   </div>
-  <h6><a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a></h6>
+  <h6 class="f-medium">
+      <a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a>
+  </h6>
 </div>
 
 <div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">

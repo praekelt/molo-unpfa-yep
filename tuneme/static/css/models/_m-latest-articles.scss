@@ -20,7 +20,17 @@
   margin: 5px 0;
   @media screen and (min-width: 600px) {
     margin: 5px 5px 0 0;
-    max-height: 115px;
+    max-height: 185px;
+    min-height: 185px;
     width: 48%;
+  }
+}
+
+.feature-image {
+  max-height: 81px;
+  min-height: 81px;
+  padding: 0 0 5px;
+  a {
+    display: block;
   }
 }
