@@ -3,6 +3,7 @@
   background: black;
   color: #ffffff;
 }
+
 .search-block {
   padding-right: 2.0em;
   z-index: 12;
@@ -10,5 +11,10 @@
   @media screen and (min-width: 600px) {
     padding: 0;
   }
+}
+
+.search-title {
+  text-align: left;
+  word-wrap: break-word;
 }
 
