@@ -4,19 +4,12 @@
   overflow: hidden;
 }
 
-.language-title {
-  float: left;
-}
-
-.language-list {
-  float: right;
-}
-
 .language-list__item {
     display: inline-block;
+    margin: 0 0 15px 0;
     a {
       color: white;
-      padding: 5px 10px;
+      padding: 5px;
       background: gray;
       border-radius: 15px;
     }
