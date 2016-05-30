@@ -1,10 +1,7 @@
 
 .feature-menu {
   background: $white;
-  color: #ffffff;
-  text-transform: uppercase;
-  font-weight: bold;
-  border-bottom: 1px solid #ddd;
+  text-align: left;
   @media screen and (min-width: 600px) {
     background: $black;
     display: block;
@@ -15,13 +12,12 @@
     padding: 10px 0;
 }
 
-
 .feature-menu-list__item {
   display: block;
   font-weight: bold;
   font-size: 125%;
   margin: 15px 0;
-  padding: 15px;
+  padding: 20px;
 
   @media screen and (min-width: 600px) {
      border-top-right-radius: 25px;
@@ -32,6 +28,14 @@
   a {
     color: $black;
     display: block;
+  }
+}
+
+.feature-menu-list__item--home {
+  display: block;
+  border-bottom: 1px solid #ddd;
+  @media screen and (min-width: 600px) {
+     display: none;
   }
 }
 

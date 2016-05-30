@@ -18,7 +18,7 @@
             </li>
             <li class="menu-list--item">
                 <div class="mobile-navigation">
-                     <div class="feature-menu">
+                     <div class="mobile-menu">
                         <a href="#feature-menu">{% trans "Menu" %}</a>
                      </div>
                 </div>
@@ -70,9 +70,9 @@
 
 <div id="feature-menu" class="feature-menu">
     <ul class="feature-menu-list">
-        <!--<li class="feature-menu-list__item">
-            <a href="/">{#{% trans "HOME" %}  #}</a>
-        </li>-->
+        <li class="feature-menu-list__item feature-menu-list__item--home">
+            <a href="/">{% trans "HOME" %}</a>
+        </li>
         {% for section in language_page.sections %}
         <li class="feature-menu-list__item feature-menu-list__item{{section.get_effective_extra_style_hints}}">
             <a href="{% pageurl section %}">{{section.title}}</a>
