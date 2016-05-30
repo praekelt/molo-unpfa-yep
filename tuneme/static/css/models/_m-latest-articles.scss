@@ -20,17 +20,21 @@
   margin: 5px 0;
   @media screen and (min-width: 600px) {
     margin: 5px 5px 0 0;
-    max-height: 185px;
-    min-height: 185px;
+    max-height: 200px;
+    min-height: 200px;
     width: 48%;
   }
 }
 
 .feature-image {
-  max-height: 81px;
-  min-height: 81px;
+  //max-height: 200px;
+  //min-height: 200px;
   padding: 0 0 5px;
   a {
     display: block;
+
+    img {
+      width: 460px;
+    }
   }
 }
