@@ -13,35 +13,58 @@
 }
 
 .feature-menu-list__item {
-  display: block;
-  font-weight: bold;
   font-size: 125%;
   margin: 15px 0;
-  padding: 20px;
-
-  @media screen and (min-width: 600px) {
-     border-top-right-radius: 25px;
-     border-bottom-right-radius: 25px;
-     width: 35%;
-  }
+  display: block;
+  overflow: hidden;
 
   a {
     color: $black;
     display: block;
+
+  }
+}
+
+.feature-menu-list__item--title {
+  float: left;
+  width: 100%;
+  padding: 20px;
+  font-weight: bold;
+  @media screen and (min-width: 600px) {
+     border-top-right-radius: 25px;
+     border-bottom-right-radius: 25px;
+     width: 35%;
+     margin-right: 5%;
+  }
+}
+
+.feature-menu-list__item--subtitle {
+  display: none;
+  //background: lightgoldenrodyellow;
+  color: $white;
+  padding-right: 10px;
+  @media screen and (min-width: 600px) {
+    display: block;
+    float: left;
+    width: 45%;
+  }
+  span {
+    display: block;
+    vertical-align: middle;
   }
 }
 
 .feature-menu-list__item--home {
   display: block;
+  padding: 20px;
   border-bottom: 1px solid #ddd;
   @media screen and (min-width: 600px) {
      display: none;
   }
 }
 
-
 @each $name, $color in $color_list {
-  .feature-menu-list__item--#{$name} {
+  .feature-menu-list__item--#{$name} .feature-menu-list__item--title {
     background: transparent;
     border-bottom: 1px $color solid;
     @media screen and (min-width: 600px) {
