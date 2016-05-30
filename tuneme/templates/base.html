@@ -71,7 +71,7 @@
 <div id="feature-menu" class="feature-menu">
     <ul class="feature-menu-list">
         <li class="feature-menu-list__item feature-menu-list__item--home">
-            <a href="/">{% trans "HOME" %}</a>
+            <a href="/">{% trans "Home" %}</a>
         </li>
         {% for section in language_page.sections %}
         <li class="feature-menu-list__item feature-menu-list__item{{section.get_effective_extra_style_hints}}">
@@ -87,18 +87,29 @@
     </ul>
 </div><!-- /feature-menu -->
 
-<div class="footer">
+<div class="footer l-indent">
     {% if languages %}
-      <ul>
-          <strong>{% trans "Site Language:" %}</strong>
+      <ul class="footer-menu-list">
+         <p class="footer-menu-list__title">
+             {% trans "Change your site Language:" %}
+         </p>
           {% for language in languages %}
-          <a href="{% url 'locale_set' language.code %}">{{language.title}}</a>
+          <li class="footer-menu-list__item">
+            <a href="{% url 'locale_set' language.code %}">{{language.title}}</a>
+          </li>
           {% endfor %}
       </ul>
     {% endif %}
-    {% for page in language_page.footers %}
-        <a href="{% pageurl page %}">{{page.title}}</a>
-    {% endfor %}
+
+    <ul class="footer-page-list">
+         {% for page in language_page.footers %}
+             <li class="footer-page-list__item"><a href="{% pageurl page %}">{{page.title}}</a></li>
+         {% endfor %}
+    </ul>
+
+    <p class="copyright">
+        © 2016 UNFPA, Ford Foundation All Rights Reserved
+    </p>
 </div>
 
 {% endblock %}

@@ -1,4 +1,15 @@
 .footer {
+  background: $black;
   padding:15px;
-  font-size:85%;
+  color: $santas_gray;
+  text-align: left;
+
+   a {
+     color: $santas_gray;
+     text-decoration: underline;
+   }
+
+  a.active {
+    text-decoration: underline;
+  }
 }

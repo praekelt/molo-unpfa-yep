@@ -13,7 +13,6 @@
 }
 
 .feature-menu-list__item {
-  font-size: 125%;
   margin: 15px 0;
   display: block;
   overflow: hidden;
@@ -21,47 +20,50 @@
   a {
     color: $black;
     display: block;
+    font-size: 95%;
+    text-transform: capitalize;
+    padding: 15px;
+    font-weight: bold;
+  }
+}
 
+.feature-menu-list__item--home {
+  display: block;
+  margin: 15px 0;
+  border-bottom: 1px solid #ddd;
+  @media screen and (min-width: 600px) {
+     display: none;
   }
 }
 
 .feature-menu-list__item--title {
   float: left;
   width: 100%;
-  padding: 20px;
-  font-weight: bold;
+
   @media screen and (min-width: 600px) {
      border-top-right-radius: 25px;
      border-bottom-right-radius: 25px;
-     width: 35%;
-     margin-right: 5%;
+     width: 50%;
   }
 }
 
 .feature-menu-list__item--subtitle {
   display: none;
-  //background: lightgoldenrodyellow;
   color: $white;
   padding-right: 10px;
+
   @media screen and (min-width: 600px) {
     display: block;
-    float: left;
+    float: right;
     width: 45%;
   }
   span {
     display: block;
     vertical-align: middle;
+    font-size: 80%;
   }
 }
 
-.feature-menu-list__item--home {
-  display: block;
-  padding: 20px;
-  border-bottom: 1px solid #ddd;
-  @media screen and (min-width: 600px) {
-     display: none;
-  }
-}
 
 @each $name, $color in $color_list {
   .feature-menu-list__item--#{$name} .feature-menu-list__item--title {
