@@ -1,5 +1,4 @@
 //Mobile Navigation
-
 .mobile-navigation {
  display: block;
  @media screen and (min-width: 600px) {
@@ -17,7 +16,6 @@
 }
 
 //Tablet Navigation
-
 .tablet-navigation {
  display: none;
  @media screen and (min-width: 600px) {
@@ -26,32 +24,39 @@
 }
 
 //Popup navigation
-
-.menuItem.hide div.content {
+.menuItem.hide .content {
   display:none;
   background: black;
 }
 
-.menuItem div.content {
+.main-navigation {
   width: 100%;
   height: 100%;
   background: white;
+  padding-top: 20%;
+  margin: 0 auto;
+
   position: absolute;
   left: 0;
-  margin: 0 auto;
   right: 0;
   top: 0;
-  padding-top: 9%;
+  z-index: 10;
 }
 
-.mainMenu ul li a img {
-    float: left;
+.header-menu-list__item {
+  display: block;
+  a {
+    display: block;
+    img {
+      float: left;
+    }
+  }
 }
 
-.mainMenu ul li a div {
+.header-menu-list__item--title{
     font-size: 17px;
     vertical-align: top;
     display: inline-block;
     line-height: 40px;
-    margin-left: 30px;
+    margin-left: 15px;
 }

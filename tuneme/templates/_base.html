@@ -89,12 +89,11 @@
         {% block language %}
             {% if languages %}
                 <div class="languages l-indent">
-                    <p class="language-title l-indent l-indent-small"><strong>{% trans "Select Languages:" %}</strong></p>
-                    <ul class="language-list l-indent l-indent-small">
+                    <ul class="language-list">
+                        <li class="language-list__item"><p class="language-title f-tiny">{% trans "Select Languages:" %}</p></li>
                         {% for language in languages %}
                             <li class="language-list__item">
-
-                                <a href="{% url 'locale_set' language.code %}">{{ language.title }}</a>
+                                <a class="f-tiny" href="{% url 'locale_set' language.code %}">{{ language.title }}</a>
                             </li>
                         {% endfor %}
                     </ul>

@@ -34,16 +34,24 @@ a {
   cursor: pointer;
 }
 
+.f-tiny {
+  font-size: 80%;
+}
+
 .f-small {
-  font-size:100%;
+  font-size: 100%;
+}
+
+.f-bigger {
+  font-size: 120%;
 }
 
 .f-medium {
-  font-size:150%;
+  font-size: 150%;
 }
 
 .f-large {
-  font-size:200%;
+  font-size: 200%;
 }
 
 
@@ -94,32 +102,6 @@ textarea {
 label {
   font-size: 15px ;
 }
-
-.turq h3 {color:#21e0d8;}
-.purple h3 {color:#d127fc;}
-.pink h3 {color:#f82353;}
-.orange h3 {color:#ff7c44;}
-.yellow h3 {color:#fad400;}
-.grey h3 {color:#666666;}
-.magenta h3 {color:#e60382;}
-
-a {color:black;}
-.turq h3 a {color:#21e0d8;}
-.purple h3 a {color:#d127fc;}
-.pink h3 a {color:#f82353;}
-.orange h3 a {color:#ff7c44;}
-.yellow h3 a {color:#fad400;}
-.grey h3 a {color:#666666;}
-.magenta h3 a {color:#e60382;}
-
-.turq h4 {color: #21e0d8;}
-.purple h4 {color:#d127fc;}
-.pink h4 {color:#f82353;}
-.orange h4 {color:#ff7c44;}
-.yellow h4 {color:#fad400;}
-.grey h4 {color:#666666;}
-.magenta h4 {color:#e60382;}
-
 
 .error {
   color: red;
@@ -198,7 +180,6 @@ img {
 }
 
 //To Review - Content blocks
-
 hr {
   display: none;
   height:10px;

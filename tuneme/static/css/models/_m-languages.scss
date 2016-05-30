@@ -1,15 +1,20 @@
 .languages {
    background: black;
    color: #ffffff;
-  overflow: hidden;
+   overflow: hidden;
+   padding: 5px 15px 20px;
+}
+
+.language-list__item:first-child {
+  margin-right: 5px;
 }
 
 .language-list__item {
     display: inline-block;
-    margin: 0 0 15px 0;
+    margin: 5px 0;
     a {
       color: white;
-      padding: 5px;
+      padding: 5px 10px;
       background: gray;
       border-radius: 15px;
     }
