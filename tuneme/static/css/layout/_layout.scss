@@ -21,5 +21,9 @@
     padding: 5px;
 }
 
+#wagtail-userbar {
+  display: none;
+}
+
 @import "_header";
 @import "_footer";
