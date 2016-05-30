@@ -199,15 +199,6 @@ img {
 }
 
 //To Review - Content blocks
-.block {
-  display:block;
-  clear:both;
-  overflow:hidden;
-  padding:15px;
-  @media screen and (min-width: 600px) {
-    border-bottom:1px solid #ddd;
-  }
-}
 
 hr {
   display: none;

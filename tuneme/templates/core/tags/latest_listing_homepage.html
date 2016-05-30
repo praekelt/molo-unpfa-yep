@@ -1,17 +1,18 @@
 
 {% load wagtailcore_tags wagtailimages_tags i18n comments %}
-
 {% if articles %}
-
-<h2>{% trans "Fresh Stories" %}</h2>
-{% for article in articles %}
-      {% if article.featured_in_latest %}
-      <div class="block {{article.get_parent_section.get_effective_extra_style_hints}}">
-        <h3 class="small-font"><a href="{% pageurl article %}">{{article.title}}</a></h3>
-        <p>{{article.subtitle}}</p>
-      </div>
-      {% endif %}
-        {% if not forloop.last %}<hr>{% endif %}
-{% endfor%}
-
+    <div class="latest-articles l-indent">
+        <h2 class="article-title">{% trans "Fresh Stories" %}</h2>
+        {% for article in articles %}
+              {% if article.featured_in_latest %}
+              <div class="columns block {{article.get_parent_section.get_effective_extra_style_hints}}">
+                <h3 class="f-small">
+                    <a href="{% pageurl article %}">{{article.title}}</a>
+                </h3>
+                <p>{{article.subtitle}}</p>
+              </div>
+              {% endif %}
+              {# {% if not forloop.last %}<hr>{% endif %} #}
+        {% endfor%}
+    </div>
 {% endif %}
