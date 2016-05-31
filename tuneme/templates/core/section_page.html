@@ -48,17 +48,16 @@
     {% endfor %}
 
     {% for page in self.articles %}
-      <div class="article-row">
+      <div class="article-row l-indent">
         <div class="image-article-col">
             {% if page.image %}
-                {% image page.image width-98 as tmp_photo %}
+                {% image page.image width-100 as tmp_photo %}
                 <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="img-circle" />
             {% endif %}
         </div>
         <div class="text-article-col">
             <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
-            <p>{{page.subtitle}}</p>
-            <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
+            <p>{{page.subtitle}} <a href="{% pageurl page %}">{% trans "Read on" %}</a></p>
         </div>
       </div>
     {% endfor %}

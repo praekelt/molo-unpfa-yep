@@ -6,18 +6,18 @@
         {% for article in articles %}
               {% if article.featured_in_latest %}
               <div class="columns">
-              <div class="feature-image">
-                  {% if article.image %}
-                    <a href="{% pageurl article %}">
-                    {% image article.image width-100 as tmp_photo %}
-                    <img src="{{ tmp_photo.url }}" alt="{{ article.image.title }}"/>
-                    </a>
-                  {% endif %}
-              </div>
-                <h3 class="f-small">
-                    <a href="{% pageurl article %}">{{article.title}}</a>
-                </h3>
-                <p>{{article.subtitle}}</p>
+                  <div class="feature-image">
+                      {% if article.image %}
+                        <a href="{% pageurl article %}">
+                        {% image article.image width-100 as tmp_photo %}
+                        <img src="{{ tmp_photo.url }}" alt="{{ article.image.title }}"/>
+                        </a>
+                      {% endif %}
+                  </div>
+                    <h3 class="f-small">
+                        <a href="{% pageurl article %}">{{article.title}}</a>
+                    </h3>
+                    <p>{{article.subtitle}}</p>
               </div>
               {% endif %}
               {# {% if not forloop.last %}<hr>{% endif %} #}

@@ -1,6 +1,5 @@
 
 .sub-navigation-list {}
-
 .sub-navigation-list__item {
   display: inline-block;
     a {
@@ -24,7 +23,6 @@
 
 .article-row {
   overflow: hidden;
-  padding: 10px;
   @media screen and (min-width: 600px) {
     display: -webkit-flex;
     display: flex;
@@ -33,6 +31,11 @@
     -webkit-align-items: flex-start;
     align-items: flex-start;
   }
+}
+
+
+.text-article-col {
+  vertical-align: middle;
 }
 
 .article-column {
