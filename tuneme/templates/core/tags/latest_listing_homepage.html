@@ -5,7 +5,7 @@
         <h2 class="article-title">{% trans "Fresh Stories" %}</h2>
         {% for article in articles %}
               {% if article.featured_in_latest %}
-              <div class="columns block {{article.get_parent_section.get_effective_extra_style_hints}}">
+              <div class="columns">
               <div class="feature-image">
                   {% if article.image %}
                     <a href="{% pageurl article %}">
