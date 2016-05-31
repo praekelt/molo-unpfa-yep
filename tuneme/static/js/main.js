@@ -8,13 +8,14 @@
             menuItems.push( divs[i] );
       }
     }
+
     // Assign onclick events to the accordion item headings
     for ( var i = 0; i < menuItems.length; i++ ) {
       var span = getFirstChildWithTagName( menuItems[i], 'SPAN' );
       span.onclick = toggleItem;
     }
-
   }
+
   function toggleItem() {
     var itemClass = this.parentNode.className;
 
@@ -39,8 +40,24 @@
       }
     }
   }
+
   function getFirstChildWithTagName( element, tagName ) {
     for ( var i = 0; i < element.childNodes.length; i++ ) {
       if ( element.childNodes[i].nodeName == tagName ) return element.childNodes[i];
     }
   }
+
+(function() {
+  var $parent_div = $('.image-article-col');
+   $parent_div.each(function(i) {
+      if ($(this).find("img").length > 0) {
+           $(this).addClass('article-column')
+      }
+      else {
+          $(this).removeClass('article-column')
+      }
+   });
+
+})();
+
+

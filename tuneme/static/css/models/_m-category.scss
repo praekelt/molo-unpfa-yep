@@ -23,5 +23,19 @@
 }
 
 .article-row {
-  
+  overflow: hidden;
+  padding: 10px;
+  @media screen and (min-width: 600px) {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+  }
+}
+
+.article-column {
+  margin-right: 10%;
+  width: auto;
 }

@@ -14,15 +14,16 @@
 
 .feature-menu-list__item {
   margin: 15px 0;
-  display: block;
+  display: flex;
   overflow: hidden;
+  padding: 0 10px 0 0;
 
   a {
     color: $black;
     display: block;
     font-size: 95%;
     text-transform: capitalize;
-    padding: 15px;
+    padding: 15px 10px;
     font-weight: bold;
   }
 }
@@ -50,7 +51,7 @@
 .feature-menu-list__item--subtitle {
   display: none;
   color: $white;
-  padding-right: 10px;
+  padding-left: 5%;
 
   @media screen and (min-width: 600px) {
     display: block;
