@@ -18,7 +18,7 @@
 					{{form.username}}
 					<p><strong>{% trans "4-digit pin" %}</strong></p>
 					{{form.password}}
-					<input type="submit" value="{% trans 'Sign in' %}">
+					<input type="submit" class="submit-button" value="{% trans 'Sign in' %}">
 					<input type="hidden" name="next" value="{% if request.GET.next %}{{ request.GET.next }}{% else %}{{request.site.root_page.url}}{% endif %}" />
 					<a href="{% url 'molo.profiles:user_register' %}" class="button inverted">{% trans "Not a member yet" %}</a>
 	    </form>

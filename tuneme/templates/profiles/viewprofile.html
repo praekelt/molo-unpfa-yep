@@ -4,7 +4,7 @@
 
 
 {% block content %}
-  <div class="title profile">
+  <div class="title profile l-indent">
     <h3>{% trans "Hello " %}{{ username }}</h3>
   </div>
   <div class="block turq">
@@ -28,7 +28,7 @@
   	      {{ edit_profile_form.mobile_number }}
         {% endif %}
 
-  		  <input type="submit" value='{% trans "Update profile" %}'>
+  		  <input type="submit" class="submit-button" value='{% trans "Update profile" %}'>
   		</form>
     </div>
   </div>
@@ -66,7 +66,7 @@
           {{password_change_form.confirm_password}}
           <span>{{form.confirm_password.errors}}</span>
         </div>
-        <input type="submit" value='{% trans "Change" %}'>
+        <input type="submit" class="submit-button" value='{% trans "Change" %}'>
       </form>
     </div>
   </div>

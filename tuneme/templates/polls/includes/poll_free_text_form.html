@@ -11,9 +11,9 @@
         {% else %}
           <input type="text" name="answer" id="id_answer" value="" />
         {% endif%}
-        <input type="submit" value="{% trans "Submit" %}" />
+        <input type="submit" class="submit-button" value="{% trans "Submit" %}" />
       {% else %}
-        <h5 style="color: #666666">Thank you! Your repsonse has already been submitted.<h5>
+        <h5>Thank you! Your repsonse has already been submitted.<h5>
 
       {% endif %}
   {% else %}

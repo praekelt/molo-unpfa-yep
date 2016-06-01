@@ -10,8 +10,8 @@
 
     {% if form.comment.errors %}{{ form.comment.errors }}{% endif %}
     <p>{{ form.comment }}</p>
-    <input type="submit" name="submit" value="Comment">
-    <input type="submit" name="submit_anonymously" value="Add anonymously">
+    <input type="submit" class="submit-button" name="submit" value="Comment">
+    <input type="submit" class="submit-button" name="submit_anonymously" value="Add anonymously">
     {{ form.object_pk }}
 
     {{ form.content_type }}

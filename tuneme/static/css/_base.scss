@@ -187,31 +187,23 @@ hr {
 }
 
 
-input[type='submit'],
-a.button {
-  cursor:pointer;
-  outline:none;
-  text-decoration:none;
-  padding:10px;
-  display:inline-block;
-  border:0;
-  margin: 40px 0 15px;
-  font-weight:bold;
-  text-transform:uppercase;
-  color:white;
-  background: $purple;
+.submit-button {
+  cursor: pointer;
+  outline: none;
+  display: block;
   border-radius: 25px;
-  -webkit-appearance:none;
+  margin: 10px auto;
+  border: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  &:focus {
+    opacity: 0.5;
+  }
 }
 
 a.button.inverted {
-  color:#666666;
+  color: #666666;
   background:white;
   padding:9px;
   border:1px solid #666666;
-}
-
-input[type='submit']:focus,
-a.button:focus {
-  opacity:0.5;
 }

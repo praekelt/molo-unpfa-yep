@@ -4,7 +4,7 @@
     <div id="search-form" class="search-form">
         <form action="{% url 'search' %}">
             <input placeholder="{% trans "Looking for something?" %}" name="q" type="text" value="{{ search_query }}">
-            <input type="submit" value="{% trans "SEARCH" %}">
+            <input type="submit" class="submit-button" value="{% trans "SEARCH" %}">
         </form>
     </div>
 </div>

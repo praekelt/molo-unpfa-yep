@@ -1,10 +1,5 @@
 .post-comment {
-    font-weight: normal;
-}
-
-.post-comment input[type='submit'],
-a.button {
-    margin: 10px 0 0 0;
+  font-weight: normal;
 }
 
 .post-comment textarea {
@@ -17,35 +12,6 @@ a.button {
 
 .post-comment a {
     font-weight: bold;
-}
-
-.post-comment.turq a {
-    color: #21e0d8;
-}
-
-.post-comment.purple a {
-    color: #d127fc;
-}
-
-.post-comment.pink a {
-    color: #f82353;
-}
-
-.post-comment.orange a {
-    color: #ff7c44;
-}
-
-.post-comment.yellow a {
-    color: #fad400;
-}
-
-.post-comment.magenta a {
-    color: #e60382;
-}
-
-.post-comment a.anon {
-    color: white;
-    margin-left: 10px;
 }
 
 .comment {
@@ -63,52 +29,6 @@ a.button {
 
 .comment p {
     padding: 5px 0;
-}
-
-.comment a {
-    color: #21e0d8;
-}
-
-.turq .article-copy blockquote,
-.comment.turq .by strong,
-.comment.turq .report {
-    color: #21e0d8;
-}
-
-.purple .article-copy blockquote,
-.comment.purple .by strong,
-.comment.purple .report {
-    color: #d127fc;
-}
-
-.pink .article-copy blockquote,
-.comment.pink .by strong,
-.comment.pink .report {
-    color: #f82353;
-}
-
-.orange .article-copy blockquote,
-.comment.orange .by strong,
-.comment.orange .report {
-    color: #ff7c44;
-}
-
-.yellow .article-copy blockquote,
-.comment.yellow .by strong,
-.comment.yellow .report {
-    color: #fad400;
-}
-
-.grey .article-copy blockquote,
-.comment.grey .by strong,
-.comment.grey .report {
-    color: #666666;
-}
-
-.magenta .article-copy blockquote,
-.comment.magenta .by strong,
-.comment.magenta .report {
-    color: #e60382;
 }
 
 .navigator {

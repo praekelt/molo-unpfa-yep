@@ -76,7 +76,7 @@
 
 {% has_questions self as questions %}
 {% if questions %}
-<div class="block {{self.get_parent_section.get_effective_extra_style_hints|default:"orange"}}">
+<div class="questions">
   <div class="title">
     <div class="icon"><a href=""><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></a></div>
       <h6><a href="">{% trans "Have Your Say" %}</a></h6>
@@ -86,23 +86,31 @@
 {% endif %}
 
 {% if self.is_commenting_enabled %}
-<div class="block {{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
+<div class="post-comments post-comments{{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
     {% if self.allow_commenting %}
       {% get_comment_count for self as comment_count %}
       {% if comment_count > 0 %}
-        <h5><div class="comments-count align-left">{% trans "Comment" %}<a href="#" class="pull-right">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div></h5>
+          <div class="posted-comments-heading">
+                <div class="post-comment-title">
+                    <h5>{% trans "Comment" %}</h5>
+                </div>
+                <div class="posted-comments-count">
+                    <a href="#">{{comment_count}}
+                        <span>{% trans "comment" %}{{comment_count|pluralize}}</span>
+                    </a>
+                </div>
+          </div>
       {% endif %}
-      <div class="post-comment {{self.get_parent_section.get_effective_extra_style_hints}}">
-      {% if request.user.is_authenticated %}
-        {% render_comment_form for self %}
-      {% else %}
-        <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="button inverted">{% trans "Log in to comment" %}</a>
-        <hr>
-      {% endif %}
-    {% else %}
-      <p>{% trans "Commenting on this article is currently disabled" %}</p>
-    {% endif %}
-		</div>
+      <div class="post-comment">
+          {% if request.user.is_authenticated %}
+            {% render_comment_form for self %}
+          {% else %}
+                <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="submit-button inverted">{% trans "Log in to comment" %}</a>
+          {% endif %}
+            {% else %}
+              <p>{% trans "Commenting on this article is currently disabled" %}</p>
+            {% endif %}
+     </div>
 
 </div>
 <div id="comments-list" class="l-indent">

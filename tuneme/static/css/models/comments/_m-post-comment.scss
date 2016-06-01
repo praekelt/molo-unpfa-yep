@@ -1,0 +1,37 @@
+
+.post-comments {}
+
+.posted-comments-heading {
+  clear: both;
+  font-size: 100%;
+  padding: 0 0 35px;
+  color: black;
+
+  a {
+    font-size: 100%;
+  }
+}
+
+.post-comment-title {
+  float: left;
+}
+
+.posted-comments-count {
+  float: right;
+}
+
+@each $name, $color in $color_list {
+  .post-comments--#{$name} {
+    color: $color;
+    a {
+      color: $color;
+    }
+  }
+
+  .post-comments--#{$name} .post-comment {
+      .submit-button {
+          background: $color;
+          color: $white;
+      }
+  }
+}

@@ -1,6 +1,6 @@
 @import "../variables";
 
-@import "_logo";
+@import "m-logo";
 @import "_m-languages";
 
 @import "_m-search";
@@ -15,14 +15,19 @@
 @import "_m-latest-articles";
 
 @import "m-article";
-@import "m-category";
+@import "m-section-page";
 @import "m-polls";
 
 @import "_m-featured-section";
 @import "_m-footer-menu";
 
+//Comments
+@import "_m-comments";
+@import "comments/_m-post-comment";
+
+
 
 //Unedited
-@import "_m-comments";
+
 @import "_m-poll_results";
 @import "_m-search-results";

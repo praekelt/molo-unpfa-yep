@@ -40,7 +40,7 @@
   {% if request.user.is_authenticated %}
     {% can_vote question as user_can_vote %}
     {% if user_can_vote %}
-      <input type="submit"  class="l-indent" value="{% trans "Vote" %}" />
+      <input type="submit" class="submit-button" value="{% trans "Vote" %}" />
     {% elif question.show_results %}
       <a href="{% url 'molo.polls:results' question.id %}" class="button">{% trans "Show Results" %}</a>
     {% endif %}
