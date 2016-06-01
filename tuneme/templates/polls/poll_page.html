@@ -1,23 +1,18 @@
 {% load i18n static poll_votings %}
 {% block content %}
-    <div class="poll-section">
+    <div class="poll-section poll-section{{ question.get_effective_extra_style_hints|default:"--default"}} l-indent">
         {% if questions %}
             {% for question in questions %}
-            {% if forloop.first%}
-                <h2 class="f-medium l-indent">{% trans "Your opinion" %}</h2>
+                {% if forloop.first %}
+                    <h2 class="poll-title f-bigger">{% trans "Your opinion" %}</h2>
                 {% endif %}
-                <div class="block {{question.get_effective_extra_style_hints|default:"orange"}}">
-                    <h3 class="l-indent ">{{ question.title }}</h3>
-                        {% if question.freetextquestion %}
-                            <div class="l-indent">
-                                {% include 'polls/includes/poll_free_text_form.html'%}
-                            </div>
-                        {% else %}
-                            <div class="l-indent">
-                                {% include 'polls/includes/poll_question_form.html'%}
-                            </div>
-                        {% endif %}
-                </div>
+                <h3 class="question-title">{{ question.title }}</h3>
+                {% if question.freetextquestion %}
+                        {% include 'polls/includes/poll_free_text_form.html' %}
+                {% else %}
+                        {% include 'polls/includes/poll_question_form.html' %}
+                {% endif %}
+
             {% endfor %}
         {% endif %}
     </div>

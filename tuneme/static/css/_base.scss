@@ -1,3 +1,6 @@
+
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,300);
+
 html, body {
   background: #fff;
   position:relative;
@@ -30,27 +33,6 @@ a {
   cursor: pointer;
   color: $black;
 }
-
-.f-tiny {
-  font-size: 80%;
-}
-
-.f-small {
-  font-size: 100%;
-}
-
-.f-bigger {
-  font-size: 120%;
-}
-
-.f-medium {
-  font-size: 150%;
-}
-
-.f-large {
-  font-size: 200%;
-}
-
 
 .author {
   font-style:italic;
@@ -88,15 +70,23 @@ img {
 
 //Form
 
+
+input {
+   font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+}
+
 .submit-button {
   cursor: pointer;
   outline: none;
   display: block;
   border-radius: 25px;
-  margin: 10px auto;
+  margin: 10px 0;
   border: 0;
   font-weight: bold;
   text-transform: uppercase;
+  width: 95%;
+  padding: 15px;
+  color: $white;
   &:focus {
     opacity: 0.5;
   }
@@ -118,5 +108,4 @@ hr {
   background:url(/static/img/hr.gif) 0 0 repeat-x;
   background-size:20px;
 }
-
 

@@ -21,8 +21,7 @@
   a {
     color: $black;
     display: block;
-    font-size: 95%;
-    text-transform: capitalize;
+    text-transform: uppercase;
     padding: 15px 10px;
     font-weight: bold;
   }
@@ -45,6 +44,7 @@
      border-top-right-radius: 25px;
      border-bottom-right-radius: 25px;
      width: 50%;
+     max-height: 51px;
   }
 }
 
@@ -61,7 +61,7 @@
   span {
     display: block;
     vertical-align: middle;
-    font-size: 80%;
+    font-size: 17px;
   }
 }
 

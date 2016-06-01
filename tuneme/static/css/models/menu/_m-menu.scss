@@ -30,9 +30,11 @@
 }
 
 .main-navigation {
+  background: $black;
+
   width: 100%;
   height: 100%;
-  background: white;
+
   padding-top: 20%;
   margin: 0 auto;
 
@@ -41,6 +43,10 @@
   right: 0;
   top: 0;
   z-index: 10;
+
+  a {
+     color: $white;
+  }
 }
 
 .header-menu-list__item {
@@ -53,7 +59,7 @@
   }
 }
 
-.header-menu-list__item--title{
+.header-menu-list__item--title {
     font-size: 17px;
     vertical-align: top;
     display: inline-block;

@@ -4,7 +4,7 @@
   display: inline-block;
     a {
       color: $black;
-      font-size: 90%;
+      font-size: 14px;
       font-weight: bold;
       text-transform: uppercase;
 
@@ -24,20 +24,25 @@
 .article-row {
   overflow: hidden;
   @media screen and (min-width: 600px) {
-    display: -webkit-flex;
     display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: flex-start;
-    align-items: flex-start;
   }
 }
 
 .text-article-col {
   vertical-align: middle;
+  width: 135%; //Investigate flexbox 2 cloumn float
+
+  .comments-count {
+    color: $light_gray;
+    text-transform: capitalize;
+    font-size: 14px;
+    a {
+      color: $light_gray;
+
+    }
+  }
 }
 
 .article-column {
-  margin-right: 10%;
-  width: auto;
+  width: 100%;
 }

@@ -1,9 +1,11 @@
 {% load i18n static poll_votings %}
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
 <form action="{% url 'molo.polls:vote' question.id %}" method="post">
   {% csrf_token %}
-  <div class="radios">
+  <div class="questions-choice-list">
     {% if not request.user.is_authenticated%}
       {% for choice in question.choices %}
         <div>

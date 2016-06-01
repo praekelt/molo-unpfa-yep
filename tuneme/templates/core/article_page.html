@@ -40,8 +40,8 @@
       {% image self.image width-620 as tmp_photo_large %}
         <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
       {% endif %}
-      <h1 class="article-heading">{{self.title}}</h1>
-      <h3>{{self.subtitle}}</h3>
+      <h1 class="article-heading f-large">{{self.title}}</h1>
+      <h3 class="f-bigger">{{self.subtitle}}</h3>
       <div class="article-copy">
         {% for block in self.body %}
           {% if block.block_type == 'heading' %}
@@ -113,7 +113,7 @@
      </div>
 
 </div>
-<div id="comments-list" class="l-indent">
+<div id="comments-list" class="comments-list">
   {% get_comment_count for self as comment_count %}
     {% get_molo_comments for self as comment_list %}
       {% for node in comment_list %}

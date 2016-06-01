@@ -4,7 +4,7 @@
 {% if sections %}
   {% for section in sections %}
       <!-- Title section -->
-    <div class="featured-section">
+    <div class="featured-section l-indent">
         <!-- Not on the designs -->
         <div class="icon">
           {% if section.image %}
@@ -15,7 +15,7 @@
           {% endif %}
         </div>
 
-        <h6 class="featured-section-title featured-section-title{{section.get_effective_extra_style_hints}}">
+        <h6 class="featured-section-title featured-section-title{{section.get_effective_extra_style_hints}} f-bigger">
             <a href="{% pageurl section %}">{{section.title}}</a>
         </h6>
     </div>
@@ -42,8 +42,8 @@
                 </a>
             </div>
           {% endif %}
-          <a href="{% pageurl page %}">{% trans "Read on" %}</a>
-          <a href="{% pageurl page.get_parent_section %}" class="inverted">{% trans "View Similar" %}</a>
+          <!--<a href="{# {% pageurl page %} #}">{# {% trans "Read on" %}  #}</a>-->
+          <!--<a href="{# {% pageurl page.get_parent_section %} #}" class="inverted">{# {% trans "View Similar" %} #}</a>-->
         </div>
     </div>
     {% endif %}

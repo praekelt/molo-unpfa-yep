@@ -1,0 +1,24 @@
+.comments-list {
+  background: #ebebeb;
+}
+
+.comment {
+  text-align: left;
+  font-weight: normal;
+  padding: 15px;
+  border-bottom: 1px solid $white;
+  font-size: 18px;
+}
+
+.date {
+  font-style: italic;
+}
+
+.report-link {
+  font-size: 13px;
+  font-weight: 700;
+  float: right;
+  a {
+    color: #9d9d9d;
+  }
+}

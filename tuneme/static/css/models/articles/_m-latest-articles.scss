@@ -1,21 +1,18 @@
 .latest-articles {
   overflow: hidden;
   position: relative;
-  padding: 10px 0 10px 15px;
+  padding: 10px 0 10px 12px;
 }
 
 .article-title {
   padding: 10px 0;
-  text-align: left;
   text-transform: uppercase;
-  font-size: 120%;
   color: $violet;
 }
 
 .columns {
   width: 100%;
   float: left;
-  text-align: left;
   overflow: hidden;
   margin: 15px 5% 0 0;
   @media screen and (min-width: 600px) {
@@ -29,10 +26,10 @@
   a {
     display: block;
     img {
-      //Is this an easier fix
-      //width: 460px;
       @media screen and (min-width: 900px) {
-        //width: 100%;
+        width: 100%;
+        max-width: 135px;
+        margin: 0 auto;
       }
     }
   }
