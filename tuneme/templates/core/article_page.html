@@ -2,67 +2,77 @@
 {% load wagtailcore_tags wagtailimages_tags comments mptt_tags molo_commenting_tags static poll_votings i18n %}
 
 {% block content %}
+    <ul class="sub-navigation-list l-indent">
+        <li class="sub-navigation-list__item">
+            <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
+        </li>
+        <li class="sub-navigation-list__item">
+            <a href="">{{self.get_parent_section.title}}</a>
+        </li>
+        <li class="sub-navigation-list__item">
+            <a href="">{{self.title}}</a>
+        </li>
+    </ul>
+    <!--<div class="title {# {{self.get_parent_section.get_effective_extra_style_hints}} #}
+    {# {% if self.image %}feature-image{% endif %}  #}">
+      <div class="icon">
+        {# {% if self.get_parent_section.get_effective_image %} #}
+          {# {% image self.get_parent_section.get_effective_image width-98 as tmp_photo %} #}
+          <img src="{# {{ tmp_photo.url }} #}" alt="{# {{ self.get_effective_image.title }} #}"/>
+        {# {% endif %} #}
+      </div>
 
-<div class="title {{self.get_parent_section.get_effective_extra_style_hints}} {% if self.image %}feature-image{% endif %}">
-  <div class="icon">
-    {% if self.get_parent_section.get_effective_image %}
-      {% image self.get_parent_section.get_effective_image width-98 as tmp_photo %}
-      <img src="{{ tmp_photo.url }}" alt="{{ self.get_effective_image.title }}"/>
-    {% endif %}
-  </div>
-  <h6 class="f-medium">
-      <a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a>
-  </h6>
-</div>
+      <h6 class="f-medium">
+          <a href="{# {% pageurl self.get_parent_section %}">{{self.get_parent_section.title}} #}</a>
+      </h6>
+    </div>-->
+    <div class="article article{{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
 
-<div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">
-  {% if messages %}
-  <ul class="messages">
-      {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-      {% endfor %}
-  </ul>
-  {% endif %}
-
-  {% if self.image %}
-  {% image self.image width-98 as tmp_photo_small %}
-  {% image self.image width-620 as tmp_photo_large %}
-    <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
-  {% endif %}
-  <h4>{{self.title}}</h4>
-  <blockquote>{{self.subtitle}}</blockquote>
-  <div class="article-copy">
-    {% for block in self.body %}
-      {% if block.block_type == 'heading' %}
-        <hr>
-        <p class="bold">{{ block.value }}</p>
-      {% else %}
-      <br>
-      {% if block.block_type == 'page' %}
-        {{ block }}
-      {% else %}
-      {% if block.block_type == 'image' %}
-      {% image block.value width-98 as tmp_photo_small %}
-      {% image block.value width-620 as tmp_photo_large %}
+      {% if self.image %}
+      {% image self.image width-98 as tmp_photo_small %}
+      {% image self.image width-620 as tmp_photo_large %}
         <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
-      {% else %}
-      {% if block.block_type == 'numbered_list' %}
-        <ol>
-        {% for item in block.value %}
-          <li>{{item}}</li>
-        {% endfor %}
-        </ol>
-      {% else %}
-          {{ block }}
+      {% endif %}
+      <h1 class="article-heading">{{self.title}}</h1>
+      <h3>{{self.subtitle}}</h3>
+      <div class="article-copy">
+        {% for block in self.body %}
+          {% if block.block_type == 'heading' %}
+            <hr>
+            <p class="bold">{{ block.value }}</p>
+          {% else %}
+          <br>
+          {% if block.block_type == 'page' %}
+            {{ block }}
+          {% else %}
+          {% if block.block_type == 'image' %}
+          {% image block.value width-98 as tmp_photo_small %}
+          {% image block.value width-620 as tmp_photo_large %}
+            <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
+          {% else %}
+          {% if block.block_type == 'numbered_list' %}
+            <ol>
+            {% for item in block.value %}
+              <li>{{item}}</li>
+            {% endfor %}
+            </ol>
+          {% else %}
+              {{ block }}
 
-      {% endif %}
-      {% endif %}
-      {% endif %}
-      {% endif %}
-    {% endfor %}
- <hr>
-</div>
-</div>
+          {% endif %}
+          {% endif %}
+          {% endif %}
+          {% endif %}
+        {% endfor %}
+    </div>
+    </div>
 
 {% has_questions self as questions %}
 {% if questions %}
@@ -76,7 +86,7 @@
 {% endif %}
 
 {% if self.is_commenting_enabled %}
-<div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">
+<div class="block {{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
     {% if self.allow_commenting %}
       {% get_comment_count for self as comment_count %}
       {% if comment_count > 0 %}
@@ -95,7 +105,7 @@
 		</div>
 
 </div>
-<div id="comments-list">
+<div id="comments-list" class="l-indent">
   {% get_comment_count for self as comment_count %}
     {% get_molo_comments for self as comment_list %}
       {% for node in comment_list %}

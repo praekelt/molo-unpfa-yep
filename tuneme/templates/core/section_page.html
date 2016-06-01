@@ -10,7 +10,6 @@
             <a href="">{{self.title}}</a>
         </li>
     </ul>
-
     <!--
     <div class="title {#{{self.get_effective_extra_style_hints}}#}">
       <div class="icon">
@@ -19,13 +18,12 @@
               <img src="{{ tmp_photo.url }}" alt="{{ self.get_effective_image.title }}"/>
           {% endif %}#}
         </div>
-        <h6> {#{{self.title}}#}</h6>
+        <h6>{#{{self.title}}#}</h6>
     </div>
     <div class="block  {#{{self.get_effective_extra_style_hints}}">
         <a href="{{request.site.root_page.url}}" class="button inverted">{% trans "Home" %}#}</a>
     </div>
     -->
-
     {% for section in self.sections %}
       <div class="block {{self.get_effective_extra_style_hints}} l-indent">
         <h5><a href="{% pageurl section %}">{{section.title}}</a></h5>
