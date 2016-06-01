@@ -62,80 +62,6 @@ ul,li,ol {
   padding: 0;
 }
 
-input {
-  width:90%;
-  padding:10px;
-  margin:5px 0;
-  display:inline-block;
-  background:#f7f7f7;
-  font-size: 0.9em;
-  border:1px solid #ddd;
-}
-
-input[type="search"] {
-  -webkit-appearance: textfield;
-}
-
-select {
-  min-width:90%;
-  margin:0 0 10px;
-  display:inline-block;
-  font-size:125%;
-  text-align:center;
-}
-
-input:focus {
-  background:#eee;
-  color:black;
-}
-
-textarea {
-  width:94%;
-  font-size:100%;
-  padding:10px;
-  display:block;
-}
-
-label {
-  font-size: 15px ;
-}
-
-.error {
-  color: red;
-}
-
-.input-error {
-  border: solid 1px red;
-}
-
-.btn {
-  padding: 0.75em 1em;
-  border: none;
-}
-
-.btn-wide {
-  display: block;
-  text-align: center;
-}
-
-input.btn-wide {
-  width: 100%;
-  font-size: 0.9em;
-  cursor: pointer;
-}
-
-textarea {
-  display: block;
-  width: 100%;
-  font-size: 0.9em;
-}
-
-.label-wide, .input-wide {
-  display: block;
-  width: 100%;
-  margin-bottom: 1em;
-}
-
 blockquote {
   padding:0 0 15px 0;
   background:white;
@@ -143,7 +69,6 @@ blockquote {
   font-size:115%;
   line-height:130%;
 }
-
 
 img {
   border-width: 0;
@@ -161,31 +86,7 @@ img {
   }
 }
 
-.radios div {
-  display:block;
-  text-align: left;
-  clear: both;
-}
-
-.radios input[type="radio"]:checked + label {
-  font-weight:bold;
-}
-
-.radios label {
-  text-align:left;
-  font-weight:bold;
-}
-
-//To Review - Content blocks
-hr {
-  display: none;
-  height:10px;
-  margin:10px 0 0; width:100%;
-  border:0;
-  background:url(/static/img/hr.gif) 0 0 repeat-x;
-  background-size:20px;
-}
-
+//Form
 
 .submit-button {
   cursor: pointer;
@@ -207,3 +108,15 @@ a.button.inverted {
   padding:9px;
   border:1px solid #666666;
 }
+
+//To Review - Content blocks
+hr {
+  display: none;
+  height:10px;
+  margin:10px 0 0; width:100%;
+  border:0;
+  background:url(/static/img/hr.gif) 0 0 repeat-x;
+  background-size:20px;
+}
+
+
