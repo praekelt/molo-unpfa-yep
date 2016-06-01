@@ -17,7 +17,7 @@
 
       {% endif %}
   {% else %}
-      <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="button">{% trans "Log in to vote" %}</a>
+      <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}">{% trans "Log in to vote" %}</a>
   {% endif %}
 
 </form>

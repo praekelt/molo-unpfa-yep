@@ -90,11 +90,12 @@
                 <div class="languages l-indent">
                     <ul class="language-list">
                         <li class="language-list__item"><p class="language-title f-tiny">{% trans "Select Languages:" %}</p></li>
-                        {% for language in languages %}
+                         {% get_current_language as LANGUAGE_CODE %}
+                         {% for language in languages %}
                             <li class="language-list__item">
-                                <a class="f-tiny" href="{% url 'locale_set' language.code %}">{{ language.title }}</a>
+                                <a class="f-tiny" href="{% url 'locale_set' language.code %}?next={{request.path}}?{{ request.GET.urlencode }}" {% if LANGUAGE_CODE == language.code  %} class="active" {% endif %}>{{ language.code }}</a>
                             </li>
-                        {% endfor %}
+                         {% endfor %}
                     </ul>
                 </div>
             {% endif %}
