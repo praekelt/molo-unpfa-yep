@@ -22,9 +22,13 @@
   a {
     color: $black;
     display: block;
-    text-transform: uppercase;
+    text-transform: capitalize;
     padding: 15px 10px;
     font-weight: bold;
+
+    @media screen and (min-width: 600px)  {
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -62,7 +66,7 @@
   span {
     display: block;
     vertical-align: middle;
-    font-size: 17px;
+    font-size: 15px;
   }
 }
 
