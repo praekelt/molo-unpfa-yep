@@ -1,6 +1,23 @@
 .article {
   padding: 0 10px;
 }
+
+.article-page {
+  text-align: center;
+}
+
+.article-page-title {
+  padding: 20px 10px 10px;
+  text-align: center;
+}
+
+
+.article-page-subtitle {
+  padding: 0 10px 10px;
+  font-size: 15px;
+  text-align: center;
+}
+
 .article-heading {
   margin: 10px 0;
 }
@@ -12,10 +29,6 @@
   display: block;
 }
 
-.article-subtitle {
-  padding: 0 10px 10px;
-  font-size: 15px;
-}
 
 .page-includes {
   display: block;

@@ -1,8 +1,8 @@
 .heading {
-  padding: 0 10px;
-  color: #fff;
+  padding: 10px 0;
+  color: $black;
   a {
-    color: #fff;
+    color: $black;
   }
 }
 
@@ -19,10 +19,11 @@
 }
 
 @each $name, $color in $color_list {
-  .heading--#{$name} {
+  .article--#{$name} .heading {
     color: $color;
     text-transform: capitalize;
   }
+
   .section-heading__title--#{$name} {
     background: $color;
     color: $black;

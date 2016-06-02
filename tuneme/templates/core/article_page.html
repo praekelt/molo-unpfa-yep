@@ -67,22 +67,34 @@
           {% endif %}
         {% endfor %}
       </div>
-    </div>
-
-    {% with section=self.get_parent_section %}
+     {% if self.get_parent_section %}
         <h2 class="heading heading{{ section.get_effective_extra_style_hints }}">
             {% trans "Must Read" %}
         </h2>
         <ul class="article__links article__links{{ section.get_effective_extra_style_hints}}">
             {% for block in self.body %}
                 {% if block.block_type == 'page' %}
-                    <li class="article__link--item l-indent l-indent--small">
-                        <a href="{% pageurl block.value %}">{{ block.value }}</a>
+                    <li class="article__link--item article-row">
+                            <div class="image-article-col article-column">
+                                 <a href="{% pageurl block.value %}"> {% if page.image %}
+                                    {% image page.image width-100 as tmp_photo %}
+                                    <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="img-circle" />
+                                {% endif %}
+                                 </a>
+                            </div>
+                            <div class="text-article-col">
+                                <a href="{% pageurl block.value %}"> {{ block.value }}</a>
+                                <p>{{ block.subtitle }}</p>
+                            </div>
+
                     </li>
                 {% endif %}
             {% endfor %}
         </ul>
-    {% endwith %}
+    {% endif %}
+    </div>
+
+
 
 {% has_questions self as questions %}
 {% if questions %}
