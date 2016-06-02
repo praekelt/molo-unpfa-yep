@@ -1,4 +1,8 @@
 
+.section-body {
+  padding-bottom: 25px;
+}
+
 .sub-navigation-list {}
 .sub-navigation-list__item {
   display: inline-block;
@@ -31,6 +35,9 @@
 .text-article-col {
   vertical-align: middle;
   width: 135%; //Investigate flexbox 2 cloumn float
+  a {
+    text-decoration: none;
+  }
 
   .comments-count {
     color: $light_gray;

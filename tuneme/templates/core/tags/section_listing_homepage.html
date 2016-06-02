@@ -3,10 +3,10 @@
 
 {% if sections %}
   {% for section in sections %}
-      <!-- Title section -->
-    <div class="featured-section l-indent">
+    <!-- Title section -->
+    <div class="section-heading section-heading{{section.get_effective_extra_style_hints}}">
         <!-- Not on the designs -->
-        <div class="icon">
+        <div class="section-heading__icon">
           {% if section.image %}
             <a href="{% pageurl section %}">
             {% image section.image width-80 as tmp_photo %}
@@ -15,12 +15,13 @@
           {% endif %}
         </div>
 
-        <h6 class="featured-section-title featured-section-title{{section.get_effective_extra_style_hints}} f-bigger">
+        <h6 class="section-heading__title section-heading__title{{section.get_effective_extra_style_hints}}">
             <a href="{% pageurl section %}">{{section.title}}</a>
         </h6>
     </div>
 
-<!-- Body list section -->
+  <!-- Body list section -->
+  <div class="section-body">
   {% for page in section.featured_articles_in_homepage %}
     {% if page.featured_in_homepage %}
     <div class="article-row l-indent">
@@ -47,7 +48,7 @@
         </div>
     </div>
     {% endif %}
-  {% endfor%}
+  {% endfor%}</div>
 
   {% endfor%}
 {% endif %}
