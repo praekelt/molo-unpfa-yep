@@ -25,23 +25,33 @@
     </div>
     -->
     {% for section in self.sections %}
-      <div class="block {{self.get_effective_extra_style_hints}} l-indent">
-        <h5><a href="{% pageurl section %}">{{section.title}}</a></h5>
+        <ul class="">
+            <li><a href="{% pageurl section %}">{{section.title}}</a></li>
+            <li><a href="{% pageurl section %}">{% trans "View All" %}</a></li>
+        </ul>
+
+
         {% for page in section.featured_articles %}
-            {% if page.image %}
-              {% image page.image width-98 as tmp_photo %}
-              <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="img-circle"/>
-            {% endif %}
-            <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
-            <p>{{page.subtitle}}</p>
+
+            <div class="article-row {{ self.get_effective_extra_style_hints }} l-indent">
+                <div class="image-article-col">
+                    {% if page.image %}
+                      {% image page.image width-98 as tmp_photo %}
+                      <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="img-circle"/>
+                    {% endif %}
+                </div>
+
+                <div class="text-article-col">
+                    <h3><a href="{% pageurl page %}">{{ page.title }}</a></h3>
+                    <p>{{ page.subtitle }}</p>
+                </div>
+            </div>
             {% get_comment_count for page as comment_count %}
             {% if comment_count > 0 %}
               <div class="comments-count"><a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
             {% endif %}
             <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
         {% endfor %}
-        <a href="{% pageurl section %}" class="button inverted">{% trans "View Similar" %}</a>
-        <hr>
       </div>
     {% endfor %}
 
