@@ -6,6 +6,11 @@
    display: flex;
 }
 
+.language-list {
+  padding: 10px 0;
+  margin: 0;
+}
+
 .language-list__item:first-child {
   margin-right: 5px;
 }

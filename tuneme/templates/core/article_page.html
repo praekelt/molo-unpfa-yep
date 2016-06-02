@@ -45,34 +45,46 @@
       <div class="article-copy">
         {% for block in self.body %}
           {% if block.block_type == 'heading' %}
-            <hr>
-            <p class="bold">{{ block.value }}</p>
+            <span class="article-heading">{{ block.value }}</span>
           {% else %}
-          <br>
-          {% if block.block_type == 'page' %}
-            {{ block }}
+          {% if block.block_type == 'list' %}
+             <span class="page-includes">{{ block }}</span>
           {% else %}
           {% if block.block_type == 'image' %}
-          {% image block.value width-98 as tmp_photo_small %}
-          {% image block.value width-620 as tmp_photo_large %}
+            {% image block.value width-98 as tmp_photo_small %}
+            {% image block.value width-620 as tmp_photo_large %}
             <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
           {% else %}
           {% if block.block_type == 'numbered_list' %}
-            <ol>
+            <ol class="numbered-list">
             {% for item in block.value %}
-              <li>{{item}}</li>
+              <li class="numbered-list__item">{{item}}</li>
             {% endfor %}
             </ol>
-          {% else %}
-              {{ block }}
-
           {% endif %}
           {% endif %}
           {% endif %}
           {% endif %}
         {% endfor %}
+      </div>
     </div>
-    </div>
+
+    {% with section=self.get_parent_section %}
+        <h2 class="heading heading{{ section.get_effective_extra_style_hints }}">
+            {% trans "Must Read" %}
+        </h2>
+        <ul class="article__links article__links{{ section.get_effective_extra_style_hints}}">
+            {% for block in self.body %}
+                {% if block.block_type == 'page' %}
+                    <li class="article__link--item l-indent l-indent--small">
+                        <a href="{% pageurl block.value %}">{{ block.value }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            <li class="article__link article__link--more l-indent l-indent--small">
+                <a href="{% pageurl self.get_parent_section %}">{% trans "More" %} &gt;</a></li>
+        </ul>
+    {% endwith %}
 
 {% has_questions self as questions %}
 {% if questions %}
