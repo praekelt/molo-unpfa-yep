@@ -1,4 +1,5 @@
 .article {
+  padding: 0 10px;
 }
 .article-heading {
   margin: 10px 0;
@@ -9,6 +10,11 @@
   font-weight: 700;
   padding: 5px 0;
   display: block;
+}
+
+.article-subtitle {
+  padding: 0 10px 10px;
+  font-size: 15px;
 }
 
 .page-includes {
