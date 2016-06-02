@@ -1,16 +1,12 @@
-.competition-section  {
-  color: $black;
 
-  .submit-button {
-    background: #ce1d43;
-    color: $white;
-    text-align: center;
-    font-size: 14px;
+@mixin submit_button($name) {
+  @if $name == '--red' {
+    background: $cardinal_red;
+  } @else if $name == '--orange' {
+    background: $dark_orange;
+  } @else {
+    background: $grey;
   }
-}
-
-.competition-title {
-  color: $white;
 }
 
 @each $name, $color in $color_list {
@@ -18,4 +14,29 @@
     background-color: $color;
   }
 }
+
+.competition-section  {
+  color: $black;
+
+  .submit-button {
+    @include submit_button('');
+    color: $white;
+    text-align: center;
+    font-size: 14px;
+  }
+}
+
+.competition-section--red .submit-button {
+  @include submit_button('--red');
+}
+
+.competition-section--orange .submit-button {
+  @include submit_button('--orange');
+}
+
+.competition-title {
+  color: $white;
+}
+
+
 

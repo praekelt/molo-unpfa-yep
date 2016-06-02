@@ -1,8 +1,8 @@
 
 {% load wagtailcore_tags wagtailimages_tags i18n comments %}
 {% if articles %}
+    <h2 class="article-title {{section.get_effective_extra_style_hints}} f-small">{% trans "Fresh Stories" %}</h2>
     <div class="latest-articles">
-        <h2 class="article-title f-bigger">{% trans "Fresh Stories" %}</h2>
         {% for article in articles %}
               {% if article.featured_in_latest %}
               <div class="columns">
@@ -14,13 +14,14 @@
                         </a>
                       {% endif %}
                   </div>
+                  <a href="{% pageurl article %}">
                     <h3 class="f-small">
                         <a href="{% pageurl article %}">{{article.title}}</a>
                     </h3>
                     <p>{{article.subtitle}}</p>
+                  </a>
               </div>
               {% endif %}
-              {# {% if not forloop.last %}<hr>{% endif %} #}
         {% endfor%}
     </div>
 {% endif %}

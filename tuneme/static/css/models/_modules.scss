@@ -1,29 +1,34 @@
 @import "../variables";
 
-@import "m-logo";
+@import "_m-logo";
 @import "_m-languages";
+
+@import "menu/_m-menu";
+@import "menu/_m-menu-list";
+@import "menu/_m-nav-button";
+@import "menu/_m-nav-containers";
 
 @import "search/m-search";
 @import "search/m-search-button";
 @import "search/m-search-form";
-
-@import "menu/m-menu";
-@import "menu/m-menu-list";
-@import "menu/m-menu-button";
-@import "menu/m-feature-menu";
-
 
 
 @import "articles/m-article";
 @import "articles/_m-headings";
 @import "articles/m-latest-articles";
 
+
+
+//Footer Featured Navigation
+@import "featured-menu/m-featured-menu";
+@import "featured-menu/m-featured-section";
+
+
+@import "_m-footer-menu";
+
 @import "m-section-page";
 
 @import "polls/m-polls";
-
-@import "menu/m-featured-section";
-@import "_m-footer-menu";
 
 //Comments
 @import "comments/m-comments";

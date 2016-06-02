@@ -1,29 +1,5 @@
-//Mobile Navigation
-.mobile-navigation {
- display: block;
- @media screen and (min-width: 600px) {
-      display: none;
- }
-}
 
-.mobile-menu {
-  a {
-    color: #ffffff;
-    text-transform: uppercase;
-    font-weight: bold;
-    text-decoration: underline;
-  }
-}
-
-//Tablet Navigation
-.tablet-navigation {
- display: none;
- @media screen and (min-width: 600px) {
-      display: block;
- }
-}
-
-//Popup navigation
+//START:Popup navigation - To Edit
 .menuItem.hide .content {
   display:none;
   background: black;
@@ -48,8 +24,9 @@
      color: $white;
   }
 }
+//END
 
-.header-menu-list__item {
+.header-nav-list__item {
   display: block;
   a {
     display: block;
@@ -59,7 +36,7 @@
   }
 }
 
-.header-menu-list__item--title {
+.header-nav-list__item--title {
     font-size: 17px;
     vertical-align: top;
     display: inline-block;

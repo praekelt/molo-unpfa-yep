@@ -2,13 +2,24 @@
   overflow: hidden;
   position: relative;
   padding: 10px 0 10px 12px;
+  @media screen and (min-width: 600px) {
+    padding: 0 0 10px 12px;
+  }
 }
 
+//START: Style per top latest article color
 .article-title {
-  padding: 10px 0;
+  background: $violet ;
   text-transform: uppercase;
-  color: $violet;
+  color: $black;
+  padding: 5px 10px;
+  @media screen and (min-width: 600px)  {
+    background: transparent;
+    color: $violet;
+    padding: 20px 10px 10px;
+  }
 }
+//END
 
 .columns {
   width: 100%;

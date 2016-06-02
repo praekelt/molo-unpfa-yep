@@ -2,12 +2,15 @@
    background: black;
    color: #ffffff;
    overflow: hidden;
-   padding: 0 25px 20px;
-   display: flex;
+   padding: 0 25px 15px;
+   display: none;
+    @media screen and (min-width: 600px) {
+      display: flex;
+    }
 }
 
 .language-list {
-  padding: 10px 0;
+  padding: 0 0 10px;
   margin: 0;
 }
 

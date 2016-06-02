@@ -1,0 +1,24 @@
+
+.featurephone-menu__button {
+  a {
+    color: #ffffff;
+    text-transform: capitalize;
+    font-weight: bold;
+    @media screen and (min-width: 600px) {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.smartphone-menu__button {
+  text-align: center;
+  font-weight: bold;
+  text-transform: capitalize;
+  z-index: 12;
+  vertical-align: middle;
+  color: white;
+  cursor: pointer;
+  @media screen and (min-width: 600px) {
+    text-transform: uppercase;
+  }
+}
