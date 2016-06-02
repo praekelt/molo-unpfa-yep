@@ -1,56 +1,39 @@
 
-/* Article lists*/
-/*.article-copy ul {list-style-type:disc; margin:0px 15px;}
-.article-copy ul li {list-style-type:disc; padding:5px 0;}
-.article-copy ol {list-style-type:decimal; margin:0px 15px;}
-.article-copy ol li {list-style-type:decimal; padding:5px 0;}
-
-.readmore {
-text-align: left;
-padding: 10px 0;
-color: black;
-font-weight: bold;
-}*/
-
-    /* Links to Menu
-.feature-menu {float:right; padding:12px 14px 0; text-transform:uppercase; font-weight:bold;}
-.feature-menu a {padding:5px; display:inline-block; color:white;}
-.backtotop {display:block; clear:both; text-transform:uppercase;
-    padding:15px; margin-top:-1px; font-weight:bold; border-top:1px solid #ddd; border-bottom:1px solid #ddd;}*/
-
-
-/* Radios */
-.radios div { padding:5px 5px 5px 0px; }
-
-/* Comments */
-.comments-count a {font-weight:bold;}
-.turq .comments-count a {color:#21e0d8; visibility: hidden;}
-.purple .comments-count a {color:#d127fc; visibility: hidden;}
-.pink .comments-count a {color:#f82353; visibility: hidden;}
-.orange .comments-count a {color:#ff7c44; visibility: hidden;}
-.yellow .comments-count a {color:#fad400; visibility: hidden;}
-.magenta .comments-count a {color:#e60382; visibility: hidden;}
-
 /* Your Words */
+.yourwords {
+    display: block;
+    text-align: left;
+    clear: both;
+    padding: 10px 0;
+}
 
-.yourwords {display: block; text-align: left; clear: both; padding: 10px 0;}
-  .yourwords input {width: 90%; margin: 10px 0 20px 0; display: inline-block; font-size: 95%; background: white; border: 2px solid #ddd; }
-  .yourwords input[type="submit"] {width: auto;}
-  .yourwords input[type="checkbox"] {width: auto; margin: 10px 0;}
-  .yourwords textarea {width: 90%; border: 2px solid #ddd; margin: 10px 0 20px 0;}
-  .yourwords ul {list-style-type: square;}
-  .yourwords ol {list-style-type: decimal}
+.yourwords input {
+    width: 90%;
+    margin: 10px 0 20px 0;
+    display: inline-block;
+    font-size: 95%;
+    background: white;
+    border: 2px solid #ddd;
+}
 
-.centent h5 {padding: 10px 0;}
-.centent p {padding: 10px 0;}
-.centent ul {padding: 10px 20px;}
-.centent ol {padding: 10px 20px;}
-.centent li {padding: 10px 0;}
+.yourwords input[type="submit"] {
+    width: auto;
+}
 
-.alert-error {color:red; padding: 0; font-style: italic;}
+.yourwords input[type="checkbox"] {
+    width: auto;
+    margin: 10px 0;
+}
 
 
 
+.yourwords ul {
+    list-style-type: square;
+}
+
+.yourwords ol {
+    list-style-type: decimal
+}
 
 /* Service Directory */
 .sd-heading.category-grouping a {color:#FF8E1E; text-decoration: underline; font-size: 130%; font-weight: bold; text-transform: none; line-height: 130%;}

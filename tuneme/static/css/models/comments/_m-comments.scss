@@ -3,19 +3,8 @@
 }
 
 .post-comment textarea {
-    width: 90%;
-    font-size: 100%;
     padding: 10px;
-    outline: none;
-    margin: 0 auto;
-}
-
-.post-comment a {
-    font-weight: bold;
-}
-
-.comment p {
-    padding: 5px 0;
+    font-size: 16px;
 }
 
 .navigator {
@@ -28,7 +17,7 @@
 }
 
 .navigator .padding {
-    padding: 0px 15px;
+    padding: 0 15px;
 }
 
 .pagination {

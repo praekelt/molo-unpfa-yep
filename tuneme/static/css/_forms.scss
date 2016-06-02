@@ -22,10 +22,15 @@ input:focus {
 }
 
 textarea {
-  width:95%;
-  font-size: 0.9em;
-  padding:10px;
-  display:block;
+  width: 90%;
+  outline: none;
+  margin: 0 auto;
+}
+
+.yourwords textarea {
+    width: 90%;
+    border: 2px solid #ddd;
+    margin: 10px 0 20px 0;
 }
 
 label {
@@ -62,30 +67,6 @@ input[type='radio'] {
     color: #21e0d8;
 }
 
-.purple .radios input[type="radio"]:checked + label {
-    color: #d127fc;
-}
-
-.pink .radios input[type="radio"]:checked + label {
-    color: #f82353;
-}
-
-.orange .radios input[type="radio"]:checked + label {
-    color: #ff7c44;
-}
-
-.yellow .radios input[type="radio"]:checked + label {
-    color: #fad400;
-}
-
-.grey .radios input[type="radio"]:checked + label {
-    color: #666666;
-}
-
-.magenta .radios input[type="radio"]:checked + label {
-    color: #e60382;
-}
-
 input[type='checkbox'] {
     width: auto;
     padding: 0px;
@@ -102,37 +83,6 @@ input[type='checkbox'] {
     width: 85%;
     float: left
 }
-
-.turq .radios input[type="radio"]:checked + label {
-    color: #21e0d8;
-}
-
-.purple .radios input[type="radio"]:checked + label {
-    color: #d127fc;
-}
-
-.pink .radios input[type="radio"]:checked + label {
-    color: #f82353;
-}
-
-.orange .radios input[type="radio"]:checked + label {
-    color: #ff7c44;
-}
-
-.yellow .radios input[type="radio"]:checked + label {
-    color: #fad400;
-}
-
-.grey .radios input[type="radio"]:checked + label {
-    color: #666666;
-}
-
-.magenta .radios input[type="radio"]:checked + label {
-    color: #e60382;
-}
-
-
-
 
 .btn {
   padding: 0.75em 1em;
@@ -166,13 +116,6 @@ select {
 input:focus {
   background:#eee;
   color:black;
-}
-
-textarea {
-  width:94%;
-  font-size:100%;
-  padding:10px;
-  display:block;
 }
 
 label {

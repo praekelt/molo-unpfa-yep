@@ -1,0 +1,21 @@
+.competition-section  {
+  color: $black;
+
+  .submit-button {
+    background: #ce1d43;
+    color: $white;
+    text-align: center;
+    font-size: 14px;
+  }
+}
+
+.competition-title {
+  color: $white;
+}
+
+@each $name, $color in $color_list {
+  .competition-section--#{$name} {
+    background-color: $color;
+  }
+}
+
