@@ -7,8 +7,11 @@
 
 .main-menu-nav-list__item  {
   overflow: hidden;
+  display: block;
   margin: 15px 0;
-  display: flex;
+  @media screen and (min-width: 600px) {
+    display: flex;
+  }
 
   &:last-child {
     .main-menu-nav-list__item--title {
@@ -20,10 +23,9 @@
     color: $black;
     display: block;
     text-transform: capitalize;
-    padding: 20px 10px;
+    padding: 10px;
     font-weight: bold;
     @media screen and (min-width: 600px)  {
-      color: $white;
       text-transform: uppercase;
       padding: 15px 10px;
     }
@@ -48,7 +50,6 @@
     vertical-align: top;
     float: left;
     width: 100%;
-
     @media screen and (min-width: 600px) {
        border-top-right-radius: 25px;
        border-bottom-right-radius: 25px;
@@ -70,12 +71,12 @@
 }
 
 .main-menu-nav-list__item--subtitle {
-  display: none;
-  color: $white;
-  padding-left: 5%;
+  color: $black;
+  padding: 0 50px 10px 10px;
 
   @media screen and (min-width: 600px) {
-    display: block;
+    color: $white;
+    padding: 0 0 0 5%;
     float: right;
     width: 45%;
   }
@@ -86,13 +87,17 @@
   }
 }
 
-
 @each $name, $color in $color_list {
   .main-menu-nav-list__item--#{$name} .main-menu-nav-list__item--title {
-    background: transparent;
-    border-bottom: 1px $color solid;
+     background: transparent;
     @media screen and (min-width: 600px) {
      background-color: $color;
+    }
+  }
+
+  .main-menu-nav-list__item--#{$name} {
+    border-bottom: 1px $color solid;
+    @media screen and (min-width: 600px) {
      border: none;
     }
   }
