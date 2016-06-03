@@ -47,6 +47,12 @@
                                     </a>
                                 </li>
                             {% endif %}
+
+                            <li class="main-menu-nav-list__item">
+                                <div class="main-menu-nav-list__item--title">
+                                    <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -60,7 +66,6 @@
 {% endblock %}
 
 {% block footer %}
-
     <div id="featured-menu" class="footer-menu">
         <ul class="main-menu-nav-list">
             <li class="main-menu-nav-list__item main-menu-nav-list__item--backtotop">
