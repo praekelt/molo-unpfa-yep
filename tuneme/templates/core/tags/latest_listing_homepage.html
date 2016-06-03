@@ -1,11 +1,11 @@
 
 {% load wagtailcore_tags wagtailimages_tags i18n comments %}
 {% if articles %}
-    <h2 class="article-title {{section.get_effective_extra_style_hints}} f-small">{% trans "Fresh Stories" %}</h2>
+    <h2 class="latest-article__title {{section.get_effective_extra_style_hints}} f-small">{% trans "Fresh Stories" %}</h2>
     <div class="latest-articles">
-        {% for article in articles %}
+       {% for article in articles %}
               {% if article.featured_in_latest %}
-              <div class="columns">
+              <div class="latest-article__columns">
                   <div class="feature-image">
                       {% if article.image %}
                         <a href="{% pageurl article %}">
@@ -14,7 +14,7 @@
                         </a>
                       {% endif %}
                   </div>
-                    <h3 class="f-small">
+                    <h3 class="latest-article__subtitle f-small">
                         <a href="{% pageurl article %}">{{article.title}}</a>
                     </h3>
                     <p>{{article.subtitle}}</p>

@@ -1,39 +1,46 @@
 .latest-articles {
   overflow: hidden;
   position: relative;
-  padding: 10px 0 10px 12px;
+  padding: 10px;
   @media screen and (min-width: 600px) {
     padding: 0 0 10px 12px;
   }
 }
 
-//START: Style per top latest article color
-.article-title {
+.latest-article__columns {
+  width: 100%;
+  float: left;
+  overflow: hidden;
+  margin: 0 5% 15px 0;
+  @media screen and (min-width: 600px) {
+    width: 45%;
+    max-height: 235px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.latest-article__title {
   background: $violet ;
   text-transform: uppercase;
   color: $black;
   padding: 5px 10px;
+  margin-bottom: 10px;
   @media screen and (min-width: 600px)  {
     background: transparent;
     color: $violet;
-    padding: 20px 10px 10px;
+    padding: 20px 10px;
+    margin: 0;
   }
 }
-//END
 
-.columns {
-  width: 100%;
-  float: left;
-  overflow: hidden;
-  margin: 15px 5% 0 0;
-  @media screen and (min-width: 600px) {
-    width: 45%;
-    height: 235px;
-  }
+.latest-article__subtitle {
+  margin: 5px 0 0;
 }
 
 .feature-image {
-  padding: 0 0 5px;
   a {
     display: block;
     img {

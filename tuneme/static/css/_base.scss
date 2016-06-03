@@ -29,12 +29,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
   color: $black;
-  @media screen and (min-width: 600px) {
-    text-decoration: none;
-  }
 }
 
 ul, ol {
