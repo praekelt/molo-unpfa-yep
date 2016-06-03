@@ -27,17 +27,20 @@
                 <div class="main-menu menu-item hide" id="pages">
                     <span class="menu-nav__button">{% trans "Menu" %}</span>
                     <div class="main-navigation">
-                        <ul class="header-nav-list">
+                        <ul class="main-menu-nav-list">
                             {% for section in language_page.sections %}
-                                <li class="header-nav-list__item {{ section.get_effective_extra_style_hints }}">
-                                    <a href="{% pageurl section %}">
-                                        {% image section.image width-40 %}
-                                        <span class="header-nav-list__item--title">{{ section.title }}</span>
-                                    </a>
+                                <li class="main-menu-nav-list__item main-menu-nav-list__item{{ section.get_effective_extra_style_hints }}">
+                                    {% image section.image width-40 %}
+                                    <div class="main-menu-nav-list__item--title">
+                                        <a class="section-link" href="{% pageurl section %}">{{ section.title }}</a>
+                                    </div>
+                                    <div class="main-menu-nav-list__item--subtitle">
+                                        <span>{{ section.description }}</span>
+                                    </div>
                                 </li>
                             {% endfor %}
                             {% if user.is_authenticated %}
-                                <li class="header-nav-list__item pgrey">
+                                <li class="main-menu-nav-list__item pgrey">
                                     <a href="{% url 'molo.profiles:view_my_profile' %}">
                                         <img src="{% static 'img/profile.png' %}" width="40">
                                         <span>{% trans "Your Profile" %}</span>
@@ -58,21 +61,20 @@
 
 {% block footer %}
 
-    <div id="feature-menu" class="feature-menu">
-        <ul class="feature-menu-list">
-            <li class="feature-menu-list__item feature-menu-list__item--backtotop">
-                <a href="#top">{% trans "Back to top" %}</a>
+    <div id="featured-menu" class="footer-menu">
+        <ul class="main-menu-nav-list">
+            <li class="main-menu-nav-list__item main-menu-nav-list__item--backtotop">
+                <a class="section-link" href="#top">{% trans "Back to top" %}</a>
             </li>
-            <li class="feature-menu-list__item feature-menu-list__item--home">
-                <a href="/">{% trans "Home" %}</a>
+            <li class="main-menu-nav-list__item main-menu-nav-list__item--home">
+                <a class="section-link" href="/">{% trans "Home" %}</a>
             </li>
             {% for section in language_page.sections %}
-                <li class="feature-menu-list__item feature-menu-list__item{{ section.get_effective_extra_style_hints }}">
-                    <div class="feature-menu-list__item--title">
-                        <a href="{% pageurl section %}">{{ section.title }}</a>
+                <li class="main-menu-nav-list__item main-menu-nav-list__item{{ section.get_effective_extra_style_hints }}">
+                    <div class="main-menu-nav-list__item--title">
+                        <a class="section-link" href="{% pageurl section %}">{{ section.title }}</a>
                     </div>
-
-                    <div class="feature-menu-list__item--subtitle">
+                    <div class="main-menu-nav-list__item--subtitle">
                         <span>{{ section.description }}</span>
                     </div>
                 </li>

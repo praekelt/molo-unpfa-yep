@@ -1,48 +1,55 @@
 
-.feature-menu {
-  background: $white;
-  text-align: left;
-  @media screen and (min-width: 600px) {
-    background: $black;
-    display: block;
-  }
-}
 
-.feature-menu-list {
+.main-menu-nav-list {
     padding: 10px 0;
     margin: 0;
 }
 
-.feature-menu-list__item {
-  display: flex;
+.main-menu-nav-list__item  {
   overflow: hidden;
-  @media screen and (min-width: 600px) {
-    margin: 15px 0;
-    padding: 0 10px 0 0;
-  }
+  margin: 15px 0;
+  display: flex;
 
   &:last-child {
-    .feature-menu-list__item--title {
+    .main-menu-nav-list__item--title {
       border-bottom: none;
     }
   }
 
   a {
-    color: $black;
+    color: $santas_gray;
     display: block;
     text-transform: capitalize;
     padding: 20px 10px;
     font-weight: bold;
-
     @media screen and (min-width: 600px)  {
+      color: $white;
       text-transform: uppercase;
       padding: 15px 10px;
     }
   }
+
+  .section-link {
+      color: $black;
+  }
 }
 
-.feature-menu-list__item--home,
-.feature-menu-list__item--backtotop {
+.main-menu-nav-list__item--title {
+    font-size: 17px;
+    vertical-align: top;
+    float: left;
+    width: 100%;
+
+    @media screen and (min-width: 600px) {
+       border-top-right-radius: 25px;
+       border-bottom-right-radius: 25px;
+       width: 50%;
+       max-height: 51px;
+    }
+}
+
+.main-menu-nav-list__item--home,
+.main-menu-nav-list__item--backtotop {
   display: block;
   border-bottom: 1px solid #ddd;
   @media screen and (min-width: 600px) {
@@ -50,22 +57,11 @@
   }
 }
 
-.feature-menu-list__item--backtotop a {
+.main-menu-nav-list__item--backtotop a {
   font-size: 14px;
 }
 
-.feature-menu-list__item--title {
-  float: left;
-  width: 100%;
-  @media screen and (min-width: 600px) {
-     border-top-right-radius: 25px;
-     border-bottom-right-radius: 25px;
-     width: 50%;
-     max-height: 51px;
-  }
-}
-
-.feature-menu-list__item--subtitle {
+.main-menu-nav-list__item--subtitle {
   display: none;
   color: $white;
   padding-left: 5%;
@@ -84,7 +80,7 @@
 
 
 @each $name, $color in $color_list {
-  .feature-menu-list__item--#{$name} .feature-menu-list__item--title {
+  .main-menu-nav-list__item--#{$name} .main-menu-nav-list__item--title {
     background: transparent;
     border-bottom: 1px $color solid;
     @media screen and (min-width: 600px) {

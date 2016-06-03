@@ -1,0 +1,9 @@
+
+.footer-menu {
+  background: $white;
+  text-align: left;
+  @media screen and (min-width: 600px) {
+    background: $black;
+    display: block;
+  }
+}

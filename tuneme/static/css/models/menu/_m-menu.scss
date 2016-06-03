@@ -37,30 +37,9 @@
       background: $black;
    }
 
-  a {
-     color: $black;
-       @media screen and (min-width: 600px) {
-       color: $white;
-     }
+  .main-menu-nav-list__item--home {
+      display: block;
   }
-}
-
-.header-nav-list__item {
-  display: block;
-  a {
-    display: block;
-    img {
-      float: left;
-    }
-  }
-}
-
-.header-nav-list__item--title {
-    font-size: 17px;
-    vertical-align: top;
-    display: inline-block;
-    line-height: 40px;
-    margin-left: 15px;
 }
 
 //THIS IS NOT USED
