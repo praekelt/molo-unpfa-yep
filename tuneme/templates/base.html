@@ -52,13 +52,11 @@
                                     </a>
                                 </li>
                             {% endif %}
-
                             <li class="main-menu-nav-list__item menu-profiles">
                                 <div class="main-menu-nav-list__item--title">
                                     <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
                                 </div>
                             </li>
-
                             <li class="main-menu-nav-list__item menu-profiles">
                                 <div class="main-menu-nav-list__item--title">
                                     <a href="{% url 'molo.profiles:user_register' %}">{% trans "Signup" %}</a>
@@ -95,6 +93,17 @@
                     </div>
                 </li>
             {% endfor %}
+            <li class="main-menu-nav-list__item menu-profiles">
+                <div class="main-menu-nav-list__item--title">
+                    <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
+                </div>
+            </li>
+
+            <li class="main-menu-nav-list__item menu-profiles">
+                <div class="main-menu-nav-list__item--title">
+                    <a href="{% url 'molo.profiles:user_register' %}">{% trans "Sign up" %}</a>
+                </div>
+            </li>
         </ul>
     </div><!-- /feature-menu -->
 
