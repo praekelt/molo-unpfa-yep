@@ -1,9 +1,12 @@
 
 .poll-section {
-  color: $white;
-
+  @media screen and (min-width: 600px) {
+      color: $white;
+    }
   a {
-    color: $white;
+    @media screen and (min-width: 600px) {
+      color: $white;
+    }
   }
 }
 
@@ -28,10 +31,3 @@
 .questions-choice-list {
   overflow: hidden;
 }
-
-
-/*@each $name, $color in $color_list {
-  .poll-section {
-    background: $color;
-  }
-}*/
