@@ -1,15 +1,13 @@
 @import "../variables";
 
-@import "_m-logo";
-@import "_m-languages";
+@import "menu/m-logo";
+@import "menu/m-languages";
 
 @import "menu/_m-menu";
-@import "menu/_m-menu-list";
 @import "menu/_m-nav-button";
-@import "menu/_m-nav-containers";
 
 @import "search/m-search";
-@import "search/m-search-button";
+@import "menu/m-menu-search__button";
 @import "search/m-search-form";
 
 

@@ -6,48 +6,45 @@
     <div class="header">
         <div class="logo-container">
             <a href="/">
-                <!-- NOTE: Used the same image on toggle -->
-                <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo hide">
+                <img src="{% static 'img/logo-black.png' %}" alt="{% trans "TuneMe" %}" class="logo hide">
                 <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo">
             </a>
         </div>
         <ul class="menu-list">
             <li class="menu-list__item">
-                <div class="search-block">
+                <div class="menu-list__search-block">
                     <a href="#search-form" class="search-icon">{% trans "Search" %}</a>
                 </div>
             </li>
-            <li class="menu-list__item">
+            <!--<li class="menu-list__item">
                 <div class="mobile-navigation">
                     <div class="featurephone-menu__button">
-                        <a href="#feature-menu">{% trans "Menu" %}</a>
+                        <a href="#feature-menu">{# {% trans "Menu" %} #}</a>
                     </div>
                 </div>
-            </li>
+            </li>-->
             <li class="menu-list__item">
-                <div class="tablet-navigation">
-                    <div class="mainMenu menuItem hide" id="pages">
-                        <span class="smartphone-menu__button">{% trans "Menu" %}</span>
-                        <div class="content main-navigation">
-                            <ul class="header-nav-list">
-                                {% for section in language_page.sections %}
-                                    <li class="header-nav-list__item {{ section.get_effective_extra_style_hints }}">
-                                        <a href="{% pageurl section %}">
-                                            {% image section.image width-40 %}
-                                            <span class="header-nav-list__item--title">{{ section.title }}</span>
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                                {% if user.is_authenticated %}
-                                    <li class="header-nav-list__item pgrey">
-                                        <a href="{% url 'molo.profiles:view_my_profile' %}">
-                                            <img src="{% static 'img/profile.png' %}" width="40">
-                                            <span>{% trans "Your Profile" %}</span>
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </div>
+                <div class="main-menu menu-item hide" id="pages">
+                    <span class="menu-nav__button">{% trans "Menu" %}</span>
+                    <div class="main-navigation">
+                        <ul class="header-nav-list">
+                            {% for section in language_page.sections %}
+                                <li class="header-nav-list__item {{ section.get_effective_extra_style_hints }}">
+                                    <a href="{% pageurl section %}">
+                                        {% image section.image width-40 %}
+                                        <span class="header-nav-list__item--title">{{ section.title }}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            {% if user.is_authenticated %}
+                                <li class="header-nav-list__item pgrey">
+                                    <a href="{% url 'molo.profiles:view_my_profile' %}">
+                                        <img src="{% static 'img/profile.png' %}" width="40">
+                                        <span>{% trans "Your Profile" %}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
                     </div>
                 </div>
             </li>
