@@ -28,6 +28,11 @@
                     <span class="menu-nav__button">{% trans "Menu" %}</span>
                     <div class="main-navigation">
                         <ul class="main-menu-nav-list">
+                                <li class="main-menu-nav-list__item main-menu-nav-list__item--home menu-profiles">
+                                    <div class="main-menu-nav-list__item--title">
+                                        <a href="/">{% trans "Home" %}</a>
+                                    </div>
+                                </li>
                             {% for section in language_page.sections %}
                                 <li class="main-menu-nav-list__item main-menu-nav-list__item{{ section.get_effective_extra_style_hints }}">
                                     {% image section.image width-40 %}
@@ -48,9 +53,15 @@
                                 </li>
                             {% endif %}
 
-                            <li class="main-menu-nav-list__item">
+                            <li class="main-menu-nav-list__item menu-profiles">
                                 <div class="main-menu-nav-list__item--title">
                                     <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
+                                </div>
+                            </li>
+
+                            <li class="main-menu-nav-list__item menu-profiles">
+                                <div class="main-menu-nav-list__item--title">
+                                    <a href="{% url 'molo.profiles:user_register' %}">{% trans "Signup" %}</a>
                                 </div>
                             </li>
                         </ul>

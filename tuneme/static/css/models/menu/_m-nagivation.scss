@@ -33,6 +33,19 @@
   }
 }
 
+.menu-profiles {
+  margin: 0;
+
+  a {
+    color: $black;
+    padding: 5px 10px;
+    @media screen and (min-width: 600px) {
+      padding: 10px 10px;
+      color: $white;
+    }
+  }
+}
+
 .main-menu-nav-list__item--title {
     font-size: 17px;
     vertical-align: top;
@@ -49,10 +62,9 @@
 
 .main-menu-nav-list__item--home,
 .main-menu-nav-list__item--backtotop {
-  display: block;
   border-bottom: 1px solid #ddd;
   @media screen and (min-width: 600px) {
-     display: none;
+    border: none;
   }
 }
 

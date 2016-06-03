@@ -40,6 +40,13 @@
   .main-menu-nav-list__item--home {
       display: block;
   }
+
+  a {
+     text-decoration: underline;
+     @media screen and (min-width: 600px) {
+       text-decoration: none;
+     }
+  }
 }
 
 //THIS IS NOT USED
