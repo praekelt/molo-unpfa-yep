@@ -17,7 +17,7 @@
   }
 
   a {
-    color: $santas_gray;
+    color: $black;
     display: block;
     text-transform: capitalize;
     padding: 20px 10px;
@@ -28,16 +28,13 @@
       padding: 15px 10px;
     }
   }
-  .section-link {
-      color: $black;
-  }
 }
 
 .menu-profiles {
   margin: 0;
 
   a {
-    color: $black;
+    color: $santas_gray;
     padding: 5px 10px;
     @media screen and (min-width: 600px) {
       padding: 10px 10px;
