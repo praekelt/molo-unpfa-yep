@@ -1,12 +1,9 @@
-html {height:100%; width:100%; position:relative;}
-body {background:white; position:relative; text-align:center; margin-bottom: 0px;}
-
 
 /* Header */
-.header {background:none; height:0px;}
-    .menu, .search-icon {display:inline-block;}
-    .header .logo {position:absolute; z-index:12; width:110px; display:block !important; margin: -8px 5px}
-    .header .logo.hide {display:none !important;}
+.header {background:none; height:0;}
+.menu, .search-icon {display:inline-block;}
+.header .logo {position:absolute; z-index:12; width:110px; display:block !important; margin: -8px 5px}
+.header .logo.hide {display:none !important;}
     /* Main Menu */
     .menu {text-align:left;}
     .menuItem div.content li:first-child:before{content:""; height:10px; width:100%; display:block; background:url(../img/black-wave.png) 0 bottom repeat-x; background-size:20px;}
@@ -40,21 +37,7 @@ body {background:white; position:relative; text-align:center; margin-bottom: 0px
             .signin-form p {text-align:left; padding:10px 0px 10px 5px; color:black;}
             .signin-form h5 {text-align:left; padding:10px 0px 10px 5px;}
 
-        /* Pages Menu */
-        #pages ul {font-size:140%;}
-            #pages ul li { display:block; font-weight:bold;}
-            #pages ul li a {display:block; padding:15px; color:white; text-decoration:none; vertical-align:top;}
 
-        li.turq {background-color:#21e0d8;}
-        li.purple {background-color:#d127fc;}
-        li.pink {background-color:#f82353;}
-        li.orange {background-color:#ff7c44;}
-        li.servicedirectory {background-color:#FF8E1E;}
-        li.yellow {background-color:#fad400;}
-        li.pgrey {background-color:#666666;}
-        li.magenta {background-color:#e60382;}
-    /* Hide Feature Menu */
-    #feature-menu, .feature-menu {display:none;}
 
 /* Radios */
 .radios div {padding:5px 25px 5px 25px;}

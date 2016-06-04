@@ -33,6 +33,16 @@
                                         <a href="/">{% trans "Home" %}</a>
                                     </div>
                                 </li>
+                                <li class="main-menu-nav-list__item main-menu-nav-list__item--main menu-profiles">
+                                    <div class="main-menu-nav-list__item--title">
+                                        <a href="#search-form">{% trans "Search" %}</a>
+                                    </div>
+                                </li>
+                                <li class="main-menu-nav-list__item main-menu-nav-list__item--main menu-profiles">
+                                    <div class="main-menu-nav-list__item--title">
+                                        <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
+                                    </div>
+                                </li>
                             {% for section in language_page.sections %}
                                 <li class="main-menu-nav-list__item main-menu-nav-list__item{{ section.get_effective_extra_style_hints }}">
                                     {% image section.image width-40 %}
@@ -45,7 +55,7 @@
                                 </li>
                             {% endfor %}
                             {% if user.is_authenticated %}
-                                <li class="main-menu-nav-list__item pgrey">
+                                <li class="main-menu-nav-list__item">
                                     <a href="{% url 'molo.profiles:view_my_profile' %}">
                                         <img src="{% static 'img/profile.png' %}" width="40">
                                         <span>{% trans "Your Profile" %}</span>

@@ -11,13 +11,15 @@
     font-weight: 700;
     font-size: 17px;
     border: none;
+    outline: none;
+
   }
 
   input[type="text"] {
     background: #f7f7f7;
     width: 65%;
     padding: 15px;
-
+    text-transform: capitalize;
     @media screen and (min-width: 600px) {
       border-radius: 25px;
       width: 90%;
@@ -28,6 +30,7 @@
       background: none;
       text-transform: uppercase;
       color: $white;
+      cursor: pointer;
     @media screen and (min-width: 600px) {
       background: url(/static/img/search-black.png) center center no-repeat;
       background-size: 25px;

@@ -4,35 +4,52 @@
 
 {% block content %}
 {% if search_results %}
-  <div class="title search">
-    <h3>{{search_query}}</h3>
-  </div>
+    <h2 class="search-result-title f-bigger">{{search_query}}</h2>
   {% for page in search_results %}
     {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
-    {% if ancestor.sectionpage.image %}
-      <a href="{% pageurl page %}" class="search-result {{page.get_parent_section.get_effective_extra_style_hints}}">
-        <div class="icon">
-          {% image ancestor.sectionpage.image width-98 as tmp_photo %}
-          <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/>
+        <div class="search-results-body">
+         {% if ancestor.sectionpage.image %}
+        <a href="{% pageurl page %}" class="search-result">
+             <h6 class="search-result-section__title search-result-section__title{{page.get_parent_section.get_effective_extra_style_hints}}">
+                 {{ parent_section.title }}
+             </h6>
+        </a>
+        <div class="article-row">
+            <div class="image-article-col">
+                <a href="{% pageurl page %}" class="search-result">
+                    {% image ancestor.sectionpage.image width-98 as tmp_photo %}
+                    <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/>
+                </a>
+            </div>
+
+            <div class="text-article-col">
+                <a href="{% pageurl page %}" class="search-result">
+                    <!--<h6>{# {{ancestor.title}} #}</h6>-->
+                    <h3>{{page.title}}</h3>
+                </a>
+                <p>{{page.subtitle}}</p>
+            </div>
         </div>
-        <div class="copy">
-          <h6>{{ancestor.title}}</h6>
-          <h3>{{page.title}}</h3>
-          <p>{{page.subtitle}}</p>
-        </div>
-      </a>
     {% else %}
-      <a href="{% pageurl page %}" class="search-result {{page.get_parent_section.get_effective_extra_style_hints}}">
-        <div class="icon">
-          {% image parent_section.sectionpage.image width-98 as tmp_photo %}
-          <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/>
-        </div>
-        <div class="copy">
-          <h6>{{parent_section.title}}</h6>
-          <h3>{{page.title}}</h3>
-          <p>{{page.subtitle}}</p>
-        </div>
-      </a>
+         <a href="{% pageurl page %}" class="search-result">
+             <h6 class="search-result-section__title search-result-section__title{{page.get_parent_section.get_effective_extra_style_hints}}">
+                 {{ parent_section.title }}
+             </h6>
+        </a>
+         <div class="article-row">
+             <div class="image-article-col">
+                 <a href="{% pageurl page %}" class="search-result">
+                     {% image parent_section.sectionpage.image width-98 as tmp_photo %}
+                 <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/></a>
+             </div>
+             <div class="text-article-col">
+                 <a href="{% pageurl page %}" class="search-result">
+                     <h3>{{ page.title }}</h3>
+                 </a>
+                 <p>{{ page.subtitle }}</p>
+             </div>
+         </div>
+     </div>
     {% endif %}
     {% endwith %}
   {% endfor %}
@@ -42,7 +59,6 @@
     {% if search_results.has_previous %}
         <a href="?p={{ search_results.previous_page_number }}&amp;q={{search_query}}">&larr;</a>
     {% endif %}
-
 
     <span class="current">
         Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}
@@ -55,8 +71,8 @@
   </div>
 
   {% else %}
-    <div class="title search">
-        <h3>{% trans "Search" %}</h3>
+    <div class="search-title l-indent">
+        <h2 class="search-result-title">{% trans "Search" %}</h2>
     </div>
     <div class="block turq">
         <p>{% trans "No search results for " %}{{search_query}}.</p>

@@ -37,8 +37,22 @@
       background: $black;
    }
 
+  a {
+     text-decoration: underline;
+     @media screen and (min-width: 600px) {
+       text-decoration: none;
+     }
+  }
+
+  .main-menu-nav-list__item--main,
   .main-menu-nav-list__item--home {
       display: block;
+      padding: 15px 0;
+      border-bottom: 1px solid $santas_gray;
+      @media screen and (min-width: 600px)  {
+          padding: 0;
+          border-bottom: none;
+      }
       a{
         color: $black;
         @media screen and (min-width: 600px)  {
@@ -47,12 +61,15 @@
       }
   }
 
-  a {
-     text-decoration: underline;
-     @media screen and (min-width: 600px) {
-       text-decoration: none;
-     }
+
+  .main-menu-nav-list__item--main {
+    display: block;
+    @media screen and (min-width: 600px)  {
+      display: none;
+    }
   }
+
+
 }
 
 //THIS IS NOT USED
