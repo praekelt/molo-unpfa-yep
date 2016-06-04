@@ -30,12 +30,12 @@
                 <p>{{page.subtitle}}</p>
             </div>
         </div>
-    {% else %}
+        {% else %}
          <a href="{% pageurl page %}" class="search-result">
              <h6 class="search-result-section__title search-result-section__title{{page.get_parent_section.get_effective_extra_style_hints}}">
                  {{ parent_section.title }}
              </h6>
-        </a>
+         </a>
          <div class="article-row">
              <div class="image-article-col">
                  <a href="{% pageurl page %}" class="search-result">
