@@ -3,10 +3,10 @@
 
 {% block content %}
 	<div class="title profile">
-		<h3>{% trans "Sign in" %}</h3>
+		<h3 class="l-indent">{% trans "Sign in" %}</h3>
 	</div>
 
-	<div class="block turq">
+	<div class="block l-indent">
 		<div class="signin-form">
 			<h5>{% trans "LOGIN TO YOUR ACCOUNT!" %}</h5>
 			<p>{% trans "We’re excited to have you..." %}</p>
@@ -20,7 +20,7 @@
 					{{form.password}}
 					<input type="submit" class="submit-button" value="{% trans 'Sign in' %}">
 					<input type="hidden" name="next" value="{% if request.GET.next %}{{ request.GET.next }}{% else %}{{request.site.root_page.url}}{% endif %}" />
-					<a href="{% url 'molo.profiles:user_register' %}" class="button inverted">{% trans "Not a member yet" %}</a>
+					<a href="{% url 'molo.profiles:user_register' %}" class="submit-button">{% trans "Not a member yet" %}</a>
 	    </form>
 		</div>
 	</div>

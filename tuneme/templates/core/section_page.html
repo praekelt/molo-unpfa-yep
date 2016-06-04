@@ -21,7 +21,7 @@
         <h6>{#{{self.title}}#}</h6>
     </div>
     <div class="block  {#{{self.get_effective_extra_style_hints}}">
-        <a href="{{request.site.root_page.url}}" class="button inverted">{% trans "Home" %}#}</a>
+        <a href="{{request.site.root_page.url}}" class="submit-button">{% trans "Home" %}#}</a>
     </div>
     -->
     {% for section in self.sections %}
@@ -50,7 +50,7 @@
             {% if comment_count > 0 %}
               <div class="comments-count"><a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
             {% endif %}
-            <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
+            <a href="{% pageurl page %}" class="submit-button">{% trans "Read on" %}</a>
         {% endfor %}
       </div>
     {% endfor %}
