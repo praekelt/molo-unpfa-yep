@@ -4,7 +4,7 @@
 {% block content %}
 {% get_comments_content_object for form as self %}
 
-<div class="title {{self.get_parent_section.get_effective_extra_style_hints}}">
+<div class="article article{{self.get_parent_section.get_effective_extra_style_hints}}">
 
   {% with parent_section=self.get_parent_section ancestor=self.get_parent_section.get_ancestors.last %}
     <div class="icon">
@@ -16,12 +16,10 @@
         {% image ancestor.sectionpage.image width-98 %}
       {% endif %}
     </div>
-    <h6>{{ancestor.sectionpage.title}}</h6>
-    <h6>{{parent_section.title}}</h6>
+    <h1 class="article-heading article-heading">{{ancestor.sectionpage.title}}</h1>
+    <h3 class="f-bigger">{{parent_section.title}}</h3>
   {% endwith %}
-</div>
 
-<div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">
   {% if messages %}
   <ul class="messages">
       {% for message in messages %}
@@ -38,5 +36,7 @@
       {% endif %}
 		</div>
   </div>
+
+
 </div>
 {% endblock %}

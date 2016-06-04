@@ -5,12 +5,12 @@ ul.errorlist {
 
 .error, .errorlist {
   list-style: none;
-  margin: 0;
   text-align: left !important;
   display: block;
   color: #ff4b4b !important;
   background: #fff;
   line-height: 18px !important;
+  padding: 15px 0;
 }
 
 .error:before, .errorlist li:before, p.errorlist:before {

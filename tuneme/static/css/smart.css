@@ -82,30 +82,11 @@ blockquote {
     font-weight: bold;
 }
 
-.article-copy ul,
-.article-copy ol {
-    margin: 5px 35px;
-}
-
-.article-image {
-    padding: 10px 15px;
-}
-
-.article-image p {
-    display: block;
-    padding: 10px 0 0;
-    font-size: 85%;
-}
-
 .readmore {
     text-align: left;
     padding: 10px 15px;
     color: black;
     font-weight: bold;
-}
-
-.feature-image {
-    margin-bottom: -10px;
 }
 
 /* Comments Count  - comments-count a style hint
@@ -353,7 +334,11 @@ a.white-link {
 }
 
 /* Footer */
-.terms_and_conditions label {display:block; padding:0; text-align: left;}
+.terms_and_conditions label {
+    display: block;
+    padding: 0;
+    text-align: left;
+}
 
 /* Service Directory */
 .sd-heading.category-grouping a {color:#FF8E1E; text-decoration: underline; font: bold 20px 'Quicksand', Arial, Helvetica, sans-serif; text-transform: none}

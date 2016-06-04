@@ -43,3 +43,9 @@
 .article__link--item {
   display: block;
 }
+
+//@each $name, $color in $color_list {
+  //.article--#{$name} .icon {
+      //background: $color;
+  //}
+//}
