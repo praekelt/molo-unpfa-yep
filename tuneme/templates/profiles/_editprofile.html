@@ -3,13 +3,12 @@
 
 {% block content %}
 <div class="title profile">
-    <h3></h3>
+    <h3 class="l-indent"></h3>
 </div>
-<div class="block turq">
+<div class="block l-indent">
 	<div class="signin-form">
 		<form method="post" id="frmProfileEdit" action="">{% csrf_token %}
 		  {{ edit_profile_form.alias }}
-      <br><br>
 		  <input type="submit" class="submit-button" value='{% trans "Update profile" %}' class="btn btn-wide">
 		</form>
 	</div>

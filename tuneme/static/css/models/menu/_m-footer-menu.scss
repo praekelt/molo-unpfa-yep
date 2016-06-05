@@ -1,17 +1,9 @@
 
 .footer-menu {
   background: $white;
-  text-align: left;
   @media screen and (min-width: 600px) {
     background: $black;
     display: block;
-  }
-
-  a {
-     text-decoration: underline;
-     @media screen and (min-width: 600px) {
-       text-decoration: none;
-     }
   }
 
   .main-menu-nav-list__item--home,
@@ -27,5 +19,40 @@
     @media screen and (min-width: 600px) {
        display: none;
     }
+  }
+}
+
+.footer-menu-list {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+
+  p {
+      margin: 0;
+  }
+}
+
+.footer-menu-list__item , .footer-page-list__item {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.footer-page-list {
+  font-size: 80%;
+  padding: 10px 0 15px;
+}
+
+.copyright {
+  font-size: 9px;
+}
+
+.footer-menu-list, .footer-page-list {
+  a {
+     text-decoration: underline;
+  }
+
+  a .active {
+    text-decoration: none;
+    font-weight: 400;
   }
 }

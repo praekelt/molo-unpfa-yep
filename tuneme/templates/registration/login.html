@@ -8,7 +8,7 @@
 
 	<div class="block l-indent">
 		<div class="signin-form">
-			<h5>{% trans "LOGIN TO YOUR ACCOUNT!" %}</h5>
+			<h5 class="profile-subtitle">{% trans "LOGIN TO YOUR ACCOUNT!" %}</h5>
 			<p>{% trans "We’re excited to have you..." %}</p>
 	    <form method="post" action=".">{% csrf_token %}
 	        {% if form.errors %}

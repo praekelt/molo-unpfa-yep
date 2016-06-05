@@ -1,18 +1,7 @@
 
 .footer {
-  padding:15px;
   color: $santas_gray;
-  text-align: left;
-  @media screen and (min-width: 600px) {
-    background: $black;
-  }
-
    a {
      color: $santas_gray;
-     text-decoration: underline;
-   }
-
-   a.active {
-      text-decoration: underline;
    }
 }

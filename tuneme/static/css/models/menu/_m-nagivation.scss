@@ -1,8 +1,13 @@
 
-
 .main-menu-nav-list {
     padding: 10px 0;
     margin: 0;
+    a {
+       text-decoration: underline;
+       @media screen and (min-width: 600px) {
+         text-decoration: none;
+       }
+    }
 }
 
 .main-menu-nav-list__item  {
@@ -59,7 +64,8 @@
 }
 
 .main-menu-nav-list__item--home,
-.main-menu-nav-list__item--backtotop {
+.main-menu-nav-list__item--backtotop,
+.main-menu-nav-list__item--main {
   border-bottom: 1px solid #ddd;
   @media screen and (min-width: 600px) {
     border: none;
