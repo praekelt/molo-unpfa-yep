@@ -4,46 +4,45 @@
 
 {% block content %}
 {% if search_results %}
-    <h2 class="search-result-title f-bigger">{{search_query}}</h2>
+    <h2 class="search-result-title f-tiny">{% trans "your search results for: " %}{{search_query}}</h2>
   {% for page in search_results %}
     {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
         <div class="search-results-body">
          {% if ancestor.sectionpage.image %}
-        <a href="{% pageurl page %}" class="search-result">
+        <a href="{% pageurl page %}">
              <h6 class="search-result-section__title search-result-section__title{{page.get_parent_section.get_effective_extra_style_hints}}">
                  {{ parent_section.title }}
              </h6>
         </a>
         <div class="article-row">
             <div class="image-article-col">
-                <a href="{% pageurl page %}" class="search-result">
+                <a href="{% pageurl page %}">
                     {% image ancestor.sectionpage.image width-98 as tmp_photo %}
                     <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/>
                 </a>
             </div>
 
             <div class="text-article-col">
-                <a href="{% pageurl page %}" class="search-result">
-                    <!--<h6>{# {{ancestor.title}} #}</h6>-->
+                <a href="{% pageurl page %}" class="search-result-article-title">
                     <h3>{{page.title}}</h3>
                 </a>
                 <p>{{page.subtitle}}</p>
             </div>
         </div>
         {% else %}
-         <a href="{% pageurl page %}" class="search-result">
+         <a href="{% pageurl page %}">
              <h6 class="search-result-section__title search-result-section__title{{page.get_parent_section.get_effective_extra_style_hints}}">
                  {{ parent_section.title }}
              </h6>
          </a>
          <div class="article-row">
              <div class="image-article-col">
-                 <a href="{% pageurl page %}" class="search-result">
+                 <a href="{% pageurl page %}">
                      {% image parent_section.sectionpage.image width-98 as tmp_photo %}
                  <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/></a>
              </div>
              <div class="text-article-col">
-                 <a href="{% pageurl page %}" class="search-result">
+                 <a href="{% pageurl page %}" class="search-result-article-title">
                      <h3>{{ page.title }}</h3>
                  </a>
                  <p>{{ page.subtitle }}</p>

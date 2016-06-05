@@ -70,9 +70,7 @@
         {% endfor %}
       </div>
      {% if self.get_parent_section %}
-        <h2 class="heading heading{{ section.get_effective_extra_style_hints }}">
-            {% trans "Must Read" %}
-        </h2>
+        <h2 class="heading heading{{ section.get_effective_extra_style_hints }}">{% trans "Must Read" %}</h2>
         <ul class="article__links article__links{{ section.get_effective_extra_style_hints}}">
             {% for block in self.body %}
                 {% if block.block_type == 'page' %}
@@ -85,7 +83,7 @@
                                  </a>
                             </div>
                             <div class="text-article-col">
-                                <a href="{% pageurl block.value %}"> {{ block.value }}</a>
+                                <strong><a href="{% pageurl block.value %}"> {{ block.value }}</a></strong>
                                 <p>{{ block.subtitle }}</p>
                             </div>
 

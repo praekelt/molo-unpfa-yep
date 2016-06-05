@@ -14,10 +14,6 @@
     background-size: 20px;
 }
 
-.signin-form {
-    color: black;
-}
-
 .signin-form input.error {
     border: 2px solid red;
 }
@@ -88,55 +84,6 @@ blockquote {
     color: black;
     font-weight: bold;
 }
-
-/* Comments Count  - comments-count a style hint
-comments-count a - background:#e60382; color:white;
-comments-count a:after - border-top-color:#e60382;
-*/
-.post-comment {
-    text-align:center;
-}
-
-.comment {
-    padding:10px 15px;
-    border:0;
-}
-
-.comments-count {
-    display: block;
-    font-weight: bold;
-}
-
-.comments-count a {
-    position: relative;
-    text-decoration: none;
-    display: inline-block;
-    height: 25px;
-    width: 30px;
-    padding: 0;
-    line-height: 25px;
-    text-align: center;
-    background: #666666;
-    color: white;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-}
-
-.comments-count span {
-    display: none;
-}
-
-.comments-count a:after {
-    top: 100%;
-    left: 65%;
-    border: solid transparent;
-    content: " ";
-    position: absolute;
-    border-top-color: #666666;
-    border-width: 4px;
-    margin-left: -4px;
-}
-
 
 /* Links */
 .block .more,

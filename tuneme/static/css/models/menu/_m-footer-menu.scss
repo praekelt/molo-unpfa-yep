@@ -7,7 +7,8 @@
   }
 
   .main-menu-nav-list__item--home,
-  .main-menu-nav-list__item--backtotop {
+  .main-menu-nav-list__item--backtotop,
+  .main-menu-nav-list__item--main {
     display: block;
     @media screen and (min-width: 600px) {
        display: none;

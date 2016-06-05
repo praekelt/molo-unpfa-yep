@@ -112,9 +112,7 @@
                 <a class="section-link" href="/">{% trans "Home" %}</a>
             </li>
             <li class="main-menu-nav-list__item main-menu-nav-list__item--main">
-                <div class="main-menu-nav-list__item--title">
-                    <a href="#search-form">{% trans "Search" %}</a>
-                </div>
+                <a class="section-link" href="#search-form">{% trans "Search" %}</a>
             </li>
             {% for section in language_page.sections %}
                 <li class="main-menu-nav-list__item main-menu-nav-list__item{{ section.get_effective_extra_style_hints }}">

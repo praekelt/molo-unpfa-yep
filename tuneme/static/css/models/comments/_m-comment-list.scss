@@ -1,6 +1,3 @@
-.comments-list {
-  background: #ebebeb;
-}
 
 .comment {
   text-align: left;
@@ -8,6 +5,10 @@
   padding: 15px;
   border-bottom: 1px solid $white;
   font-size: 16px;
+}
+
+.comments-list {
+  background: #ebebeb;
 }
 
 .date {
@@ -21,4 +22,43 @@
   a {
     color: #9d9d9d;
   }
+}
+
+.text-article-col {
+  .comments-count {
+    color: $light_gray;
+    text-transform: capitalize;
+    font-size: 14px;
+    display: block;
+    font-weight: bold;
+    a {
+      color: $light_gray;
+      position: relative;
+      text-decoration: none;
+      display: inline-block;
+      height: 25px;
+      width: 30px;
+      padding: 0;
+      line-height: 25px;
+      text-align: center;
+      background: #666666;
+      -webkit-border-radius: 2px;
+      border-radius: 2px;
+      &:after {
+          top: 100%;
+          left: 65%;
+          border: solid transparent;
+          content: " ";
+          position: absolute;
+          border-top-color: #666666;
+          border-width: 4px;
+          margin-left: -4px;
+      }
+    }
+
+    span {
+      display: none;
+    }
+  }
+
 }
