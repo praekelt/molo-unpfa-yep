@@ -25,7 +25,7 @@
     </div>
     -->
     {% for section in self.sections %}
-        <ul class="sub-category-list sub-category-list{{ self.get_effective_extra_style_hints }} l-indent">
+        <ul class="sub-category-list sub-category-list{{ self.get_effective_extra_style_hints }}">
             <li class="sub-category-list__item">
                 <a href="{% pageurl section %}">{{section.title}}</a>
             </li>
