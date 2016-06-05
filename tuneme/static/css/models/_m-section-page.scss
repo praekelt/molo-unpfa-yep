@@ -3,6 +3,19 @@
   padding-bottom: 25px;
 }
 
+.sub-category-list {}
+
+.sub-category-list__item {
+  display: inline-block;
+  a {
+    font-size: 15px;
+  }
+}
+
+.float-right {
+  float: right;
+}
+
 .sub-navigation-list {}
 .sub-navigation-list__item {
   display: inline-block;
@@ -35,7 +48,7 @@
 
 .text-article-col {
   vertical-align: middle;
-  width: 135%; //Investigate flexbox 2 cloumn float
+  width: 135%;
   a {
     text-decoration: none;
   }
@@ -51,3 +64,13 @@
 
   }
 }
+
+
+@each $name, $color in $color_list {
+  .sub-category-list--#{$name} .sub-category-list__item a {
+    color: $color;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}
+
