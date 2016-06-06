@@ -49,7 +49,9 @@
             </div>
             {% get_comment_count for page as comment_count %}
             {% if comment_count > 0 %}
-              <div class="comments-count"><a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
+              <div class="posted-comments-count">
+                  <a href="#">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a>
+              </div>
             {% endif %}
             <!--<a href="{# {% pageurl page %} #}" class="submit-button">
                 {# {% trans "Read on" %} #}

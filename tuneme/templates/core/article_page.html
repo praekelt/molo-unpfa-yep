@@ -7,7 +7,7 @@
             <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
         </li>
         <li class="sub-navigation-list__item">
-            <a href="">{{self.get_parent_section.title}}</a>
+            <a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a>
         </li>
         <li class="sub-navigation-list__item">
             <a href="">{{self.title}}</a>
@@ -28,11 +28,11 @@
     </div>-->
     <div class="article article{{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
       {% if messages %}
-      <ul class="messages">
+      <div class="messages">
           {% for message in messages %}
-          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
           {% endfor %}
-      </ul>
+      </div>
       {% endif %}
 
       {% if self.image %}
@@ -118,7 +118,7 @@
                 </div>
                 <div class="posted-comments-count">
                     <a href="#">{{comment_count}}
-                        <span>{% trans "comment" %}{{comment_count|pluralize}}</span>
+                        <!--<span>{# {% trans "comment" %}{{comment_count|pluralize}} #}</span>-->
                     </a>
                 </div>
           </div>
