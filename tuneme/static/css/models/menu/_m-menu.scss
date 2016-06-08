@@ -14,11 +14,14 @@
 }
 
 .main-menu {
+  background: $white;
+  @media screen and (min-width: 600px) {
+     background: $black;
+  }
   input[type="checkbox"] {
    margin: 0 10px;
    display: none;
   }
-
   /*.main-menu-nav-list__item--main,
   .main-menu-nav-list__item--home {
       display: block;
@@ -44,12 +47,11 @@
   }*/
 }
 
-
-.main-menu input + * {
+.main-menu input[type="checkbox"] +  * {
   display: none;
 }
 
-.main-menu input:checked + * {
+.main-menu input[type="checkbox"]:checked +  * {
   background: $white;
   display: block;
   height: 100%;
