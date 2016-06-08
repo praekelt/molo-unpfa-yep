@@ -1,4 +1,4 @@
-  var menuItems = new Array(),
+  /*var menuItems = new Array(),
       screenWidth = window.innerWidth;
 
   function init() {
@@ -51,7 +51,7 @@
     for ( var i = 0; i < element.childNodes.length; i++ ) {
       if ( element.childNodes[i].nodeName == tagName ) return element.childNodes[i];
     }
-  }
+  }*/
 
 
   //NEW JQUERY
@@ -67,5 +67,3 @@
    });
 
 })();
-
-

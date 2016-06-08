@@ -1,11 +1,12 @@
 @import "../variables";
 
-@import "menu/m-logo";
-@import "menu/m-languages";
+@import "_m-logo";
+@import "menu/_m-search-icon";
 @import "menu/_m-menu";
-@import "menu/_m-nav-button";
+@import "menu/m-languages";
+
+@import "menu/_m-menu-button";
 @import "menu/m-nagivation";
-@import "menu/m-menu-search__button";
 @import "menu/_m-footer-menu";
 
 @import "search/m-search";

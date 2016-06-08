@@ -1,110 +1,139 @@
 
-.main-menu-nav-list {
-    padding: 10px 0;
-    margin: 0;
+.navigation-list {
     a {
-       text-decoration: underline;
+      text-decoration: underline;
+      text-transform: capitalize;
+      font-weight: bold;
+      display: block;
        @media screen and (min-width: 600px) {
          text-decoration: none;
+         text-transform: uppercase;
        }
     }
-}
 
-.main-menu-nav-list__item  {
-  overflow: hidden;
-  display: block;
-  margin: 15px 0;
-  @media screen and (min-width: 600px) {
-    display: flex;
-  }
+    @at-root #{&}__item {
+      display: block;
+      overflow: hidden;
+      padding: 15px 0;
+      @media screen and (min-width: 600px) {
+        display: flex;
+      }
 
-  &:last-child {
-    .main-menu-nav-list__item--title {
-      border-bottom: none;
+      &--title {
+        font-size: 17px;
+        vertical-align: top;
+        float: left;
+        width: 100%;
+
+        @media screen and (min-width: 600px) {
+           border-top-right-radius: 25px;
+           border-bottom-right-radius: 25px;
+           width: 50%;
+           max-height: 50px;
+        }
+        a {
+          padding: 10px;
+          color: $black;
+          @media screen and (min-width: 600px)  {
+            padding: 15px 10px;
+          }
+        }
+      }
+
+      &:last-child {
+        &--title {
+          border-bottom: none;
+        }
+      }
+
+      &--show, &--feature, &--backtotop {
+        border-bottom: 1px solid #ddd;
+        @media screen and (min-width: 600px) {
+          border: none;
+        }
+      }
+
+      &--show, &--footer-show {
+        a {
+          color: $black;
+          padding: 0 10px;
+          @media screen and (min-width: 600px) {
+            color: $white;
+          }
+        }
+      }
+
+      &--footer-show {
+        display: block;
+        @media screen and (min-width: 600px) {
+            display: none;
+        }
+      }
+
+      &--feature {
+          display: block;
+          @media screen and (min-width: 600px) {
+              display: none;
+          }
+      }
+
+      &--backtotop {
+        font-size: 14px;
+        display: block;
+        @media screen and (min-width: 600px) {
+          display: none;
+        }
+      }
+
+      &--feature-small {
+        padding: 0;
+        @media screen and (min-width: 600px) {
+          display: none
+        }
+
+        &:last-child {
+          padding-bottom: 10px;
+          border-bottom: 1px solid #ddd;
+        }
+        a {
+          color: $santas_gray;
+          padding: 5px 10px;
+          @media screen and (min-width: 600px) {
+            padding: 10px 10px;
+            color: $white;
+          }
+        }
+      }
+
+      &--subtitle {
+        color: $black;
+        padding: 0 10px;
+        display: block;
+        vertical-align: middle;
+        font-size: 15px;
+        width: 70%;
+        @media screen and (min-width: 600px) {
+          color: $white;
+          padding: 0 0 0 5%;
+          float: right;
+          width: 45%;
+        }
+      }
     }
-  }
-
-  a {
-    color: $black;
-    display: block;
-    text-transform: capitalize;
-    padding: 10px;
-    font-weight: bold;
-    @media screen and (min-width: 600px)  {
-      text-transform: uppercase;
-      padding: 15px 10px;
-    }
-  }
 }
 
-.menu-profiles {
-  margin: 0;
-
-  a {
-    color: $santas_gray;
-    padding: 5px 10px;
-    @media screen and (min-width: 600px) {
-      padding: 10px 10px;
-      color: $white;
-    }
-  }
-}
-
-.main-menu-nav-list__item--title {
-    font-size: 17px;
-    vertical-align: top;
-    float: left;
-    width: 100%;
-    @media screen and (min-width: 600px) {
-       border-top-right-radius: 25px;
-       border-bottom-right-radius: 25px;
-       width: 50%;
-       max-height: 51px;
-    }
-}
-
-.main-menu-nav-list__item--home,
-.main-menu-nav-list__item--backtotop,
-.main-menu-nav-list__item--main {
-  border-bottom: 1px solid #ddd;
-  @media screen and (min-width: 600px) {
-    border: none;
-  }
-}
-
-.main-menu-nav-list__item--backtotop a {
-  font-size: 14px;
-}
-
-.main-menu-nav-list__item--subtitle {
-  color: $black;
-  padding: 0 50px 10px 10px;
-
-  @media screen and (min-width: 600px) {
-    color: $white;
-    padding: 0 0 0 5%;
-    float: right;
-    width: 45%;
-  }
-  span {
-    display: block;
-    vertical-align: middle;
-    font-size: 15px;
-  }
-}
 
 @each $name, $color in $color_list {
-  .main-menu-nav-list__item--#{$name} .main-menu-nav-list__item--title {
-     background: transparent;
-    @media screen and (min-width: 600px) {
-     background-color: $color;
-    }
-  }
-
-  .main-menu-nav-list__item--#{$name} {
+  .navigation-list__item--#{$name}  {
     border-bottom: 1px $color solid;
     @media screen and (min-width: 600px) {
-     border: none;
+      border: none;
     }
+      .navigation-list__item--title {
+          background: transparent;
+          @media screen and (min-width: 600px) {
+          background-color: $color;
+         }
+      }
   }
 }

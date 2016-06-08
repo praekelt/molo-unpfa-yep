@@ -1,5 +1,4 @@
 
-.login-icon,
 .search-icon {
   color: white;
   text-indent: -999em;
@@ -10,8 +9,7 @@
   text-decoration: underline;
 }
 
-.search-icon ,
-.login-icon  {
+.search-icon {
   width: 30px;
   height: 26px;
   @media screen and (min-width: 600px) {
@@ -19,9 +17,4 @@
     display: block;
     background-size:23px;
   }
-}
-
-.login-icon {
-  background: #000000 url(/static/img/user.png) center center no-repeat;
-  background-size:15px;
 }

@@ -1,6 +1,4 @@
 
-@import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,300);
-
 html, body {
   background: #fff;
   position:relative;
@@ -11,7 +9,6 @@ html, body {
 }
 
 body {
-  background: #fff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
   margin: 0 auto;
@@ -31,12 +28,33 @@ h1, h2, h3, h4, h5, h6 {
 a {
   text-decoration: none;
   cursor: pointer;
-  color: $black;
 }
 
 ul, ol {
   margin: 0;
   padding: 0;
+  list-style-position: inside;
+}
+
+blockquote {
+  padding-bottom: 15px;
+  background: $white;
+  color: $black;
+}
+
+img {
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  height:10px;
+  margin:10px 0 0; width:100%;
+  border:0;
+  background: url(/tuneme/static/img/hr.gif) 0 0 repeat-x;
+  background-size:20px;
 }
 
 .author {
@@ -53,33 +71,9 @@ ul, ol {
   padding: 5px 0 5px 0;
 }
 
-blockquote {
-  padding:0 0 15px 0;
-  background:white;
-  color:black;
-  font-size:115%;
-  line-height:130%;
-}
-
-img {
-  border-width: 0;
-  vertical-align: middle;
-  -ms-interpolation-mode: bicubic;
-  max-width: 100%;
-  height: auto;
-}
-
-.banner {
-  img {
+.banner img {
     width: 100%;
     max-width: 100%;
-    margin-bottom: -3px
-  }
-}
-
-//Form
-input {
-   font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
 
 .submit-button {
@@ -107,12 +101,6 @@ input {
   text-align: center;
 }
 
-//To Review - Content blocks
-hr {
+.wagtail-userbar {
   display: none;
-  height:10px;
-  margin:10px 0 0; width:100%;
-  border:0;
-  background: url(/tuneme/static/img/hr.gif) 0 0 repeat-x;
-  background-size:20px;
 }

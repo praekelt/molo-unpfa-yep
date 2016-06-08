@@ -1,18 +1,4 @@
 
-.l-row {
-  clear: both;
-}
-
-.l-half {
-  width: 50%;
-  &:first-child {
-    float: left;
-  }
-  &:last-child {
-    float: right;
-  }
-}
-
 .l-indent-small {
     padding: 5px;
 }
@@ -20,10 +6,5 @@
 .l-indent {
   padding: 10px;
 }
-
-#wagtail-userbar {
-  display: none;
-}
-
 @import "_header";
 @import "_footer";
