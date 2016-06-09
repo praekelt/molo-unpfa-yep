@@ -3,31 +3,17 @@
 
 {% if sections %}
   {% for section in sections %}
-    <!-- Title section -->
-    <div class="section-heading section-heading{{section.get_effective_extra_style_hints}}">
-        <!-- Not on the designs -->
-        <div class="section-heading__icon">
-          {% if section.image %}
-            <a href="{% pageurl section %}">
-            {% image section.image width-80 as tmp_photo %}
-            <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/>
-            </a>
-          {% endif %}
-        </div>
+  <h4 class="section-heading section-heading{{section.get_effective_extra_style_hints}} f-medium">
+      <a href="{% pageurl section %}">{{section.title}}</a>
+  </h4>
 
-        <h6 class="section-heading__title section-heading__title{{section.get_effective_extra_style_hints}}">
-            <a href="{% pageurl section %}">{{section.title}}</a>
-        </h6>
-    </div>
-
-  <!-- Body list section -->
-  <div class="section-body">
+  <div class="section-article-list">
   {% for page in section.featured_articles_in_homepage %}
     {% if page.featured_in_homepage %}
-    <div class="article-row l-indent">
+    <div class="article-row">
         <div class="image-article-col">
             {% if page.image %}
-                {% image page.image width-100 as tmp_photo %}
+                {% image page.image width-98 as tmp_photo %}
                 <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="img-circle" />
             {% endif %}
         </div>
@@ -35,16 +21,6 @@
         <div class="text-article-col">
           <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
           <p>{{page.subtitle}}</p>
-          {% get_comment_count for page as comment_count %}
-          {% if comment_count > 0 %}
-            <div class="posted-comments-count">
-                <a href="{% pageurl page %}#comments-list">{{comment_count}}
-                    <span>{% trans "comment" %}{{comment_count|pluralize}}</span>
-                </a>
-            </div>
-          {% endif %}
-          <!--<a href="{# {% pageurl page %} #}">{# {% trans "Read on" %}  #}</a>-->
-          <!--<a href="{# {% pageurl page.get_parent_section %} #}" class="inverted">{# {% trans "View Similar" %}#}</a>-->
         </div>
     </div>
     {% endif %}

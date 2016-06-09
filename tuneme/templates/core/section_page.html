@@ -10,20 +10,6 @@
             <a href="">{{self.title}}</a>
         </li>
     </ul>
-    <!--
-    <div class="title {#{{self.get_effective_extra_style_hints}}#}">
-      <div class="icon">
-           {#{% if self.get_effective_image %}
-              {% image self.get_effective_image width-98 as tmp_photo %}
-              <img src="{{ tmp_photo.url }}" alt="{{ self.get_effective_image.title }}"/>
-          {% endif %}#}
-        </div>
-        <h6>{#{{self.title}}#}</h6>
-    </div>
-    <div class="block  {#{{self.get_effective_extra_style_hints}}">
-        <a href="{{request.site.root_page.url}}" class="submit-button">{% trans "Home" %}#}</a>
-    </div>
-    -->
     {% for section in self.sections %}
         <ul class="sub-category-list sub-category-list{{ self.get_effective_extra_style_hints }}">
             <li class="sub-category-list__item">

@@ -27,11 +27,9 @@
       {% endif %}
 
       {% if self.image %}
-      <div class="icon">
           {% image self.image width-98 as tmp_photo_small %}
-          {% image self.image width-620 as tmp_photo_large %}
+          {% image self.image width-300 as tmp_photo_large %}
             <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
-      </div>
       {% endif %}
       <h1 class="article-heading f-large">{{self.title}}</h1>
       <h3 class="f-bigger">{{self.subtitle}}</h3>
@@ -77,7 +75,6 @@
                                 <strong><a href="{% pageurl block.value %}"> {{ block.value }}</a></strong>
                                 <p>{{ block.subtitle }}</p>
                             </div>
-
                     </li>
                 {% endif %}
             {% endfor %}

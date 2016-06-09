@@ -6,13 +6,9 @@
   }
 }
 
-.section-heading__title {
+.section-heading {
   text-transform: uppercase;
-  font-size: 16px;
   padding: 10px;
-  @media screen and (min-width: 480px) {
-    padding: 0 10px;
-  }
   a {
     text-decoration: none;
   }
@@ -24,21 +20,19 @@
     text-transform: capitalize;
   }
 
-  .section-heading__title--#{$name} {
+  .section-heading--#{$name} {
     background: $color;
     color: $black;
     @media screen and (min-width: 480px) {
       background: none;
        color: $color;
     }
-  }
 
-  .section-heading__title--#{$name} a {
-    color: $black;
-
-    @media screen and (min-width: 480px) {
-      color: $color;
+    a {
+      color: $black;
+      @media screen and (min-width: 480px) {
+        color: $color;
+      }
     }
   }
-
 }
