@@ -3,30 +3,31 @@
 @import "_m-logo";
 @import "menu/_m-search-icon";
 @import "menu/_m-menu";
-@import "menu/m-languages";
+@import "menu/_m-languages";
 
 @import "menu/_m-menu-button";
-@import "menu/m-nagivation";
+@import "menu/_m-nagivation";
 @import "menu/_m-footer-menu";
 
-@import "search/m-search";
-@import "search/m-search-results";
-@import "search/m-search-pagination";
+@import "search/_m-search";
+@import "search/_m-search-results";
+@import "search/_m-search-pagination";
 
-@import "articles/m-article";
+@import "articles/_m-article";
 @import "articles/_m-headings";
-@import "articles/m-latest-articles";
+@import "articles/_m-story-columns";
+@import "articles/_m-latest-articles";
 
 
-@import "featured-menu/m-featured-section";
+@import "featured-menu/_m-featured-section";
 
-@import "comments/m-comments";
+@import "comments/_m-comments";
 @import "comments/_m-comment-list";
 @import "comments/_m-post-comment";
 
 @import "competition/_m-competition";
 
-@import "polls/m-poll_results";
-@import "polls/m-polls";
+@import "polls/_m-poll_results";
+@import "polls/_m-polls";
 
 @import "_m-section-page";

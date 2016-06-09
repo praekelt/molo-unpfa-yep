@@ -14,7 +14,10 @@
   background: black;
   width: 100%;
   position: relative;
-  padding: 10px 0;
+  padding: 10px 0 20px;
+  @media screen and (min-width: 480px) {
+    padding: 15px 0;
+  }
 
   input[type="text"],
   input[type="submit"] {
@@ -28,7 +31,7 @@
     background: #f7f7f7;
     width: 65%;
     padding: 12px 10px;
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 480px) {
       border-radius: 25px;
       width: 90%;
     }
@@ -39,7 +42,7 @@
       text-transform: uppercase;
       color: $white;
       cursor: pointer;
-      @media screen and (min-width: 600px) {
+      @media screen and (min-width: 480px) {
         background: url(/static/img/search-black.png) center center no-repeat;
         background-size: 25px;
         position: absolute;

@@ -6,7 +6,7 @@
     display: inline-block;
     &:first-child {
       padding-right: 8px;
-      @media screen and (min-width: 600px) {
+      @media screen and (min-width: 480px) {
         padding: 0;
       }
     }
@@ -15,37 +15,15 @@
 
 .main-menu {
   background: $white;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 480px) {
      background: $black;
   }
   input[type="checkbox"] {
    margin: 0 10px;
    display: none;
   }
-  /*.main-menu-nav-list__item--main,
-  .main-menu-nav-list__item--home {
-      display: block;
-      padding: 15px 0;
-      border-bottom: 1px solid $santas_gray;
-      @media screen and (min-width: 600px)  {
-          padding: 0;
-          border-bottom: none;
-      }
-      a{
-        color: $black;
-        @media screen and (min-width: 600px)  {
-          color: $white;
-        }
-      }
-  }
-
-  .main-menu-nav-list__item--main {
-    display: block;
-    @media screen and (min-width: 600px)  {
-      display: none;
-    }
-  }*/
 }
+
 .main-menu input[type="checkbox"] + * {
   display: none;
 }
@@ -57,7 +35,7 @@
   width: 100%;
   z-index: 10;
   position: absolute;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 480px) {
      background: $black;
   }
 }

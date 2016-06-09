@@ -39,7 +39,6 @@
             </li>
             {% for section in language_page.sections %}
                 <li class="navigation-list__item navigation-list__item{{ section.get_effective_extra_style_hints }}">
-                    {% image section.image width-40 %}
                     <span class="navigation-list__item--title">
                         <a class="section-link" href="{% pageurl section %}">{{ section.title }}</a>
                     </span>

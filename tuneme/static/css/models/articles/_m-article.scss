@@ -11,24 +11,11 @@
   text-align: center;
 }
 
-
 .article-page-subtitle {
   padding: 0 10px 10px;
   font-size: 15px;
   text-align: center;
 }
-
-.article-heading {
-  margin: 10px 0;
-}
-
-.article-heading {
-  color: $black;
-  font-weight: 700;
-  padding: 5px 0;
-  display: block;
-}
-
 
 .page-includes {
   display: block;
@@ -50,3 +37,8 @@
       //background: $color;
   //}
 //}
+
+.article-heading {
+  padding-top: 5px;
+  word-wrap: break-word;
+}

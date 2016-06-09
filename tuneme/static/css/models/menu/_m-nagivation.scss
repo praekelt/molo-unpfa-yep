@@ -5,7 +5,7 @@
       text-transform: capitalize;
       font-weight: bold;
       display: block;
-       @media screen and (min-width: 600px) {
+       @media screen and (min-width: 480px) {
          text-decoration: none;
          text-transform: uppercase;
        }
@@ -15,7 +15,7 @@
       display: block;
       overflow: hidden;
       padding: 15px 0;
-      @media screen and (min-width: 600px) {
+      @media screen and (min-width: 480px) {
         display: flex;
         padding: 15px 0 0;
       }
@@ -26,7 +26,7 @@
         float: left;
         width: 100%;
 
-        @media screen and (min-width: 600px) {
+        @media screen and (min-width: 480px) {
            border-top-right-radius: 25px;
            border-bottom-right-radius: 25px;
            width: 50%;
@@ -35,7 +35,7 @@
         a {
           padding: 10px;
           color: $black;
-          @media screen and (min-width: 600px)  {
+          @media screen and (min-width: 480px)  {
             padding: 15px 10px;
           }
         }
@@ -49,7 +49,7 @@
 
       &--home-link, &--footer-home-link, &--search-link, &--backtotop-link, &--login-link {
         border-bottom: 1px solid #ddd;
-        @media screen and (min-width: 600px) {
+        @media screen and (min-width: 480px) {
           border: none;
         }
       }
@@ -59,7 +59,7 @@
         a {
           color: $black;
           padding: 0 10px;
-          @media screen and (min-width: 600px) {
+          @media screen and (min-width: 480px) {
             color: $white;
           }
         }
@@ -71,7 +71,7 @@
 
       &--search-link, &--login-link {
         display: block;
-        @media screen and (min-width: 600px) {
+        @media screen and (min-width: 480px) {
             display: none;
         }
         a {
@@ -82,14 +82,14 @@
       //FOOTER CONTAINER LINKS
       &--footer-home-link {
         display: block;
-        @media screen and (min-width: 600px) {
+        @media screen and (min-width: 480px) {
             display: none;
         }
       }
 
       &--backtotop-link {
         display: block;
-        @media screen and (min-width: 600px) {
+        @media screen and (min-width: 480px) {
           display: none;
         }
         a {
@@ -102,7 +102,7 @@
         a {
           color: $santas_gray;
           padding: 5px 10px;
-          @media screen and (min-width: 600px) {
+          @media screen and (min-width: 480px) {
             padding: 10px;
             color: $white;
           }
@@ -111,7 +111,7 @@
 
       &--featurephone-link {
         display: block;
-        @media screen and (min-width: 600px) {
+        @media screen and (min-width: 480px) {
           display: none;
         }
       }
@@ -123,7 +123,7 @@
         vertical-align: middle;
         font-size: 15px;
         width: 70%;
-        @media screen and (min-width: 600px) {
+        @media screen and (min-width: 480px) {
           color: $white;
           padding: 0 0 0 5%;
           float: right;
@@ -136,12 +136,12 @@
 @each $name, $color in $color_list {
   .navigation-list__item--#{$name}  {
     border-bottom: 1px $color solid;
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 480px) {
       border: none;
     }
       .navigation-list__item--title {
           background: transparent;
-          @media screen and (min-width: 600px) {
+          @media screen and (min-width: 480px) {
           background-color: $color;
          }
       }

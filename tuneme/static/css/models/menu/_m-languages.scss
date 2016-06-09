@@ -2,9 +2,9 @@
    background: $black;
    color: $white;
    overflow: hidden;
-   padding: 0 21px 15px;
+   padding: 0 20px 25px;
    display: none;
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 480px) {
       display: flex;
     }
 }
@@ -30,24 +30,21 @@
 }
 
 .language-list {
-  padding-bottom: 10px;
-  margin: 0;
-
   @at-root #{&}__item {
     display: inline-block;
-    margin: 5px 0;
+    margin: 8px 0;
+    font-size: 14px;
     a {
       color: white;
       padding: 5px 10px;
       background: $grey;
-      border-radius: 15px;
+      border-radius: 12px;
+
+      font-weight: bold;
       text-transform: capitalize;
     }
     a.active {
       background: #cf25f8;
-    }
-    &:first-child {
-        margin-right: 5px;
     }
   }
 }

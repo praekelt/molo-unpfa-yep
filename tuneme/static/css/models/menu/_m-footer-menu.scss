@@ -2,14 +2,14 @@
 .footer-content {
   border-top: 1px solid #ddd;
   color: $santas_gray;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 480px) {
     border: none;
     margin-top: 20px;
   }
   a {
     color: $santas_gray;
     text-decoration: underline;
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 480px) {
       border: none;
     }
   }

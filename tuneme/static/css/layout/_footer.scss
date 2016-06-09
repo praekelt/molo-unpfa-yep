@@ -1,7 +1,7 @@
 
 .footer-wrapper {
   background: $white;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 480px) {
     background: $black;
     display: block;
   }

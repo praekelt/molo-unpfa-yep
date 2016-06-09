@@ -5,7 +5,7 @@
 
 .sub-category-list {
   padding: 10px 0;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 480px) {
     padding: 10px;
   }
 }
@@ -13,14 +13,14 @@
 .sub-category-list__item {
   display: inline-block;
   width: 100%;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 480px) {
     width: auto;
   }
   a {
     font-size: 15px;
     display: block;
     padding: 0 10px 10px;
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 480px) {
       padding: 0;
     }
 
@@ -30,7 +30,7 @@
 .float-right {
   float: right;
   display: none;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 480px) {
     display: block;
   }
 }
@@ -40,7 +40,6 @@
   display: inline-block;
     a {
       color: $black;
-      font-size: 14px;
       font-weight: bold;
       text-transform: uppercase;
       text-decoration: none;
@@ -60,7 +59,7 @@
 
 .article-row {
   overflow: hidden;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 480px) {
     display: flex;
   }
 }
@@ -87,11 +86,10 @@
     text-transform: uppercase;
     font-weight: 600;
     border-bottom: 1px solid $color;
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 480px) {
       color: $color;
       border-bottom: none;
 
     }
   }
 }
-

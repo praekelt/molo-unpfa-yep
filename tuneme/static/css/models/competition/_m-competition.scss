@@ -23,7 +23,7 @@
     text-align: center;
     font-size: 14px;
     display: block;
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 480px) {
       color: $white;
     }
   }
@@ -38,11 +38,7 @@
 }
 
 .competition-title {
-   @media screen and (min-width: 600px) {
+   @media screen and (min-width: 480px) {
       color: $white;
    }
 }
-
-
-
-

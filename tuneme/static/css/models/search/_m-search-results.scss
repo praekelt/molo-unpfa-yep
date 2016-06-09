@@ -2,34 +2,21 @@
 .search-results-body {
     clear: both;
     text-decoration: none;
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 480px) {
       padding: 10px;
     }
 
   .article-row {
     padding: 10px;
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 480px) {
     }
   }
 
   .text-article-col {
     width: 100%;
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 480px) {
       width: 135%;
     }
-
-  .search-result-article-title, p {
-      display: inline;
-    }
-  }
-}
-
-.search-result-title {
-  text-transform: uppercase;
-  padding: 10px;
-  display: none;
-  @media screen and (min-width: 600px) {
-    display: block;
   }
 }
 
@@ -37,7 +24,7 @@
    text-transform: uppercase;
    padding: 10px 10px;
    font-size: 14px;
-   @media screen and (min-width: 600px) {
+   @media screen and (min-width: 480px) {
      font-size: 17px;
       padding: 10px 0;
     }
@@ -47,7 +34,7 @@
   .search-result-section__title--#{$name} {
      background-color: $color;
      color: $black;
-     @media screen and (min-width: 600px) {
+     @media screen and (min-width: 480px) {
        color: $color;
        background: transparent;
      }

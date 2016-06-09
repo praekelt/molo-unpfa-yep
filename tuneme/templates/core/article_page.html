@@ -3,20 +3,18 @@
 
 {% block content %}
     <ul class="sub-navigation-list l-indent">
-        <li class="sub-navigation-list__item">
+        <li class="sub-navigation-list__item f-small">
             <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
         </li>
-        <li class="sub-navigation-list__item">
+        <li class="sub-navigation-list__item f-small">
             <a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a>
         </li>
-        <li class="sub-navigation-list__item">
+        <li class="sub-navigation-list__item f-small">
             <a href="">{{self.title}}</a>
         </li>
     </ul>
     <div class="article-language-container">
-      {% block language %}
-          {% include "core/language_block.html" %}
-      {% endblock %}
+      {% include "core/language_block.html" %}
     </div>
 
     <div class="article article{{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
