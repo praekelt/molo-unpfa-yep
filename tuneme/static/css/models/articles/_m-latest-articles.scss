@@ -3,19 +3,6 @@
   position: relative;
 }
 
-.latest-article__columns {
-  float: left;
-  overflow: hidden;
-  margin: 0 5% 15px 0;
-  @media screen and (min-width: 480px) {
-    width: 45%;
-    max-height: 235px;
-  }
-  p {
-    margin: 0;
-  }
-}
-
 .latest-article__title {
   background: $violet ;
   text-transform: uppercase;
@@ -28,19 +15,8 @@
   }
 }
 
-.latest-article__subtitle {
-  margin: 5px 0 0;
-}
-
 .feature-image {
   a {
     display: block;
-    img {
-      @media screen and (min-width: 480px) {
-        width: 100%;
-        max-width: 135px;
-        margin: 0 auto;
-      }
-    }
   }
 }

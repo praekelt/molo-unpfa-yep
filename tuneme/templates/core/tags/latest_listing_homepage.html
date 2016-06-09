@@ -9,15 +9,17 @@
                 {% if article.featured_in_latest %}
                 <div class="article-hero-row">
                     <div class="article-hero-story feature-image">
-                      {% if article.get_parent_section.get_effective_image %}
-                          {% image article.get_parent_section.get_effective_image width-100 as tmp_photo %}
-                            <img src="{{ tmp_photo.url }}" alt="{{ article.get_effective_image.title }}" class="image_radius"/>
+                {% if article.get_parent_section.get_effective_image %}
+                  {% image article.get_parent_section.get_effective_image width-100 as tmp_photo_small %}
+                  {% image article.get_parent_section.get_effective_image width-620 as tmp_photo_large %}
+                  <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ article.get_effective_image.title }}" class="image_radius"/>
                         {% else %}
                           <a href="{% pageurl article %}">
-                          {% image article.image width-100 as tmp_photo %}
-                          <img src="{{ tmp_photo.url }}" alt="{{ article.image.title }}" class="image_radius"/>
+                            {% image article.image width-100 as tmp_photo_small %}
+                            {% image article.image width-620 as tmp_photo_large %}
+                            <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ article.image.title }}" class="image_radius"/>
                           </a>
-                        {% endif %}
+                {% endif %}
                     </div>
                       <h2 class="article-heading f-large">
                           <a href="{% pageurl article %}">{{article.title}}</a>
