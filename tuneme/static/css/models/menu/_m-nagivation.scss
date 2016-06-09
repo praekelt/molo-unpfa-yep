@@ -17,6 +17,7 @@
       padding: 15px 0;
       @media screen and (min-width: 600px) {
         display: flex;
+        padding: 15px 0 0;
       }
 
       &--title {
@@ -46,14 +47,15 @@
         }
       }
 
-      &--show, &--feature, &--backtotop {
+      &--home-link, &--footer-home-link, &--search-link, &--backtotop-link, &--login-link {
         border-bottom: 1px solid #ddd;
         @media screen and (min-width: 600px) {
           border: none;
         }
       }
 
-      &--show, &--footer-show {
+      //MENU CONTAINER LINKS
+      &--home-link, &--footer-home-link {
         a {
           color: $black;
           padding: 0 10px;
@@ -63,45 +65,58 @@
         }
       }
 
-      &--footer-show {
+      &--home-link {
+        display: block;
+      }
+
+      &--search-link, &--login-link {
+        display: block;
+        @media screen and (min-width: 600px) {
+            display: none;
+        }
+        a {
+          padding: 0 10px;
+        }
+      }
+
+      //FOOTER CONTAINER LINKS
+      &--footer-home-link {
         display: block;
         @media screen and (min-width: 600px) {
             display: none;
         }
       }
 
-      &--feature {
-          display: block;
-          @media screen and (min-width: 600px) {
-              display: none;
-          }
-      }
-
-      &--backtotop {
-        font-size: 14px;
+      &--backtotop-link {
         display: block;
         @media screen and (min-width: 600px) {
           display: none;
         }
+        a {
+          font-size: 14px;
+        }
       }
 
-      &--feature-small {
+      &--smartphone-link, &--featurephone-link {
         padding: 0;
-        @media screen and (min-width: 600px) {
-          display: none
-        }
-
-        &:last-child {
-          padding-bottom: 10px;
-          border-bottom: 1px solid #ddd;
-        }
         a {
           color: $santas_gray;
           padding: 5px 10px;
           @media screen and (min-width: 600px) {
-            padding: 10px 10px;
+            padding: 10px;
             color: $white;
           }
+        }
+      }
+
+      &--featurephone-link {
+        display: block;
+        @media screen and (min-width: 600px) {
+          display: none;
+        }
+        &:last-child {
+          padding-bottom: 10px;
+          border-bottom: 1px solid #ddd;
         }
       }
 
@@ -121,7 +136,6 @@
       }
     }
 }
-
 
 @each $name, $color in $color_list {
   .navigation-list__item--#{$name}  {

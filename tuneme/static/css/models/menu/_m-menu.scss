@@ -46,12 +46,11 @@
     }
   }*/
 }
-
-.main-menu input[type="checkbox"] +  * {
+.main-menu input[type="checkbox"] + * {
   display: none;
 }
 
-.main-menu input[type="checkbox"]:checked +  * {
+.main-menu input[type="checkbox"]:checked + * {
   background: $white;
   display: block;
   height: 100%;

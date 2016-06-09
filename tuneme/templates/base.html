@@ -22,17 +22,17 @@
       <input type="checkbox" id="menu-toggle">
       <div class="toggle-container">
             <ul class="navigation-list">
-                <li class="navigation-list__item navigation-list__item--show">
+                <li class="navigation-list__item navigation-list__item--home-link">
                     <span class="navigation-list__item--title">
                         <a href="/">{% trans "Home" %}</a>
                     </span>
                 </li>
-                <li class="navigation-list__item navigation-list__item--feature">
+                <li class="navigation-list__item navigation-list__item--search-link">
                     <span class="navigation-list__item--title">
                         <a href="#search-form">{% trans "Search" %}</a>
                     </span>
                 </li>
-                <li class="navigation-list__item navigation-list__item--feature">
+                <li class="navigation-list__item navigation-list__item--login-link">
                     <span class="navigation-list__item--title">
                         <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
                     </span>
@@ -49,7 +49,7 @@
                     </li>
                 {% endfor %}
                 {% if user.is_authenticated %}
-                    <li class="navigation-list__item navigation-list__item--feature-small">
+                    <li class="navigation-list__item navigation-list__item--smartphone-link">
                       <span class="navigation-list__item--title">
                         <a href="{% url 'molo.profiles:view_my_profile' %}">
                             <!--<img src="{% static 'img/profile.png' %}" width="40">-->
@@ -58,12 +58,12 @@
                       </span>
                     </li>
                 {% endif %}
-                <li class="navigation-list__item navigation-list__item--feature-small">
+                <li class="navigation-list__item navigation-list__item--smartphone-link">
                     <span class="navigation-list__item--title">
                         <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
                     </span>
                 </li>
-                <li class="navigation-list__item navigation-list__item--feature-small">
+                <li class="navigation-list__item navigation-list__item--smartphone-link">
                     <span class="navigation-list__item--title">
                         <a href="{% url 'molo.profiles:user_register' %}">{% trans "Signup" %}</a>
                     </span>
@@ -104,17 +104,17 @@
 {% block footer %}
     <div class="footer-menu">
         <ul class="navigation-list">
-            <li class="navigation-list__item navigation-list__item--backtotop">
+            <li class="navigation-list__item navigation-list__item--backtotop-link">
               <span class="navigation-list__item--title">
                 <a class="section-link" href="#top">{% trans "Back to top" %}</a>
               </a>
             </li>
-            <li class="navigation-list__item navigation-list__item--footer-show">
+            <li class="navigation-list__item navigation-list__item--footer-home-link">
               <span class="navigation-list__item--title">
                 <a class="section-link" href="/">{% trans "Home" %}</a>
               </span>
             </li>
-            <li class="navigation-list__item navigation-list__item--feature">
+            <li class="navigation-list__item navigation-list__item--search-link">
               <span class="navigation-list__item--title">
                 <a class="section-link" href="#search-form">{% trans "Search" %}</a>
               </span>
@@ -129,13 +129,13 @@
                     </span>
                 </li>
             {% endfor %}
-            <li class="navigation-list__item navigation-list__item--feature-small">
+            <li class="navigation-list__item navigation-list__item--featurephone-link">
               <span class="navigation-list__item--title">
                     <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
                 </span>
             </li>
 
-            <li class="navigation-list__item navigation-list__item--feature-small">
+            <li class="navigation-list__item navigation-list__item--featurephone-link">
                 <span class="navigation-list__item--title">
                     <a href="{% url 'molo.profiles:user_register' %}">{% trans "Sign up" %}</a>
                 </span>
