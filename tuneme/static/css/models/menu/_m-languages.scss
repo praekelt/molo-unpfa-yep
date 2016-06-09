@@ -1,35 +1,53 @@
 .languages {
-   background: black;
-   color: #ffffff;
+   background: $black;
+   color: $white;
    overflow: hidden;
-   padding: 0 25px 15px;
+   padding: 0 21px 15px;
    display: none;
     @media screen and (min-width: 600px) {
       display: flex;
     }
 }
 
+.article-language-container {
+  .languages {
+    background: $white;
+    color: $black;
+    padding: 0 10px;
+  }
+
+  .language-list {
+    @at-root #{&}__item a {
+      background: $wild_sand;
+      color: $black;
+      font-weight: bold;
+    }
+
+    @at-root #{&}__item a.active {
+        background: #cf25f8;
+    }
+  }
+}
+
 .language-list {
-  padding: 0 0 10px;
+  padding-bottom: 10px;
   margin: 0;
-}
 
-.language-list__item:first-child {
-  margin-right: 5px;
-}
-
-.language-list__item {
+  @at-root #{&}__item {
     display: inline-block;
     margin: 5px 0;
     a {
       color: white;
       padding: 5px 10px;
-      background: gray;
+      background: $grey;
       border-radius: 15px;
       text-transform: capitalize;
     }
-
     a.active {
       background: #cf25f8;
     }
+    &:first-child {
+        margin-right: 5px;
+    }
+  }
 }

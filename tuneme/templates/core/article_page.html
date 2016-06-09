@@ -13,6 +13,11 @@
             <a href="">{{self.title}}</a>
         </li>
     </ul>
+    <div class="article-language-container">
+      {% block language %}
+          {% include "core/language_block.html" %}
+      {% endblock %}
+    </div>
 
     <div class="article article{{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
       {% if messages %}
