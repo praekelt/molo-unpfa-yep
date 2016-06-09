@@ -1,59 +1,32 @@
 
-.footer-menu {
-  background: $white;
+.footer-content {
+  border-top: 1px solid #ddd;
+  color: $santas_gray;
   @media screen and (min-width: 600px) {
-    background: $black;
-    display: block;
+    border: none;
+    margin-top: 20px;
   }
-
-  .main-menu-nav-list__item--home,
-  .main-menu-nav-list__item--backtotop,
-  .main-menu-nav-list__item--main {
-    display: block;
+  a {
+    color: $santas_gray;
+    text-decoration: underline;
     @media screen and (min-width: 600px) {
-       display: none;
-    }
-  }
-
-  .menu-profiles {
-    display: block;
-    @media screen and (min-width: 600px) {
-       display: none;
+      border: none;
+      //text-decoration: none;
+      //margin-top: 20px;
     }
   }
 }
 
 .footer-menu-list {
   font-size: 15px;
+  padding: 5px 0;
+
+  @at-root #{&}__item  {
+    display: inline-block;
+    padding-right: 10px;
+  }
+}
+
+.language-title {
   margin: 0;
-  padding: 0;
-
-  p {
-      margin: 0;
-  }
-}
-
-.footer-menu-list__item , .footer-page-list__item {
-  display: inline-block;
-  padding-right: 10px;
-}
-
-.footer-page-list {
-  font-size: 80%;
-  padding: 10px 0 15px;
-}
-
-.copyright {
-  font-size: 9px;
-}
-
-.footer-menu-list, .footer-page-list {
-  a {
-     text-decoration: underline;
-  }
-
-  a .active {
-    text-decoration: none;
-    font-weight: 400;
-  }
 }

@@ -69,12 +69,10 @@
                     </span>
                 </li>
             </ul>
-            <div class="footer l-indent">
+            <div class="footer-content l-indent">
                 {% if languages %}
+                <p class="language-title">{% trans "Change your site Language:" %}</p>
                     <ul class="footer-menu-list">
-                        <p>
-                            {% trans "Change your site Language:" %}
-                        </p>
                         {% for language in languages %}
                             <li class="footer-menu-list__item">
                                 <a href="{% url 'locale_set' language.code %}">{{ language.title }}</a>
@@ -82,13 +80,14 @@
                         {% endfor %}
                     </ul>
                 {% endif %}
-                <ul class="footer-page-list">
+                <ul class="footer-menu-list">
                     {% for page in language_page.footers %}
-                        <li class="footer-page-list__item"><a href="{% pageurl page %}">{{ page.title }}</a>
+                        <li class="footer-menu-list__item">
+                          <a href="{% pageurl page %}">{{ page.title }}</a>
                         </li>
                     {% endfor %}
                 </ul>
-                <p class="copyright">
+                <p class="f-tiny">
                     © 2016 UNFPA, Ford Foundation All Rights Reserved
                 </p>
             </div>
@@ -102,7 +101,7 @@
 
 <!-- START: /feature-menu -->
 {% block footer %}
-    <div class="footer-menu">
+    <div class="footer-wrapper">
         <ul class="navigation-list">
             <li class="navigation-list__item navigation-list__item--backtotop-link">
               <span class="navigation-list__item--title">
@@ -141,7 +140,7 @@
                 </span>
             </li>
         </ul>
-        <div class="footer l-indent">
+        <div class="footer-content l-indent">
             {% if languages %}
                 <ul class="footer-menu-list">
                     <p>{% trans "Change your site Language:" %}</p>
@@ -152,12 +151,14 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            <ul class="footer-page-list">
+            <ul class="footer-menu-list">
                 {% for page in language_page.footers %}
-                    <li class="footer-page-list__item"><a href="{% pageurl page %}">{{ page.title }}</a></li>
+                    <li class="footer-menu-list__item">
+                      <a href="{% pageurl page %}">{{ page.title }}</a>
+                    </li>
                 {% endfor %}
             </ul>
-            <p class="copyright"> © 2016 UNFPA, Ford Foundation All Rights Reserved</p>
+            <p class="f-tiny"> © 2016 UNFPA, Ford Foundation All Rights Reserved</p>
         </div>
     </div>
 <!--END: /feature-menu -->

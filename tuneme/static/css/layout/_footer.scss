@@ -1,7 +1,8 @@
 
-.footer {
-  color: $santas_gray;
-   a {
-     color: $santas_gray;
-   }
+.footer-wrapper {
+  background: $white;
+  @media screen and (min-width: 600px) {
+    background: $black;
+    display: block;
+  }
 }
