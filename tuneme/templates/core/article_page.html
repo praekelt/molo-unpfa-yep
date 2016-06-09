@@ -13,19 +13,7 @@
             <a href="">{{self.title}}</a>
         </li>
     </ul>
-    <!--<div class="title {# {{self.get_parent_section.get_effective_extra_style_hints}} #}
-    {# {% if self.image %}feature-image{% endif %}  #}">
-      <div class="icon">
-        {# {% if self.get_parent_section.get_effective_image %} #}
-          {# {% image self.get_parent_section.get_effective_image width-98 as tmp_photo %} #}
-          <img src="{# {{ tmp_photo.url }} #}" alt="{# {{ self.get_effective_image.title }} #}"/>
-        {# {% endif %} #}
-      </div>
 
-      <h6 class="f-medium">
-          <a href="{# {% pageurl self.get_parent_section %}">{{self.get_parent_section.title}} #}</a>
-      </h6>
-    </div>-->
     <div class="article article{{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
       {% if messages %}
       <div class="messages">
@@ -133,7 +121,6 @@
               <p>{% trans "Commenting on this article is currently disabled" %}</p>
             {% endif %}
      </div>
-
 </div>
 <div id="comments-list" class="comments-list">
   {% get_comment_count for self as comment_count %}
@@ -151,5 +138,4 @@
   {% endif %}
 </div>
 {% endif %}
-
 {% endblock %}

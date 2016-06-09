@@ -11,14 +11,12 @@
     text-decoration: underline;
     @media screen and (min-width: 600px) {
       border: none;
-      //text-decoration: none;
-      //margin-top: 20px;
     }
   }
 }
 
 .footer-menu-list {
-  font-size: 15px;
+  font-size: 14px;
   padding: 5px 0;
 
   @at-root #{&}__item  {

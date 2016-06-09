@@ -1,8 +1,8 @@
 
 .search-container {
   background: black;
-  color: #ffffff;
-  padding: 0 10px 15px;
+  color: $white;
+  padding: 0 10px;
 }
 
 .search-title {
@@ -10,3 +10,44 @@
   word-wrap: break-word;
 }
 
+.search-form {
+  background: black;
+  width: 100%;
+  position: relative;
+  padding: 10px 0;
+
+  input[type="text"],
+  input[type="submit"] {
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    outline: none;
+  }
+
+  input[type="text"] {
+    background: #f7f7f7;
+    width: 65%;
+    padding: 12px 10px;
+    @media screen and (min-width: 600px) {
+      border-radius: 25px;
+      width: 90%;
+    }
+  }
+
+  .search-button {
+      background: none;
+      text-transform: uppercase;
+      color: $white;
+      cursor: pointer;
+      @media screen and (min-width: 600px) {
+        background: url(/static/img/search-black.png) center center no-repeat;
+        background-size: 25px;
+        position: absolute;
+        width: 60px;
+        height: 57px;
+        right: 0;
+        top: 5%;
+        text-indent: -999em;
+      }
+  }
+}

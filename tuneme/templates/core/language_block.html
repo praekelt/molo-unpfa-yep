@@ -1,0 +1,14 @@
+{% load i18n %}
+{% if languages %}
+        <div class="languages">
+            <ul class="language-list">
+                <li class="language-list__item"><p class="language-title f-small">{% trans "Select Languages:" %}</p></li>
+                 {% get_current_language as LANGUAGE_CODE %}
+                 {% for language in languages %}
+                    <li class="language-list__item">
+                        <a class="f-tiny" href="{% url 'locale_set' language.code %}?next={{request.path}}?{{ request.GET.urlencode }}" {% if LANGUAGE_CODE == language.code  %} class="active" {% endif %}>{{ language.code }}</a>
+                    </li>
+                 {% endfor %}
+            </ul>
+        </div>
+    {% endif %}

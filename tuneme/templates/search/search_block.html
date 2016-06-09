@@ -1,12 +1,8 @@
 {% load i18n %}
 <div class="search-container">
-    <h2 class="search-title f-bigger">
-        Do you have questions on love, sex and relationships
-    </h2>
+    <h2 class="search-title f-medium">Do you have questions on love, sex and relationships</h2>
     <form action="{% url 'search' %}" class="search-form">
         <input placeholder="{% trans "Search TuneMe for..." %}" name="q" type="text" value="{{ search_query }}">
         <input type="submit" class="search-button" value="{% trans "Submit" %}">
     </form>
 </div>
-
-

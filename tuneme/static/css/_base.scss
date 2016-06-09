@@ -1,6 +1,6 @@
 
 html, body {
-  background: #fff;
+  background: $white;
   position:relative;
   width: 100%;
   @media screen and (min-width: 600px) {
@@ -16,6 +16,14 @@ body {
   line-height: 1.333333333;
   height: 100%;
   max-width: 320px;
+  background: $white;
+  @media screen and (min-width: 600px) {
+    font: normal 17px 'Quicksand', Arial, Helvetica, sans-serif;
+  }
+}
+
+form, input, textarea, select {
+  font-family: Arial, Helvetica, sans-serif;
   @media screen and (min-width: 600px) {
     font: normal 17px 'Quicksand', Arial, Helvetica, sans-serif;
   }
@@ -88,6 +96,7 @@ hr {
   padding: 13px;
   text-align: center;
   font-size: 15px;
+  display: block;
   &:focus {
     opacity: 0.5;
   }
