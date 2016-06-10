@@ -2,12 +2,6 @@
 {% extends "base.html" %}
 {% load static core_tags poll_votings competition_tag i18n %}
 
-{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
-{% block search %}
-  <div id="home-search">
-    {% include "search/search_block.html" %}
-  </div>
-{% endblock %}
 {% block language %}
     {% include "core/language_block.html" %}
 {% endblock %}
