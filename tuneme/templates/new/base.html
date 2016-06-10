@@ -24,31 +24,8 @@
 
         <script type="text/javascript" src="{% static 'js/eCSSential.min.js' %}"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
-
-        <script type="text/javascript">
-              /*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
-            function loadJS( src, cb ){
-              "use strict";
-              var ref = window.document.getElementsByTagName( "script" )[ 1 ];
-              var script = window.document.createElement( "script" );
-              script.src = src;
-              script.async = true;
-              ref.parentNode.insertBefore( script, ref );
-              if (cb && typeof(cb) === "function") {
-                script.onload = cb;
-              }
-              return script;
-            }
-            // cut the mustard
-            if('querySelector' in document && 'localStorage' in window && 'addEventListener' in window) {
-              eCSSential({
-                "(min-width: 320px)": "{% static 'css/smart.css' %}"
-              });
-              loadJS( "{% static 'js/main.js' %}" );
-            }
-        </script>
         {% block extra_css %}{% endblock %}
-        {% block Facebook_pixel  %}
+        {% block Facebook_pixel %}
         {% endblock %}
     </head>
     <body class="{% block body_class %}{% endblock %}">
@@ -57,9 +34,12 @@
         <a href="/">
           <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo">
         </a>
-        <label for="menu_toggle">{% trans "Menu" %}</label>
-      </div>
+        <label class="f-small" for="menu_toggle">{% trans "Menu" %}</label>
+        <label class="f-small" for="">{% trans "Search" %}</label>
 
+        <h2 class="f-large header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
+        {% include "search/search_block.html" %}
+      </div>
 
 
 
@@ -137,11 +117,7 @@
         </div>
 
 
-        {% block search %}
-          <div id="home-search">
-          {% include "search/search_block.html" %}
-          </div>
-        {% endblock %}
+
 
         {% block language %}
             {% include "core/language_block.html" %}
