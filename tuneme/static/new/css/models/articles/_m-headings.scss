@@ -8,6 +8,10 @@
   }
 }
 
+.article-heading {
+  margin: 10px 0;
+}
+
 .section-heading {
   text-transform: uppercase;
   padding: 10px 10px 0;
@@ -21,9 +25,10 @@
 }
 
 @each $name, $color in $color_list {
-  .article--#{$name} .heading {
+  .article--#{$name} .article-mustread-heading {
     color: $color;
     text-transform: capitalize;
+    margin: 10px 0;
   }
 
   .section-heading--#{$name} {

@@ -1,111 +1,112 @@
 {% extends "core/_article_page.html" %}
 {% load wagtailcore_tags wagtailimages_tags comments mptt_tags molo_commenting_tags static poll_votings i18n %}
-
 {% block content %}
-    <ul class="sub-navigation-list l-indent">
-        <li class="sub-navigation-list__item f-small">
-            <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
-        </li>
-        <li class="sub-navigation-list__item f-small">
-            <a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a>
-        </li>
-        <li class="sub-navigation-list__item f-small">
-            <a href="">{{self.title}}</a>
-        </li>
-    </ul>
-    <div class="article-language-container article-language-container{{self.get_parent_section.get_effective_extra_style_hints}}">
-      {% include "core/language_block.html" %}
-    </div>
+<ul class="sub-navigation-list l-indent">
+    <li class="sub-navigation-list__item f-small">
+        <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
+    </li>
+    <li class="sub-navigation-list__item f-small">
+        <a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a>
+    </li>
+    <li class="sub-navigation-list__item f-small">
+        <a href="">{{self.title}}</a>
+    </li>
+</ul>
 
-    <div class="article article{{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
-      {% if messages %}
-      <div class="messages">
-          {% for message in messages %}
-          <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-          {% endfor %}
-      </div>
-      {% endif %}
+<div class="article-language-container article-language-container{{self.get_parent_section.get_effective_extra_style_hints}}">
+  {% include "core/language_block.html" %}
+</div>
 
-      {% if self.image %}
-          {% image self.image width-98 as tmp_photo_small %}
-          {% image self.image width-300 as tmp_photo_large %}
-            <img class="article-image-thumb" src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
-      {% endif %}
-      <h1 class="article-heading f-large">{{self.title}}</h1>
-      <h3 class="f-medium">{{self.subtitle}}</h3>
+<div class="article article{{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
+  {% if messages %}
+  <div class="messages">
+      {% for message in messages %}
+      <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+      {% endfor %}
+  </div>
+  {% endif %}
 
-      <div class="article-language-container--feature">
-        {% if languages %}
-            <ul class="language-list">
-                <li class="language-list__item">{% trans "Read this is:" %}</li>
-                {% for language in languages %}
-                    <li class="language-list__item">
-                        <a href="{% url 'locale_set' language.code %}" {% if LANGUAGE_CODE == language.code %} class="active" {% endif %}>{{ language.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        </ul>
-      </div>
-
-      <div class="article-copy">
-        {% for block in self.body %}
-          {% if block.block_type == 'heading' %}
-            <span class="article-heading">{{ block.value }}</span>
-          {% else %}
-          {% if block.block_type == 'list' %}
-             <span class="page-includes">{{ block }}</span>
-          {% else %}
-          {% if block.block_type == 'image' %}
-            {% image block.value width-98 as tmp_photo_small %}
-            {% image block.value width-620 as tmp_photo_large %}
-            <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
-          {% else %}
-          {% if block.block_type == 'numbered_list' %}
-            <ol class="numbered-list">
-            {% for item in block.value %}
-              <li class="numbered-list__item">{{item}}</li>
-            {% endfor %}
-            </ol>
-            % else %}
-              {{ block }}
-          {% endif %}
-          {% endif %}
-          {% endif %}
-          {% endif %}
-        {% endfor %}
-      </div>
-     {% if self.get_parent_section %}
-        <h2 class="heading heading{{ section.get_effective_extra_style_hints }}">{% trans "Must Read" %}</h2>
-        <ul class="section-article-list section-article-list{{ section.get_effective_extra_style_hints}}">
-            {% for block in self.body %}
-                {% if block.block_type == 'page' %}
-                    <li class="section-article-list__item">
-                            <div class="section-article-list__item--image">
-                                 <a href="{% pageurl block.value %}"> {% if page.image %}
-                                    {% image page.image width-100 as tmp_photo %}
-                                    <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="img-circle" />
-                                {% endif %}
-                                 </a>
-                            </div>
-                            <div class="section-article-list__item-description">
-                                <h4><a href="{% pageurl block.value %}"> {{ block.value }}</a></strong>
-                                <p>{{ block.subtitle }}</h4>
-                            </div>
-                    </li>
-                {% endif %}
+  {% if self.image %}
+      {% image self.image width-98 as tmp_photo_small %}
+      {% image self.image width-300 as tmp_photo_large %}
+        <img class="article-image-thumb" src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
+  {% endif %}
+  <h1 class="article-heading f-large">{{self.title}}</h1>
+  <h3 class="f-bigger">{{self.subtitle}}</h3>
+  <div class="article-language-container--feature">
+    {% if languages %}
+        <ul class="language-list">
+            <li class="language-list__item">{% trans "Read this is:" %}</li>
+            {% for language in languages %}
+                <li class="language-list__item">
+                    <a href="{% url 'locale_set' language.code %}" {% if LANGUAGE_CODE == language.code %} class="active" {% endif %}>{{ language.title }}</a>
+                </li>
             {% endfor %}
         </ul>
     {% endif %}
+    </ul>
+  </div>
+
+  <div class="article-body">
+    {% for block in self.body %}
+      {% if block.block_type == 'heading' %}
+          {{ block.value }}
+      {% else %}
+        {% if block.block_type == 'page' %}
+          {{ block }}
+      {% else %}
+          {% if block.block_type == 'image' %}
+            {% image block.value width-98 as tmp_photo_small %}
+            {% image block.value width-620 as tmp_photo_large %}
+                <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
+      {% else %}
+          {% if block.block_type == 'numbered_list' %}
+              <ol>
+              {% for item in block.value %}
+                <li>{{item}}</li>
+              {% endfor %}
+              </ol>
+      {% else %}
+              {{ block }}
+      {% endif %}
+      {% endif %}
+      {% endif %}
+      {% endif %}
+    {% endfor %}
     </div>
-
-
+     {% if self.get_parent_section %}
+      <h2 class="article-mustread-heading">{% trans "Must Read" %}</h2>
+      <ul class="section-article-list section-article-list{{ section.get_effective_extra_style_hints}}">
+          {% for block in self.body %}
+              {% if block.block_type == 'page' %}
+                  <li class="section-article-list__item">
+                          <div class="section-article-list__item--image">
+                            <!-- Get Page Article Image-->
+                               <a href="{% pageurl block.value %}"> {% if page.image %}
+                                  {% image page.image width-98 as tmp_photo %}
+                                  <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="image_radius" />
+                              {% endif %}
+                               </a>
+                          </div>
+                          <div class="section-article-list__item-description">
+                              <h4><a href="{% pageurl block.value %}"> {{ block.value }}</a></strong>
+                                <!-- Get Page Article Subheading-->
+                              <p>{{ block.subtitle }}</h4>
+                          </div>
+                  </li>
+              {% endif %}
+          {% endfor %}
+      </ul>
+    {% endif %}
+    </div>
 
 {% has_questions self as questions %}
 {% if questions %}
 <div class="questions">
   <div class="title">
-    <div class="icon"><a href=""><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></a></div>
+    <div class="icon">
+      <a href="">
+        <img src="{% static 'img/polls.png' %}" alt="Have Your Say"></a></div>
       <h6><a href="">{% trans "Have Your Say" %}</a></h6>
   </div>
 {% poll_page_in_section page=self %}
@@ -123,7 +124,7 @@
                 </div>
                 <div class="posted-comments-count">
                     <a href="#">{{comment_count}}
-                        <!--<span>{# {% trans "comment" %}{{comment_count|pluralize}} #}</span>-->
+                        <span>{# {% trans "comment" %}{{comment_count|pluralize}} #}</span>
                     </a>
                 </div>
           </div>
@@ -155,4 +156,5 @@
   {% endif %}
 </div>
 {% endif %}
+
 {% endblock %}

@@ -12,7 +12,7 @@
         <div class="section-article-list__item--image">
             {% if page.image %}
                 {% image page.image width-98 as tmp_photo %}
-                <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="img-circle" />
+                <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="image_radius" />
             {% endif %}
         </div>
         <div class="section-article-list__item-description">

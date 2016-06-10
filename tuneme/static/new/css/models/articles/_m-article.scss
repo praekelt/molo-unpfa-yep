@@ -1,41 +1,18 @@
 .article {
-  padding: 10px;
-}
-
-.article-page {
-  text-align: center;
-}
-
-.article-page-title {
-  padding: 20px 10px 10px;
-  text-align: center;
-}
-
-.article-page-subtitle {
-  padding: 0 10px 10px;
-  font-size: 15px;
-  text-align: center;
-}
-
-.page-includes {
-  display: block;
-}
-
-.article__links {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-.article__link--item {
-  display: block;
-  margin-bottom: 20px;
-}
-
-.article-heading {
-  padding-top: 5px;
   word-wrap: break-word;
+  padding-top: 10px;
 }
+
+.article-body {
+  word-wrap: break-word;
+  a {
+    display: block;
+    color: $black;
+    font-weight: bold;
+  }
+}
+
+
 
 .article-image-thumb {
   display: none;

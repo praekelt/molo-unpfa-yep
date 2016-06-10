@@ -12,6 +12,7 @@ To get started::
     $ pip install -e .
     $ ./manage.py migrate
     $ ./manage.py createsuperuser
+    export SITE_LAYOUT="new"
     $ ./manage.py runserver
 
 You can now connect access the demo site on http://localhost:8000
