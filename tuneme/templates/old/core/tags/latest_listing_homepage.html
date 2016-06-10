@@ -1,0 +1,18 @@
+
+{% load wagtailcore_tags wagtailimages_tags i18n comments %}
+
+{% if articles %}
+
+<h2 class="list-header">{% trans "Fresh Stories" %}</h2>
+<br>
+{% for article in articles %}
+      {% if article.featured_in_latest %}
+      <div class="block {{article.get_parent_section.get_effective_extra_style_hints}}">
+        <h3 class="small-font"><a href="{% pageurl article %}">{{article.title}}</a></h3>
+        <p>{{article.subtitle}}</p>
+      </div>
+      {% endif %}
+        {% if not forloop.last %}<hr>{% endif %}
+{% endfor%}
+
+{% endif %}

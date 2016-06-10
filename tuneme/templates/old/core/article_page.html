@@ -1,0 +1,113 @@
+{% extends "core/_article_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags comments mptt_tags molo_commenting_tags static poll_votings i18n %}
+
+{% block content %}
+
+<div class="title {{self.get_parent_section.get_effective_extra_style_hints}} {% if self.image %}feature-image{% endif %}">
+  <div class="icon">
+    {% if self.get_parent_section.get_effective_image %}
+      {% image self.get_parent_section.get_effective_image width-98 as tmp_photo %}
+      <img src="{{ tmp_photo.url }}" alt="{{ self.get_effective_image.title }}"/>
+    {% endif %}
+  </div>
+  <h6><a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a></h6>
+</div>
+
+<div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if self.image %}
+  {% image self.image width-98 as tmp_photo_small %}
+  {% image self.image width-620 as tmp_photo_large %}
+    <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
+  {% endif %}
+  <h4>{{self.title}}</h4>
+  <blockquote>{{self.subtitle}}</blockquote>
+  <div class="article-copy">
+    {% for block in self.body %}
+      {% if block.block_type == 'heading' %}
+        <hr>
+        <p class="bold">{{ block.value }}</p>
+      {% else %}
+      <br>
+      {% if block.block_type == 'page' %}
+        {{ block }}
+      {% else %}
+      {% if block.block_type == 'image' %}
+      {% image block.value width-98 as tmp_photo_small %}
+      {% image block.value width-620 as tmp_photo_large %}
+        <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
+      {% else %}
+      {% if block.block_type == 'numbered_list' %}
+        <ol>
+        {% for item in block.value %}
+          <li>{{item}}</li>
+        {% endfor %}
+        </ol>
+      {% else %}
+          {{ block }}
+
+      {% endif %}
+      {% endif %}
+      {% endif %}
+      {% endif %}
+    {% endfor %}
+ <hr>
+</div>
+</div>
+
+{% has_questions self as questions %}
+{% if questions %}
+<div class="block {{self.get_parent_section.get_effective_extra_style_hints|default:"orange"}}">
+  <div class="title">
+    <div class="icon"><a href=""><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></a></div>
+      <h6><a href="">{% trans "Have Your Say" %}</a></h6>
+  </div>
+{% poll_page_in_section page=self %}
+</div>
+{% endif %}
+
+{% if self.is_commenting_enabled %}
+<div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">
+    {% if self.allow_commenting %}
+      {% get_comment_count for self as comment_count %}
+      {% if comment_count > 0 %}
+        <h5><div class="comments-count align-left">{% trans "Comment" %}<a href="#" class="pull-right">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div></h5>
+      {% endif %}
+      <div class="post-comment {{self.get_parent_section.get_effective_extra_style_hints}}">
+      {% if request.user.is_authenticated %}
+        {% render_comment_form for self %}
+      {% else %}
+        <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="button inverted">{% trans "Log in to comment" %}</a>
+        <hr>
+      {% endif %}
+    {% else %}
+      <p>{% trans "Commenting on this article is currently disabled" %}</p>
+    {% endif %}
+		</div>
+
+</div>
+<div id="comments-list">
+  {% get_comment_count for self as comment_count %}
+    {% get_molo_comments for self as comment_list %}
+      {% for node in comment_list %}
+          {% recursetree node %}
+            {% include "comments/comment.html" %}
+            {{ children }}
+          {% endrecursetree %}
+      {% endfor %}
+  {% if comment_count > 5 %}
+    <div class="pagination">
+      <a href="{% url 'more-comments' self.pk %}">{% trans "view more comments" %}</a>
+    </div>
+  {% endif %}
+</div>
+{% endif %}
+
+{% endblock %}

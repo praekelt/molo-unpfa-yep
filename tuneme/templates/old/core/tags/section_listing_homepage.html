@@ -1,0 +1,36 @@
+
+{% load wagtailcore_tags wagtailimages_tags comments i18n %}
+<h2 class="list-header">{% trans "Topics" %}</h2>
+
+{% if sections %}
+  {% for section in sections %}
+    <div class="block {{section.get_effective_extra_style_hints}}">
+      <div class="title">
+        <div class="icon">
+          {% if section.image %}
+            <a href="{% pageurl section %}">
+            {% image section.image width-80 as tmp_photo %}
+            <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/>
+            </a>
+          {% endif %}
+        </div>
+        <h6><a href="{% pageurl section %}">{{section.title}}</a></h6>
+      </div>
+    </div>
+  {% for page in section.featured_articles_in_homepage %}
+    {% if page.featured_in_homepage %}
+    <div class="block {{section.get_effective_extra_style_hints}}">
+      <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
+      <p>{{page.subtitle}}</p>
+      {% get_comment_count for page as comment_count %}
+      {% if comment_count > 0 %}
+        <div class="comments-count"><a href="{% pageurl page %}#comments-list">{{comment_count}} <span>{% trans "comment" %}{{comment_count|pluralize}}</span></a></div>
+      {% endif %}
+      <a href="{% pageurl page %}" class="button">{% trans "Read on" %}</a>
+      <a href="{% pageurl page.get_parent_section %}" class="button inverted">{% trans "View Similar" %}</a>
+      {% if not forloop.last %}<hr>{% endif %}
+    </div>
+    {% endif %}
+  {% endfor%}
+  {% endfor%}
+{% endif %}

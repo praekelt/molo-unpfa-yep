@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% load static core_tags %}
+
+{% block content %}
+
+<div class="title {{question.get_effective_extra_style_hints|default:"orange"}}">
+	<div class="icon"><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></div>
+	<h6><a href="">{% trans "Have Your Say" %}</a></h6>
+</div>
+
+<div class="block {{question.get_effective_extra_style_hints|default:"orange"}}">
+	<h3>{{ question.title }}</h3>
+	{% if form.answer.errors %}<p><strong>{{form.answer.errors|join:", " }}</strong></p>{% endif %}
+		<form action="{% url 'molo.polls:free_text_vote' question.id %}" method="post">
+			{% csrf_token %}
+			{{form.answer}}
+				<div>
+					<input type="submit" value="{% trans "Vote" %}"/>
+					<hr>
+  				<a href="{{request.site.root_page.url}}" class="button inverted">{% trans "Home" %}</a>
+				</div>
+		</form>
+</div>
+{% endblock %}
