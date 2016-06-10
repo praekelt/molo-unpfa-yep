@@ -2,24 +2,24 @@
 
 {% load wagtailcore_tags wagtailimages_tags compress static i18n %}
 {% block header %}
-    <div class="header">
-        <span class="logo-container">
-            <a href="/">
-                <img src="{% static 'img/logo-black.png' %}" alt="{% trans "TuneMe" %}" class="logo hide">
-                <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo">
-            </a>
-        </span>
-        <ul class="menu-list">
-            <li class="menu-list__item">
-                <a href="#search-form" class="search-icon">{% trans "Search" %}</a>
-            </li>
-            <li class="menu-list__item">
-                <label class="menu-button" for="menu-toggle">{% trans "Menu" %}</label>
-            </li>
-        </ul>
-    </div>
+<div class="header">
+    <span class="logo-container">
+        <a href="/">
+            <img src="{% static 'img/logo-black.png' %}" alt="{% trans "TuneMe" %}" class="logo hide">
+            <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo">
+        </a>
+    </span>
+    <ul class="menu-list">
+        <li class="menu-list__item">
+            <label class="search-icon" for="search_form">{% trans "Search" %}</label>
+        </li>
+        <li class="menu-list__item">
+            <label class="menu-button" for="menu_toggle">{% trans "Menu" %}</label>
+        </li>
+    </ul>
+</div>
 <div class="main-menu">
-  <input type="checkbox" id="menu-toggle">
+  <input type="checkbox" id="menu_toggle">
   <div class="toggle-container">
         <ul class="navigation-list">
             <li class="navigation-list__item navigation-list__item--home-link">
@@ -90,6 +90,11 @@
     </div>
 </div>
 {% endblock %}
+
+{% block search %}
+    {% include "search/search_block.html" %}
+{% endblock %}
+
 <!-- START: /feature-menu -->
 {% block footer %}
     <div class="footer-wrapper">
