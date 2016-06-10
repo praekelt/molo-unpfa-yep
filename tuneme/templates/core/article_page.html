@@ -13,7 +13,7 @@
             <a href="">{{self.title}}</a>
         </li>
     </ul>
-    <div class="article-language-container">
+    <div class="article-language-container article-language-container{{self.get_parent_section.get_effective_extra_style_hints}}">
       {% include "core/language_block.html" %}
     </div>
 
@@ -29,10 +29,25 @@
       {% if self.image %}
           {% image self.image width-98 as tmp_photo_small %}
           {% image self.image width-300 as tmp_photo_large %}
-            <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
+            <img class="article-image-thumb" src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
       {% endif %}
       <h1 class="article-heading f-large">{{self.title}}</h1>
-      <h3 class="f-bigger">{{self.subtitle}}</h3>
+      <h3 class="f-medium">{{self.subtitle}}</h3>
+
+      <div class="article-language-container--feature">
+        {% if languages %}
+            <ul class="language-list">
+                <li class="language-list__item">{% trans "Read this is:" %}</li>
+                {% for language in languages %}
+                    <li class="language-list__item">
+                        <a href="{% url 'locale_set' language.code %}" {% if LANGUAGE_CODE == language.code %} class="active" {% endif %}>{{ language.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        </ul>
+      </div>
+
       <div class="article-copy">
         {% for block in self.body %}
           {% if block.block_type == 'heading' %}
@@ -52,6 +67,8 @@
               <li class="numbered-list__item">{{item}}</li>
             {% endfor %}
             </ol>
+            % else %}
+              {{ block }}
           {% endif %}
           {% endif %}
           {% endif %}

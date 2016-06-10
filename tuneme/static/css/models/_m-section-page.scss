@@ -1,33 +1,22 @@
 
 .section-article-list {
   padding: 10px;
-  @media screen and (min-width: 480px) {
-    padding: 0 10px 20px 10px;
+  @at-root #{&}__item {
+    overflow: hidden;
+    padding-bottom: 10px;
+    @media screen and (min-width: 480px) {
+      display: flex;
+    }
   }
 }
 
-.float-right {
-  float: right;
-  display: none;
-  @media screen and (min-width: 480px) {
-    display: block;
-  }
-}
-
-.article-row {
-  overflow: hidden;
-  padding-bottom: 10px;
-  @media screen and (min-width: 480px) {
-    display: flex;
-  }
-}
-.image-article-col {
+.section-article-list__item--image {
   @media screen and (min-width: 480px) {
     padding-right: 20px;
   }
 }
 
-.text-article-col {
+.section-article-list__item-description {
   vertical-align: middle;
   a {
     text-decoration: none;
@@ -35,22 +24,5 @@
   }
   p {
     margin: 0;
-  }
-}
-
-.profile-subtitle {
-  text-transform: uppercase;
-}
-
-@each $name, $color in $color_list {
-  .sub-category-list--#{$name} .sub-category-list__item a {
-    color: $black;
-    text-transform: uppercase;
-    font-weight: 600;
-    border-bottom: 1px solid $color;
-    @media screen and (min-width: 480px) {
-      color: $color;
-      border-bottom: none;
-    }
   }
 }

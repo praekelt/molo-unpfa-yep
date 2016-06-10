@@ -9,26 +9,6 @@
     }
 }
 
-.article-language-container {
-  .languages {
-    background: $white;
-    color: $black;
-    padding: 0 10px;
-  }
-
-  .language-list {
-    @at-root #{&}__item a {
-      background: $wild_sand;
-      color: $black;
-      font-weight: bold;
-    }
-
-    @at-root #{&}__item a.active {
-        background: #cf25f8;
-    }
-  }
-}
-
 .language-list {
   @at-root #{&}__item {
     display: inline-block;
@@ -39,12 +19,72 @@
       padding: 5px 10px;
       background: $grey;
       border-radius: 12px;
-
       font-weight: bold;
       text-transform: capitalize;
     }
     a.active {
       background: #cf25f8;
+      @media screen and (min-width: 480px) {
+          background: #cf25f8;
+      }
     }
   }
+}
+
+.article-language-container {
+  display: none;
+  @media screen and (min-width: 480px) {
+    display: block;
+  }
+  .languages {
+    background: $white;
+    color: $black;
+    padding: 0 10px;
+  }
+
+  .language-list {
+    @at-root #{&}__item {
+        margin: 0;
+      a {
+        padding: 5px 8px;
+        background: transparent;
+        color: $black;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.article-language-container--feature {
+  display: block;
+  @media screen and (min-width: 480px) {
+    display: none;
+  }
+  .language-list {
+    margin: 10px 0;
+      @at-root #{&}__item {
+        margin: 0;
+          a {
+              padding: 2px;
+              color: $black;
+              background: transparent;
+              text-decoration: underline;
+              font-weight: normal;
+          }
+          a.active {
+            text-decoration: none;
+            font-weight: bold;
+          }
+      }
+  }
+}
+
+@each $name, $color in $color_list {
+  .article-language-container--#{$name} a.active {
+      text-decoration: none;
+      @media screen and (min-width: 480px) {
+        background-color: $color;
+      }
+  }
+
 }

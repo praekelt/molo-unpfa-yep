@@ -27,5 +27,11 @@
 
 .pagination {
     padding: 15px;
-    text-align: left;
+    text-align: center;
+    a {
+      text-decoration: underline;
+      color: $black;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
 }

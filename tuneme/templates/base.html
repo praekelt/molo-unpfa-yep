@@ -73,7 +73,7 @@
                     <p>{% trans "Change your site Language:" %}</p>
                     {% for language in languages %}
                         <li class="footer-menu-list__item">
-                            <a href="{% url 'locale_set' language.code %}">{{ language.title }}</a>
+                            <a href="{% url 'locale_set' language.code %}" {% if LANGUAGE_CODE == language.code %} class="active" {% endif %}>{{ language.title }}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -137,7 +137,7 @@
                     <p>{% trans "Change your site Language:" %}</p>
                     {% for language in languages %}
                         <li class="footer-menu-list__item">
-                            <a href="{% url 'locale_set' language.code %}">{{ language.title }}</a>
+                            <a href="{% url 'locale_set' language.code %}" {% if LANGUAGE_CODE == language.code %} class="active" {% endif %}>{{ language.title }}</a>
                         </li>
                     {% endfor %}
                 </ul>

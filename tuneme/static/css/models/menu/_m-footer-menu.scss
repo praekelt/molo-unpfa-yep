@@ -22,6 +22,18 @@
   @at-root #{&}__item  {
     display: inline-block;
     padding-right: 10px;
+    margin-bottom: 5px;
+  }
+
+  a {
+    text-transform: capitalize;;
+  }
+
+  a.active {
+    text-decoration: none;
+    @media screen and (min-width: 480px)  {
+      color: $wild_sand;
+    }
   }
 }
 

@@ -1,5 +1,8 @@
 .heading {
-  padding: 10px 0;
+  padding: 10px;
+  @media screen and (min-width: 480px) {
+      padding: 10px 0;
+  }
   color: $black;
   a {
     color: $black;
@@ -8,7 +11,7 @@
 
 .section-heading {
   text-transform: uppercase;
-  padding: 10px;
+  padding: 10px 10px 0;
   a {
     text-decoration: none;
   }
