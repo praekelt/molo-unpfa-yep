@@ -1,5 +1,4 @@
 .heading {
-  padding: 10px;
   @media screen and (min-width: 480px) {
       padding: 10px 0;
   }
@@ -22,7 +21,7 @@
     color: $color;
     text-transform: capitalize;
   }
-
+  
   .section-heading--#{$name} {
     background: $color;
     color: $black;

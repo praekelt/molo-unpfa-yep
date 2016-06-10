@@ -77,20 +77,20 @@
       </div>
      {% if self.get_parent_section %}
         <h2 class="heading heading{{ section.get_effective_extra_style_hints }}">{% trans "Must Read" %}</h2>
-        <ul class="article__links article__links{{ section.get_effective_extra_style_hints}}">
+        <ul class="section-article-list section-article-list{{ section.get_effective_extra_style_hints}}">
             {% for block in self.body %}
                 {% if block.block_type == 'page' %}
-                    <li class="article__link--item article-row">
-                            <div class="image-article-col article-column">
+                    <li class="section-article-list__item">
+                            <div class="section-article-list__item--image">
                                  <a href="{% pageurl block.value %}"> {% if page.image %}
                                     {% image page.image width-100 as tmp_photo %}
                                     <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="img-circle" />
                                 {% endif %}
                                  </a>
                             </div>
-                            <div class="text-article-col">
-                                <strong><a href="{% pageurl block.value %}"> {{ block.value }}</a></strong>
-                                <p>{{ block.subtitle }}</p>
+                            <div class="section-article-list__item-description">
+                                <h4><a href="{% pageurl block.value %}"> {{ block.value }}</a></strong>
+                                <p>{{ block.subtitle }}</h4>
                             </div>
                     </li>
                 {% endif %}
