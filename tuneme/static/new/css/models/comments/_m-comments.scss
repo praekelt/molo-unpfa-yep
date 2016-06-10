@@ -1,9 +1,15 @@
 .post-comment {
-  font-weight: normal;
    text-align: center;
-    a {
-        text-decoration: none;
-    }
+   padding: 10px;
+}
+
+.profile-signup {
+    text-transform: uppercase;
+    color: $black;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 10px;
+    display: block;
 }
 
 .post-comment textarea {

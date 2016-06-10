@@ -9,6 +9,19 @@
 
 .comments-list {
   background: #ebebeb;
+  @at-root #{&}__heading {
+      padding: 10px;
+  }
+}
+
+.comments-list__heading {
+  text-transform: uppercase;
+  font-size: 17px;
+}
+
+.by {
+  text-transform: capitalize;
+  margin: 0;
 }
 
 .date {

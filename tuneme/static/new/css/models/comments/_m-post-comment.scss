@@ -28,7 +28,7 @@
     }
   }
 
-  .post-comments--#{$name} .post-comment {
+  .post-comment--#{$name} {
       .submit-button {
           background: $color;
           color: $white;
@@ -44,5 +44,3 @@
     }
   }
 }
-
-

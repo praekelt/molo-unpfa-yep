@@ -114,7 +114,7 @@
 {% endif %}
 
 {% if self.is_commenting_enabled %}
-<div class="post-comments post-comments{{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
+<!--<div class="post-comments post-comments{{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
     {% if self.allow_commenting %}
       {% get_comment_count for self as comment_count %}
       {% if comment_count > 0 %}
@@ -129,18 +129,10 @@
                 </div>
           </div>
       {% endif %}
-      <div class="post-comment">
-          {% if request.user.is_authenticated %}
-            {% render_comment_form for self %}
-          {% else %}
-                <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="submit-button">{% trans "Log in to comment" %}</a>
-          {% endif %}
-            {% else %}
-              <p>{% trans "Commenting on this article is currently disabled" %}</p>
-            {% endif %}
-     </div>
-</div>
+</div>-->
+
 <div id="comments-list" class="comments-list">
+  <h3 class="comments-list__heading">{% trans "Join the discussion" %}</h3>
   {% get_comment_count for self as comment_count %}
     {% get_molo_comments for self as comment_list %}
       {% for node in comment_list %}
@@ -149,11 +141,23 @@
             {{ children }}
           {% endrecursetree %}
       {% endfor %}
-  {% if comment_count > 5 %}
+
+  {% if comment_count > 3 %}
     <div class="pagination">
       <a href="{% url 'more-comments' self.pk %}">{% trans "view more comments" %}</a>
     </div>
   {% endif %}
+  <div class="post-comment post-comment{{self.get_parent_section.get_effective_extra_style_hints}}">
+      {% if request.user.is_authenticated %}
+        {% render_comment_form for self %}
+      {% else %}
+            <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="submit-button">{% trans "Log in to comment" %}</a>
+            <a href="{% url 'molo.profiles:user_register' %}" class="profile-signup">{% trans "Sign up for a profile" %}</a>
+      {% endif %}
+        {% else %}
+          <p>{% trans "Commenting on this article is currently disabled" %}</p>
+        {% endif %}
+  </div>
 </div>
 {% endif %}
 
