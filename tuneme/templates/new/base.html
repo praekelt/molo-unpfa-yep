@@ -55,7 +55,7 @@
 
         <div class="menu" id="menu">
           <ul>
-            <li class="l-dent menu__item"><a href="#top">{% trans "Back to top" %}</a></li>
+            <li class="l-dent menu__item f-small"><a href="#top">{% trans "Back to top" %}</a></li>
             <li class="l-dent menu__item"><a href="/">{% trans "Home" %}</a></li>
             <li class="l-dent menu__item"><a href="#search-form">{% trans "Search" %}</a></li>
             {% if user.is_authenticated %}
@@ -76,15 +76,15 @@
             {% endfor %}
           </ul>
 
-          <ul class="menu__list--secondary">
+          <ul class="l-dent">
             {% for page in language_page.footers %}
-            <li class="l-dent menu__item"><a href="{% pageurl page %}">{{ page.title }}</a></li>
+            <li class="menu__item menu__item--alt"><a href="{% pageurl page %}">{{ page.title }}</a></li>
             {% endfor %}
           </ul>
 
           {% if languages %}
-          <div class="l-dent languages">
-            <p>{% trans "Language" %}:</p>
+          <div class="l-dent l-dent--no-height languages">
+            {% trans "Language" %}:
             {% for language in languages %}
               <a href="{% url 'locale_set' language.code %}" class="languages__item {% if LANGUAGE_CODE == language.code %} languages__item--active{% endif %}">
                 {{ language.title }}
