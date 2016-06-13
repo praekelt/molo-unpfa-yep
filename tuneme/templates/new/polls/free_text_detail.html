@@ -5,20 +5,18 @@
 
 {% block content %}
 
-<div class="title {{question.get_effective_extra_style_hints|default:"--default"}}">
-	<div class="icon"><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></div>
-	<h6><a href="">{% trans "Have Your Say" %}</a></h6>
+<div class="title {{question.get_effective_extra_style_hints|default:"--default"}} l-indent">
+  <img src="{% static 'img/polls.png' %}" alt="Have Your Say">
+	<h2 class="poll-title f-bigger">{% trans "Have Your Say" %}</h2>
 </div>
-
-<div class="block {{question.get_effective_extra_style_hints|default:"--default"}}">
-	<h3>{{ question.title }}</h3>
+<div class="poll-section {{question.get_effective_extra_style_hints|default:"--default"}} l-indent">
+	<h3 class="f-medium">{{ question.title }}</h3>
 	{% if form.answer.errors %}<p><strong>{{form.answer.errors|join:", " }}</strong></p>{% endif %}
 		<form action="{% url 'molo.polls:free_text_vote' question.id %}" method="post">
 			{% csrf_token %}
 			{{form.answer}}
 				<div>
 					<input type="submit" class="submit-button" value="{% trans "Vote" %}"/>
-					<hr>
   				<a href="{{request.site.root_page.url}}" class="submit-button">{% trans "Home" %}</a>
 				</div>
 		</form>

@@ -1,6 +1,6 @@
 {% load i18n static poll_votings %}
 {% block content %}
-    <div class="poll-section poll-section{{ question.get_effective_extra_style_hints|default:"--default"}} l-indent">
+    <div class="poll-section poll-section{{ question.get_effective_extra_style_hints|default:"--default"}} poll-section__home l-indent">
         {% if questions %}
             {% for question in questions %}
                 {% if forloop.first %}

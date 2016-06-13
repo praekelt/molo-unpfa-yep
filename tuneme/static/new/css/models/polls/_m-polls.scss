@@ -1,5 +1,11 @@
 
 .poll-section {
+  a {
+    color: $black;
+  }
+}
+
+.poll-section__home {
   @media screen and (min-width: 480px) {
       color: $white;
     }
