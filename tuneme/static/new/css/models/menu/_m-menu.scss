@@ -1,4 +1,15 @@
 
+
+.menu {
+  background: red;
+
+  input[type="checkbox"] {
+    display: none;
+  }
+}
+
+
+
 .menu-list {
   float: right;
   padding: 25px 0;
