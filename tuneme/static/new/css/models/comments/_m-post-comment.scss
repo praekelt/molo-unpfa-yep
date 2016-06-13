@@ -1,5 +1,9 @@
 
 .post-comments {
+  p {
+   margin: 0;
+ }
+
   .posted-comments-count {
     float: right;
   }
@@ -10,7 +14,6 @@
   font-size: 100%;
   padding: 0 0 35px;
   color: black;
-
   a {
     font-size: 100%;
   }

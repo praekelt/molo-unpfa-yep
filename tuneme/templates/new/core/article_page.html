@@ -98,8 +98,6 @@
           {% endfor %}
       </ul>
     {% endif %}
-    </div>
-
 {% has_questions self as questions %}
 {% if questions %}
 <div class="questions">
@@ -114,10 +112,10 @@
 {% endif %}
 
 {% if self.is_commenting_enabled %}
-<!--<div class="post-comments post-comments{{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
+<div class="post-comments post-comments{{self.get_parent_section.get_effective_extra_style_hints}}">
     {% if self.allow_commenting %}
       {% get_comment_count for self as comment_count %}
-      {% if comment_count > 0 %}
+      <!--{% if comment_count > 0 %}
           <div class="posted-comments-heading">
                 <div class="post-comment-title">
                     <h5>{% trans "Comment" %}</h5>
@@ -128,8 +126,9 @@
                     </a>
                 </div>
           </div>
-      {% endif %}
-</div>-->
+      {% endif %}-->
+</div>
+</div>
 
 <div id="comments-list" class="comments-list">
   <h3 class="comments-list__heading">{% trans "Join the discussion" %}</h3>
