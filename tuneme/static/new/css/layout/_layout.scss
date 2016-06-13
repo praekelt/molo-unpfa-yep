@@ -1,20 +1,10 @@
 
 
 .l-dent {
-  padding: 0 20px;
+  padding: 20px;
 }
 
-
-.l-indent-small {
-    padding: 5px;
+.l-dent--no-height {
+  padding-top: 0;
+  padding-bottom: 0;
 }
-
-.l-indent {
-  padding: 10px;
-}
-
-.image_radius {
-  border-radius: 10px;
-}
-
-@import "_footer";

@@ -3,16 +3,8 @@
   color: #fff;
   overflow: hidden;
 
-  label {
-    float: right;
-    line-height: 73px; // Warning: Magic number!
-    text-decoration: underline;
-    padding-left: 20px;
-    font-weight: bold;
-  }
-
-  .header__search-title {
-    margin: 0 0 20px 0;
+  .logo {
+    width: 110px;
   }
 
   .search-form {
@@ -20,6 +12,15 @@
   }
 }
 
-.logo {
-  width: 110px;
+.header__navitem {
+  float: right;
+  line-height: 73px; // Warning: Magic number!
+  text-decoration: underline;
+  padding-left: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.header__search-title {
+  margin: 0 0 20px 0;
 }

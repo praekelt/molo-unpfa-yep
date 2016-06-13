@@ -29,98 +29,16 @@
     </head>
     <body class="{% block body_class %}{% endblock %}">
 
-      <div class="l-dent header">
+      <div class="l-dent l-dent--no-height header">
         <a href="/">
           <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo">
         </a>
-        <label class="f-small" for="menu_toggle">{% trans "Menu" %}</label>
-        <label class="f-small" for="search_query">{% trans "Search" %}</label>
+        <a href="#menu" class="header__navitem f-small">{% trans "Menu" %}</a>
+        <label class="header__navitem f-small" for="search-query">{% trans "Search" %}</label>
 
         <h2 class="f-large header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
         {% include "search/search_block.html" %}
       </div>
-
-      <div class="menu">
-        <input type="checkbox" id="menu_toggle">
-        <ul>
-          <li><a href="/">{% trans "Home" %}</a></li>
-          <li><a href="#search-form">{% trans "Search" %}</a></li>
-          <li><a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a></li>
-          {% for section in language_page.sections %}
-          <li class="menu__item menu__item{{ section.get_effective_extra_style_hints }}">
-            <a href="{% pageurl section %}">
-              {{ section.title }}
-              <span>{{ section.description }}</span>
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
-        <p class="f-tiny">&copy; {2016} UNFPA, Ford Foundation All Rights Reserved</p>
-      </div>
-
-
-        <!-- <div class="main-menu">
-
-          <div class="toggle-container">
-                <ul class="navigation-list">
-                    <li class="navigation-list__item navigation-list__item--home-link">
-                        <span class="navigation-list__item--title">
-
-                        </span>
-                    </li>
-                    <li class="navigation-list__item navigation-list__item--search-link">
-                        <span class="navigation-list__item--title">
-                            <a href="#search-form">{% trans "Search" %}</a>
-                        </span>
-                    </li>
-                    <li class="navigation-list__item navigation-list__item--login-link">
-                        <span class="navigation-list__item--title">
-                            <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
-                        </span>
-                    </li>
-
-                    {% if user.is_authenticated %}
-                        <li class="navigation-list__item navigation-list__item--smartphone-link">
-                          <span class="navigation-list__item--title">
-                            <a href="{% url 'molo.profiles:view_my_profile' %}">
-                                <span>{% trans "Your Profile" %}</span>
-                            </a>
-                          </span>
-                        </li>
-                    {% endif %}
-                    <li class="navigation-list__item navigation-list__item--smartphone-link">
-                        <span class="navigation-list__item--title">
-                            <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
-                        </span>
-                    </li>
-                    <li class="navigation-list__item navigation-list__item--smartphone-link">
-                        <span class="navigation-list__item--title">
-                            <a href="{% url 'molo.profiles:user_register' %}">{% trans "Signup" %}</a>
-                        </span>
-                    </li>
-                </ul>
-                <div class="footer-content l-indent">
-                    {% if languages %}
-                        <ul class="footer-menu-list">
-                            <p>{% trans "Change your site Language:" %}</p>
-                            {% for language in languages %}
-                                <li class="footer-menu-list__item">
-                                    <a href="{% url 'locale_set' language.code %}" {% if LANGUAGE_CODE == language.code %} class="active" {% endif %}>{{ language.title }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                    <ul class="footer-menu-list">
-                        {% for page in language_page.footers %}
-                            <li class="footer-menu-list__item">
-                              <a href="{% pageurl page %}">{{ page.title }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-
-                </div>
-            </div>
-        </div> -->
 
 
 
@@ -135,67 +53,47 @@
 
         {% block footer %}
 
-        <div class="footer-wrapper">
-            <ul class="navigation-list">
-                <li class="navigation-list__item navigation-list__item--backtotop-link">
-                  <span class="navigation-list__item--title">
-                    <a class="section-link" href="#top">{% trans "Back to top" %}</a>
-                  </a>
-                </li>
-                <li class="navigation-list__item navigation-list__item--footer-home-link">
-                  <span class="navigation-list__item--title">
-                    <a class="section-link" href="/">{% trans "Home" %}</a>
-                  </span>
-                </li>
-                <li class="navigation-list__item navigation-list__item--search-link">
-                  <span class="navigation-list__item--title">
-                    <a class="section-link" href="#search-form">{% trans "Search" %}</a>
-                  </span>
-                </li>
-                {% for section in language_page.sections %}
-                    <li class="navigation-list__item navigation-list__item{{ section.get_effective_extra_style_hints }}">
-                        <span class="navigation-list__item--title">
-                            <a class="section-link" href="{% pageurl section %}">{{ section.title }}</a>
-                        </span>
-                        <span class="navigation-list__item--subtitle">
-                            <span>{{ section.description }}</span>
-                        </span>
-                    </li>
-                {% endfor %}
-                <li class="navigation-list__item navigation-list__item--featurephone-link">
-                  <span class="navigation-list__item--title">
-                        <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
-                    </span>
-                </li>
+        <div class="menu" id="menu">
+          <ul>
+            <li class="l-dent menu__item"><a href="#top">{% trans "Back to top" %}</a></li>
+            <li class="l-dent menu__item"><a href="/">{% trans "Home" %}</a></li>
+            <li class="l-dent menu__item"><a href="#search-form">{% trans "Search" %}</a></li>
+            {% if user.is_authenticated %}
+            <li class="l-dent menu__item"><a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Your Profile" %}</a></li>
+            <li class="l-dent menu__item"><a href="{% url 'molo.profiles:auth_logout' %}">{% trans "Log out" %}</a></li>
+            {% else %}
+            <li class="l-dent menu__item"><a href="{% url 'molo.profiles:auth_login' %}">{% trans "Log in" %}</a></li>
+            <li class="l-dent menu__item"><a href="{% url 'molo.profiles:user_register' %}">{% trans "Register" %}</a></li>
+            {% endif %}
 
-                <li class="navigation-list__item navigation-list__item--featurephone-link">
-                    <span class="navigation-list__item--title">
-                        <a href="{% url 'molo.profiles:user_register' %}">{% trans "Sign up" %}</a>
-                    </span>
-                </li>
-            </ul>
-            <div class="footer-content l-indent">
-                {% if languages %}
-                    <ul class="footer-menu-list">
-                        <p>{% trans "Change your site Language:" %}</p>
-                        {% for language in languages %}
-                            <li class="footer-menu-list__item">
-                                <a href="{% url 'locale_set' language.code %}" {% if LANGUAGE_CODE == language.code %} class="active" {% endif %}>{{ language.title }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-                <ul class="footer-menu-list">
-                    {% for page in language_page.footers %}
-                        <li class="footer-menu-list__item">
-                          <a href="{% pageurl page %}">{{ page.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-                <p class="f-tiny"> © 2016 UNFPA, Ford Foundation All Rights Reserved</p>
-            </div>
+            {% for section in language_page.sections %}
+            <li class="l-dent menu__item menu__item{{ section.get_effective_extra_style_hints }}">
+              <a href="{% pageurl section %}">
+                {{ section.title }}
+                <span>{{ section.description }}</span>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <ul class="menu__list--secondary">
+            {% for page in language_page.footers %}
+            <li class="l-dent menu__item"><a href="{% pageurl page %}">{{ page.title }}</a></li>
+            {% endfor %}
+          </ul>
+
+          {% if languages %}
+          <div class="l-dent languages">
+            <p>{% trans "Language" %}:</p>
+            {% for language in languages %}
+              <a href="{% url 'locale_set' language.code %}" class="languages__item {% if LANGUAGE_CODE == language.code %} languages__item--active{% endif %}">
+                {{ language.title }}
+              </a>
+            {% endfor %}
+          </div>
+          {% endif %}
         </div>
-
+        <p class="l-dent l-dent--no-height f-x-small">&copy; {% now "Y" %} UNFPA, Ford Foundation All Rights Reserved.</p>
         {% endblock %}
 
         {% if GOOGLE_TAG_MANAGER_ACCOUNT %}

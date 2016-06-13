@@ -1,52 +1,25 @@
-
-
 .menu {
-  background: red;
+  background: #fff;
+  color: #000;
 
-  input[type="checkbox"] {
-    display: none;
+  a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: underline;
   }
+}
+
+.menu__item {
+  border-bottom: 1px #e7e7e7 solid;
 }
 
 
 
-.menu-list {
-  float: right;
-  padding: 25px 0;
-  @at-root #{&}__item {
-    display: inline-block;
-    &:first-child {
-      padding-right: 8px;
-      @media screen and (min-width: 480px) {
-        padding: 0;
-      }
-    }
-  }
+.languages__item {
+  text-decoration: underline;
+  color: #8d8d8d;
 }
 
-.main-menu {
-  background: $white;
-  @media screen and (min-width: 480px) {
-     background: $black;
-  }
-  input[type="checkbox"] {
-   margin: 0 10px;
-   display: none;
-  }
-}
-
-.main-menu input[type="checkbox"] + * {
-  display: none;
-}
-
-.main-menu input[type="checkbox"]:checked + * {
-  background: $white;
-  display: block;
-  height: 100%;
-  width: 100%;
-  z-index: 10;
-  position: absolute;
-  @media screen and (min-width: 480px) {
-     background: $black;
-  }
+.languages__item--active {
+  text-decoration: none;
 }
