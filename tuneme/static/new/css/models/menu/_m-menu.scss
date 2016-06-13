@@ -1,0 +1,41 @@
+
+.menu-list {
+  float: right;
+  padding: 25px 0;
+  @at-root #{&}__item {
+    display: inline-block;
+    &:first-child {
+      padding-right: 8px;
+      @media screen and (min-width: 480px) {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.main-menu {
+  background: $white;
+  @media screen and (min-width: 480px) {
+     background: $black;
+  }
+  input[type="checkbox"] {
+   margin: 0 10px;
+   display: none;
+  }
+}
+
+.main-menu input[type="checkbox"] + * {
+  display: none;
+}
+
+.main-menu input[type="checkbox"]:checked + * {
+  background: $white;
+  display: block;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  position: absolute;
+  @media screen and (min-width: 480px) {
+     background: $black;
+  }
+}

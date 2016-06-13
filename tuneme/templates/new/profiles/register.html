@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n static core_tags wagtailsettings_tags %}
+{% get_settings %}
+
+{% block content %}
+    <div class="title profile">
+        <h3 class="l-indent">{% trans "Join" %}</h3>
+    </div>
+    <div class="block l-indent">
+        <div class="signin-form">
+            <p>{% trans "Not a member yet? Join us by signing up below." %}</p>
+            <form method="post" action="{% url 'molo.profiles:user_register' %}">{% csrf_token %}
+        <p><strong>{% trans "Choose a username" %}</strong></p>
+        {% if form.username.errors %}
+          {{ form.username.errors}}
+        {% endif %}
+        {{ form.username }}
+        <p><strong>{% trans "Choose a 4-digit pin" %}</strong></p>
+        {% if form.password.errors %}
+          {{ form.password.errors}}
+        {% endif %}
+        {{ form.password }}
+        <br>
+        {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
+          <p><strong>{% trans "Enter your mobile number" %}</strong></p>
+          <p>{% trans "(e.g. +260979000001)" %}</p>
+          {% if form.mobile_number.errors %}
+          {{ form.mobile_number.errors}}
+          {% endif %}
+          {{ form.mobile_number }}
+          <br>
+        {% endif %}
+        {% if form.terms_and_conditions.errors %}
+          <p class="error">{% trans "Please accept the T&amp;Cs in order to complete the registration" %}</p>
+        {% endif %}
+        <div class="terms_and_conditions">
+          {{ form.terms_and_conditions}}
+          <label>{% trans "I accept the Terms and Conditions" %}</label>
+          <br>
+        </div>
+        <input type="submit" class="registerSubmit submit-button" value='{% trans "JOIN" %}' />
+        <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
+        <a href="{% url 'molo.profiles:auth_login' %}" class="submit-button">{% trans "already joined?" %}</a>
+    </form>
+    </div>
+    </div>
+{% endblock %}

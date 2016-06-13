@@ -1,0 +1,27 @@
+
+{% load wagtailcore_tags wagtailimages_tags comments i18n %}
+{% if sections %}
+  {% for section in sections %}
+  <h4 class="section-heading section-heading{{section.get_effective_extra_style_hints}} f-medium">
+      <a href="{% pageurl section %}">{{section.title}}</a>
+  </h4>
+  <div class="section-article-list">
+  {% for page in section.featured_articles_in_homepage %}
+    {% if page.featured_in_homepage %}
+    <div class="section-article-list__item">
+        <div class="section-article-list__item--image">
+            {% if page.image %}
+                {% image page.image width-98 as tmp_photo %}
+                <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="image_radius" />
+            {% endif %}
+        </div>
+        <div class="section-article-list__item-description">
+          <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
+          <p>{{page.subtitle}}</p>
+        </div>
+    </div>
+    {% endif %}
+  {% endfor%}</div>
+
+  {% endfor%}
+{% endif %}

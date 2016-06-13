@@ -1,0 +1,101 @@
+
+{% load wagtailcore_tags wagtailimages_tags compress static wagtailuserbar core_tags %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+    <head>
+        <link href='//fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <meta name="description" content="Tune Me puts the power in your hands to make choices about your body, your rights, your love life and your sexual health." />
+        <meta name="keywords" content="Zambia, love, sex, relationships, advice, help, family planning, contraception, private" />
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:title" content="{% if self.social_media_title %}{{ self.social_media_title }}{% else %}{{ self.title }}{% endif %}"/>
+        <meta name="twitter:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
+        {% image self.social_media_image width-300 as tmp_photo %}
+        <meta name="twitter:image" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
+        <meta property="og:title" content= "{% if self.social_media_title %}{{ self.social_media_title }}{% else %}{{ self.title }}{% endif %}" />
+        <meta property="og:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
+        {% image self.social_media_image width-300 as tmp_photo %}
+        <meta property="og:image" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
+        <meta property="og:image:url" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui"/>
+        <meta name="robots" content="all,index,follow" />
+        {% compress css %}
+            <link rel="stylesheet" type="text/css" media="screen,projection" href="{% static 'css/styles.css' %}">
+            <link rel="stylesheet" type="text/css" media="screen,projection" href="{% static 'css/feature.css' %}">
+        {% endcompress %}
+
+        <script type="text/javascript" src="{% static 'js/eCSSential.min.js' %}"></script>
+
+        <script type="text/javascript">
+              /*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
+            function loadJS( src, cb ){
+              "use strict";
+              var ref = window.document.getElementsByTagName( "script" )[ 1 ];
+              var script = window.document.createElement( "script" );
+              script.src = src;
+              script.async = true;
+              ref.parentNode.insertBefore( script, ref );
+              if (cb && typeof(cb) === "function") {
+                script.onload = cb;
+              }
+              return script;
+            }
+
+            // cut the mustard
+            if('querySelector' in document && 'localStorage' in window && 'addEventListener' in window) {
+              eCSSential({
+                "(min-width: 320px)": "{% static 'css/smart.css' %}"
+              });
+              loadJS( "{% static 'js/main.js' %}" );
+            }
+        </script>
+
+        {% block extra_css %}
+
+        {% endblock %}
+
+        {% block Facebook_pixel  %}
+
+        {% endblock %}
+
+
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}" onload="init()">
+
+        {% if GOOGLE_TAG_MANAGER_ACCOUNT %}
+            <!-- Google Tag Manager -->
+             <noscript><iframe src="//www.googletagmanager.com/ns.html?id={{GOOGLE_TAG_MANAGER_ACCOUNT}}"
+             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+             <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+             '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+             })(window,document,'script','dataLayer','{{GOOGLE_TAG_MANAGER_ACCOUNT}}');</script>
+            <!-- End Google Tag Manager -->
+        {% endif %}
+
+        {% wagtailuserbar %}
+
+        {% block header %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% block extra_js %}
+        {% endblock %}
+
+        {% block search %}
+        {% endblock %}
+
+        {% block footer %}
+        {% endblock %}
+    </body>
+</html>

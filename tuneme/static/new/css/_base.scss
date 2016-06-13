@@ -1,0 +1,111 @@
+
+html, body {
+  background: $white;
+  position:relative;
+  width: 100%;
+  @media screen and (min-width: 480px) {
+    background: #333;
+  }
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  margin: 0 auto;
+  color: $black;
+  line-height: 1.333333333;
+  height: 100%;
+  max-width: 320px;
+  background: $white;
+  @media screen and (min-width: 480px) {
+    font: normal 17px 'Quicksand', Arial, Helvetica, sans-serif;
+  }
+}
+
+form, input, textarea, select {
+  font-family: Arial, Helvetica, sans-serif;
+  @media screen and (min-width: 480px) {
+    font: normal 17px 'Quicksand', Arial, Helvetica, sans-serif;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+}
+
+blockquote {
+  padding-bottom: 15px;
+  background: $white;
+  color: $black;
+}
+
+img {
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+  height: auto;
+}
+
+input.error {
+    border: 1px solid red;
+    color: red;
+}
+
+.author {
+  font-style:italic;
+  font-size:85%;
+}
+
+.numbered-list {
+  margin: 0;
+  padding: 0 25px;
+}
+
+.numbered-list__item {
+  padding: 5px 0 5px 0;
+}
+
+.banner img {
+    width: 100%;
+    max-width: 100%;
+}
+
+.submit-button {
+  cursor: pointer;
+  outline: none;
+  border-radius: 25px;
+  margin: 10px 0;
+  border: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 90%;
+  padding: 13px;
+  text-align: center;
+  font-size: 15px;
+  display: block;
+  &:focus {
+    opacity: 0.5;
+  }
+}
+
+.img-circle {
+    border-radius: 10px;
+}
+
+.icon {
+  text-align: center;
+}
+
+.wagtail-userbar {
+  display: none;
+}

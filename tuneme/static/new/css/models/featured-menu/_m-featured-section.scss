@@ -1,0 +1,13 @@
+
+.featured-section-title {
+  text-transform: uppercase;
+}
+
+@each $name, $color in $color_list {
+  .featured-section-title--#{$name} {
+    color: $color;
+    a {
+      color: $color;
+    }
+  }
+}

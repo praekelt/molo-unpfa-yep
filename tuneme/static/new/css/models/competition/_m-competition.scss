@@ -1,0 +1,44 @@
+
+@mixin submit_button($name) {
+  @if $name == '--red' {
+    background: $cardinal_red;
+  } @else if $name == '--orange' {
+    background: $dark_orange;
+  } @else {
+    background: $grey;
+  }
+}
+
+@each $name, $color in $color_list {
+  .competition-section--#{$name} {
+    background-color: $color;
+  }
+}
+
+.competition-section  {
+  color: $black;
+
+  .submit-button {
+    @include submit_button('');
+    text-align: center;
+    font-size: 14px;
+    display: block;
+    @media screen and (min-width: 480px) {
+      color: $white;
+    }
+  }
+}
+
+.competition-section--red .submit-button {
+  @include submit_button('--red');
+}
+
+.competition-section--orange .submit-button {
+  @include submit_button('--orange');
+}
+
+.competition-title {
+   @media screen and (min-width: 480px) {
+      color: $white;
+   }
+}

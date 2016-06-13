@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags comments i18n%}
+
+{% block content %}
+{% if search_results %}
+<div class="search-results">
+    <h2 class="section-heading section-heading--search f-medium">{% trans "your results:"%}{{search_query}}</h2>
+  {% for page in search_results %}
+    {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
+    {% if ancestor.sectionpage.image %}
+     <h4 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
+         <a href="{% pageurl page %}">{{ parent_section.title }}</a>
+     </h4>
+     <div class="section-article-list">
+      <div class="section-article-list__item">
+          <div class="section-article-list__item--image">
+              <a href="{% pageurl page %}">
+                  {% image ancestor.sectionpage.image width-80 as tmp_photo %}
+                  <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/>
+              </a>
+          </div>
+
+          <div class="section-article-list__item-description">
+              <!--<a href="{% pageurl page %}" class="search-result-article-title">
+                  <h3>{{page.title}}</h3>
+              </a>-->
+              <p>{{page.subtitle}}</p>
+          </div>
+      </div>
+    </div>
+      {% else %}
+      <h4 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
+         <a href="{% pageurl page %}">{{ parent_section.title }}</a>
+      </h4>
+      <div class="section-article-list">
+      <div class="section-article-list__item">
+           <div class="section-article-list__item--image">
+               <a href="{% pageurl page %}">
+                   {% image parent_section.sectionpage.image width-80 as tmp_photo %}
+               <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/></a>
+           </div>
+           <div class="section-article-list__item-description">
+               <!--a href="{% pageurl page %}" class="search-result-article-title">
+                   <h3>{{ page.title }}</h3>
+               </a>-->
+               <p>{{ page.subtitle }}</p>
+           </div>
+       </div>
+     </div>
+    {% endif %}
+    {% endwith %}
+  {% endfor %}
+  </div>
+  <div class="search-result pagination">
+  <div class="pagination-step-links">
+    {% if search_results.has_previous %}
+        <a href="?p={{ search_results.previous_page_number }}&amp;q={{search_query}}">&larr;</a>
+    {% endif %}
+
+    <span class="current">
+        Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}
+    </span>
+
+    {% if search_results.has_next %}
+        <a href="?p={{ search_results.next_page_number }}&amp;q={{search_query}}">&rarr;</a>
+    {% endif %}
+  </div>
+  </div>
+
+  {% else %}
+    <div class="search-title l-indent">
+        <h2 class="search-result-title">{% trans "Search" %}</h2>
+    </div>
+    <div class="block turq">
+        <p>{% trans "No search results for " %}{{search_query}}.</p>
+        <div class="signin-form">
+            <form action="{% url 'search' %}">
+              <input placeholder="{% trans "I am looking for" %}" name="q" type="search">
+              <input type="submit" class="submit-button" value="{% trans "Search"%}">
+            </form>
+        </div>
+    </div>
+    <hr>
+  {% endif %}
+{% endblock %}
+
+{% block search %}
+  {% if search_results %}
+      {% include "search/search_block.html" %}
+  {% endif %}
+{% endblock %}

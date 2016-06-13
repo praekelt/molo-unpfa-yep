@@ -1,5 +1,5 @@
 
-{% load wagtailcore_tags wagtailimages_tags compress static wagtailuserbar core_tags %}
+{% load wagtailcore_tags wagtailimages_tags compress static wagtailuserbar core_tags i18n %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -26,11 +26,11 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui"/>
         <meta name="robots" content="all,index,follow" />
         {% compress css %}
-            <link rel="stylesheet" type="text/css" media="screen,projection" href="{% static 'css/styles.css' %}">
-            <link rel="stylesheet" type="text/css" media="screen,projection" href="{% static 'css/feature.css' %}">
+            <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">
         {% endcompress %}
 
         <script type="text/javascript" src="{% static 'js/eCSSential.min.js' %}"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
 
         <script type="text/javascript">
               /*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
@@ -46,7 +46,6 @@
               }
               return script;
             }
-
             // cut the mustard
             if('querySelector' in document && 'localStorage' in window && 'addEventListener' in window) {
               eCSSential({
@@ -55,20 +54,12 @@
               loadJS( "{% static 'js/main.js' %}" );
             }
         </script>
-
         {% block extra_css %}
-
         {% endblock %}
-
         {% block Facebook_pixel  %}
-
         {% endblock %}
-
-
     </head>
-
-    <body class="{% block body_class %}{% endblock %}" onload="init()">
-
+    <body class="{% block body_class %}{% endblock %}">
         {% if GOOGLE_TAG_MANAGER_ACCOUNT %}
             <!-- Google Tag Manager -->
              <noscript><iframe src="//www.googletagmanager.com/ns.html?id={{GOOGLE_TAG_MANAGER_ACCOUNT}}"
@@ -80,21 +71,21 @@
              })(window,document,'script','dataLayer','{{GOOGLE_TAG_MANAGER_ACCOUNT}}');</script>
             <!-- End Google Tag Manager -->
         {% endif %}
-
         {% wagtailuserbar %}
 
-
-
         {% block header %}
+        {% endblock %}
+
+        {% block search %}
+        {% endblock %}
+
+        {% block language %}
         {% endblock %}
 
         {% block content %}
         {% endblock %}
 
         {% block extra_js %}
-        {% endblock %}
-
-        {% block search %}
         {% endblock %}
 
         {% block footer %}

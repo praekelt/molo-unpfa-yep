@@ -87,6 +87,8 @@ COMMENTS_APP = 'molo.commenting'
 COMMENTS_FLAG_THRESHHOLD = 3
 COMMENTS_HIDE_REMOVED = False
 SITE_ID = 1
+# We have multiple layouts: use `old` or `new` to switch between them.
+SITE_LAYOUT = environ.get('SITE_LAYOUT', 'old')
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -164,7 +166,7 @@ LOCALE_PATHS = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_ROOT = join(PROJECT_ROOT, 'static')
+STATIC_ROOT = join(PROJECT_ROOT, 'tuneme', 'static', SITE_LAYOUT)
 STATIC_URL = '/static/'
 
 STATICFILES_FINDERS = (
@@ -186,6 +188,9 @@ COMPRESS_PRECOMPILERS = (
 
 
 # Template configuration
+TEMPLATE_DIRS = (
+    join(PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT),
+)
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',

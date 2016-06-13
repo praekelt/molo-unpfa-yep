@@ -1,0 +1,49 @@
+.heading {
+  @media screen and (min-width: 480px) {
+      padding: 10px 0;
+  }
+  color: $black;
+  a {
+    color: $black;
+  }
+}
+
+.article-heading {
+  margin: 10px 0;
+}
+
+.section-heading {
+  text-transform: uppercase;
+  padding: 10px 10px 0;
+  a {
+    text-decoration: none;
+  }
+}
+
+.section-heading--search  {
+    padding: 10px;
+}
+
+@each $name, $color in $color_list {
+  .article--#{$name} .article-mustread-heading {
+    color: $color;
+    text-transform: capitalize;
+    margin: 10px 0;
+  }
+
+  .section-heading--#{$name} {
+    background: $color;
+    color: $black;
+    @media screen and (min-width: 480px) {
+      background: none;
+       color: $color;
+    }
+
+    a {
+      color: $black;
+      @media screen and (min-width: 480px) {
+        color: $color;
+      }
+    }
+  }
+}
