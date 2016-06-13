@@ -16,7 +16,7 @@
 	        {% endif %}
 					<p><strong>{% trans "Username" %}</strong></p>
 					{{form.username}}
-					<p><strong>{% trans "4-digit pin" %}</strong></p>
+					<p><strong>{% trans "Choose 4-digit pin" %}</strong> (E.g.: 2086)</p>
 					{{form.password}}
 					<input type="submit" class="submit-button" value="{% trans 'Sign in' %}">
 					<input type="hidden" name="next" value="{% if request.GET.next %}{{ request.GET.next }}{% else %}{{request.site.root_page.url}}{% endif %}" />

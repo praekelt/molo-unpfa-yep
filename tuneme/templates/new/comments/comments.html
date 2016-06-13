@@ -5,9 +5,8 @@
 {% block content %}
 <div class="article">
     <h1 class="article-heading article-heading{{self.get_parent_section.get_effective_extra_style_hints}} f-large">
-    <h3 class="f-bigger">{% trans "Comments" %}</h3>
-
-    <div id="comments-list">
+    <h3 class="f-bigger  l-indent">{% trans "Comments" %}</h3>
+    <div class="comments-list">
           {% for node in comments %}
             {% recursetree node %}
                 {% include "comments/comment.html" %}
