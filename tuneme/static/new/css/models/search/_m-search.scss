@@ -69,9 +69,8 @@
 }
 
 .search-container input[type="checkbox"]:checked + * {
-  background: $white;
   display: block;
   @media screen and (min-width: 480px) {
-     background: $black;
+     //background: $black;
   }
 }

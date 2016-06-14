@@ -1,7 +1,19 @@
-  /*var menuItems = new Array(),
-      screenWidth = window.innerWidth;
+var  menuItems = new Array(),
+     screenWidth = window.innerWidth;
 
-  function init() {
+//ADD EXTRA CLASS ON IMAGES
+(function() {
+  var $parent_div = $('.image-article-col');
+   $parent_div.each(function(i) {
+      if ($(this).find("img").length > 0) {
+           $(this).addClass('article-column')
+      }
+      else {
+          $(this).removeClass('article-column')
+      }
+   });
+
+    function init() {
     // Grab the accordion items from the page
     var divs = document.getElementsByTagName( 'div' );
     for ( var i = 0; i < divs.length; i++ ) {
@@ -17,8 +29,6 @@
       menu.onclick = toggleItem;
     }
   }
-
-
 
   function toggleItem() {
     var itemClass = this.parentNode.className;
@@ -52,18 +62,4 @@
       if ( element.childNodes[i].nodeName == tagName ) return element.childNodes[i];
     }
   }*/
-
-
-  //NEW JQUERY
-(function() {
-  var $parent_div = $('.image-article-col');
-   $parent_div.each(function(i) {
-      if ($(this).find("img").length > 0) {
-           $(this).addClass('article-column')
-      }
-      else {
-          $(this).removeClass('article-column')
-      }
-   });
-
 })();

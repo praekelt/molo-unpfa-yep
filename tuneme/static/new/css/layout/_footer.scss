@@ -5,4 +5,21 @@
     background: $black;
     display: block;
   }
+
+  .navigation-list__item {
+    &--title a {
+      color: $black;
+      @media screen and (min-width: 480px) {
+
+      }
+    }
+
+    &--subtitle {
+      color: $black;
+      @media screen and (min-width: 480px) {
+        color: $white;
+      }
+    }
+  }
+
 }

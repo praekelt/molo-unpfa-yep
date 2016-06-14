@@ -1,6 +1,22 @@
 
 .header {
-  background: black;
+  background: $black;
+  color: $white;
   overflow: hidden;
   padding: 0 10px;
+  @media screen and (min-width: 480px) {}
+}
+
+.menu-list {
+  float: right;
+  padding: 25px 0;
+  @at-root #{&}__item {
+    display: inline-block;
+    &:first-child {
+      padding-right: 8px;
+      @media screen and (min-width: 480px) {
+        padding: 0;
+      }
+    }
+  }
 }
