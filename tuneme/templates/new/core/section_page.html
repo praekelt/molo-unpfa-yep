@@ -5,42 +5,44 @@
 
 <div class="breadcrumbs">
   <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
-  <a href="">{{ self.title }}</a>
+  {{ self.title }}
 </div>
 
 
+<ul class="article-list article-list{{section.get_effective_extra_style_hints}}">
 {% for article in self.articles %}
+  <li class="article-list__item l-indent l-indent--tall">
+     <a href="{% pageurl article %}">
+        {% if article.image %}
+          {% image article.image width-90 height-90 as article_image %}
+          <img src="{{ article_image.url }}" alt="{{ article_image.title }}" class="article-list__image" />
+        {% endif %}
+        <h2 class="article-list__title">{{article.title}}</h2>
+        <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
+      </a>
+  </li>
 {% endfor %}
+</ul>
 
-
-
-
-
-    {% for section in self.sections %}
-        <ul class="sub-category-list sub-category-list{{ self.get_effective_extra_style_hints }} l-indent">
-            <li class="sub-category-list__item">
-                <a href="{% pageurl section %}">{{section.title}}</a>
-            </li>
-            <li class="sub-category-list__item sub-category-list__item--view-all">
-                <a href="{% pageurl section %}">{% trans "View All" %}</a>
-            </li>
-        </ul>
-        {% for page in section.featured_articles %}
-            <div class="section-article-list__item section-article-list__item{{ self.get_effective_extra_style_hints }} l-indent">
-                <div class="section-article-list__item--image">
-                    {% if page.image %}
-                      {% image page.image width-98 as tmp_photo %}
-                      <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="img-circle"/>
-                    {% endif %}
-                </div>
-
-                <div class="section-article-list__item-description">
-                    <h3><a href="{% pageurl page %}">{{ page.title }}</a></h3>
-                    <p>{{ page.subtitle }}</p>
-                </div>
-            </div>
-        {% endfor %}
-      </div>
+{% for section in sections %}
+  <h1 class="heading heading{{section.get_effective_extra_style_hints}}">
+    <a href="{% pageurl section %}">{{section.title}}</a>
+  </h1>
+  <ul class="article-list article-list{{section.get_effective_extra_style_hints}}">
+    {% for article in section %}
+        <li class="article-list__item l-indent l-indent--tall">
+           <a href="{% pageurl article %}">
+              {% if article.image %}
+                {% image article.image width-90 height-90 as article_image %}
+                <img src="{{ article_image.url }}" alt="{{ article_image.title }}" class="article-list__image" />
+              {% endif %}
+              <h2 class="article-list__title">{{article.title}}</h2>
+              <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
+            </a>
+        </li>
     {% endfor %}
+    <li class="article-list__item article-list__item--more"><a href="{% pageurl section %}">{% trans "More" %} {{section.title}}</a></li>
+  </ul>
+{% endfor %}
 
 {% endblock %}
