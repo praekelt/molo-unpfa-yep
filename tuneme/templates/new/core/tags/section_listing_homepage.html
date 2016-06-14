@@ -1,27 +1,24 @@
-
 {% load wagtailcore_tags wagtailimages_tags comments i18n %}
-{% if sections %}
-  {% for section in sections %}
-  <h4 class="section-heading section-heading{{section.get_effective_extra_style_hints}} f-medium">
-      <a href="{% pageurl section %}">{{section.title}}</a>
-  </h4>
-  <div class="section-article-list">
-  {% for page in section.featured_articles_in_homepage %}
-    {% if page.featured_in_homepage %}
-    <div class="section-article-list__item">
-        <div class="section-article-list__item--image">
-            {% if page.image %}
-                {% image page.image width-98 as tmp_photo %}
-                <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="img-circle" />
-            {% endif %}
-        </div>
-        <div class="section-article-list__item-description">
-          <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
-          <p>{{page.subtitle}}</p>
-        </div>
-    </div>
-    {% endif %}
-  {% endfor%}</div>
 
-  {% endfor%}
-{% endif %}
+{% for section in sections %}
+  <h1 class="heading heading{{section.get_effective_extra_style_hints}}">
+    <a href="{% pageurl section %}">{{section.title}}</a>
+  </h1>
+  <ul class="article-list article-list{{section.get_effective_extra_style_hints}}">
+    {% for article in section.featured_articles_in_homepage %}
+      {% if article.featured_in_homepage %}
+        <li class="article-list__item l-indent l-indent--tall">
+           <a href="{% pageurl article %}">
+              {% if article.image %}
+                {% image article.image width-90 height-90 as article_image %}
+                <img src="{{ article_image.url }}" alt="{{ article_image.title }}" class="article-list__image" />
+              {% endif %}
+              <h2 class="article-list__title">{{article.title}}</h2>
+              <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
+            </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+    <li class="article-list__item article-list__item--more"><a href="{% pageurl section %}">{% trans "More" %} {{section.title}}</a></li>
+  </ul>
+{% endfor %}

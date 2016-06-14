@@ -1,15 +1,21 @@
-{% extends "core/_section_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags comments poll_votings static i18n %}
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags core_tags poll_votings static i18n %}
 
 {% block content %}
-    <ul class="sub-navigation-list l-indent">
-        <li class="sub-navigation-list__item">
-            <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
-        </li>
-        <li class="sub-navigation-list__item">
-            <a href="">{{self.title}}</a>
-        </li>
-    </ul>
+
+<div class="breadcrumbs">
+  <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
+  <a href="">{{ self.title }}</a>
+</div>
+
+
+{% for article in self.articles %}
+{% endfor %}
+
+
+
+
+
     {% for section in self.sections %}
         <ul class="sub-category-list sub-category-list{{ self.get_effective_extra_style_hints }} l-indent">
             <li class="sub-category-list__item">
@@ -37,30 +43,4 @@
       </div>
     {% endfor %}
 
-    {% for page in self.articles %}
-      <div class="section-article-list__item l-indent">
-        <div class="section-article-list__item--image">
-            {% if page.image %}
-                {% image page.image width-100 as tmp_photo %}
-                <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="img-circle" />
-            {% endif %}
-        </div>
-        <div class="section-article-list__item-description">
-            <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
-            <p>{{page.subtitle}} <a href="{% pageurl page %}">{% trans "Read on" %}</a></p>
-        </div>
-      </div>
-    {% endfor %}
-
-    {% has_questions self as questions %}
-    {% if questions %}
-    <div class="block {{self.get_effective_extra_style_hints|default:"orange"}}">
-      <div class="title">
-        <div class="icon"><a href=""><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></a></div>
-          <h6><a href="">{% trans "Have Your Say" %}</a></h6>
-      </div>
-      {% poll_page_in_section page=self %}
-      <hr>
-    </div>
-    {% endif %}
 {% endblock %}

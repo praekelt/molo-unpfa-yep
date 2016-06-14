@@ -31,7 +31,7 @@
       <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo">
     </a>
     <a href="#menu" class="header__navitem f-small">{% trans "Menu" %}</a>
-    <label class="header__navitem f-small" for="search-query">{% trans "Search" %}</label>
+    <a href="#search-form" class="header__navitem f-small">{% trans "Search" %}</a>
 
     <h2 class="f-large header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
     {% include "search/search_block.html" %}
@@ -93,7 +93,7 @@
    })(window,document,'script','dataLayer','{{GOOGLE_TAG_MANAGER_ACCOUNT}}');</script>
   <!-- End Google Tag Manager -->
   {% endif %}
-  
+
   {% block extra_js %}{% endblock %}
   {% wagtailuserbar %}
 </body>
