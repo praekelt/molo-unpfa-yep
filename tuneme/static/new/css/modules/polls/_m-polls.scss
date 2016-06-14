@@ -1,0 +1,33 @@
+
+.poll-section {
+  @media screen and (min-width: 480px) {
+      color: $white;
+    }
+  a {
+    @media screen and (min-width: 480px) {
+      color: $white;
+    }
+  }
+}
+
+.poll-section--default {
+  background: $violet;
+
+  .submit-button {
+    background: rgba($purple, 1);
+  }
+}
+
+.poll-title ,
+.question-title {
+  text-transform: uppercase;
+  padding: 0 0 10px 0;
+}
+
+.question-title {
+  font-size: 15px;
+}
+
+.questions-choice-list {
+  overflow: hidden;
+}

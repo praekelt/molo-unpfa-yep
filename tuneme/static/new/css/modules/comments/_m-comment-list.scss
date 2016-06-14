@@ -1,0 +1,52 @@
+
+.comment {
+  text-align: left;
+  font-weight: normal;
+  padding: 15px;
+  border-bottom: 1px solid $white;
+  font-size: 16px;
+}
+
+.comments-list {
+  background: #ebebeb;
+}
+
+.date {
+  font-style: italic;
+}
+
+.report-link {
+  font-size: 13px;
+  font-weight: 700;
+  float: right;
+  a {
+    color: #9d9d9d;
+  }
+}
+
+.posted-comments-count {
+  text-transform: capitalize;
+  font-size: 14px;
+  display: block;
+  font-weight: bold;
+  a {
+    position: relative;
+    text-decoration: none;
+    height: 25px;
+    width: 30px;
+    padding: 0;
+    line-height: 25px;
+    text-align: center;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    &:after {
+      top: 100%;
+      left: 65%;
+      border: solid transparent;
+      content: " ";
+      position: absolute;
+      border-width: 4px;
+      margin-left: -4px;
+    }
+  }
+}

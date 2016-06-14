@@ -1,0 +1,10 @@
+.heading {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+@each $name, $color in $color_list {
+  .heading--#{$name} {
+    background: $color;
+  }
+}
