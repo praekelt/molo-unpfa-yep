@@ -11,4 +11,8 @@
   .heading--#{$name} {
     background: $color;
   }
+
+  .heading--section-list.heading--#{name} {
+    border-bottom: 2px $color solid;
+  }
 }

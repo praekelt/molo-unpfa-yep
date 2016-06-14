@@ -1,6 +1,7 @@
 .menu {
   background: #fff;
   color: #000;
+  border-top: 2px #e7e7e7 solid;
 
   a {
     color: #000;
@@ -25,7 +26,6 @@
 
 .menu__item--alt {
   border: 0;
-
   a {
     color: #8d8d8d;
   }
