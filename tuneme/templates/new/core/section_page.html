@@ -2,14 +2,12 @@
 {% load wagtailcore_tags wagtailimages_tags core_tags poll_votings static i18n %}
 
 {% block content %}
-
 <div class="breadcrumbs">
   <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
   {{ self.title }}
 </div>
 
-
-<ul class="article-list article-list{{section.get_effective_extra_style_hints}}">
+<ul class="article-list article-list--section article-list{{self.get_effective_extra_style_hints}}">
 {% for article in self.articles %}
   <li class="article-list__item l-indent l-indent--tall">
      <a href="{% pageurl article %}">
@@ -28,7 +26,7 @@
   <h1 class="heading heading{{section.get_effective_extra_style_hints}}">
     <a href="{% pageurl section %}">{{section.title}}</a>
   </h1>
-  <ul class="article-list article-list{{section.get_effective_extra_style_hints}}">
+  <ul class="article-list article-list--section article-list{{self.get_effective_extra_style_hints}}">
     {% for article in section %}
         <li class="article-list__item l-indent l-indent--tall">
            <a href="{% pageurl article %}">

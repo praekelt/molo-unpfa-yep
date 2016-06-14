@@ -1,4 +1,16 @@
 
+.article-list--section {
+  border-bottom: 2px #000 solid;
+}
+
+@each $name, $color in $color_list {
+  .article-list--section.article-list--#{$name} {
+    border-bottom-color: $color;
+  }
+}
+
+
+
 .article-list__item {
   a {
     color: #000;
