@@ -9,7 +9,7 @@
         <a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a>
     </li>
     <li class="sub-navigation-list__item f-small">
-        <a href="">{{self.title}}</a>
+        <a href="{{ request.url }}">{{self.title}}</a>
     </li>
 </ul>
 
@@ -74,6 +74,11 @@
       {% endif %}
     {% endfor %}
     </div>
+  
+    <div class="facebook-share">
+      <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">Facebook Share</a>
+    </div>
+
      {% if self.get_parent_section %}
       <h2 class="article-mustread-heading">{% trans "Must Read" %}</h2>
       <ul class="section-article-list section-article-list{{ section.get_effective_extra_style_hints}}">
@@ -98,6 +103,7 @@
           {% endfor %}
       </ul>
     {% endif %}
+
 {% has_questions self as questions %}
 {% if questions %}
 <div class="questions">

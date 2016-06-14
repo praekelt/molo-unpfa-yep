@@ -66,21 +66,19 @@
     {% endif %}
   </div>
   </div>
-
   {% else %}
-    <div class="search-title l-indent">
-        <h2 class="search-result-title">{% trans "Search" %}</h2>
-    </div>
-    <div class="block turq">
-        <p>{% trans "No search results for " %}{{search_query}}.</p>
-        <div class="signin-form">
-            <form action="{% url 'search' %}">
-              <input placeholder="{% trans "I am looking for" %}" name="q" type="search">
-              <input type="submit" class="submit-button" value="{% trans "Search"%}">
-            </form>
+  <div class="search-results">
+        <h2 class="section-heading section-heading--search f-medium">{% trans "Search" %}</h2>
+        <div class="section-article-list">
+           <h4 class="f-medium">{% trans "No search results for " %}{{search_query}}.</h4>
+          <div class="signin-form">
+              <form action="{% url 'search' %}">
+                <input placeholder="{% trans "I am looking for" %}" name="q" type="search">
+                <input type="submit" class="submit-button" value="{% trans "Search"%}">
+              </form>
+          </div>
         </div>
-    </div>
-    <hr>
+  </div>
   {% endif %}
 {% endblock %}
 
