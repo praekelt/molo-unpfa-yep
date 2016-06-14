@@ -1,13 +1,12 @@
-
 {% extends "base.html" %}
 {% load static core_tags poll_votings competition_tag i18n %}
 
-{% block language %}
-    {% include "core/language_block.html" %}
-{% endblock %}
+
 {% block content %}
-    {% latest_listing_homepage num_count=5 %}
-    {% poll_page page=language_page %}
-    {# {% your_words_competition page=language_page %} #}
-    {% section_listing_homepage %}
+
+  {% latest_listing_homepage num_count=5 %}
+
+  {% poll_page page=language_page %}
+  {# {% your_words_competition page=language_page %} #}
+  {% section_listing_homepage %}
 {% endblock %}

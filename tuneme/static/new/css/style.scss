@@ -1,20 +1,11 @@
-/*
-  VIRIABLES
---------------------------------------------------------------------*/
-@import "_variables";
+
+@import "_colors";
 @import "_base";
 
-
-/*
-  FILES
---------------------------------------------------------------------*/
-@import "models/_modules";
-@import "_typography";
-
-/*
-  PAGES
---------------------------------------------------------------------*/
 @import "layout/_layout";
+@import "modules/_modules";
+
+
 
 //@import "_icons";
 //@import "_version";

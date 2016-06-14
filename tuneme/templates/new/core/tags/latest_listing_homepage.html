@@ -1,23 +1,36 @@
-
-{% load wagtailcore_tags wagtailimages_tags i18n comments %}
+{% load wagtailcore_tags wagtailimages_tags i18n %}
 {% if articles %}
+<h2 class="l-dent l-dent--short f-small heading heading--purple">{% trans "Fresh Stories" %}</h2>
+
+<ul class="article-list">
+  {% for article in articles %}
+  <li class="article-list__item article-list__item{{article.get_parent_section.get_effective_extra_style_hints}}">
+    <a href="{% pageurl article %}">
+      {% if article.image %}
+        {% image article.image width-98 as article_image %}
+
+      {% endif %}
+      <h2 class="article-list__title">{{article.title}}</h2>
+      <h3 class="article-list__subtitle">{{article.subtitle}}</h4>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+
 
     <div class="latest-articles">
-        <h2 class="latest-article__title {{section.get_effective_extra_style_hints}} f-medium">{% trans "Fresh Stories" %}</h2>
         {% if articles %}
           {% with articles|first as article %}
                 {% if article.featured_in_latest %}
                 <div class="article-hero-row">
                     <div class="article-hero-story feature-image">
-                {% if article.get_parent_section.get_effective_image %}
                   {% image article.get_parent_section.get_effective_image width-98 as tmp_photo_small %}
-                  {% image article.get_parent_section.get_effective_image width-300 as tmp_photo_large %}
+
                   <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ article.get_effective_image.title }}" class="image_radius"/>
                         {% else %}
                           <a href="{% pageurl article %}">
-                            {% image article.image width-98 as tmp_photo_small %}
-                            {% image article.image width-300 as tmp_photo_large %}
-                            <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ article.image.title }}" class="image_radius"/>
+
+
                           </a>
                 {% endif %}
                     </div>

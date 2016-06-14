@@ -1,113 +1,100 @@
 {% load wagtailcore_tags wagtailimages_tags compress static wagtailuserbar core_tags i18n %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
-        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-        <meta name="description" content="Tune Me puts the power in your hands to make choices about your body, your rights, your love life and your sexual health." />
-        <meta name="keywords" content="love, sex, relationships, advice, help, family planning, contraception, private" />
-        <meta name="twitter:card" content="summary"/>
-        <meta name="twitter:title" content="{% if self.social_media_title %}{{ self.social_media_title }}{% else %}{{ self.title }}{% endif %}"/>
-        <meta name="twitter:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
-        {% image self.social_media_image width-300 as tmp_photo %}
-        <meta name="twitter:image" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
-        <meta property="og:title" content= "{% if self.social_media_title %}{{ self.social_media_title }}{% else %}{{ self.title }}{% endif %}" />
-        <meta property="og:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
-        {% image self.social_media_image width-300 as tmp_photo %}
-        <meta property="og:image" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
-        <meta property="og:image:url" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui"/>
-        <meta name="robots" content="all,index,follow" />
-        {% compress css %}
-        <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">
-        {% endcompress %}
+<head>
+  <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta name="description" content="Tune Me puts the power in your hands to make choices about your body, your rights, your love life and your sexual health." />
+  <meta name="keywords" content="love, sex, relationships, advice, help, family planning, contraception, private" />
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="{% if self.social_media_title %}{{ self.social_media_title }}{% else %}{{ self.title }}{% endif %}"/>
+  <meta name="twitter:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
+  {% image self.social_media_image width-300 as tmp_photo %}
+  <meta name="twitter:image" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
+  <meta property="og:title" content= "{% if self.social_media_title %}{{ self.social_media_title }}{% else %}{{ self.title }}{% endif %}" />
+  <meta property="og:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
+  {% image self.social_media_image width-300 as tmp_photo %}
+  <meta property="og:image" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
+  <meta property="og:image:url" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui"/>
+  <meta name="robots" content="all,index,follow" />
+  {% compress css %}
+  <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">
+  {% endcompress %}
+  {% block extra_css %}{% endblock %}
+  {% block Facebook_pixel %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
 
-        <script type="text/javascript" src="{% static 'js/eCSSential.min.js' %}"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
-        {% block extra_css %}{% endblock %}
-        {% block Facebook_pixel %}{% endblock %}
-    </head>
-    <body class="{% block body_class %}{% endblock %}">
+  <div class="l-dent l-dent--no-height header">
+    <a href="/">
+      <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo">
+    </a>
+    <a href="#menu" class="header__navitem f-small">{% trans "Menu" %}</a>
+    <label class="header__navitem f-small" for="search-query">{% trans "Search" %}</label>
 
-      <div class="l-dent l-dent--no-height header">
-        <a href="/">
-          <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo">
+    <h2 class="f-large header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
+    {% include "search/search_block.html" %}
+
+    {% include "core/language_block.html" with extra_classes="" %}
+  </div>
+
+  {% block content %}{% endblock %}
+
+
+  <div class="menu" id="menu">
+    <ul>
+      <li class="l-dent menu__item f-small"><a href="#top">{% trans "Back to top" %}</a></li>
+      <li class="l-dent menu__item"><a href="/">{% trans "Home" %}</a></li>
+      <li class="l-dent menu__item"><a href="#search-form">{% trans "Search" %}</a></li>
+      {% if user.is_authenticated %}
+      <li class="l-dent menu__item"><a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Your Profile" %}</a></li>
+      <li class="l-dent menu__item"><a href="{% url 'molo.profiles:auth_logout' %}">{% trans "Log out" %}</a></li>
+      {% else %}
+      <li class="l-dent menu__item"><a href="{% url 'molo.profiles:auth_login' %}">{% trans "Log in" %}</a></li>
+      <li class="l-dent menu__item"><a href="{% url 'molo.profiles:user_register' %}">{% trans "Register" %}</a></li>
+      {% endif %}
+
+      {% for section in language_page.sections %}
+      <li class="l-dent menu__item menu__item{{ section.get_effective_extra_style_hints }}">
+        <a href="{% pageurl section %}">
+          {{ section.title }}
+          <span>{{ section.description }}</span>
         </a>
-        <a href="#menu" class="header__navitem f-small">{% trans "Menu" %}</a>
-        <label class="header__navitem f-small" for="search-query">{% trans "Search" %}</label>
+      </li>
+      {% endfor %}
+    </ul>
 
-        <h2 class="f-large header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
-        {% include "search/search_block.html" %}
-      </div>
+    <ul class="l-dent">
+      {% for page in language_page.footers %}
+      <li class="menu__item menu__item--alt"><a href="{% pageurl page %}">{{ page.title }}</a></li>
+      {% endfor %}
+    </ul>
 
+    {% if languages %}
+    <div class="l-dent l-dent--no-height languages">
+      {% trans "Language" %}:
+      {% for language in languages %}
+        <a href="{% url 'locale_set' language.code %}" class="languages__item {% if LANGUAGE_CODE == language.code %} languages__item--active{% endif %}">{{ language.title }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  <p class="l-dent l-dent--no-height f-x-small">&copy; {% now "Y" %} UNFPA, Ford Foundation All Rights Reserved.</p>
 
-
-
-        {% block language %}
-            {% include "core/language_block.html" %}
-        {% endblock %}
-
-        {% block content %}{% endblock %}
-
-
-
-        {% block footer %}
-
-        <div class="menu" id="menu">
-          <ul>
-            <li class="l-dent menu__item f-small"><a href="#top">{% trans "Back to top" %}</a></li>
-            <li class="l-dent menu__item"><a href="/">{% trans "Home" %}</a></li>
-            <li class="l-dent menu__item"><a href="#search-form">{% trans "Search" %}</a></li>
-            {% if user.is_authenticated %}
-            <li class="l-dent menu__item"><a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Your Profile" %}</a></li>
-            <li class="l-dent menu__item"><a href="{% url 'molo.profiles:auth_logout' %}">{% trans "Log out" %}</a></li>
-            {% else %}
-            <li class="l-dent menu__item"><a href="{% url 'molo.profiles:auth_login' %}">{% trans "Log in" %}</a></li>
-            <li class="l-dent menu__item"><a href="{% url 'molo.profiles:user_register' %}">{% trans "Register" %}</a></li>
-            {% endif %}
-
-            {% for section in language_page.sections %}
-            <li class="l-dent menu__item menu__item{{ section.get_effective_extra_style_hints }}">
-              <a href="{% pageurl section %}">
-                {{ section.title }}
-                <span>{{ section.description }}</span>
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-
-          <ul class="l-dent">
-            {% for page in language_page.footers %}
-            <li class="menu__item menu__item--alt"><a href="{% pageurl page %}">{{ page.title }}</a></li>
-            {% endfor %}
-          </ul>
-
-          {% if languages %}
-          <div class="l-dent l-dent--no-height languages">
-            {% trans "Language" %}:
-            {% for language in languages %}
-              <a href="{% url 'locale_set' language.code %}" class="languages__item {% if LANGUAGE_CODE == language.code %} languages__item--active{% endif %}">
-                {{ language.title }}
-              </a>
-            {% endfor %}
-          </div>
-          {% endif %}
-        </div>
-        <p class="l-dent l-dent--no-height f-x-small">&copy; {% now "Y" %} UNFPA, Ford Foundation All Rights Reserved.</p>
-        {% endblock %}
-
-        {% if GOOGLE_TAG_MANAGER_ACCOUNT %}
-        <!-- Google Tag Manager -->
-         <noscript><iframe src="//www.googletagmanager.com/ns.html?id={{GOOGLE_TAG_MANAGER_ACCOUNT}}"
-         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-         '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-         })(window,document,'script','dataLayer','{{GOOGLE_TAG_MANAGER_ACCOUNT}}');</script>
-        <!-- End Google Tag Manager -->
-        {% endif %}
-        {% block extra_js %}{% endblock %}
-        {% wagtailuserbar %}
-    </body>
+  {% if GOOGLE_TAG_MANAGER_ACCOUNT %}
+  <!-- Google Tag Manager -->
+   <noscript><iframe src="//www.googletagmanager.com/ns.html?id={{GOOGLE_TAG_MANAGER_ACCOUNT}}"
+   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+   })(window,document,'script','dataLayer','{{GOOGLE_TAG_MANAGER_ACCOUNT}}');</script>
+  <!-- End Google Tag Manager -->
+  {% endif %}
+  
+  {% block extra_js %}{% endblock %}
+  {% wagtailuserbar %}
+</body>
 </html>
