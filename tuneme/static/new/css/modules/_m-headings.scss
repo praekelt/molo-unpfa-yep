@@ -7,12 +7,19 @@
   }
 }
 
+
+
 @each $name, $color in $color_list {
   .heading--#{$name} {
     background: $color;
   }
 
-  .heading--section-list.heading--#{name} {
+  .heading--section-list.heading--#{$name} {
+    border-bottom: 2px $color solid;
+  }
+
+  .heading--article.heading--#{$name} {
+    background: transparent;
     border-bottom: 2px $color solid;
   }
 }

@@ -6,8 +6,17 @@
     width: 100%;
     display: block;
   }
-
   input {
     color: #000;
   }
+}
+
+.comment p {
+  margin: 0;
+}
+
+.comment__report a {
+  color: #000;
+  text-decoration: underline;
+  font-weight: bold;
 }

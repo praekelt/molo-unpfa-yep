@@ -36,8 +36,8 @@
 
 
      {% if self.get_parent_section %}
-        <h2 class="heading heading{{ section.get_effective_extra_style_hints }}">{% trans "Must Read" %}</h2>
-        <ul class="section-article-list section-article-list{{ section.get_effective_extra_style_hints}}">
+        <h2 class="heading heading--article heading{{ self.get_parent_section.get_effective_extra_style_hints }}">{% trans "Must Read" %}</h2>
+        <ul class="section-article-list section-article-list{{ self.get_parent_section.get_effective_extra_style_hints}}">
             {% for block in self.body %}
                 {% if block.block_type == 'page' %}
                     <li class="section-article-list__item">
@@ -73,9 +73,7 @@
 {% endif %}
 
 {% if self.is_commenting_enabled %}
-
-  <div class="heading heading{{ section.get_effective_extra_style_hints }}">{% trans "Join the discussion" %}</div>
-
+  <div class="heading heading--article heading{{ self.get_parent_section.get_effective_extra_style_hints }}">{% trans "Join the discussion" %}</div>
   <div id="comments-list" class="comments-list">
   {% get_comment_count for self as comment_count %}
   {% get_molo_comments for self as comment_list %}
@@ -86,11 +84,10 @@
       {% endrecursetree %}
     {% endfor %}
   {% if comment_count > 5 %}
-    <div class="comments_pagination">
-      <a href="{% url 'more-comments' self.pk %}">{% trans "view more comments" %}</a>
+    <div class="comments-list__pagination">
+      <a href="{% url 'more-comments' self.pk %}">{% trans "More" %}</a>
     </div>
   {% endif %}
-
   {% if self.allow_commenting %}
     {% if request.user.is_authenticated %}
       {% render_comment_form for self %}
@@ -98,9 +95,8 @@
       <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}#comments-list" class="submit-button">{% trans "Log in to comment" %}</a>
     {% endif %}
   {% else %}
-    <p class="comments__disabled">{% trans "Commenting on this article is currently disabled" %}</p>
+    <p class="comments-list__disabled">{% trans "Commenting on this article is currently disabled" %}</p>
   {% endif %}
-
 </div>
 {% endif %}
 {% endblock %}

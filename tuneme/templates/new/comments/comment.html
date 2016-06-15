@@ -17,18 +17,18 @@
     {% if node.is_removed %}
         <p>{% trans "This comment has been removed by the community. Please read our platform rules." %}</p>
     {% else %}
-      <p>{{node.comment}}</p>
-      {% if node.parent == None %}
-        <p class="comment__report">
-          <a href="{% url 'molo-comments-report' node.pk %}?next={% url 'report_response' node.pk %}" class="report">
-            {% trans "Report" %}
-          </a>
-        </p>
-      {% endif %}
+      <p class="comment__text">{{node.comment}}</p>
       {% if request.user|is_in_group:'Expert' and not node.user|is_in_group:'Expert' %}
         <p class="comment__report">
           <a href="{% url 'molo-comments-reply' node.pk %}">
           {% trans "Reply" %}
+          </a>
+        </p>
+      {% endif %}
+      {% if node.parent == None %}
+        <p class="comment__report">
+          <a href="{% url 'molo-comments-report' node.pk %}?next={% url 'report_response' node.pk %}" class="report">
+            {% trans "Report" %}
           </a>
         </p>
       {% endif %}
