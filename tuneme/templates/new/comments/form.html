@@ -1,28 +1,23 @@
 {% load comments i18n wagtailcore_tags wagtailimages_tags %}
 
 
-<form action="{% url 'molo-comments-post' %}#comments-list" method="post">
-    {% csrf_token %}
-    {% if form.errors %}
-      <h3>{% blocktrans count counter=form.errors|length %}Please correct the error below{% plural %}Please correct the
-        errors below{% endblocktrans %}</h3>
-    {% endif %}
+<form class="comments-form" action="{% url 'molo-comments-post' %}" method="post">
+  {% csrf_token %}
+  {% if form.comment.errors %}
+    {{ form.comment.errors }}
+  {% endif %}
 
-    {% if form.comment.errors %}{{ form.comment.errors }}{% endif %}
-    <p>{{ form.comment }}</p>
-    <input type="submit" class="submit-button" name="submit" value="Comment">
-    <input type="submit" class="submit-button" name="submit_anonymously" value="Add anonymously">
-    {{ form.object_pk }}
+  {{ form.comment }}
 
-    {{ form.content_type }}
+  <input type="submit" name="submit" value="{% trans "Comment" %}">
+  <input type="submit" name="submit_anonymously" value="{% trans "Comment anonymously" %}"">
 
-    {{ form.timestamp }}
-
-    {{ form.security_hash }}
-
-    <input type="hidden" name="next" value="{% pageurl self %}" />
-
-    {% if node.id %}
-        <input type="hidden" name="parent" id="parent_id" value="{{ node.id }}" />
-    {% endif %}
+  {{ form.object_pk }}
+  {{ form.content_type }}
+  {{ form.timestamp }}
+  {{ form.security_hash }}
+  <input type="hidden" name="next" value="{% pageurl self %}#comments-list" />
+  {% if node.id %}
+    <input type="hidden" name="parent" id="parent_id" value="{{ node.id }}" />
+  {% endif %}
 </form>
