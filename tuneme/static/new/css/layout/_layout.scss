@@ -28,3 +28,12 @@
 .polls {
   padding: 20px;
 }
+
+.article__title, .article__subtitle, .article__image, .article__content {
+  padding: 5px 20px;
+}
+
+.article__content .article__image {
+  padding-left: 0;
+  padding-right: 0;
+}
