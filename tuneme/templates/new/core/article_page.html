@@ -34,42 +34,11 @@
 </div>
 
 
-
-     {% if self.get_parent_section %}
-        <h2 class="heading heading--article heading{{ self.get_parent_section.get_effective_extra_style_hints }}">{% trans "Must Read" %}</h2>
-        <ul class="section-article-list section-article-list{{ self.get_parent_section.get_effective_extra_style_hints}}">
-            {% for block in self.body %}
-                {% if block.block_type == 'page' %}
-                    <li class="section-article-list__item">
-                            <div class="section-article-list__item--image">
-                                 <a href="{% pageurl block.value %}"> {% if page.image %}
-                                    {% image page.image width-100 as tmp_photo %}
-
-                                {% endif %}
-                                 </a>
-                            </div>
-                            <div class="section-article-list__item-description">
-                                <h4><a href="{% pageurl block.value %}"> {{ block.value }}</a></strong>
-                                <p>{{ block.subtitle }}</h4>
-                            </div>
-                    </li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    {% endif %}
-    </div>
-
-
-
 {% has_questions self as questions %}
 {% if questions %}
-<div class="questions">
-  <div class="title">
-    <div class="icon"><a href=""><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></a></div>
-      <h6><a href="">{% trans "Have Your Say" %}</a></h6>
+  <div class="article__polls">
+    {% poll_page_in_section page=self %}
   </div>
-{% poll_page_in_section page=self %}
-</div>
 {% endif %}
 
 {% if self.is_commenting_enabled %}
