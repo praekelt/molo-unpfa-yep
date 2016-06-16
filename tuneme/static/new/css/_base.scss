@@ -36,14 +36,21 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
+.errorlist, .error {
+  margin: 1em 0;
+  color: red;
+}
+
+
 input[type="submit"] {
-  font-size: 13px;
   font-weight: bold;
   text-decoration: underline;
   color: #000;
   background: transparent;
   border: 0;
   width: auto;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .f-x-small {
@@ -58,70 +65,6 @@ input[type="submit"] {
   font-size: 18px;
 }
 
-
-//
-// blockquote {
-//   padding-bottom: 15px;
-//   background: $white;
-//   color: $black;
-// }
-
-
-
-//
-// hr {
-//   height:10px;
-//   margin:10px 0 0; width:100%;
-//   border:0;
-//   background: url(/tuneme/static/img/hr.gif) 0 0 repeat-x;
-//   background-size:20px;
-// }
-
-// .author {
-//   font-style:italic;
-//   font-size:85%;
-// }
-
-// .numbered-list {
-//   margin: 0;
-//   padding: 0 25px;
-// }
-//
-// .numbered-list__item {
-//   padding: 5px 0 5px 0;
-// }
-
-// .banner img {
-//     width: 100%;
-//     max-width: 100%;
-// }
-//
-// .submit-button {
-//   cursor: pointer;
-//   outline: none;
-//   border-radius: 25px;
-//   margin: 10px 0;
-//   border: 0;
-//   font-weight: bold;
-//   text-transform: uppercase;
-//   width: 90%;
-//   padding: 13px;
-//   text-align: center;
-//   font-size: 15px;
-//   display: block;
-//   &:focus {
-//     opacity: 0.5;
-//   }
-// }
-
-// .img-circle {
-//     border-radius: 10px;
-// }
-//
-// .icon {
-//   text-align: center;
-// }
-//
 .wagtail-userbar {
   display: none;
 }

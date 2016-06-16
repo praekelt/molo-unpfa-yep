@@ -3,45 +3,40 @@
 {% get_settings %}
 
 {% block content %}
-    <div class="title profile">
-        <h3 class="l-indent">{% trans "Join" %}</h3>
+<div class="heading heading--auth">
+	{% trans "Register" %}
+</div>
+<div class="auth-tools">
+
+	<a href="{% url 'molo.profiles:auth_login' %}">{% trans "Already have an account? Log in" %}</a>
+
+  <form method="post" action="{% url 'molo.profiles:user_register' %}">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
+
+    <label for="id_username">{% trans "Choose a username" %}</label>
+    {{ form.username.errors }}
+		{{ form.username }}
+
+    <label for="id_password">{% trans "Choose a 4 digit pin" %} <span>{% trans "(eg: 5656)" %}</span></label>
+    {{ form.password.errors }}
+    {{ form.password }}
+
+    {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
+      <label for="id_mobile_number">{% trans "Enter your mobile number" %} <span>{% trans "(eg: 260979000001)" %}</span></label>
+      {{ form.mobile_number.errors}}
+      {{ form.mobile_number }}
+    {% endif %}
+
+    <div class="auth-tools__tandcs">
+      {{ form.terms_and_conditions }}
+      <label for="id_terms_and_conditions">{% trans "I accept the terms and conditions" %}</label>
+      {% if form.terms_and_conditions.errors %}
+        <p class="error">{% trans "Please accept the T&amp;Cs in order to complete the registration" %}</p>
+      {% endif %}
     </div>
-    <div class="block l-indent">
-        <div class="signin-form">
-            <p>{% trans "Not a member yet? Join us by signing up below." %}</p>
-            <form method="post" action="{% url 'molo.profiles:user_register' %}">{% csrf_token %}
-        <p><strong>{% trans "Choose a username" %}</strong></p>
-        {% if form.username.errors %}
-          {{ form.username.errors}}
-        {% endif %}
-        {{ form.username }}
-        <p><strong>{% trans "Choose a 4-digit pin" %}</strong></p>
-        {% if form.password.errors %}
-          {{ form.password.errors}}
-        {% endif %}
-        {{ form.password }}
-        <br>
-        {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
-          <p><strong>{% trans "Enter your mobile number" %}</strong></p>
-          <p>{% trans "(e.g. +260979000001)" %}</p>
-          {% if form.mobile_number.errors %}
-          {{ form.mobile_number.errors}}
-          {% endif %}
-          {{ form.mobile_number }}
-          <br>
-        {% endif %}
-        {% if form.terms_and_conditions.errors %}
-          <p class="error">{% trans "Please accept the T&amp;Cs in order to complete the registration" %}</p>
-        {% endif %}
-        <div class="terms_and_conditions">
-          {{ form.terms_and_conditions}}
-          <label>{% trans "I accept the Terms and Conditions" %}</label>
-          <br>
-        </div>
-        <input type="submit" class="registerSubmit submit-button" value='{% trans "JOIN" %}' />
-        <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
-        <a href="{% url 'molo.profiles:auth_login' %}" class="submit-button">{% trans "already joined?" %}</a>
-    </form>
-    </div>
-    </div>
+
+    <input type="submit" value="{% trans "Register" %}" />
+  </form>
+</div>
 {% endblock %}

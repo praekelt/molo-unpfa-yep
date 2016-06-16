@@ -1,0 +1,36 @@
+.auth-tools {
+  label, input {
+    display: block;
+    width: 100%;
+  }
+
+  input {
+    margin-bottom: 40px;
+  }
+
+  label {
+    margin-top: 20px;
+    font-weight: bold;
+    span {
+      font-weight: normal;
+    }
+  }
+
+  label span {
+    color: #999
+  }
+
+  input[type="submit"] {
+    width: auto;
+    margin: 1em 0;
+  }
+}
+
+.auth-tools__tandcs {
+  label, input {
+    margin-bottom: 0;
+    display:inline;
+    width: auto;
+    text-decoration: underline;
+  }
+}
