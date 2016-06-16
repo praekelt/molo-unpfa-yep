@@ -6,11 +6,16 @@
 
   input {
     margin-bottom: 40px;
+    border: 1px #000 solid;
   }
+
+
 
   label {
     margin-top: 20px;
+    margin-bottom: 0;
     font-weight: bold;
+
     span {
       font-weight: normal;
     }
@@ -23,6 +28,7 @@
   input[type="submit"] {
     width: auto;
     margin: 1em 0;
+    border: 0;
   }
 }
 

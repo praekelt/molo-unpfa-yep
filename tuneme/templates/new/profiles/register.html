@@ -14,16 +14,16 @@
     {% csrf_token %}
     <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
 
-    <label for="id_username">{% trans "Choose a username" %}</label>
+    <label for="id_username">{% trans "Username" %}</label>
     {{ form.username.errors }}
 		{{ form.username }}
 
-    <label for="id_password">{% trans "Choose a 4 digit pin" %} <span>{% trans "(eg: 5656)" %}</span></label>
+    <label for="id_password">{% trans "4 digit pin" %} <span>{% trans "(eg: 5656)" %}</span></label>
     {{ form.password.errors }}
     {{ form.password }}
 
     {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
-      <label for="id_mobile_number">{% trans "Enter your mobile number" %} <span>{% trans "(eg: 260979000001)" %}</span></label>
+      <label for="id_mobile_number">{% trans "Mobile number" %} <span>{% trans "(eg: 260979000001)" %}</span></label>
       {{ form.mobile_number.errors}}
       {{ form.mobile_number }}
     {% endif %}
