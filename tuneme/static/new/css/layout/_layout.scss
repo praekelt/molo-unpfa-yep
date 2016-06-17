@@ -21,8 +21,6 @@
 
 // and we implement them here.
 
-
-
 .heading {
   @extend .l-dent;
   @extend .l-dent--short;
@@ -41,9 +39,3 @@
 .polls {
   @extend .l-dent;
 }
-
-
-//
-// .auth-tools {
-//   padding: 20px
-// }

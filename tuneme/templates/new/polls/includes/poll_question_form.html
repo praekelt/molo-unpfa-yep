@@ -28,6 +28,7 @@
     {% endif %}
   {% else %}
     <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}">{% trans "Log in" %}</a>
+    {% trans "or" %}
     <a href="{% url 'molo.profiles:user_register' %}">{% trans "Register" %}</a>
     {% trans "to vote" %}
   {% endif %}
