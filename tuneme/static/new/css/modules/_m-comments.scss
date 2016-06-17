@@ -9,6 +9,7 @@
   input {
     color: #000;
   }
+
 }
 
 .comment p {
@@ -19,4 +20,12 @@
   color: #000;
   text-decoration: underline;
   font-weight: bold;
+}
+
+.comment__date {
+  font-size: $font-x-small;
+}
+
+.comment, .comments-list__pagination, .comments__reported, .comments-list .auth-call-to-action  {
+  padding: 10px 20px;
 }

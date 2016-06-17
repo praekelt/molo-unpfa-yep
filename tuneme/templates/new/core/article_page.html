@@ -61,7 +61,12 @@
     {% if request.user.is_authenticated %}
       {% render_comment_form for self %}
     {% else %}
-      <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}#comments-list" class="submit-button">{% trans "Log in to comment" %}</a>
+      <div class="auth-call-to-action">
+        <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}#comments-list">{% trans "Log in" %}</a>
+        {% trans "or" %}
+        <a href="{% url 'molo.profiles:user_register' %}?next={{request.path}}#comments-list">{% trans "Register" %}</a>
+        {% trans "to comment" %}
+      </div>
     {% endif %}
   {% else %}
     <p class="comments-list__disabled">{% trans "Commenting on this article is currently disabled" %}</p>

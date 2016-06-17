@@ -1,10 +1,19 @@
-.article__title {
-  font-weight: bold;
 
+
+.article__title {
+  padding: 0 20px;
+  font-size: $font-large;
+  font-weight: bold;
+  margin: 20px 0;
 }
 
 .article__subtitle {
+  padding: 0 20px;
   font-weight: bold;
+}
+
+.article__image {
+  padding: 20px;
 }
 
 .article__image img {
@@ -14,6 +23,7 @@
 
 
 .article__content {
+  padding: 0 20px;
   h4 {
     font-weight: bold;
   }
