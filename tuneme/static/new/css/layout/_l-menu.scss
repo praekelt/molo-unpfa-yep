@@ -1,7 +1,7 @@
 .menu {
   background: #fff;
   color: #000;
-  border-top: 2px #e7e7e7 solid;
+  border-top: $border;
 
   a {
     color: #000;
@@ -10,12 +10,14 @@
   }
 
   .languages {
+    padding: 1.2em;
     color: #8d8d8d;
   }
 }
 
-.menu__item {
-  border-bottom: 2px #e7e7e7 solid;
+.menu-items li {
+  padding: 1em 1.25em;
+  border-bottom: $border;
 }
 
 @each $name, $color in $color_list {
@@ -24,9 +26,14 @@
   }
 }
 
-.menu__item--alt {
-  border: 0;
-  a {
-    color: #8d8d8d;
+.menu-items--alt {
+  margin-top: 1.25em;
+  li {
+    border: 0;
+    padding-top: .25em;
+    padding-bottom: .25em;
+    a {
+      color: #8d8d8d;
+    }
   }
 }

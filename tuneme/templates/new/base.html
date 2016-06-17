@@ -46,20 +46,21 @@
 
 
   <div class="menu" id="menu">
-    <ul>
-      <li class="l-dent menu__item f-small"><a href="#top">{% trans "Back to top" %}</a></li>
-      <li class="l-dent menu__item"><a href="/">{% trans "Home" %}</a></li>
-      <li class="l-dent menu__item"><a href="#search-form">{% trans "Search" %}</a></li>
+
+    <ul class="menu-items">
+      <li><a href="#top">{% trans "Back to top" %}</a></li>
+      <li><a href="/">{% trans "Home" %}</a></li>
+      <li><a href="#search-form">{% trans "Search" %}</a></li>
       {% if user.is_authenticated %}
-      <li class="l-dent menu__item"><a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Your Profile" %}</a></li>
-      <li class="l-dent menu__item"><a href="{% url 'molo.profiles:auth_logout' %}">{% trans "Log out" %}</a></li>
+      <li><a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Your Profile" %}</a></li>
+      <li><a href="{% url 'molo.profiles:auth_logout' %}">{% trans "Log out" %}</a></li>
       {% else %}
-      <li class="l-dent menu__item"><a href="{% url 'molo.profiles:auth_login' %}">{% trans "Log in" %}</a></li>
-      <li class="l-dent menu__item"><a href="{% url 'molo.profiles:user_register' %}">{% trans "Register" %}</a></li>
+      <li><a href="{% url 'molo.profiles:auth_login' %}">{% trans "Log in" %}</a></li>
+      <li><a href="{% url 'molo.profiles:user_register' %}">{% trans "Register" %}</a></li>
       {% endif %}
 
       {% for section in language_page.sections %}
-      <li class="l-dent menu__item menu__item{{ section.get_effective_extra_style_hints }}">
+      <li class="menu__item menu__item{{ section.get_effective_extra_style_hints }}">
         <a href="{% pageurl section %}">
           {{ section.title }}
           <span>{{ section.description }}</span>
@@ -68,14 +69,14 @@
       {% endfor %}
     </ul>
 
-    <ul class="l-dent">
+    <ul class="menu-items menu-items--alt">
       {% for page in language_page.footers %}
-      <li class="menu__item menu__item--alt"><a href="{% pageurl page %}">{{ page.title }}</a></li>
+      <li><a href="{% pageurl page %}">{{ page.title }}</a></li>
       {% endfor %}
     </ul>
 
     {% if languages %}
-    <div class="l-dent l-dent--no-height languages">
+    <div class="languages">
       {% trans "Language" %}:
       {% for language in languages %}
         <a href="{% url 'locale_set' language.code %}" class="languages__item {% if LANGUAGE_CODE == language.code %} languages__item--active{% endif %}">{{ language.title }}</a>
@@ -83,7 +84,8 @@
     </div>
     {% endif %}
   </div>
-  <p class="l-dent l-dent--no-height f-x-small">&copy; {% now "Y" %} UNFPA, Ford Foundation All Rights Reserved.</p>
+  <div class="copyright">&copy; {% now "Y" %} UNFPA, Ford Foundation All Rights Reserved.</div>
+
 
   {% if GOOGLE_TAG_MANAGER_ACCOUNT %}
   <!-- Google Tag Manager -->
