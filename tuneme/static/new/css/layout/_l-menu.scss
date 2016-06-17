@@ -10,28 +10,28 @@
   }
 
   .languages {
-    padding: 1.2em;
+    padding: 15px 20px;
     color: #8d8d8d;
   }
 }
 
 .menu-items li {
-  padding: 1em 1.25em;
+  padding: 15px 20px;
   border-bottom: $border;
 }
 
 @each $name, $color in $color_list {
-  .menu__item--#{$name} {
+  .menu-items .menu__item--#{$name} {
     border-bottom-color: $color;
   }
 }
 
 .menu-items--alt {
-  margin-top: 1.25em;
+  margin-top: 10px;
   li {
     border: 0;
-    padding-top: .25em;
-    padding-bottom: .25em;
+    padding-top: 5px;
+    padding-bottom: 5px;
     a {
       color: #8d8d8d;
     }

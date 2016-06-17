@@ -1,14 +1,15 @@
 .breadcrumbs {
+  padding: 10px 20px;
   text-transform: uppercase;
-  font-weight: bold;
   color: #000;
-  border-bottom: 2px #e7e7e7 solid;
+  border-bottom: $border;
+  font-size: $font-small;
+  font-weight: bold;
 }
 
 .breadcrumbs a {
   font-weight: normal;
   color: #000;
-
   &:after {
     content: " > ";
     color: #000;
