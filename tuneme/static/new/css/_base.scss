@@ -41,7 +41,6 @@ h1, h2, h3, h4, h5, h6 {
   color: red;
 }
 
-
 input[type="submit"] {
   font-weight: bold;
   text-decoration: underline;
@@ -53,18 +52,14 @@ input[type="submit"] {
   padding-right: 0;
 }
 
-.f-x-small {
+.font-x-small {
   font-size: 9px;
 }
 
-.f-small {
+.font-small {
   font-size: 13px;
 }
 
-.f-large {
+.font-large {
   font-size: 18px;
-}
-
-.wagtail-userbar {
-  display: none;
 }

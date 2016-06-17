@@ -6,12 +6,13 @@
   .logo {
     width: 110px;
   }
+  
   .search-form, .languages {
     margin: 0 0 20px 0;
   }
 
   input[type="submit"] {
-    font-size: 13px;
+    @extend .font-small;
     color: #fff;
   }
 }
@@ -23,8 +24,10 @@
   padding-left: 20px;
   font-weight: bold;
   color: #fff;
+  @extend .font-small;
 }
 
 .header__search-title {
+  @extend .font-large;
   margin: 0 0 20px 0;
 }
