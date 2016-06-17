@@ -1,7 +1,8 @@
 .languages__item {
   color: #8d8d8d;
+  text-decoration: underline;
 }
 
 .languages__item--active {
-  text-decoration: none !important;
+  text-decoration: none;
 }

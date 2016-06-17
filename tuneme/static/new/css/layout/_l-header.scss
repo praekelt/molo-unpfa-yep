@@ -1,0 +1,40 @@
+.header {
+  padding: .5em 1.25em;
+
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+
+  input[type="submit"] {
+    font-size: $font-small;
+    color: #fff;
+  }
+
+  .languages {
+    margin: 1em 0 .5em 0;
+  }
+}
+
+.header-nav {
+  height: 40px;
+}
+
+.logo {
+  height: 100%;
+}
+
+.header-nav__item {
+  float: right;
+  height: 100%;
+  line-height: 40px;
+  text-decoration: underline;
+  padding-left: 1.25em;
+  font-weight: bold;
+  color: #fff;
+  font-size: $font-small;
+}
+
+.header__search-title {
+  margin: 1em 0;
+  font-size: $font-large;
+}

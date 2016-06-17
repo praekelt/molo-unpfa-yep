@@ -15,46 +15,59 @@
   padding-bottom: 5px;
 }
 
+@import "_l-header";
+@import "_l-menu";
 
-.header {
+
+// and we implement them here.
+
+
+
+.heading {
+  @extend .l-dent;
+  @extend .l-dent--short;
+}
+
+
+.article-list {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+.article-list__item {
+  @extend .l-dent;
+  @extend .l-dent--short;
+}
+
+.polls {
   @extend .l-dent;
 }
 
 
-// I'm trying something new, where I'm adding the layout styles
-// directly on the elements.
-
-.heading {
-  padding: 5px 20px;
-}
-.heading--article {
-  padding-top: 15px;
-}
-
-
-.article-list__item, .breadcrumbs {
-  padding: 10px 20px;
-}
-
-
-.polls {
-  padding: 20px;
-}
-
-.article__title, .article__subtitle, .article__image, .article__content {
-  padding: 5px 20px;
-}
-
-.article__content .article__image {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-
-.comment, .comments-list__pagination, .comments__reported  {
-  padding: 10px 20px;
-}
-
-.auth-tools {
-  padding: 20px
-}
+//
+//
+// .article-list__item, .breadcrumbs {
+//   padding: 10px 20px;
+// }
+//
+//
+// .polls {
+//   padding: 20px;
+// }
+//
+// .article__title, .article__subtitle, .article__image, .article__content {
+//   padding: 5px 20px;
+// }
+//
+// .article__content .article__image {
+//   padding-left: 0;
+//   padding-right: 0;
+// }
+//
+//
+// .comment, .comments-list__pagination, .comments__reported  {
+//   padding: 10px 20px;
+// }
+//
+// .auth-tools {
+//   padding: 20px
+// }
