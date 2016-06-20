@@ -17,9 +17,7 @@
 
 
     .search-form {
-
       display: flex;
-
       input[type="text"] {
         padding: 0 20px;
         line-height: 38px;
@@ -28,10 +26,28 @@
         border: 0;
       }
       input[type="submit"] {
-        background: #fff;
         border-top-right-radius: 19px;
         border-bottom-right-radius: 19px;
-        color: #000;
+        color: transparent;
+        background: #fff url(/static/img/search-black.png) no-repeat 50%;
+        background-size: 50%;
+      }
+    }
+
+    .languages {
+      font-size: $font-small;
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .languages__item {
+        padding: 5px;
+      }
+
+      .languages__item--active {
+        background: #cf25f8;
+        border-radius: 10px;
       }
     }
   }
@@ -131,8 +147,6 @@
   .article-list--latest-listing .article-list__item:first-child {
     flex: 1 100%;
   }
-
-
   .article-list--latest-listing .article-list__item {
     flex: .5;
   }
