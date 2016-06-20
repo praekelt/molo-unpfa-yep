@@ -13,6 +13,7 @@ input, select, textarea {
 }
 
 a {
+  color: #cd36f5;
   text-decoration: none;
 }
 
@@ -53,6 +54,6 @@ input[type="submit"] {
 }
 
 .copyright {
-  margin: 0 20px 20px 20px;
+  padding: 0 20px 20px 20px;
   font-size: $font-x-small;
 }

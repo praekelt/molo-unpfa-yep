@@ -1,7 +1,6 @@
 {% load i18n static poll_votings %}
 {% block content %}
 {% if questions %}
-  <h2 class="heading heading--polls">{% trans "Have your say" %}</h2>
   <div class="polls">
   {% for question in questions %}
     <h3 class="poll-question__title">{{ question.title }}</h3>

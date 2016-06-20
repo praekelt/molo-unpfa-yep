@@ -27,8 +27,6 @@
 <body class="{% block body_class %}{% endblock %}">
 
   <div class="header">
-
-
     <div class="header-nav">
       <a href="/">
         <img class="logo" src="{% static 'img/logo.png' %}" alt="TuneMe" />
@@ -48,31 +46,27 @@
   <div class="menu" id="menu">
 
     <ul class="menu-items">
-      <li><a href="#top">{% trans "Back to top" %}</a></li>
-      <li><a href="/">{% trans "Home" %}</a></li>
-      <li><a href="#search-form">{% trans "Search" %}</a></li>
-      {% if user.is_authenticated %}
-      <li><a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Your Profile" %}</a></li>
-      <li><a href="{% url 'molo.profiles:auth_logout' %}">{% trans "Log out" %}</a></li>
-      {% else %}
-      <li><a href="{% url 'molo.profiles:auth_login' %}">{% trans "Log in" %}</a></li>
-      <li><a href="{% url 'molo.profiles:user_register' %}">{% trans "Register" %}</a></li>
-      {% endif %}
-
+      <li class="menu__item menu__item--default"><a href="#top">{% trans "Back to top" %}</a></li>
+      <li class="menu__item menu__item--default"><a href="/">{% trans "Home" %}</a></li>
       {% for section in language_page.sections %}
-      <li class="menu__item{{ section.get_effective_extra_style_hints }}">
+      <li class="menu__item menu__item{{ section.get_effective_extra_style_hints }}">
         <a href="{% pageurl section %}">
           {{ section.title }}
-          <span>{{ section.description }}</span>
         </a>
+        <span>{{ section.description }}</span>
       </li>
       {% endfor %}
     </ul>
 
     <ul class="menu-items menu-items--alt">
-      {% for page in language_page.footers %}
-      <li><a href="{% pageurl page %}">{{ page.title }}</a></li>
-      {% endfor %}
+      <li class="menu__item menu__item--default"><a href="#search-form">{% trans "Search" %}</a></li>
+      {% if user.is_authenticated %}
+      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Your Profile" %}</a></li>
+      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:auth_logout' %}">{% trans "Log out" %}</a></li>
+      {% else %}
+      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:auth_login' %}">{% trans "Log in" %}</a></li>
+      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:user_register' %}">{% trans "Register" %}</a></li>
+      {% endif %}
     </ul>
 
     {% if languages %}
@@ -83,6 +77,14 @@
       {% endfor %}
     </div>
     {% endif %}
+
+
+    <div class="footer-links">
+    {% for page in language_page.footers %}
+      <a href="{% pageurl page %}">{{ page.title }}</a>
+    {% endfor %}
+    </div>
+
   </div>
   <div class="copyright">&copy; {% now "Y" %} UNFPA, Ford Foundation All Rights Reserved.</div>
 

@@ -1,6 +1,6 @@
 
 .article-list--section {
-  border-bottom: 2px #000 solid;
+  border-bottom: $border;
 }
 
 @each $name, $color in $color_list {
@@ -13,6 +13,7 @@
 
 
 .article-list__item {
+  padding: 0 20px 20px 20px;
   a {
     color: #000;
   }
@@ -20,7 +21,7 @@
 
 .article-list__item--more {
   a {
-    color: blue;
+    color: #cd36f5;
   }
 }
 
