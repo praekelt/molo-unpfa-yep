@@ -124,6 +124,10 @@
     background: transparent;
   }
 
+  .heading--article {
+    border: 0 !important;
+  }
+
   @each $name, $color in $color_list {
     .heading--#{$name}, .heading--#{$name} a {
       color: $color;
@@ -164,6 +168,34 @@
   .polls a {
     text-decoration: underline;
   }
+
+  .breadcrumbs {
+    border: 0;
+    a {
+      font-weight: bold;
+    }
+  }
+
+  .article-list__item {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+  /// comments
+
+  .heading--comments {
+    background: #ebebeb !important;
+    color: #000;
+    margin: 0;
+  }
+
+  .comments-list {
+    background: #ebebeb;
+  }
+
+
+
 
 }
 

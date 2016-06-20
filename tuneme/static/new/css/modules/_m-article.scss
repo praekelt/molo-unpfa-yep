@@ -1,19 +1,18 @@
 
 
 .article__title {
-  padding: 0 20px;
   font-size: $font-large;
   font-weight: bold;
-  margin: 20px 0;
+  padding: 0 20px 0 20px;
 }
 
 .article__subtitle {
-  padding: 0 20px;
+  padding: 0 20px 20px 20px;
   font-weight: bold;
 }
 
 .article__image {
-  padding: 20px;
+  padding: 0 20px 20px 20px;
 }
 
 .article__image img {

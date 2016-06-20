@@ -9,14 +9,15 @@
   {{ self.title }}
 </div>
 
-<h1 class="article__title">{{ self.title }}</h1>
-<h1 class="article__subtitle">{{ self.subtitle }}</h1>
 {% if self.image %}
   {% image self.image width-280 as article_image %}
   <div class="article__image">
     <img src="{{ article_image.url }}" />
   </div>
 {% endif %}
+
+<h1 class="article__title">{{ self.title }}</h1>
+<h2 class="article__subtitle">{{ self.subtitle }}</h2>
 
 <div class="article__content">
   {% for block in self.body %}
@@ -42,7 +43,7 @@
 {% endif %}
 
 {% if self.is_commenting_enabled %}
-  <div class="heading heading--article heading{{ self.get_parent_section.get_effective_extra_style_hints }}">{% trans "Join the discussion" %}</div>
+  <div class="heading heading--article heading--comments heading{{ self.get_parent_section.get_effective_extra_style_hints }}">{% trans "Join the discussion" %}</div>
   <div id="comments-list" class="comments-list">
   {% get_comment_count for self as comment_count %}
   {% get_molo_comments for self as comment_list %}
