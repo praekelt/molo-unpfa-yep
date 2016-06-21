@@ -13,11 +13,11 @@ WAGTAILSEARCH_BACKENDS = {
 }
 
 try:
-    from .local import *
+    from .local import *  # noqa
 except ImportError:
     pass
 
 try:
-    from secrets import *
+    from secrets import *  # noqa
 except ImportError:
     pass
