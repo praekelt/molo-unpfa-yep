@@ -43,14 +43,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 input[type="submit"] {
-  font-weight: bold;
-  text-decoration: underline;
-  color: #000;
-  background: transparent;
+  background: #000;
+  color: #fff;
   border: 0;
-  width: auto;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-transform: uppercase;
 }
 
 .copyright {

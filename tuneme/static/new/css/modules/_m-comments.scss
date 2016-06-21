@@ -5,11 +5,12 @@
   textarea {
     width: 100%;
     display: block;
-  }
-  input {
-    color: #000;
+    border: $border;
   }
 
+  textarea, input {
+    margin: 0 0 10px 0;
+  }
 }
 
 .comment p {
@@ -26,6 +27,6 @@
   font-size: $font-x-small;
 }
 
-.comment, .comments-list__pagination, .comments__reported, .comments-list .auth-call-to-action  {
+.comment, .comments-list__disabled, .comments-list__pagination, .comments__reported, .comments-list .auth-call-to-action  {
   padding: 10px 20px;
 }

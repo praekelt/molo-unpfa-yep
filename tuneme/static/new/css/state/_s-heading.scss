@@ -1,0 +1,13 @@
+.heading {
+  background: transparent;
+}
+
+.heading--article {
+  border: 0 !important;
+}
+
+@each $name, $color in $color_list {
+  .heading--#{$name}, .heading--#{$name} a {
+    color: $color;
+  }
+}

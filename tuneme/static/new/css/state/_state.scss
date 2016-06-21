@@ -3,170 +3,21 @@
 
   @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700);
 
-
-
-
   html, body,
   h1, h2, h3, h4, h5, h6,
   input, select, textarea {
     font-family: 'Quicksand', sans-serif;
   }
 
-  .header {
-    padding: 20px;
-
-
-    .search-form {
-      display: flex;
-      input[type="text"] {
-        padding: 0 20px;
-        line-height: 38px;
-        border-top-left-radius: 19px;
-        border-bottom-left-radius: 19px;
-        border: 0;
-      }
-      input[type="submit"] {
-        border-top-right-radius: 19px;
-        border-bottom-right-radius: 19px;
-        color: transparent;
-        background: #fff url(/static/img/search-black.png) no-repeat 50%;
-        background-size: 50%;
-      }
-    }
-
-    .languages {
-      font-size: $font-small;
-      a {
-        color: #fff;
-        text-decoration: none;
-      }
-
-      .languages__item {
-        padding: 5px;
-      }
-
-      .languages__item--active {
-        background: #cf25f8;
-        border-radius: 10px;
-      }
-    }
+  input[type="submit"] {
+    line-height: 28px;
+    border-radius: 14px;
+    width: 100%;
   }
-
-  .header-nav__item {
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-
-
-  /// Menu
-
-  .menu {
-    background: #000;
-    color: #a3a3a3;
-    a {
-      color: #a3a3a3;
-    }
-  }
-
-  .menu-items--alt {
-    padding-top: 0;
-  }
-
-  .menu-items .menu__item:first-child {
-    display: none;
-  }
-
-  .menu__item {
-    display: flex;
-    padding: 5px 0;
-    overflow: auto;
-    font-size: $font-small;
-
-    a {
-      flex: 1;
-      padding: 10px 20px;
-      text-transform: uppercase;
-      color: #000;
-      border-bottom-right-radius: 25px;
-      border-top-right-radius: 25px;
-      border: 0;
-    }
-
-    span {
-      flex: 1.25;
-      padding: 10px 20px 0 20px;
-      display: block;
-    }
-  }
-
-  @each $name, $color in $color_list {
-    .menu__item--#{$name} a {
-      background: $color;
-    }
-  }
-
-  .menu__item--default a {
-    color: #fff;
-  }
-
 
   .copyright {
     background: #000;
     color: #fff;
-  }
-
-
-
-
-
-
-  .heading {
-    background: transparent;
-  }
-
-  .heading--article {
-    border: 0 !important;
-  }
-
-  @each $name, $color in $color_list {
-    .heading--#{$name}, .heading--#{$name} a {
-      color: $color;
-    }
-  }
-
-  /// article list, latest articles.
-
-  .article-list__item--more {
-    display: none;
-  }
-
-  .article-list--latest-listing {
-    display: flex;
-    flex-wrap: wrap;
-    .article-list__image {
-      width: 100%;
-    }
-  }
-
-  .article-list--latest-listing .article-list__item:first-child {
-    flex: 1 100%;
-  }
-  .article-list--latest-listing .article-list__item {
-    flex: .5;
-  }
-
-  /// polls
-
-  .heading--polls {
-    display: none;
-  }
-
-
-  .polls, .polls a {
-    color: #fff;
-  }
-  .polls a {
-    text-decoration: underline;
   }
 
   .breadcrumbs {
@@ -176,26 +27,11 @@
     }
   }
 
-  .article-list__item {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-
-  /// comments
-
-  .heading--comments {
-    background: #ebebeb !important;
-    color: #000;
-    margin: 0;
-  }
-
-  .comments-list {
-    background: #ebebeb;
-  }
-
-
-
+  @import "_s-header";
+  @import "_s-menu";
+  @import "_s-polls";
+  @import "_s-article-list";
+  @import "_s-comments";
 
 }
 
