@@ -1,0 +1,26 @@
+.polls {
+  padding: 20px;
+  background: #cd36f5;
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  input[type="submit"] {
+    background: #a023c1;
+  }
+}
+
+.poll-question__title {
+  margin: 0 0 20px 0;
+}
+
+.poll-choices {
+  margin: 0 0 20px 0;
+}
+
+.poll-choices__item {
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}

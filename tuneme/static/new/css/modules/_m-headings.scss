@@ -1,0 +1,29 @@
+.heading {
+  padding: 10px 20px;
+  margin: 0 0 20px 0;
+  font-size: $font-small;
+  font-weight: bold;
+  text-transform: uppercase;
+  a {
+    color: #000;
+  }
+}
+
+.heading.heading--article, .heading.heading--section {
+  background: transparent;
+  border-bottom: $border;
+}
+
+@each $name, $color in $color_list {
+  .heading--#{$name} {
+    background: $color;
+  }
+
+  .heading--section-list.heading--#{$name} {
+    border-bottom-color: $color;
+  }
+
+  .heading--article.heading--#{$name} {
+    border-bottom-color: $color;
+  }
+}

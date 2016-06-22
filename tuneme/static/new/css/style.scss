@@ -1,22 +1,6 @@
-/*
-  VIRIABLES
---------------------------------------------------------------------*/
+
 @import "_variables";
-@import "_base";
-
-
-/*
-  FILES
---------------------------------------------------------------------*/
-@import "models/_modules";
-@import "_typography";
-
-/*
-  PAGES
---------------------------------------------------------------------*/
-@import "layout/_layout";
-
-//@import "_icons";
-//@import "_version";
-@import "_forms";
-@import "state/_state";
+@import "_BASE";
+@import "layout/_LAYOUT";
+@import "modules/_MODULES";
+@import "state/_STATE";

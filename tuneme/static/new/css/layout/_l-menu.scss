@@ -1,0 +1,48 @@
+
+.menu {
+  border-top: $border;
+  .languages {
+    padding: 0 20px;
+    font-size: $font-small;
+  }
+}
+
+.footer-links {
+  padding: 0 20px 20px 20px;
+  a {
+
+    font-size: $font-small;
+    color: #8d8d8d;
+    text-decoration: underline;
+  }
+}
+
+.menu__item {
+  a {
+    color: #000;
+    font-weight: bold;
+    padding: 20px;
+    display: block;
+    border-bottom: $border;
+  }
+
+  span {
+    display: none;
+  }
+}
+
+.menu-items--alt {
+  padding: 20px 0;
+  a {
+    color: #8d8d8d;
+    border: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+@each $name, $color in $color_list {
+  .menu__item--#{$name} a {
+    border-color: $color;
+  }
+}

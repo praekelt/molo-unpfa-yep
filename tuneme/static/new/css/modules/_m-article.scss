@@ -1,0 +1,29 @@
+
+
+.article__title {
+  font-size: $font-large;
+  font-weight: bold;
+  padding: 0 20px 0 20px;
+}
+
+.article__subtitle {
+  padding: 0 20px 20px 20px;
+  font-weight: bold;
+}
+
+.article__image {
+  padding: 0 20px 20px 20px;
+}
+
+.article__image img {
+  width: 100%;
+  height: auto;
+}
+
+
+.article__content {
+  padding: 0 20px;
+  h4 {
+    font-weight: bold;
+  }
+}

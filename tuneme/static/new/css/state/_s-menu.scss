@@ -1,0 +1,48 @@
+.menu {
+  background: #000;
+  color: #a3a3a3;
+  a {
+    color: #a3a3a3;
+  }
+}
+
+.menu-items--alt {
+  padding-top: 0;
+}
+
+.menu-items .menu__item:first-child {
+  display: none;
+}
+
+.menu__item {
+  display: flex;
+  padding: 5px 0;
+  overflow: auto;
+  font-size: $font-small;
+
+  a {
+    flex: 1;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    color: #000;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+    border: 0;
+  }
+
+  span {
+    flex: 1.25;
+    padding: 10px 20px 0 20px;
+    display: block;
+  }
+}
+
+@each $name, $color in $color_list {
+  .menu__item--#{$name} a {
+    background: $color;
+  }
+}
+
+.menu__item--default a {
+  color: #fff;
+}
