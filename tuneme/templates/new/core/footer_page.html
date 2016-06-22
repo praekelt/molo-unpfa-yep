@@ -7,18 +7,16 @@
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
 {% block content %}
-<div class="title turq"></div>
-<div class="articles nav">
-  <h3 class="article-page-title f-large">{{self.title}}</h3>
-  <h5 class="article-page-subtitle"> {{self.subtitle}}</h5>
+<div class="page-body l-indent">
+  <h3 class="page-body__title f-large">{{self.title}}</h3>
+  <h5 class="page-body__subtitle f-medium"> {{self.subtitle}}</h5>
   {% if self.image %}
   <div class="banner">{% image self.image width-240 %}</div>
   {% endif %}
-
-<article class="article article-page">
+<article class="article">
   {% for block in self.body %}
       {% if block.block_type == 'heading' %}
-          <h1>{{ block.value }}</h1>
+          <h1 class="f-medium">{{ block.value }}</h1>
       {% else %}
       {% if block.block_type == 'image' %}
         {% image block.value width-240 %}
