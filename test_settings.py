@@ -1,4 +1,4 @@
-from tuneme.settings import *
+from tuneme.settings import *  # noqa
 
 DATABASES = {
     'default': {
