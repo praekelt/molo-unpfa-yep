@@ -2,26 +2,28 @@
 {% load i18n %}
 
 {% block content %}
-	<div class="title profile">
-		<h3 class="l-indent">{% trans "Sign in" %}</h3>
-	</div>
+<div class="heading heading--auth">{% trans "Log in" %}</div>
 
-	<div class="block l-indent">
-		<div class="signin-form">
-			<h5 class="profile-subtitle">{% trans "LOGIN TO YOUR ACCOUNT!" %}</h5>
-			<p>{% trans "We’re excited to have you..." %}</p>
-	    <form method="post" action=".">{% csrf_token %}
-	        {% if form.errors %}
-	            <p class="error errorlist">{% trans "Your username and password does not match. Please try again." %}</p>
-	        {% endif %}
-					<p><strong>{% trans "Username" %}</strong></p>
-					{{form.username}}
-					<p><strong>{% trans "4-digit pin" %}</strong></p>
-					{{form.password}}
-					<input type="submit" class="submit-button" value="{% trans 'Sign in' %}">
-					<input type="hidden" name="next" value="{% if request.GET.next %}{{ request.GET.next }}{% else %}{{request.site.root_page.url}}{% endif %}" />
-					<a href="{% url 'molo.profiles:user_register' %}" class="submit-button">{% trans "Not a member yet" %}</a>
-	    </form>
-		</div>
-	</div>
+
+<div class="auth-tools">
+
+	<a href="{% url 'molo.profiles:user_register' %}">{% trans "Don't have an account? Register" %}</a>
+
+	<form method="post" action="">
+		{% csrf_token %}
+		<input type="hidden" name="next" value="{% if not request.GET.next %}/{% else %}{{ request.GET.next }}{% endif %}" />
+
+		{% if form.errors %}
+			<p class="error">{% trans "Your username and password does not match. Please try again." %}</p>
+		{% endif %}
+
+		<label for="id_username">{% trans "Username" %}</label>
+		{{ form.username }}
+
+		<label for="id_password">{% trans "4 digit pin" %} <span>{% trans "(eg: 5656)" %}</span></label>
+		{{ form.password }}
+
+		<input type="submit" value="{% trans "Log in" %}">
+	</form>
+</div>
 {% endblock %}

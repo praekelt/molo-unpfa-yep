@@ -1,0 +1,32 @@
+
+.comments-form {
+  padding: 20px;
+
+  textarea {
+    width: 100%;
+    display: block;
+    border: $border;
+  }
+
+  textarea, input {
+    margin: 0 0 10px 0;
+  }
+}
+
+.comment p {
+  margin: 0;
+}
+
+.comment__report a {
+  color: #000;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.comment__date {
+  font-size: $font-x-small;
+}
+
+.comment, .comments-list__disabled, .comments-list__pagination, .comments__reported, .comments-list .auth-call-to-action  {
+  padding: 10px 20px;
+}

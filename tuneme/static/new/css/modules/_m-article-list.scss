@@ -1,0 +1,44 @@
+
+.article-list--section {
+  border-bottom: $border;
+}
+
+@each $name, $color in $color_list {
+  .article-list--section.article-list--#{$name} {
+    border-bottom-color: $color;
+  }
+}
+
+
+
+
+.article-list__item {
+  padding: 0 20px 20px 20px;
+  a {
+    color: #000;
+  }
+}
+
+.article-list__item--more {
+  a {
+    color: #cd36f5;
+  }
+}
+
+.article-list__image {
+  display: block;
+}
+
+.article-list__title {
+  font-weight: bold;
+}
+
+.article-list--latest-listing .article-list__item:first-child {
+  .article-list__image {
+    width: 100%;
+  }
+
+  .article-list__title, .article-list__subtitle {
+    font-size: $font-x-large;
+  }
+}

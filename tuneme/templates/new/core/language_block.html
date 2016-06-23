@@ -1,16 +1,11 @@
-{% load i18n %}
+{% load i18n core_tags %}
+
 {% if languages %}
-<div class="languages">
-    <ul class="language-list">
-        <li class="language-list__item">
-          <p class="language-title">{% trans "Select Languages:" %}</p>
-        </li>
-         {% get_current_language as LANGUAGE_CODE %}
-         {% for language in languages %}
-        <li class="language-list__item">
-            <a href="{% url 'locale_set' language.code %}" {% if LANGUAGE_CODE == language.code %} class="active" {% endif %}>{{ language.code }}</a>
-        </li>
-         {% endfor %}
-    </ul>
+<div class="languages {{ extra_classes }}">
+  {% trans "Language" %}:
+  {% get_current_language as LANGUAGE_CODE %}
+  {% for language in languages %}
+    <a href="{% url 'locale_set' language.code %}" class="languages__item {% if LANGUAGE_CODE == language.code %} languages__item--active{% endif %}">{{ language.title }}</a>
+  {% endfor %}
 </div>
 {% endif %}

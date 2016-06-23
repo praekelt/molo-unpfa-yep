@@ -1,11 +1,5 @@
 {% load i18n %}
-<div class="search-container">
-  <input type="checkbox"/ id="search_form">
-    <div class="search-block">
-      <h2 class="search-title f-medium">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
-      <form action="{% url 'search' %}" class="search-form">
-          <input placeholder="{% trans "Search TuneMe for..." %}" name="q" type="text" value="{{ search_query }}">
-          <input type="submit" class="search-button" value="{% trans "Submit" %}">
-      </form>
-    </div>
-</div>
+<form action="{% url 'search' %}" class="search-form" id="search-form">
+    <input name="q" type="text" value="{{ search_query }}" />
+    <input type="submit" value="{% trans "Search" %}" />
+</form>

@@ -1,168 +1,76 @@
-{% extends "core/_article_page.html" %}
+{% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags comments mptt_tags molo_commenting_tags static poll_votings i18n %}
 {% block content %}
-<ul class="sub-navigation-list l-indent">
-    <li class="sub-navigation-list__item f-small">
-        <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
-    </li>
-    <li class="sub-navigation-list__item f-small">
-        <a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a>
-    </li>
-    <li class="sub-navigation-list__item f-small">
-        <a href="{{ request.url }}">{{self.title}}</a>
-    </li>
-</ul>
 
-<div class="article-language-container article-language-container{{self.get_parent_section.get_effective_extra_style_hints}}">
-  {% include "core/language_block.html" %}
+<div class="breadcrumbs">
+  <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
+  <a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a>
+  {{ self.title }}
 </div>
 
-<div class="article article{{self.get_parent_section.get_effective_extra_style_hints}} l-indent">
-  {% if messages %}
-  <div class="messages">
-      {% for message in messages %}
-      <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-      {% endfor %}
+{% if self.image %}
+  {% image self.image width-280 as article_image %}
+  <div class="article__image">
+    <img src="{{ article_image.url }}" />
   </div>
-  {% endif %}
+{% endif %}
 
-  {% if self.image %}
-      {% image self.image width-98 as tmp_photo_small %}
-      {% image self.image width-300 as tmp_photo_large %}
-        <img class="article-image-thumb" src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
-  {% endif %}
-  <h1 class="article-heading f-large">{{self.title}}</h1>
-  <h3 class="f-bigger">{{self.subtitle}}</h3>
-  <div class="article-language-container--feature">
-    {% if languages %}
-        <ul class="language-list">
-            <li class="language-list__item">{% trans "Read this is:" %}</li>
-            {% for language in languages %}
-                <li class="language-list__item">
-                    <a href="{% url 'locale_set' language.code %}" {% if LANGUAGE_CODE == language.code %} class="active" {% endif %}>{{ language.title }}</a>
-                </li>
-            {% endfor %}
-        </ul>
+<h1 class="article__title">{{ self.title }}</h1>
+<h2 class="article__subtitle">{{ self.subtitle }}</h2>
+
+<div class="article__content">
+  {% for block in self.body %}
+    {% if block.block_type == 'heading' %}
+        <h4>{{ block.value }}</h4>
+    {% elif block.block_type == 'image' %}
+      {% image block.value width-280 as article_image %}
+      <div class="article__image">
+        <img src="{{ article_image.url }}" />
+      </div>
+    {% else %}
+        {{ block }}
     {% endif %}
-    </ul>
-  </div>
+  {% endfor %}
+</div>
 
-  <div class="article-body">
-    {% for block in self.body %}
-      {% if block.block_type == 'heading' %}
-          {{ block.value }}
-      {% else %}
-        {% if block.block_type == 'page' %}
-          {{ block }}
-      {% else %}
-          {% if block.block_type == 'image' %}
-            {% image block.value width-98 as tmp_photo_small %}
-            {% image block.value width-620 as tmp_photo_large %}
-                <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.image.title }}"/>
-      {% else %}
-          {% if block.block_type == 'numbered_list' %}
-              <ol>
-              {% for item in block.value %}
-                <li>{{item}}</li>
-              {% endfor %}
-              </ol>
-      {% else %}
-              {{ block }}
-      {% endif %}
-      {% endif %}
-      {% endif %}
-      {% endif %}
-    {% endfor %}
-    </div>
-  
-    <div class="facebook-share">
-      <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">Facebook Share</a>
-    </div>
-
-     {% if self.get_parent_section %}
-      <h2 class="article-mustread-heading">{% trans "Must Read" %}</h2>
-      <ul class="section-article-list section-article-list{{ section.get_effective_extra_style_hints}}">
-          {% for block in self.body %}
-              {% if block.block_type == 'page' %}
-                  <li class="section-article-list__item">
-                          <div class="section-article-list__item--image">
-                            <!-- Get Page Article Image-->
-                               <a href="{% pageurl block.value %}"> {% if page.image %}
-                                  {% image page.image width-98 as tmp_photo %}
-                                  <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="image_radius" />
-                              {% endif %}
-                               </a>
-                          </div>
-                          <div class="section-article-list__item-description">
-                              <h4><a href="{% pageurl block.value %}"> {{ block.value }}</a></strong>
-                                <!-- Get Page Article Subheading-->
-                              <p>{{ block.subtitle }}</h4>
-                          </div>
-                  </li>
-              {% endif %}
-          {% endfor %}
-      </ul>
-    {% endif %}
 
 {% has_questions self as questions %}
 {% if questions %}
-<div class="questions">
-  <div class="title">
-    <div class="icon">
-      <a href="">
-        <img src="{% static 'img/polls.png' %}" alt="Have Your Say"></a></div>
-      <h6><a href="">{% trans "Have Your Say" %}</a></h6>
+  <div class="article__polls">
+    {% poll_page_in_section page=self %}
   </div>
-{% poll_page_in_section page=self %}
-</div>
 {% endif %}
 
 {% if self.is_commenting_enabled %}
-<div class="post-comments post-comments{{self.get_parent_section.get_effective_extra_style_hints}}">
-    {% if self.allow_commenting %}
-      {% get_comment_count for self as comment_count %}
-      <!--{% if comment_count > 0 %}
-          <div class="posted-comments-heading">
-                <div class="post-comment-title">
-                    <h5>{% trans "Comment" %}</h5>
-                </div>
-                <div class="posted-comments-count">
-                    <a href="#">{{comment_count}}
-                        <span>{# {% trans "comment" %}{{comment_count|pluralize}} #}</span>
-                    </a>
-                </div>
-          </div>
-      {% endif %}-->
-</div>
-</div>
-
-<div id="comments-list" class="comments-list">
-  <h3 class="comments-list__heading">{% trans "Join the discussion" %}</h3>
+  <div class="heading heading--article heading--comments heading{{ self.get_parent_section.get_effective_extra_style_hints }}">{% trans "Join the discussion" %}</div>
+  <div id="comments-list" class="comments-list">
   {% get_comment_count for self as comment_count %}
-    {% get_molo_comments for self as comment_list %}
-      {% for node in comment_list %}
-          {% recursetree node %}
-            {% include "comments/comment.html" %}
-            {{ children }}
-          {% endrecursetree %}
-      {% endfor %}
-
-  {% if comment_count > 3 %}
-    <div class="pagination">
-      <a href="{% url 'more-comments' self.pk %}">{% trans "view more comments" %}</a>
+  {% get_molo_comments for self as comment_list %}
+    {% for node in comment_list %}
+      {% recursetree node %}
+        {% include "comments/comment.html" %}
+          {{ children }}
+      {% endrecursetree %}
+    {% endfor %}
+  {% if comment_count > 5 %}
+    <div class="comments-list__pagination">
+      <a href="{% url 'more-comments' self.pk %}">{% trans "More" %}</a>
     </div>
   {% endif %}
-  <div class="post-comment post-comment{{self.get_parent_section.get_effective_extra_style_hints}}">
-      {% if request.user.is_authenticated %}
-        {% render_comment_form for self %}
-      {% else %}
-            <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="submit-button">{% trans "Log in to comment" %}</a>
-            <a href="{% url 'molo.profiles:user_register' %}" class="profile-signup">{% trans "Sign up for a profile" %}</a>
-      {% endif %}
-        {% else %}
-          <p>{% trans "Commenting on this article is currently disabled" %}</p>
-        {% endif %}
-  </div>
+  {% if self.allow_commenting %}
+    {% if request.user.is_authenticated %}
+      {% render_comment_form for self %}
+    {% else %}
+      <div class="auth-call-to-action">
+        <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}#comments-list">{% trans "Log in" %}</a>
+        {% trans "or" %}
+        <a href="{% url 'molo.profiles:user_register' %}?next={{request.path}}#comments-list">{% trans "Register" %}</a>
+        {% trans "to comment" %}
+      </div>
+    {% endif %}
+  {% else %}
+    <p class="comments-list__disabled">{% trans "Commenting on this article is currently disabled" %}</p>
+  {% endif %}
 </div>
 {% endif %}
 

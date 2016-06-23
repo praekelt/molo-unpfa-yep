@@ -1,40 +1,26 @@
 {% extends "base.html" %}
-{% load i18n %}
-
-{% load static core_tags %}
+{% load i18n static core_tags %}
 
 {% block content %}
-
-<div class="title orange">
-		<div class="icon"><img src="{% static 'img/polls.png' %}" alt="Have Your Say"></div>
-		<h6><a href="">{% trans "Have Your Say" %}</a></h6>
-</div>
-
-<div class="block orange">
-	{% if question.show_results and not question.freetextquestion%}
-	<h4>{{ question.title }}</h4>
-	<p class="grey">{% trans "Your answers" %}</p>
-		{% for choice in choices %}
-			<div class="poll-result">
-					<div class="result-line {% if forloop.first %}winner{% endif %}">
-					<span class="option">{{ choice.title }}</span>
-					<br>
-					<span class="bar">
-						{% if question.result_as_percentage %}
-			        <span style="width:{{ choice.percentage }}%"></span>
-							{{ choice.percentage }}%
-						{% else %}
-							<span style="width:{{ choice.percentage }}%"></span>
-								{{ choice.votes }} vote{{ choice.votes|pluralize }}
-						{% endif %}
-		      </span>
-				</div>
-			</div>
-		{% endfor %}
-		{% else %}
-		<h4>{% trans "Thank you for voting!" %}</h4>
+<h2 class="heading heading--polls">{% trans "Have your say" %}</h2>
+<div class="polls">
+	<h3 class="poll-question__title">{{ question.title }}</h3>
+	{% if not question.show_results and not question.freetextquestion %}
+		{% trans "Thank you for voting!" %}
+	{% else %}
+		<ul class="poll-choices">
+	  {% for choice in question.choices %}
+	    <li class="poll-choices__item">
+	      {{ choice.title }}
+				{% if question.result_as_percentage %}
+					{{ choice.percentage }}%
+				{% else %}
+					{{ choice.votes }} vote{{ choice.votes|pluralize }}
+				{% endif %}
+	    </li>
+	  {% endfor %}
+	  </ul>
 	{% endif %}
-	<hr>
-  <a href="{{request.site.root_page.url}}" class="submit-button">{% trans "Home" %}</a>
+	<a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
 </div>
 {% endblock %}

@@ -1,161 +1,107 @@
-{% extends "_base.html" %}
+{% load wagtailcore_tags wagtailimages_tags compress static wagtailuserbar core_tags i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta name="description" content="Tune Me puts the power in your hands to make choices about your body, your rights, your love life and your sexual health." />
+  <meta name="keywords" content="love, sex, relationships, advice, help, family planning, contraception, private" />
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="{% if self.social_media_title %}{{ self.social_media_title }}{% else %}{{ self.title }}{% endif %}"/>
+  <meta name="twitter:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
+  {% image self.social_media_image width-300 as tmp_photo %}
+  <meta name="twitter:image" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
+  <meta property="og:title" content= "{% if self.social_media_title %}{{ self.social_media_title }}{% else %}{{ self.title }}{% endif %}" />
+  <meta property="og:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
+  {% image self.social_media_image width-300 as tmp_photo %}
+  <meta property="og:image" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
+  <meta property="og:image:url" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui"/>
+  <meta name="robots" content="all,index,follow" />
+  {% compress css %}
+  <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">
+  {% endcompress %}
+  {% block extra_css %}{% endblock %}
+  {% block Facebook_pixel %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
 
-{% load wagtailcore_tags wagtailimages_tags compress static i18n %}
-{% block header %}
-<div class="header">
-    <span class="logo-container">
-        <a href="/">
-            <img src="{% static 'img/logo-black.png' %}" alt="{% trans "TuneMe" %}" class="logo hide">
-            <img src="{% static 'img/logo-white.png' %}" alt="{% trans "TuneMe" %}" class="logo">
-        </a>
-    </span>
-    <ul class="menu-list">
-        <li class="menu-list__item">
-            <label class="search-icon" for="search_form">{% trans "Search" %}</label>
-        </li>
-        <li class="menu-list__item">
-            <label class="menu-button" for="menu_toggle">{% trans "Menu" %}</label>
-        </li>
-    </ul>
-</div>
-<div class="main-menu">
-  <input type="checkbox" id="menu_toggle">
-  <div class="toggle-container">
-        <ul class="navigation-list">
-            <li class="navigation-list__item navigation-list__item--home-link">
-                <span class="navigation-list__item--title">
-                    <a href="/">{% trans "Home" %}</a>
-                </span>
-            </li>
-            <li class="navigation-list__item navigation-list__item--search-link">
-                <span class="navigation-list__item--title">
-                    <a href="#search-form">{% trans "Search" %}</a>
-                </span>
-            </li>
-            <li class="navigation-list__item navigation-list__item--login-link">
-                <span class="navigation-list__item--title">
-                    <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
-                </span>
-            </li>
-            {% for section in language_page.sections %}
-                <li class="navigation-list__item navigation-list__item{{ section.get_effective_extra_style_hints }}">
-                    <span class="navigation-list__item--title">
-                        <a class="section-link" href="{% pageurl section %}">{{ section.title }}</a>
-                    </span>
-                    <span class="navigation-list__item--subtitle">
-                        {{ section.description }}
-                    </span>
-                </li>
-            {% endfor %}
-            {% if user.is_authenticated %}
-                <li class="navigation-list__item navigation-list__item--smartphone-link">
-                  <span class="navigation-list__item--title">
-                    <a href="{% url 'molo.profiles:view_my_profile' %}">
-                        <span>{% trans "Your Profile" %}</span>
-                    </a>
-                  </span>
-                </li>
-            {% endif %}
-            <li class="navigation-list__item navigation-list__item--smartphone-link">
-                <span class="navigation-list__item--title">
-                    <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
-                </span>
-            </li>
-            <li class="navigation-list__item navigation-list__item--smartphone-link">
-                <span class="navigation-list__item--title">
-                    <a href="{% url 'molo.profiles:user_register' %}">{% trans "Signup" %}</a>
-                </span>
-            </li>
-        </ul>
-        <div class="footer-content l-indent">
-            {% if languages %}
-                <ul class="footer-menu-list">
-                    <p>{% trans "Change your site Language:" %}</p>
-                    {% for language in languages %}
-                        <li class="footer-menu-list__item">
-                            <a href="{% url 'locale_set' language.code %}" {% if LANGUAGE_CODE == language.code %} class="active" {% endif %}>{{ language.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-            <ul class="footer-menu-list">
-                {% for page in language_page.footers %}
-                    <li class="footer-menu-list__item">
-                      <a href="{% pageurl page %}">{{ page.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-            <p class="f-tiny"> © 2016 UNFPA, Ford Foundation All Rights Reserved</p>
-        </div>
+  <div class="header">
+    <div class="header-nav">
+      <a href="/">
+        <img class="logo" src="{% static 'img/logo.png' %}" alt="TuneMe" />
+      </a>
+      <a href="#menu" class="header-nav__item">{% trans "Menu" %}</a>
+      <a href="#search-form" class="header-nav__item">{% trans "Search" %}</a>
     </div>
-</div>
-{% endblock %}
 
-{% block search %}
+    <h2 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
     {% include "search/search_block.html" %}
-{% endblock %}
+    {% include "core/language_block.html" with extra_classes="" %}
+  </div>
 
-<!-- START: /feature-menu -->
-{% block footer %}
-    <div class="footer-wrapper">
-        <ul class="navigation-list">
-            <li class="navigation-list__item navigation-list__item--backtotop-link">
-              <span class="navigation-list__item--title">
-                <a class="section-link" href="#top">{% trans "Back to top" %}</a>
-              </a>
-            </li>
-            <li class="navigation-list__item navigation-list__item--footer-home-link">
-              <span class="navigation-list__item--title">
-                <a class="section-link" href="/">{% trans "Home" %}</a>
-              </span>
-            </li>
-            <li class="navigation-list__item navigation-list__item--search-link">
-              <span class="navigation-list__item--title">
-                <a class="section-link" href="#search-form">{% trans "Search" %}</a>
-              </span>
-            </li>
-            {% for section in language_page.sections %}
-                <li class="navigation-list__item navigation-list__item{{ section.get_effective_extra_style_hints }}">
-                    <span class="navigation-list__item--title">
-                        <a class="section-link" href="{% pageurl section %}">{{ section.title }}</a>
-                    </span>
-                    <span class="navigation-list__item--subtitle">
-                        <span>{{ section.description }}</span>
-                    </span>
-                </li>
-            {% endfor %}
-            <li class="navigation-list__item navigation-list__item--featurephone-link">
-              <span class="navigation-list__item--title">
-                    <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Login" %}</a>
-                </span>
-            </li>
+  {% block content %}{% endblock %}
 
-            <li class="navigation-list__item navigation-list__item--featurephone-link">
-                <span class="navigation-list__item--title">
-                    <a href="{% url 'molo.profiles:user_register' %}">{% trans "Sign up" %}</a>
-                </span>
-            </li>
-        </ul>
-        <div class="footer-content l-indent">
-            {% if languages %}
-                <ul class="footer-menu-list">
-                    <p>{% trans "Change your site Language:" %}</p>
-                    {% for language in languages %}
-                        <li class="footer-menu-list__item">
-                            <a href="{% url 'locale_set' language.code %}" {% if LANGUAGE_CODE == language.code %} class="active" {% endif %}>{{ language.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-            <ul class="footer-menu-list">
-                {% for page in language_page.footers %}
-                    <li class="footer-menu-list__item">
-                      <a href="{% pageurl page %}">{{ page.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-            <p class="f-tiny"> © 2016 UNFPA, Ford Foundation All Rights Reserved</p>
-        </div>
+
+  <div class="menu" id="menu">
+
+    <ul class="menu-items">
+      <li class="menu__item menu__item--default"><a href="#top">{% trans "Back to top" %}</a></li>
+      <li class="menu__item menu__item--default"><a href="/">{% trans "Home" %}</a></li>
+      {% for section in language_page.sections %}
+      <li class="menu__item menu__item{{ section.get_effective_extra_style_hints }}">
+        <a href="{% pageurl section %}">
+          {{ section.title }}
+        </a>
+        <span>{{ section.description }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <ul class="menu-items menu-items--alt">
+      <li class="menu__item menu__item--default"><a href="#search-form">{% trans "Search" %}</a></li>
+      {% if user.is_authenticated %}
+      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Your Profile" %}</a></li>
+      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:auth_logout' %}">{% trans "Log out" %}</a></li>
+      {% else %}
+      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:auth_login' %}">{% trans "Log in" %}</a></li>
+      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:user_register' %}">{% trans "Register" %}</a></li>
+      {% endif %}
+    </ul>
+
+    {% if languages %}
+    <div class="languages">
+      {% trans "Language" %}:
+      {% for language in languages %}
+        <a href="{% url 'locale_set' language.code %}" class="languages__item {% if LANGUAGE_CODE == language.code %} languages__item--active{% endif %}">{{ language.title }}</a>
+      {% endfor %}
     </div>
-<!--END: /feature-menu -->
-{% endblock %}
+    {% endif %}
+
+
+    <div class="footer-links">
+    {% for page in language_page.footers %}
+      <a href="{% pageurl page %}">{{ page.title }}</a>
+    {% endfor %}
+    </div>
+
+  </div>
+  <div class="copyright">&copy; {% now "Y" %} UNFPA, Ford Foundation All Rights Reserved.</div>
+
+
+  {% if GOOGLE_TAG_MANAGER_ACCOUNT %}
+  <!-- Google Tag Manager -->
+   <noscript><iframe src="//www.googletagmanager.com/ns.html?id={{GOOGLE_TAG_MANAGER_ACCOUNT}}"
+   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+   })(window,document,'script','dataLayer','{{GOOGLE_TAG_MANAGER_ACCOUNT}}');</script>
+  <!-- End Google Tag Manager -->
+  {% endif %}
+
+  {% block extra_js %}{% endblock %}
+
+</body>
+</html>

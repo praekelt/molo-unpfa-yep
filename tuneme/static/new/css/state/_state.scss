@@ -1,5 +1,46 @@
 
-@import "_s-errors";
+@media only screen and (min-device-width: 320px) {
 
-//Unedited
-@import "_s-buttons";
+  @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700);
+
+  html, body,
+  h1, h2, h3, h4, h5, h6,
+  input, select, textarea {
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  input[type="submit"] {
+    line-height: 28px;
+    border-radius: 14px;
+    width: 100%;
+  }
+
+  .copyright {
+    background: #000;
+    color: #fff;
+  }
+
+  .breadcrumbs {
+    border: 0;
+    a {
+      font-weight: bold;
+    }
+  }
+
+  @import "_s-header";
+  @import "_s-menu";
+  @import "_s-polls";
+  @import "_s-article-list";
+  @import "_s-comments";
+
+}
+
+@media only screen and (min-width: 600px) {
+  html {
+    background:#333;
+  }
+  body {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
