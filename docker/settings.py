@@ -4,7 +4,7 @@ from os import environ
 
 import dj_database_url
 
-from .base import *
+from .base import *  # noqa
 
 
 # Disable debug mode
