@@ -11,6 +11,7 @@ ENV DJANGO_SETTINGS_MODULE tuneme.settings.docker
 WORKDIR /deploy/
 
 COPY tuneme /deploy/tuneme
+COPY polls /deploy/polls
 COPY locale /deploy/locale
 ADD manage.py /deploy/
 ADD requirements.txt /deploy/
