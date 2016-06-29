@@ -10,8 +10,10 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 from os.path import abspath, dirname, join
 from os import environ
+import django.conf.locale
 from django.conf import global_settings
 from django.utils.translation import ugettext_lazy as _
+import dj_database_url
 import djcelery
 from celery.schedules import crontab
 djcelery.setup_loader()
@@ -29,8 +31,6 @@ SECRET_KEY = 'v+*c@9@x%h%ou32gk58nv5=03dti0=z^g%296vcx*1alxg#m2)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = ['*']
 
 
@@ -41,7 +41,7 @@ BASE_URL = 'http://example.com'
 
 # Application definition
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,10 +49,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_extensions',
 
-    'compressor',
     'taggit',
     'modelcluster',
+
+    'molo.core',
+    'tuneme',
 
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
@@ -65,43 +68,74 @@ INSTALLED_APPS = (
     'wagtail.wagtailsearch',
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
+    'wagtailmodeladmin',
+    'wagtailmedia',
     'wagtail.contrib.settings',
 
-
-    'raven.contrib.django.raven_compat',
-    'tuneme',
-    'polls',
-    'djcelery',
-
-    'molo.core',
-    'molo.profiles',
     'mptt',
+    'molo.profiles',
     'django_comments',
     'molo.commenting',
-    'django_extensions',
     'molo.yourwords',
     'molo.servicedirectory'
-)
+    'polls',
+
+    'raven.contrib.django.raven_compat',
+    'djcelery',
+    'django_cas_ng',
+    'compressor',
+
+]
 
 COMMENTS_APP = 'molo.commenting'
 COMMENTS_FLAG_THRESHHOLD = 3
 COMMENTS_HIDE_REMOVED = False
+
 SITE_ID = 1
+
 # We have multiple layouts: use `old` or `new` to switch between them.
 SITE_LAYOUT = environ.get('SITE_LAYOUT', 'old')
 
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
+MIDDLEWARE_CLASSES = [
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
+    'wagtailmodeladmin.middleware.ModelAdminMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-)
+
+    'molo.core.middleware.AdminLocaleMiddleware',
+    'molo.core.middleware.NoScriptGASessionMiddleware',
+
+]
+
+# Template configuration
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'molo.core.context_processors.locale',
+                'molo.profiles.context_processors.get_profile_data',
+                'wagtail.contrib.settings.context_processors.settings',
+                'tuneme.context_processors.default_forms',
+                'tuneme.context_processors.add_tag_manager_account',
+            ],
+        },
+    },
+]
 
 ROOT_URLCONF = 'tuneme.urls'
 WSGI_APPLICATION = 'tuneme.wsgi.application'
@@ -111,12 +145,8 @@ WSGI_APPLICATION = 'tuneme.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 # SQLite (simplest install)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': join(PROJECT_ROOT, 'db.sqlite3'),
-    }
-}
+DATABASES = {'default': dj_database_url.config(
+    default='sqlite:///%s' % (join(PROJECT_ROOT, 'db.sqlite3'),))}
 
 # PostgreSQL (Recommended, but requires the psycopg2 library and
 #             Postgresql development headers)
@@ -133,11 +163,30 @@ DATABASES = {
 #     }
 # }
 
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_IMPORTS = ('molo.profiles.task', 'molo.core.tasks')
+BROKER_URL = environ.get('BROKER_URL', 'redis://localhost:6379/0')
+CELERY_RESULT_BACKEND = environ.get(
+    'CELERY_RESULT_BACKEND', 'redis://localhost:6379/0')
+CELERYBEAT_SCHEDULE = {
+    # Executes every morning at 8:00 A.M GMT+2
+    'add-every-morning': {
+        'task': 'molo.profiles.task.send_user_data_to_slack',
+        'schedule': crontab(minute=0, hour=8)
+    },
+    'rotate_content': {
+        'task': 'molo.core.tasks.rotate_content',
+        'schedule': crontab(minute=0),
+    },
+}
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-gb'
+LANGUAGE_CODE = environ.get('LANGUAGE_CODE', 'en-gb')
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
@@ -146,7 +195,7 @@ USE_TZ = True
 # Native South African languages are currently not included in the default
 # list of languges in django
 # https://github.com/django/django/blob/master/django/conf/global_settings.py#L50
-LANGUAGES = global_settings.LANGUAGES + (
+LANGUAGES = global_settings.LANGUAGES + [
     ('zu', _('Zulu')),
     ('xh', _('Xhosa')),
     ('st', _('Sotho')),
@@ -157,11 +206,78 @@ LANGUAGES = global_settings.LANGUAGES + (
     ('nr', _('Ndebele')),
     ('bem', _('Bemba')),
     ('nya', _('Nyanja')),
-)
+]
 
-LOCALE_PATHS = (
+EXTRA_LANG_INFO = {
+    'zu': {
+        'bidi': False,
+        'code': 'zu',
+        'name': 'Zulu',
+        'name_local': 'isiZulu',
+    },
+    'xh': {
+        'bidi': False,
+        'code': 'xh',
+        'name': 'Xhosa',
+        'name_local': 'isiXhosa',
+    },
+    'st': {
+        'bidi': False,
+        'code': 'st',
+        'name': 'Sotho',
+        'name_local': 'seSotho',
+    },
+    've': {
+        'bidi': False,
+        'code': 've',
+        'name': 'Venda',
+        'name_local': u'tshiVenḓa',
+    },
+    'tn': {
+        'bidi': False,
+        'code': 'tn',
+        'name': 'Tswana',
+        'name_local': 'Setswana',
+    },
+    'ts': {
+        'bidi': False,
+        'code': 'ts',
+        'name': 'Tsonga',
+        'name_local': 'xiTsonga',
+    },
+    'ss': {
+        'bidi': False,
+        'code': 'ss',
+        'name': 'Swati',
+        'name_local': 'siSwati',
+    },
+    'nr': {
+        'bidi': False,
+        'code': 'nr',
+        'name': 'Ndebele',
+        'name_local': 'isiNdebele',
+    },
+    'bem': {
+        'bidi': False,
+        'code': 'bem',
+        'name': 'Bemba',
+        'name_local': 'Bemba',
+    },
+    'nya': {
+        'bidi': False,
+        'code': 'nya',
+        'name': 'Nyanja',
+        'name_local': 'Nyanja',
+    }
+}
+
+LANG_INFO = (
+    dict(django.conf.locale.LANG_INFO.items() + EXTRA_LANG_INFO.items()))
+django.conf.locale.LANG_INFO = LANG_INFO
+
+LOCALE_PATHS = [
     join(PROJECT_ROOT, "locale"),
-)
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
@@ -169,11 +285,11 @@ LOCALE_PATHS = (
 STATIC_ROOT = join(PROJECT_ROOT, 'tuneme', 'static', SITE_LAYOUT)
 STATIC_URL = '/static/'
 
-STATICFILES_FINDERS = (
+STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
-)
+]
 
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
@@ -182,42 +298,29 @@ MEDIA_URL = '/media/'
 # Django compressor settings
 # http://django-compressor.readthedocs.org/en/latest/settings/
 
-COMPRESS_PRECOMPILERS = (
+COMPRESS_PRECOMPILERS = [
     ('text/x-scss', 'django_libsass.SassCompiler'),
-)
-
+]
 
 # Template configuration
 TEMPLATE_DIRS = (
     join(PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT),
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-    'django.core.context_processors.request',
-    'django.contrib.messages.context_processors.messages',
-    'molo.core.context_processors.locale',
-    'molo.profiles.context_processors.get_profile_data',
-    'tuneme.context_processors.default_forms',
-    'wagtail.contrib.settings.context_processors.settings',
-    'tuneme.context_processors.add_tag_manager_account',
-
-)
-
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
-
-# Celery
-
-CELERY_IMPORTS = ('molo.profiles.task', 'molo.core.tasks')
-BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 # Wagtail settings
 
 LOGIN_URL = 'molo.profiles:auth_login'
 LOGIN_REDIRECT_URL = 'wagtailadmin_home'
 
-WAGTAIL_SITE_NAME = "TuneMe"
+SITE_NAME = environ.get('SITE_NAME', "TuneMe")
+WAGTAIL_SITE_NAME = SITE_NAME
+
+# Whether to use face/feature detection to improve image
+# cropping - requires OpenCV
+WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
 
 # Use Elasticsearch as the search backend for extra performance and
 # better search results:
@@ -237,17 +340,6 @@ WAGTAILSEARCH_BACKENDS = {
 # Whether to use face/feature detection to improve image cropping - requires OpenCV  # noqa
 WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
 
-CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
-CELERYBEAT_SCHEDULE = {
-    # Executes every morning at 8:00 A.M GMT+2
-    'add-every-morning': {
-        'task': 'molo.profiles.task.send_user_data_to_slack',
-        'schedule': crontab(minute=0, hour=8)
-    },
-    'rotate_content': {
-        'task': 'molo.core.tasks.rotate_content',
-        'schedule': crontab(minute=0),
-    },
-}
+ADMIN_LANGUAGE_CODE = environ.get('ADMIN_LANGUAGE_CODE', "en")
 
 GOOGLE_TAG_MANAGER_ACCOUNT = environ.get('GOOGLE_TAG_MANAGER_ACCOUNT')
