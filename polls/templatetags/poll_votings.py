@@ -3,18 +3,27 @@ from copy import copy
 
 from django import template
 
-from polls.models import Question
+from polls.models import Question, Choice, PollsIndexPage
 
 register = template.Library()
 
 
 @register.inclusion_tag('polls/poll_page.html',
                         takes_context=True)
-def poll_page(context, pk=None, page=None):
+def poll_page(context, pk=None):
     context = copy(context)
+    locale_code = context.get('locale_code')
+    page = PollsIndexPage.objects.live().first()
+    if page:
+        questions = (
+            Question.objects.live().child_of(page).filter(
+                languages__language__is_main_language=True).specific())
+    else:
+        questions = []
+
     context.update({
-        'questions': Question.objects.live().child_of(page)
-        if page else Question.objects.none()
+        'questions': [
+            a.get_translation_for(locale_code) or a for a in questions]
     })
     return context
 
@@ -23,11 +32,32 @@ def poll_page(context, pk=None, page=None):
                         takes_context=True)
 def poll_page_in_section(context, pk=None, page=None):
     context = copy(context)
+    locale_code = context.get('locale_code')
+    if page:
+        questions = (
+            Question.objects.live().child_of(page).filter(
+                languages__language__is_main_language=True).specific())
+    else:
+        questions = []
+
     context.update({
-        'questions': Question.objects.live().child_of(page)
-        if page else Question.objects.none()
+        'questions': [
+            a.get_translation_for(locale_code) or a for a in questions]
     })
     return context
+
+
+@register.assignment_tag(takes_context=True)
+def load_choices_for_poll_page(context, question):
+    page = question.get_main_language_page()
+    locale = context.get('locale_code')
+    qs = Choice.objects.live().child_of(page).filter(
+        languages__language__is_main_language=True)
+
+    if not locale:
+        return qs
+
+    return [a.get_translation_for(locale) or a for a in qs]
 
 
 @register.assignment_tag(takes_context=True)
@@ -46,10 +76,11 @@ def can_vote(context, question):
 @register.assignment_tag(takes_context=True)
 def user_choice(context, question):
     request = context['request']
-    choice = question.user_choice(request.user)
-    if choice.all().count() == 1:
-        return choice
+    choices = question.get_main_language_page().specific.user_choice(
+        request.user)
+    if choices.all().count() == 1:
+        return choices.first().title
     else:
-        choice_titles = [c.title for c in choice.all()]
+        choice_titles = [c.title for c in choices.all()]
 
         return ", ".join(choice_titles)

@@ -1,9 +1,11 @@
 from polls import views
-from django.conf.urls import url
+
+from django.conf.urls import patterns, url
 from django.contrib.auth.decorators import login_required
 
 
-urlpatterns = [
+urlpatterns = patterns(
+    '',
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
     url(
@@ -17,4 +19,4 @@ urlpatterns = [
     url(r'^(?P<question_id>\d+)/freetextvote/$',
         login_required(views.FreeTextVoteView.as_view()),
         name='free_text_vote'),
-]
+)
