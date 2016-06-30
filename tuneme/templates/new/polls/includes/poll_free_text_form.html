@@ -1,7 +1,7 @@
 {% load i18n static poll_votings %}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<form action="{% url 'molo.polls:free_text_vote' question.id %}" method="post">
+<form action="{% url 'polls:free_text_vote' question.id %}" method="post">
   {% csrf_token %}
   {% if request.user.is_authenticated %}
     {% can_vote question as user_can_vote %}

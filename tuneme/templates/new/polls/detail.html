@@ -13,7 +13,7 @@
     </h1>
 	<h3 class="f-bigger">{{ question.title }}</h3>
 	{% if form.choice.errors %}<p><strong>{{form.choice.errors|join:", " }}</strong></p>{% endif %}
-		<form action="{% url 'molo.polls:vote' question.id %}" method="post">
+		<form action="{% url 'polls:vote' question.id %}" method="post">
 			{% csrf_token %}
 				<div class="radios">
 					{% for choice in question.choices %}

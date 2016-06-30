@@ -1,7 +1,7 @@
 {% load i18n static poll_votings %}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<form action="{% url 'molo.polls:vote' question.id %}" method="post">
+<form action="{% url 'polls:vote' question.id %}" method="post">
   {% csrf_token %}
   <div class="radios">
     {% if not request.user.is_authenticated%}
@@ -42,7 +42,7 @@
     {% if user_can_vote %}
       <input type="submit" value="{% trans "Vote" %}" />
     {% elif question.show_results %}
-      <a href="{% url 'molo.polls:results' question.id %}" class="button">{% trans "Show Results" %}</a>
+      <a href="{% url 'polls:results' question.id %}" class="button">{% trans "Show Results" %}</a>
     {% endif %}
   {% else %}
     <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="button">{% trans "Log in to vote" %}</a>
