@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.test.client import Client
 from molo.core.tests.base import MoloTestCaseMixin
-from molo.core.models import ArticlePage
+from molo.core.models import ArticlePage, SiteLanguage
 from molo.commenting.models import MoloComment
 from molo.commenting.forms import MoloCommentForm
 from django.contrib.contenttypes.models import ContentType
@@ -19,6 +19,7 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             username='tester',
             email='tester@example.com',
             password='tester')
+        self.english = SiteLanguage.objects.create(locale='en')
         self.mk_main()
 
     def create_comment(self, article, comment, parent=None):
@@ -125,7 +126,7 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
 
     def test_comment_reply_in_article(self):
             self.yourmind = self.mk_section(
-                self.main, title='Your mind')
+                self.section_index, title='Your mind')
             article = self.mk_article(self.yourmind, title='article 1',
                                       subtitle='article 1 subtitle',
                                       slug='article-1')
@@ -135,7 +136,7 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             comment3 = self.create_comment(article, 'test comment3 text')
             reply = self.create_comment(article,
                                         'test reply text', parent=comment2)
-            response = self.client.get('/your-mind/article-1/')
+            response = self.client.get('/sections/your-mind/article-1/')
 
             html = BeautifulSoup(response.content, 'html.parser')
             [c3row, c2row, replyrow, c1row] = html.find_all(class_='comment')
@@ -146,21 +147,21 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
 
     def test_comment_shows_user_display_name(self):
         self.yourmind = self.mk_section(
-            self.main, title='Your mind')
+            self.section_index, title='Your mind')
         article = self.mk_article(self.yourmind, title='article 1',
                                   subtitle='article 1 subtitle',
                                   slug='article-1')
 
         # check when user doesn't have an alias
         self.create_comment(article, 'test comment1 text')
-        response = self.client.get('/your-mind/article-1/')
+        response = self.client.get('/sections/your-mind/article-1/')
         self.assertContains(response, "Anonymous")
 
         # check when user have an alias
         self.user.profile.alias = 'this is my alias'
         self.user.profile.save()
         self.create_comment(article, 'test comment2 text')
-        response = self.client.get('/your-mind/article-1/')
+        response = self.client.get('/sections/your-mind/article-1/')
         self.assertContains(response, "this is my alias")
         self.assertNotContains(response, "tester")
 

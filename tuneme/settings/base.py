@@ -120,7 +120,7 @@ MIDDLEWARE_CLASSES = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [join(PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -302,11 +302,6 @@ MEDIA_URL = '/media/'
 COMPRESS_PRECOMPILERS = [
     ('text/x-scss', 'django_libsass.SassCompiler'),
 ]
-
-# Template configuration
-TEMPLATE_DIRS = (
-    join(PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT),
-)
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
