@@ -6,7 +6,7 @@ from molo.core.tests.base import MoloTestCaseMixin
 from molo.core.models import SiteLanguage
 
 from polls.models import (Choice, Question, ChoiceVote, FreeTextQuestion,
-                               FreeTextVote, PollsIndexPage)
+                          FreeTextVote, PollsIndexPage)
 
 
 class ModelsTestCase(TestCase, MoloTestCaseMixin):

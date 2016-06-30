@@ -9,7 +9,7 @@ from molo.core.models import SiteLanguage
 
 from polls.admin import QuestionAdmin, download_as_csv
 from polls.models import (Choice, Question, FreeTextQuestion,
-                               PollsIndexPage)
+                          PollsIndexPage)
 
 
 class ModelsTestCase(TestCase, MoloTestCaseMixin):
