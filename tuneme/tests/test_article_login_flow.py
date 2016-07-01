@@ -24,4 +24,4 @@ class ArticleLoginFlow(TestCase):
         # Test that next url is article url
         self.assertEqual(
             response['Location'],
-            'http://testserver/engilsh/sex/sub-category-4/article/')
+            '/engilsh/sex/sub-category-4/article/')

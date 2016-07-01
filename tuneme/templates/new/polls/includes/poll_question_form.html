@@ -1,5 +1,5 @@
 {% load i18n poll_votings %}
-<form class="polls__form" action="{% url 'molo.polls:vote' question.id %}" method="post">
+<form class="polls__form" action="{% url 'polls:vote' question.id %}" method="post">
   {% csrf_token %}
   <ul class="poll-choices">
   {% for choice in question.choices %}
@@ -24,7 +24,7 @@
     {% if can_user_vote %}
         <input type="submit" value="{% trans "Vote" %}" />
     {% elif question.show_results %}
-      <a href="{% url 'molo.polls:results' question.id %}">{% trans "Show Results" %}</a>
+      <a href="{% url 'polls:results' question.id %}">{% trans "Show Results" %}</a>
     {% endif %}
   {% else %}
     <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}">{% trans "Log in" %}</a>

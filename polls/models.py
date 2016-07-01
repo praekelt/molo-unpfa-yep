@@ -2,16 +2,20 @@ from django.db import models
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailadmin.edit_handlers import (
     FieldPanel, MultiFieldPanel, FieldRowPanel)
-from molo.core.models import LanguagePage, ArticlePage, SectionPage
+from molo.core.models import ArticlePage, SectionPage, TranslatablePageMixin
 from django.utils.translation import ugettext_lazy as _
 
 
-LanguagePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
 SectionPage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
 ArticlePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
 
 
-class Question(Page):
+class PollsIndexPage(Page):
+    parent_page_types = []
+    subpage_types = ['polls.Question', 'polls.FreeTextQuestion']
+
+
+class Question(TranslatablePageMixin, Page):
     subpage_types = ['polls.Choice']
     short_name = models.TextField(
         null=True, blank=True,
@@ -54,13 +58,12 @@ class Question(Page):
                 "Question Settings",))]
 
     def user_choice(self, user):
-        self.choicevote_set.filter(user=user)
         return ChoiceVote.objects.get(
             user=user, question__id=self.id).choice
 
     def can_vote(self, user):
         return not (ChoiceVote.objects.filter(
-            user=user, question__id=self.id).exists())
+            user=user, question__id=self.get_main_language_page().id).exists())
 
     def choices(self):
         if self.randomise_options:
@@ -105,14 +108,15 @@ class FreeTextQuestion(Question):
 
     def can_vote(self, user):
         return not (FreeTextVote.objects.filter(
-            user=user, question__id=self.id).exists())
+            user=user, question__id=self.get_main_language_page().id).exists())
 
 
-class Choice(Page):
+class Choice(TranslatablePageMixin, Page):
+    subpage_types = []
     votes = models.IntegerField(default=0)
     choice_votes = models.ManyToManyField('ChoiceVote',
                                           related_name='choices',
-                                          null=True, blank=True)
+                                          blank=True)
     short_name = models.TextField(
         null=True, blank=True,
         help_text="The short name will replace the title when "
@@ -126,7 +130,7 @@ class Choice(Page):
 
 class ChoiceVote(models.Model):
     user = models.ForeignKey('auth.User', related_name='choice_votes')
-    choice = models.ManyToManyField('Choice', null=True, blank=True)
+    choice = models.ManyToManyField('Choice', blank=True)
     question = models.ForeignKey('Question')
     submission_date = models.DateField(null=True, blank=True,
                                        auto_now_add=True)

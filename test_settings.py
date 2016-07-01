@@ -6,6 +6,10 @@ DATABASES = {
         'NAME': 'ndohyep_test.db',
     }
 }
-
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail.wagtailsearch.backends.db.DBSearch',
+    }
+}
 DEBUG = True
 CELERY_ALWAYS_EAGER = True
