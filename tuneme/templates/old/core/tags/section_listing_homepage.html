@@ -1,5 +1,5 @@
 
-{% load wagtailcore_tags wagtailimages_tags comments i18n %}
+{% load wagtailcore_tags wagtailimages_tags comments core_tags i18n %}
 <h2 class="list-header">{% trans "Topics" %}</h2>
 
 {% if sections %}
@@ -17,8 +17,9 @@
         <h6><a href="{% pageurl section %}">{{section.title}}</a></h6>
       </div>
     </div>
-  {% for page in section.featured_articles_in_homepage %}
-    {% if page.featured_in_homepage %}
+
+  {% load_descendant_articles_for_section section featured_in_homepage=True as featured_articles %}
+  {% for page in featured_articles %}
     <div class="block {{section.get_effective_extra_style_hints}}">
       <h3><a href="{% pageurl page %}">{{page.title}}</a></h3>
       <p>{{page.subtitle}}</p>

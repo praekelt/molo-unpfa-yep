@@ -1,6 +1,6 @@
 {% extends "_base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags compress static i18n %}
+{% load wagtailcore_tags wagtailimages_tags compress static core_tags i18n %}
 
 {% block header %}
 <div class="header" id="top">
@@ -32,7 +32,8 @@
       <span>{% trans "Menu" %}</span>
       <div class="content">
         <ul>
-          {% for section in language_page.sections %}
+          {% load_sections as sections %}
+          {% for section in sections %}
             <li class="{{section.get_effective_extra_style_hints}}">
                 <a href="{% pageurl section %}">
                   {% image section.image width-40 %}
@@ -71,7 +72,8 @@
 <div id="feature-menu">
     <ul>
         <li><a href="/">{% trans "HOME" %}</a></li>
-        {% for section in language_page.sections %}
+        {% load_sections as sections %}
+        {% for section in sections %}
           <li class="{{section.get_effective_extra_style_hints}}">
             <a href="{% pageurl section %}">{{section.title}}</a>
           </li>
@@ -89,9 +91,7 @@
       {% endfor %}
       </ul>
     {% endif %}
-    {% for page in language_page.footers %}
-    <a href="{% pageurl page %}">{{page.title}}</a>
-    {% endfor %}
+    {% footer_page %}
 </div>
 
 {% endblock %}

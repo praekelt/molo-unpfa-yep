@@ -1,16 +1,16 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% if homepages %}
-{% for homepage in homepages %}
+{% if bannerpages %}
+{% for bannerpage in bannerpages %}
 <div class="banner">
-  {% if homepage.banner %}
-    {% image homepage.banner width-320 as tmp_photo %}
+  {% if bannerpage.banner %}
+    {% image bannerpage.banner width-320 as tmp_photo %}
 
-    {% if homepage.banner_link_page %}
-    <a href="{% pageurl homepage.banner_link_page %}"><img src="{{ tmp_photo.url }}" alt="{{ homepage.banner.title }}"/></a>
+    {% if bannerpage.banner_link_page %}
+    <a href="{% pageurl bannerpage.banner_link_page %}"><img src="{{ tmp_photo.url }}" alt="{{ bannerpage.banner.title }}"/></a>
     {% else %}
-    <img src="{{ tmp_photo.url }}" alt="{{ homepage.banner.title }}"/>
+    <img src="{{ tmp_photo.url }}" alt="{{ bannerpage.banner.title }}"/>
     {% endif %}
   {% endif %}
 </div>
