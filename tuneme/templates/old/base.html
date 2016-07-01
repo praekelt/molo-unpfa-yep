@@ -87,7 +87,7 @@
       <strong>{% trans "Site Language:" %}</strong>
       {% get_current_language as LANGUAGE_CODE %}
       {% for language in languages %}
-        <a href="{% url 'locale_set' language.locale %}?next={{request.path}}?{{ request.GET.urlencode }}">{{language.title}}</a>
+        <a href="{% url 'locale_set' language.locale %}?next={{request.path}}?{{ request.GET.urlencode }}">{{language}}</a>
       {% endfor %}
       </ul>
     {% endif %}
