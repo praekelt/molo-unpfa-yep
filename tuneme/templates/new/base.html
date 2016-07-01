@@ -7,11 +7,11 @@
   <meta name="description" content="Tune Me puts the power in your hands to make choices about your body, your rights, your love life and your sexual health." />
   <meta name="keywords" content="love, sex, relationships, advice, help, family planning, contraception, private" />
   <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="{% if self.social_media_title %}{{ self.social_media_title }}{% else %}{{ self.title }}{% endif %}"/>
+  <meta name="twitter:title" content="{% if self.social_media_title %}{{ self.social_media_title }}{% elif self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}"/>
   <meta name="twitter:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
   {% image self.social_media_image width-300 as tmp_photo %}
   <meta name="twitter:image" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
-  <meta property="og:title" content= "{% if self.social_media_title %}{{ self.social_media_title }}{% else %}{{ self.title }}{% endif %}" />
+  <meta property="og:title" content= "{% if self.social_media_title %}{{ self.social_media_title }}{% elif self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}" />
   <meta property="og:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
   {% image self.social_media_image width-300 as tmp_photo %}
   <meta property="og:image" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
@@ -48,7 +48,8 @@
     <ul class="menu-items">
       <li class="menu__item menu__item--default"><a href="#top">{% trans "Back to top" %}</a></li>
       <li class="menu__item menu__item--default"><a href="/">{% trans "Home" %}</a></li>
-      {% for section in language_page.sections %}
+      {% load_sections as sections %}
+      {% for section in sections %}
       <li class="menu__item menu__item{{ section.get_effective_extra_style_hints }}">
         <a href="{% pageurl section %}">
           {{ section.title }}
@@ -72,6 +73,7 @@
     {% if languages %}
     <div class="languages">
       {% trans "Language" %}:
+      {% get_current_language as LANGUAGE_CODE %}
       {% for language in languages %}
         <a href="{% url 'locale_set' language.code %}" class="languages__item {% if LANGUAGE_CODE == language.code %} languages__item--active{% endif %}">{{ language.title }}</a>
       {% endfor %}
@@ -80,9 +82,7 @@
 
 
     <div class="footer-links">
-    {% for page in language_page.footers %}
-      <a href="{% pageurl page %}">{{ page.title }}</a>
-    {% endfor %}
+      {% footer_page %}
     </div>
 
   </div>
@@ -90,15 +90,15 @@
 
 
   {% if GOOGLE_TAG_MANAGER_ACCOUNT %}
-  <!-- Google Tag Manager -->
-   <noscript><iframe src="//www.googletagmanager.com/ns.html?id={{GOOGLE_TAG_MANAGER_ACCOUNT}}"
-   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-   '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-   })(window,document,'script','dataLayer','{{GOOGLE_TAG_MANAGER_ACCOUNT}}');</script>
-  <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager -->
+     <noscript><iframe src="//www.googletagmanager.com/ns.html?id={{GOOGLE_TAG_MANAGER_ACCOUNT}}&client_session_id={{request.session.MOLO_GA_SESSION_FOR_NOSCRIPT}}&page_title={% if self.seo_title %}{{ self.seo_title|urlencode }}{% else %}{{ self.title|urlencode }}{% endif %}{%if request.META.HTTP_X_IORG_FBS_UIP %}&freebasics_uip={{request.META.HTTP_X_IORG_FBS_UIP}}{%endif%}"
+     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+     '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+     })(window,document,'script','dataLayer','{{GOOGLE_TAG_MANAGER_ACCOUNT}}');</script>
+    <!-- End Google Tag Manager -->
   {% endif %}
 
   {% block extra_js %}{% endblock %}

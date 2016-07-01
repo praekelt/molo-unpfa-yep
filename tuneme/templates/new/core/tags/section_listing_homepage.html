@@ -4,8 +4,8 @@
     <a href="{% pageurl section %}">{{section.title}}</a>
   </h1>
   <ul class="article-list article-list{{section.get_effective_extra_style_hints}}">
-    {% for article in section.featured_articles_in_homepage %}
-      {% if article.featured_in_homepage %}
+    {% load_descendant_articles_for_section section featured_in_homepage=True as featured_articles %}
+    {% for article in featured_articles %}
         <li class="article-list__item l-indent l-indent--tall">
            <a href="{% pageurl article %}">
               {% if article.image %}
