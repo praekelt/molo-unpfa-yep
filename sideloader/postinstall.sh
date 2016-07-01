@@ -1,7 +1,8 @@
 cd "${INSTALLDIR}/${NAME}/"
 manage="${VENV}/bin/python ${INSTALLDIR}/${NAME}/manage.py"
 
-$manage migrate core 0031 --fake --settings=tuneme.settings.production
+# run the following if migration `core 0031` has faild
+# $manage migrate core 0031 --fake --settings=tuneme.settings.production
 $manage migrate --settings=tuneme.settings.production
 
 # process static files
