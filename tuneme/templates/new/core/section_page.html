@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags core_tags poll_votings static i18n %}
+{% load wagtailcore_tags wagtailimages_tags core_tags poll_votings static core_tags i18n %}
 
 {% block content %}
 
@@ -9,7 +9,8 @@
 </div>
 
 <ul class="article-list article-list{{self.get_effective_extra_style_hints}}">
-  {% for article in self.articles %}
+  {% load_child_articles_for_section self as articles %}
+  {% for article in articles %}
   <li class="article-list__item l-indent l-indent--tall">
      <a href="{% pageurl article %}">
         {% if article.image %}
@@ -24,12 +25,14 @@
   <li class="article-list__item article-list__item--more"><a href="{% pageurl self %}">{% trans "More" %}</a></li>
 </ul>
 
+{% load_child_sections_for_section self as sections %}
 {% for section in sections %}
   <h1 class="heading heading--section-list heading{{section.get_effective_extra_style_hints}}">
     <a href="{% pageurl section %}">{{section.title}}</a>
   </h1>
   <ul class="article-list article-list--section article-list{{self.get_effective_extra_style_hints}}">
-    {% for article in section %}
+    {% load_descendant_articles_for_section section featured_in_section=True as featured_articles %}
+    {% for article in featured_articles %}
         <li class="article-list__item l-indent l-indent--tall">
            <a href="{% pageurl article %}">
               {% if article.image %}

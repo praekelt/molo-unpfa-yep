@@ -1,5 +1,5 @@
 {% extends "core/_section_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags comments poll_votings static i18n %}
+{% load wagtailcore_tags wagtailimages_tags comments poll_votings static core_tags i18n %}
 
 {% block content %}
 
@@ -13,10 +13,12 @@
     <h6>{{self.title}}</h6>
 </div>
 
-{% for section in self.sections %}
+{% load_child_sections_for_section self as sections %}
+{% for section in sections %}
   <div class="block {{self.get_effective_extra_style_hints}}">
     <h5><a href="{% pageurl section %}">{{section.title}}</a></h5>
-    {% for page in section.featured_articles %}
+    {% load_descendant_articles_for_section section featured_in_section=True as featured_articles %}
+    {% for page in featured_articles %}
         {% if page.image %}
           {% image page.image width-98 as tmp_photo %}
           <img src="{{ tmp_photo.url }}" alt="{{ page.image.title }}" class="img-circle"/>
@@ -34,7 +36,9 @@
   </div>
 {% endfor %}
 
-{% for page in self.articles %}
+
+{% load_child_articles_for_section self as articles %}
+{% for page in articles %}
   <div class="block {{self.get_effective_extra_style_hints}}">
     {% if page.image %}
         {% image page.image width-98 as tmp_photo %}
