@@ -41,3 +41,10 @@ STATIC_ROOT = join(PROJECT_ROOT, 'static')
 LOCALE_PATHS = (
     join(PROJECT_ROOT, "locale"),
 )
+
+# until we can specify ES host in cluster
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail.wagtailsearch.backends.db.DBSearch',
+    }
+}
