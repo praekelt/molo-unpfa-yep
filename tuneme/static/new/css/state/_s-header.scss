@@ -43,3 +43,9 @@
   text-transform: uppercase;
   text-decoration: none;
 }
+
+.header-nav__item--search {
+  color: transparent;
+  background: transparent url(/static/new/img/search.png) no-repeat 100% 50%;
+  background-size: 30%;
+}
