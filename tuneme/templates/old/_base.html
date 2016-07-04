@@ -30,7 +30,7 @@
             <link rel="stylesheet" type="text/css" media="screen,projection" href="{% static 'old/css/feature.css' %}">
         {% endcompress %}
 
-        <script type="text/javascript" src="{% static 'js/eCSSential.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'old/js/eCSSential.min.js' %}"></script>
 
         <script type="text/javascript">
               /*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
@@ -52,7 +52,7 @@
               eCSSential({
                 "(min-width: 320px)": "{% static 'old/css/smart.css' %}"
               });
-              loadJS( "{% static 'js/main.js' %}" );
+              loadJS( "{% static 'old/js/main.js' %}" );
             }
         </script>
 
