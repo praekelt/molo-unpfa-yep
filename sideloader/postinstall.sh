@@ -3,7 +3,7 @@ manage="${VENV}/bin/python ${INSTALLDIR}/${NAME}/manage.py"
 
 # run the following if migration `core 0031` has faild
 # $manage migrate core 0031 --fake --settings=tuneme.settings.production
-$manage migrate --settings=tuneme.settings.production
+$manage migrate --noinput --settings=tuneme.settings.production
 
 # process static files
 $manage collectstatic --noinput --settings=tuneme.settings.production
