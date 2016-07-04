@@ -26,8 +26,8 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui"/>
         <meta name="robots" content="all,index,follow" />
         {% compress css %}
-            <link rel="stylesheet" type="text/css" media="screen,projection" href="{% static 'css/styles.css' %}">
-            <link rel="stylesheet" type="text/css" media="screen,projection" href="{% static 'css/feature.css' %}">
+            <link rel="stylesheet" type="text/css" media="screen,projection" href="{% static 'old/css/styles.css' %}">
+            <link rel="stylesheet" type="text/css" media="screen,projection" href="{% static 'old/css/feature.css' %}">
         {% endcompress %}
 
         <script type="text/javascript" src="{% static 'js/eCSSential.min.js' %}"></script>
@@ -50,7 +50,7 @@
             // cut the mustard
             if('querySelector' in document && 'localStorage' in window && 'addEventListener' in window) {
               eCSSential({
-                "(min-width: 320px)": "{% static 'css/smart.css' %}"
+                "(min-width: 320px)": "{% static 'old/css/smart.css' %}"
               });
               loadJS( "{% static 'js/main.js' %}" );
             }

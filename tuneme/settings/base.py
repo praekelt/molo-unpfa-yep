@@ -284,7 +284,6 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_ROOT = join(PROJECT_ROOT, 'static')
-COMPRESS_ROOT = join(PROJECT_ROOT, 'tuneme', 'static', SITE_LAYOUT)
 STATIC_URL = '/static/'
 
 STATICFILES_FINDERS = [
