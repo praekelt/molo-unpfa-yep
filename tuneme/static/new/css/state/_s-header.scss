@@ -16,7 +16,7 @@
       border-top-right-radius: 19px;
       border-bottom-right-radius: 19px;
       color: transparent;
-      background: #fff url(/static/img/search-black.png) no-repeat 50%;
+      background: #fff url(/static/new/img/search-black.png) no-repeat 50%;
       background-size: 50%;
       width: auto;
     }
@@ -24,18 +24,17 @@
 
   .languages {
     font-size: $font-small;
-    a {
-      color: #fff;
-      text-decoration: none;
-    }
 
     .languages__item {
+      color: #fff;
+      text-decoration: none;
       padding: 5px;
+      background: #cf25f8;
+      border-radius: 10px;
     }
 
     .languages__item--active {
-      background: #cf25f8;
-      border-radius: 10px;
+      background: none;
     }
   }
 }
