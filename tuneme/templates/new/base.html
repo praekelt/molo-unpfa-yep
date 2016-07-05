@@ -31,13 +31,13 @@
       <a href="/">
         <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe" />
       </a>
-      <a href="#menu" class="header-nav__item">{% trans "Menu" %}</a>
-      <a href="#search-form" class="header-nav__item">{% trans "Search" %}</a>
+      <a href="#menu" class="header-nav__item header-nav__item--menu">{% trans "Menu" %}</a>
+      <a href="#search-form" class="header-nav__item header-nav__item--search">{% trans "Search" %}</a>
     </div>
 
     <h2 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
     {% include "search/search_block.html" %}
-    {% include "core/language_block.html" with extra_classes="" %}
+    {% include "core/language_block.html" %}
   </div>
 
   {% block content %}{% endblock %}
@@ -70,16 +70,7 @@
       {% endif %}
     </ul>
 
-    {% if languages %}
-    <div class="languages">
-      {% trans "Language" %}:
-      {% get_current_language as LANGUAGE_CODE %}
-      {% for language in languages %}
-        <a href="{% url 'locale_set' language.locale %}?next={{request.path}}?{{ request.GET.urlencode }}" class="languages__item {% if LANGUAGE_CODE == language.code %} languages__item--active{% endif %}">{{ language }}</a>
-      {% endfor %}
-    </div>
-    {% endif %}
-
+    {% include "core/language_block.html" %}
 
     <div class="footer-links">
       {% footer_page %}
