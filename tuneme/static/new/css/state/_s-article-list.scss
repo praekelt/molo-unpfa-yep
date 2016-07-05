@@ -6,9 +6,27 @@
   display: flex;
   flex-wrap: wrap;
 
+  .article-list__item:first-child {
+    .article-list__title, .article-list__subtitle {
+      padding: 0 5px;
+    }
+  }
+
   .article-list__image {
     width: 100%;
+    margin-bottom: 5px;
   }
+}
+
+.article-list__item {
+  padding-left: 20px;
+  padding-right: 20px;
+  overflow: auto;
+}
+
+.article-list__image {
+  float: left;
+  margin-right: 20px;
 }
 
 .article-list--latest-listing .article-list__item:first-child {
@@ -17,8 +35,4 @@
 .article-list--latest-listing .article-list__item {
   box-sizing: border-box;
   width: 50%;
-}
-.article-list__item {
-  padding-left: 10px;
-  padding-right: 10px;
 }
