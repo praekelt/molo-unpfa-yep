@@ -2,10 +2,6 @@
   background: transparent;
 }
 
-.heading--article {
-  border: 0 !important;
-}
-
 .heading--auth {
   margin: 0;
 }
@@ -13,5 +9,9 @@
 @each $name, $color in $color_list {
   .heading--#{$name}, .heading--#{$name} a {
     color: $color;
+  }
+
+  .heading--article.heading--#{$name} {
+    border: 0;
   }
 }
