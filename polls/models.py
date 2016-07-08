@@ -2,7 +2,8 @@ from django.db import models
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailadmin.edit_handlers import (
     FieldPanel, MultiFieldPanel, FieldRowPanel)
-from molo.core.models import ArticlePage, SectionPage, TranslatablePageMixin, SiteLanguage
+from molo.core.models import (ArticlePage, SectionPage, TranslatablePageMixin,
+                              SiteLanguage)
 from django.utils.translation import ugettext_lazy as _
 
 
