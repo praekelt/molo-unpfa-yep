@@ -9,7 +9,7 @@
 		{% trans "Thank you for voting!" %}
 	{% else %}
 		<ul class="poll-choices">
-	  {% for choice in question.choices %}
+	  {% for choice in choices %}
 	    <li class="poll-choices__item">
 	      {{ choice.title }}
 				{% if question.result_as_percentage %}

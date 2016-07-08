@@ -1,28 +1,23 @@
 {% extends "base.html" %}
-{% load i18n %}
 
-{% load static core_tags %}
+{% load static core_tags poll_votings i18n %}
 
 {% block content %}
 <div class="article article{{question.get_effective_extra_style_hints|default:"orange"}} l-indent">
-	<div class="icon">
-        <img src="{% static 'new/img/polls.png' %}" alt="Have Your Say">
-    </div>
-	<h1 class="article-heading f-large {{question.get_effective_extra_style_hints|default:"--default"}}">
-        <a href="">{% trans "Have Your Say" %}</a>
-    </h1>
+
 	<h3 class="f-bigger">{{ question.title }}</h3>
 	{% if form.choice.errors %}<p><strong>{{form.choice.errors|join:", " }}</strong></p>{% endif %}
 		<form action="{% url 'polls:vote' question.id %}" method="post">
 			{% csrf_token %}
 				<div class="radios">
-					{% for choice in question.choices %}
+					{% load_choices_for_poll_page question as choices %}
+					{% for choice in choices %}
 						<div>
 							{% if question.allow_multiple_choice%}
-								<input type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+								<input type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.get_main_language_page.id }}" />
 								<label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
 							{% else %}
-								<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+								<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.get_main_language_page.id }}" />
 								<label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
 							{% endif %}
 						</div>

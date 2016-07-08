@@ -2,15 +2,16 @@
 <form class="polls__form" action="{% url 'polls:vote' question.id %}" method="post">
   {% csrf_token %}
   <ul class="poll-choices">
-  {% for choice in question.choices %}
+  {% load_choices_for_poll_page question as choices %}
+  {% for choice in choices %}
     <li class="poll-choices__item">
       {% if request.user.is_authenticated %}
         {% can_vote question as can_user_vote %}
         {% if can_user_vote %}
-          {% if question.allow_multiple_choices %}
-            <input type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+          {% if question.get_main_language_page.allow_multiple_choices %}
+            <input type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.get_main_language_page.id }}" />
           {% else %}
-            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.get_main_language_page.id }}" />
           {% endif %}
         {% endif %}
       {% endif %}
@@ -23,8 +24,11 @@
     {% can_vote question as can_user_vote %}
     {% if can_user_vote %}
         <input type="submit" value="{% trans "Vote" %}" />
-    {% elif question.show_results %}
+    {% elif question.get_main_language_page.show_results %}
       <a href="{% url 'polls:results' question.id %}">{% trans "Show Results" %}</a>
+    {% elif not question.get_main_language_page.show_results %}
+      {% user_choice question as user_choice %}
+      <h5>{% trans "You voted: " %}{{user_choice}}</h5>
     {% endif %}
   {% else %}
     <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}">{% trans "Log in" %}</a>
