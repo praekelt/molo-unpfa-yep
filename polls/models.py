@@ -2,7 +2,8 @@ from django.db import models
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailadmin.edit_handlers import (
     FieldPanel, MultiFieldPanel, FieldRowPanel)
-from molo.core.models import ArticlePage, SectionPage, TranslatablePageMixin
+from molo.core.models import (ArticlePage, SectionPage, TranslatablePageMixin,
+                              SiteLanguage)
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -72,16 +73,19 @@ class Question(TranslatablePageMixin, Page):
             return Choice.objects.live().child_of(self)
 
     def get_effective_extra_style_hints(self):
-        parent_section = SectionPage.objects.all().ancestor_of(self).last()
-        if parent_section:
-            return self.extra_style_hints or \
-                parent_section.get_effective_extra_style_hints()
+        if self.extra_style_hints:
+            return self.extra_style_hints
+
+        main_lang = SiteLanguage.objects.filter(is_main_language=True).first()
+        language_rel = self.languages.all().first()
+        if language_rel and main_lang == language_rel.language:
+            parent_section = SectionPage.objects.all().ancestor_of(self).last()
+            if parent_section:
+                return parent_section.get_effective_extra_style_hints()
+            return ''
         else:
-            parent_article = ArticlePage.objects.all().ancestor_of(self).last()
-            if parent_article:
-                return self.extra_style_hints or \
-                    parent_article  .get_effective_extra_style_hints()
-        return self.extra_style_hints
+            page = self.get_main_language_page()
+            return page.specific.get_effective_extra_style_hints()
 
 Question.settings_panels = [
     MultiFieldPanel(
