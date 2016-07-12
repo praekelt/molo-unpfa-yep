@@ -2,11 +2,11 @@
 
 {% block inner_content %}
 
-    <p class="sd-help-text search">Search by typing something, or choose a category below:</p>
+    <p class="sd-help-text search">Search for the service you are looking for:</p>
 
     <form action="{% url 'location-search' %}" method="get" class="sd-search-form">
 
-        <input type="text" name="search" placeholder="I'm looking for..." />
+        <input type="text" name="search" placeholder="Find me a service about..." />
         <input type="submit" value="Search" />
 
         <br/>
