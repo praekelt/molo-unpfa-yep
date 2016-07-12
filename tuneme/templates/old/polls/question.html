@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static core_tags i18n %}
+
+{% block content %}
+  <div class="list-inline block {{self.get_effective_extra_style_hints|default:"orange"}}">
+      <h2>{% trans "What's your opinion?" %}</h2>
+      <div class="title">
+        <div class="icon"><a href=""><img src="{% static 'old/img/polls.png' %}" alt="Have Your Say"></a></div>
+	<h6><a href="">{% trans "Have Your Say" %}</a></h6>
+      </div>
+      <h3>{{ self.title }}</h3>
+      {% if self.freetextquestion %}
+        {% include 'polls/includes/poll_free_text_form.html' with question=self %}
+      {% else %}
+        {% include 'polls/includes/poll_question_form.html' with question=self %}
+      {% endif %}
+  </div>
+{% endblock %}

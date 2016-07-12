@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n static poll_votings %}
+{% block content %}
+{% if self %}
+  <div class="polls">
+    <h3 class="poll-question__title">{{ self.title }}</h3>
+    {% if self.freetextquestion %}
+      {% include 'polls/includes/poll_free_text_form.html' with question=self %}
+    {% else %}
+      {% include 'polls/includes/poll_question_form.html' with question=self %}
+    {% endif %}
+  </div>
+{% endif %}
+{% endblock %}
