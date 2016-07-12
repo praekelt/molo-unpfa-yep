@@ -24,11 +24,14 @@
         {% endfor %}
     </div>
 
-    <h1 class="sd-heading service-keywords">What we do</h1>
+    {% if organisation.about %}
+        <h1 class="sd-heading service-keywords">What we do</h1>
 
-    <p class="sd-service-keywords">
-     {{ organisation.about }}
-    </p>
+        <p class="sd-service-keywords">
+            {{ organisation.about }}
+        </p>
+
+    {% endif %}
 
     {% if organisation.telephone or organisation.email or organisation.web %}
 
