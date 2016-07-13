@@ -1,7 +1,7 @@
 {% load i18n %}
 <form action="{% url 'search' %}" class="search-form" id="search-form">
     <input
-      class="search-query"
+      id="search-query"
       name="q"
       type="text"
       placeholder="{% trans 'Search for...' %}"
