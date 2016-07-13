@@ -2,9 +2,17 @@
   display: none;
 }
 
-.article-list--latest-listing {
+.article-list--latest-listing, .article-list--section-listing {
   display: flex;
   flex-wrap: wrap;
+
+  .article-list__item {
+    box-sizing: border-box;
+    width: 50%;
+  }
+}
+
+.article-list--latest-listing {
 
   .article-list__item:first-child {
     .article-list__title, .article-list__subtitle {
@@ -31,8 +39,4 @@
 
 .article-list--latest-listing .article-list__item:first-child {
   flex: 1 100%;
-}
-.article-list--latest-listing .article-list__item {
-  box-sizing: border-box;
-  width: 50%;
 }
