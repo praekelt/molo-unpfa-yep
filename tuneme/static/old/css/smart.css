@@ -289,9 +289,9 @@ h1.sd-heading.find-a-service {color: white; text-decoration: none; font: bold 12
 .sd-search-form input[type="text"] {width: 82%; color: #FF8E1E; font: bold 100% 'Quicksand', Arial, Helvetica, sans-serif; height: auto;}
 .sd-search-form input[type="submit"] {color: #fff; width: 90%; margin: 0 0 15px 0; background-color: #FF8E1E; text-decoration: none; padding: 10px 0; font: bold 15px 'Quicksand', Arial, Helvetica, sans-serif;}
 .sd-search-form input[type="text"]::-webkit-input-placeholder {color: #FF8E1E; font: bold 100% 'Quicksand', Arial, Helvetica, sans-serif;}
-.sd-search-form input[type="text"]:-moz-placeholder {color: #FF8E1E; font: bold 125% 'Quicksand', Arial, Helvetica, sans-serif;}
-.sd-search-form input[type="text"]::-moz-placeholder {color: #FF8E1E; font: bold 125% 'Quicksand', Arial, Helvetica, sans-serif;}
-.sd-search-form input[type="text"]:-ms-input-placeholder {color: #FF8E1E; font: bold 125% 'Quicksand', Arial, Helvetica, sans-serif;}
+.sd-search-form input[type="text"]:-moz-placeholder {color: #FF8E1E; font: bold 100% 'Quicksand', Arial, Helvetica, sans-serif;}
+.sd-search-form input[type="text"]::-moz-placeholder {color: #FF8E1E; font: bold 100% 'Quicksand', Arial, Helvetica, sans-serif;}
+.sd-search-form input[type="text"]:-ms-input-placeholder {color: #FF8E1E; font: bold 100% 'Quicksand', Arial, Helvetica, sans-serif;}
 .sd-categories {padding: 0 10px 15px 10px;}
 h1.sd-heading.category-grouping {padding-left: 8px; margin-bottom: 5px;}
 .sd-back {text-align: left; font-weight: bold; padding: 15px 0 0 10px; font-size: 100%;}
