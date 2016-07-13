@@ -10,6 +10,12 @@
     box-sizing: border-box;
     width: 50%;
   }
+
+  .article-list__image {
+    float: none;
+    width: 100%;
+    margin-bottom: 5px;
+  }
 }
 
 .article-list--latest-listing {
@@ -19,16 +25,17 @@
       padding: 0 5px;
     }
   }
-
-  .article-list__image {
-    width: 100%;
-    margin-bottom: 5px;
-  }
 }
 
 .article-list__item {
   padding-left: 20px;
   padding-right: 20px;
+  overflow: auto;
+}
+
+.article-list__image {
+  float: left;
+  margin-right: 20px;
 }
 
 .article-list--latest-listing .article-list__item:first-child {
