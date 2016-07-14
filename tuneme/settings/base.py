@@ -324,14 +324,20 @@ WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
 # http://wagtail.readthedocs.org/en/latest/core_components/search/backends.html#elasticsearch-backend  # noqa
 #
 WAGTAILSEARCH_RESULTS_TEMPLATE = 'search/search_results.html'
-WAGTAILSEARCH_BACKENDS = {
-    'default': {
-        'BACKEND': (
-            'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch'),
-        'INDEX': 'tuneme',
-        'AUTO_UPDATE': True,
-    },
-}
+
+# NOTE: We're falling back to the DB backend because multi-language filtering
+# requires us to filter on a related field which is not currently supported
+# by Wagtail (http://docs.wagtail.io/en/v1.5.2/topics/search/indexing.html)
+# Filtering on index.RelatedFields with the QuerySet API is planned for a future release of Wagtail. # noqa
+
+# WAGTAILSEARCH_BACKENDS = {
+#     'default': {
+#         'BACKEND': (
+#             'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch'),
+#         'INDEX': 'tuneme',
+#         'AUTO_UPDATE': True,
+#     },
+# }
 
 # Whether to use face/feature detection to improve image cropping - requires OpenCV  # noqa
 WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
