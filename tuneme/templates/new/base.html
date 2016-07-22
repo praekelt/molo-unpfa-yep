@@ -104,7 +104,6 @@
     })(window,document,'script','dataLayer','{{settings.core.SiteSettings.global_ga_tag_manager}}');</script>
     <!-- End Global Google Tag Manager -->
   {% endif %}
-
   {% if settings.core.SiteSettings.global_ga_tracking_code %}
         <div style="display:none">
             <img src="{% google_analytics settings.core.SiteSettings.global_ga_tracking_code %}" width="0" height="0" />
@@ -117,8 +116,7 @@
             <img src="{% google_analytics settings.core.SiteSettings.local_ga_tracking_code %}" width="0" height="0" />
         </div>
         <!-- Local End Google Tracking Code -->
-        {% endif %}
-      
+        {% endif %} 
   {% block extra_js %}{% endblock %}
 
 </body>
