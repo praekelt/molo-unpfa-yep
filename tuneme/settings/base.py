@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 
     'molo.core',
     'tuneme',
+    'google_analytics',
 
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
