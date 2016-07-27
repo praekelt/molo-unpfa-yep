@@ -11,3 +11,11 @@
 .comments-list, .comments-list__pagination {
   background: #ebebeb;
 }
+
+@each $name, $color in $color_list {
+  .comments-list--#{$name} {
+  	input[type="submit"] {
+  		background: $color;
+  	}
+  }
+}
