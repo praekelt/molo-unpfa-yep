@@ -11,9 +11,11 @@
 		<ul class="poll-choices">
 	  {% for choice in choices %}
 	    <li class="poll-choices__item">
-	      {{ choice.title }}
+	      <span class="poll-choices__item--question-title">
+	      {{ choice.title }}</span>
 				{% if question.result_as_percentage %}
-					{{ choice.percentage }}%
+					 <span class="poll-choices__item--bar" style="width:{{ choice.percentage }}%"></span>
+					 {{ choice.percentage }}%
 				{% else %}
 					{{ choice.votes }} vote{{ choice.votes|pluralize }}
 				{% endif %}
