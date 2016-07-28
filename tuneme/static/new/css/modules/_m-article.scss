@@ -1,5 +1,4 @@
 
-
 .article__title {
   font-size: $font-large;
   font-weight: bold;
@@ -24,6 +23,10 @@
 
 .article__content {
   padding: 0 20px;
+  a {
+    font-weight: bold;
+    display: block;
+  }
   h4 {
     font-weight: bold;
   }
