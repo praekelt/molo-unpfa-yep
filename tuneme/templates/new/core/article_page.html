@@ -27,6 +27,12 @@
       <div class="article__image">
         <img src="{{ article_image.url }}" />
       </div>
+    {% elif block.block_type == 'numbered_list' %}
+         <ol>
+         {% for item in block.value %}
+           <li>{{item}}</li>
+         {% endfor %}
+         </ol>
     {% else %}
         {{ block }}
     {% endif %}
