@@ -3,7 +3,7 @@
 
 {% block content %}
 <h2 class="heading heading--polls">{% trans "Have your say" %}</h2>
-<div class="polls">
+<div class="polls polls--results">
 	<h3 class="poll-question__title">{{ question.title }}</h3>
 	{% if not question.show_results and not question.freetextquestion %}
 		{% trans "Thank you for voting!" %}
@@ -11,9 +11,11 @@
 		<ul class="poll-choices">
 	  {% for choice in choices %}
 	    <li class="poll-choices__item">
-	      {{ choice.title }}
+	      <span class="poll-choices__item--question-title">
+	      {{ choice.title }}</span>
 				{% if question.result_as_percentage %}
-					{{ choice.percentage }}%
+					 <span class="poll-choices__item--bar" style="width:{{ choice.percentage }}%"></span>
+					 {{ choice.percentage }}%
 				{% else %}
 					{{ choice.votes }} vote{{ choice.votes|pluralize }}
 				{% endif %}
