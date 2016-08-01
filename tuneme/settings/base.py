@@ -208,6 +208,7 @@ LANGUAGES = global_settings.LANGUAGES + [
     ('nr', _('Ndebele')),
     ('bem', _('Bemba')),
     ('nya', _('Nyanja')),
+    ('ny', _('Chichewa')),
 ]
 
 EXTRA_LANG_INFO = {
@@ -251,7 +252,7 @@ EXTRA_LANG_INFO = {
         'bidi': False,
         'code': 'ss',
         'name': 'Swati',
-        'name_local': 'siSwati',
+        'name_local': 'SiSwati',
     },
     'nr': {
         'bidi': False,
@@ -270,6 +271,12 @@ EXTRA_LANG_INFO = {
         'code': 'nya',
         'name': 'Nyanja',
         'name_local': 'Nyanja',
+    },
+    'ny': {
+        'bidi': False,
+        'code': 'ny',
+        'name': 'Chichewa',
+        'name_local': 'Chichewa',
     }
 }
 

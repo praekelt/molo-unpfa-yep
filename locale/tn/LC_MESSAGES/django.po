@@ -1,0 +1,772 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-08-01 09:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: polls/forms.py:20
+msgid "You didn't select a choice"
+msgstr ""
+
+#: polls/models.py:30
+msgid ""
+"Styling options that can be applied to this section and all its descendants"
+msgstr ""
+
+#: polls/models.py:35
+msgid "This option allows the users to see the results."
+msgstr ""
+
+#: polls/models.py:40
+msgid ""
+"Randomising the options allows the options to be shown in a different order "
+"each time the page is displayed."
+msgstr ""
+
+#: polls/models.py:45
+msgid ""
+"If not checked, the results will be shown as a total instead of a percentage."
+msgstr ""
+
+#: polls/models.py:51
+msgid "Allows the user to choose more than one option."
+msgstr ""
+
+#: polls/models.py:59 polls/models.py:107
+msgid "Question Settings"
+msgstr ""
+
+#: polls/models.py:104
+msgid "When selected, this question will allow numerical data only"
+msgstr ""
+
+#: tuneme/settings/base.py:201
+msgid "Zulu"
+msgstr ""
+
+#: tuneme/settings/base.py:202
+msgid "Xhosa"
+msgstr ""
+
+#: tuneme/settings/base.py:203
+msgid "Sotho"
+msgstr ""
+
+#: tuneme/settings/base.py:204
+msgid "Venda"
+msgstr ""
+
+#: tuneme/settings/base.py:205
+msgid "Tswana"
+msgstr ""
+
+#: tuneme/settings/base.py:206
+msgid "Tsonga"
+msgstr ""
+
+#: tuneme/settings/base.py:207
+msgid "Swati"
+msgstr ""
+
+#: tuneme/settings/base.py:208
+msgid "Ndebele"
+msgstr ""
+
+#: tuneme/settings/base.py:209
+msgid "Bemba"
+msgstr ""
+
+#: tuneme/settings/base.py:210
+msgid "Nyanja"
+msgstr ""
+
+#: tuneme/settings/base.py:211
+msgid "Chichewa"
+msgstr ""
+
+#: tuneme/templates/new/404.html:9 tuneme/templates/old/404.html:9
+msgid "Page not found"
+msgstr ""
+
+#: tuneme/templates/new/404.html:10 tuneme/templates/old/404.html:10
+msgid "Sorry, this page could not be found."
+msgstr ""
+
+#: tuneme/templates/new/500.html:12 tuneme/templates/new/500.html:16
+#: tuneme/templates/old/500.html:12 tuneme/templates/old/500.html:16
+msgid "Internal server error"
+msgstr ""
+
+#: tuneme/templates/new/500.html:18 tuneme/templates/old/500.html:18
+msgid "Sorry, there seems to be an error. Please try again soon."
+msgstr ""
+
+#: tuneme/templates/new/admin/question_results.html:29
+#: tuneme/templates/old/admin/question_results.html:29
+msgid "Download CSV"
+msgstr ""
+
+#: tuneme/templates/new/admin/versions.html:9
+#: tuneme/templates/old/admin/versions.html:9
+msgid "Plugin"
+msgstr ""
+
+#: tuneme/templates/new/admin/versions.html:10
+#: tuneme/templates/old/admin/versions.html:10
+msgid "PyPI Version"
+msgstr ""
+
+#: tuneme/templates/new/admin/versions.html:11
+#: tuneme/templates/old/admin/versions.html:11
+msgid "Runing Version"
+msgstr ""
+
+#: tuneme/templates/new/admin/versions.html:12
+#: tuneme/templates/old/admin/versions.html:12
+msgid "Status"
+msgstr ""
+
+#: tuneme/templates/new/admin/versions.html:20
+#: tuneme/templates/old/admin/versions.html:20
+msgid "UpToDate"
+msgstr ""
+
+#: tuneme/templates/new/admin/versions.html:23
+#: tuneme/templates/old/admin/versions.html:23
+msgid "Not installed"
+msgstr ""
+
+#: tuneme/templates/new/admin/versions.html:25
+#: tuneme/templates/old/admin/versions.html:25
+msgid "Compare"
+msgstr ""
+
+#: tuneme/templates/new/base.html:35 tuneme/templates/old/base.html:16
+#: tuneme/templates/old/base.html:32
+msgid "Menu"
+msgstr ""
+
+#: tuneme/templates/new/base.html:36 tuneme/templates/new/base.html:65
+#: tuneme/templates/new/search/search_block.html:9
+#: tuneme/templates/new/search/search_results.html:71
+#: tuneme/templates/new/search/search_results.html:77
+#: tuneme/templates/old/base.html:20 tuneme/templates/old/base.html:56
+#: tuneme/templates/old/search/search_results.html:59
+#: tuneme/templates/old/search/search_results.html:66
+msgid "Search"
+msgstr ""
+
+#: tuneme/templates/new/base.html:39
+msgid "Do you have questions on love, sex and relationships?"
+msgstr ""
+
+#: tuneme/templates/new/base.html:50
+#: tuneme/templates/old/search/search_block.html:3
+msgid "Back to top"
+msgstr ""
+
+#: tuneme/templates/new/base.html:51
+#: tuneme/templates/new/comments/comments.html:7
+#: tuneme/templates/new/comments/preview.html:6
+#: tuneme/templates/new/core/article_page.html:6
+#: tuneme/templates/new/core/section_page.html:7
+#: tuneme/templates/new/core/tags/breadcrumbs.html:6
+#: tuneme/templates/new/polls/results.html:26
+#: tuneme/templates/old/core/section_page.html:67
+#: tuneme/templates/old/core/tags/breadcrumbs.html:6
+#: tuneme/templates/old/polls/detail.html:32
+#: tuneme/templates/old/polls/free_text_detail.html:22
+#: tuneme/templates/old/polls/results.html:38
+msgid "Home"
+msgstr ""
+
+#: tuneme/templates/new/base.html:52
+msgid "Find A Service"
+msgstr ""
+
+#: tuneme/templates/new/base.html:67 tuneme/templates/old/base.html:48
+msgid "Your Profile"
+msgstr ""
+
+#: tuneme/templates/new/base.html:68
+msgid "Log out"
+msgstr ""
+
+#: tuneme/templates/new/base.html:70
+#: tuneme/templates/new/core/article_page.html:71
+#: tuneme/templates/new/polls/includes/poll_question_form.html:34
+#: tuneme/templates/new/registration/login.html:5
+#: tuneme/templates/new/registration/login.html:26
+msgid "Log in"
+msgstr ""
+
+#: tuneme/templates/new/base.html:71
+#: tuneme/templates/new/core/article_page.html:73
+#: tuneme/templates/new/polls/includes/poll_question_form.html:36
+#: tuneme/templates/new/profiles/done.html:6
+#: tuneme/templates/new/profiles/register.html:7
+#: tuneme/templates/new/profiles/register.html:39
+msgid "Register"
+msgstr ""
+
+#: tuneme/templates/new/comments/comment.html:18
+#: tuneme/templates/old/comments/comment.html:18
+msgid ""
+"This comment has been removed by the community. Please read our platform "
+"rules."
+msgstr ""
+
+#: tuneme/templates/new/comments/comment.html:24
+#: tuneme/templates/new/comments/reply.html:7
+#: tuneme/templates/old/comments/comment.html:24
+#: tuneme/templates/old/comments/reply.html:7
+msgid "Reply"
+msgstr ""
+
+#: tuneme/templates/new/comments/comment.html:31
+#: tuneme/templates/old/comments/comment.html:22
+msgid "Report"
+msgstr ""
+
+#: tuneme/templates/new/comments/comments.html:10
+#: tuneme/templates/old/comments/comments.html:7
+msgid "Comments"
+msgstr ""
+
+#: tuneme/templates/new/comments/comments.html:34
+#: tuneme/templates/new/comments/report_response.html:8
+#: tuneme/templates/old/comments/comments.html:30
+#: tuneme/templates/old/comments/report_response.html:17
+msgid "Back to article"
+msgstr ""
+
+#: tuneme/templates/new/comments/form.html:12
+#: tuneme/templates/old/core/article_page.html:81
+msgid "Comment"
+msgstr ""
+
+#: tuneme/templates/new/comments/form.html:13
+msgid "Comment anonymously"
+msgstr ""
+
+#: tuneme/templates/new/comments/preview.html:7
+msgid "Comment preview"
+msgstr ""
+
+#: tuneme/templates/new/comments/preview.html:14
+#: tuneme/templates/new/comments/reply.html:22
+#: tuneme/templates/old/comments/preview.html:37
+#: tuneme/templates/old/comments/reply.html:22
+msgid "Please "
+msgstr ""
+
+#: tuneme/templates/new/comments/preview.html:14
+#: tuneme/templates/new/comments/reply.html:22
+#: tuneme/templates/old/comments/preview.html:37
+#: tuneme/templates/old/comments/reply.html:22
+msgid "log in"
+msgstr ""
+
+#: tuneme/templates/new/comments/preview.html:14
+#: tuneme/templates/new/comments/reply.html:22
+#: tuneme/templates/old/comments/preview.html:37
+#: tuneme/templates/old/comments/reply.html:22
+msgid " to leave a comment."
+msgstr ""
+
+#: tuneme/templates/new/comments/report_response.html:6
+#: tuneme/templates/old/comments/report_response.html:14
+msgid "This comment has been reported."
+msgstr ""
+
+#: tuneme/templates/new/comments/report_response.html:7
+msgid ""
+"It will be reviewed by the Tune Me team and may be removed if it breaks our "
+"platform rules"
+msgstr ""
+
+#: tuneme/templates/new/core/article_page.html:51
+msgid "Join the discussion"
+msgstr ""
+
+#: tuneme/templates/new/core/article_page.html:63
+#: tuneme/templates/new/core/section_page.html:25
+#: tuneme/templates/new/core/section_page.html:47
+#: tuneme/templates/new/core/tags/section_listing_homepage.html:20
+msgid "More"
+msgstr ""
+
+#: tuneme/templates/new/core/article_page.html:72
+#: tuneme/templates/new/polls/includes/poll_question_form.html:35
+msgid "or"
+msgstr ""
+
+#: tuneme/templates/new/core/article_page.html:74
+msgid "to comment"
+msgstr ""
+
+#: tuneme/templates/new/core/article_page.html:78
+#: tuneme/templates/old/core/article_page.html:91
+msgid "Commenting on this article is currently disabled"
+msgstr ""
+
+#: tuneme/templates/new/core/language_block.html:5
+msgid "Language"
+msgstr ""
+
+#: tuneme/templates/new/core/tags/latest_listing_homepage.html:3
+#: tuneme/templates/old/core/tags/latest_listing_homepage.html:6
+msgid "Fresh Stories"
+msgstr ""
+
+#: tuneme/templates/new/polls/includes/poll_free_text_form.html:19
+#: tuneme/templates/old/polls/includes/poll_free_text_form.html:14
+msgid "Submit"
+msgstr ""
+
+#: tuneme/templates/new/polls/includes/poll_free_text_form.html:21
+msgid "Thank you! Your repsonse has already been submitted."
+msgstr ""
+
+#: tuneme/templates/new/polls/includes/poll_free_text_form.html:25
+#: tuneme/templates/old/polls/includes/poll_free_text_form.html:19
+#: tuneme/templates/old/polls/includes/poll_question_form.html:20
+msgid "Log in to vote"
+msgstr ""
+
+#: tuneme/templates/new/polls/includes/poll_question_form.html:26
+#: tuneme/templates/old/polls/detail.html:30
+#: tuneme/templates/old/polls/free_text_detail.html:20
+#: tuneme/templates/old/polls/includes/poll_question_form.html:35
+msgid "Vote"
+msgstr ""
+
+#: tuneme/templates/new/polls/includes/poll_question_form.html:28
+#: tuneme/templates/old/polls/includes/poll_question_form.html:37
+msgid "Show Results"
+msgstr ""
+
+#: tuneme/templates/new/polls/includes/poll_question_form.html:31
+#: tuneme/templates/old/polls/includes/poll_question_form.html:40
+msgid "You voted: "
+msgstr ""
+
+#: tuneme/templates/new/polls/includes/poll_question_form.html:37
+msgid "to vote"
+msgstr ""
+
+#: tuneme/templates/new/polls/results.html:5
+msgid "Have your say"
+msgstr ""
+
+#: tuneme/templates/new/polls/results.html:9
+#: tuneme/templates/old/polls/results.html:35
+msgid "Thank you for voting!"
+msgstr ""
+
+#: tuneme/templates/new/profiles/_change_password.html:43
+#: tuneme/templates/new/profiles/viewprofile.html:62
+#: tuneme/templates/old/profiles/_change_password.html:43
+msgid "Change Password"
+msgstr ""
+
+#: tuneme/templates/new/profiles/_editprofile.html:12
+#: tuneme/templates/old/profiles/_editprofile.html:13
+#: tuneme/templates/old/profiles/viewprofile.html:31
+msgid "Update profile"
+msgstr ""
+
+#: tuneme/templates/new/profiles/done.html:10
+#: tuneme/templates/old/profiles/done.html:7
+msgid "Thank you for joining!"
+msgstr ""
+
+#: tuneme/templates/new/profiles/done.html:11
+#: tuneme/templates/old/profiles/done.html:8
+msgid "Let us know your birthday to get access to exclusive content."
+msgstr ""
+
+#: tuneme/templates/new/profiles/done.html:17
+msgid "Save"
+msgstr ""
+
+#: tuneme/templates/new/profiles/done.html:18
+#: tuneme/templates/old/profiles/done.html:13
+msgid "Skip"
+msgstr ""
+
+#: tuneme/templates/new/profiles/register.html:11
+msgid "Already have an account? Log in"
+msgstr ""
+
+#: tuneme/templates/new/profiles/register.html:17
+#: tuneme/templates/new/registration/login.html:20
+#: tuneme/templates/old/registration/login.html:17
+msgid "Username"
+msgstr ""
+
+#: tuneme/templates/new/profiles/register.html:21
+#: tuneme/templates/new/registration/login.html:23
+msgid "4 digit pin"
+msgstr ""
+
+#: tuneme/templates/new/profiles/register.html:21
+#: tuneme/templates/new/registration/login.html:23
+msgid "(eg: 5656)"
+msgstr ""
+
+#: tuneme/templates/new/profiles/register.html:26
+#: tuneme/templates/new/profiles/viewprofile.html:19
+msgid "Mobile number"
+msgstr ""
+
+#: tuneme/templates/new/profiles/register.html:26
+#: tuneme/templates/new/profiles/viewprofile.html:19
+msgid "(eg: 260979000001)"
+msgstr ""
+
+#: tuneme/templates/new/profiles/register.html:33
+msgid "I accept the terms and conditions"
+msgstr ""
+
+#: tuneme/templates/new/profiles/register.html:35
+#: tuneme/templates/old/profiles/register.html:36
+msgid "Please accept the T&amp;Cs in order to complete the registration"
+msgstr ""
+
+#: tuneme/templates/new/profiles/viewprofile.html:8
+msgid "Hello"
+msgstr ""
+
+#: tuneme/templates/new/profiles/viewprofile.html:15
+msgid "Nickname"
+msgstr ""
+
+#: tuneme/templates/new/profiles/viewprofile.html:15
+msgid "Appears in comments"
+msgstr ""
+
+#: tuneme/templates/new/profiles/viewprofile.html:23
+#: tuneme/templates/old/profiles/done.html:12
+msgid "Update"
+msgstr ""
+
+#: tuneme/templates/new/profiles/viewprofile.html:28
+msgid "Change 4 digit pin"
+msgstr ""
+
+#: tuneme/templates/new/profiles/viewprofile.html:48
+#: tuneme/templates/old/profiles/viewprofile.html:55
+msgid "Old Password:"
+msgstr ""
+
+#: tuneme/templates/new/profiles/viewprofile.html:53
+#: tuneme/templates/old/profiles/viewprofile.html:60
+msgid "New Password:"
+msgstr ""
+
+#: tuneme/templates/new/profiles/viewprofile.html:58
+#: tuneme/templates/old/profiles/viewprofile.html:65
+msgid "Confirm Password:"
+msgstr ""
+
+#: tuneme/templates/new/registration/login.html:10
+msgid "Don't have an account? Register"
+msgstr ""
+
+#: tuneme/templates/new/registration/login.html:17
+#: tuneme/templates/old/registration/login.html:15
+msgid "Your username and password does not match. Please try again."
+msgstr ""
+
+#: tuneme/templates/new/search/search_block.html:7
+msgid "Search for..."
+msgstr ""
+
+#: tuneme/templates/new/search/search_results.html:7
+msgid "your results:"
+msgstr ""
+
+#: tuneme/templates/new/search/search_results.html:73
+#: tuneme/templates/old/search/search_results.html:62
+msgid "No search results for "
+msgstr ""
+
+#: tuneme/templates/new/search/search_results.html:76
+#: tuneme/templates/old/search/search_results.html:65
+msgid "I am looking for"
+msgstr ""
+
+#: tuneme/templates/new/wagtailadmin/pages/listing/_page_title_explore.html:7
+#: tuneme/templates/new/wagtailadmin/pages/listing/_page_title_explore.html:19
+#: tuneme/templates/old/wagtailadmin/pages/listing/_page_title_explore.html:7
+#: tuneme/templates/old/wagtailadmin/pages/listing/_page_title_explore.html:19
+msgid "Edit this page"
+msgstr ""
+
+#: tuneme/templates/new/wagtailadmin/pages/listing/_page_title_explore.html:19
+#: tuneme/templates/old/wagtailadmin/pages/listing/_page_title_explore.html:19
+msgid "Edit"
+msgstr ""
+
+#: tuneme/templates/new/wagtailadmin/pages/listing/_page_title_explore.html:22
+#: tuneme/templates/old/wagtailadmin/pages/listing/_page_title_explore.html:22
+msgid "Draft"
+msgstr ""
+
+#: tuneme/templates/new/wagtailadmin/pages/listing/_page_title_explore.html:25
+#: tuneme/templates/old/wagtailadmin/pages/listing/_page_title_explore.html:25
+msgid ""
+"This page is published but does not exist within a configured Site, so "
+"cannot be viewed."
+msgstr ""
+
+#: tuneme/templates/new/wagtailadmin/pages/listing/_page_title_explore.html:25
+#: tuneme/templates/old/wagtailadmin/pages/listing/_page_title_explore.html:25
+msgid "Live"
+msgstr ""
+
+#: tuneme/templates/new/wagtailadmin/pages/listing/_page_title_explore.html:28
+#: tuneme/templates/old/wagtailadmin/pages/listing/_page_title_explore.html:28
+msgid "Move"
+msgstr ""
+
+#: tuneme/templates/new/wagtailadmin/pages/listing/_page_title_explore.html:31
+#: tuneme/templates/old/wagtailadmin/pages/listing/_page_title_explore.html:31
+msgid "Copy"
+msgstr ""
+
+#: tuneme/templates/new/wagtailadmin/pages/listing/_page_title_explore.html:34
+#: tuneme/templates/old/wagtailadmin/pages/listing/_page_title_explore.html:34
+msgid "Delete"
+msgstr ""
+
+#: tuneme/templates/new/wagtailadmin/pages/listing/_page_title_explore.html:37
+#: tuneme/templates/old/wagtailadmin/pages/listing/_page_title_explore.html:37
+msgid "Unpublish"
+msgstr ""
+
+#: tuneme/templates/new/wagtailadmin/pages/listing/_page_title_explore.html:40
+#: tuneme/templates/old/wagtailadmin/pages/listing/_page_title_explore.html:40
+msgid "Add child page"
+msgstr ""
+
+#: tuneme/templates/new/your_words_backup/your_words_competition_tag.html:9
+msgid "Competition"
+msgstr ""
+
+#: tuneme/templates/new/your_words_backup/your_words_competition_tag.html:18
+msgid "Share your story"
+msgstr ""
+
+#: tuneme/templates/new/your_words_backup/your_words_competition_tag.html:27
+msgid "Enter"
+msgstr ""
+
+#: tuneme/templates/new/your_words_backup/your_words_competition_tag.html:29
+msgid "Log in to Enter"
+msgstr ""
+
+#: tuneme/templates/old/base.html:8 tuneme/templates/old/base.html:9
+msgid "TuneMe"
+msgstr ""
+
+#: tuneme/templates/old/base.html:12 tuneme/templates/old/base.html:26
+#: tuneme/templates/old/profiles/register.html:8
+msgid "Join"
+msgstr ""
+
+#: tuneme/templates/old/base.html:14 tuneme/templates/old/base.html:28
+msgid "Profile"
+msgstr ""
+
+#: tuneme/templates/old/base.html:55
+#: tuneme/templates/old/search/search_block.html:6
+msgid "Looking for something?"
+msgstr ""
+
+#: tuneme/templates/old/base.html:74
+msgid "HOME"
+msgstr ""
+
+#: tuneme/templates/old/base.html:87
+msgid "Site Language:"
+msgstr ""
+
+#: tuneme/templates/old/comments/form.html:7
+msgid "Please correct the error below"
+msgid_plural ""
+"Please correct the\n"
+"        errors below"
+msgstr[0] ""
+msgstr[1] ""
+
+#: tuneme/templates/old/comments/report_response.html:10
+msgid "Thanks!"
+msgstr ""
+
+#: tuneme/templates/old/comments/report_response.html:15
+msgid ""
+"It will be reviewed by the Tune Me team and may be removed if it breaks our "
+"Platform rules"
+msgstr ""
+
+#: tuneme/templates/old/core/article_page.html:70
+#: tuneme/templates/old/core/section_page.html:59
+#: tuneme/templates/old/polls/detail.html:8
+#: tuneme/templates/old/polls/free_text_detail.html:10
+#: tuneme/templates/old/polls/poll_page.html:12
+#: tuneme/templates/old/polls/question.html:9
+#: tuneme/templates/old/polls/results.html:10
+msgid "Have Your Say"
+msgstr ""
+
+#: tuneme/templates/old/core/article_page.html:81
+#: tuneme/templates/old/core/section_page.html:30
+#: tuneme/templates/old/core/tags/section_listing_homepage.html:28
+msgid "comment"
+msgstr ""
+
+#: tuneme/templates/old/core/article_page.html:87
+msgid "Log in to comment"
+msgstr ""
+
+#: tuneme/templates/old/core/article_page.html:107
+msgid "view more comments"
+msgstr ""
+
+#: tuneme/templates/old/core/section_page.html:32
+#: tuneme/templates/old/core/section_page.html:49
+#: tuneme/templates/old/core/tags/section_listing_homepage.html:30
+msgid "Read on"
+msgstr ""
+
+#: tuneme/templates/old/core/section_page.html:34
+#: tuneme/templates/old/core/tags/section_listing_homepage.html:31
+msgid "View Similar"
+msgstr ""
+
+#: tuneme/templates/old/core/tags/section_listing_homepage.html:3
+msgid "Topics"
+msgstr ""
+
+#: tuneme/templates/old/polls/includes/poll_free_text_form.html:16
+msgid "Thank you! Your response has already been submitted."
+msgstr ""
+
+#: tuneme/templates/old/polls/poll_page.html:6
+#: tuneme/templates/old/polls/question.html:6
+msgid "What's your opinion?"
+msgstr ""
+
+#: tuneme/templates/old/polls/results.html:16
+msgid "Your answers"
+msgstr ""
+
+#: tuneme/templates/old/profiles/register.html:12
+msgid "Not a member yet? Join us by signing up below."
+msgstr ""
+
+#: tuneme/templates/old/profiles/register.html:15
+msgid "Choose a username"
+msgstr ""
+
+#: tuneme/templates/old/profiles/register.html:20
+msgid "Choose a 4-digit pin"
+msgstr ""
+
+#: tuneme/templates/old/profiles/register.html:27
+msgid "Enter your mobile number"
+msgstr ""
+
+#: tuneme/templates/old/profiles/register.html:28
+#: tuneme/templates/old/profiles/viewprofile.html:24
+msgid "(e.g. +260979000001)"
+msgstr ""
+
+#: tuneme/templates/old/profiles/register.html:40
+msgid "I accept the Terms and Conditions"
+msgstr ""
+
+#: tuneme/templates/old/profiles/register.html:43
+msgid "JOIN"
+msgstr ""
+
+#: tuneme/templates/old/profiles/register.html:45
+msgid "already joined?"
+msgstr ""
+
+#: tuneme/templates/old/profiles/viewprofile.html:8
+msgid "Hello "
+msgstr ""
+
+#: tuneme/templates/old/profiles/viewprofile.html:11
+msgid "log out"
+msgstr ""
+
+#: tuneme/templates/old/profiles/viewprofile.html:17
+msgid "Change your name"
+msgstr ""
+
+#: tuneme/templates/old/profiles/viewprofile.html:18
+msgid "When you type comments your name will appear as:"
+msgstr ""
+
+#: tuneme/templates/old/profiles/viewprofile.html:20
+msgid "Type new display name:"
+msgstr ""
+
+#: tuneme/templates/old/profiles/viewprofile.html:23
+msgid "Update your mobile number:"
+msgstr ""
+
+#: tuneme/templates/old/profiles/viewprofile.html:25
+msgid "Your mobile number is:"
+msgstr ""
+
+#: tuneme/templates/old/profiles/viewprofile.html:38
+msgid "Change Your Password"
+msgstr ""
+
+#: tuneme/templates/old/profiles/viewprofile.html:69
+msgid "Change"
+msgstr ""
+
+#: tuneme/templates/old/registration/login.html:6
+#: tuneme/templates/old/registration/login.html:21
+msgid "Sign in"
+msgstr ""
+
+#: tuneme/templates/old/registration/login.html:11
+msgid "LOGIN TO YOUR ACCOUNT!"
+msgstr ""
+
+#: tuneme/templates/old/registration/login.html:12
+msgid "We’re excited to have you..."
+msgstr ""
+
+#: tuneme/templates/old/registration/login.html:19
+msgid "4-digit pin"
+msgstr ""
+
+#: tuneme/templates/old/registration/login.html:23
+msgid "Not a member yet"
+msgstr ""
+
+#: tuneme/templates/old/search/search_block.html:7
+msgid "SEARCH"
+msgstr ""
