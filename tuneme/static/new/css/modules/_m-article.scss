@@ -29,4 +29,16 @@
   h4 {
     font-weight: bold;
   }
+
+  ul, ol, li {
+      list-style-position: inside;
+  }
+
+  ul li {
+    list-style-type: disc;
+  }
+
+  ol li {
+    list-style-type: decimal;
+  }
 }
