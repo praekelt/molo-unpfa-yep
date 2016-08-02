@@ -4,15 +4,15 @@
 
 
 {% block content %}
-<h1 class="heading heading--profiles heading--auth">{% trans "Hello " %}{{ user.username }}</h1>
+<h1 class="heading heading--profiles">{% trans "Hello " %}{{ user.username }}</h1>
 
-<div class="auth-tools">
+<div class="profiles">
   <form method="post" action="{% url 'molo.profiles:edit_my_profile' %}" class="profiles__form">
   {% csrf_token %}
     <fieldset>
       <label for="id_alias">
         {% trans "Nickname" %} 
-        <span>({% trans "Appears in comments" %})</span>
+        <span class="input-hint">({% trans "Appears in comments" %})</span>
       </label>
       <input type="text" name="alias" id="id_alias" value="{{ alias }}" />
     </fieldset>

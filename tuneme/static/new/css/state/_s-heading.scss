@@ -3,10 +3,6 @@
   font-size: $font-large;
 }
 
-.heading--auth {
-  margin: 0;
-}
-
 @each $name, $color in $color_list {
   .heading--#{$name}, .heading--#{$name} a {
     color: $color;

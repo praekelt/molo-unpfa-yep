@@ -2,27 +2,31 @@
 {% load i18n %}
 
 {% block content %}
-<div class="heading heading--auth">{% trans "Log in" %}</div>
-
-
-<div class="auth-tools">
-
-	<a href="{% url 'molo.profiles:user_register' %}">{% trans "Don't have an account? Register" %}</a>
-
-	<form method="post" action="">
-		{% csrf_token %}
+<h1 class="heading heading--profiles">{% trans "Log in" %}</h1>
+<div class="call-to-action call-to-action--profile">
+    <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
+    {% trans "Don't have an account? " %}</h5>
+    <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__nav-item call-to-action__nav-item--login">
+    {% trans "Register" %}</a>
+</div>
+<div class="profiles">
+	<form method="post" class="profiles__form">
+	{% csrf_token %}
 		<input type="hidden" name="next" value="{% if not request.GET.next %}/{% else %}{{ request.GET.next }}{% endif %}" />
 
 		{% if form.errors %}
-			<p class="error">{% trans "Your username and password does not match. Please try again." %}</p>
+			<span class="error">{% trans "Your username and password does not match. Please try again." %}</span>
 		{% endif %}
+		<fieldset>
+			<label for="id_username">{% trans "Username" %}</label>
+			{{ form.username }}
+		</fieldset>
 
-		<label for="id_username">{% trans "Username" %}</label>
-		{{ form.username }}
-
-		<label for="id_password">{% trans "4 digit pin" %} <span>{% trans "(eg: 5656)" %}</span></label>
-		{{ form.password }}
-
+		<fieldset>
+			<label for="id_password">{% trans "4 digit pin" %}</label>
+			{{ form.password }}
+			<span class="input-hint">{% trans "(eg: 5656)" %}</span>
+		</fieldset>
 		<input type="submit" value="{% trans "Log in" %}">
 	</form>
 </div>
