@@ -73,8 +73,10 @@ INSTALLED_APPS = [
     'wagtailmodeladmin',
     'wagtailmedia',
     'wagtail.contrib.settings',
+    'wagtailsurveys',
 
     'mptt',
+    'molo.surveys',
     'molo.profiles',
     'django_comments',
     'molo.commenting',

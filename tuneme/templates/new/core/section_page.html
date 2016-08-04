@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags core_tags poll_votings static core_tags i18n %}
+{% load wagtailcore_tags wagtailimages_tags molo_survey_tags core_tags poll_votings static core_tags i18n %}
 
 {% block content %}
 
@@ -47,5 +47,7 @@
     <li class="article-list__item article-list__item--more"><a href="{% pageurl section %}">{% trans "More" %} {{section.title}}</a></li>
   </ul>
 {% endfor %}
+
+{% surveys_list_for_pages page=self %}
 
 {% endblock %}

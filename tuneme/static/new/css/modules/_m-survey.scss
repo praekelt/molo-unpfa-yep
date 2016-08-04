@@ -1,0 +1,70 @@
+.surveys {
+  .call-to-action__nav-item--back-home {
+    color: #EF9955;
+  }
+}
+
+.surveys__title {
+  color: #EF9955;
+  word-break: break-word;
+  border-top: 2px solid #EF9955;
+  padding: 5px 15px;
+  font-size: $font-large;
+
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.surveys__thank-you {
+  padding: 10px 16px;
+  font-size: $font-x-large;
+}
+
+.surveys__intro {
+  padding: 0 16px;
+  font-weight: normal;
+}
+
+.surveys__results {
+  padding: 5px 16px;
+  margin: 15px 0;
+  border-top: 1px solid #DEDEDE;
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.surveys__helptext {
+  color: #999;
+  font-size: $font-x-small;
+  padding-bottom: 10px;
+  display: block;
+}
+
+.surveys__answer {
+  background: #DEDEDE;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+.call-to-action--surveys {
+  padding: 16px;
+}
+
+input[type="submit"],
+.call-to-action__nav-item--surveys {
+  color: #000;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.surveys__form {
+  padding: 0 16px;
+
+  label {
+    color: #000;
+    padding: 0;
+  }
+}
+
+.error--surveys {
+  padding: 0 16px;
+}
