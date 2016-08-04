@@ -5,9 +5,9 @@
 <h1 class="heading heading--profiles">{% trans "Log in" %}</h1>
 <div class="call-to-action call-to-action--profile">
     <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
-    {% trans "Don't have an account? " %}</h5>
-    <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__nav-item call-to-action__nav-item--login">
-    {% trans "Register" %}</a>
+    {% trans "Don't have an account yet?" %}<br/>
+    <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__link">
+    {% trans "Click here" %}</a> {% trans "to join today!" %}</h5>
 </div>
 <div class="profiles">
 	<form method="post" class="profiles__form">
@@ -29,5 +29,12 @@
 		</fieldset>
 		<input type="submit" value="{% trans "Log in" %}">
 	</form>
+</div>
+
+<div class="call-to-action call-to-action--profile">
+    <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
+    {% trans "Not a memember yet?" %}</h5>
+    <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__nav-item call-to-action__nav-item--login">
+    {% trans "Register" %}</a>
 </div>
 {% endblock %}

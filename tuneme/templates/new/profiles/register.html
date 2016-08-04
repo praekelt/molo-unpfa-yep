@@ -7,9 +7,13 @@
 
 <div class="call-to-action call-to-action--profile">
     <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
-    {% trans "Already have an account? " %}</h5>
-    <a href="{% url 'molo.profiles:auth_login' %}" class="call-to-action__nav-item call-to-action__nav-item--login">
-    {% trans "Log in" %}</a>
+    {% trans "Not a member yet?" %}<br/>
+    {% trans "Join by signing up below. " %}<br/>
+    {% trans "Or" %}
+    <a href="{% url 'molo.profiles:auth_login' %}" class="call-to-action__link">
+    {% trans "log in now" %}</a>
+    {% trans "if you've not already joined" %}
+    </h5>
 </div>
 
 <div class="profiles">
@@ -51,5 +55,11 @@
     </fieldset>
     <input type="submit" value="{% trans "Register" %}" />
   </form>
+</div>
+<div class="call-to-action call-to-action--profile">
+    <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
+    {% trans "Already registered?" %}</h5>
+     <a href="{% url 'molo.profiles:auth_login' %}" class="call-to-action__nav-item call-to-action__nav-item--login">
+    {% trans "Log in" %}</a>
 </div>
 {% endblock %}

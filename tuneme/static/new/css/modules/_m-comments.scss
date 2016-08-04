@@ -27,6 +27,9 @@
   font-size: $font-x-small;
 }
 
-.comment, .comments-list__disabled, .comments-list__pagination, .comments__reported, .comments-list .auth-call-to-action  {
+.comment, .comments-list__disabled, 
+.comments-list__pagination,
+.comments__reported, 
+.comments-list .auth-call-to-action  {
   padding: 10px 20px;
 }
