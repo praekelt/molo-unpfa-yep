@@ -1,0 +1,33 @@
+.profiles__form {
+  padding: 5px 20px;
+  margin: 0 0 20px 0;
+}
+.profiles__terms {
+  display:inline;
+  width: auto;
+  text-decoration: underline;
+}
+
+.input-hint {
+ font-weight: normal;
+ color: #999;
+}
+
+.call-to-action {
+  padding: 5px 20px;
+}
+
+.call-to-action__nav-item--challenge,
+.call-to-action__nav-item  {
+  font-size: $font-large;
+}
+
+.call-to-action__nav-item--login {
+  color: #fff;
+  margin: 10px 0;
+}
+
+.call-to-action__link {
+  font-weight: bold;
+  text-decoration: underline;
+}

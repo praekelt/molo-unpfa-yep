@@ -1,5 +1,13 @@
 
-@media only screen and (min-device-width: 320px) {
+@import "_s-header";
+@import "_s-heading";
+@import "_s-menu";
+@import "_s-polls";
+@import "_s-article";
+@import "_s-article-list";
+@import "_s-comments";
+
+@media only screen and (min-width: 320px) {
 
   @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700);
 
@@ -9,10 +17,39 @@
     font-family: 'Quicksand', sans-serif;
   }
 
+  .search-form {
+    display: flex;
+    input[type="text"] {
+      border-top-left-radius: 19px;
+      border-bottom-left-radius: 19px;
+    }
+    input[type="submit"] {
+      border-radius: 0;
+      border-top-right-radius: 19px;
+      border-bottom-right-radius: 19px;
+      color: transparent;
+      background: #fff url(/static/new/img/search-black.png) no-repeat 90%;
+      background-size: 20%;
+      width: 100%;
+    }
+  }
+
+  .call-to-action__nav-item--login,
   input[type="submit"] {
     line-height: 28px;
     border-radius: 14px;
-    width: 100%;
+  }
+
+  .call-to-action__nav-item {
+    color: #cd36f5;
+  }
+  .call-to-action__link {
+    color: #990099;
+  }
+  .call-to-action__nav-item--login {
+    color: #fff;
+    display: inline-block;
+    padding: 1px 20px;
   }
 
   .copyright {
@@ -27,13 +64,13 @@
     }
   }
 
-  @import "_s-header";
-  @import "_s-heading";
-  @import "_s-menu";
-  @import "_s-polls";
-  @import "_s-article";
-  @import "_s-article-list";
-  @import "_s-comments";
+  .heading--profiles {
+    padding: 30px 20px;
+    background: #000;
+    color: #fff;
+    padding: 10px 0 30px 20px;
+    font-size: $font-xx-large;
+  }
 
 }
 

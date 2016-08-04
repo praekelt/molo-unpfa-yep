@@ -4,62 +4,67 @@
 
 
 {% block content %}
-<div class="heading heading--auth">
-	{% trans "Hello" %} {{ username }}
-</div>
+<h1 class="heading heading--profiles">{% trans "Hello " %}{{ user.username }}</h1>
 
-<div class="auth-tools">
-  <form method="post" action="{% url 'molo.profiles:edit_my_profile' %}">
-    {% csrf_token %}
-
-    <label for="id_alias">{% trans "Nickname" %} <span>({% trans "Appears in comments" %})</span></label>
-    <input type="text" name="alias" id="id_alias" value="{{ alias }}" />
+<div class="profiles">
+  <form method="post" action="{% url 'molo.profiles:edit_my_profile' %}" class="profiles__form">
+  {% csrf_token %}
+    <fieldset>
+      <label for="id_alias">
+        {% trans "Nickname" %} 
+        <span class="input-hint">({% trans "Appears in comments" %})</span>
+      </label>
+      <input type="text" name="alias" id="id_alias" value="{{ alias }}" />
+    </fieldset>
 
     {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
-      <label for="id_mobile_number">{% trans "Mobile number" %} <span>{% trans "(eg: 260979000001)" %}</span></label>
+    <fieldset>
+      <label for="id_mobile_number">{% trans "Mobile number" %}</label>
       {{ edit_profile_form.mobile_number.errors}}
       {{ edit_profile_form.mobile_number }}
-    {% endif %}
-    <input type="submit" class="submit-button" value="{% trans "Update" %}">
+      <span class="input-hint">{% trans "(eg: 260979000001)" %}</span>
+    </fieldset>
+     {% endif %}
+    <input type="submit" value="{% trans "Update" %}">
   </form>
 </div>
 
-<div class="heading heading--auth">
-	{% trans "Change 4 digit pin" %}
-</div>
+<h1 class="heading heading--profiles-auth">{% trans "Change 4 digit pin" %}</h1>
 <div class="auth-tools">
-  <form method="post" action="{% url 'molo.profiles:profile_password_change' %}" class="profile">
-    {% csrf_token %}
+  <form method="post" action="{% url 'molo.profiles:profile_password_change' %}" class="profiles__form">
+  {% csrf_token %}
     {% if form.errors or form.non_field_errors %}
       {% if form.non_field_errors %}
         {% for error in form.non_field_errors %}
-            <p class="errorlist">{{ error }}</p>
+          <span class="error">{{ error }}</span>
         {% endfor %}
       {% endif %}
     {% endif %}
     {% if messages %}
-      <ul class="errorlist">
-          {% for message in messages %}
-          <li>{{ message }}</li>
-          {% endfor %}
-      </ul>
+    <ul class="error-list">
+      {% for message in messages %}
+      <li class="error-list__item error">{{ message }}</li>
+      {% endfor %}
+    </ul>
     {% endif %}
-    <div>
-      <p>{% trans "Old Password:" %}</p>
+    <fieldset>
+      <label>{% trans "Old Password:" %}</label>
       {{password_change_form.old_password}}
-      <span>{{password_change_form.old_password.errors}}</span>
-    </div>
-    <div>
-      <p>{% trans "New Password:" %}</p>
+      {{password_change_form.old_password.errors}}
+    </fieldset>
+
+    <fieldset>
+      <label>{% trans "New Password:" %}</label>
       {{password_change_form.new_password}}
-      <span>{{form.new_password.errors}}</span>
-    </div>
-    <div>
-      <p>{% trans "Confirm Password:" %}</p>
+      {{form.new_password.errors}}
+    </fieldset>
+    
+    <fieldset>
+      <label>{% trans "Confirm Password:" %}</label>
       {{password_change_form.confirm_password}}
-      <span>{{form.confirm_password.errors}}</span>
-    </div>
-    <input type="submit" class="submit-button" value='{% trans "Change Password" %}'>
+      {{form.confirm_password.errors}}
+    </fieldset>
+    <input type="submit" value='{% trans "Change Password" %}'>
   </form>
 </div>
 </div>

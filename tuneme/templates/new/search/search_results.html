@@ -3,16 +3,17 @@
 
 {% block content %}
 {% if search_results %}
-<div class="search-results">
-    <h2 class="section-heading section-heading--search f-medium">{% trans "your results:"%}{{search_query}}</h2>
+<h2 class="heading heading--search">{% trans "your results: "%}{{search_query}}</h2>
+  <ul class="article-list">
   {% for page in search_results %}
     {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
     {% if ancestor.sectionpage.image %}
-     <h4 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
+      <li class="article-list__item">
+      <div class="">
+        <h4 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
          <a href="{% pageurl page %}">{{ parent_section.title }}</a>
-     </h4>
-     <div class="section-article-list">
-      <div class="section-article-list__item">
+        </h4>
+   
           <div class="section-article-list__item--image">
               <a href="{% pageurl page %}">
                   {% image ancestor.sectionpage.image width-80 as tmp_photo %}
@@ -21,19 +22,16 @@
           </div>
 
           <div class="section-article-list__item-description">
-              <!--<a href="{% pageurl page %}" class="search-result-article-title">
-                  <h3>{{page.title}}</h3>
-              </a>-->
               <p>{{page.subtitle}}</p>
           </div>
       </div>
-    </div>
+      </li>
       {% else %}
+
       <h4 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
          <a href="{% pageurl page %}">{{ parent_section.title }}</a>
       </h4>
-      <div class="section-article-list">
-      <div class="section-article-list__item">
+      <li class="article-list__item">
            <div class="section-article-list__item--image">
                <a href="{% pageurl page %}">
                    {% image parent_section.sectionpage.image width-80 as tmp_photo %}
@@ -45,11 +43,12 @@
                </a>-->
                <p>{{ page.subtitle }}</p>
            </div>
-       </div>
-     </div>
+       </li>
+   
     {% endif %}
     {% endwith %}
   {% endfor %}
+  </ul>
   </div>
   <div class="search-result pagination">
   <div class="pagination-step-links">
@@ -67,17 +66,17 @@
   </div>
   </div>
   {% else %}
-  <div class="search-results">
-        <h2 class="section-heading section-heading--search f-medium">{% trans "Search" %}</h2>
-        <div class="section-article-list">
-           <h4 class="f-medium">{% trans "No search results for " %}{{search_query}}.</h4>
-          <div class="signin-form">
-              <form action="{% url 'search' %}">
-                <input placeholder="{% trans "I am looking for" %}" name="q" type="search">
-                <input type="submit" class="submit-button" value="{% trans "Search"%}">
-              </form>
-          </div>
-        </div>
+  <h2 class="heading heading--search">{% trans "Search" %}</h2>
+  <div class="section-article-list">
+     <h4>{% trans "No search results for " %}{{search_query}}</h4>
+    <div class="signin-form">
+        <form action="{% url 'search' %}">
+          <fieldset>
+            <input placeholder="{% trans "I am looking for" %}" name="q" type="search">
+          </fieldset>
+          <input type="submit" value="{% trans "Search"%}">
+        </form>
+    </div>
   </div>
   {% endif %}
 {% endblock %}

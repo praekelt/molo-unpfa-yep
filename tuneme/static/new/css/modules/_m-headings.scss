@@ -1,12 +1,15 @@
 .heading {
   padding: 10px 20px;
   margin: 0 0 10px 0;
-  font-size: $font-small;
   font-weight: bold;
   text-transform: uppercase;
   a {
     color: #000;
   }
+}
+
+.heading--subtitle {
+  font-size: $font-small;
 }
 
 .heading.heading--article, .heading.heading--section {
