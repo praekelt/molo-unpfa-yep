@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static core_tags poll_votings competition_tag i18n %}
+{% load static core_tags poll_votings molo_survey_tags competition_tag i18n %}
 
 
 {% block content %}
@@ -7,4 +7,5 @@
   {% latest_listing_homepage num_count=5 %}
   {% poll_page %}
   {% section_listing_homepage %}
+  {% surveys_list %} 
 {% endblock %}
