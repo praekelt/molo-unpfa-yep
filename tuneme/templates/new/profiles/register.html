@@ -3,40 +3,58 @@
 {% get_settings %}
 
 {% block content %}
-<div class="heading heading--auth">
-	{% trans "Register" %}
+<div class="heading heading--auth">{% trans "Register" %}</div>
+<div class="call-to-action call-to-action--profile">
+    <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
+    {% trans "Not a member yet?" %}<br/>
+    {% trans "Join by signing up below. " %}<br/>
+    {% trans "Or" %}
+    <a href="{% url 'molo.profiles:auth_login' %}" class="call-to-action__link">
+    {% trans "log in now" %}</a>
+    {% trans "if you've not already joined" %}
+    </h5>
 </div>
 <div class="auth-tools">
-
 	<a href="{% url 'molo.profiles:auth_login' %}">{% trans "Already have an account? Log in" %}</a>
 
-  <form method="post" action="{% url 'molo.profiles:user_register' %}">
+  <form method="post" action="{% url 'molo.profiles:user_register' %}" class="profiles__form">
     {% csrf_token %}
     <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
 
     <label for="id_username">{% trans "Username" %}</label>
     {{ form.username.errors }}
 		{{ form.username }}
-
-    <label for="id_password">{% trans "4 digit pin" %} <span>{% trans "(eg: 5656)" %}</span></label>
+    <fieldset>
+    <label for="id_password">{% trans "4 digit pin" %}</label>
     {{ form.password.errors }}
     {{ form.password }}
+    <span class="input-hint">{% trans "(eg: 5656)" %}</span>
+    </fieldset>
 
     {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
-      <label for="id_mobile_number">{% trans "Mobile number" %} <span>{% trans "(eg: 260979000001)" %}</span></label>
+    <fieldset>
+      <label for="id_mobile_number">{% trans "Mobile number" %}</label>
       {{ form.mobile_number.errors}}
       {{ form.mobile_number }}
+      <span class="input-hint">{% trans "(eg: 260979000001)" %}</span>
     {% endif %}
+    </fieldset>
 
-    <div class="auth-tools__tandcs">
+    <fieldset class="auth-tools__tandcs">
       {{ form.terms_and_conditions }}
       <label for="id_terms_and_conditions">{% trans "I accept the terms and conditions" %}</label>
       {% if form.terms_and_conditions.errors %}
         <p class="error">{% trans "Please accept the T&amp;Cs in order to complete the registration" %}</p>
       {% endif %}
-    </div>
+    </fieldset>
 
     <input type="submit" value="{% trans "Register" %}" />
   </form>
+</div>
+<div class="call-to-action call-to-action--profile">
+    <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
+    {% trans "Already registered?" %}</h5>
+     <a href="{% url 'molo.profiles:auth_login' %}" class="call-to-action__nav-item call-to-action__nav-item--login">
+    {% trans "Log in" %}</a>
 </div>
 {% endblock %}

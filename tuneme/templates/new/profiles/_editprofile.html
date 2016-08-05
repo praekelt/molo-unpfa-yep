@@ -7,8 +7,11 @@
 </div>
 <div class="block l-indent">
 	<div class="signin-form">
-		<form method="post" id="frmProfileEdit" action="">{% csrf_token %}
+		<form method="post" id="frmProfileEdit" class="profiles__form">
+			{% csrf_token %}
+			<fieldset>
 		  {{ edit_profile_form.alias }}
+		  </fieldset>
 		  <input type="submit" class="submit-button" value='{% trans "Update profile" %}' class="btn btn-wide">
 		</form>
 	</div>
