@@ -37,9 +37,9 @@
       {% endif %}
     {% endif %}
     {% if messages %}
-      <ul class="errorlist">
+      <ul class="error-list">
           {% for message in messages %}
-          <li>{{ message }}</li>
+          <li class="error-list__item error">{{ message }}</li>
           {% endfor %}
       </ul>
     {% endif %}
@@ -58,7 +58,7 @@
       {{password_change_form.confirm_password}}
       <span>{{form.confirm_password.errors}}</span>
     </div>
-    <input type="submit" class="submit-button" value='{% trans "Change Password" %}'>
+    <input type="submit" value='{% trans "Change Password" %}'>
   </form>
 </div>
 </div>
