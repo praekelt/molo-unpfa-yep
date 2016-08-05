@@ -7,7 +7,7 @@
     <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
     {% trans "Don't have an account yet?" %}<br/>
     <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__link">
-    {% trans "Click here" %}</a> {% trans "to join today!" %}</h5>
+    {% trans "Join" %}</a></h5>
 </div>
 
 <div class="auth-tools">
@@ -35,7 +35,7 @@
 <div class="call-to-action call-to-action--profile">
     <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
     {% trans "Don't have an account?" %}</h5>
-    <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__nav-item call-to-action__nav-item--register">
-    {% trans "Click here to" %}<br/>{% trans "register" %}</a>
+    <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__nav-item call-to-action__nav-item--login">
+    {% trans "Join" %}</a>
 </div>
 {% endblock %}
