@@ -3,7 +3,7 @@
 {% get_settings %}
 
 {% block content %}
-<h1 class="heading heading--auth">{% trans "Register" %}</h1>
+<h1 class="heading heading--auth">{% trans "Join" %}</h1>
 <div class="call-to-action call-to-action--profile">
     <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
     {% trans "Not a member yet?" %}<br/>
@@ -15,8 +15,6 @@
     </h5>
 </div>
 <div class="auth-tools">
-  <a href="{% url 'molo.profiles:auth_login' %}">{% trans "Already have an account? Log in" %}</a>
-
   <form method="post" action="{% url 'molo.profiles:user_register' %}" class="profiles__form">
     {% csrf_token %}
     <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
