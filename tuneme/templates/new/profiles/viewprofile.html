@@ -2,12 +2,8 @@
 {% load i18n wagtailsettings_tags %}
 {% get_settings %}
 
-
 {% block content %}
-<div class="heading heading--auth">
-	{% trans "Hello" %} {{ username }}
-</div>
-
+<h1 class="heading heading--auth">{% trans "Hello" %} {{ username }}</h1>
 <div class="auth-tools">
   <form method="post" action="{% url 'molo.profiles:edit_my_profile' %}" class="profiles__form">
     {% csrf_token %}
@@ -28,7 +24,7 @@
 </div>
 
 <div class="heading heading--auth">
-	{% trans "Change 4 digit pin" %}
+  {% trans "Change 4 digit pin" %}
 </div>
 <div class="auth-tools">
   <form method="post" action="{% url 'molo.profiles:profile_password_change' %}" class="profile">

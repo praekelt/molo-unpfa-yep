@@ -2,14 +2,10 @@
 {% load i18n %}
 
 {% block content %}
-<div class="heading heading--auth">
-	{% trans "Register" %}
-</div>
+<h1 class="heading heading--auth">{% trans "Register" %}</h1>
 <div class="auth-tools">
-
   <h5>{% trans "Thank you for joining!" %}</h5>
   <h5>{% trans "Let us know your birthday to get access to exclusive content." %}</h5><br>
-
   <form method="post" action="{% url 'molo.profiles:registration_done' %}" class="profiles__form">
     {% csrf_token %}
     <fieldset>
