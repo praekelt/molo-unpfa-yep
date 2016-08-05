@@ -3,6 +3,7 @@ molo.profiles==1.2.0
 molo.commenting==0.5.0
 molo.yourwords==1.0.2
 molo.servicedirectory==2.1.0
+molo.surveys
 wagtailmodeladmin
 django-celery
 redis
