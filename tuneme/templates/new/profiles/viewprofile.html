@@ -2,30 +2,29 @@
 {% load i18n wagtailsettings_tags %}
 {% get_settings %}
 
-
 {% block content %}
-<div class="heading heading--auth">
-	{% trans "Hello" %} {{ username }}
-</div>
-
+<h1 class="heading heading--auth">{% trans "Hello" %} {{ username }}</h1>
 <div class="auth-tools">
-  <form method="post" action="{% url 'molo.profiles:edit_my_profile' %}">
+  <form method="post" action="{% url 'molo.profiles:edit_my_profile' %}" class="profiles__form">
     {% csrf_token %}
 
     <label for="id_alias">{% trans "Nickname" %} <span>({% trans "Appears in comments" %})</span></label>
     <input type="text" name="alias" id="id_alias" value="{{ alias }}" />
 
     {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
-      <label for="id_mobile_number">{% trans "Mobile number" %} <span>{% trans "(eg: 260979000001)" %}</span></label>
+    <fieldset>
+      <label for="id_mobile_number">{% trans "Mobile number" %}</label>
       {{ edit_profile_form.mobile_number.errors}}
       {{ edit_profile_form.mobile_number }}
+      <span class="input-hint">{% trans "(eg: 260979000001)" %}</span>
+    </fieldset>
     {% endif %}
-    <input type="submit" class="submit-button" value="{% trans "Update" %}">
+    <input type="submit" value="{% trans "Update" %}">
   </form>
 </div>
 
 <div class="heading heading--auth">
-	{% trans "Change 4 digit pin" %}
+  {% trans "Change 4 digit pin" %}
 </div>
 <div class="auth-tools">
   <form method="post" action="{% url 'molo.profiles:profile_password_change' %}" class="profile">
@@ -38,9 +37,9 @@
       {% endif %}
     {% endif %}
     {% if messages %}
-      <ul class="errorlist">
+      <ul class="error-list">
           {% for message in messages %}
-          <li>{{ message }}</li>
+          <li class="error-list__item error">{{ message }}</li>
           {% endfor %}
       </ul>
     {% endif %}
@@ -59,7 +58,7 @@
       {{password_change_form.confirm_password}}
       <span>{{form.confirm_password.errors}}</span>
     </div>
-    <input type="submit" class="submit-button" value='{% trans "Change Password" %}'>
+    <input type="submit" value='{% trans "Change Password" %}'>
   </form>
 </div>
 </div>
