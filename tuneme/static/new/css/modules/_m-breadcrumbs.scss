@@ -2,7 +2,7 @@
   padding: 10px 20px;
   margin-bottom: 20px;
   text-transform: uppercase;
-  color: #000;
+  color: #777777;
   border-bottom: $border;
   font-size: $font-small;
   font-weight: bold;
@@ -10,9 +10,9 @@
 
 .breadcrumbs a {
   font-weight: normal;
-  color: #000;
+  color: #777777;
   &:after {
     content: " > ";
-    color: #000;
+    color: #777777;
   }
 }
