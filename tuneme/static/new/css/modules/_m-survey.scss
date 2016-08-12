@@ -43,6 +43,10 @@
   background: #DEDEDE;
   padding: 10px 5px;
   margin: 10px 5px;
+  word-wrap: break-word;
+  span {
+    display: block;
+  }
 }
 
 .call-to-action--surveys {
