@@ -15,6 +15,7 @@
 }
 
 .menu__item {
+ 
   display: flex;
   align-items: flex-start;
   padding: 5px 0;
@@ -22,6 +23,7 @@
   font-size: $font-small;
 
   a {
+    background: #fff;
     flex: 1;
     padding: 10px 20px;
     text-transform: uppercase;
@@ -30,7 +32,6 @@
     border-top-right-radius: 25px;
     border: 0;
   }
-
   span {
     flex: 1.25;
     padding: 10px 20px 0 20px;
@@ -38,13 +39,15 @@
     color: #ffffff;
   }
 }
-
+.menu__item--default {
+  a {
+    background: #000;
+    color: #fff;
+  }
+}
 @each $name, $color in $color_list {
   .menu__item--#{$name} a {
     background: $color;
   }
 }
 
-.menu__item--default a {
-  color: #fff;
-}
