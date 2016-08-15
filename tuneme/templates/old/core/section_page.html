@@ -17,7 +17,7 @@
 {% for section in sections %}
   <div class="block {{self.get_effective_extra_style_hints}}">
     <h5><a href="{% pageurl section %}">{{section.title}}</a></h5>
-    {% load_descendant_articles_for_section section featured_in_section=True as featured_articles %}
+    {% load_descendant_articles_for_section section count=None featured_in_section=True as featured_articles %}
     {% for page in featured_articles %}
         {% if page.image %}
           {% image page.image width-98 as tmp_photo %}
@@ -37,7 +37,7 @@
 {% endfor %}
 
 
-{% load_child_articles_for_section self as articles %}
+{% load_child_articles_for_section self count=None as articles %}
 {% for page in articles %}
   <div class="block {{self.get_effective_extra_style_hints}}">
     {% if page.image %}
