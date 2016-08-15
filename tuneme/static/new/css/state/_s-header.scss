@@ -1,7 +1,5 @@
 .header {
   padding: 20px;
-
-
   .search-form {
     display: flex;
     input[type="text"] {
@@ -31,6 +29,8 @@
       padding: 5px;
       background: #cf25f8;
       border-radius: 10px;
+      margin: 10px 0 0;
+      display: inline-block;
     }
 
     .languages__item--active {
