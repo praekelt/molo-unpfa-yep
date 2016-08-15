@@ -3,10 +3,10 @@
 }
 
 .article-list--latest-listing, .article-list--section-listing {
-  display: flex;
-  flex-wrap: wrap;
+  overflow: auto;
 
   .article-list__item {
+    float: left;
     box-sizing: border-box;
     width: 50%;
   }
@@ -21,6 +21,8 @@
 .article-list--latest-listing {
 
   .article-list__item:first-child {
+    width: 100%;
+
     .article-list__title, .article-list__subtitle {
       padding: 0 5px;
     }
