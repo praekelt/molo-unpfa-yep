@@ -15,7 +15,6 @@
 }
 
 .menu__item {
- 
   display: flex;
   align-items: flex-start;
   padding: 5px 0;
@@ -45,6 +44,12 @@
     color: #fff;
   }
 }
+
+.menu__item--service a {
+  background: $green;
+  color: #000;
+}
+
 @each $name, $color in $color_list {
   .menu__item--#{$name} a {
     background: $color;
