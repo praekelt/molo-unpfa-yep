@@ -2,6 +2,7 @@
   display: none;
 }
 
+
 .article-list--latest-listing, .article-list--section-listing {
   overflow: auto;
 
@@ -10,6 +11,29 @@
     box-sizing: border-box;
     width: 50%;
   }
+
+  .article-list__image {
+    float: none;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
+
+.article-list--section-listing {
+  .article-list__item:nth-child(even) {
+    float: left;
+    clear: left;
+  }
+
+  .article-list__item:nth-child(odd) {
+    float: right;
+    clear: right;
+  }
+}
+
+// in the latest list the first article is "LARGE" and
+// isn't floated.
+.article-list--latest-listing {
 
   .article-list__item:nth-child(odd) {
     float: left;
@@ -20,15 +44,6 @@
     float: right;
     clear: right;
   }
-
-  .article-list__image {
-    float: none;
-    width: 100%;
-    margin-bottom: 5px;
-  }
-}
-
-.article-list--latest-listing {
 
   .article-list__item:first-child {
     clear: none;
