@@ -9,9 +9,6 @@
   }
 }
 
-
-
-
 .article-list__item {
   padding: 0 20px 20px 20px;
   a {
@@ -26,8 +23,7 @@
 }
 
 .article-list__image {
-  display: block;
-  border-radius: 10px;
+  display: none;
 }
 
 .article-list__title {
