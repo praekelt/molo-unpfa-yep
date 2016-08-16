@@ -6,9 +6,19 @@
   overflow: auto;
 
   .article-list__item {
-    float: left;
+
     box-sizing: border-box;
     width: 50%;
+  }
+
+  .article-list__item:nth-child(odd) {
+    float: left;
+    clear: left;
+  }
+
+  .article-list__item:nth-child(even) {
+    float: right;
+    clear: right;
   }
 
   .article-list__image {
@@ -21,6 +31,8 @@
 .article-list--latest-listing {
 
   .article-list__item:first-child {
+    clear: none;
+    float: none;
     width: 100%;
 
     .article-list__title, .article-list__subtitle {
