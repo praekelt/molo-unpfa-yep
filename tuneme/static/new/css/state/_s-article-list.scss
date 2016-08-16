@@ -2,8 +2,7 @@
   display: none;
 }
 
-.article-list--latest-listing, 
-.article-list--section-listing {
+.article-list--latest-listing, .article-list--section-listing {
   overflow: auto;
 
   .article-list__item {
@@ -20,6 +19,7 @@
 }
 
 .article-list--latest-listing {
+
   .article-list__item:first-child {
     width: 100%;
 
@@ -36,8 +36,6 @@
 }
 
 .article-list__image {
-  border-radius: 10px;
-  display: block;
   float: left;
   margin-right: 20px;
 }
