@@ -4,6 +4,7 @@ $font-small: 13px;
 $font-medium: 16px;
 $font-large: 18px;
 $font-x-large: 21px;
+$font-xx-large: 25px;
 
 $border: 1px #e7e7e7 solid;
 
@@ -25,6 +26,7 @@ $cardinal_red         :           #ce1d43;
 $orange               :           #ff8e1f;
 $dark_orange          :           #d46900;
 $rose_pink            :           #e60382;
+$green                :           #21E078;
 
 $color_list: (
   purple    : $purple,
@@ -32,6 +34,6 @@ $color_list: (
   violet    : $violet,
   red       : $red,
   orange    : $orange,
-  pink      : $rose_pink,
+  rose_pink : $rose_pink,
   gold      : $gold
 );

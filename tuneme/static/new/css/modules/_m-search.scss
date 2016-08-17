@@ -1,10 +1,14 @@
 .search-form {
   input[type="text"] {
-    width: 70%;
+    width: 80%;
   }
   input[type="submit"] {
     text-align: left;
   }
+}
+
+.search-form--main {
+  margin: 10px 0;
 }
 
 .search-results {

@@ -8,6 +8,12 @@
     color: #000;
   }
 }
+.heading--auth {
+  font-size: $font-large;
+}
+.heading--section-list {
+  margin: 0;
+}
 
 .heading.heading--article, .heading.heading--section {
   background: transparent;
