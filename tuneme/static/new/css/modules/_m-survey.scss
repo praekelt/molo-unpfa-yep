@@ -51,6 +51,7 @@
 
 .call-to-action--surveys {
   padding: 16px 0 0 16px;
+  color: #EF9955;
 }
 
 .surveys__form {
@@ -60,13 +61,10 @@
     color: #000;
     padding: 0;
   }
-}
-
-input[type="submit"],
-.call-to-action__nav-item--surveys {
-  color: #fff;
-  width: auto;
-  font-weight: bold;
+  input[type="submit"],
+  .call-to-action__nav-item--surveys {
+    font-weight: bold;
+  }
 }
 
 .call-to-action__nav-item--surveys {
