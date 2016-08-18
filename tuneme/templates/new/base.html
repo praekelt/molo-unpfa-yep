@@ -50,7 +50,7 @@
       <li class="menu__item menu__item--default"><a href="#top">{% trans "Back to top" %}</a></li>
       <li class="menu__item menu__item--default"><a href="/">{% trans "Home" %}</a></li>
       <li class="menu__item menu__item--service menu__item--default">
-        <a href="{% url 'molo.servicedirectory:home' %}">{% trans "Find A Service" %}</a>
+        <a href="{% url 'home' %}">{% trans "Find A Service" %}</a>
         <span>{% trans "Find A Service description" %}</span>
       </li>
       {% load_sections as sections %}
@@ -120,7 +120,7 @@
             <img src="{% google_analytics settings.core.SiteSettings.local_ga_tracking_code %}" width="0" height="0" />
         </div>
         <!-- Local End Google Tracking Code -->
-        {% endif %} 
+        {% endif %}
   {% block extra_js %}{% endblock %}
 
 </body>
