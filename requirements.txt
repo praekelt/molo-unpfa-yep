@@ -2,7 +2,7 @@ molo.core==3.5.0
 molo.profiles==1.2.3
 molo.commenting==0.5.2
 molo.yourwords==1.0.2
-molo.servicedirectory==2.1.0
+molo.servicedirectory==2.1.1
 molo.surveys
 wagtailmodeladmin
 django-celery
