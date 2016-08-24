@@ -4,8 +4,8 @@
 {% block content %}
 <h1 class="heading heading--auth">{% trans "Log in" %}</h1>
 <div class="call-to-action call-to-action--profile">
-    <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
-    {% trans "Don't have an account yet?" %}<br/>
+    <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge-heading">
+    {% trans "Don't have an account yet?" %}
     <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__link">
     {% trans "Join" %}</a></h5>
 </div>
