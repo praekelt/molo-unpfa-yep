@@ -26,7 +26,7 @@
     <label for="id_password">{% trans "4 digit pin" %}</label>
     {{ form.password.errors }}
     {{ form.password }}
-    <span class="input-hint">{% trans "(eg: 5656)" %}</span>
+    <span class="input-hint">{% trans "Numbers only eg. 5656" %}</span>
     </fieldset>
 
     {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
@@ -34,7 +34,6 @@
       <label for="id_mobile_number">{% trans "Mobile number" %}</label>
       {{ form.mobile_number.errors}}
       {{ form.mobile_number }}
-      <span class="input-hint">{% trans "(eg: 260979000001)" %}</span>
     {% endif %}
     </fieldset>
 
