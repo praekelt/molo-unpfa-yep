@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.utils.formats import date_format
 from django.contrib.auth.models import User
 from django.test import TestCase, Client
 from molo.core.models import SiteLanguage
@@ -62,9 +63,11 @@ class TestQuestionResultsAdminView(TestCase, MoloTestCaseMixin):
                                  '<th>User</th></tr>'
 
         expected_data_html = '<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>'\
-            .format(datetime.today().strftime('%b. %-d, %Y'),
-                    choice1.title,
-                    self.superuser.username)
+            .format(
+                # this depends on settings.DATE_FORMAT assuming default
+                date_format(datetime.today(), 'N j, Y'),
+                choice1.title,
+                self.superuser.username)
 
         self.assertContains(response, expected_headings_html, html=True)
         self.assertContains(response, expected_data_html, html=True)
@@ -99,9 +102,11 @@ class TestQuestionResultsAdminView(TestCase, MoloTestCaseMixin):
                                  '<th>User</th></tr>'
 
         expected_data_html = '<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>' \
-            .format(datetime.today().strftime('%b. %-d, %Y'),
-                    free_text_vote.answer,
-                    self.superuser.username)
+            .format(
+                # this depends on settings.DATE_FORMAT assuming default
+                date_format(datetime.today(), 'N j, Y'),
+                free_text_vote.answer,
+                self.superuser.username)
 
         self.assertContains(response, expected_headings_html, html=True)
         self.assertContains(response, expected_data_html, html=True)
