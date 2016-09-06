@@ -35,10 +35,8 @@
       <a href="#menu" class="header-nav__item header-nav__item--menu">{% trans "Menu" %}</a>
       <a href="#search-query" class="header-nav__item header-nav__item--search">{% trans "Search" %}</a>
     </div>
-
-    <h2 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
-    {% include "search/search_block.html" %}
-    {% include "core/language_block.html" %}
+    {% block search_language %}
+    {% endblock %}
   </div>
 
   {% block content %}{% endblock %}
@@ -122,6 +120,5 @@
         <!-- Local End Google Tracking Code -->
         {% endif %}
   {% block extra_js %}{% endblock %}
-
 </body>
 </html>
