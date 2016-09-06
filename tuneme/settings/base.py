@@ -98,7 +98,7 @@ COMMENTS_HIDE_REMOVED = False
 SITE_ID = 1
 
 # We have multiple layouts: use `old` or `new` to switch between them.
-SITE_LAYOUT = environ.get('SITE_LAYOUT', 'old')
+SITE_LAYOUT = environ.get('SITE_LAYOUT', 'new')
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.locale.LocaleMiddleware',
