@@ -23,11 +23,8 @@
     font-weight: bold;
   }
 
-  ul,ol,li {
-      list-style-position: inside;
-  }
-
   ul li {
+    list-style-position: inside;
     list-style-type: disc;
   }
 
