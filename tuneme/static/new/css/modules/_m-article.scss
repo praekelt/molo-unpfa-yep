@@ -23,7 +23,7 @@
     font-weight: bold;
   }
 
-  ul, ol, li {
+  ul,ol,li {
       list-style-position: inside;
   }
 
@@ -31,7 +31,13 @@
     list-style-type: disc;
   }
 
-  ol li {
-    list-style-type: decimal;
-  }
+  ol {
+    margin-left: 5px;
+    padding: 0 5px 0 5px;
+    li {
+     list-style-position: outside;
+     list-style-type: decimal;
+    }
+    
+  } 
 }
