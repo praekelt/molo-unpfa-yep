@@ -49,7 +49,12 @@
     <ul class="menu-items">
       <li class="menu__item menu__item--default"><a href="#top">{% trans "Back to top" %}</a></li>
       <li class="menu__item menu__item--default"><a href="/">{% trans "Home" %}</a></li>
-      
+      {% if request.get_host == "localhost:9000" %}
+        <li class="menu__item menu__item--service menu__item--default">
+         <a href="{% url 'molo.servicedirectory:home' %}">{% trans "Find A Service" %}</a>
+        <span>{% trans "Find A Service description" %}</span>
+       </li>
+      {% endif %}    
       {% load_sections as sections %}
       {% for section in sections %}
       <li class="menu__item menu__item{{ section.get_effective_extra_style_hints }}">
