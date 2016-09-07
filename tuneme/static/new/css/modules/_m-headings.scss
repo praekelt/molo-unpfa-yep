@@ -20,6 +20,14 @@
   border-bottom: $border;
 }
 
+.featured-articles__heading {
+  border-bottom:1px solid #000;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0 20px 10px;
+  margin: 0 0 15px;
+}
+
 @each $name, $color in $color_list {
   .heading--#{$name} {
     background: $color;
