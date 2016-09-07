@@ -1,5 +1,9 @@
 from tuneme.settings import *  # noqa
 
+SITE_LAYOUT = 'old'
+TEMPLATES[0]['DIRS'] = [
+    join(PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT), ]
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -13,5 +17,3 @@ WAGTAILSEARCH_BACKENDS = {
 }
 DEBUG = True
 CELERY_ALWAYS_EAGER = True
-
-SITE_LAYOUT = 'old'
