@@ -21,7 +21,8 @@
 }
 
 .featured-articles__heading {
-  border-bottom:1px solid #000;
+  border-bottom: $border;
+  border-color: #000;
   text-transform: uppercase;
   font-weight: bold;
   padding: 10px 20px;
