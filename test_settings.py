@@ -1,5 +1,9 @@
 from tuneme.settings import *  # noqa
 
+SITE_LAYOUT = 'old'
+TEMPLATES[0]['DIRS'] = [
+    join(PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT), ]
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
