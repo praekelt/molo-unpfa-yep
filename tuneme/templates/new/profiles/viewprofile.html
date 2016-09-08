@@ -16,6 +16,7 @@
       <label for="id_mobile_number">{% trans "Mobile number" %}</label>
       {{ edit_profile_form.mobile_number.errors}}
       {{ edit_profile_form.mobile_number }}
+      <span class="input-hint">{% trans "(e.g. 260979000001)" %}</span>
     </fieldset>
     {% endif %}
     <input type="submit" value="{% trans "Update" %}">
