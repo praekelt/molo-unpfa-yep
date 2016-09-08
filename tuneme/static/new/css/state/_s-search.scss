@@ -1,0 +1,7 @@
+.search-results {
+  @each $name, $color in $color_list {
+   .section-heading--#{$name} {
+      color: $color;
+   }
+  }
+}

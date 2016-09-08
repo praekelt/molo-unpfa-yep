@@ -35,10 +35,8 @@
       <a href="#menu" class="header-nav__item header-nav__item--menu">{% trans "Menu" %}</a>
       <a href="#search-query" class="header-nav__item header-nav__item--search">{% trans "Search" %}</a>
     </div>
-
-    <h2 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
-    {% include "search/search_block.html" %}
-    {% include "core/language_block.html" %}
+    {% block search_language %}
+    {% endblock %}
   </div>
 
   {% block content %}{% endblock %}
@@ -49,10 +47,12 @@
     <ul class="menu-items">
       <li class="menu__item menu__item--default"><a href="#top">{% trans "Back to top" %}</a></li>
       <li class="menu__item menu__item--default"><a href="/">{% trans "Home" %}</a></li>
-      <li class="menu__item menu__item--service menu__item--default">
-        <a href="{% url 'molo.servicedirectory:home' %}">{% trans "Find A Service" %}</a>
+      {% if 'tuneme.org' in request.get_host %}
+        <li class="menu__item menu__item--service menu__item--default">
+         <a href="{% url 'molo.servicedirectory:home' %}">{% trans "Find A Service" %}</a>
         <span>{% trans "Find A Service description" %}</span>
-      </li>
+       </li>
+      {% endif %}    
       {% load_sections as sections %}
       {% for section in sections %}
       <li class="menu__item menu__item{{ section.get_effective_extra_style_hints }}">
@@ -122,6 +122,5 @@
         <!-- Local End Google Tracking Code -->
         {% endif %}
   {% block extra_js %}{% endblock %}
-
 </body>
 </html>

@@ -4,7 +4,18 @@
 
 <div class="breadcrumbs">
   <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
-  <a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a>
+  {% if self.get_parent_section.get_parent_section %}
+    {% with section=self.get_parent_section.get_parent_section %}
+      <a href="{% pageurl section %}">{{section.title}}</a>
+      {% with sub_section=self.get_parent_section %}
+          <a href="{% pageurl sub_section %}">{{sub_section.title}}</a>
+      {% endwith %}
+    {% endwith %}
+    {% else %}
+    {% with section=self.get_parent_section %}
+      <a href="{% pageurl section %}">{{section.title}}</a>
+    {% endwith %}
+    {% endif %}
   {{ self.title }}
 </div>
 
@@ -19,6 +30,7 @@
 <h2 class="article__subtitle">{{ self.subtitle }}</h2>
 
 <div class="article__content article__content{{ self.get_parent_section.get_effective_extra_style_hints }}">
+  <div class="article__content--inner">
   {% for block in self.body %}
     {% if block.block_type == 'heading' %}
         <h4>{{ block.value }}</h4>
