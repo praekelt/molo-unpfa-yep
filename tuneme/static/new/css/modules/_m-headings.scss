@@ -9,7 +9,10 @@
   }
 }
 .heading--auth {
+  border-top: 1px solid rgba(153,153,153,0.5);
+  margin: 0;
   font-size: $font-large;
+  padding: 15px 20px;
 }
 .heading--section-list {
   margin: 0;
@@ -19,7 +22,8 @@
   padding: 0;
 }
 
-.heading.heading--article, .heading.heading--section {
+.heading.heading--article, 
+.heading.heading--section {
   background: transparent;
   border-bottom: $border;
 }

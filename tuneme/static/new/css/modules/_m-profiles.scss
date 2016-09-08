@@ -10,25 +10,27 @@
 .input-hint {
  font-weight: normal;
  color: #999;
+ display: block;
 }
 
 .call-to-action {
-  padding: 5px 20px;
+  padding: 5px 20px 20px;
 }
 .call-to-action__nav-item,
 .call-to-action__nav-item--challenge {
   font-size: $font-large;
   font-weight: bold;
 }
-
+.call-to-action__nav-item--challenge-heading {
+  color: #999;
+}
 .call-to-action__link {
   font-weight: bold;
   text-decoration: underline;
 }
-
 .call-to-action__nav-item--login {
   color: #fff;
   margin: 20px 0 10px;
-  font-size: $font-x-large;
-  font-weight: bold;
+  padding: 5px 20px;
+  font-weight: normal;
 }
