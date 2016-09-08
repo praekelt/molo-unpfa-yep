@@ -14,7 +14,7 @@
     {% trans "if you've already joined" %}
     </h5>
 </div>
-<div class="auth-tools">
+<div class="auth-tools auth-tools--profiles">
   <form method="post" action="{% url 'molo.profiles:user_register' %}" class="profiles__form">
     {% csrf_token %}
     <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
