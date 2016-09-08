@@ -38,17 +38,22 @@
     color: #ffffff;
   }
 }
-.menu__item--default {
-  a {
-    background: #000;
+.menu {
+  .menu-items {
+    padding: 0;
+    .menu__item--default a {
+      background: #000;
     color: #fff;
+    }
+    .menu__item--service a {
+      background: $green;
+      color: #000;
+    }
   }
+
 }
 
-.menu__item--service a {
-  background: $green;
-  color: #000;
-}
+
 
 @each $name, $color in $color_list {
   .menu__item--#{$name} a {
