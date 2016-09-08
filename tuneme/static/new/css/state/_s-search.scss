@@ -1,3 +1,7 @@
+
+.section-article-list__item--image {
+  border-radius: 10px;
+}
 .search-results {
   @each $name, $color in $color_list {
    .section-heading--#{$name} {
