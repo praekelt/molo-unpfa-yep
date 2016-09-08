@@ -10,7 +10,7 @@
     {% trans "Join" %}</a></h5>
 </div>
 
-<div class="auth-tools">
+<div class="auth-tools auth-tools--profiles ">
   <form method="post" class="profiles__form">
     {% csrf_token %}
     <input type="hidden" name="next" value="{% if not request.GET.next %}/{% else %}{{ request.GET.next }}{% endif %}" />
