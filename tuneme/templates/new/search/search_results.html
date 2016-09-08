@@ -4,52 +4,46 @@
 {% block content %}
 {% if search_results %}
 <div class="search-results">
-    <h2 class="section-heading section-heading--search f-medium">{% trans "your results:"%}{{search_query}}</h2>
-  {% for page in search_results %}
+  <h2 class="section-heading section-heading--search f-medium">{% trans "your results:"%}{{search_query}}</h2>
+
+    {% for page in search_results %}
     {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
     {% if ancestor.sectionpage.image %}
-     <h4 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
-         <a href="{% pageurl page %}">{{ parent_section.title }}</a>
-     </h4>
-     <div class="section-article-list">
-      <div class="section-article-list__item">
-          <div class="section-article-list__item--image">
-              <a href="{% pageurl page %}">
-                  {% image ancestor.sectionpage.image width-80 as tmp_photo %}
-                  <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/>
-              </a>
-          </div>
-
-          <div class="section-article-list__item-description">
-              <!--<a href="{% pageurl page %}" class="search-result-article-title">
-                  <h3>{{page.title}}</h3>
-              </a>-->
-              <p>{{page.subtitle}}</p>
-          </div>
-      </div>
-    </div>
-      {% else %}
-      <h4 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
-         <a href="{% pageurl page %}">{{ parent_section.title }}</a>
-      </h4>
+      <a href="{% pageurl ancestor %}">
+        <h3 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
+         {{ancestor.title}}
+        </h3>
+      </a>
+      <a href="{% pageurl page %}">
       <div class="section-article-list">
-      <div class="section-article-list__item">
-           <div class="section-article-list__item--image">
-               <a href="{% pageurl page %}">
-                   {% image parent_section.sectionpage.image width-80 as tmp_photo %}
-               <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}"/></a>
-           </div>
-           <div class="section-article-list__item-description">
-               <!--a href="{% pageurl page %}" class="search-result-article-title">
-                   <h3>{{ page.title }}</h3>
-               </a>-->
-               <p>{{ page.subtitle }}</p>
-           </div>
-       </div>
-     </div>
+        <div class="section-article-list__item">
+              {% image ancestor.sectionpage.image width-80 as tmp_photo %}
+              <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}" class="section-article-list__item--image"/>
+          <h1 class="search--result__title">{{page.title}}</h3>
+          <p class="section-article-list__item-description">{{page.subtitle}}</p>
+        </div>
+      </div>
+      </a>
+     
+    {% else %}
+      <a href="{% pageurl parent_section %}">
+        <h3 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
+          {{parent_section.title}}
+        </h3>
+      </a>
+      <a href="{% pageurl page %}">
+      <div class="section-article-list">
+        <div class="section-article-list__item">
+            {% image ancestor.sectionpage.image width-80 as tmp_photo %}
+            <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}" class="section-article-list__item--image"/>
+          <h1 class="search--result__title">{{page.title}}</h3>
+          <p class="section-article-list__item-description">{{page.subtitle}}</p>
+        </div>
+      </div>
+      </a>
     {% endif %}
     {% endwith %}
-  {% endfor %}
+    {% endfor %}
   </div>
   <div class="search-result pagination">
   <div class="pagination-step-links">
