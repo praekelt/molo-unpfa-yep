@@ -4,27 +4,33 @@
 {% block content %}
 {% if search_results %}
 <div class="search-results">
-  <h2 class="section-heading section-heading--search f-medium">{% trans "your results:"%}{{search_query}}</h2>
+  <h2 class="section-heading section-heading--search f-medium">{% trans "your results:"%} {{search_query}}</h2>
 
     {% for page in search_results %}
     {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
-    {% if ancestor.sectionpage.image %}
+    {% if ancestor.sectionpage %}
       <a href="{% pageurl ancestor %}">
         <h3 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
          {{ancestor.title}}
         </h3>
       </a>
+      <a href="{% pageurl parent_section %}">
+        <h3 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
+          {{parent_section.title}}
+        </h3>
+      </a>
       <a href="{% pageurl page %}">
       <div class="section-article-list">
         <div class="section-article-list__item">
-              {% image ancestor.sectionpage.image width-80 as tmp_photo %}
-              <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}" class="section-article-list__item--image"/>
+        {% if page.image %}
+          {% image page.image width-80 as tmp_photo %}
+          <img src="{{ tmp_photo.url }}" alt="{{ page.title }}"/>
+        {% endif %}
           <h1 class="search--result__title">{{page.title}}</h3>
           <p class="section-article-list__item-description">{{page.subtitle}}</p>
         </div>
       </div>
       </a>
-     
     {% else %}
       <a href="{% pageurl parent_section %}">
         <h3 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
@@ -34,8 +40,10 @@
       <a href="{% pageurl page %}">
       <div class="section-article-list">
         <div class="section-article-list__item">
-            {% image ancestor.sectionpage.image width-80 as tmp_photo %}
-            <img src="{{ tmp_photo.url }}" alt="{{ section.image.title }}" class="section-article-list__item--image"/>
+          {% if page.image %}
+            {% image page.image width-80 as tmp_photo %}
+            <img src="{{ tmp_photo.url }}" alt="{{ page.title }}" class="section-article-list__item--image"/>
+          {% endif %}
           <h1 class="search--result__title">{{page.title}}</h3>
           <p class="section-article-list__item-description">{{page.subtitle}}</p>
         </div>
