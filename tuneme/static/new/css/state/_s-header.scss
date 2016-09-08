@@ -1,5 +1,5 @@
 .header {
-  padding: 20px;
+  padding: 10px 20px;
   .search-form {
     overflow: auto;
 
@@ -12,6 +12,7 @@
       border-bottom-right-radius: 0;
       border: 0;
       width: 70%;
+      outline: none;
     }
     input[type="submit"] {
       float:left;
@@ -46,9 +47,22 @@
   }
 }
 
+.header-nav {
+  height: 40px;
+  .logo {
+    display: inline-block;
+  }
+}
+
 .header-nav__item {
+  float: right;
+  padding: 0 10px 0 10px;
   text-transform: uppercase;
   text-decoration: none;
+}
+
+.header__search-title  {
+ margin: 20px 0 15px 0;
 }
 
 .header-nav__item--search {

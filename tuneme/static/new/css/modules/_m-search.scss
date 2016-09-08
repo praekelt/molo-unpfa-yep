@@ -12,5 +12,26 @@
 }
 
 .search-results {
-  padding: 20px;
+  a {color: #000;}
+  .section-heading {
+    font-weight: bold;
+  }
+
+  .section-heading,
+  .section-article-list  {
+    padding: 0 20px;
+  }
+  .section-heading--search  {
+    padding: 15px 20px;
+  }
+}
+
+.section-heading--search {
+  border-bottom: 1px solid gray;
+
+  margin-bottom: 25px;
+  text-transform: capitalize;
+}
+.search--result__title {
+  font-weight: bold;
 }

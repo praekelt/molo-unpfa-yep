@@ -1,4 +1,12 @@
 
+@media only screen and (max-width: 200px) { 
+  .header-nav {
+    .logo {
+      width: 100%;
+    }
+  }
+}
+
 @media only screen and (min-width: 320px) {
 
   @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700);
@@ -21,7 +29,7 @@
   }
 
   .breadcrumbs {
-    border: 0;
+    border-bottom: 1px #e7e7e7 solid;
     a {
       font-weight: bold;
     }
@@ -39,6 +47,7 @@
   @import "_s-article-list";
   @import "_s-comments";
   @import "_s-profiles";
+  @import "_s-search";
   @import "_s-survey";
 }
 
