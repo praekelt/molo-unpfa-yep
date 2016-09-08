@@ -8,10 +8,14 @@
   }
 }
 
+
 @each $name, $color in $color_list {
   .article__content--#{$name} {
     a {
       color: $color;
+    }
+    .featured-articles__heading {
+      border-color: $color;
     }
   }
 }

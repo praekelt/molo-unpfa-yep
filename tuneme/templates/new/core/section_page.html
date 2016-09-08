@@ -5,7 +5,10 @@
 
 <div class="breadcrumbs">
   <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
-  {{ self.title }}
+ {% if self.get_parent_section %}
+   <a href="{% pageurl self.get_parent_section %}">{{ self.get_parent_section }}</a>
+ {% endif %}
+ <a href="{% pageurl self %}">{{ self.title }}</a>
 </div>
 
 <ul class="article-list article-list{{self.get_effective_extra_style_hints}}">
