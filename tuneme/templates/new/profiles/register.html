@@ -3,15 +3,15 @@
 {% get_settings %}
 
 {% block content %}
-<h1 class="heading heading--auth">{% trans "Join" %}</h1>
+<h1 class="heading heading--auth">{% trans "Sign up" %}</h1>
 <div class="call-to-action call-to-action--profile">
     <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge-heading">
-    {% trans "Not a member yet?" %}<br/>
-    {% trans "Join by signing up below. " %}<br/>
+    {% trans "Not a member yet?" %}
+    {% trans "Join by signing up below. " %}
     {% trans "Or" %}
     <a href="{% url 'molo.profiles:auth_login' %}" class="call-to-action__link">
     {% trans "log in now" %}</a>
-    {% trans "if you've not already joined" %}
+    {% trans "if you've already joined" %}
     </h5>
 </div>
 <div class="auth-tools">
@@ -46,7 +46,7 @@
         <p class="error">{% trans "Please accept the T&amp;Cs in order to complete the registration" %}</p>
       {% endif %}
     </fieldset>
-    <input type="submit" value="{% trans "Register" %}" />
+    <input type="submit" value="{% trans "Sign up" %}" />
   </form>
 </div>
 <div class="call-to-action call-to-action--profile">
