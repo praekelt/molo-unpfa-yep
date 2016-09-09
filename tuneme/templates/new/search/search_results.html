@@ -70,17 +70,16 @@
   </div>
   {% else %}
   <div class="search-results">
-        <h2 class="section-heading section-heading--search f-medium">{% trans "Search" %}</h2>
-        <div class="section-article-list">
-           <h4 class="f-medium">{% trans "No search results for " %}{{search_query}}.</h4>
+    <h2 class="section-heading section-heading--search f-medium">{% trans "Search" %}</h2>
+    <div class="section-article-list">
+       <h4 class="f-medium">{% trans "No search results for " %}{{search_query}}.</h4>
 
-            <form class="search-form search-form--main" action="{% url 'search' %}">
-              <input placeholder="{% trans "I am looking for" %}" name="q" type="search" value="{{ search_query }}">
-              <br/>
-              <input type="submit" value="{% trans "Search"%}">
-            </form>
-
-        </div>
+        <form class="search-form search-form--main" action="{% url 'search' %}">
+          <input placeholder="{% trans "I am looking for" %}" name="q" type="search" value="{{ search_query }}">
+          <br/>
+          <input type="submit" value="{% trans "Search"%}">
+        </form>
+    </div>
   </div>
   {% endif %}
 {% endblock %}
