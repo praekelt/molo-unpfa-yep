@@ -1,3 +1,18 @@
+.search-bar__toggle-input {
+  visibility: hidden;
+  position: absolute;
+}
+
+.search-bar--form  {
+  display: none;
+}
+.search-bar__toggle-input-input:not(checked) ~ .search-bar--form {
+    display: none;
+}
+.search-bar__toggle-input:checked ~ .search-bar--form {       
+    display: block;
+}
+
 .search-form {
   input[type="text"] {
     width: 80%;

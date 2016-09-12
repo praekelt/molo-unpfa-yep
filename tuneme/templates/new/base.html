@@ -33,9 +33,21 @@
         <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe" />
       </a>
       <a href="#menu" class="header-nav__item header-nav__item--menu">{% trans "Menu" %}</a>
-      <a href="#search-query" class="header-nav__item header-nav__item--search">{% trans "Search" %}</a>
+      {% block search-button %}
+        
+        <label class="search-bar__toggle-label  header-nav__item header-nav__item--search" for="search-bar__toggle">
+          {% trans "Search" %}
+        </label>
+      {% endblock %}
     </div>
-    {% block search_language %}
+    {% block search %}
+      <input id="search-bar__toggle" class="search-bar__toggle-input" type="checkbox">
+      <div class="search-bar--form">
+        <h2 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
+        {% include "search/search_block.html" %}
+      </div>
+    {% endblock %}
+    {% block language %}
     {% endblock %}
   </div>
 

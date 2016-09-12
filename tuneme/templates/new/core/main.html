@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 {% load static core_tags poll_votings molo_survey_tags competition_tag i18n %}
 
-{% block search_language %}
-  <h2 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
+{% block search-button %}
+  <a href="#search-query" class="header-nav__item header-nav__item--search">{% trans "Search" %}</a>
+{% endblock %}
+{% block search %}
+ 	<h2 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
   {% include "search/search_block.html" %}
+{% endblock %}
+{% block language %}
   {% include "core/language_block.html" %}
 {% endblock %}
 {% block content %}
