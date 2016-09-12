@@ -4,7 +4,7 @@
 {% block content %}
 {% if search_results %}
 <div class="search-results">
-  <h2 class="section-heading section-heading--search f-medium">{% trans "your results:"%} {{search_query}}</h2>
+  <h2 class="section-heading section-heading--search f-medium">{% trans "your results:"%} {{search_query.strip}}</h2>
 
     {% for page in search_results %}
     {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
