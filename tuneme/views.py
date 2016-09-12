@@ -13,7 +13,7 @@ def search(request, results_per_page=10):
     page = request.GET.get('p', 1)
     locale = get_locale_code(get_language_from_request(request))
 
-    if search_query:
+    if search_query and search_query.strip():
         results = ArticlePage.objects.filter(
             languages__language__locale=locale
         ).values_list('pk', flat=True)
