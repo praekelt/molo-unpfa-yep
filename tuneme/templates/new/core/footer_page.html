@@ -2,37 +2,58 @@
 {% extends "base.html" %}
 
 {% load static core_tags %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags i18n %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
 {% block content %}
-<div class="page-body l-indent">
-  <h3 class="page-body__title f-large">{{self.title}}</h3>
-  <h5 class="page-body__subtitle f-medium"> {{self.subtitle}}</h5>
-  {% if self.image %}
-  <div class="banner">{% image self.image width-240 %}</div>
-  {% endif %}
-<article class="article">
+
+<div class="breadcrumbs">
+  <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
+ {% if self.get_parent_section %}
+   <a href="{% pageurl self.get_parent_section %}">{{ self.get_parent_section }}</a>
+ {% endif %}
+ <a href="{% pageurl self %}">{{ self.title }}</a>
+</div>
+
+{% if self.image %}
+  {% image self.image width-280 as article_image %}
+  <div class="article__image">
+    <img src="{{ article_image.url }}" />
+  </div>
+{% endif %}
+
+<h1 class="article__title">{{ self.title }}</h1>
+<h2 class="article__subtitle">{{ self.subtitle }}</h2>
+
+<div class="article__content article__content{{ self.get_parent_section.get_effective_extra_style_hints }}">
+  <div class="article__content--inner">
   {% for block in self.body %}
-      {% if block.block_type == 'heading' %}
-          <h1 class="f-medium">{{ block.value }}</h1>
-      {% else %}
-      {% if block.block_type == 'image' %}
-        {% image block.value width-240 %}
-      {% else %}
-      {% if block.block_type == 'numbered_list' %}
-        <ol>
+    {% if block.block_type == 'heading' %}
+        <h4>{{ block.value }}</h4>
+    {% elif block.block_type == 'image' %}
+      {% image block.value width-280 as article_image %}
+      <div class="article__image">
+        <img src="{{ article_image.url }}" />
+      </div>
+    {% elif block.block_type == 'numbered_list' %}
+         <ol>
         {% for item in block.value %}
-          <li>{{item}}</li>
+          <li>{{ item|handle_markdown }}</li>
         {% endfor %}
         </ol>
-      {% else %}
-          {{ block }}
-      {% endif %}
-      {% endif %}
-      {% endif %}
+      {% elif block.block_type == 'list' %}
+        <ul>
+        {% for item in block.value %}
+          <li>{{ item|handle_markdown }}</li>
+        {% endfor %}
+      </ul>
+    {% elif block.block_type = 'page' %}
+        <a href="{% pageurl block.value %}" class="featured-articles">{{ block.value }}</a>
+    {% else %}
+        {{ block }}
+    {% endif %} 
   {% endfor %}
-</article>
+  </div>
 </div>
 {% endblock %}
