@@ -7,7 +7,7 @@
     <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge-heading">
     {% trans "Don't have an account yet?" %}
     <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__link">
-    {% trans "Join" %}</a></h5>
+    {% trans "Sign up" %}</a></h5>
 </div>
 
 <div class="auth-tools auth-tools--profiles ">
@@ -25,9 +25,10 @@
 
     <fieldset>
       <label for="id_password">{% trans "4 digit pin" %}
-      <span class="input-hint">{% trans "Numbers only eg. 5656" %}</span>
       </label>
       {{ form.password }}
+      <span class="input-hint">{% trans "(e.g. 5656)" %}</span>
+      <span class="input-hint">{% trans "Numbers only eg. 5656" %}</span>
     </fieldset>
     <input type="submit" value="{% trans "Log in" %}">
   </form>
