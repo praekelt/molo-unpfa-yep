@@ -23,6 +23,8 @@
   {% compress css %}
     <link rel="stylesheet" type="text/x-scss" href="{% static 'new/css/style.scss' %}">
     <link rel="stylesheet" media="only screen and (min-width: 320px)" type="text/x-scss" href="{% static 'new/css/state_320.scss' %}">
+    <link rel="stylesheet" type="text/css" media="handheld" href="{% static 'new/css/opera_single_view.css' %}">
+  
   {% endcompress %}
 
   <noscript>
