@@ -67,3 +67,12 @@
    });
 
 })();
+
+    var CutsTheMustard = 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window,
+        ScreenLargeEnough = ((window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) >= 200);
+          if(CutsTheMustard === true)  {
+              document.write('<link rel="stylesheet" type="text/x-scss" href="static/new/css/style.scss');
+          } else {
+             
+          }
+
