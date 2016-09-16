@@ -19,9 +19,18 @@
   <meta property="og:image:url" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui"/>
   <meta name="robots" content="all,index,follow" />
+
   {% compress css %}
-  <link rel="stylesheet" type="text/x-scss" href="{% static 'new/css/style.scss' %}">
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'new/css/style.scss' %}">
+    <link rel="stylesheet" media="only screen and (min-width: 320px)" type="text/x-scss" href="{% static 'new/css/state_320.scss' %}">
   {% endcompress %}
+
+  <noscript>
+    {% compress css %}   
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'new/css/style.scss' %}">
+    {% endcompress %}
+  </noscript>
+
   {% block extra_css %}{% endblock %}
   {% block Facebook_pixel %}{% endblock %}
 </head>
@@ -97,7 +106,6 @@
 
   </div>
   <div class="copyright">&copy; {% now "Y" %} UNFPA, Ford Foundation All Rights Reserved.</div>
-
 
   {% if GOOGLE_TAG_MANAGER_ACCOUNT %}
     <!-- Google Tag Manager -->
