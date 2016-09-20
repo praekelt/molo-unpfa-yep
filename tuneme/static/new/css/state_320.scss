@@ -50,15 +50,22 @@
     color: #EF9955;
   }
 
+  .copyright {
+    padding: 0 20px 20px 20px;
+  }
+  
   @import "state_320/_s-header";
   @import "state_320/_s-heading";
+  @import "state_320/_s-auth";
   @import "state_320/_s-menu";
+  @import "state_320/_s-buttons";
   @import "state_320/_s-polls";
   @import "state_320/_s-article";
   @import "state_320/_s-article-list";
   @import "state_320/_s-comments";
   @import "state_320/_s-profiles";
   @import "state_320/_s-search";
+  @import "state_320/_s-yourwords";
   @import "state_320/_s-survey";
 }
 

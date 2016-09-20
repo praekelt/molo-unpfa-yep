@@ -2,12 +2,11 @@
 .menu {
   border-top: $border;
   .languages {
-    padding: 0 20px;
+    padding: 0 10px;
     font-size: $font-small;
     a {color: #a3a3a3;}
   }
   .menu-items {
-    padding: 0;
     .menu__item {
       list-style-type: none;
       a { color: #000;}
@@ -34,7 +33,7 @@
   a {
     color: #000;
     font-weight: bold;
-    padding: 20px;
+    padding: 20px 10px;
     display: block;
     border-bottom: $border;
   }
