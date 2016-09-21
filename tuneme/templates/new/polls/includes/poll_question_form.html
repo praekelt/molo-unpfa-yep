@@ -10,11 +10,13 @@
         {% for choice in choices %}
         <li class="poll-choices__item">
           {% if question.get_main_language_page.allow_multiple_choices %}
+           <label for="choice{{ forloop.counter }}">
             <input type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.get_main_language_page.id }}" />
-            <label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
+           {{ choice.title }}</label>
           {% else %}
+           <label for="choice{{ forloop.counter }}">
             <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.get_main_language_page.id }}" />
-            <label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
+            {{ choice.title }}</label>
           {% endif %}
         </li>
         {% endfor %}
@@ -33,11 +35,15 @@
         {% for choice in choices %}
           <li class="poll-choices__item">
             {% if question.get_main_language_page.allow_multiple_choices %}
-              <input type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.get_main_language_page.id }}" />
-              <label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
+              <label for="choice{{ forloop.counter }}">
+                <input type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.get_main_language_page.id }}" />
+                {{ choice.title }}
+              </label>
             {% else %}
+              <label for="choice{{ forloop.counter }}">
               <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.get_main_language_page.id }}" />
-              <label for="choice{{ forloop.counter }}">{{ choice.title }}</label>
+              {{ choice.title }}
+              </label>
             {% endif %}
           </li>
         {% endfor %}
