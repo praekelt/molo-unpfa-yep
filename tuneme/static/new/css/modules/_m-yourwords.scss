@@ -6,6 +6,15 @@
     font-size: $font-small;
     padding: 0 10px;
   }
+
+  label[for="id_terms_or_conditions_approved"],
+  label[for="id_hide_real_name"] {
+    display: inline;
+  }
+
+  input[type="checkbox"]  {
+    display: inline;
+  }
 }
 
 .competition__title,
