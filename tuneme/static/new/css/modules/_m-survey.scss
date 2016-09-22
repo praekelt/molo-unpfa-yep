@@ -8,7 +8,7 @@
 .surveys__title {
   word-break: break-word;
   border-top: 2px solid #EF9955;
-  padding: 20px 15px 5px;
+  padding: 20px 10px 5px;
   font-size: $font-large;
 
   font-weight: bold;
@@ -21,7 +21,7 @@
 }
 
 .surveys__intro {
-  padding: 0 16px;
+  padding: 0 10px;
   font-weight: normal;
 }
 
@@ -49,10 +49,6 @@
   }
 }
 
-.call-to-action--surveys {
-  padding: 16px 0 0 16px;
-}
-
 .surveys__form {
   padding: 0 16px;
 
@@ -64,11 +60,6 @@
   .call-to-action__nav-item--surveys {
     font-weight: bold;
   }
-}
-
-.call-to-action__nav-item--surveys {
-  color: #000;
-  text-decoration: underline;
 }
 
 .error--surveys {

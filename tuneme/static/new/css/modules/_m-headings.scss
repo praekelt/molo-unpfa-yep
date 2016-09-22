@@ -1,6 +1,6 @@
 .heading {
   padding: 10px 20px;
-  margin: 0 0 10px 0;
+  margin: 5px 0 10px 0;
   font-size: $font-small;
   font-weight: bold;
   text-transform: uppercase;
@@ -12,7 +12,7 @@
   border-top: 1px solid rgba(153,153,153,0.5);
   margin: 0;
   font-size: $font-large;
-  padding: 15px 20px;
+  padding: 15px 10px;
 }
 .heading--section-list {
   margin: 0;
@@ -20,6 +20,10 @@
 
 .heading--subtitle {
   padding: 0;
+}
+
+.heading--yourwords {
+  border-top: 1px solid #000;
 }
 
 .heading.heading--article, 

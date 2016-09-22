@@ -68,6 +68,11 @@ input[type="search"] {
   padding: 6px 10px;
 }
 
+textarea {
+  padding: 5px;
+  width: 95%;
+}
+
 .call-to-action__nav-item--login,
 input[type="submit"] {
   background: #000;
@@ -79,6 +84,6 @@ input[type="submit"] {
 }
 
 .copyright {
-  padding: 0 20px 20px 20px;
+  padding: 0 10px 20px 10px;
   font-size: $font-x-small;
 }

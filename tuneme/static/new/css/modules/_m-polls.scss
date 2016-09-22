@@ -12,6 +12,11 @@
     background: #a023c1;
     font-weight: bold;
   }
+
+  label {
+    cursor: pointer;
+    display: block;
+  }
 }
 
 .polls--results {

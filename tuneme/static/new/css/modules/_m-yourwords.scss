@@ -1,0 +1,34 @@
+.yourwords {
+  .heading {
+    padding: 10px;
+    margin: 0;
+  }
+  .heading--yourwords-subtitle {
+    font-size: $font-small;
+    padding: 0 10px;
+  }
+
+  label[for="id_terms_or_conditions_approved"],
+  label[for="id_hide_real_name"] {
+    display: inline;
+  }
+
+  input[type="checkbox"]  {
+    display: inline;
+  }
+}
+
+.heading--yourwords-description {
+  font-weight: normal;
+   text-transform: none;
+}
+
+.competition__title,
+.competition__title--description  {
+  padding: 0 10px;
+}
+
+.yourwords-form {
+  padding: 10px;
+}
+
