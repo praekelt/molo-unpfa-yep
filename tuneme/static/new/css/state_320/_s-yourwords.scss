@@ -5,6 +5,16 @@
   .heading--yourwords-subtitle {
     padding: 0 20px;
   }
+
+  img {
+    margin: 5px 20px 10px;
+  }
+
+  .yourwords--inner-content {
+   .heading  {
+    padding: 0;
+   }
+  }
 }
 
 .competition__title,
@@ -12,7 +22,10 @@
   padding: 0 20px;
 }
 
-.yourwords-form {
-  padding: 20px;
+.yourwords--inner-content {
+  padding: 0 20px;
 }
 
+.yourwords-form {
+  padding: 0 20px;
+}
