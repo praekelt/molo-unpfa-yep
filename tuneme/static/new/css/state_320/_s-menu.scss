@@ -1,13 +1,16 @@
 .menu {
   background: #000;
   color: #a3a3a3;
+   .languages {
+    padding: 0 20px;
+  }
   a {
     color: #a3a3a3;
   }
 }
 
 .menu-items--alt {
-  padding-top: 0;
+  padding: 0;
 }
 
 .menu-items .menu__item:first-child {

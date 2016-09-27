@@ -1,0 +1,27 @@
+.yourwords {
+   .heading {
+    padding: 10px 20px;
+  }
+  .heading--yourwords-subtitle {
+    font-size: $font-large;
+    padding: 10px 20px 0;
+  }
+  .yourwords--inner-content {
+   .heading  {
+    padding: 0;
+   }
+  }
+}
+
+.competition__title,
+.competition__title--description  {
+  padding: 0 20px;
+}
+
+.yourwords--inner-content {
+  padding: 0 20px;
+}
+
+.yourwords-form {
+  padding: 0 20px;
+}

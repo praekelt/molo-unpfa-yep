@@ -1,0 +1,65 @@
+.yourwords {
+  .heading {
+    padding: 10px;
+    margin: 0;
+  }
+  .heading--yourwords-subtitle {
+    font-size: $font-small;
+    padding: 0 10px;
+  }
+
+  label[for="id_terms_or_conditions_approved"],
+  label[for="id_hide_real_name"] {
+    display: inline;
+  }
+
+  input[type="checkbox"]  {
+    display: inline;
+  }
+
+  .heading-container  {
+    img {
+      margin: 0;
+      border-radius: 0;
+      width: 100%;
+    }
+  }
+
+  .yourwords--inner-content {
+    img {
+      margin: 0;
+      padding: 10px 0;
+    }
+  }
+
+}
+
+.heading--yourwords-description {
+  font-weight: normal;
+   text-transform: none;
+}
+
+.competition__title,
+.competition__title--description  {
+  padding: 0 10px;
+}
+
+.yourwords--inner-content {
+  padding: 0 10px;
+  img {
+    padding: 0;
+  }
+  .heading  {
+    border: none;
+    padding: 0;
+  }
+}
+
+.yourwords-form {
+  padding: 0 10px;
+}
+
+.alert-error {
+  color: red;
+}
+
