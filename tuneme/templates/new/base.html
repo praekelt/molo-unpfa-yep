@@ -24,7 +24,6 @@
     <link rel="stylesheet" type="text/x-scss" href="{% static 'new/css/style.scss' %}">
     <link rel="stylesheet" media="only screen and (min-width: 320px)" type="text/x-scss" href="{% static 'new/css/state_320.scss' %}">
     <link rel="stylesheet" type="text/css" media="handheld" href="{% static 'new/css/opera_single_view.css' %}">
-  
   {% endcompress %}
 
   <noscript>
@@ -43,18 +42,21 @@
       <a href="/">
         <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe" />
       </a>
-      <a href="#menu" class="header-nav__item header-nav__item--menu">{% trans "Menu" %}</a>
-      {% block search-button %}
-
-        <label class="search-bar__toggle-label  header-nav__item header-nav__item--search" for="search-bar__toggle">
-          {% trans "Search" %}
-        </label>
-      {% endblock %}
+      <div class="menu-links__container"> 
+        {% block homepage-signup %}
+        {% endblock %}
+        {% block search-button %}
+          <label class="search-bar__toggle-label  header-nav__item header-nav__item--search" for="search-bar__toggle">
+            {% trans "Search" %}
+          </label>
+        {% endblock %}
+        <a href="#menu" class="header-nav__item header-nav__item--menu">{% trans "Menu" %}</a>
+      </div>
     </div>
     {% block search %}
       <input id="search-bar__toggle" class="search-bar__toggle-input" type="checkbox">
       <div class="search-bar--form">
-        <h2 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
+        <h1 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h1>
         {% include "search/search_block.html" %}
       </div>
     {% endblock %}
