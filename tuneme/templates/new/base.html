@@ -83,10 +83,10 @@
       <li class="menu__item menu__item--default"><a href="#top">{% trans "Back to top" %}</a></li>
       <li class="menu__item menu__item--default"><a href="/">{% trans "Home" %}</a></li>
 
-      {% if 'tuneme.org' in request.get_host %}
+      {% if ENABLE_SERVICE_DIRECTORY %}
         <li class="menu__item menu__item--service menu__item--default">
-         <a href="{% url 'molo.servicedirectory:home' %}">{% trans "Find A Service" %}</a>
-        <span>{% trans "Find A Service description" %}</span>
+         <a href="{% url 'molo.servicedirectory:home' %}">{% trans "Find a service" %}</a>
+        <span>{% trans "Find me a clinic" %}</span>
        </li>
       {% endif %}
 

@@ -12,6 +12,12 @@ def default_forms(request):
     }
 
 
+def enable_service_directory_context(request):
+    return {
+        'ENABLE_SERVICE_DIRECTORY': settings.ENABLE_SERVICE_DIRECTORY,
+    }
+
+
 def add_tag_manager_account(request):
     site_settings = SiteSettings.for_site(request.site)
     return {

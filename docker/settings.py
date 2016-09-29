@@ -7,6 +7,10 @@ import dj_database_url
 from .base import *  # noqa
 
 
+def bool_env(val):
+    """Replaces string based environment values with Python booleans"""
+    return True if environ.get(val, False) == 'True' else False
+
 # Disable debug mode
 
 DEBUG = False
@@ -48,3 +52,5 @@ WAGTAILSEARCH_BACKENDS = {
         'BACKEND': 'wagtail.wagtailsearch.backends.db.DBSearch',
     }
 }
+
+ENABLE_SERVICE_DIRECTORY = bool_env('ENABLE_SERVICE_DIRECTORY')
