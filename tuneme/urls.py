@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
+from django.views.generic.base import TemplateView
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
@@ -47,6 +48,9 @@ urlpatterns = patterns(
         report_response, name='report_response'),
     url(r'^comments/', include('molo.commenting.urls')),
     url(r'search/$', search, name='search'),
+    url(r'^robots\.txt$', TemplateView.as_view(
+        template_name='robots.txt', content_type='text/plain')),
+    url(r'^sitemap\.xml$', 'wagtail.contrib.wagtailsitemaps.views.sitemap'),
     url(r'', include(wagtail_urls)),
 )
 
