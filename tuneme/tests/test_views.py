@@ -124,6 +124,14 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         self.assertTrue(reply.comment in replyrow.prettify())
         self.assertTrue(comment1.comment in c1row.prettify())
 
+    def test_service_directory_link_enabled(self):
+        response = self.client.get('/')
+        self.assertNotContains(response, 'Find a service')
+
+        with self.settings(ENABLE_SERVICE_DIRECTORY=True):
+            response = self.client.get('/')
+            self.assertContains(response, 'Find a service')
+
     def test_comment_reply_in_article(self):
             self.yourmind = self.mk_section(
                 self.section_index, title='Your mind')

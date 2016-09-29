@@ -72,6 +72,12 @@
 <div id="feature-menu">
     <ul>
         <li><a href="/">{% trans "HOME" %}</a></li>
+        {% if ENABLE_SERVICE_DIRECTORY %}
+        <li>
+          <a href="{% url 'molo.servicedirectory:home' %}">{% trans "Find a service" %}</a>
+          <span>{% trans "Find me a clinic" %}</span>
+        </li>
+        {% endif %}
         {% load_sections as sections %}
         {% for section in sections %}
           <li class="{{section.get_effective_extra_style_hints}}">
@@ -128,6 +134,6 @@
             <img src="{% google_analytics settings.core.SiteSettings.local_ga_tracking_code %}" width="0" height="0" />
         </div>
         <!-- Local End Google Tracking Code -->
-        {% endif %} 
+        {% endif %}
 
 {% endblock %}
