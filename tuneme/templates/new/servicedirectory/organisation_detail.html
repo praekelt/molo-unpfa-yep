@@ -14,20 +14,18 @@
     </div>
     {% endif %}
 
-    <h1 class="sd-heading svc-org-name">{{ organisation.name }}</h1>
-    <h1 class="sd-heading org-services">Services</h1>
-    <div class="sd-service-categories">
-        {% for category in organisation.categories %}
-        <span class="category">
-            {{ category.name }}
-        </span><br/>
+    <h1 class="service-dir__title service-dir__title--org-name">{{ organisation.name }}</h1>
+    <h1 class="service-dir__title">Services</h1>
+    <p class="service-dir__categories">
+    {% for category in organisation.categories %}
+        {{ category.name }},&nbsp;
         {% endfor %}
-    </div>
+      </p>
 
     {% if organisation.about %}
-        <h1 class="sd-heading service-keywords">What we do</h1>
+        <h1 class="service-dir__title">What we do</h1>
 
-        <p class="sd-service-keywords">
+        <p class="service-dir__keywords">
             {{ organisation.about }}
         </p>
 
@@ -35,9 +33,9 @@
 
     {% if organisation.telephone or organisation.email or organisation.web %}
 
-        <h1 class="sd-heading org-contact">Contact</h1>
+        <h1 class="service-dir__title">Contact</h1>
 
-        <p class="sd-org-contact">
+        <p class="service-dir__contact">
             {% if organisation.telephone %}
             <span class="tel">
                 <a href="tel:{{ organisation.telephone }}">{{ organisation.telephone }}</a>
@@ -63,51 +61,51 @@
     {% endif %}
 
     {% if organisation.address %}
-        <h1 class="sd-heading org-address">Address</h1>
+        <h1 class="service-dir__title">Address</h1>
 
-        <p class="sd-org-address">
+        <p class="service-dir__address">
             {{ organisation.address }}
         </p>
 
     {% endif %}
 
     {% if organisation.availability_hours %}
-        <h1 class="sd-heading service-tradinghours">Trading Hours</h1>
+        <h1 class="service-dir__title">Trading Hours</h1>
 
-        <p class="sd-service-tradinghours">
+        <p class="service-dir__tradinghours">
             {{ organisation.availability_hours }}
         </p>
 
     {% endif %}
 
     {% if organisation.age_range_min and organisation.age_range_max %}
-        <div class="sd-service-ages">
+        <div class="service-dir__ages">
             {{ organisation.age_range_min }}-{{ organisation.age_range_max }} years
         </div>
     {% endif %}
 
-    <a class="sd-report-link" href="{% url 'molo.servicedirectory:organisation-report' organisation.id %}?org_name={{ organisation.name | urlencode }}">Is this info correct?</a>
+    <a class="call-to-action__link" href="{% url 'molo.servicedirectory:organisation-report' organisation.id %}?org_name={{ organisation.name | urlencode }}">Is this info correct?</a>
 
-    <a href="{% url 'molo.servicedirectory:organisation-sms' organisation.id %}" class="sd-sms-button primary">Send Clinic Info to Someone</a>
+    <a href="{% url 'molo.servicedirectory:organisation-sms' organisation.id %}" class="service-dir__button">Send Clinic Info to Someone</a>
 
-    <a href="{% url 'molo.servicedirectory:organisation-sms-self' organisation.id %}" class="sd-sms-button secondary">Send Clinic Info to Yourself</a>
+    <a href="{% url 'molo.servicedirectory:organisation-sms-self' organisation.id %}" class="service-dir__button service-dir__button--outline">Send Clinic Info to Yourself</a>
 
-    <hr/>
+    <br/>
 
-    <h1 class="sd-heading service-rating">How helpful was this service directory entry?</h1>
+    <h1 class="service-dir__title">How helpful was this service directory entry?</h1>
 
     <form method="post" action="{% url 'molo.servicedirectory:organisation-rate' organisation.id %}">
         {% csrf_token %}
-        <div class="org-rate-container">
-            <div class="org-rate-faces">
+        <div class="service-dir__org-rating">
+            <div class="service-dir__rate-faces">
                 <button type="submit" name="rating" value="good" class="smiley happy"></button>
                 <span>Very helpful</span>
             </div>
-            <div class="org-rate-faces">
+            <div class="service-dir__rate-faces">
                 <button type="submit" name="rating" value="average" class="smiley neutral"></button>
                 <span>I'm neutral</span>
             </div>
-            <div class="org-rate-faces">
+            <div class="service-dir__rate-faces">
                 <button type="submit" name="rating" value="poor" class="smiley sad"></button>
                 <span>Not helpful</span>
             </div>
