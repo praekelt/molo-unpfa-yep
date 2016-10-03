@@ -1,10 +1,5 @@
 {% load i18n %}
 <form action="{% url 'search' %}" class="search-form" id="search-form">
-    <input
-      id="search-query"
-      name="q"
-      type="text"
-      placeholder="{% trans 'Search for...' %}"
-      value="{{ search_query }}" />
+    <input title="Search field" id="search-query" name="q" type="text" placeholder="{% trans 'Search for...' %}" value="{{ search_query }}" />
     <input type="submit" value="{% trans "Search" %}" />
 </form>

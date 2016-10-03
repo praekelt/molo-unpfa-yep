@@ -9,7 +9,6 @@
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       border: 0;
-      //width: 70%;
       outline: none;
     }
     input[type="submit"] {
@@ -52,9 +51,12 @@
   }
 }
 
-.header-nav__item {
+.menu-links__container {
+  display: inline-block;
   float: right;
-  padding: 0 10px 0 10px;
+}
+
+.header-nav__item {
   text-transform: uppercase;
   text-decoration: none;
 }

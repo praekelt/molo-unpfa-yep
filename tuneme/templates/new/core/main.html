@@ -1,11 +1,20 @@
 {% extends "base.html" %}
 {% load static core_tags poll_votings molo_survey_tags competition_tag i18n %}
 
+
+{% block homepage-signup %}
+  {% if user.is_authenticated %}
+    <a href="{% url 'molo.profiles:view_my_profile' %}" class="header-nav__item header-nav__item--menu">{% trans "Profile" %}</a>
+  {% else %}
+     <a href="{% url 'molo.profiles:user_register' %}" class="header-nav__item header-nav__item--menu">{% trans "Sign Up" %}</a>
+  {% endif %}
+{% endblock %}
+
 {% block search-button %}
-  <a href="#search-query" class="header-nav__item header-nav__item--search">{% trans "Search" %}</a>
+  <!--<a href="#search-query" class="header-nav__item header-nav__item--search">{% trans "Search" %}</a>-->
 {% endblock %}
 {% block search %}
- 	<h2 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h2>
+ 	<h1 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h1>
   {% include "search/search_block.html" %}
 {% endblock %}
 {% block language %}
@@ -14,8 +23,8 @@
 {% block content %}
   {% bannerpages %}
   {% latest_listing_homepage num_count=5 %}
+  {% your_words_competition %}
   {% poll_page %}
   {% section_listing_homepage %}
-  {% your_words_competition %}
   {% surveys_list %} 
 {% endblock %}
