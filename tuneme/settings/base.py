@@ -135,6 +135,7 @@ TEMPLATES = [
                 'wagtail.contrib.settings.context_processors.settings',
                 'tuneme.context_processors.default_forms',
                 'tuneme.context_processors.add_tag_manager_account',
+                'tuneme.context_processors.enable_service_directory_context',
             ],
         },
     },
@@ -354,3 +355,5 @@ WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
 ADMIN_LANGUAGE_CODE = environ.get('ADMIN_LANGUAGE_CODE', "en")
 
 GOOGLE_TAG_MANAGER_ACCOUNT = environ.get('GOOGLE_TAG_MANAGER_ACCOUNT')
+
+ENABLE_SERVICE_DIRECTORY = False
