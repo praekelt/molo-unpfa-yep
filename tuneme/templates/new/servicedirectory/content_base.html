@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="sd-banner">
-        <div class="sd-img-container"></div>
-        <h1 class="sd-heading find-a-service">Clinic Service Finder{% if search_term %}: {{ search_term }} {% endif %}</h1>
-    </div>
-    <div class="sd-container">
-        {% block inner_content %}{% endblock %}
-    </div>
+<div class="service-dir__banner">
+  <div class="service-dir__image"></div>
+  <h1 class="heading">Clinic Service Finder{% if search_term %}:<br /> {{ search_term }} {% endif %}</h1>
+</div>
+<div class="service-dir__container">
+    {% block inner_content %}{% endblock %}
+</div>
+
 {% endblock %}
