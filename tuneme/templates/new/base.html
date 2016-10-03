@@ -19,29 +19,11 @@
   <meta property="og:image:url" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui"/>
   <meta name="robots" content="all,index,follow" />
-
-  {% compress css %}
-    <link rel="stylesheet" type="text/x-scss" href="{% static 'new/css/style.scss' %}">
-    <link rel="stylesheet" media="only screen and (min-width: 320px)" type="text/x-scss" href="{% static 'new/css/state_320.scss' %}">
-    <link rel="stylesheet" type="text/css" media="handheld" href="{% static 'new/css/opera_single_view.css' %}">
+  {% compress css %}   
+  <link rel="stylesheet" type="text/x-scss" href="{% static 'new/css/style.scss' %}">
+  <link rel="stylesheet" media="only screen and (min-width: 320px)" type="text/x-scss" href="{% static 'new/css/state_320.scss' %}">
+  <link rel="stylesheet" type="text/css" media="handheld" href="{% static 'new/css/opera_single_view.css' %}">
   {% endcompress %}
-
-  <noscript>
-    {% compress css %}
-        <link rel="stylesheet" type="text/x-scss" href="{% static 'new/css/style.scss' %}">
-    {% endcompress %}
-  </noscript>
-
-  <script type="text/javascript">
-    var CutsTheMustard = 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window,
-        ScreenLargeEnough = ((window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) >= 200);
-        if (CutsTheMustard == true) {
-            if(ScreenLargeEnough == true) {
-                document.write('<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">')
-            }
-        }
-  </script>
-
   {% block extra_css %}{% endblock %}
   {% block Facebook_pixel %}{% endblock %}
 </head>
