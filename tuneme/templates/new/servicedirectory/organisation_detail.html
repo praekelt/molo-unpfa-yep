@@ -97,15 +97,15 @@
     <form method="post" action="{% url 'molo.servicedirectory:organisation-rate' organisation.id %}">
         {% csrf_token %}
         <div class="service-dir__org-rating">
-            <div class="service-dir__rate-faces">
+            <div class="service-dir__faces">
                 <button type="submit" name="rating" value="good" class="smiley happy"></button>
                 <span>Very helpful</span>
             </div>
-            <div class="service-dir__rate-faces">
+            <div class="service-dir__faces">
                 <button type="submit" name="rating" value="average" class="smiley neutral"></button>
                 <span>I'm neutral</span>
             </div>
-            <div class="service-dir__rate-faces">
+            <div class="service-dir__faces">
                 <button type="submit" name="rating" value="poor" class="smiley sad"></button>
                 <span>Not helpful</span>
             </div>

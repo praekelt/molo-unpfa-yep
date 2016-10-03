@@ -68,7 +68,7 @@
   color: $orange;
 }
 
-.service-dir__search-form {
+.service-dir__search-form, .sd-search-form {
   input[type="submit"]{
     margin: 10px 0 20px;
   }
