@@ -3,13 +3,13 @@
 {% load staticfiles %}
 {% block inner_content %}
     {% if message %}
-    <div class="sd-msg">
+    <div class="service-directory__feedback-message">
         {{ message }}
     </div>
     {% endif %}
 
-    <h1 class="heading heading--org-name">{{ organisation.name }}</h1>
-    <h2 class="heading heading--subtitle">Services</h2>
+    <h1 class="heading heading--organisation-name">{{ organisation.name }}</h1>
+    <h2 class="service-directory__title">Services</h2>
     <ul class="service-link-list">
     {% for category in organisation.categories %}
     <li class="service-link-list__item">
@@ -17,7 +17,6 @@
     </li>
     {% endfor %}
     </ul>
-    <p class="service-dir__categories">Old styles</p>
 
     {% if organisation.about %}
     <h3 class="heading heading--subtitle heading--keywords">What we do</h3>
