@@ -8,7 +8,7 @@
     </form>
     <div class="service-directory__listings">
     {% for category in categories_keywords %}
-        <a class="service-dir__category-title" href="{% url 'molo.servicedirectory:location-search' %}?search={{ category.name }}">{{ category.name }}</a>
+    <a class="service-directory__title" href="{% url 'molo.servicedirectory:location-search' %}?search={{ category.name }}">{{ category.name }}</a>
     <ul class="service-list">
         {% for keyword in category.keywords %}
         <li class="service-list__item">
