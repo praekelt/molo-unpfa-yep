@@ -20,10 +20,12 @@
     <p class="service-dir__categories">Old styles</p>
 
     {% if organisation.about %}
-    <h3 class="heading heading--subtitle">What we do</h3>
-    <p class="service-dir__keywords">
-        {{ organisation.about }}
-    </p>
+    <h3 class="heading heading--subtitle heading--keywords">What we do</h3>
+    <ul class="service-link-list">
+        <li class="service-link-list__item service-link-list__item--keywords">
+          {{ organisation.about }}
+        </li>
+    </ul>
     {% endif %}
 
     {% if organisation.telephone or organisation.email or organisation.web %}
@@ -50,7 +52,6 @@
             </span>
             {% endif %}
         </p>
-
     {% endif %}
 
     {% if organisation.address %}

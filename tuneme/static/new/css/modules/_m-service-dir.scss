@@ -19,8 +19,9 @@
   font-weight: bold;
 }
 
-.service-link-list__ietm {
+.service-link-list__item {
   display: inline-block;
+  color: #000;
   a {
     color: #000;
   }
@@ -51,7 +52,7 @@
   }
 
   .heading--subtitle {
-    
+
   }
   
 }
