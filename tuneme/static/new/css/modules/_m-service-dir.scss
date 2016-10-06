@@ -1,7 +1,5 @@
 .service-dir__banner {
-  background: $orange;
   text-align: center;
-  color: $white;
   padding-top: 10px;
   h1 {
     padding-top: 0;
@@ -11,14 +9,25 @@
 
 .service-dir__image {
   background: no-repeat center/contain url(../img/Find-a-clinic.png); 
-  height: 100px;
 }
+
+//New Classes
+.service-dir__category-title {
+  font-size: $font-large;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.category-list__item {
+  display: inline-block;
+  a {
+    color: $green;
+  }
+}
+
 
 .service-dir__container {
   padding: 0 20px 20px;
-  a {
-    color: $orange;
-  }
   li {
     line-height: 2em;
   }

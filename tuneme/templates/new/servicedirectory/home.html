@@ -1,30 +1,27 @@
 {% extends 'servicedirectory/content_base.html' %}
 
 {% block inner_content %}
-
-    <p class="service-dir__title">Search for the service you are looking for:</p>
-
+    <h2 class="service-dir__title">Search for the service you are looking for:</h2>
     <form action="{% url 'molo.servicedirectory:location-search' %}" method="get" class="service-dir__search-form">
-
         <input type="text" name="search" placeholder="Find me this clinic service..." />
         <input type="submit" value="Search" />
-
-        <br/>
     </form>
-
     <div class="service-dir__categories">
-        {% for category in categories_keywords %}
-            <h1 class="service-dir__subtitle">
-                <a class="service-dir__subtitle--main" href="{% url 'molo.servicedirectory:location-search' %}?search={{ category.name }}">{{ category.name }}</a>
-                <br>
-                {% for keyword in category.keywords %}
-                    <a href="{% url 'molo.servicedirectory:location-search' %}?search={{ keyword }}">{{ keyword }}</a>{% if not forloop.last or and_more %}, {% endif %}
-                {% endfor %}
-                {% if and_more %}
-                    <a href="{% url 'molo.servicedirectory:home' %}?category={{ category.name }}">and more...</a>
-                {% endif %}
-            </h1>
+    {% for category in categories_keywords %}
+        <a class="service-dir__category-title" href="{% url 'molo.servicedirectory:location-search' %}?search={{ category.name }}">{{ category.name }}</a>
+    <ul class="category-list">
+        {% for keyword in category.keywords %}
+        <li class="category-list__item">
+            <a href="{% url 'molo.servicedirectory:location-search' %}?search={{ keyword }}">{{ keyword }}</a>{% if not forloop.last or and_more %}, {% endif %}
+         </li>
         {% endfor %}
-        <div style="clear: both"></div>
+         <li class="category-list__item">
+        {% if and_more %}
+            <a href="{% url 'molo.servicedirectory:home' %}?category={{ category.name }}">and more...</a>
+        {% endif %}
+        </li>
+    </ul>
+    
+    {% endfor %}
     </div>
 {% endblock %}
