@@ -8,27 +8,28 @@
     </div>
     {% endif %}
 
-    <h1 class="service-dir__title service-dir__title--org-name">{{ organisation.name }}</h1>
-    <h1 class="service-dir__title">Services</h1>
-    <p class="service-dir__categories">
+    <h1 class="heading heading--org-name">{{ organisation.name }}</h1>
+    <h2 class="heading heading--subtitle">Services</h2>
+    <ul class="service-link-list">
     {% for category in organisation.categories %}
+    <li class="service-link-list__item">
         {{ category.name }},&nbsp;
-        {% endfor %}
-      </p>
+    </li>
+    {% endfor %}
+    </ul>
+    <p class="service-dir__categories">Old styles</p>
 
     {% if organisation.about %}
-        <h1 class="service-dir__title">What we do</h1>
-
-        <p class="service-dir__keywords">
-            {{ organisation.about }}
-        </p>
-
+    <h3 class="heading heading--subtitle heading--keywords">What we do</h3>
+    <ul class="service-link-list">
+        <li class="service-link-list__item service-link-list__item--keywords">
+          {{ organisation.about }}
+        </li>
+    </ul>
     {% endif %}
 
     {% if organisation.telephone or organisation.email or organisation.web %}
-
-        <h1 class="service-dir__title">Contact</h1>
-
+        <h3 class="heading heading--subtitle">Contact</h3>
         <p class="service-dir__contact">
             {% if organisation.telephone %}
             <span class="tel">
@@ -51,25 +52,20 @@
             </span>
             {% endif %}
         </p>
-
     {% endif %}
 
     {% if organisation.address %}
-        <h1 class="service-dir__title">Address</h1>
-
+        <h3 class="heading heading--subtitle">Address</h3>
         <p class="service-dir__address">
             {{ organisation.address }}
         </p>
-
     {% endif %}
 
     {% if organisation.availability_hours %}
-        <h1 class="service-dir__title">Trading Hours</h1>
-
+        <h3 class="heading heading--subtitle">Trading Hours</h3>
         <p class="service-dir__tradinghours">
             {{ organisation.availability_hours }}
         </p>
-
     {% endif %}
 
     {% if organisation.age_range_min and organisation.age_range_max %}
@@ -86,8 +82,7 @@
 
     <br/>
 
-    <h1 class="service-dir__title">How helpful was this service directory entry?</h1>
-
+    <h4 class="heading heading--subtitle">How helpful was this service directory entry?</h4>
     <form method="post" action="{% url 'molo.servicedirectory:organisation-rate' organisation.id %}">
         {% csrf_token %}
         <div class="service-dir__org-rating">
