@@ -3,8 +3,10 @@
 {% block inner_content %}
     <h2 class="heading heading--service-directory-subtitle">Search for the service you are looking for:</h2>
     <form action="{% url 'molo.servicedirectory:location-search' %}" method="get" class="service-direcyory__form">
+    <fieldset>
         <input type="text" name="search" placeholder="Find me this clinic service..." />
-        <input type="submit" value="Search" />
+    </fieldset>
+    <input type="submit" value="Search" />
     </form>
     <div class="service-directory__listings">
     {% for category in categories_keywords %}

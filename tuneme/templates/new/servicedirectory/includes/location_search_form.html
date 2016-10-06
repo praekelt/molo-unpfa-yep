@@ -2,15 +2,11 @@
   &lt; Back
 </a>
 
-<p class="service-dir__title">
-    In which village or town would you like to find a service?
-</p>
-
-<form action="{% url 'molo.servicedirectory:location-results'  %}" method="get" class="service-dir__search-form">
-
+<h4 class="service-directory__title">In which village or town would you like to find a service?</h4>
+<form action="{% url 'molo.servicedirectory:location-results'  %}" method="get" class="service-direcyory__form">
+  <fieldset>
     <input type="text" name="location" value="{{ location_term }}" placeholder="Enter village or town..."/>
-    <input type="submit" value="Search" />
-
-    <input type="hidden" name="search" value="{{ search_term }}" />
-
+  <fieldset>
+  <input type="submit" value="Search" />
+  <input type="hidden" name="search" value="{{ search_term }}" />
 </form>
