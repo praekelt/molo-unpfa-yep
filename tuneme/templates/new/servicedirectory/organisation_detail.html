@@ -10,25 +10,25 @@
 
     <h1 class="heading heading--organisation-name">{{ organisation.name }}</h1>
     <h2 class="service-directory__title">Services</h2>
-    <ul class="service-link-list">
+    <ul class="service-list">
     {% for category in organisation.categories %}
-    <li class="service-link-list__item">
+    <li class="service-list__item">
         {{ category.name }},&nbsp;
     </li>
     {% endfor %}
     </ul>
 
     {% if organisation.about %}
-    <h3 class="heading heading--subtitle heading--keywords">What we do</h3>
-    <ul class="service-link-list">
-        <li class="service-link-list__item service-link-list__item--keywords">
+    <h3 class="service-directory__title">What we do</h3>
+    <ul class="service-list">
+        <li class="service-list__item service-link-list__item--keywords">
           {{ organisation.about }}
         </li>
     </ul>
     {% endif %}
 
     {% if organisation.telephone or organisation.email or organisation.web %}
-        <h3 class="heading heading--subtitle">Contact</h3>
+        <h3 class="service-directory__title">Contact</h3>
         <p class="service-dir__contact">
             {% if organisation.telephone %}
             <span class="tel">
@@ -54,26 +54,26 @@
     {% endif %}
 
     {% if organisation.address %}
-    <h3 class="heading heading--subtitle">Address</h3>
-    <ul class="service-link-list">
-        <li class="service-link-list__item">
+    <h3 class="service-directory__title">Address</h3>
+    <ul class="service-list">
+        <li class="service-list__item">
             {{ organisation.address }}
         </li>
     </ul>
     {% endif %}
 
     {% if organisation.availability_hours %}
-    <h3 class="heading heading--subtitle">Trading Hours</h3>
-    <ul class="service-link-list">
-        <li class="service-link-list__item">
+    <h3 class="service-directory__title">Trading Hours</h3>
+    <ul class="service-list">
+        <li class="service-list__item">
            {{ organisation.availability_hours }}
         </li>
     </ul>
     {% endif %}
 
     {% if organisation.age_range_min and organisation.age_range_max %}
-    <ul class="service-link-list">
-        <li class="service-link-list__item">
+    <ul class="service-list">
+        <li class="service-list__item">
             {{ organisation.age_range_min }}-{{ organisation.age_range_max }} years
         </li>
     </ul>
@@ -85,8 +85,8 @@
 
     <a class="call-to-action__nav-item" href="{% url 'molo.servicedirectory:organisation-sms-self' organisation.id %}" class="service-dir__button service-dir__button--outline">Send Clinic Info to Yourself</a>
 
-    <h4 class="heading heading--subtitle">How helpful was this service directory entry?</h4>
-    <form method="post" action="{% url 'molo.servicedirectory:organisation-rate' organisation.id %}" class="service-dir-form">
+    <h4 class="service-directory__title">How helpful was this service directory entry?</h4>
+    <form method="post" action="{% url 'molo.servicedirectory:organisation-rate' organisation.id %}"  class="service-direcyory__form">
     {% csrf_token %}
         <fieldset>
             <button type="submit" name="rating" value="good" class="smiley happy"></button>
