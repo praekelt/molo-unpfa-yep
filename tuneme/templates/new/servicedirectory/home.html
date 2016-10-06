@@ -1,21 +1,21 @@
 {% extends 'servicedirectory/content_base.html' %}
 
 {% block inner_content %}
-    <h2 class="service-dir__title">Search for the service you are looking for:</h2>
-    <form action="{% url 'molo.servicedirectory:location-search' %}" method="get" class="service-dir__search-form">
+    <h2 class="heading heading--service-directory-subtitle">Search for the service you are looking for:</h2>
+    <form action="{% url 'molo.servicedirectory:location-search' %}" method="get" class="service-direcyory__form">
         <input type="text" name="search" placeholder="Find me this clinic service..." />
         <input type="submit" value="Search" />
     </form>
-    <div class="service-dir__categories">
+    <div class="service-directory__listings">
     {% for category in categories_keywords %}
         <a class="service-dir__category-title" href="{% url 'molo.servicedirectory:location-search' %}?search={{ category.name }}">{{ category.name }}</a>
-    <ul class="service-link-list">
+    <ul class="service-list">
         {% for keyword in category.keywords %}
-        <li class="service-link-list__item">
+        <li class="service-list__item">
             <a href="{% url 'molo.servicedirectory:location-search' %}?search={{ keyword }}">{{ keyword }}</a>{% if not forloop.last or and_more %}, {% endif %}
          </li>
         {% endfor %}
-         <li class="category-list__item">
+         <li class="service-list__item">
         {% if and_more %}
             <a href="{% url 'molo.servicedirectory:home' %}?category={{ category.name }}">and more...</a>
         {% endif %}

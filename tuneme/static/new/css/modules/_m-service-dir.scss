@@ -7,20 +7,40 @@
   background: no-repeat center/contain url(../img/Find-a-clinic.png); 
 }
 
+.heading--service-directory-title {
+  padding: 0 10px;
+}
+
+.heading--service-directory-subtitle {
+  font-weight: bold;
+  padding: 0 10px 0;
+}
+
+.service-direcyory__form {
+  padding: 0 10px;
+}
+
+.service-directory__listings {
+  padding: 0 10px;
+}
+
+.service-list {
+  .service-list__item {
+    display: inline-block;
+    color: #000;
+    a {
+      color: #000;
+    }
+  }
+}
+
+
 //New Classes
 .service-dir__category-title {
   color: $green;
   font-size: $font-large;
   text-decoration: underline;
   font-weight: bold;
-}
-
-.service-link-list__item {
-  display: inline-block;
-  color: #000;
-  a {
-    color: #000;
-  }
 }
 
 .service-directory {
@@ -37,20 +57,11 @@
     color: $green;
   }
   //Is this inside service-dir__container
-  .heading {
-    font-size: $font-large;
-    font-weight: bold;
-  }
 
   .heading--org-name {
     margin-bottom: 10px;
     text-transform: uppercase;
-  }
-
-  .heading--subtitle {
-
-  }
-  
+  }  
 }
 
 
