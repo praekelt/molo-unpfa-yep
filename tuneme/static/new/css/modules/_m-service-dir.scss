@@ -13,18 +13,18 @@
 
 //New Classes
 .service-dir__category-title {
+  color: $green;
   font-size: $font-large;
   text-decoration: underline;
   font-weight: bold;
 }
 
-.category-list__item {
+.service-link-list__ietm {
   display: inline-block;
   a {
-    color: $green;
+    color: #000;
   }
 }
-
 
 .service-dir__container {
   padding: 0 20px 20px;
@@ -34,6 +34,10 @@
   .call-to-action__link {
     margin-bottom: 15px;
     display: inline-block;
+  }
+
+  .call-to-action__nav-item--back {
+    color: $green;
   }
 }
 

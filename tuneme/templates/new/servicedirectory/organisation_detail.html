@@ -1,13 +1,7 @@
 {% extends 'servicedirectory/content_base.html' %}
 
 {% load staticfiles %}
-
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'servicedirectory/sd-base.css' %}"/>
-{% endblock %}
-
 {% block inner_content %}
-
     {% if message %}
     <div class="sd-msg">
         {{ message }}

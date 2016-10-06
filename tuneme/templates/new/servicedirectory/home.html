@@ -9,9 +9,9 @@
     <div class="service-dir__categories">
     {% for category in categories_keywords %}
         <a class="service-dir__category-title" href="{% url 'molo.servicedirectory:location-search' %}?search={{ category.name }}">{{ category.name }}</a>
-    <ul class="category-list">
+    <ul class="service-link-list">
         {% for keyword in category.keywords %}
-        <li class="category-list__item">
+        <li class="service-link-list__item">
             <a href="{% url 'molo.servicedirectory:location-search' %}?search={{ keyword }}">{{ keyword }}</a>{% if not forloop.last or and_more %}, {% endif %}
          </li>
         {% endfor %}
