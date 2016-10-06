@@ -55,50 +55,51 @@
     {% endif %}
 
     {% if organisation.address %}
-        <h3 class="heading heading--subtitle">Address</h3>
-        <p class="service-dir__address">
+    <h3 class="heading heading--subtitle">Address</h3>
+    <ul class="service-link-list">
+        <li class="service-link-list__item">
             {{ organisation.address }}
-        </p>
+        </li>
+    </ul>
     {% endif %}
 
     {% if organisation.availability_hours %}
-        <h3 class="heading heading--subtitle">Trading Hours</h3>
-        <p class="service-dir__tradinghours">
-            {{ organisation.availability_hours }}
-        </p>
+    <h3 class="heading heading--subtitle">Trading Hours</h3>
+    <ul class="service-link-list">
+        <li class="service-link-list__item">
+           {{ organisation.availability_hours }}
+        </li>
+    </ul>
     {% endif %}
 
     {% if organisation.age_range_min and organisation.age_range_max %}
-        <div class="service-dir__ages">
+    <ul class="service-link-list">
+        <li class="service-link-list__item">
             {{ organisation.age_range_min }}-{{ organisation.age_range_max }} years
-        </div>
+        </li>
+    </ul>
     {% endif %}
 
-    <a class="call-to-action__link" href="{% url 'molo.servicedirectory:organisation-report' organisation.id %}?org_name={{ organisation.name | urlencode }}">Is this info correct?</a>
+    <a class="call-to-action__nav-item call-to-action__nav-item--report" href="{% url 'molo.servicedirectory:organisation-report' organisation.id %}?org_name={{ organisation.name | urlencode }}">Is this info correct?</a>
 
-    <a href="{% url 'molo.servicedirectory:organisation-sms' organisation.id %}" class="service-dir__button">Send Clinic Info to Someone</a>
+    <a class="call-to-action__nav-item" href="{% url 'molo.servicedirectory:organisation-sms' organisation.id %}" class="service-dir__button">Send Clinic Info to Someone</a>
 
-    <a href="{% url 'molo.servicedirectory:organisation-sms-self' organisation.id %}" class="service-dir__button service-dir__button--outline">Send Clinic Info to Yourself</a>
-
-    <br/>
+    <a class="call-to-action__nav-item" href="{% url 'molo.servicedirectory:organisation-sms-self' organisation.id %}" class="service-dir__button service-dir__button--outline">Send Clinic Info to Yourself</a>
 
     <h4 class="heading heading--subtitle">How helpful was this service directory entry?</h4>
-    <form method="post" action="{% url 'molo.servicedirectory:organisation-rate' organisation.id %}">
-        {% csrf_token %}
-        <div class="service-dir__org-rating">
-            <div class="service-dir__faces">
-                <button type="submit" name="rating" value="good" class="smiley happy"></button>
-                <span>Very helpful</span>
-            </div>
-            <div class="service-dir__faces">
-                <button type="submit" name="rating" value="average" class="smiley neutral"></button>
-                <span>I'm neutral</span>
-            </div>
-            <div class="service-dir__faces">
-                <button type="submit" name="rating" value="poor" class="smiley sad"></button>
-                <span>Not helpful</span>
-            </div>
-        </div>
+    <form method="post" action="{% url 'molo.servicedirectory:organisation-rate' organisation.id %}" class="service-dir-form">
+    {% csrf_token %}
+        <fieldset>
+            <button type="submit" name="rating" value="good" class="smiley happy"></button>
+            <label>Very helpful</label>
+       </fieldset>
+        <fieldset>
+            <button type="submit" name="rating" value="average" class="smiley neutral"></button>
+            <label>I'm neutral</label>
+        </fieldset>
+        <fieldset>
+            <button type="submit" name="rating" value="poor" class="smiley sad"></button>
+            <label>Not helpful</label>
+        </fieldset>
     </form>
-
 {% endblock %}
