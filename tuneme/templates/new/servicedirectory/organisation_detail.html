@@ -8,13 +8,16 @@
     </div>
     {% endif %}
 
-    <h1 class="service-dir__title service-dir__title--org-name">{{ organisation.name }}</h1>
-    <h1 class="service-dir__title">Services</h1>
-    <p class="service-dir__categories">
+    <h1 class="heading heading--org-name">{{ organisation.name }}</h1>
+    <h2 class="heading heading--subtitle">Services</h2>
+    <ul class="service-link-list">
     {% for category in organisation.categories %}
+    <li class="service-link-list__item">
         {{ category.name }},&nbsp;
-        {% endfor %}
-      </p>
+    </li>
+    {% endfor %}
+    </ul>
+    <p class="service-dir__categories">Old styles</p>
 
     {% if organisation.about %}
         <h1 class="service-dir__title">What we do</h1>

@@ -39,18 +39,24 @@
   .call-to-action__nav-item--back {
     color: $green;
   }
-}
+  //Is this inside service-dir__container
+  .heading {
+    font-size: $font-large;
+    font-weight: bold;
+  }
 
-.service-dir__title, .sd-heading {
-  font-size: $font-large;
-  font-weight: bold;
-}
+  .heading--org-name {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
 
-.service-dir__title--org-name {
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
+  .heading--subtitle {
+    
+  }
   
+}
+
+
 .service-dir__subtitle {
   line-height: 2em;
   .service-dir__subtitle--main {
