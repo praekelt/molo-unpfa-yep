@@ -32,7 +32,7 @@
   li {
     line-height: 2em;
   }
-  .call-to-action__link {
+  .call-to-action__nav-item--report {
     margin-bottom: 15px;
     display: inline-block;
   }
@@ -94,21 +94,17 @@
   }
 }
 
-.service-dir__org-rating {
+.service-dir-form {
   padding: 20px 0;
-}
-
-.service-dir__org-rating {
   display: inline-block;
   width: 100%;
-}
-
-.service-dir__faces {
-  text-align: center;
-  font-size: 100%;
-  float: left;
-  width: 33.3333%;
-  span {
+  fieldset {
+    text-align: center;
+    font-size: 100%;
+    float: left;
+    width: 33.3333%;
+  }
+  label {
     display: block;
     margin-top: 10px;
     font-size: $font-small;
