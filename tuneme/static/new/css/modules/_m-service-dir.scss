@@ -1,13 +1,9 @@
-.service-dir__banner {
+.service-directory__banner {
   text-align: center;
   padding-top: 10px;
-  h1 {
-    padding-top: 0;
-    margin-top: 0;
-  }
 }
 
-.service-dir__image {
+.service-directory__image {
   background: no-repeat center/contain url(../img/Find-a-clinic.png); 
 }
 
@@ -27,8 +23,8 @@
   }
 }
 
-.service-dir__container {
-  padding: 0 20px 20px;
+.service-directory {
+  //padding: 0 20px 20px;
   li {
     line-height: 2em;
   }

@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="service-dir__banner">
-  <div class="service-dir__image"></div>
-  <h1 class="heading">Clinic Service Finder{% if search_term %}:<br /> {{ search_term }} {% endif %}</h1>
+<div class="service-directory__banner">
+  <div class="service-directory__image"></div>
+  <h1 class="heading heading--service-directory-title">
+    Clinic Service Finder{% if search_term %}:
+    <span class="search-term">{{ search_term }} {% endif %}</span>
+  </h1>
 </div>
-<div class="service-dir__container">
+<div class="service-directory">
     {% block inner_content %}{% endblock %}
 </div>
 
