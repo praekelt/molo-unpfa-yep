@@ -45,6 +45,9 @@
 
 .service-directory__listings {
   padding: 0 10px;
+  .service-directory__title {
+    padding: 0;
+  }
 }
 
 .service-list {
