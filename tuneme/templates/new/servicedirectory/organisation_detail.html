@@ -89,16 +89,22 @@
     <form method="post" action="{% url 'molo.servicedirectory:organisation-rate' organisation.id %}"  class="service-directory__form service-directory__form--service-rate">
     {% csrf_token %}
        <fieldset>
-            <button type="submit" name="rating" value="good" class="smiley happy"></button>
-            <label>Very helpful</label>
+        <label>
+        <button type="submit" name="rating" value="good" class="smiley happy"></button>
+        Very helpful
+        </label>
        </fieldset>
        <fieldset>
-            <button type="submit" name="rating" value="average" class="smiley neutral"></button>
-            <label>I'm neutral</label>
+       <label>
+        <button type="submit" name="rating" value="average" class="smiley neutral"></button>
+        I'm neutral
+        </label>
        </fieldset>
        <fieldset>
-            <button type="submit" name="rating" value="poor" class="smiley sad"></button>
-            <label>Not helpful</label>
+       <label>
+        <button type="submit" name="rating" value="poor" class="smiley sad"></button>
+        Not helpful
+        </label>
        </fieldset>
     </form>
 {% endblock %}
