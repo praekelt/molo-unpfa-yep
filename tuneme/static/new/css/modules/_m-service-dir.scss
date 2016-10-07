@@ -37,7 +37,6 @@
 }
 
 .service-directory__form {
-  padding: 0 10px;
   fieldset {
     font-size: 100%;
   }
@@ -47,19 +46,22 @@
     font-size: $font-small;
   }
   input[type="checkbox"],
-  label[for="checkbox"] {
+  label[for="checkbox"]{
     display: inline;
   }
   .call-to-action__nav-item--login, 
   input[type="submit"] {
     margin: 10px 0 20px;
   }
+
+  .service-directory__title {
+    padding: 0;
+  }
 }
 
 .service-directory__form--service-rate {
    padding: 0 10px 10px;
 }
-
 
 .service-directory__listings {
   padding: 0 10px;
@@ -101,6 +103,10 @@
 .call-to-action__nav-item--report {
   margin-bottom: 15px;
   display: inline-block;
+}
+
+.call-to-action__nav-item--change-search {
+  padding: 0;
 }
 
 .service-dir-location {
