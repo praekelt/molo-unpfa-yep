@@ -13,7 +13,7 @@
 }
 
 .heading--service-dir-subtitle {
-  font-size: $font-large;
+  font-size: $font-small;
   padding: 0 20px 0;
 }
 
@@ -23,12 +23,17 @@
 }
 
 .service-directory__title {
+  padding: 15px 20px;
 }
 
-.service-direcyory__form {
-  padding: 20px 0;
+.service-directory__form {
+  padding: 15px 20px;
 }
 
 .service-directory__listings {
   padding: 10px 20px;
+}
+
+.call-to-action__nav-item--back {
+  padding: 0 20px;
 }
