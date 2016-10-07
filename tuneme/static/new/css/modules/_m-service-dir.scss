@@ -1,3 +1,8 @@
+.service-directory {
+  .call-to-action__nav-item {
+    color: #000;
+  }
+}
 .service-directory__banner {
   text-align: center;
   padding-top: 10px;
@@ -29,8 +34,6 @@
   fieldset {
     text-align: center;
     font-size: 100%;
-    //float: left;
-    //width: 33.3333%;
   }
   label {
     display: block;
@@ -75,7 +78,6 @@
 .service-directory__location {
   border-bottom: 1px solid  #000;
 }
-
 
 .service-dir__button {
   display: block;
