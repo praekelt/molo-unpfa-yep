@@ -1,6 +1,7 @@
 .service-directory {
   .call-to-action__nav-item {
     color: #000;
+    display: block;
   }
 }
 .service-directory__banner {
@@ -45,6 +46,14 @@
   }
 }
 
+.service-directory__form--service-rate {
+  input[type="checkbox"],
+  label {
+    display: inline;
+  }
+}
+
+
 .service-directory__listings {
   padding: 0 10px;
   .service-directory__title {
@@ -53,6 +62,7 @@
 }
 
 .service-list {
+  padding: 0 10px;
   .service-list__item {
     display: inline;
     color: #000;
