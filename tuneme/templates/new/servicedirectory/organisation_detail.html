@@ -84,21 +84,21 @@
     <a class="call-to-action__nav-item" href="{% url 'molo.servicedirectory:organisation-sms' organisation.id %}" class="service-dir__button">Send Clinic Info to Someone</a>
 
     <a class="call-to-action__nav-item" href="{% url 'molo.servicedirectory:organisation-sms-self' organisation.id %}" class="service-dir__button service-dir__button--outline">Send Clinic Info to Yourself</a>
-
+    <hr/>
     <h4 class="service-directory__title">How helpful was this service directory entry?</h4>
     <form method="post" action="{% url 'molo.servicedirectory:organisation-rate' organisation.id %}"  class="service-directory__form">
     {% csrf_token %}
-        <fieldset>
+       <fieldset>
             <button type="submit" name="rating" value="good" class="smiley happy"></button>
             <label>Very helpful</label>
        </fieldset>
-        <fieldset>
+       <fieldset>
             <button type="submit" name="rating" value="average" class="smiley neutral"></button>
             <label>I'm neutral</label>
-        </fieldset>
-        <fieldset>
+       </fieldset>
+       <fieldset>
             <button type="submit" name="rating" value="poor" class="smiley sad"></button>
             <label>Not helpful</label>
-        </fieldset>
+       </fieldset>
     </form>
 {% endblock %}
