@@ -1,3 +1,9 @@
+.service-directory {
+  .call-to-action__nav-item {
+    color: #000;
+    display: block;
+  }
+}
 .service-directory__banner {
   text-align: center;
   padding-top: 10px;
@@ -27,10 +33,7 @@
 .service-directory__form {
   padding: 0 10px;
   fieldset {
-    text-align: center;
     font-size: 100%;
-    //float: left;
-    //width: 33.3333%;
   }
   label {
     display: block;
@@ -43,11 +46,23 @@
   }
 }
 
+.service-directory__form--service-rate {
+  input[type="checkbox"],
+  label {
+    display: inline;
+  }
+}
+
+
 .service-directory__listings {
   padding: 0 10px;
+  .service-directory__title {
+    padding: 0;
+  }
 }
 
 .service-list {
+  padding: 0 10px;
   .service-list__item {
     display: inline;
     color: #000;
@@ -55,6 +70,14 @@
     a {
       color: #000;
     }
+  }
+}
+
+.service-list--results {
+  border-bottom: 1px solid #000;
+  padding: 0 0 10px;
+  .service-list__item { 
+    padding: 0 10px;
   }
 }
 
@@ -69,10 +92,9 @@
   display: inline-block;
 }
 
-.service-directory__location {
-  border-bottom: 1px solid  #000;
+.service-dir-location {
+  border-top: 1px solid  #000;
 }
-
 
 .service-dir__button {
   display: block;

@@ -23,11 +23,11 @@
 }
 
 .service-directory__title {
-  padding: 15px 20px;
+  padding: 10px 20px 0;
 }
 
 .service-directory__form {
-  padding: 15px 20px;
+  padding: 0 20px;
 }
 
 .service-directory__listings {
@@ -36,4 +36,20 @@
 
 .call-to-action__nav-item--back {
   padding: 0 20px;
+}
+.service-list {
+  //Seperate if inside a padded container
+  padding: 0 20px;
+}
+.service-list--results {
+  .service-list__item { 
+    padding: 0 20px;
+  }
+}
+
+.service-directory__form--service-rate {
+  fieldset {
+    float: left;
+    width: 33.3333%;
+  }
 }
