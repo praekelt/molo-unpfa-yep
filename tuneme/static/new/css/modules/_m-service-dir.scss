@@ -2,6 +2,7 @@
   .call-to-action__nav-item {
     color: #000;
     display: block;
+    padding: 0 10px;
   }
 }
 .service-directory__banner {
@@ -47,6 +48,7 @@
 }
 
 .service-directory__form--service-rate {
+   padding: 0 10px 10px;
   input[type="checkbox"],
   label {
     display: inline;

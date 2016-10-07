@@ -1,3 +1,9 @@
+.service-directory {
+  .call-to-action__nav-item {
+    padding: 0 20px;
+  }
+}
+
 .service-directory__banner {
   color: $white;
   background: $green;
@@ -48,8 +54,8 @@
 }
 
 .service-directory__form--service-rate {
+  padding: 0 20px 20px;
   fieldset {
-    float: left;
-    width: 33.3333%;
+    margin: 20px 0 0;
   }
 }
