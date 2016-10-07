@@ -18,20 +18,21 @@
 }
 
 .service-directory__title {
+  line-height: 2em;
   color: #000;
   text-decoration: underline;
   font-weight: bold;
 }
 
-.service-direcyory__form {
+.service-directory__form {
   padding: 0 10px;
   display: inline-block;
   width: 100%;
   fieldset {
     text-align: center;
     font-size: 100%;
-    float: left;
-    width: 33.3333%;
+    //float: left;
+    //width: 33.3333%;
   }
   label {
     display: block;
@@ -71,14 +72,6 @@
 
 
 
-.service-dir__subtitle {
-  line-height: 2em;
-  .service-dir__subtitle--main {
-    font-size: $font-large;
-    text-decoration: underline;
-    font-weight: bold;
-  }
-}
 
 .service-dir__button {
   display: block;
@@ -97,11 +90,8 @@
   background: $white;
 }
 
-.sd-search-results a{
-  color: $orange;
-}
-
-.sd-service-distance, .sd-service-location {
+.sd-service-distance, 
+.sd-service-location {
   font-weight: bold;
 }
 

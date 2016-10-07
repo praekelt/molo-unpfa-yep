@@ -4,11 +4,10 @@
   <div class="service-directory__image"></div>
   <h1 class="heading heading--service-directory-title">
     Clinic Service Finder{% if search_term %}:
-    <span class="search-term">{{ search_term }} {% endif %}</span>
+    <span class="search-term">{{ search_term }}</span> {% endif %}
   </h1>
 </div>
 <div class="service-directory">
     {% block inner_content %}{% endblock %}
 </div>
-
 {% endblock %}
