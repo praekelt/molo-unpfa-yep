@@ -5,25 +5,41 @@
     padding: 0 10px;
   }
 }
+
+.call-to-action__nav-item--back {
+  color: #000;
+  padding: 0 10px;
+}
+.call-to-action__nav-item--report {
+  margin-bottom: 15px;
+  display: inline-block;
+}
+.call-to-action__nav-item--change-search {
+  padding: 0;
+}
+
+.service-dir-location {
+  border-top: 1px solid  #000;
+  .call-to-action__nav-item {
+    padding: 0;
+  }
+}
+
 .service-directory__banner {
   text-align: center;
   padding-top: 10px;
 }
 
-.service-directory__image {
-  background: no-repeat center/contain url(../img/Find-a-clinic.png); 
-}
-
 .service-directory__feedback-message {
-  padding: 0 10px 15px;
   border-bottom: 1px solid #000;
+  font-weight: bold;
+  padding: 0 10px 15px;
 }
 
 .heading--service-dir-title {
   color: #000;
   padding: 0 10px;
 }
-
 .heading--service-dir-subtitle {
   font-weight: bold;
   padding: 0 10px 0;
@@ -42,7 +58,7 @@
     font-size: 100%;
   }
   label {
-    display: block;
+    display: inline-block;
     margin-top: 10px;
     font-size: $font-small;
   }
@@ -64,16 +80,6 @@
    padding: 0 10px 10px;
 }
 
-.service-directory__listings {
-  padding: 0 10px;
-  .service-directory__title {
-    padding: 0;
-  }
-
-  .service-list {
-    padding: 0;
-  }
-}
 
 .service-list {
   padding: 0 10px;
@@ -86,38 +92,25 @@
     }
   }
 }
+.service-directory__listings {
+  padding: 0 10px;
+  .service-directory__title {
+    padding: 0;
+  }
+  .service-list {
+    padding: 0;
+  }
+}
+.service-directory__form--location-results {
+  .service-list {
+    padding: 0;
+  }
+}
 
 .service-list--results {
   border-bottom: 1px solid #000;
-  padding: 0 0 10px;
-  .service-list__item { 
-    padding: 0 10px;
-  }
-
   .heading--service-dir-organisation {
-    padding: 0;
-  }
-}
-
-.service-directory__feedback-message {}
-.call-to-action__nav-item--back {
-  color: #000;
-  padding: 0 10px;
-}
-
-.call-to-action__nav-item--report {
-  margin-bottom: 15px;
-  display: inline-block;
-}
-
-.call-to-action__nav-item--change-search {
-  padding: 0;
-}
-
-.service-dir-location {
-  border-top: 1px solid  #000;
-  .call-to-action__nav-item {
-    padding: 0;
+    padding: 0; //Where is this used?
   }
 }
 
