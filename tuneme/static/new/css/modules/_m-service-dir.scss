@@ -4,9 +4,6 @@
     display: block;
     padding: 0 10px;
   }
-  .call-to-action__nav-item--change-search {
-    padding: 0;
-  }
 }
 
 .call-to-action__nav-item--back {
@@ -60,6 +57,11 @@
 
 .service-directory__title--current-address {
   text-decoration: none;
+}
+
+.call-to-action__nav-item--change-search {
+  text-decoration: underline;
+  font-size: $font-medium;
 }
 
 .service-directory__form {
