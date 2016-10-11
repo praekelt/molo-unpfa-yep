@@ -2,7 +2,7 @@
   &lt; Back</a>
 <form action="{% url 'molo.servicedirectory:location-results'  %}" method="get" class="service-directory__form service-directory__form--location-results">
   <fieldset>
-    <label>In which village or town would you like to find a service?</label>
+    <label class="service-dir-hero-label">In which village or town would you like to find a service?</label>
     <input type="text" name="location" value="{{ location_term }}" placeholder="Enter village or town..."/>
   <fieldset>
   <input type="submit" value="Search" />
