@@ -1,4 +1,5 @@
-{% load wagtailcore_tags wagtailimages_tags compress static wagtailuserbar core_tags i18n %}
+{% load wagtailcore_tags compress static wagtailuserbar core_tags i18n %}
+{% load wagtailsettings_tags wagtailimages_tags %}
 {% load google_analytics_tags %}
 <!DOCTYPE html>
 <html>
@@ -139,5 +140,6 @@
         <!-- Local End Google Tracking Code -->
         {% endif %}
   {% block extra_js %}{% endblock %}
+  {% wagtailuserbar %}
 </body>
 </html>
