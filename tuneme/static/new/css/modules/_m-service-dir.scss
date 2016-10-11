@@ -47,9 +47,13 @@
 
 .service-directory__title {
   color: #000;
+  display: block;
+  margin-bottom: 5px;
   padding: 10px;
   text-decoration: underline;
   font-weight: bold;
+  font-size: $font-large;
+  text-transform: uppercase;
 }
 
 .service-directory__form {
