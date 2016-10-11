@@ -72,6 +72,9 @@
     margin-top: 10px;
     font-size: $font-small;
   }
+  .service-dir-hero-label {
+    font-size: $font-medium;
+  }
   input[type="checkbox"],
   label[for="checkbox"]{
     display: inline;
@@ -93,7 +96,7 @@
 .service-dir-hero-label {
   margin: 0;
   padding: 0;
-  font-size: $font-medium
+  font-size: $font-medium; //Duplicate font-size here until ServiceDirectory plugin gets updated
 }
 
 .service-list {
