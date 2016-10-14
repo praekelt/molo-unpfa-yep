@@ -11,14 +11,14 @@ var gulp              =   require('gulp'),
     livereload        =   require('gulp-livereload');
 
 var sassPaths = [
-    'tuneme/styles/opera-single-view.scss',
-    'tuneme/styles/style.scss',
-    'tuneme/styles/state_320/state_320.scss',
+    'iogt/styles/opera-mini_single-view.scss',
+    'iogt/styles/style.scss',
+    'iogt/styles/state_320/state_320.scss',
 ];
 
 var sassDest = {
-     prd: 'tuneme/static/new/css/prd',
-     dev: 'tuneme/static/new/css/dev'
+     prd: 'iogt/static/new/css/prd',
+     dev: 'iogt/static/new/css/dev'
 };
 
 function styles(env) {
@@ -48,7 +48,7 @@ gulp.task('styles:dev', function() {
 
 gulp.task('watch', function() {
     livereload.listen();
-    gulp.watch('tuneme/styles/*.scss', ['styles']);
+    gulp.watch('iogt/styles/*.scss', ['styles']);
 });
 
 gulp.task('styles', ['styles:dev', 'styles:prd']);
