@@ -1,6 +1,7 @@
 {% load wagtailcore_tags compress static wagtailuserbar core_tags i18n %}
 {% load wagtailsettings_tags wagtailimages_tags %}
 {% load google_analytics_tags %}
+{% get_static_prefix as STATIC_PREFIX %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,36 @@
   <meta property="og:image:url" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui"/>
   <meta name="robots" content="all,index,follow" />
+  {% compress css %}
+   <link rel="stylesheet" type="text/css" href="{{ STATIC_PREFIX }}new/css/{{ ENV }}/style.css">
+  {% endcompress %}
+  <script type="text/javascript">
+     var CutsTheMustard = 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window,
+         LargeScreen = ((window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) >= 200);
+
+    var operaMiniSingleView = '{% spaceless %} 
+      {% compress css %}
+         <link rel="stylesheet" type="text/css" media="handheld" href="{{ STATIC_PREFIX }}new/css/{{ ENV }}/opera-single-view.css">
+      {% endcompress %}
+    {% endspaceless %}';
+
+    var smartStyles = '{% spaceless %}
+       {% compress css %}
+         <link rel="stylesheet" type="text/css" href="{{ STATIC_PREFIX }}new/css/{{ ENV }}/state_320.css">
+       {% endcompress %}
+     {% endspaceless %}';
+
+    var latoGoogleFont = '<link href="//fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet" type="text/css">';
+
+    if(CutsTheMustard === true) {
+      if(LargeScreen) {
+        document.write(smartStyles, latoGoogleFont);
+        }
+    }
+      if(LargeScreen === false) {
+        document.write(operaMiniSingleView);
+     }
+    </script>
   {% block extra_css %}{% endblock %}
   {% block Facebook_pixel %}{% endblock %}
 </head>
