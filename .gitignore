@@ -52,3 +52,5 @@ docs/_build
 */settings/secrets.py
 tuneme/static/new/CACHE/
 tuneme/static/old/CACHE/
+
+node_modules/
