@@ -5,7 +5,7 @@ from .base import *  # noqa
 # Disable debug mode
 
 DEBUG = False
-
+ENV = 'prd'
 
 # Compress static files offline
 # http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
@@ -60,6 +60,10 @@ GOOGLE_PLACES_API_SERVER_KEY = os.environ.get(
     'GOOGLE_PLACES_API_SERVER_KEY', None
 )
 
+COMPRESS_OFFLINE_CONTEXT = {
+    'STATIC_URL': STATIC_URL,
+    'ENV': ENV,
+}
 
 try:
     from .local import *  # noqa
