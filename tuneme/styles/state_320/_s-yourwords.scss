@@ -25,3 +25,9 @@
 .yourwords-form {
   padding: 0 20px;
 }
+
+@each $name, $color in $color_list {
+   .yourwords--#{$name} {
+      background: : $color;
+   }
+}
