@@ -52,5 +52,3 @@ docs/_build
 */settings/secrets.py
 
 node_modules/
-tuneme/static/new/css/dev/
-tuneme/static/new/css/prd/
