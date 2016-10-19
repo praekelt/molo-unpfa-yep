@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% load static core_tags %}
@@ -52,7 +51,7 @@
         <a href="{% pageurl block.value %}" class="featured-articles">{{ block.value }}</a>
     {% else %}
         {{ block }}
-    {% endif %} 
+    {% endif %}
   {% endfor %}
   </div>
 </div>
