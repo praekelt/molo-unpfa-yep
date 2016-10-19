@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags comments core_tags i18n %}
+{% load wagtailcore_tags wagtailimages_tags comments core_tags competition_tag i18n %}
 {% for section in sections %}
   <h1 class="heading heading{{section.get_effective_extra_style_hints}}">
     <a href="{% pageurl section %}">{{section.title}}</a>
@@ -20,4 +20,5 @@
     {% endfor %}
     <li class="article-list__item article-list__item--more"><a href="{% pageurl section %}">{% trans "More" %}</a></li>
   </ul>
+  {% your_words_competition_in_section section %}
 {% endfor %}
