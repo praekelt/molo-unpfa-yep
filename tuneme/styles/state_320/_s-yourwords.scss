@@ -39,7 +39,14 @@
     background: $color;
     .call-to-action__nav-item--login {
       background: $color;
-      filter: grayscale(80%);
+      filter: grayscale(60%);
     }
   }
+}
+//Manual color match
+.yourwords--gold .call-to-action__nav-item--login  {
+  background: rgb(153, 130, 0);
+}
+.yourwords--turquoise .call-to-action__nav-item--login {
+  background: rgb(53, 140, 139);
 }
