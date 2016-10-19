@@ -4,7 +4,7 @@ from os import environ
 
 import dj_database_url
 
-from .base import *  # noqa
+from .production import *  # noqa
 
 
 def bool_env(val):
