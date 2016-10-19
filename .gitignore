@@ -54,3 +54,5 @@ tuneme/static/new/CACHE/
 tuneme/static/old/CACHE/
 
 node_modules/
+tuneme/static/new/css/dev/
+tuneme/static/new/css/prd/

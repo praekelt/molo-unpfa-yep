@@ -2,10 +2,14 @@
   .heading {
     padding: 10px;
     margin: 0;
+    text-align: center;
+  }
+  .heading--yourwords {
+    border: none;
   }
   .heading--yourwords-subtitle {
     font-size: $font-small;
-    padding: 0 10px;
+    padding: 0 10px 20px;
   }
 
   label[for="id_terms_or_conditions_approved"],
@@ -62,4 +66,3 @@
 .alert-error {
   color: red;
 }
-

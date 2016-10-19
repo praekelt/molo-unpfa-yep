@@ -1,15 +1,23 @@
 .yourwords {
+  padding: 10px 0;
+  color: #fff;
    .heading {
     padding: 10px 20px;
+    color: #fff;
   }
   .heading--yourwords-subtitle {
     font-size: $font-large;
-    padding: 10px 20px 0;
+    padding: 5px 20px 20px;
   }
   .yourwords--inner-content {
    .heading  {
     padding: 0;
    }
+  }
+
+  .call-to-action__nav-item--login {
+    text-align: center;
+    display: block;
   }
 }
 
@@ -24,4 +32,14 @@
 
 .yourwords-form {
   padding: 0 20px;
+}
+
+@each $name, $color in $color_list {
+  .yourwords--#{$name} {
+    background: $color;
+    .call-to-action__nav-item--login {
+      background: $color;
+      filter: grayscale(80%);
+    }
+  }
 }
