@@ -26,7 +26,7 @@
       Type = needs to be x-scss to be compiled
   -->
   {% compress css %}
-    <link rel="stylesheet" type="text/x-scss" href="{{ STATIC_URL }}new/css/{{ ENV }}/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/style.css">
   {% endcompress %}
 
   <script type="text/javascript">
@@ -35,13 +35,13 @@
 
     var operaMiniSingleView = '{% spaceless %}
     {% compress css %}
-       <link rel="stylesheet" type="text/x-scss" media="handheld" href="{{ STATIC_URL }}new/css/{{ ENV }}/opera_single_view.css">
+       <link rel="stylesheet" type="text/css" media="handheld" href="{{ STATIC_URL }}new/css/{{ ENV }}/opera_single_view.css">
     {% endcompress %}
     {% endspaceless %}';
 
     var smartStyles = '{% spaceless %}
      {% compress css %}
-       <link rel="stylesheet" type="text/x-scss" href="{{ STATIC_URL }}new/css/{{ ENV }}/state_320.css">
+       <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/state_320.css">
      {% endcompress %}
     {% endspaceless %}';
 
