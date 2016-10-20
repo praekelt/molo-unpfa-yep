@@ -1,6 +1,4 @@
 .yourwords {
-  border: none;
-  color: #fff;
   .heading {
     padding: 10px 20px;
     text-align: center;
@@ -66,7 +64,9 @@
 
 @each $name, $color in $color_list {
   .yourwords--#{$name} {
+    color: #fff;
     background: $color;
+    border: none;
     .call-to-action__nav-item--back-home {
       color: $color;
     }
