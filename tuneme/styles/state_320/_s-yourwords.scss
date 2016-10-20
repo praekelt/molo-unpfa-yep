@@ -1,9 +1,9 @@
 .yourwords {
-  padding: 10px 0;
+  border: none;
   color: #fff;
-   .heading {
+  .heading {
     padding: 10px 20px;
-    color: #fff;
+    text-align: center;
   }
   .heading--yourwords-subtitle {
     font-size: $font-large;
@@ -14,10 +14,28 @@
     padding: 0;
    }
   }
-
   .call-to-action__nav-item--login {
     text-align: center;
     display: block;
+  }
+
+  .call-to-action__nav-item--back-home {
+    padding: 10px 20px;
+  }
+}
+
+.yourwords--entries {
+  color: #000;
+  .heading {
+    text-align: left;
+  }
+}
+
+//Yourwords Page
+.heading-container  {
+  .heading {
+    color: #000;
+    text-align: left;
   }
 }
 
@@ -37,6 +55,9 @@
 @each $name, $color in $color_list {
   .yourwords--#{$name} {
     background: $color;
+    .call-to-action__nav-item--back-home {
+      color: $color;
+    }
     .call-to-action__nav-item--login {
       background: $color;
       filter: grayscale(60%);
