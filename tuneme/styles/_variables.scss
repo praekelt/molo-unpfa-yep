@@ -39,3 +39,8 @@ $color_list: (
   rose_pink : $rose_pink,
   gold      : $gold
 );
+
+@mixin float-clear($value) {
+  float: $value;
+  clear: $value;
+}
