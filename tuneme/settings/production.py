@@ -5,13 +5,6 @@ from .base import *  # noqa
 # Disable debug mode
 
 DEBUG = False
-ENV = 'prd'
-
-# Compress static files offline
-# http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
-
-COMPRESS_OFFLINE = True
-
 
 # Send notification emails as a background task using Celery,
 # to prevent this from blocking web server threads
@@ -59,11 +52,6 @@ SERVICE_DIRECTORY_API_PASSWORD = os.environ.get(
 GOOGLE_PLACES_API_SERVER_KEY = os.environ.get(
     'GOOGLE_PLACES_API_SERVER_KEY', None
 )
-
-COMPRESS_OFFLINE_CONTEXT = {
-    'STATIC_URL': STATIC_URL,
-    'ENV': ENV,
-}
 
 try:
     from .local import *  # noqa
