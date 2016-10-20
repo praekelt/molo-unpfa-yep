@@ -11,9 +11,9 @@ var gulp              =   require('gulp'),
     livereload        =   require('gulp-livereload');
 
 var sassPaths = [
-    'tuneme/styles/opera_single_view.scss',
-    'tuneme/styles/style.scss',
-    'tuneme/styles/state_320/state_320.scss',
+    'tuneme/static/new/css/styles/opera_single_view.scss',
+    'tuneme/static/new/css/style.scss',
+    'tuneme/static/new/css/state_320/state_320.scss',
 ];
 
 var sassDest = {
@@ -49,7 +49,7 @@ gulp.task('styles:dev', function() {
 
 gulp.task('watch', function() {
     livereload.listen();
-    gulp.watch('tuneme/styles/*.scss', ['styles']);
+    gulp.watch('tuneme/static/new/css/*.scss', ['styles']);
 });
 
 gulp.task('styles', ['styles:dev', 'styles:prd']);
