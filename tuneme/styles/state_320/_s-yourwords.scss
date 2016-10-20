@@ -29,6 +29,11 @@
   .heading {
     text-align: left;
   }
+
+  .call-to-action__nav-item {
+    //color: #777;
+    text-decoration: underline;
+  }
 }
 
 //Yourwords Page
@@ -46,6 +51,13 @@
 
 .yourwords--inner-content {
   padding: 0 20px;
+  a {
+    text-decoration: underline;
+    color: #000;
+    font-weight: bold;
+    display: inline-block;
+    padding: 10px 0 0;
+  }
 }
 
 .yourwords-form {
