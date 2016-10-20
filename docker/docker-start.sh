@@ -7,7 +7,6 @@ LANGUAGE_CODE=en ./manage.py compilemessages
 
 ./manage.py migrate --noinput
 ./manage.py collectstatic --noinput
-./manage.py compress
 
 echo "from django.contrib.auth.models import User
 if not User.objects.filter(username='admin').count():
