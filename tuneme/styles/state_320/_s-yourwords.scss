@@ -1,9 +1,7 @@
 .yourwords {
-  padding: 10px 0;
-  color: #fff;
-   .heading {
+  .heading {
     padding: 10px 20px;
-    color: #fff;
+    text-align: center;
   }
   .heading--yourwords-subtitle {
     font-size: $font-large;
@@ -14,10 +12,33 @@
     padding: 0;
    }
   }
-
   .call-to-action__nav-item--login {
     text-align: center;
     display: block;
+  }
+
+  .call-to-action__nav-item--back-home {
+    padding: 10px 20px;
+  }
+}
+
+.yourwords--entries {
+  color: #000;
+  .heading {
+    text-align: left;
+  }
+
+  .call-to-action__nav-item {
+    //color: #777;
+    text-decoration: underline;
+  }
+}
+
+//Yourwords Page
+.heading-container  {
+  .heading {
+    color: #000;
+    text-align: left;
   }
 }
 
@@ -28,6 +49,13 @@
 
 .yourwords--inner-content {
   padding: 0 20px;
+  a {
+    text-decoration: underline;
+    color: #000;
+    font-weight: bold;
+    display: inline-block;
+    padding: 10px 0 0;
+  }
 }
 
 .yourwords-form {
@@ -36,7 +64,12 @@
 
 @each $name, $color in $color_list {
   .yourwords--#{$name} {
+    color: #fff;
     background: $color;
+    border: none;
+    .call-to-action__nav-item--back-home {
+      color: $color;
+    }
     .call-to-action__nav-item--login {
       background: $color;
       filter: grayscale(60%);
