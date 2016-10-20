@@ -59,7 +59,7 @@ gulp.task('styles:dev', () => {
     .pipe(sourcemaps.init());
 
   return styles('dev', s)
-  .pipe(sourcemaps.write('../maps'))
+    .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest(paths.styles.dest));
 });
 
