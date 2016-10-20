@@ -14,7 +14,11 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-watch": "^4.3.9"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-hash": "^3.1.0",
+    "gulp-rev": "^7.1.2",
+    "lodash": "^4.16.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/praekelt/molo-tuneme.git"
