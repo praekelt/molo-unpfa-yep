@@ -29,7 +29,6 @@
 .article-list--latest-listing {
   .article-list__item:first-child {
     @include float-clear(none);
-    border: 1px solid red;
     width: 100%;
   }
   .article-list__item:nth-child(even) {
