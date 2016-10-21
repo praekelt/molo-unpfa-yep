@@ -1,1 +1,1 @@
-{"version":3,"sources":["opera_single_view.scss"],"names":[],"mappings":"AAAA,KACE,WAAY,KACZ,MAAO,KAGT,kBACE,MAAO","file":"../styles/opera_single_view.css","sourcesContent":["body {\n  background: #fff;\n  color: #000;\n}\n\n.header .logo img {\n  width: 100%;\n}"]}
+{"version":3,"sources":["opera_single_view.scss"],"names":[],"mappings":"AAAA,KACE,WAAY,KACZ,MAAO,KAGT,kBACE,MAAO","file":"../css/opera_single_view.css","sourcesContent":["body {\n  background: #fff;\n  color: #000;\n}\n\n.header .logo img {\n  width: 100%;\n}"]}

@@ -16,9 +16,9 @@ const paths = {
   base: 'tuneme/static',
   styles: {
     src: [
-      'tuneme/styles/opera_single_view.scss',
-      'tuneme/styles/style.scss',
-      'tuneme/styles/state_320/state_320.scss',
+      'tuneme/client/css/opera_single_view.scss',
+      'tuneme/client/css/style.scss',
+      'tuneme/client/css/state_320/state_320.scss',
     ],
     dest: 'tuneme/static/new/css'
   }
