@@ -31,8 +31,6 @@ SECRET_KEY = 'v+*c@9@x%h%ou32gk58nv5=03dti0=z^g%296vcx*1alxg#m2)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ENV = 'dev'
-
 ALLOWED_HOSTS = ['*']
 
 
@@ -89,7 +87,7 @@ INSTALLED_APPS = [
     'djcelery',
     'django_cas_ng',
     'compressor',
-
+    'gulp_rev',
 ]
 
 COMMENTS_APP = 'molo.commenting'
@@ -137,7 +135,6 @@ TEMPLATES = [
                 'tuneme.context_processors.default_forms',
                 'tuneme.context_processors.add_tag_manager_account',
                 'tuneme.context_processors.enable_service_directory_context',
-                'tuneme.processors.compress_settings',
             ],
         },
     },

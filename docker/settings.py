@@ -32,8 +32,6 @@ GOOGLE_PLACES_API_SERVER_KEY = environ.get(
 RAVEN_DSN = environ.get('RAVEN_DSN')
 RAVEN_CONFIG = {'dsn': RAVEN_DSN} if RAVEN_DSN else {}
 
-COMPRESS_OFFLINE = True
-
 DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///%s' % (join(PROJECT_ROOT, 'tunememolo.db'),))}
