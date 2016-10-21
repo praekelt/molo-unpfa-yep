@@ -13,7 +13,6 @@ var gulp              =   require('gulp'),
 var sassPaths = [
     'tuneme/client/css/opera_single_view.scss',
     'tuneme/client/css/style.scss',
-    'tuneme/client/css/versions.scss',
     'tuneme/client/css/state_320/state_320.scss',
 ];
 
