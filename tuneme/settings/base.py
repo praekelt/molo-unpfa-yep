@@ -297,6 +297,7 @@ LOCALE_PATHS = [
 
 STATIC_ROOT = join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
+COMPRESS_ENABLED = True
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -307,13 +308,6 @@ STATICFILES_FINDERS = [
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
-
-# Django compressor settings
-# http://django-compressor.readthedocs.org/en/latest/settings/
-
-COMPRESS_PRECOMPILERS = [
-    ('text/x-scss', 'django_libsass.SassCompiler'),
-]
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
