@@ -32,7 +32,7 @@
         LargeScreen = ((window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) >= 200);
 
     var operaMiniSingleView = '{% compress css %}{% spaceless %}
-       <link rel="stylesheet" type="text/x-scss" media="handheld" href="{{ STATIC_URL }}new/css/{{ ENV }}/opera_single_view.css">
+       <link rel="stylesheet" type="text/css" media="handheld" href="{{ STATIC_URL }}new/css/{{ ENV }}/opera_single_view.css">
   {% endspaceless %}{% endcompress %}';
 
     var smartStyles = '{% compress css %}{% spaceless %}
