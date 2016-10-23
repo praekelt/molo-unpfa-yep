@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-21 18:44+0200\n"
+"POT-Creation-Date: 2016-10-23 12:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,15 +96,15 @@ msgstr ""
 msgid "Chichewa"
 msgstr ""
 
-#: tuneme/templates/new/403_csrf.html:9 tuneme/templates/old/403_csrf.html:9
+#: tuneme/templates/new/403_csrf.html:9
 msgid "Unable to Login"
 msgstr ""
 
-#: tuneme/templates/new/403_csrf.html:12 tuneme/templates/old/403_csrf.html:12
+#: tuneme/templates/new/403_csrf.html:12
 msgid "Hi"
 msgstr ""
 
-#: tuneme/templates/new/403_csrf.html:13 tuneme/templates/old/403_csrf.html:13
+#: tuneme/templates/new/403_csrf.html:13
 msgid ""
 "Sorry, you are having trouble accessing this feature! Due to a temporary "
 "technical issue, login and registrations are not available on the Free "
@@ -112,7 +112,7 @@ msgid ""
 "mobisite through your mobile browser at"
 msgstr ""
 
-#: tuneme/templates/new/403_csrf.html:13 tuneme/templates/old/403_csrf.html:13
+#: tuneme/templates/new/403_csrf.html:13
 msgid " We're working hard to get this problem resolved. Thank you."
 msgstr ""
 
