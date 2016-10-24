@@ -32,12 +32,13 @@
     width: 100%;
   }
   .article-list__item:nth-child(even) {
-    @include float-clear(left);
-  }
-  .article-list__item:nth-child(odd) {
     @include float-clear(right);
   }
+  .article-list__item:nth-child(odd) {
+    @include float-clear(left);
+  }
 }
+
 
 .article-list__item {
   padding-left: 20px;
