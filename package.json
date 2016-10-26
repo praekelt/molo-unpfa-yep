@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "tuneme ======",
   "main": "gulpfile.js",
+  "scripts": {
+   "build": "gulp"
+  },
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.13",
