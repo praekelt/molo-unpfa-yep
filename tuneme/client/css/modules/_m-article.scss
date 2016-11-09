@@ -14,14 +14,16 @@
 }
 
 .article__content {
-  p, h3, h4, ul, ol {
+  ul, ol, p {
     padding: 0 20px;
+    margin: 16px 0;
   }
   a {
     font-weight: bold;
     color: #000;
   }
   h3, h4 {
+    padding: 0 20px;
     font-weight: bold;
   }
 
