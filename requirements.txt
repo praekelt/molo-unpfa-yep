@@ -12,3 +12,5 @@ django-modelcluster>=2.0,<3.0
 psycopg2
 gunicorn
 django_compressor==2.0
+celery<4.0
+wagtailmedia==0.1.1
