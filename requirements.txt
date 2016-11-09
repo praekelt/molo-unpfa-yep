@@ -5,10 +5,11 @@ molo.yourwords==1.2.1
 molo.servicedirectory==2.1.4
 molo.surveys==1.1.0
 wagtailmodeladmin
-django-celery
 redis
 elasticsearch==1.7.0
 django-modelcluster>=2.0,<3.0
 psycopg2
 gunicorn
 django_compressor==2.0
+celery<4.0
+wagtailmedia==0.1.1
