@@ -20,6 +20,7 @@
   }
   a {
     font-weight: bold;
+    color: #000;
   }
   h3, h4 {
     padding: 0 20px;
@@ -50,11 +51,6 @@
     display: block;
     color: #000;
     padding: 0 20px 6px;
-  }
-
-  .featured-articles {
-    display: block;
-    color: #000;
-    padding: 0 20px 6px;
+    text-decoration: underline;
   }
 }
