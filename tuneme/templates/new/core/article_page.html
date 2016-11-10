@@ -55,7 +55,7 @@
         <a href="{% pageurl block.value %}" class="featured-articles">{{ block.value }}</a>
     {% else %}
         {{ block }}
-    {% endif %} 
+    {% endif %}
   {% endfor %}
 </div>
 
@@ -80,7 +80,7 @@
     {% endfor %}
   {% if comment_count > 5 %}
     <div class="comments-list__pagination">
-      <a href="{% url 'more-comments' self.pk %}">{% trans "More" %}</a>
+      <a href="{% url 'molo.commenting:more-comments' self.pk %}">{% trans "More" %}</a>
     </div>
   {% endif %}
   {% if self.allow_commenting %}
