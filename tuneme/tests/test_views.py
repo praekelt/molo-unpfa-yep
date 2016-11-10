@@ -99,7 +99,7 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         data.update({
             'comment': "This is a second comment",
         })
-        response = client.post(reverse('molo-comments-post'), data)
+        response = client.post(reverse('molo.commenting:molo-comments-post'), data)
         self.assertEqual(response.status_code, 302)
 
     def test_comment_reply(self):
