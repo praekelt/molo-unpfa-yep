@@ -79,7 +79,8 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         data.update({
             'comment': "This is another comment"
         })
-        response = client.post(reverse('molo-comments-post'), data)
+        response = client.post(
+            reverse('molo.commenting:molo-comments-post'), data)
         self.assertEqual(response.status_code, 400)
 
     def test_commenting_open(self):
@@ -99,7 +100,8 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         data.update({
             'comment': "This is a second comment",
         })
-        response = client.post(reverse('molo-comments-post'), data)
+        response = client.post(
+            reverse('molo.commenting:molo-comments-post'), data)
         self.assertEqual(response.status_code, 302)
 
     def test_comment_reply(self):
@@ -115,10 +117,11 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         reply = self.create_comment(article,
                                     'test reply text', parent=comment2)
         response = self.client.get(
-            reverse('more-comments', args=(article.pk,)))
+            reverse('molo.commenting:more-comments', args=(article.pk,)))
 
         html = BeautifulSoup(response.content, 'html.parser')
-        [c3row, c2row, replyrow, c1row] = html.find_all(class_='comment')
+        [c3row, c2row, replyrow, c1row] = html.find_all(
+            class_='comment-list__item')
         self.assertTrue(comment3.comment in c3row.prettify())
         self.assertTrue(comment2.comment in c2row.prettify())
         self.assertTrue(reply.comment in replyrow.prettify())
@@ -147,7 +150,8 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             response = self.client.get('/sections/your-mind/article-1/')
 
             html = BeautifulSoup(response.content, 'html.parser')
-            [c3row, c2row, replyrow, c1row] = html.find_all(class_='comment')
+            [c3row, c2row, replyrow, c1row] = html.find_all(
+                class_='comment-list__item')
             self.assertTrue(comment3.comment in c3row.prettify())
             self.assertTrue(comment2.comment in c2row.prettify())
             self.assertTrue(reply.comment in replyrow.prettify())
