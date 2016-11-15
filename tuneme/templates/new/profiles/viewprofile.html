@@ -12,11 +12,10 @@
     <input type="text" name="alias" id="id_alias" value="{{ alias }}" />
 
     {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
-    <fieldset>
       <label for="id_mobile_number">{% trans "Mobile number" %}</label>
-      {{ edit_profile_form.mobile_number.errors}}
-      {{ edit_profile_form.mobile_number }}
-      <span class="input-hint">{% trans "Please add your country code followed by your phone number. e.g. +263772222222" %}</span>
+      {{ edit_profile_form.mobile_number.errors }}
+      <input type="text" name="mobile_number" id="mobile_numer" value="{{ user.profile.mobile_number | default:"Not set" }}" />
+      <p class="input-hint">{% trans "Please add your mobile number. e.g. 0377222222" %}</p>
     </fieldset>
     {% endif %}
     <input type="submit" value="{% trans "Update" %}">
