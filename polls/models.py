@@ -87,6 +87,7 @@ class Question(TranslatablePageMixin, Page):
             page = self.get_main_language_page()
             return page.specific.get_effective_extra_style_hints()
 
+
 Question.settings_panels = [
     MultiFieldPanel(
         [FieldRowPanel(
