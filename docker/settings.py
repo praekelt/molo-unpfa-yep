@@ -13,6 +13,7 @@ def bool_env(val):
 
 # Disable debug mode
 
+
 DEBUG = False
 
 SECRET_KEY = environ.get('SECRET_KEY') or 'please-change-me'
