@@ -65,6 +65,12 @@ COMPRESS_OFFLINE_CONTEXT = {
     'ENV': ENV,
 }
 
+# SMTP Settings
+EMAIL_HOST = environ.get('EMAIL_HOST', 'localhost')
+EMAIL_PORT = environ.get('EMAIL_PORT', 25)
+EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', '')
+
 try:
     from .local import *  # noqa
 except ImportError:
