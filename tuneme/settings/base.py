@@ -188,6 +188,14 @@ CELERYBEAT_SCHEDULE = {
         'task': 'molo.core.tasks.rotate_content',
         'schedule': crontab(minute=0),
     },
+    'demote_articles': {
+        'task': 'molo.core.tasks.demote_articles',
+        'schedule': crontab(minute="*"),
+    },
+    'promote_articles': {
+        'task': 'molo.core.tasks.promote_articles',
+        'schedule': crontab(minute="*"),
+    },
 }
 CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 
