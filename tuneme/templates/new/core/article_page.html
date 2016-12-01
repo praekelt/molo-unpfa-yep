@@ -31,6 +31,7 @@
 
 <div class="article__content article__content{{ self.get_parent_section.get_effective_extra_style_hints }}">
   <div class="article__content--inner">
+  {% social_media_article %}
   {% for block in self.body %}
     {% if block.block_type == 'heading' %}
         <h4>{{ block.value }}</h4>
