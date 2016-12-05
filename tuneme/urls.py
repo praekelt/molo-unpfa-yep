@@ -15,7 +15,18 @@ from tuneme.views import report_response
 from tuneme.forms import DateOfBirthForm
 
 
-urlpatterns = patterns(
+# implement CAS URLs in a production setting
+if settings.ENABLE_SSO:
+    urlpatterns = patterns(
+        '',
+        url(r'^admin/login/', 'django_cas_ng.views.login'),
+        url(r'^admin/logout/', 'django_cas_ng.views.logout'),
+        url(r'^admin/callback/', 'django_cas_ng.views.callback'),
+    )
+else:
+    urlpatterns = patterns('', )
+
+urlpatterns += patterns(
     '',
     url(r'^django-admin/', include(admin.site.urls)),
 
