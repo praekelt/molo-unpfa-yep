@@ -57,3 +57,9 @@ WAGTAILSEARCH_BACKENDS = {
 }
 
 ENABLE_SERVICE_DIRECTORY = bool_env('ENABLE_SERVICE_DIRECTORY')
+
+CELERYBEAT_SCHEDULE.update({
+    'publish_pages': {
+        'task': 'molo.core.tasks.publish_scheduled_pages',
+        'schedule': crontab(minute='*')}
+})
