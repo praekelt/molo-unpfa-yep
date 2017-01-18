@@ -68,8 +68,9 @@
   {% block extra_css %}{% endblock %}
   {% block Facebook_pixel %}{% endblock %}
   <noscript>Your browser does not support JavaScript!</noscript>
+  {% get_current_language as LANGUAGE_CODE %}
 </head>
-<body class="{% block body_class %}{% endblock %}">
+<body class="{% block body_class %}{% endblock %}"  {% if LANGUAGE_CODE|language_bidi == True %}dir="rtl"{% endif %}>
   <div class="header">
     <div class="header-nav">
       <a href="/">
@@ -134,7 +135,6 @@
     </ul>
 
     {% include "core/language_block.html" %}
-
     <div class="footer-links">
       {% footer_page %}
     </div>
