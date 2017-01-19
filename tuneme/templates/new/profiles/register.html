@@ -9,13 +9,13 @@
     {% trans "Not a member yet?" %}
     {% trans "Join by signing up below. " %}
     {% trans "Or" %}
-    <a href="{% url 'molo.profiles:auth_login' %}" class="call-to-action__link">
+    <a href="{% url "molo.profiles:auth_login" %}" class="call-to-action__link">
     {% trans "log in" %}</a>
     {% trans "now if you've already joined" %}
     </h5>
 </div>
 <div class="auth-tools auth-tools--profiles">
-  <form method="post" action="{% url 'molo.profiles:user_register' %}" class="profiles__form">
+  <form method="post" action="{% url "molo.profiles:user_register" %}" class="profiles__form">
     {% csrf_token %}
     <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
 
@@ -38,16 +38,27 @@
     {% endif %}
     </fieldset>
 
+    {% if settings.profiles.UserProfilesSettings.show_email_field %}
+    <fieldset>
+      <label for="id_email">{% trans "Enter your email address" %}</label>
+      {{ form.email.errors}}
+      {{ form.email }}
+      <span class="input-hint">{% trans "(e.g. example@foo.com)" %}</span>
+    </fieldset>
+    {% endif %}
+
     <fieldset class="auth-tools__tandcs">
       {{ form.terms_and_conditions }}
-      <label for="id_terms_and_conditions">{% trans "I accept the terms and conditions" %}</label>
-      {% if form.terms_and_conditions.errors %}
+        <label for="id_terms_and_conditions">{% trans "I accept the terms and conditions" %}</label>
+        {% if form.terms_and_conditions.errors %}
         <p class="error">{% trans "Please accept the T&amp;Cs in order to complete the registration" %}</p>
       {% endif %}
     </fieldset>
-    <input type="submit" value="{% trans "Sign up" %}" />
+    <input type="submit" value="{% trans "Sign up" %}"/>
+    <input type="hidden" name="next" value="{% url "molo.profiles:registration_done" %}"/>
   </form>
 </div>
+<!-- Repeat Log Option -->
 <div class="call-to-action call-to-action--profile">
     <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
     {% trans "Already a member?" %}</h5>
