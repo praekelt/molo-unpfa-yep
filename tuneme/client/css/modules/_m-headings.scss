@@ -8,7 +8,8 @@
     color: #000;
   }
 }
-.heading--auth {
+.heading--auth,
+.heading--profiles {
   border-top: 1px solid rgba(153,153,153,0.5);
   margin: 0;
   font-size: $font-large;
@@ -20,6 +21,7 @@
 
 .heading--subtitle {
   padding: 0;
+  font-size: 14px;
 }
 
 .heading--yourwords {
@@ -40,6 +42,12 @@
   padding: 10px 20px;
   margin: 0 0 15px;
 }
+
+.call-to-action__nav-item--challenge-heading,
+.call-to-action__nav-item--challenge {
+  padding: 0 20px;
+}
+
 
 @each $name, $color in $color_list {
   .heading--#{$name} {

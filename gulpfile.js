@@ -14,6 +14,7 @@ var sassPaths = [
     'tuneme/client/css/opera_single_view.scss',
     'tuneme/client/css/style.scss',
     'tuneme/client/css/state_320/state_320.scss',
+    'tuneme/client/css/style-rtl.scss',
 ];
 
 var sassDest = {
