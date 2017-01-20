@@ -1,9 +1,9 @@
 molo.core==4.0.0
-molo.profiles==2.0.0
-molo.commenting==2.0.0
-molo.yourwords==1.2.2
+molo.profiles==2.0.2
+molo.commenting==2.0.1
+molo.yourwords==2.0.0
 molo.servicedirectory==2.1.4
-molo.surveys==1.2.3
+molo.surveys==2.0.0
 redis
 elasticsearch==1.7.0
 django-modelcluster>=2.0,<3.0
