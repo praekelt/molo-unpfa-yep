@@ -71,9 +71,9 @@ INSTALLED_APPS = [
     'wagtail.wagtailsearch',
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
-    'wagtailmodeladmin',
     'wagtailmedia',
     'wagtail.contrib.settings',
+    'wagtail.contrib.modeladmin',
     'wagtailsurveys',
 
     'mptt',
@@ -113,7 +113,6 @@ MIDDLEWARE_CLASSES = [
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-    'wagtailmodeladmin.middleware.ModelAdminMiddleware',
 
     'molo.core.middleware.AdminLocaleMiddleware',
     'molo.core.middleware.NoScriptGASessionMiddleware',
@@ -195,6 +194,10 @@ CELERYBEAT_SCHEDULE = {
     'promote_articles': {
         'task': 'molo.core.tasks.promote_articles',
         'schedule': crontab(minute="*"),
+    },
+    'publish_pages': {
+        'task': 'molo.core.tasks.publish_scheduled_pages',
+        'schedule': crontab(minute='*'),
     },
 }
 CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
@@ -361,6 +364,7 @@ WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
 ADMIN_LANGUAGE_CODE = environ.get('ADMIN_LANGUAGE_CODE', "en")
 
 GOOGLE_TAG_MANAGER_ACCOUNT = environ.get('GOOGLE_TAG_MANAGER_ACCOUNT')
+CUSTOM_UIP_HEADER = 'HTTP_X_IORG_FBS_UIP'
 
 ENABLE_SERVICE_DIRECTORY = False
 

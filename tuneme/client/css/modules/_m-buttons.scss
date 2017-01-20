@@ -34,3 +34,16 @@
   padding: 10px 20px;
   display: block;
 }
+
+.profiles__forgotten-password {
+  display: block;
+}
+
+.call-to-action--view-profile {
+  .call-to-action__nav-item--logout,
+  .call-to-action__nav-item--editprofile,
+  .call-to-action__nav-item--change-password {
+    text-decoration: underline;
+    color: #000;
+  }
+}

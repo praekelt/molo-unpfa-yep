@@ -12,7 +12,7 @@ DATABASES = {
 }
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.db.DBSearch',
+        'BACKEND': 'wagtail.wagtailsearch.backends.db',
     }
 }
 DEBUG = True
