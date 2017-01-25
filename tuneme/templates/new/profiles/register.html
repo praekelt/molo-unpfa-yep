@@ -29,7 +29,7 @@
     <span class="input-hint">{% trans "Numbers only eg. 5656" %}</span>
     </fieldset>
 
-    {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
+    {% if settings.profiles.UserProfilesSettings.show_mobile_number_field and settings.profiles.UserProfilesSettings.country_code %}
     <fieldset>
       <label for="id_mobile_number">{% trans "Mobile number" %}</label>
       {{ form.mobile_number.errors}}
