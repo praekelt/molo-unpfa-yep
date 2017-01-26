@@ -1,10 +1,9 @@
-molo.core==3.17.4
-molo.profiles==1.5.1
-molo.commenting==1.0.4
-molo.yourwords==1.2.2
+molo.core==4.0.0
+molo.profiles==2.1.0
+molo.commenting==2.0.1
+molo.yourwords==2.0.0
 molo.servicedirectory==2.1.4
-molo.surveys==1.2.3
-wagtailmodeladmin
+molo.surveys==2.0.0
 redis
 elasticsearch==1.7.0
 django-modelcluster>=2.0,<3.0
@@ -12,5 +11,4 @@ psycopg2
 gunicorn
 django_compressor==2.0
 celery<4.0
-wagtailmedia==0.1.1
 django-google-analytics-app==2.1.4
