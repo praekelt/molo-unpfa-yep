@@ -1,4 +1,4 @@
-FROM praekeltfoundation/django-bootstrap:onbuild
+FROM praekeltfoundation/django-bootstrap
 RUN apt-get-install.sh git libjpeg-dev zlib1g-dev libffi-dev gettext libtiff-dev
 
 ENV PROJECT_ROOT /app/
