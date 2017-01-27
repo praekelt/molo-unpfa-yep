@@ -1,14 +1,12 @@
 FROM praekeltfoundation/django-bootstrap
 COPY . /app
+RUN pip install -e .
 
-RUN apt-get-install.sh \
-    gettext \
-    libjpeg62 \
-    libtiff5
+RUN apt-get-install.sh gettext
 
-ENV PROJECT_ROOT /app/
-ENV DJANGO_SETTINGS_MODULE tuneme.settings.docker
-ENV APP_MODULE "tuneme.wsgi:application"
+ENV PROJECT_ROOT /app/ \
+    DJANGO_SETTINGS_MODULE tuneme.settings.docker \
+    APP_MODULE "tuneme.wsgi:application"
 
 ENV CELERY_APP=tuneme \
     CELERY_BEAT=1
