@@ -1,5 +1,8 @@
 FROM praekeltfoundation/django-bootstrap
-RUN apt-get-install.sh git libjpeg-dev zlib1g-dev libffi-dev gettext libtiff-dev
+RUN apt-get-install.sh \
+    gettext \
+    libjpeg62 \
+    libtiff5
 
 ENV PROJECT_ROOT /app/
 ENV DJANGO_SETTINGS_MODULE tuneme.settings.docker
