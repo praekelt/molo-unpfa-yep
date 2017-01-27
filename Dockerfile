@@ -1,4 +1,6 @@
 FROM praekeltfoundation/django-bootstrap
+COPY . /app
+
 RUN apt-get-install.sh \
     gettext \
     libjpeg62 \
