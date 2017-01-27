@@ -1,0 +1,13 @@
+.git
+.gitignore
+LICENSE
+VERSION
+README.rst
+
+ve/
+
+build
+dist
+*.egg-info
+*.egg/
+*.pyc
