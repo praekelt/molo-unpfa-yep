@@ -1,9 +1,3 @@
-.git
-.gitignore
-LICENSE
-VERSION
-README.rst
-
 ve/
 
 build
