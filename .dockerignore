@@ -1,7 +1,14 @@
-ve/
+.git
+.gitignore
+
+.dockerignore
+Dockerfile
+
+sideloader
+.deploy.yaml
 
 build
 dist
 *.egg-info
-*.egg/
-*.pyc
+*.egg
+**/*.pyc
