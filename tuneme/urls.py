@@ -13,6 +13,7 @@ from wagtail.wagtailcore import urls as wagtail_urls
 from molo.profiles.views import RegistrationDone
 from tuneme.views import report_response
 from tuneme.forms import DateOfBirthForm
+from molo.core.views import upload_file, download_file
 
 
 # implement CAS URLs in a production setting
@@ -28,6 +29,10 @@ else:
 
 urlpatterns += patterns(
     '',
+    url(r'^django-admin/upload_media/', upload_file,
+        name='molo_upload_media'),
+    url(r'^django-admin/download_media/', download_file,
+        name='molo_download_media'),
     url(r'^django-admin/', include(admin.site.urls)),
 
     url(r'^admin/', include(wagtailadmin_urls)),

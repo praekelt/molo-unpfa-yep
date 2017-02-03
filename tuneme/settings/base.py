@@ -44,6 +44,7 @@ BASE_URL = 'http://example.com'
 # Application definition
 
 INSTALLED_APPS = [
+    'tuneme',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,7 +58,6 @@ INSTALLED_APPS = [
     'modelcluster',
 
     'molo.core',
-    'tuneme',
     'google_analytics',
 
     'wagtail.wagtailcore',
