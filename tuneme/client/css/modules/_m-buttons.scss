@@ -47,3 +47,30 @@
     color: #000;
   }
 }
+
+.call-to-action__item-share {
+  display: block;
+  margin: 15px;
+}
+.call-to-action__item-share-title {
+  font-size: 13px;
+  display: inline-block;
+  color: #fff;
+}
+
+.call-to-action__item-share--facebook {
+  background: #3B5998;
+  border: 1px solid #2C4376;
+  border-radius: 5px;
+  .call-to-action__item-share-img {
+    border-right: 1px solid #2C4376;
+  }
+}
+.call-to-action__item-share--twitter {
+  background: #55ACEE;
+  border: 1px solid #4086BB;
+  border-radius: 5px;
+  .call-to-action__item-share-img {
+    border-right: 1px solid #4086BB;
+  }
+}
