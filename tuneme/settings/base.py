@@ -57,7 +57,8 @@ INSTALLED_APPS = [
 
     'molo.core',
     'tuneme',
-    'django.contrib.admin', # below tuneme for django-admin template override
+    # admin below tuneme for django-admin template override
+    'django.contrib.admin',
     'google_analytics',
 
     'wagtail.wagtailcore',
