@@ -131,11 +131,15 @@
     <ul class="menu-items menu-items--alt">
       <li class="menu__item menu__item--default"><a href="#search-form">{% trans "Search" %}</a></li>
       {% if user.is_authenticated %}
-      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:view_my_profile' %}">{% trans "Your Profile" %}</a></li>
-      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:auth_logout' %}">{% trans "Log out" %}</a></li>
+      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:view_my_profile' %}">
+        {% trans "Your Profile" %}</a></li>
+      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:auth_logout' %}">
+        {% trans "Log out" %}</a></li>
       {% else %}
-      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:auth_login' %}">{% trans "Log in" %}</a></li>
-      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:user_register' %}">{% trans "Sign Up" %}</a></li>
+      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:auth_login' %}">
+        {% trans "Log in" %}</a></li>
+      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:user_register' %}">
+        {% trans "Sign Up" %}</a></li>
       {% endif %}
     </ul>
 
