@@ -3,14 +3,14 @@
 <!--This currently displays when SocialMedia image is uploaded -->
 {% if facebook %}
     <a href="http://www.facebook.com/sharer.php?u=http{% if request.is_secure %}s{%endif %}://{{ request.get_host }}{{ request.path }}" target="_blank" class="call-to-action__item-share call-to-action__item-share--facebook">
-        {% image facebook width-40 class="call-to-action__item-share-img" %}
+        {% image facebook width-30 class="call-to-action__item-share-img" %}
         <span class="call-to-action__item-share-title">Share on Facebook</span>
     </a>
 {% endif %}
 
 {% if twitter %}
     <a href="https://twitter.com/share?url=http{% if request.is_secure %}s{%endif %}://{{ request.get_host }}{{ request.path }}" target="_blank" class="call-to-action__item-share call-to-action__item-share--twitter">
-        {% image twitter width-40 class="call-to-action__item-share-img" %}
+        {% image twitter width-30 class="call-to-action__item-share-img" %}
         <span class="call-to-action__item-share-title">Share on Twitter</span>
     </a>
 {% endif %}
