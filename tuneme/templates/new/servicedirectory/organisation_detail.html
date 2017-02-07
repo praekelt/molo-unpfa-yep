@@ -71,7 +71,8 @@
     {% endif %}
 
     <a class="call-to-action__nav-item call-to-action__nav-item--report" href="{% url 'molo.servicedirectory:organisation-report' organisation.id %}?org_name={{ organisation.name | urlencode }}">Is this info correct?</a>
-
+    <hr/>
+    
     <form method="post" action="{% url 'molo.servicedirectory:organisation-rate' organisation.id %}"  class="service-directory__form service-directory__form--service-rate">
     {% csrf_token %}
     <label class="service-dir-hero-label">How helpful was this service directory entry?</label>
