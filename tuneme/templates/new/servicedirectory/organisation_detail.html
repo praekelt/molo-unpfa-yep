@@ -72,11 +72,6 @@
 
     <a class="call-to-action__nav-item call-to-action__nav-item--report" href="{% url 'molo.servicedirectory:organisation-report' organisation.id %}?org_name={{ organisation.name | urlencode }}">Is this info correct?</a>
 
-    <a class="call-to-action__nav-item" href="{% url 'molo.servicedirectory:organisation-sms' organisation.id %}" class="service-dir__button">Send Clinic Info to Someone</a>
-
-    <a class="call-to-action__nav-item" href="{% url 'molo.servicedirectory:organisation-sms-self' organisation.id %}" class="service-dir__button service-dir__button--outline">Send Clinic Info to Yourself</a>
-    <hr/>
-    
     <form method="post" action="{% url 'molo.servicedirectory:organisation-rate' organisation.id %}"  class="service-directory__form service-directory__form--service-rate">
     {% csrf_token %}
     <label class="service-dir-hero-label">How helpful was this service directory entry?</label>
