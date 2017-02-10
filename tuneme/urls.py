@@ -4,6 +4,7 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
+from django.views.generic.base import TemplateView
 from django.contrib.auth.decorators import login_required
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
@@ -42,6 +43,9 @@ urlpatterns += patterns(
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
+    url(r'^robots\.txt$', TemplateView.as_view(
+        template_name='robots.txt', content_type='text/plain')),
+    url(r'^sitemap\.xml$', 'wagtail.contrib.wagtailsitemaps.views.sitemap'),
 
     url(r'', include('molo.core.urls')),
 
