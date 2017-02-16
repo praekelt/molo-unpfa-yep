@@ -10,6 +10,7 @@ from molo.commenting.models import MoloComment
 from molo.commenting.forms import MoloCommentForm
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
+from django.contrib.auth.models import Group
 
 
 class ViewsTestCase(TestCase, MoloTestCaseMixin):
@@ -191,3 +192,100 @@ class TagManagerAccountTestCase(TestCase, MoloTestCaseMixin):
         with self.settings(GOOGLE_TAG_MANAGER_ACCOUNT='GTM-XXXXXX'):
             response = self.client.get('/')
             self.assertContains(response, 'GTM-XXXXXX')
+
+
+class TestFrontEndCommentReplies(TestCase, MoloTestCaseMixin):
+
+    def create_comment(self, article, comment, user, parent=None):
+        return MoloComment.objects.create(
+            content_type=ContentType.objects.get_for_model(article),
+            object_pk=article.pk,
+            content_object=article,
+            site=Site.objects.get_current(),
+            user=user,
+            comment=comment,
+            parent=parent,
+            submit_date=datetime.now())
+
+    def setUp(self):
+        self.mk_main()
+        self.english = SiteLanguage.objects.create(locale='en')
+        self.client = Client()
+
+        self.superuser = User.objects.create_superuser(
+            username='superuser',
+            email='superuser@email.com',
+            password='password'
+        )
+
+        self.moderator_group, _created = Group.objects.get_or_create(
+            name='Moderator')
+        self.comment_moderator_group, _created = Group.objects.get_or_create(
+            name='Comment Moderator')
+        self.expert_group, _created = Group.objects.get_or_create(
+            name='Expert')
+
+        self.moderator = User.objects.create_user(
+            username='moderator',
+            email='moderator@example.com',
+            password='password',
+            )
+        self.moderator.groups.set([self.moderator_group])
+
+        self.comment_moderator = User.objects.create_user(
+            username='comment_moderator',
+            email='comment_moderator@example.com',
+            password='password',
+            )
+        self.comment_moderator.groups.set([self.comment_moderator_group])
+
+        self.expert = User.objects.create_user(
+            username='expert',
+            email='expert@example.com',
+            password='password',
+            )
+        self.expert.groups.set([self.expert_group])
+
+        # create ordinary user
+        self.bob = User.objects.create_user(
+            username='bob',
+            email='bob@example.com',
+            password='password',
+        )
+
+        self.section = self.mk_section(
+            self.section_index, title='section')
+        self.article = self.mk_article(self.section, title='article 1',
+                                       subtitle='article 1 subtitle',
+                                       slug='article-1')
+        self.comment1 = self.create_comment(
+            article=self.article,
+            comment="this_is_comment_content",
+            user=self.bob
+        )
+
+    def check_reply_exists(self, client):
+        response = client.get(
+            '/sections/{0}/{1}/'.format(self.section.slug,
+                                        self.article.slug)
+        )
+        self.assertTrue(response.status_code, 200)
+        html = BeautifulSoup(response.content, 'html.parser')
+        [comment] = html.find_all(class_='comment-list__item')
+        self.assertTrue(comment.find('p', string='this_is_comment_content'))
+        self.assertTrue(comment.find('a', string='Reply'))
+        comment_reply_url = comment.find('a', string='Reply')['href']
+
+        response = self.client.get(comment_reply_url)
+        self.assertTrue(response.status_code, 200)
+
+    def test_expert_can_reply_to_comments_on_front_end(self):
+        client = Client()
+        client.login(
+            username=self.expert.username, password='password')
+        self.check_reply_exists(client)
+
+        self.bob.profile.alias = 'bob_alias'
+        self.bob.profile.save()
+
+        self.check_reply_exists(client)
