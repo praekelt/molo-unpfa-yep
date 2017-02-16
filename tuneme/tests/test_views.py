@@ -289,3 +289,36 @@ class TestFrontEndCommentReplies(TestCase, MoloTestCaseMixin):
         self.bob.profile.save()
 
         self.check_reply_exists(client)
+
+    def test_moderator_can_reply_to_comments_on_front_end(self):
+        client = Client()
+        client.login(
+            username=self.moderator.username, password='password')
+        self.check_reply_exists(client)
+
+        self.bob.profile.alias = 'bob_alias'
+        self.bob.profile.save()
+
+        self.check_reply_exists(client)
+
+    def test_comment_moderator_can_reply_to_comments_on_front_end(self):
+        client = Client()
+        client.login(
+            username=self.comment_moderator.username, password='password')
+        self.check_reply_exists(client)
+
+        self.bob.profile.alias = 'bob_alias'
+        self.bob.profile.save()
+
+        self.check_reply_exists(client)
+
+    def test_superuser_can_reply_to_comments_on_front_end(self):
+        client = Client()
+        client.login(
+            username=self.superuser.username, password='password')
+        self.check_reply_exists(client)
+
+        self.bob.profile.alias = 'bob_alias'
+        self.bob.profile.save()
+
+        self.check_reply_exists(client)
