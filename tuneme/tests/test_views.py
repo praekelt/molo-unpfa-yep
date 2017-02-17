@@ -229,21 +229,21 @@ class TestFrontEndCommentReplies(TestCase, MoloTestCaseMixin):
             username='moderator',
             email='moderator@example.com',
             password='password',
-            )
+        )
         self.moderator.groups.set([self.moderator_group])
 
         self.comment_moderator = User.objects.create_user(
             username='comment_moderator',
             email='comment_moderator@example.com',
             password='password',
-            )
+        )
         self.comment_moderator.groups.set([self.comment_moderator_group])
 
         self.expert = User.objects.create_user(
             username='expert',
             email='expert@example.com',
             password='password',
-            )
+        )
         self.expert.groups.set([self.expert_group])
 
         # create ordinary user
