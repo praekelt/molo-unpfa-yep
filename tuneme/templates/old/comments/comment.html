@@ -1,0 +1,39 @@
+{% load i18n molo_commenting_tags %}
+
+<div class="comment {% if node.user.is_staff %}comment--staff{% endif %}">
+  <p class="comment__by">
+    <strong>
+        {% if node.user_name.lower == 'anonymous' %}
+          {{node.user_name}}
+        {% else %}
+          {% if not node.user.profile.alias %}
+            Anonymous
+          {% else %}
+            {{node.user.profile.alias}}
+          {% endif %}
+        {% endif %}
+        </strong>
+    </p>
+    {% if node.is_removed %}
+        <p>{% trans "This comment has been removed by the community. Please read our platform rules." %}</p>
+    {% else %}
+      <p class="comment__text">{{node.comment}}</p>
+      {% if request.user.is_superuser or request.user|is_in_group:'Moderator' or request.user|is_in_group:'Comment Moderator' or request.user|is_in_group:'Expert'%}
+        {% if not node.user.is_superuser and not node.user|is_in_group:'Moderator' and not node.user|is_in_group:'Comment Moderator' and not node.user|is_in_group:'Expert'%}
+          <p class="comment__report">
+            <a href="{% url 'molo.commenting:molo-comments-reply' node.pk %}">
+            {% trans "Reply" %}
+            </a>
+          </p>
+        {% endif %}
+      {% endif %}
+      {% if node.parent == None %}
+        <p class="comment__report">
+          <a href="{% url 'molo.commenting:molo-comments-report' node.pk %}?next={% url 'molo.commenting:report_response' node.pk %}" class="report">
+            {% trans "Report" %}
+          </a>
+        </p>
+      {% endif %}
+      <span class="comment__date">{{node.submit_date|date:"j F Y"}}</span>
+    {% endif %}
+</div>
