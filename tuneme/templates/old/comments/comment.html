@@ -1,6 +1,6 @@
 {% load i18n molo_commenting_tags %}
 
-<div class="comment {% if node.user.is_staff %}comment--staff{% endif %}">
+<div class="comment comment-list__item {% if node.user.is_staff %}comment--staff{% endif %}">
   <p class="comment__by">
     <strong>
         {% if node.user_name.lower == 'anonymous' %}
