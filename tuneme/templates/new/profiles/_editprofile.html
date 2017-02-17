@@ -10,7 +10,7 @@
     	   {{ edit_profile_form.alias }}
   	  </fieldset>
       <fieldset>
-      {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
+      {% if settings.profiles.UserProfilesSettings.show_mobile_number_field and settings.profiles.UserProfilesSettings.country_code %}
         <label for="id_mobile_number">{% trans "Mobile number" %}</label>
         {{ edit_profile_form.mobile_number.errors }}
         <input type="text" name="mobile_number" id="mobile_numer" value="{{ user.profile.mobile_number | default:"Not set" }}" />
