@@ -258,7 +258,7 @@ class TestFrontEndCommentReplies(TestCase, MoloTestCaseMixin):
         self.article = self.mk_article(self.section, title='article 1',
                                        subtitle='article 1 subtitle',
                                        slug='article-1')
-        self.comment1 = self.create_comment(
+        self.comment = self.create_comment(
             article=self.article,
             comment="this_is_comment_content",
             user=self.bob
@@ -270,11 +270,10 @@ class TestFrontEndCommentReplies(TestCase, MoloTestCaseMixin):
                                         self.article.slug)
         )
         self.assertTrue(response.status_code, 200)
-        html = BeautifulSoup(response.content, 'html.parser')
-        [comment] = html.find_all(class_='comment-list__item')
-        self.assertTrue(comment.find('p', string='this_is_comment_content'))
-        self.assertTrue(comment.find('a', string='Reply'))
-        comment_reply_url = comment.find('a', string='Reply')['href']
+        comment_reply_url = ('/commenting/molo/reply/{0}/'
+                             .format(self.comment.pk))
+        reply_link = '<a href="{0}">Reply</a>'.format(comment_reply_url)
+        self.assertContains(response, reply_link, html=True)
 
         response = self.client.get(comment_reply_url)
         self.assertTrue(response.status_code, 200)
