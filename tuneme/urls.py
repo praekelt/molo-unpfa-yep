@@ -15,7 +15,7 @@ from molo.profiles.views import RegistrationDone
 from tuneme.views import report_response
 from tuneme.forms import DateOfBirthForm
 from molo.core.views import upload_file, download_file
-
+import notifications.urls
 
 # Path to a custom template that will be used by the admin
 # site main index view.
@@ -74,6 +74,8 @@ urlpatterns += patterns(
         namespace='molo.commenting', app_name='molo.commenting')),
     url(r'', include('django_comments.urls')),
     url(r'', include(wagtail_urls)),
+    url('^inbox/notifications/', include(notifications.urls,
+        namespace='notifications')),
 )
 
 
