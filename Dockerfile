@@ -8,7 +8,8 @@ ENV PROJECT_ROOT=/app/ \
     CELERY_BEAT=1
 
 COPY . /app
-COPY docker_nginx.conf /etc/nginx/conf.d/django.conf
+COPY docker/nginx.conf /etc/nginx/conf.d/django.conf
+COPY docker/settings.py /app/tuneme/settings/docker.py
 
 RUN pip install -e .
 
