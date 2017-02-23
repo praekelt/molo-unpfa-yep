@@ -35,6 +35,8 @@ else:
 
 urlpatterns += patterns(
     '',
+    url('^inbox/notifications/', include(notifications.urls,
+        namespace='notifications')),
     url(r'^django-admin/upload_media/', upload_file,
         name='molo_upload_media'),
     url(r'^django-admin/download_media/', download_file,
@@ -74,8 +76,6 @@ urlpatterns += patterns(
         namespace='molo.commenting', app_name='molo.commenting')),
     url(r'', include('django_comments.urls')),
     url(r'', include(wagtail_urls)),
-    url('^inbox/notifications/', include(notifications.urls,
-        namespace='notifications')),
 )
 
 
