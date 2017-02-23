@@ -19,7 +19,7 @@
         <h5>{{ alias }}</h5>
         <p>{% trans "Type new display name:" %}</p>
         {{ edit_profile_form.alias }}
-        {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
+        {% if settings.profiles.UserProfilesSettings.show_mobile_number_field and settings.profiles.UserProfilesSettings.country_code %}
           <h5>{% trans "Update your mobile number:" %}</h5>
           <p>{% trans "(e.g. +260979000001)" %}</p>
           <p>{% trans "Your mobile number is:" %}</p>
