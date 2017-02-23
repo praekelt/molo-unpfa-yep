@@ -13,7 +13,7 @@ COPY docker_nginx.conf /etc/nginx/conf.d/django.conf
 RUN pip install -e .
 
 RUN LANGUAGE_CODE=en django-admin compilemessages && \
-    django-admin compress && \
-    django-admin collectstatic --noinput
+    django-admin collectstatic --noinput && \
+    django-admin compress
 
 CMD ["tuneme.wsgi:application", "--timeout", "900"]
