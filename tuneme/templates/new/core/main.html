@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% load static core_tags poll_votings molo_survey_tags competition_tag i18n %}
-
+{% load static core_tags poll_votings molo_survey_tags competition_tag i18n molo_commenting_tags %}
 
 {% block homepage-signup %}
   {% if user.is_authenticated %}
@@ -14,11 +13,12 @@
   <!--<a href="#search-query" class="header-nav__item header-nav__item--search">{% trans "Search" %}</a>-->
 {% endblock %}
 {% block search %}
- 	<h1 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h1>
+  <h1 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h1>
   {% include "search/search_block.html" %}
 {% endblock %}
 {% block language %}
   {% include "core/language_block.html" %}
+  {% display_unread_notifications %}
 {% endblock %}
 {% block content %}
   {% bannerpages %}
@@ -26,5 +26,5 @@
   {% your_words_competition %}
   {% poll_page %}
   {% section_listing_homepage %}
-  {% surveys_list %} 
+  {% surveys_list %}
 {% endblock %}
