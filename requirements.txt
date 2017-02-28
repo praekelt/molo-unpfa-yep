@@ -1,7 +1,7 @@
 molo.core==4.3.2
 molo.profiles==3.0.0
 molo.commenting==2.0.1
-molo.yourwords==2.2.0
+molo.yourwords==2.2.1
 molo.servicedirectory==2.1.4
 molo.surveys==2.1.0
 elasticsearch==1.7.0
