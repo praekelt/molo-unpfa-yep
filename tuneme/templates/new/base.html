@@ -10,6 +10,7 @@
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <meta name="description" content="Tune Me puts the power in your hands to make choices about your body, your rights, your love life and your sexual health." />
   <meta name="keywords" content="love, sex, relationships, advice, help, family planning, contraception, private" />
+
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:title" content="{% if self.social_media_title %}{{ self.social_media_title }}{% elif self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}"/>
   <meta name="twitter:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
@@ -21,7 +22,6 @@
   {% endif %}"/>
   <meta property="og:title" content= "{% if self.social_media_title %}{{ self.social_media_title }}{% elif self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}" />
   <meta property="og:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
-
   <meta property="og:image" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% else %}{{request.site.root_url}}{{ article_photo.url }}{% endif %}"/>
   <meta property="og:image:url" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% else %}{{request.site.root_url}}{{ article_photo.url }}{% endif %}"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui"/>
