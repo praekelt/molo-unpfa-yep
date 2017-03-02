@@ -200,6 +200,10 @@ CELERYBEAT_SCHEDULE = {
         'task': 'molo.core.tasks.publish_scheduled_pages',
         'schedule': crontab(minute='*'),
     },
+    'clearsessions': {
+        'task': 'molo.core.tasks.clearsessions',
+        'schedule': crontab(minute='*'),
+    },
 }
 CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 
