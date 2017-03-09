@@ -53,7 +53,7 @@
     document.write(operaMiniSingleView);
     }
     </script>
-  <!-- Facebook Pixel Code -->
+  {% block Facebook_pixel %}
   <script>
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -66,10 +66,7 @@
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1592606254380748&ev=PageView&noscript=1"
   /></noscript>
-  <!-- DO NOT MODIFY -->
-  <!-- End Facebook Pixel Code -->
-  <!-- RTL STYLE -->
-  {% block Facebook_pixel %}{% endblock %}
+  {% endblock %}
 
   {% get_current_language as LANGUAGE_CODE %}
   {% if LANGUAGE_CODE|language_bidi == True %}
@@ -79,11 +76,11 @@
   {% endif %}
   <noscript>Your browser does not support JavaScript!</noscript>
 </head>
-<body class="{% block body_class %}{% endblock %}"  {% if LANGUAGE_CODE|language_bidi == True %}dir="rtl"{% endif %}>
+<body {% if LANGUAGE_CODE|language_bidi == True %}dir="rtl"{% endif %}>
   <div class="header">
     <div class="header-nav">
       <a href="/">
-        <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe" />
+        <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe" width="auto" height="100%" />
       </a>
       <div class="menu-links__container">
         {% block homepage-signup %}
