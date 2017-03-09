@@ -8,7 +8,7 @@
       {% if article.image %}
         {% image article.image width-98 as tmp_photo_small %}
         {% image article.image width-280 as tmp_photo_large %}
-          <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" class="article-list__image" alt="{{ article.image.title }}"/>
+          <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" class="article-list__image" alt="{{ article.image.title }}" width="100%" height="auto"/>
       {% endif %}
       <h2 class="article-list__title">{{article.title}}</h2>
       <h3 class="article-list__subtitle">{{article.subtitle}}</h4>
