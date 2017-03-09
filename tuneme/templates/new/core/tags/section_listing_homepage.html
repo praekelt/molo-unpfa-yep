@@ -6,8 +6,8 @@
   <ul class="article-list article-list--section-listing article-list{{section.get_effective_extra_style_hints}}">
     {% load_descendant_articles_for_section section featured_in_homepage=True count=2 as featured_articles %}
     {% for article in featured_articles %}
-        <li class="article-list__item l-indent l-indent--tall">
-           <a href="{% pageurl article %}">
+        <li class="article-list__item">
+           <a href="{% pageurl article %}" class="article-list__item--anchor">
               {% if article.image %}
                 {% image article.image width-98 as tmp_photo_small %}
                 {% image article.image width-320 as tmp_photo_large %}
@@ -18,7 +18,7 @@
             </a>
         </li>
     {% endfor %}
-    <li class="article-list__item article-list__item--more"><a href="{% pageurl section %}">{% trans "More" %}</a></li>
+    <li class="article-list__item article-list__item--more"><a href="{% pageurl section %}" class="article-list__item--more-anchor">{% trans "More" %}</a></li>
   </ul>
   {% your_words_competition_in_section section %}
 {% endfor %}

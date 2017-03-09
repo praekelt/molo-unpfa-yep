@@ -4,11 +4,6 @@
     font-weight: bold;
   }
 }
-
-.call-to-action__nav-item--back {
-  padding: 0 20px;
-}
-
 .service-directory__banner {
   color: $white;
   background: $green;
@@ -17,7 +12,6 @@
   background: no-repeat center/contain url(/static/new/img/clinic-finder.png);
   height: 100px;
 }
-
 .service-directory__feedback-message {
   padding: 0 20px 15px;
 }
@@ -52,7 +46,6 @@
     padding: 0 20px 10px 0;
   }
 }
-
 .service-directory__form--service-rate {
   padding: 0 20px 20px;
   fieldset {

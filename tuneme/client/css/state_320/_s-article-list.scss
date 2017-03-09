@@ -5,12 +5,10 @@
 .article-list--latest-listing,
 .article-list--section-listing {
   overflow: auto;
-
   .article-list__item {
     box-sizing: border-box;
     width: 50%;
   }
-
   .article-list__image {
     float: none;
     margin-bottom: 5px;
@@ -47,12 +45,17 @@
   padding-right: 20px;
   overflow: auto;
 }
-
 .article-list__image {
   float: left;
   margin-right: 20px;
 }
-
 .article-list--latest-listing .article-list__item:first-child {
   flex: 1 100%;
+}
+
+
+@each $name, $color in $color_list {
+  .article-list--section.article-list--#{$name} {
+    border-bottom-color: $color;
+  }
 }

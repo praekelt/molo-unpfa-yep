@@ -4,7 +4,7 @@
 <ul class="article-list article-list--latest-listing">
   {% for article in articles %}
   <li class="article-list__item article-list__item{{article.get_parent_section.get_effective_extra_style_hints}}">
-    <a href="{% pageurl article %}">
+    <a href="{% pageurl article %}" class="article-list__item--anchor">
       {% if article.image %}
         {% image article.image width-98 as tmp_photo_small %}
         {% image article.image width-280 as tmp_photo_large %}
