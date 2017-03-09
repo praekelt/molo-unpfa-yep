@@ -10,9 +10,6 @@
   {% endif %}
 {% endblock %}
 
-{% block search-button %}
-  <!--<a href="#search-query" class="header-nav__item header-nav__item--search">{% trans "Search" %}</a>-->
-{% endblock %}
 {% block search %}
  	<h1 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h1>
   {% include "search/search_block.html" %}
@@ -26,5 +23,5 @@
   {% your_words_competition %}
   {% poll_page %}
   {% section_listing_homepage %}
-  {% surveys_list %} 
+  {% surveys_list %}
 {% endblock %}
