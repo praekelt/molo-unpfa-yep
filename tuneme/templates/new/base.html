@@ -27,6 +27,25 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui"/>
   <meta name="robots" content="all,index,follow" />
 
+<link rel="apple-touch-icon" sizes="57x57" href="{{ STATIC_URL }}new/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="{{ STATIC_URL }}new/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="{{ STATIC_URL }}new/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="{{ STATIC_URL }}new/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="{{ STATIC_URL }}new/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="{{ STATIC_URL }}new/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="{{ STATIC_URL }}new/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="{{ STATIC_URL }}new/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ STATIC_URL }}new/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="{{ STATIC_URL }}new/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ STATIC_URL }}new/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="{{ STATIC_URL }}new/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ STATIC_URL }}new/favicon/favicon-16x16.png">
+<link rel="manifest" href="{{ STATIC_URL }}new/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+
   {% compress css %}
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/style.css">
   {% endcompress %}
@@ -42,15 +61,11 @@
        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/state_320.css">
   {% endspaceless %}{% endcompress %}';
 
-    var latoGoogleFont = '<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">';
-
     if(CutsTheMustard === true) {
-    if(LargeScreen) {
-      document.write(smartStyles, latoGoogleFont);
-      }
+      if(LargeScreen) {document.write(smartStyles);}
     }
     if(LargeScreen === false) {
-    document.write(operaMiniSingleView);
+      document.write(operaMiniSingleView);
     }
     </script>
   {% block Facebook_pixel %}
@@ -63,9 +78,7 @@
   fbq('init', '1592606254380748');
   fbq('track', 'PageView');
   </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1592606254380748&ev=PageView&noscript=1"
-  /></noscript>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1592606254380748&ev=PageView&noscript=1" alt="Facebook Pixel"/></noscript>
   {% endblock %}
 
   {% get_current_language as LANGUAGE_CODE %}
@@ -175,7 +188,6 @@
     })(window,document,'script','dataLayer','{{settings.core.SiteSettings.global_ga_tag_manager}}');</script>
     <!-- End Global Google Tag Manager -->
   {% endif %}
-  {% block extra_js %}{% endblock %}
   {% wagtailuserbar %}
 </body>
 </html>

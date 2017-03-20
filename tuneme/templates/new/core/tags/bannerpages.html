@@ -8,14 +8,14 @@
     {% image bannerpage.banner width-320 as tmp_photo %}
     {% if bannerpage.banner_link_page %}
     <a href="{% pageurl bannerpage.banner_link_page %}" class="banner__anchor">
-      <img src="{{ tmp_photo.url }}" alt="{{ bannerpage.banner.title }}" class="banner__image" width="100%" height="auto"/>
+      <img src="{{ tmp_photo.url }}" alt="{{ bannerpage.title }}" class="banner__image" width="100%" height="auto"/>
     </a>
     {% elif bannerpage.external_link %}
     <a href="{{ bannerpage.external_link }}" class="banner__anchor">
-      <img src="{{ tmp_photo.url }}" alt="{{ bannerpage.banner.title }}" class="banner__image" width="100%" height="auto"/>
+      <img src="{{ tmp_photo.url }}" alt="{{ bannerpage.title }}" class="banner__image" width="100%" height="auto"/>
     </a>
     {% else %}
-    <img src="{{ tmp_photo.url }}" alt="{{ bannerpage.banner.title }}" class="banner__image" width="100%" height="auto"/>
+    <img src="{{ tmp_photo.url }}" alt="{{ bannerpage.title }}" class="banner__image" width="100%" height="auto"/>
     {% endif %}
   {% endif %}
 {% endfor%}
