@@ -2,7 +2,6 @@
 .call-to-action {
   padding: 5px 10px;
 }
-.call-to-action__nav-item,
 .call-to-action__nav-item--challenge {
   font-size: $font-large;
 }
@@ -11,25 +10,20 @@
   font-weight: bold;
   text-decoration: underline;
 }
-
 .call-to-action__nav-item--login {
   color: #fff;
   margin: 20px 10px;
   padding: 5px 20px;
   font-weight: normal;
-  //font-size: $font-medium;
   display: inline-block;
 }
-
 .call-to-action--surveys {
   padding: 15px 0 0 10px;
 }
-
 .call-to-action__nav-item--surveys {
   color: #000;
   text-decoration: underline;
 }
-
 .call-to-action__nav-item--back-home {
   padding: 10px 20px;
   display: block;
@@ -64,7 +58,6 @@
   padding: 6px 5px;
   text-decoration: underline;
 }
-
 .call-to-action__item-share--footer {
   margin: 10px 0;
   padding: 0;
