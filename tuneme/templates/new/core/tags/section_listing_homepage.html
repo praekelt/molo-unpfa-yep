@@ -9,8 +9,8 @@
     <li class="article-list__item">
       <a href="{% pageurl article %}" class="article-list__item--anchor">
       {% if article.image %}
-        {% image article.image width-98 as tmp_photo_small %}
-        {% image article.image width-320 as tmp_photo_large %}
+        {% image article.image width-98 format-jpeg jpegquality-40 as tmp_photo_small %}
+        {% image article.image width-320 format-jpeg jpegquality-40 as tmp_photo_large %}
           <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" class="article-list__image" alt="{{ article.image.title }}" width="100%" height="auto"/
       {% endif %}
       <h2 class="article-list__title">{{article.title}}</h2>

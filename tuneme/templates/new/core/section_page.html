@@ -15,7 +15,7 @@
   <li class="article-list__item">
    <a href="{% pageurl article %}" class="article-list__item--anchor">
     {% if article.image %}
-      {% image article.image width-90 height-90 as article_image %}
+      {% image article.image width-90 height-90 format-jpeg jpegquality-40 as article_image %}
       <img src="{{ article_image.url }}" alt="{{ article_image.title }}" class="article-list__image article-list__image--section" width="100%" height="auto" />
     {% endif %}
     <h1 class="article-list__title">{{article.title}}</h1>
@@ -36,7 +36,7 @@
   <li class="article-list__item">
   <a href="{% pageurl article %}" class="article-list__item--anchor">
   {% if article.image %}
-    {% image article.image width-90 height-90 as article_image %}
+    {% image article.image width-90 height-90 format-jpeg jpegquality-40 as article_image %}
     <img src="{{ article_image.url }}" alt="{{ article_image.title }}" class="article-list__image article-list__image--section" width="100%" height="auto" />
   {% endif %}
   <h1 class="article-list__title">{{article.title}}</h1>
