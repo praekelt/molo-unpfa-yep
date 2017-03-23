@@ -18,7 +18,7 @@
 {% if self.image %}
   {% image self.image width-280 as article_image %}
   <div class="article__image">
-    <!--<img src="{{ article_image.url }}" width="100%" height="auto" />-->
+    <img src="{{ article_image.url }}" width="100%" height="auto" />
   </div>
 {% endif %}
 
@@ -33,7 +33,7 @@
     {% elif block.block_type == 'image' %}
       {% image block.value width-280 as article_image %}
       <div class="article__image">
-        <!--<img src="{{ article_image.url }}" width="100%" height="auto" />-->
+        <img src="{{ article_image.url }}" width="100%" height="auto" />
       </div>
     {% elif block.block_type == 'numbered_list' %}
          <ol>

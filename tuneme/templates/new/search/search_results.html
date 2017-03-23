@@ -24,7 +24,7 @@
         <div class="section-article-list__item">
         {% if page.image %}
           {% image page.image width-80 as tmp_photo %}
-          <!--<img src="{{ tmp_photo.url }}" alt="{{ page.title }}" width="auto" height="auto"/>-->
+          <img src="{{ tmp_photo.url }}" alt="{{ page.title }}" width="auto" height="auto"/>
         {% endif %}
           <h1 class="search--result__title">{{page.title}}</h3>
           <p class="section-article-list__item-description">{{page.subtitle}}</p>
@@ -42,7 +42,7 @@
         <div class="section-article-list__item">
           {% if page.image %}
             {% image page.image width-80 as tmp_photo %}
-            <!--<img src="{{ tmp_photo.url }}" alt="{{ page.title }}" class="section-article-list__item--image" width="auto" height="auto"/>-->
+            <img src="{{ tmp_photo.url }}" alt="{{ page.title }}" class="section-article-list__item--image" width="auto" height="auto"/>
           {% endif %}
           <h1 class="search--result__title">{{page.title}}</h3>
           <p class="section-article-list__item-description">{{page.subtitle}}</p>
