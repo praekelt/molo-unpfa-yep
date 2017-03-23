@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-
 {% load wagtailcore_tags wagtailimages_tags comments molo_commenting_tags i18n mptt_tags %}
-
 {% block content %}
 <div class="breadcrumbs">
   <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
@@ -9,30 +7,25 @@
   <a href="{% pageurl self %}">{{self.title}}</a>
   {% trans "Comments" %}
 </div>
-
 <div class="comments-list">
   {% for node in comments %}
-    {% recursetree node %}
-        {% include "comments/comment.html" %}
-        {{ children }}
-    {% endrecursetree %}
+  {% recursetree node %}
+    {% include "comments/comment.html" %}
+    {{ children }}
+  {% endrecursetree %}
   {% endfor %}
 </div>
-
 <div class="comments-list__pagination">
   {% if page.has_previous %}
-      <a href="?p={{ page.previous_page_number }}">&lt;&ndash;&ndash;&ndash;</a>
+    <a href="?p={{ page.previous_page_number }}">&lt;&ndash;&ndash;&ndash;</a>
   {% endif %}
   <span class="padding">
-      {{ page.number }} of {{ page.paginator.num_pages }}
+    {{ page.number }} of {{ page.paginator.num_pages }}
   </span>
   {% if page.has_next %}
-      <a href="?p={{ page.next_page_number }}">&ndash;&ndash;&ndash;&gt;</a>
+    <a href="?p={{ page.next_page_number }}">&ndash;&ndash;&ndash;&gt;</a>
   {% endif %}
-
-  <p>
-    <a href="{% pageurl self %}">{% trans "Back to article" %}</a>
+  <p><a href="{% pageurl self %}">{% trans "Back to article" %}</a>
   </p>
 </div>
-
 {% endblock %}

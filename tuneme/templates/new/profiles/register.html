@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load i18n static core_tags wagtailsettings_tags wagtailcore_tags %}
 {% get_settings %}
-
 {% block content %}
 <h1 class="heading heading--auth">{% trans "Sign up" %}</h1>
 <div class="call-to-action call-to-action--profile">
@@ -18,7 +17,6 @@
   <form method="post" action="{% url "molo.profiles:user_register" %}" class="profiles__form">
     {% csrf_token %}
     <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
-
     <label for="id_username">{% trans "Username" %}</label>
     {{ form.username.errors }}
     {{ form.username }}
@@ -28,7 +26,6 @@
     {{ form.password }}
     <span class="input-hint">{% trans "Numbers only eg. 5656" %}</span>
     </fieldset>
-
     {% if settings.profiles.UserProfilesSettings.show_mobile_number_field and settings.profiles.UserProfilesSettings.country_code %}
     <fieldset>
       <label for="id_mobile_number">{% trans "Mobile number" %}</label>
@@ -37,7 +34,6 @@
       <span class="input-hint">{% trans "Please add your mobile number e.g. 0719009000" %}</span>
     {% endif %}
     </fieldset>
-
     {% if settings.profiles.UserProfilesSettings.show_email_field %}
     <fieldset>
       <label for="id_email">{% trans "Enter your email address" %}</label>
@@ -46,7 +42,6 @@
       <span class="input-hint">{% trans "(e.g. example@foo.com)" %}</span>
     </fieldset>
     {% endif %}
-
     <fieldset class="auth-tools__tandcs">
       {{ form.terms_and_conditions }}
       {% if settings.profiles.UserProfilesSettings.terms_and_conditions %}

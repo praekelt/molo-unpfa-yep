@@ -1,17 +1,12 @@
 {% load comments i18n wagtailcore_tags wagtailimages_tags %}
-
-
 <form class="comments-form" action="{% url 'molo.commenting:molo-comments-post' %}" method="post">
   {% csrf_token %}
   {% if form.comment.errors %}
     {{ form.comment.errors }}
   {% endif %}
-
   {{ form.comment }}
-
   <input type="submit" name="submit" value="{% trans "Comment" %}">
   <input type="submit" name="submit_anonymously" value="{% trans "Comment anonymously" %}">
-
   {{ form.object_pk }}
   {{ form.content_type }}
   {{ form.timestamp }}

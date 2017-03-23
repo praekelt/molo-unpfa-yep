@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load i18n %}
-
 {% block content %}
 <h1 class="heading heading--auth">{% trans "Thank you for joining!" %}</h1>
 <div class="auth-tools">
@@ -18,7 +17,6 @@
   <a href="/">{% trans "Skip" %}</a>
 </div>
 {% endblock %}
-
 {% block extra_js  %}
   <!-- Facebook Pixel Code -->
   <script>
@@ -34,10 +32,7 @@
   / CompleteRegistration
   // Track when a registration form is completed (ex. complete subscription, sign up for a service)
   fbq('track', 'CompleteRegistration');
-
   </script>
-
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=589200017912981&ev=PageView&noscript=1" alt="Facebook Pixel"/></noscript>
-
   <!-- End Facebook Pixel Code -->
 {% endblock %}
