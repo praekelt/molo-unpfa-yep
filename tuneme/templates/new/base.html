@@ -90,8 +90,7 @@
         <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe" width="auto" height="100%" />
       </a>
       <div class="menu-links__container">
-        {% block homepage-signup %}
-        {% endblock %}
+        {% block homepage-signup %}{% endblock %}
         {% block search-button %}
           <label class="search-bar__toggle-label  header-nav__item header-nav__item--search" for="search-bar__toggle">
             {% trans "Search" %}

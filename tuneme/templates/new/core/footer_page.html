@@ -23,7 +23,9 @@
 {% endif %}
 
 <h1 class="article__title">{{ self.title }}</h1>
+{% if self.subtitle %}
 <h2 class="article__subtitle">{{ self.subtitle }}</h2>
+{% endif %}
 
 <div class="article__content article__content{{ self.get_parent_section.get_effective_extra_style_hints }}">
   <div class="article__content--inner">
