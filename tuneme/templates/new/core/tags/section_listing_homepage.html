@@ -6,19 +6,19 @@
   <ul class="article-list article-list--section-listing article-list{{section.get_effective_extra_style_hints}}">
     {% load_descendant_articles_for_section section featured_in_homepage=True count=2 as featured_articles %}
     {% for article in featured_articles %}
-        <li class="article-list__item">
-           <a href="{% pageurl article %}" class="article-list__item--anchor">
-              {% if article.image %}
-                {% image article.image width-98 as tmp_photo_small %}
-                {% image article.image width-320 as tmp_photo_large %}
-                  <!--<img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" class="article-list__image" alt="{{ article.image.title }}" width="100%" height="auto"/>-->
-              {% endif %}
-              <h2 class="article-list__title">{{article.title}}</h2>
-              {% if article.subtitle %}
-              <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
-              {% endif %}
-            </a>
-        </li>
+    <li class="article-list__item">
+      <a href="{% pageurl article %}" class="article-list__item--anchor">
+      {% if article.image %}
+        {% image article.image width-98 as tmp_photo_small %}
+        {% image article.image width-320 as tmp_photo_large %}
+          <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" class="article-list__image" alt="{{ article.image.title }}" width="100%" height="auto"/
+      {% endif %}
+      <h2 class="article-list__title">{{article.title}}</h2>
+      {% if article.subtitle %}
+      <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
+      {% endif %}
+      </a>
+    </li>
     {% endfor %}
     <li class="article-list__item article-list__item--more"><a href="{% pageurl section %}" class="article-list__item--more-anchor">{% trans "More" %}</a></li>
   </ul>

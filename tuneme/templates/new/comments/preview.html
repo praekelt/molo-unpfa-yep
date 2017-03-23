@@ -1,16 +1,14 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags comments mptt_tags molo_commenting_tags i18n %}
-
 {% block content %}
 <div class="breadcrumbs">
   <a href="{{ request.site.root_page.url }}">{% trans "Home" %}</a>
   {% trans "Comment preview" %}
 </div>
-
-  {% get_comments_content_object for form as self %}
-  {% if request.user.is_authenticated %}
-    {% include "comments/form.html" with node=comment %}
-  {% else %}
-    <p>{% trans "Please " %}<a href="{% url 'molo.profiles:auth_login' %}">{% trans "log in" %}</a>{% trans " to leave a comment." %}</p>
-  {% endif %}
+{% get_comments_content_object for form as self %}
+{% if request.user.is_authenticated %}
+  {% include "comments/form.html" with node=comment %}
+{% else %}
+  <p>{% trans "Please " %}<a href="{% url 'molo.profiles:auth_login' %}">{% trans "log in" %}</a>{% trans " to leave a comment." %}</p>
+{% endif %}
 {% endblock %}

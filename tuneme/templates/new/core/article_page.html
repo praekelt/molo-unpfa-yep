@@ -1,46 +1,41 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags core_tags comments mptt_tags molo_commenting_tags static poll_votings i18n %}
 {% block content %}
-
 <div class="breadcrumbs">
   <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
   {% if self.get_parent_section.get_parent_section %}
-    {% with section=self.get_parent_section.get_parent_section %}
-      <a href="{% pageurl section %}">{{section.title}}</a>
-      {% with sub_section=self.get_parent_section %}
-          <a href="{% pageurl sub_section %}">{{sub_section.title}}</a>
-      {% endwith %}
+  {% with section=self.get_parent_section.get_parent_section %}
+    <a href="{% pageurl section %}">{{section.title}}</a>
+    {% with sub_section=self.get_parent_section %}
+        <a href="{% pageurl sub_section %}">{{sub_section.title}}</a>
     {% endwith %}
-    {% else %}
-    {% with section=self.get_parent_section %}
-      <a href="{% pageurl section %}">{{section.title}}</a>
-    {% endwith %}
-    {% endif %}
+  {% endwith %}
+  {% else %}
+  {% with section=self.get_parent_section %}
+    <a href="{% pageurl section %}">{{section.title}}</a>
+  {% endwith %}
+  {% endif %}
   {{ self.title }}
 </div>
-
 {% if self.image %}
   {% image self.image width-280 as article_image %}
   <div class="article__image">
-    <!-- <img src="{{ article_image.url }}" width="100%" height="auto" />-->
+    <img src="{{ article_image.url }}" width="100%" height="auto" />
   </div>
 {% endif %}
-
 <h1 class="article__title">{{ self.title }}</h1>
 {% if self.subtitle %}
 <h2 class="article__subtitle">{{ self.subtitle }}</h2>
 {% endif %}
-
 <div class="article__content article__content{{ self.get_parent_section.get_effective_extra_style_hints }}">
   <div class="article__content--inner">
-
   {% for block in self.body %}
     {% if block.block_type == 'heading' %}
         <h4>{{ block.value }}</h4>
     {% elif block.block_type == 'image' %}
       {% image block.value width-280 as article_image %}
       <div class="article__image">
-        <!--<img src="{{ article_image.url }}" width="100%" height="auto" />-->
+        <img src="{{ article_image.url }}" width="100%" height="auto" />
       </div>
     {% elif block.block_type == 'numbered_list' %}
          <ol>
@@ -62,15 +57,12 @@
   {% endfor %}
   {% social_media_article %}
 </div>
-
-
 {% has_questions self as questions %}
 {% if questions %}
   <div class="article__polls">
     {% poll_page_in_section page=self %}
   </div>
 {% endif %}
-
 {% if self.is_commenting_enabled %}
   <div class="heading heading--article heading--comments heading{{ self.get_parent_section.get_effective_extra_style_hints }}">{% trans "Comment" %}</div>
   <div id="comments-list" class="comments-list comments-list{{ self.get_parent_section.get_effective_extra_style_hints }}">
@@ -88,20 +80,19 @@
     </div>
   {% endif %}
   {% if self.allow_commenting %}
-    {% if request.user.is_authenticated %}
-      {% render_comment_form for self %}
-    {% else %}
-      <div class="auth-call-to-action">
-        <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}#comments-list">{% trans "Log in" %}</a>
-        {% trans "or" %}
-        <a href="{% url 'molo.profiles:user_register' %}?next={{request.path}}#comments-list">{% trans "Register" %}</a>
-        {% trans "to comment" %}
-      </div>
-    {% endif %}
+  {% if request.user.is_authenticated %}
+    {% render_comment_form for self %}
+  {% else %}
+    <div class="auth-call-to-action">
+      <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}#comments-list">{% trans "Log in" %}</a>
+      {% trans "or" %}
+      <a href="{% url 'molo.profiles:user_register' %}?next={{request.path}}#comments-list">{% trans "Register" %}</a>
+      {% trans "to comment" %}
+    </div>
+  {% endif %}
   {% else %}
     <p class="comments-list__disabled">{% trans "Commenting on this article is currently disabled" %}</p>
   {% endif %}
 </div>
 {% endif %}
-
 {% endblock %}

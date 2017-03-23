@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags molo_survey_tags core_tags poll_votings static core_tags competition_tag i18n %}
-
 {% block content %}
-
 <div class="breadcrumbs">
   <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
  {% if self.get_parent_section %}
@@ -15,44 +13,41 @@
   {% load_child_articles_for_section self count=None as articles %}
   {% for article in articles %}
   <li class="article-list__item">
-     <a href="{% pageurl article %}" class="article-list__item--anchor">
-        {% if article.image %}
-          {% image article.image width-90 height-90 as article_image %}
-          <!--<img src="{{ article_image.url }}" alt="{{ article_image.title }}" class="article-list__image article-list__image--section" width="100%" height="auto" />-->
-        {% endif %}
-        <h1 class="article-list__title">{{article.title}}</h1>
-        <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
-      </a>
+   <a href="{% pageurl article %}" class="article-list__item--anchor">
+    {% if article.image %}
+      {% image article.image width-90 height-90 as article_image %}
+      <img src="{{ article_image.url }}" alt="{{ article_image.title }}" class="article-list__image article-list__image--section" width="100%" height="auto" />
+    {% endif %}
+    <h1 class="article-list__title">{{article.title}}</h1>
+    <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
+    </a>
   </li>
   {% endfor %}
   <li class="article-list__item article-list__item--more"><a href="{% pageurl self %}" class="article-list__item--more-anchor">{% trans "More" %}</a></li>
 </ul>
-
 {% load_child_sections_for_section self as sections %}
 {% for section in sections %}
   <h1 class="heading heading--section-list heading{{section.get_effective_extra_style_hints}}">
     <a href="{% pageurl section %}">{{section.title}}</a>
   </h1>
   <ul class="article-list article-list--section article-list{{self.get_effective_extra_style_hints}}">
-    {% load_descendant_articles_for_section section featured_in_section=True count=None as featured_articles %}
-    {% for article in featured_articles %}
-        <li class="article-list__item">
-           <a href="{% pageurl article %}" class="article-list__item--anchor">
-              {% if article.image %}
-                {% image article.image width-90 height-90 as article_image %}
-                <!--<img src="{{ article_image.url }}" alt="{{ article_image.title }}" class="article-list__image article-list__image--section" width="100%" height="auto" />-->
-              {% endif %}
-              <h1 class="article-list__title">{{article.title}}</h1>
-              {% if article.subtitle %}
-              <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
-              {% endif %}
-            </a>
-        </li>
-    {% endfor %}
-    <li class="article-list__item article-list__item--more"><a href="{% pageurl section %}" class="article-list__item--more-anchor">{% trans "More" %} {{section.title}}</a></li>
+  {% load_descendant_articles_for_section section featured_in_section=True count=None as featured_articles %}
+  {% for article in featured_articles %}
+  <li class="article-list__item">
+  <a href="{% pageurl article %}" class="article-list__item--anchor">
+  {% if article.image %}
+    {% image article.image width-90 height-90 as article_image %}
+    <img src="{{ article_image.url }}" alt="{{ article_image.title }}" class="article-list__image article-list__image--section" width="100%" height="auto" />
+  {% endif %}
+  <h1 class="article-list__title">{{article.title}}</h1>
+  {% if article.subtitle %}
+  <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
+  {% endif %}
+  </a>
+  </li>
+  {% endfor %}
+  <li class="article-list__item article-list__item--more"><a href="{% pageurl section %}" class="article-list__item--more-anchor">{% trans "More" %} {{section.title}}</a></li>
   </ul>
 {% endfor %}
-
 {% surveys_list_for_pages page=self %}
-
 {% endblock %}
