@@ -80,7 +80,7 @@
   <div class="header">
     <div class="header-nav">
       <a href="/">
-        <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe" width="auto" height="100%" />
+        <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe"/>
       </a>
       <div class="menu-links__container">
         {% block homepage-signup %}{% endblock %}
@@ -89,7 +89,9 @@
             {% trans "Search" %}
           </label>
         {% endblock %}
-        <a href="#menu" class="header-nav__item header-nav__item--menu">{% trans "Menu" %}</a>
+        <a href="#menu" class="header-nav__item header-nav__item--menu">
+          {% trans "Menu" %}
+        </a>
       </div>
     </div>
     {% block search %}
