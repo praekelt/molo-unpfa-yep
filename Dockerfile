@@ -1,4 +1,4 @@
-FROM praekeltfoundation/molo-bootstrap:4.4.6-onbuild
+FROM praekeltfoundation/molo-bootstrap:4.4.7-onbuild
 
 ENV DJANGO_SETTINGS_MODULE=tuneme.settings.docker \
     CELERY_APP=tuneme \
