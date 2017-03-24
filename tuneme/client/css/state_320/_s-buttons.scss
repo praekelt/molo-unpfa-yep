@@ -1,6 +1,7 @@
-
 .call-to-action__nav-item--login {
+  border-radius: 14px;
   margin: 20px;
+  display: inline-block;
 }
 
 .call-to-action--surveys {
@@ -12,7 +13,6 @@
 .call-to-action__nav-item--back {
   padding: 0 20px;
 }
-
 .call-to-action--view-profile {
   .call-to-action__nav-item--logout,
   .call-to-action__nav-item--editprofile,
@@ -31,6 +31,8 @@
   }
 }
 
+
+//SOCIAL MEDIA SHARING
 .call-to-action__item-share {
   width: 65%;
   border-radius: 5px;
@@ -60,7 +62,6 @@
     border-right-color: #4086BB;
   }
 }
-
 .call-to-action__item-share--footer {
   margin: 10px 0 15px;
   border-color: #a3a3a3;
