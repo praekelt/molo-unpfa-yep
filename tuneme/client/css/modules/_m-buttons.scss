@@ -2,37 +2,35 @@
 .call-to-action {
   padding: 5px 10px;
 }
-.call-to-action__nav-item--challenge {
-  font-size: $font-large;
-}
-
 .call-to-action__link {
   font-weight: bold;
   text-decoration: underline;
 }
+.call-to-action__nav-item--challenge {
+  font-size: $font-large;
+}
 .call-to-action__nav-item--login {
+  background: #000;
   color: #fff;
   margin: 20px 10px;
   padding: 5px 20px;
   font-weight: normal;
   display: inline-block;
+  text-transform: uppercase;
+  border: 0;
+  text-align: center;
 }
 .call-to-action--surveys {
-  padding: 15px 0 0 10px;
-}
-.call-to-action__nav-item--surveys {
-  color: #000;
-  text-decoration: underline;
+  padding: 15px 10px;
+  .call-to-action__nav-item--surveys {
+    color: #000;
+    text-decoration: underline;
+  }
 }
 .call-to-action__nav-item--back-home {
   padding: 10px 20px;
   display: block;
 }
-
-.profiles__forgotten-password {
-  display: block;
-}
-
 .call-to-action--view-profile {
   .call-to-action__nav-item--logout,
   .call-to-action__nav-item--editprofile,
@@ -41,6 +39,9 @@
     color: #000;
   }
 }
+
+
+//SOCIAL MEDIA SHARING
 
 .call-to-action__item-share {
   display: block;

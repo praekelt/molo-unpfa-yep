@@ -2,22 +2,15 @@
 .call-to-action--profile {
   border-top: 1px solid rgba(153,153,153,0.5);
   padding: 10px 0;
+  .call-to-action__nav-item--login,
+  input[type="submit"] {
+    border-radius: 14px;
+  }
 }
 .call-to-action__link {
   color: $purple_flirt;
 }
-
-.call-to-action__nav-item {
-  color: $purple_dark;
-}
 .call-to-action__nav-item--challenge-heading {
   color: $dusty_grey;
   font-weight: normal;
-}
-.call-to-action__nav-item--login, input[type="submit"] {
-  border-radius: 14px;
-}
-.call-to-action__nav-item--login {
-  color: #fff;
-  display: inline-block;
 }
