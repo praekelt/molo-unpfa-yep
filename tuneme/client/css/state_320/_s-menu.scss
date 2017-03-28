@@ -55,8 +55,9 @@
   }
 }
 
-
-
+.footer-links {
+  padding: 0 20px 20px 20px;
+}
 @each $name, $color in $color_list {
   .menu__item--#{$name} a {
     background: $color;

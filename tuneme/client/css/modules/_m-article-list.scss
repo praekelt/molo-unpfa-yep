@@ -3,7 +3,7 @@
   border-bottom: $border;
 }
 .article-list__item {
-  padding: 20px 20px 20px;
+  padding: 5px 10px;
   .article-list__item--anchor {
     color: #000;
   }
@@ -22,6 +22,7 @@
 }
 .article-list__title {
   font-weight: bold;
+  padding: 10px 5px 0;
 }
 .article-list--latest-listing .article-list__item:first-child {
   .article-list__title {
