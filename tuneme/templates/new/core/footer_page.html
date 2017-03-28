@@ -13,7 +13,8 @@
 {% if self.image %}
   {% image self.image width-280 format-jpeg jpegquality-40 as article_image %}
   <div class="article__image">
-    <img src="{{ article_image.url }}"/>
+    <img src="{{ article_image.url }}" class="article-list__image"/>
+
   </div>
 {% endif %}
 <h1 class="article__title">{{ self.title }}</h1>
@@ -28,7 +29,8 @@
     {% elif block.block_type == 'image' %}
       {% image block.value width-280 format-jpeg jpegquality-40 as article_image %}
       <div class="article__image">
-        <img src="{{ article_image.url }}"/>
+        <img src="{{ article_image.url }}" class="article-list__image"/>
+
       </div>
     {% elif block.block_type == 'numbered_list' %}
        <ol>
