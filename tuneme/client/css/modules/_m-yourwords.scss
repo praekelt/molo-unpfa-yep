@@ -4,7 +4,6 @@
   .heading {
     padding: 10px;
     margin: 0;
-    font-size: $font-medium;
   }
   .heading--yourwords {
     border: none;
@@ -45,12 +44,13 @@
   font-weight: normal;
    text-transform: none;
 }
-
 .competition__title,
 .competition__title--description  {
   padding: 0 10px;
 }
-
+.yourwords-form {
+  padding: 0 10px;
+}
 .yourwords--inner-content {
   padding: 0 10px;
   img {
@@ -60,10 +60,6 @@
     border: none;
     padding: 0;
   }
-}
-
-.yourwords-form {
-  padding: 0 10px;
 }
 
 .alert-error {

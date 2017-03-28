@@ -2,15 +2,14 @@
 {% load wagtailsettings_tags wagtailimages_tags %}
 {% load google_analytics_tags %}
 {% get_settings %}
-
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
-<html>
+<html lang="{{LANGUAGE_CODE}}">
 <head>
   <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <meta name="description" content="Tune Me puts the power in your hands to make choices about your body, your rights, your love life and your sexual health." />
   <meta name="keywords" content="love, sex, relationships, advice, help, family planning, contraception, private" />
-
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:title" content="{% if self.social_media_title %}{{ self.social_media_title }}{% elif self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}"/>
   <meta name="twitter:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
@@ -26,48 +25,38 @@
   <meta property="og:image:url" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% else %}{{request.site.root_url}}{{ article_photo.url }}{% endif %}"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui"/>
   <meta name="robots" content="all,index,follow" />
-
-<link rel="apple-touch-icon" sizes="57x57" href="{{ STATIC_URL }}new/favicon/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="{{ STATIC_URL }}new/favicon/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="{{ STATIC_URL }}new/favicon/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="{{ STATIC_URL }}new/favicon/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="{{ STATIC_URL }}new/favicon/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="{{ STATIC_URL }}new/favicon/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="{{ STATIC_URL }}new/favicon/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="{{ STATIC_URL }}new/favicon/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ STATIC_URL }}new/favicon/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="{{ STATIC_URL }}new/favicon/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ STATIC_URL }}new/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="{{ STATIC_URL }}new/favicon/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ STATIC_URL }}new/favicon/favicon-16x16.png">
-<link rel="manifest" href="{{ STATIC_URL }}new/favicon/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
-
-
+  <link rel="apple-touch-icon" sizes="57x57" href="{{ STATIC_URL }}new/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{ STATIC_URL }}new/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ STATIC_URL }}new/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ STATIC_URL }}new/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ STATIC_URL }}new/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ STATIC_URL }}new/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{ STATIC_URL }}new/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ STATIC_URL }}new/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ STATIC_URL }}new/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="{{ STATIC_URL }}new/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ STATIC_URL }}new/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ STATIC_URL }}new/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ STATIC_URL }}new/favicon/favicon-16x16.png">
+  <link rel="manifest" href="{{ STATIC_URL }}new/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
   {% compress css %}
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/style.css">
   {% endcompress %}
   <script type="text/javascript">
     var CutsTheMustard = 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window,
-        LargeScreen = ((window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) >= 200);
-
-    var operaMiniSingleView = '{% compress css %}{% spaceless %}
+        LargeScreen = ((window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) >= 200),
+      operaMiniSingleView = '{% compress css %}{% spaceless %}
        <link rel="stylesheet" type="text/css" media="handheld" href="{{ STATIC_URL }}new/css/{{ ENV }}/opera_single_view.css">
-  {% endspaceless %}{% endcompress %}';
-
-    var smartStyles = '{% compress css %}{% spaceless %}
-       <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/state_320.css">
-  {% endspaceless %}{% endcompress %}';
-
-    if(CutsTheMustard === true) {
-      if(LargeScreen) {document.write(smartStyles);}
-    }
-    if(LargeScreen === false) {
-      document.write(operaMiniSingleView);
-    }
-    </script>
+       {% endspaceless %}{% endcompress %}',
+      smartStyles = '{% compress css %}{% spaceless %}
+       <link rel="stylesheet" type="text/css" media="(min-width: 20em)" href="{{ STATIC_URL }}new/css/{{ ENV }}/state_320.css">
+       {% endspaceless %}{% endcompress %}';
+    if(CutsTheMustard === true) {if(LargeScreen) {document.write(smartStyles);}}
+    if(LargeScreen === false) {document.write(operaMiniSingleView);}
+  </script>
   {% block Facebook_pixel %}
   <script>
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -80,8 +69,6 @@
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1592606254380748&ev=PageView&noscript=1" alt="Facebook Pixel"/></noscript>
   {% endblock %}
-
-  {% get_current_language as LANGUAGE_CODE %}
   {% if LANGUAGE_CODE|language_bidi == True %}
     {% compress css %}
       <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/style-rtl.css">
@@ -93,17 +80,18 @@
   <div class="header">
     <div class="header-nav">
       <a href="/">
-        <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe" width="auto" height="100%" />
+        <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe"/>
       </a>
       <div class="menu-links__container">
-        {% block homepage-signup %}
-        {% endblock %}
+        {% block homepage-signup %}{% endblock %}
         {% block search-button %}
           <label class="search-bar__toggle-label  header-nav__item header-nav__item--search" for="search-bar__toggle">
             {% trans "Search" %}
           </label>
         {% endblock %}
-        <a href="#menu" class="header-nav__item header-nav__item--menu">{% trans "Menu" %}</a>
+        <a href="#menu" class="header-nav__item header-nav__item--menu">
+          {% trans "Menu" %}
+        </a>
       </div>
     </div>
     {% block search %}
@@ -116,21 +104,17 @@
     {% block language %}
     {% endblock %}
   </div>
-
   {% block content %}{% endblock %}
-
   <div class="menu" id="menu">
     <ul class="menu-items">
       <li class="menu__item menu__item--default"><a href="#top">{% trans "Back to top" %}</a></li>
       <li class="menu__item menu__item--default"><a href="/">{% trans "Home" %}</a></li>
-
       {% if ENABLE_SERVICE_DIRECTORY %}
         <li class="menu__item menu__item--service menu__item--default">
          <a href="{% url 'molo.servicedirectory:home' %}">{% trans "Find a service" %}</a>
         <span>{% trans "Find me a clinic" %}</span>
        </li>
       {% endif %}
-
       {% load_sections as sections %}
       {% for section in sections %}
       <li class="menu__item menu__item{{ section.get_effective_extra_style_hints }}">
@@ -141,7 +125,6 @@
       </li>
       {% endfor %}
     </ul>
-
     <ul class="menu-items menu-items--alt">
       <li class="menu__item menu__item--default"><a href="#search-form">{% trans "Search" %}</a></li>
       {% if user.is_authenticated %}
@@ -156,15 +139,12 @@
         {% trans "Sign Up" %}</a></li>
       {% endif %}
     </ul>
-
     {% include "core/language_block.html" %}
     <div class="footer-links">
       {% footer_page %}
     </div>
-
   </div>
   <div class="copyright">&copy; {% now "Y" %} UNFPA, Ford Foundation All Rights Reserved.</div>
-
   {% if GOOGLE_TAG_MANAGER_ACCOUNT %}
     <!-- Google Tag Manager -->
      <noscript><iframe src="//www.googletagmanager.com/ns.html?id={{GOOGLE_TAG_MANAGER_ACCOUNT}}&client_session_id={{request.session.MOLO_GA_SESSION_FOR_NOSCRIPT}}&page_title={% if self.seo_title %}{{ self.seo_title|urlencode }}{% else %}{{ self.title|urlencode }}{% endif %}{%if request.META.HTTP_X_IORG_FBS_UIP %}&freebasics_uip={{request.META.HTTP_X_IORG_FBS_UIP}}{%endif%}"
@@ -176,7 +156,6 @@
      })(window,document,'script','dataLayer','{{GOOGLE_TAG_MANAGER_ACCOUNT}}');</script>
     <!-- End Google Tag Manager -->
   {% endif %}
-
   {% if settings.core.SiteSettings.global_ga_tag_manager %}
     <!--Global Google Tag Manager -->
     <noscript><iframe src="//www.googletagmanager.com/ns.html?id={{settings.core.SiteSettings.global_ga_tag_manager}}&client_session_id={{request.session.MOLO_GA_SESSION_FOR_NOSCRIPT}}"

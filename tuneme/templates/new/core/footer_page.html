@@ -1,12 +1,8 @@
 {% extends "base.html" %}
-
 {% load static core_tags %}
 {% load wagtailcore_tags wagtailimages_tags i18n %}
-
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
-
 {% block content %}
-
 <div class="breadcrumbs">
   <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
  {% if self.get_parent_section %}
@@ -14,39 +10,38 @@
  {% endif %}
  <a href="{% pageurl self %}">{{ self.title }}</a>
 </div>
-
 {% if self.image %}
-  {% image self.image width-280 as article_image %}
+  {% image self.image width-280 format-jpeg jpegquality-40 as article_image %}
   <div class="article__image">
-    <img src="{{ article_image.url }}" width="100%" height="auto" />
+    <img src="{{ article_image.url }}"/>
   </div>
 {% endif %}
-
 <h1 class="article__title">{{ self.title }}</h1>
+{% if self.subtitle %}
 <h2 class="article__subtitle">{{ self.subtitle }}</h2>
-
+{% endif %}
 <div class="article__content article__content{{ self.get_parent_section.get_effective_extra_style_hints }}">
   <div class="article__content--inner">
   {% for block in self.body %}
     {% if block.block_type == 'heading' %}
         <h4>{{ block.value }}</h4>
     {% elif block.block_type == 'image' %}
-      {% image block.value width-280 as article_image %}
+      {% image block.value width-280 format-jpeg jpegquality-40 as article_image %}
       <div class="article__image">
-        <img src="{{ article_image.url }}" width="100%" height="auto" />
+        <img src="{{ article_image.url }}"/>
       </div>
     {% elif block.block_type == 'numbered_list' %}
-         <ol>
+       <ol>
         {% for item in block.value %}
           <li>{{ item|handle_markdown }}</li>
         {% endfor %}
-        </ol>
-      {% elif block.block_type == 'list' %}
-        <ul>
+      </ol>
+    {% elif block.block_type == 'list' %}
+      <ul>
         {% for item in block.value %}
           <li>{{ item|handle_markdown }}</li>
         {% endfor %}
-      </ul>
+    </ul>
     {% elif block.block_type = 'page' %}
         <a href="{% pageurl block.value %}" class="featured-articles">{{ block.value }}</a>
     {% else %}

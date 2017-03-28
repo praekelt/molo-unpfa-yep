@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load i18n %}
-
 {% block content %}
 <h1 class="heading heading--auth">{% trans "Log in" %}</h1>
 <div class="call-to-action call-to-action--profile">
@@ -9,7 +8,6 @@
     <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__link">
     {% trans "Sign up" %}</a></h5>
 </div>
-
 <div class="auth-tools auth-tools--profiles ">
   <form method="post" class="profiles__form">
     {% csrf_token %}
@@ -17,12 +15,10 @@
     {% if form.errors %}
       <p class="error">{% trans "Your username and password does not match. Please try again." %}</p>
     {% endif %}
-
     <fieldset>
       <label for="id_username">{% trans "Username" %}</label>
       {{ form.username }}
     <fieldset>
-
     <fieldset>
       <label for="id_password">{% trans "4 digit pin" %}
       </label>
@@ -33,9 +29,9 @@
   </form>
 </div>
 <div class="call-to-action call-to-action--profile">
-    <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
-    {% trans "Don't have an account?" %}</h5>
-    <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__nav-item call-to-action__nav-item--login">
-    {% trans "Sign up" %}</a>
+  <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
+  {% trans "Don't have an account?" %}</h5>
+  <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__nav-item call-to-action__nav-item--login">
+  {% trans "Sign up" %}</a>
 </div>
 {% endblock %}
