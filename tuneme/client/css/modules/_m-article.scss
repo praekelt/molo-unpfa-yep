@@ -12,8 +12,10 @@
 .article__image {
   display: block;
   img {
-    width: 100%;
+    width: auto;
     height: auto;
+    float: none;
+    margin: 10px auto;
   }
 }
 
