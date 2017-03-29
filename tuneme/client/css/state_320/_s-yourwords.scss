@@ -89,18 +89,3 @@
 .yourwords--turquoise .call-to-action__nav-item--login {
   background: rgb(53, 140, 139);
 }
-
-//Services Feedback
-
-button.smiley.sad {background: url(../img/Not-helpful.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
-button.smiley.sad:hover {background: url(../img/Active-not-helpful.png); background-size: 100%;}
-button.smiley.sad:after{border: 0!important;}
-button.smiley.sad:before{border: 0!important;}
-button.smiley.neutral {background: url(../img/Im-neutral.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
-button.smiley.neutral:hover {background: url(../img/Active-im-neutral.png); background-size: 100%;}
-button.smiley.neutral:after{height: 0!important;}
-button.smiley.neutral:before{border: 0!important;}
-button.smiley.happy {background: url(../img/Very-helpful.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
-button.smiley.happy:hover {background: url(../img/Active-very-helpful.png); background-size: 100%;}
-button.smiley.happy:after{border: 0!important;}
-button.smiley.happy:before{border: 0!important;}
