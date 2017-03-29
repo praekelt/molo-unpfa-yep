@@ -163,8 +163,21 @@
   border-radius: 14px;
   background: $orange;
 }
-
 .service-dir__button--outline {
   color: $orange!important;
   background: $white;
 }
+
+//Services Feedback
+button.smiley.sad {background: url(/static/new/img/Not-helpful.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
+button.smiley.sad:hover {background: url(/static/new/img/Active-not-helpful.png); background-size: 100%;}
+button.smiley.sad:after{border: 0!important;}
+button.smiley.sad:before{border: 0!important;}
+button.smiley.neutral {background: url(/static/new/img/Im-neutral.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
+button.smiley.neutral:hover {background: url(/static/new/img/Active-im-neutral.png); background-size: 100%;}
+button.smiley.neutral:after{height: 0!important;}
+button.smiley.neutral:before{border: 0!important;}
+button.smiley.happy {background: url(/static/new/img/Very-helpful.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
+button.smiley.happy:hover {background: url(/static/new/img/Active-very-helpful.png); background-size: 100%;}
+button.smiley.happy:after{border: 0!important;}
+button.smiley.happy:before{border: 0!important;}
