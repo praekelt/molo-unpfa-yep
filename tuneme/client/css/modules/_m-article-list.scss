@@ -14,7 +14,12 @@
 }
 .article-list__image {
   display: block;
-  border-radius: 10px;
+  img {
+    float: none;
+    height: auto;
+    margin: 10px auto;
+    width: auto;
+  }
 }
 
 .article-list__image--section{
