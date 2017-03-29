@@ -4,7 +4,7 @@
 <div class="banner">
 {% for bannerpage in bannerpages %}
   {% if bannerpage.banner %}
-    {% image bannerpage.banner width-320 format-jpeg jpegquality-40 as tmp_photo %}
+    {% image bannerpage.banner width-320 format-jpeg jpegquality-60 as tmp_photo %}
     {% if bannerpage.banner_link_page %}
     <a href="{% pageurl bannerpage.banner_link_page %}" class="banner__anchor">
     <img src="{{ tmp_photo.url }}" alt="{{ bannerpage.title }}" class="banner__image"/>

@@ -11,7 +11,7 @@
  <a href="{% pageurl self %}">{{ self.title }}</a>
 </div>
 {% if self.image %}
-  {% image self.image width-280 format-jpeg jpegquality-40 as article_image %}
+  {% image self.image width-280 format-jpeg jpegquality-60 as article_image %}
   <div class="article__image">
     <img src="{{ article_image.url }}" class="article-list__image"/>
 
@@ -27,7 +27,7 @@
     {% if block.block_type == 'heading' %}
         <h4>{{ block.value }}</h4>
     {% elif block.block_type == 'image' %}
-      {% image block.value width-280 format-jpeg jpegquality-40 as article_image %}
+      {% image block.value width-280 format-jpeg jpegquality-60 as article_image %}
       <div class="article__image">
         <img src="{{ article_image.url }}" class="article-list__image"/>
 
