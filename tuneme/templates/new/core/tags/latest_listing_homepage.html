@@ -6,8 +6,8 @@
   <li class="article-list__item article-list__item{{article.get_parent_section.get_effective_extra_style_hints}}">
     <a href="{% pageurl article %}" class="article-list__item--anchor">
     {% if article.image %}
-      {% image article.image width-98 format-jpeg jpegquality-60 as tmp_photo_small %}
-      {% image article.image width-280 format-jpeg jpegquality-60 as tmp_photo_large %}
+      {% image article.image width-98 format-jpeg jpegquality-70 as tmp_photo_small %}
+      {% image article.image width-280 format-jpeg jpegquality-70 as tmp_photo_large %}
         <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" class="article-list__image" alt="{{ article.image.title }}" width="100%" height="auto"/>
     {% endif %}
     <h2 class="article-list__title">{{article.title}}</h2>
