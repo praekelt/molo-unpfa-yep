@@ -66,11 +66,6 @@
   text-transform: uppercase;
 }
 
-.call-to-action__nav-item--change-search {
-  text-decoration: underline;
-  padding: 0;
-}
-
 .service-directory__form {
   padding: 0 10px;
   fieldset {
@@ -116,11 +111,17 @@
 }
 .service-directory__listings {
   padding: 0 10px;
+
   .service-directory__title {
     padding: 0;
+    text-decoration: underline;
   }
   .service-list {
     padding: 0;
+  }
+  .service-directory__search-term {
+    text-decoration: none;
+    text-transform: capitalize;
   }
 }
 .service-directory__form--location-results {
@@ -141,6 +142,10 @@
     .service-directory__title {
       padding: 10px 0;
     }
+  }
+  .call-to-action__nav-item--change-search {
+    text-decoration: underline;
+    padding: 0;
   }
 }
 
