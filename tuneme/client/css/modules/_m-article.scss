@@ -10,7 +10,12 @@
 }
 
 .article__image {
-  display: none;
+  display: block;
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
 }
 
 .article__content {
