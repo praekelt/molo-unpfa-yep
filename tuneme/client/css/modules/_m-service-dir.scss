@@ -1,4 +1,7 @@
 .service-directory {
+  p {
+    margin: 0;
+  }
   .call-to-action__nav-item {
     color: #000;
     display: block;
@@ -48,18 +51,24 @@
   display: block;
   margin-bottom: 5px;
   padding: 10px;
-  text-decoration: underline;
   font-weight: bold;
   font-size: $font-large;
-  text-transform: uppercase;
 }
-
+.heading--service-dir-organisation {
+  font-size: $font-large; //Used on Clinics services results - where else?
+}
+.service-directory__search-term {
+  text-transform: uppercase;
+  text-decoration: underline;
+}
 .service-directory__title--current-address {
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .call-to-action__nav-item--change-search {
   text-decoration: underline;
+  padding: 0;
 }
 
 .service-directory__form {
@@ -69,8 +78,8 @@
   }
   label {
     display: inline-block;
-    margin-top: 10px;
-    font-size: $font-small;
+    margin: 10px 0;
+    font-size: $font-medium;
   }
   input[type="checkbox"],
   label[for="checkbox"]{
@@ -80,7 +89,6 @@
   input[type="submit"] {
     margin: 10px 0 20px;
   }
-
   .service-directory__title {
     padding: 0;
   }
