@@ -65,8 +65,7 @@
   font-size: $font-large; //Used on Clinics services results - where else?
 }
 .service-directory__search-term {
-  text-transform: uppercase;
-  text-decoration: underline;
+  text-transform: capitalize;
 }
 .service-directory__title--current-address {
   text-decoration: none;
@@ -95,11 +94,9 @@
     padding: 0;
   }
 }
-
 .service-directory__form--service-rate {
    padding: 0 10px 10px;
 }
-
 .service-dir-hero-label {
   margin: 0;
   padding: 0;
