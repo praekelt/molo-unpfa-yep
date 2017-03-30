@@ -19,7 +19,7 @@
   <div class="section-article-list">
     <div class="section-article-list__item">
     {% if page.image %}
-      {% image page.image width-80 format-jpeg jpegquality-70 as tmp_photo %}
+      {% image page.image width-80 jpegquality-70 as tmp_photo %}
       <img src="{{ tmp_photo.url }}" alt="{{ page.title }}" class="section-article-list__item--image"/>
 
     {% endif %}
@@ -37,7 +37,7 @@
     <div class="section-article-list">
       <div class="section-article-list__item">
         {% if page.image %}
-        {% image page.image width-80 format-jpeg jpegquality-70 as tmp_photo %}
+        {% image page.image width-80 jpegquality-70 as tmp_photo %}
         <img src="{{ tmp_photo.url }}" alt="{{ page.title }}" class="section-article-list__item--image"/>
 
         {% endif %}
