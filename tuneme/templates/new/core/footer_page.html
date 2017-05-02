@@ -4,17 +4,14 @@
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 {% block content %}
 <div class="breadcrumbs">
-  <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
- {% if self.get_parent_section %}
-   <a href="{% pageurl self.get_parent_section %}">{{ self.get_parent_section }}</a>
- {% endif %}
- <a href="{% pageurl self %}">{{ self.title }}</a>
+  {% block breadcrumbs %}
+    {% breadcrumbs %}
+  {% endblock %}
 </div>
 {% if self.image %}
   {% image self.image width-280 jpegquality-70 as article_image %}
   <div class="article__image">
     <img src="{{ article_image.url }}" class="article-list__image"/>
-
   </div>
 {% endif %}
 <h1 class="article__title">{{ self.title }}</h1>

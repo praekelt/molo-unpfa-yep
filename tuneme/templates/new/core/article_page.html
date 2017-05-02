@@ -2,20 +2,9 @@
 {% load wagtailcore_tags wagtailimages_tags core_tags comments mptt_tags molo_commenting_tags static poll_votings i18n %}
 {% block content %}
 <div class="breadcrumbs">
-  <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
-  {% if self.get_parent_section.get_parent_section %}
-  {% with section=self.get_parent_section.get_parent_section %}
-    <a href="{% pageurl section %}">{{section.title}}</a>
-    {% with sub_section=self.get_parent_section %}
-        <a href="{% pageurl sub_section %}">{{sub_section.title}}</a>
-    {% endwith %}
-  {% endwith %}
-  {% else %}
-  {% with section=self.get_parent_section %}
-    <a href="{% pageurl section %}">{{section.title}}</a>
-  {% endwith %}
-  {% endif %}
-  {{ self.title }}
+  {% block breadcrumbs %}
+    {% breadcrumbs %}
+  {% endblock %}
 </div>
 {% if self.image %}
   {% image self.image width-280 jpegquality-70 as article_image %}

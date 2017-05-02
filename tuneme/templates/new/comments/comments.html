@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags comments molo_commenting_tags i18n mptt_tags %}
+{% load wagtailcore_tags wagtailimages_tags comments molo_commenting_tags core_tags i18n mptt_tags %}
 {% block content %}
 <div class="breadcrumbs">
-  <a href="{{request.site.root_page.url}}">{% trans "Home" %}</a>
-  <a href="{% pageurl self.get_parent_section %}">{{self.get_parent_section.title}}</a>
-  <a href="{% pageurl self %}">{{self.title}}</a>
-  {% trans "Comments" %}
+  {% block breadcrumbs %}
+    {% breadcrumbs %}
+  {% endblock %}
 </div>
 <div class="comments-list">
+  <h3 class="comments-list__heading">{% trans "Comments" %}</h3>
   {% for node in comments %}
   {% recursetree node %}
     {% include "comments/comment.html" %}
