@@ -29,3 +29,11 @@ deploy:
   on:
     tags: true
     all_branches: true
+
+jobs:
+  include:
+    - stage: docker
+      sudo: required
+      services: [docker]
+      script:
+        - docker build --tag praekeltorg/molo-gem .
