@@ -40,4 +40,3 @@ jobs:
       before_script: molo_version="$(sed -nE 's/^molo\.core==(.*)$/\1/p' requirements.txt)"
       script: docker build --tag praekeltorg/molo-gem --build-arg MOLO_VERSION="$molo_version" .
       after_script: ignore
-      deploy: ignore
