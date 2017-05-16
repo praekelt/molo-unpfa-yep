@@ -1,37 +1,37 @@
-sudo: false  # Force container-based builds.
-language: python
-python:
-  - "2.7"
-cache:
-  - pip
-services:
-  - elasticsearch
-  - redis-server
-before_install:
-  - pip install --upgrade pip
-install:
-  - pip install -e .
-  - pip install -r requirements-dev.txt
-  - pip install coveralls
-script:
-  - flake8
-  - py.test
-  # Check that the molo.core version in requirements.txt matches the version in the Docker image
-  - \[ "$(sed -nE 's/^molo\.core==(.*)$/\1/p' requirements.txt)" = "$(sed -nE 's/^FROM .*:(.*)-onbuild$/\1/p' Dockerfile)" \]
-after_success:
-  - coveralls
-deploy:
-  provider: pypi
-  user: Praekelt
-  password:
-    # NOTE: See http://docs.travis-ci.com/user/encryption-keys/ for more info.
-    secure: "insert encrypted pypi password here"
-  on:
-    tags: true
-    all_branches: true
-
 jobs:
   include:
+    - sudo: false  # Force container-based builds.
+      language: python
+      python:
+        - "2.7"
+      cache:
+        - pip
+      services:
+        - elasticsearch
+        - redis-server
+      before_install:
+        - pip install --upgrade pip
+      install:
+        - pip install -e .
+        - pip install -r requirements-dev.txt
+        - pip install coveralls
+      script:
+        - flake8
+        - py.test
+        # Check that the molo.core version in requirements.txt matches the version in the Docker image
+        - \[ "$(sed -nE 's/^molo\.core==(.*)$/\1/p' requirements.txt)" = "$(sed -nE 's/^FROM .*:(.*)-onbuild$/\1/p' Dockerfile)" \]
+      after_success:
+        - coveralls
+      deploy:
+        provider: pypi
+        user: Praekelt
+        password:
+          # NOTE: See http://docs.travis-ci.com/user/encryption-keys/ for more info.
+          secure: "insert encrypted pypi password here"
+        on:
+          tags: true
+          all_branches: true
+
     - stage: docker
       sudo: required
       services: [docker]
