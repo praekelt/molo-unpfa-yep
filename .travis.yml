@@ -33,10 +33,12 @@ jobs:
       sudo: required
       dist: trusty
       services: [docker]
-      before_install: ignore
       # Update docker-engine: we need at least 17.05.0 to use an argument in the
       # FROM tag
       install: sudo apt-get update && sudo apt-get install -y -o Dpkg::Options::="--force-confold" docker-engine
+
       before_script: molo_version="$(sed -nE 's/^molo\.core==(.*)$/\1/p' requirements.txt)"
       script: docker build --tag praekeltorg/molo-gem --build-arg MOLO_VERSION="$molo_version" .
-      after_script: ignore
+
+      before_install: ignore
+      after_success: ignore
