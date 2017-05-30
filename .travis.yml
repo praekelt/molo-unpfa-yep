@@ -1,7 +1,9 @@
 sudo: false  # Force container-based builds.
 language: python
-python: '2.7'
-cache: pip
+python:
+  - "2.7"
+cache:
+  - pip
 services:
   - elasticsearch
   - redis-server
@@ -30,6 +32,7 @@ deploy:
 jobs:
   include:
     - stage: docker
+      python: "2.7"
       sudo: required
       dist: trusty
       services: [docker]
