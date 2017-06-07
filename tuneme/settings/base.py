@@ -56,8 +56,8 @@ INSTALLED_APPS = [
     'taggit',
     'modelcluster',
 
-    'molo.core',
     'tuneme',
+    'molo.core',
     'google_analytics',
 
     'wagtail.wagtailcore',
@@ -90,7 +90,7 @@ INSTALLED_APPS = [
     'djcelery',
     'django_cas_ng',
     'compressor',
-
+    'el_pagination',
 ]
 
 COMMENTS_APP = 'molo.commenting'
@@ -98,6 +98,7 @@ COMMENTS_FLAG_THRESHHOLD = 3
 COMMENTS_HIDE_REMOVED = False
 
 SITE_ID = 1
+DEFAULT_SITE_PORT = 8000
 
 # We have multiple layouts: use `old` or `new` to switch between them.
 SITE_LAYOUT = environ.get('SITE_LAYOUT', 'new')
@@ -118,14 +119,21 @@ MIDDLEWARE_CLASSES = [
     'molo.core.middleware.AdminLocaleMiddleware',
     'molo.core.middleware.NoScriptGASessionMiddleware',
     'molo.core.middleware.MoloGoogleAnalyticsMiddleware',
+    'molo.core.middleware.MultiSiteRedirectToHomepage',
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'molo.core.backends.MoloModelBackend',
+    'django.contrib.auth.backends.ModelBackend'
+ ]
+
 # Template configuration
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [join(PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT), ],
-        'APP_DIRS': True,
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -134,12 +142,18 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'molo.core.context_processors.locale',
                 'molo.profiles.context_processors.get_profile_data',
+                'molo.core.processors.compress_settings',
                 'wagtail.contrib.settings.context_processors.settings',
                 'tuneme.context_processors.default_forms',
                 'tuneme.context_processors.add_tag_manager_account',
                 'tuneme.context_processors.enable_service_directory_context',
                 'tuneme.processors.compress_settings',
             ],
+            "loaders": [
+                "django.template.loaders.filesystem.Loader",
+                "mote.loaders.app_directories.Loader",
+                "django.template.loaders.app_directories.Loader",
+            ]
         },
     },
 ]
@@ -325,6 +339,15 @@ LOGIN_REDIRECT_URL = 'wagtailadmin_home'
 
 SITE_NAME = environ.get('SITE_NAME', "TuneMe")
 WAGTAIL_SITE_NAME = SITE_NAME
+
+FROM_EMAIL = environ.get('FROM_EMAIL', "support@moloproject.org")
+CONTENT_IMPORT_SUBJECT = environ.get(
+    'CONTENT_IMPORT_SUBJECT', 'Molo Content Import')
+CONTENT_COPY_SUBJECT = environ.get(
+    'CONTENT_COPY_SUBJECT', 'Molo Content Copy')
+CONTENT_COPY_FAILED_SUBJECT = environ.get(
+    'CONTENT_COPY_FAILED_SUBJECT', 'Molo Content Copy Failed')
+
 
 # Whether to use face/feature detection to improve image
 # cropping - requires OpenCV
