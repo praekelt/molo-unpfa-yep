@@ -84,7 +84,6 @@ INSTALLED_APPS = [
     'molo.commenting',
     'molo.yourwords',
     'molo.servicedirectory',
-    'polls',
 
     'raven.contrib.django.raven_compat',
     'djcelery',
