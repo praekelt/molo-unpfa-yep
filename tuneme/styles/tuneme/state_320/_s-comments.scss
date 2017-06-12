@@ -1,0 +1,13 @@
+.comments {
+  input[type="submit"] {
+    background: #32dfd4;
+  }
+}
+
+@each $name, $color in $color_list {
+  .comments-list--#{$name} {
+    input[type="submit"] {
+      background: $color;
+    }
+  }
+}

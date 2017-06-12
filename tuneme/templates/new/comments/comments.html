@@ -6,26 +6,18 @@
     {% breadcrumbs %}
   {% endblock %}
 </div>
-<div class="comments-list">
-  <h3 class="comments-list__heading">{% trans "Comments" %}</h3>
-  {% for node in comments %}
-  {% recursetree node %}
-    {% include "comments/comment.html" %}
-    {{ children }}
-  {% endrecursetree %}
-  {% endfor %}
-</div>
-<div class="comments-list__pagination">
-  {% if page.has_previous %}
-    <a href="?p={{ page.previous_page_number }}">&lt;&ndash;&ndash;&ndash;</a>
-  {% endif %}
-  <span class="padding">
-    {{ page.number }} of {{ page.paginator.num_pages }}
-  </span>
-  {% if page.has_next %}
-    <a href="?p={{ page.next_page_number }}">&ndash;&ndash;&ndash;&gt;</a>
-  {% endif %}
-  <p><a href="{% pageurl self %}">{% trans "Back to article" %}</a>
-  </p>
+<h1 class="heading heading--comment">{% trans "Comments" %}</h1>
+<div class="comments">
+  <div id="comments-list" class="comments__list">
+    {% for node in comments %}
+    {% recursetree node %}
+      {% include "comments/comment.html" %}
+      {{ children }}
+    {% endrecursetree %}
+    {% endfor %}
+  </div>
+  {% include "patterns/basics/pagination/pagination-comments.html"%}
+  <a href="{% pageurl self %}">
+    {% trans "Back to article" %}</a>
 </div>
 {% endblock %}

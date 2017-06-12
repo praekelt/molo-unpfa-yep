@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags core_tags comments mptt_tags molo_commenting_tags static i18n %}
+{% load wagtailcore_tags wagtailimages_tags core_tags mptt_tags comments molo_commenting_tags static i18n %}
 {% block content %}
 <div class="breadcrumbs">
   {% block breadcrumbs %}
@@ -48,4 +48,6 @@
   {% endfor %}
   {% social_media_article %}
 </div>
+</div>
+{% include "comments/comment_block.html" %}
 {% endblock %}

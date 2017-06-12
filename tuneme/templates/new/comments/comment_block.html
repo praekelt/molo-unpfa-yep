@@ -1,36 +1,48 @@
-{% load comments mptt_tags molo_commenting_tags i18n %}
-{% if self.is_commenting_enabled %}
-<div class="block comment__form">
-  {% if self.allow_commenting %}
-    {% get_comment_count for self as comment_count %}
-    {% if comment_count > 0 %}
-    <h6 class="comment__text">{% blocktrans count comment_count=comment_count %}{{comment_count}} comment{% plural %}{{comment_count}} comments{% endblocktrans %}</h6>
-    {% endif %}
-    <div class="comment__form-post">
-    {% if request.user.is_authenticated %}
-      {% render_comment_form for self %}
-    {% else %}
-      <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="button inverted">{% trans "Log in to comment" %}</a>
-    {% endif %}
-  {% else %}
-    <p>{% trans "Commenting on this article is currently disabled" %}</p>
-  {% endif %}
-	</div>
-</div>
+{% load wagtailcore_tags mptt_tags comments molo_commenting_tags i18n %}
 
-<div id="comments-list" class="comments__list">
+{% if self.is_commenting_enabled %}
+<div class="comments">
+  <h1 class="heading heading--comment">Comment</h1>
+  {% if self.allow_commenting %}
   {% get_comment_count for self as comment_count %}
-    {% get_molo_comments for self as comment_list limit 2 child_limit 2 %}
-      {% for node in comment_list %}
-        {% recursetree node %}
-             {% include "comments/comment.html" with truncate_comment=True %}
-            {{ children }}
-        {% endrecursetree %}
-      {% endfor %}
-      {% if comment_count > 2 %}
-        <div class="pagination">
-          <a href="{% url 'molo.commenting:more-comments' self.pk %}">{% trans "View more comments" %}</a>
-        </div>
-      {% endif %}
+  {% if comment_count > 0 %}
+    <h6 class="comments__counter">
+    <a href="{% pageurl self %}#comments-list">
+      {% blocktrans count comment_count=comment_count %}
+        {{comment_count}} comment{% plural %}{{comment_count}} comments
+      {% endblocktrans %}
+    </a>
+    </h6>
+  {% endif %}
+  {% if request.user.is_authenticated %}
+    {% render_comment_form for self %}
+  {% else %}
+    <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="call-to-action__nav-item call-to-action__nav-item--login">
+      {% trans "Log in to comment" %}
+    </a>
+  {% endif %}
+  {% else %}
+  <h6 class="comments__description">
+    {% trans "Commenting on this article is currently disabled" %}
+  </h6>
+  {% endif %}
+
+<div  class="comments__list" id="comments-list">
+{% get_comment_count for self as comment_count %}
+{% get_molo_comments for self as comment_list limit 2 child_limit 2 %}
+  {% for node in comment_list %}
+    {% recursetree node %}
+         {% include "comments/comment.html" with truncate_comment=True %}
+        {{ children }}
+    {% endrecursetree %}
+  {% endfor %}
+  {% if comment_count > 2 %}
+  <div class="pagination">
+    <a href="{% url 'molo.commenting:more-comments' self.pk %}" class="pagination__item">
+      {% trans "View more comments" %}
+    </a>
+  </div>
+  {% endif %}
+</div>
 </div>
 {% endif %}
