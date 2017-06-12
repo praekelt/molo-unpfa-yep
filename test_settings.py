@@ -1,6 +1,6 @@
 from tuneme.settings import *  # noqa
 
-SITE_LAYOUT = 'old'
+SITE_LAYOUT = 'new'
 TEMPLATES[0]['DIRS'] = [
     join(PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT), ]
 
@@ -17,3 +17,5 @@ WAGTAILSEARCH_BACKENDS = {
 }
 DEBUG = True
 CELERY_ALWAYS_EAGER = True
+
+DEFAULT_SITE_PORT = 8000

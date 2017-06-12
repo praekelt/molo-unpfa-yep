@@ -1,27 +1,43 @@
 from datetime import datetime
 from bs4 import BeautifulSoup
-from django.test import TestCase
+
 from django.core.urlresolvers import reverse
-from django.contrib.auth.models import User
+from django.test import TestCase
 from django.test.client import Client
-from molo.core.tests.base import MoloTestCaseMixin
-from molo.core.models import ArticlePage, SiteLanguage
-from molo.commenting.models import MoloComment
-from molo.commenting.forms import MoloCommentForm
+
+from django.contrib.auth.models import User, Group
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
-from django.contrib.auth.models import Group
+
+from molo.core.tests.base import MoloTestCaseMixin
+from molo.core.models import SiteLanguageRelation, Main, Languages
+from molo.commenting.models import MoloComment
+from molo.commenting.forms import MoloCommentForm
 
 
 class ViewsTestCase(TestCase, MoloTestCaseMixin):
 
     def setUp(self):
+        self.mk_main()
+        self.client = Client()
+
+        self.main = Main.objects.all().first()
+        self.language_setting = Languages.objects.create(
+            site_id=self.main.get_site().pk)
+        self.english = SiteLanguageRelation.objects.create(
+            language_setting=self.language_setting,
+            locale='en',
+            is_active=True)
+
         self.user = User.objects.create_user(
             username='tester',
             email='tester@example.com',
             password='tester')
-        self.english = SiteLanguage.objects.create(locale='en')
-        self.mk_main()
+        self.section = self.mk_section(
+            self.section_index, title='test section')
+        self.article = self.mk_article(
+            self.section,
+            title='article 1')
 
     def create_comment(self, article, comment, parent=None):
         return MoloComment.objects.create(
@@ -31,13 +47,12 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             site=Site.objects.get_current(),
             user=self.user,
             comment=comment,
-            parent=parent,
+            parent=None,
             submit_date=datetime.now())
 
     def test_default_dob_in_registration_done(self):
-        client = Client()
-        client.login(username='tester', password='tester')
-        response = client.get(reverse('registration_done'))
+        self.client.login(username='tester', password='tester')
+        response = self.client.get(reverse('registration_done'))
 
         year_25_ago = datetime.today().year - 25
         self.assertContains(
@@ -46,31 +61,17 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             {'year': year_25_ago})
 
     def test_report_response(self):
-        client = Client()
-        article = ArticlePage.objects.create(
-            title='article 1', depth=1,
-            subtitle='article 1 subtitle',
-            slug='article-1', path=[1])
-        comment = MoloComment.objects.create(
-            content_object=article, object_pk=article.id,
-            content_type=ContentType.objects.get_for_model(article),
-            site=Site.objects.get_current(), user=self.user,
-            comment='comment 1', submit_date=datetime.now())
-        response = client.get(reverse('report_response',
-                                      args=(comment.id,)))
+        comment = self.create_comment(self.article, 'test comment 1')
+        response = self.client.get(reverse('report_response',
+                                           args=(comment.id,)))
         self.assertContains(
             response,
             "This comment has been reported."
         )
 
     def test_commenting_closed(self):
-        client = Client()
-        client.login(username='tester', password='tester')
-        article = ArticlePage.objects.create(
-            title='article 1', depth=1,
-            subtitle='article 1 subtitle',
-            slug='article-1', path=[1], commenting_state='C')
-        article.save()
+        self.client.login(username='tester', password='tester')
+        article = self.mk_article(self.section, commenting_state='C')
         initial = {
             'object_pk': article.id,
             'content_type': "core.articlepage"
@@ -80,18 +81,13 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         data.update({
             'comment': "This is another comment"
         })
-        response = client.post(
+        response = self.client.post(
             reverse('molo.commenting:molo-comments-post'), data)
         self.assertEqual(response.status_code, 400)
 
     def test_commenting_open(self):
-        client = Client()
-        client.login(username='tester', password='tester')
-        article = ArticlePage.objects.create(
-            title='article 1', depth=1,
-            subtitle='article 1 subtitle',
-            slug='article-1', path=[1], commenting_state='O')
-        article.save()
+        self.client.login(username='tester', password='tester')
+        article = self.mk_article(self.section, commenting_state='O')
         initial = {
             'object_pk': article.id,
             'content_type': "core.articlepage"
@@ -101,16 +97,12 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         data.update({
             'comment': "This is a second comment",
         })
-        response = client.post(
+        response = self.client.post(
             reverse('molo.commenting:molo-comments-post'), data)
         self.assertEqual(response.status_code, 302)
 
     def test_comment_reply(self):
-        article = ArticlePage.objects.create(
-            title='article 1', depth=1,
-            subtitle='article 1 subtitle',
-            slug='article-1', path=[1], commenting_state='O')
-        article.save()
+        article = self.mk_article(self.section, commenting_state='O')
 
         comment1 = self.create_comment(article, 'test comment1 text')
         comment2 = self.create_comment(article, 'test comment2 text')
@@ -119,10 +111,14 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
                                     'test reply text', parent=comment2)
         response = self.client.get(
             reverse('molo.commenting:more-comments', args=(article.pk,)))
-
         html = BeautifulSoup(response.content, 'html.parser')
+
+        html.find_all(
+            class_='comment-list__item')
+
         [c3row, c2row, replyrow, c1row] = html.find_all(
             class_='comment-list__item')
+        # print(c3row)
         self.assertTrue(comment3.comment in c3row.prettify())
         self.assertTrue(comment2.comment in c2row.prettify())
         self.assertTrue(reply.comment in replyrow.prettify())
@@ -136,20 +132,17 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             response = self.client.get('/')
             self.assertContains(response, 'Find a service')
 
-    def test_comment_reply_in_article(self):
+    def test_KKKKKomment_reply_in_artile(self):
             self.yourmind = self.mk_section(
                 self.section_index, title='Your mind')
-            article = self.mk_article(self.yourmind, title='article 1',
-                                      subtitle='article 1 subtitle',
-                                      slug='article-1')
-
+            article = article = self.mk_article(
+                self.section, commenting_state='O')
             comment1 = self.create_comment(article, 'test comment1 text')
             comment2 = self.create_comment(article, 'test comment2 text')
             comment3 = self.create_comment(article, 'test comment3 text')
             reply = self.create_comment(article,
                                         'test reply text', parent=comment2)
-            response = self.client.get('/sections/your-mind/article-1/')
-
+            response = self.client.get(article.url)
             html = BeautifulSoup(response.content, 'html.parser')
             [c3row, c2row, replyrow, c1row] = html.find_all(
                 class_='comment-list__item')
@@ -209,8 +202,15 @@ class TestFrontEndCommentReplies(TestCase, MoloTestCaseMixin):
 
     def setUp(self):
         self.mk_main()
-        self.english = SiteLanguage.objects.create(locale='en')
         self.client = Client()
+
+        self.main = Main.objects.all().first()
+        self.language_setting = Languages.objects.create(
+            site_id=self.main.get_site().pk)
+        self.english = SiteLanguageRelation.objects.create(
+            language_setting=self.language_setting,
+            locale='en',
+            is_active=True)
 
         self.superuser = User.objects.create_superuser(
             username='superuser',
