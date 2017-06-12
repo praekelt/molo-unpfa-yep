@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-molo.core==4.4.14
-molo.profiles==3.0.0
-molo.commenting==2.0.1
-molo.yourwords==2.2.2
-=======
 molo.core==5.4.4
 molo.profiles==5.1.0
 molo.commenting==5.0.1
 molo.yourwords==5.0.1
 molo.surveys==5.0.1
->>>>>>> feature/issue-421-upgrade-molo-to-v5-and-MergeCMS
 molo.servicedirectory==2.1.5
 elasticsearch==1.7.0
 django-modelcluster>=2.0,<3.0
@@ -18,3 +11,4 @@ gunicorn
 django_compressor==2.0
 celery<4.0
 django-google-analytics-app==2.1.6
+Unidecode==0.04.16
