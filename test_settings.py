@@ -1,6 +1,6 @@
 from tuneme.settings import *  # noqa
 
-SITE_LAYOUT = 'old'
+SITE_LAYOUT = 'new'
 TEMPLATES[0]['DIRS'] = [
     join(PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT), ]
 
