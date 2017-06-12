@@ -11,6 +11,7 @@
       {% endif %}
     {% endif %}
   </h4>
+
 {% if node.is_removed %}
 <!--Start Removed Comment -->
     <h6 class="comments__description">
@@ -18,9 +19,9 @@
     </h6>
   {% else %}
     {% if truncate_comment %}
-        <p class="comments__body-small">{{ node.comment|truncatechars:60 }}</p>
+      <p class="comments__body-small">{{ node.comment|truncatechars:60 }}</p>
     {% else %}
-        <p class="comments__body-small">{{ node.comment }}</p>
+      <p class="comments__body-small">{{ node.comment }}</p>
     {% endif %}
     <span class="comments__date">{{ node.submit_date|timesince }} {% trans "Ago" %}</span>
   {% if not node.user|is_in_admin_group %}
@@ -36,8 +37,10 @@
         {% trans "Reply"%}
       </a>
     {% endif %}
+
     {% if do_not_link_replies or node.get_children.count == 0 %}
       <p class="call-to-action__nav-item-text call-to-action__nav-item--replies-counter">
+        <!--Get all replies? -->
         {{ node.get_children.count }}
         {% if node.get_children.count == 0 or node.get_children.count == 1 %}
           {% trans "Reply"%}

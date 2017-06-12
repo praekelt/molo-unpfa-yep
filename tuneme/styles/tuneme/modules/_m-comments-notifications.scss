@@ -1,0 +1,63 @@
+.reply-notification {
+  border-radius: 0;
+  padding: 10px;
+  &__popup-title {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  &__popup-call-to-action {
+    margin: 0;
+  }
+  &__link {
+    display: block;
+    color: #E78184;
+    &:hover,
+    &:focus {
+      text-decoration: none
+    }
+  }
+  &__popup-number {
+    border: 2px solid #F8CAC3;
+    border-radius: 50%;
+    color: #ffffff;
+    display: inline-block;
+    padding: 5px;
+    height: 20px;
+    text-align: center;
+    width: 20px;
+  }
+  &__popup-number-text {
+    display: block;
+  }
+}
+
+
+//COMMENT REPLIES INNER
+.comments {
+  &-replies-list {
+    background: #f3f3f3;
+    padding: 0 15px;
+    &__item {
+      display: block;
+      padding: 5px 0 10px;
+    }
+  }
+
+  &__replies-title,
+  &__replies-label {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  &__replies-title {
+    padding: 8px 0 0 10px;
+  }
+  &__replies-label {
+    font-size: $font-small;
+  }
+  &__replies-cta-title {
+    background: none;
+    font-weight: bold;
+  }
+}

@@ -10,7 +10,7 @@
 {% if request.user.is_authenticated %}
   {% include "comments/form.html" with node=comment %}
 {% else %}
-  <p>{% trans "Please " %}
+  <p class="comments__call-to-action">{% trans "Please " %}
     <a href="{% url 'molo.profiles:auth_login' %}">{% trans "log in" %}</a>
     {% trans " to leave a comment." %}
   </p>
