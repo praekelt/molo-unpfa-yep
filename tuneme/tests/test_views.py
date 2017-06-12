@@ -37,9 +37,7 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             self.section_index, title='test section')
         self.article = self.mk_article(
             self.section,
-            title='article 1', depth=1,
-            subtitle='article 1 subtitle',
-            slug='article-1', path=[1])
+            title='article 1')
 
     def create_comment(self, article, comment, parent=None):
         return MoloComment.objects.create(
@@ -65,7 +63,7 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
     def test_report_response(self):
         comment = self.create_comment(self.article, 'test comment 1')
         response = self.client.get(reverse('report_response',
-                                      args=(comment.id,)))
+                                           args=(comment.id,)))
         self.assertContains(
             response,
             "This comment has been reported."
@@ -113,9 +111,6 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
                                     'test reply text', parent=comment2)
         response = self.client.get(
             reverse('molo.commenting:more-comments', args=(article.pk,)))
-
-        print(response)
-
         html = BeautifulSoup(response.content, 'html.parser')
 
         html.find_all(
@@ -140,17 +135,14 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
     def test_KKKKKomment_reply_in_artile(self):
             self.yourmind = self.mk_section(
                 self.section_index, title='Your mind')
-            article = self.mk_article(self.yourmind, title='article 1',
-                                      subtitle='article 1 subtitle',
-                                      slug='article-1')
-
+            article = article = self.mk_article(
+                self.section, commenting_state='O')
             comment1 = self.create_comment(article, 'test comment1 text')
             comment2 = self.create_comment(article, 'test comment2 text')
             comment3 = self.create_comment(article, 'test comment3 text')
             reply = self.create_comment(article,
                                         'test reply text', parent=comment2)
-            response = self.client.get('/sections/your-mind/article-1/')
-
+            response = self.client.get(article.url)
             html = BeautifulSoup(response.content, 'html.parser')
             [c3row, c2row, replyrow, c1row] = html.find_all(
                 class_='comment-list__item')
@@ -210,8 +202,15 @@ class TestFrontEndCommentReplies(TestCase, MoloTestCaseMixin):
 
     def setUp(self):
         self.mk_main()
-        self.english = SiteLanguage.objects.create(locale='en')
         self.client = Client()
+
+        self.main = Main.objects.all().first()
+        self.language_setting = Languages.objects.create(
+            site_id=self.main.get_site().pk)
+        self.english = SiteLanguageRelation.objects.create(
+            language_setting=self.language_setting,
+            locale='en',
+            is_active=True)
 
         self.superuser = User.objects.create_superuser(
             username='superuser',
