@@ -31,12 +31,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 .errorlist, .error {
-  margin: 1em 0;
+  margin: 5px 0 1em 0;
   color: red;
+  font-size: 14px;
 }
 fieldset {
   border: none;
-  margin: 10px 0;
+  margin: 10px 0 15px 0;
   padding: 0;
 }
 label {
