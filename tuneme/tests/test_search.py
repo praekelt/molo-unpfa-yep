@@ -4,23 +4,27 @@ from django.test.client import Client
 
 from wagtail.wagtailsearch.backends import get_search_backend
 
-from molo.core.models import ArticlePage, SiteLanguage
+from molo.core.models import ArticlePage, SiteLanguageRelation, Languages, Main
 from molo.core.tests.base import MoloTestCaseMixin
 
 
 class TestSearch(TestCase, MoloTestCaseMixin):
 
     def setUp(self):
-        self.client = Client()
-        # Creates Main language
-        self.english = SiteLanguage.objects.create(
-            locale='en',
-        )
-        # Creates translation Language
-        self.french = SiteLanguage.objects.create(
-            locale='fr',
-        )
         self.mk_main()
+        self.client = Client()
+
+        self.main = Main.objects.all().first()
+        self.language_setting = Languages.objects.create(
+            site_id=self.main.get_site().pk)
+        self.english = SiteLanguageRelation.objects.create(
+            language_setting=self.language_setting,
+            locale='en',
+            is_active=True)
+        self.french = SiteLanguageRelation.objects.create(
+            language_setting=self.language_setting,
+            locale='fr',
+            is_active=True)
 
         # Creates a section under the index page
         self.english_section = self.mk_section(
@@ -31,10 +35,12 @@ class TestSearch(TestCase, MoloTestCaseMixin):
         self.backend.reset_index()
 
         for a in range(0, 20):
-            ArticlePage.objects.create(
-                title='article %s' % (a,), depth=a,
+            article = ArticlePage(
+                title='article %s' % (a,),
                 subtitle='article %s subtitle' % (a,),
-                slug='article-%s' % (a,), path=[a])
+                slug='article-%s' % (a,))
+            self.english_section.add_child(instance=article)
+            article.save_revision().publish()
 
         self.backend.refresh_index()
 

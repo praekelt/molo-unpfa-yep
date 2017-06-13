@@ -2,10 +2,10 @@ from django import forms
 from datetime import datetime
 from django.forms.extras.widgets import SelectDateWidget
 
-from molo.profiles.forms import DateOfBirthForm
+from molo.profiles.forms import DoneForm
 
 
-class DateOfBirthForm(DateOfBirthForm):
+class TunemeDoneForm(DoneForm):
     date_of_birth = forms.DateField(
         widget=SelectDateWidget(
             years=list(reversed([y for y in range(1930, datetime.now().year)]))

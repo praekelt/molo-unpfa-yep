@@ -23,7 +23,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('tuneme', '0001_initial'),
-        ('polls', '0025_create_polls_index_pages'),
         ('yourwords', '0006_create_your_words_index_pages'),
     ]
 
