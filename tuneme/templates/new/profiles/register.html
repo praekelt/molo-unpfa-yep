@@ -9,7 +9,7 @@
       <h5 class="call-to-action__challenge-title">{% trans "Not a member yet?" %}
       {% trans "Join by signing up below. " %}{% trans "Or" %}
       <a href="{% url "molo.profiles:auth_login" %}" class="call-to-action__link">
-      {% trans "log in" %}</a>{% trans "now if you've already joined" %}
+      {% trans "Log in" %}</a> {% trans "now if you've already joined" %}
       </h5>
   </div>
   <form method="post" action="{% url "molo.profiles:user_register" %}" class="profiles__form">
@@ -56,12 +56,17 @@
     </fieldset>
     {% endif %}
 
-    <fieldset class="auth-tools__tandcs">
+    <fieldset class="profiles__terms-conditions">
       {{ form.terms_and_conditions }}
       {% if settings.profiles.UserProfilesSettings.terms_and_conditions %}
-        <a href="{% pageurl settings.profiles.UserProfilesSettings.terms_and_conditions %}" for="id_terms_and_conditions" class="profiles__terms">{% trans "I accept the Terms and Conditions" %}</a>
+      <label for="id_terms_and_conditions">
+        <a href="{% pageurl settings.profiles.UserProfilesSettings.terms_and_conditions %}">
+          {% trans "I accept the Terms and Conditions" %}</a>
+      </label>
       {% else %}
-          <label for="id_terms_and_conditions" class="profiles__terms">{% trans "I accept the Terms and Conditions" %}</label>
+        <label for="id_terms_and_conditions">
+          {% trans "I accept the Terms and Conditions" %}
+        </label>
       {% endif %}
       {% if form.terms_and_conditions.errors %}
         <p class="error">{% trans "Please accept the T&amp;Cs in order to complete the registration" %}</p>
@@ -70,10 +75,11 @@
     <input type="submit" value="{% trans "Sign up" %}"/>
     <input type="hidden" name="next" value="{% url "molo.profiles:registration_done" %}"/>
   </form>
-<div class="call-to-action call-to-action--profiles">
-  <h5 class="call-to-action__challenge-heading">
-  {% trans "Already a member?" %}</h5>
-   <a href="{% url 'molo.profiles:auth_login' %}" class="call-to-action__nav-item call-to-action__nav-item--login">
-  {% trans "Log in" %}</a>
+  <div class="call-to-action call-to-action--profiles">
+    <h5 class="call-to-action__challenge-heading">
+    {% trans "Already a member?" %}</h5>
+     <a href="{% url 'molo.profiles:auth_login' %}" class="call-to-action__nav-item call-to-action__nav-item--login">
+    {% trans "Log in" %}</a>
+  </div>
 </div>
 {% endblock %}

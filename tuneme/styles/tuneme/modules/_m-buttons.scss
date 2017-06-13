@@ -2,6 +2,9 @@
 .call-to-action {
   padding: 5px 15px;
 }
+.call-to-action__nav-item {
+  display: block;
+}
 .call-to-action__link {
   font-weight: bold;
   text-decoration: underline;
@@ -12,7 +15,7 @@
 .call-to-action__nav-item--login {
   background: #000;
   color: #fff;
-  margin: 20px 10px;
+  margin: 20px 0;
   padding: 5px 15px;
   font-weight: normal;
   display: inline-block;
@@ -31,7 +34,7 @@
   padding: 10px 15px;
   display: block;
 }
-.call-to-action--view-profile {
+.call-to-action--profiles {
   .call-to-action__nav-item--logout,
   .call-to-action__nav-item--editprofile,
   .call-to-action__nav-item--change-password {
