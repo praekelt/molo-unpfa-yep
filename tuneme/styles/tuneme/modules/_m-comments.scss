@@ -46,11 +46,6 @@
     font-weight: bold;
     padding: 10px 15px 5px;
   }
-  &__call-to-action {
-    padding: 10px 15px 20px;
-    margin: 0;
-    font-weight: bold;
-  }
 
   //Meta
   &__reply-meta {
@@ -77,6 +72,12 @@
     margin: 0;
   }
 }
+.call-to-action--comments {
+  padding: 10px 15px 20px;
+  margin: 0;
+  font-weight: bold;
+}
+
 .comments-list__item--parent-comment {
   //Comment and Comments template
   //border-top: 2px solid #fff;

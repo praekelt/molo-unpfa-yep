@@ -16,8 +16,10 @@
     {% endrecursetree %}
     {% endfor %}
   </div>
-  {% include "patterns/basics/pagination/pagination-comments.html"%}
 </div>
-<a href="{% pageurl self %}">
-  {% trans "Back to article" %}</a>
+{% include "patterns/basics/pagination/pagination-comments.html"%}
+<div class="call-to-action">
+  <a href="{% pageurl self %}"  class="call-to-action__nav-item-text call-to-action__nav-item-text--back">
+    {% trans "Back to article" %}</a>
+</div>
 {% endblock %}

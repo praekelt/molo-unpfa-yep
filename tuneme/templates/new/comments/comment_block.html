@@ -26,16 +26,17 @@
     {% trans "Commenting on this article is currently disabled" %}
   </h6>
   {% endif %}
-
-<div  class="comments__list" id="comments-list">
-{% get_comment_count for self as comment_count %}
-{% get_molo_comments for self as comment_list limit 2 child_limit 2 %}
-  {% for node in comment_list %}
-    {% recursetree node %}
-         {% include "comments/comment.html" with truncate_comment=True %}
-        {{ children }}
-    {% endrecursetree %}
-  {% endfor %}
+  <div  class="comments__list" id="comments-list">
+  {% get_comment_count for self as comment_count %}
+  {% get_molo_comments for self as comment_list limit 2 child_limit 2 %}
+    {% for node in comment_list %}
+      {% recursetree node %}
+           {% include "comments/comment.html" with truncate_comment=True %}
+          {{ children }}
+      {% endrecursetree %}
+    {% endfor %}
+  </div>
+</div>
   {% if comment_count > 2 %}
   <div class="pagination">
     <a href="{% url 'molo.commenting:more-comments' self.pk %}" class="pagination__item">
@@ -43,6 +44,4 @@
     </a>
   </div>
   {% endif %}
-</div>
-</div>
 {% endif %}

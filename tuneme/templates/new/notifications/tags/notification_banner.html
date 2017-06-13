@@ -8,7 +8,8 @@
     <span class="reply-notification__popup-number-text">{{ number_unread_notifications }}</span>
   </div>
   <p class="reply-notification__popup-call-to-action">
-    {% trans "You have" %} {{ number_unread_notifications }} {% trans "unread" %}
+    {% trans "You have" %} <span class="reply-notification__counter-text">{{ number_unread_notifications }}</span>
+    {% trans "unread" %}
     {% if number_unread_notifications == 1 %}
       {% trans "Reply" %}
     {% else %}
