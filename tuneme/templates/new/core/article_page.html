@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags core_tags comments mptt_tags molo_commenting_tags static i18n %}
+{% load wagtailcore_tags wagtailimages_tags core_tags mptt_tags comments molo_commenting_tags static i18n %}
 {% block content %}
 <div class="breadcrumbs">
   {% block breadcrumbs %}
@@ -10,7 +10,6 @@
   {% image self.image width-280 jpegquality-70 as article_image %}
   <div class="article__image">
     <img src="{{ article_image.url }}" class="article-list__image"/>
-
   </div>
 {% endif %}
 <h1 class="article__title">{{ self.title }}</h1>
@@ -26,7 +25,6 @@
       {% image block.value width-280 jpegquality-70 as article_image %}
       <div class="article__image">
         <img src="{{ article_image.url }}" class="article-list__image"/>
-
       </div>
     {% elif block.block_type == 'numbered_list' %}
          <ol>
@@ -47,5 +45,7 @@
     {% endif %}
   {% endfor %}
   {% social_media_article %}
+  </div>
 </div>
+{% include "comments/comment_block.html" %}
 {% endblock %}
