@@ -5,9 +5,11 @@
 }
 
 @each $name, $color in $color_list {
-  .comments-list--#{$name} {
-    input[type="submit"] {
-      background: $color;
+  .comments--#{$name} {
+    .comments__form {
+      input[type="submit"] {
+        background: $color;
+      }
     }
   }
 }

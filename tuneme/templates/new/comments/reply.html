@@ -9,7 +9,7 @@
   {% endblock %}
 </div>
 <h1 class="heading heading--comment">Join The discussion</h1>
-<div class="comments">
+<div class="comments comments{{self.get_parent_section.get_effective_extra_style_hints}}">
   {% include "comments/comment.html" with node=comment do_not_link_replies=True %}
   {% if do_not_link_replies or node.get_children.count == 0 %}
     <h6 class="comments__body-title">
@@ -25,7 +25,7 @@
   {% endfor %}
 </div>
 {% include "patterns/basics/pagination/pagination-comments_replies.html"%}
-<div class="comments">
+<div class="comments comments{{self.get_parent_section.get_effective_extra_style_hints}}">
   <h1 class="heading heading--comment heading--comment-reply-form">Comment</h1>
   <!-- On Submitting a reply the form needs to jump to Notification/top of the page instead of #comments-list -->
   {% if request.user.is_authenticated %}

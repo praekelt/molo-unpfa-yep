@@ -2,7 +2,7 @@
 {% load core_tags wagtailcore_tags i18n %}
 {% block content %}
 <h1 class="heading heading--comment">{% trans "Comment Replies" %}</h1>
-<div class="comments">
+<div class="comments comments{{self.get_parent_section.get_effective_extra_style_hints}}">
   <div class="comments__list">
   {% if unread_notifications %}
     <h3 class="comments__replies-title comments__replies-cta-title">

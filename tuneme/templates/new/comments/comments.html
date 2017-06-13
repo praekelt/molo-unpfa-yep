@@ -7,7 +7,7 @@
   {% endblock %}
 </div>
 <h1 class="heading heading--comment">{% trans "Comments" %}</h1>
-<div class="comments">
+<div class="comments comments{{self.get_parent_section.get_effective_extra_style_hints}}">
   <div id="comments-list" class="comments__list">
     {% for node in comments %}
     {% recursetree node %}

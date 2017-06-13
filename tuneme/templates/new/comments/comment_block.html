@@ -1,18 +1,16 @@
 {% load wagtailcore_tags mptt_tags comments molo_commenting_tags i18n %}
 
 {% if self.is_commenting_enabled %}
-<div class="comments">
+<div class="comments comments{{self.get_parent_section.get_effective_extra_style_hints}}">
   <h1 class="heading heading--comment">Comment</h1>
   {% if self.allow_commenting %}
   {% get_comment_count for self as comment_count %}
   {% if comment_count > 0 %}
-    <h6 class="comments__counter">
-    <a href="{% pageurl self %}#comments-list">
+    <a href="{% pageurl self %}#comments-list" class="comments__counter">
       {% blocktrans count comment_count=comment_count %}
         {{comment_count}} comment{% plural %}{{comment_count}} comments
       {% endblocktrans %}
     </a>
-    </h6>
   {% endif %}
   {% if request.user.is_authenticated %}
     {% render_comment_form for self %}
