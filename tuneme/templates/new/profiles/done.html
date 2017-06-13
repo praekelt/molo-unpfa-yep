@@ -7,14 +7,13 @@
   <h3 class="heading heading--subtitle">
     {% trans "Thank you for joining!" %}</h3>
   {% with profile_settings=settings.profiles.UserProfilesSettings %}
-
   {% if profile_settings.activate_dob and not profile_settings.capture_dob_on_reg or profile_settings.activate_display_name and not profile_settings.capture_display_name_on_reg or profile_settings.activate_gender and not profile_settings.capture_gender_on_reg or profile_settings.activate_location and not profile_settings.capture_location_on_reg or profile_settings.activate_education_level and not profile_settings.capture_education_level_on_reg %}
     <p class="profiles__description">{% trans "Let us know more about yourself to get access to exclusive content." %}</p>
     <form method="post" action="{% url "molo.profiles:registration_done" %}" class="profiles__form">
     {% csrf_token %}
       {% if profile_settings.activate_dob and not profile_settings.capture_dob_on_reg %}
       <fieldset>
-        <label for="date_of_birth">{% trans "SELECT DATE OF BIRTH" %}</label><br>
+        <label for="date_of_birth">{% trans "Select a date of birth" %}</label><br>
         {{ form.date_of_birth.errors}}
         {{ form.date_of_birth }}
       </fieldset>
@@ -62,8 +61,8 @@
   {% endwith %}
 </div>
   <div class="call-to-action">
+    <a href="{% url "molo.profiles:view_my_profile" %}" class="call-to-action__nav-item call-to-action__nav-item-primary">{% trans "Profile" %}</a>
     <a href="/" class="call-to-action__nav-item">{% trans "Home Page" %}</a>
-    <a href="{% url "molo.profiles:view_my_profile" %}" class="call-to-action__nav-item">{% trans "Profile" %}</a>
   </div>
 {% endblock %}
 

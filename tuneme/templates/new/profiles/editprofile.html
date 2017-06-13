@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block content %}
-<div class="profiles auth-tools">
+<div class="profiles">
   <form method="post" action="{% url "molo.profiles:edit_my_profile" %}" id="frmProfileEdit" class="profiles__form">
   {% csrf_token %}
   <fieldset>
@@ -13,7 +13,7 @@
     <label for="id_mobile_number">{% trans "Mobile number" %}</label>
     {{ edit_profile_form.mobile_number.errors }}
     <input type="text" name="mobile_number" id="mobile_numer" value="{{ user.profile.mobile_number | default:"Not set" }}" />
-    <p class="input-hint">{% trans "Please add your mobile number. e.g. 0377222222" %}</p>
+    <p class="helptext">{% trans "Please add your mobile number. e.g. 0377222222" %}</p>
   </fieldset>
   {% endif %}
   <input type="submit" value='{% trans "Update profile" %}'>
