@@ -14,16 +14,10 @@
     &__challenge-heading {
       font-weight: bold;
       font-size: $font-large;
-      padding: 0 0 10px;
     }
     &__challenge-title {
       color: $dusty_grey;
       font-weight: normal;
     }
   }
-}
-
-.call-to-action--profile {
-  border-top: 1px solid rgba(153,153,153,0.5);
-  padding: 10px 0;
 }
