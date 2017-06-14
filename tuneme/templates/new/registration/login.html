@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block content %}
-<h1 class="heading heading--auth">{% trans "Log in" %}</h1>
-<div class="call-to-action call-to-action--profile">
-    <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge-heading">
-    {% trans "Don't have an account yet?" %}
-    <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__link">
-    {% trans "Sign up" %}</a></h5>
-</div>
-<div class="auth-tools auth-tools--profiles ">
+<div class="profiles">
+  <h1 class="heading heading--auth">{% trans "Log in" %}</h1>
+  <div class="call-to-action call-to-action--profiles">
+    <h5 class="call-to-action__challenge-title">
+      {% trans "Don't have an account yet?" %}
+      <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__nav-item  call-to-action__nav-item-link">
+      {% trans "Sign up" %}</a>
+    </h5>
+  </div>
   <form method="post" class="profiles__form">
-    {% csrf_token %}
+  {% csrf_token %}
     <input type="hidden" name="next" value="{% if not request.GET.next %}/{% else %}{{ request.GET.next }}{% endif %}" />
     {% if form.errors %}
       <p class="error">{% trans "Your username and password does not match. Please try again." %}</p>
@@ -18,20 +19,19 @@
     <fieldset>
       <label for="id_username">{% trans "Username" %}</label>
       {{ form.username }}
+    </fieldset>
     <fieldset>
-    <fieldset>
-      <label for="id_password">{% trans "4 digit pin" %}
-      </label>
+      <label for="id_password">{% trans "4 digit pin" %}</label>
       {{ form.password }}
-      <span class="input-hint">{% trans "Numbers only eg. 5656" %}</span>
+      <p class="helptext">{% trans "Numbers only eg. 5656" %}</p>
     </fieldset>
     <input type="submit" value="{% trans "Log in" %}">
   </form>
-</div>
-<div class="call-to-action call-to-action--profile">
-  <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
-  {% trans "Don't have an account?" %}</h5>
-  <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__nav-item call-to-action__nav-item--login">
-  {% trans "Sign up" %}</a>
+  <div class="call-to-action call-to-action--profiles">
+    <h5 class="call-to-action__challenge-heading">
+    {% trans "Don't have an account?" %}</h5>
+    <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__nav-item call-to-action__nav-item-primary">
+    {% trans "Sign up" %}</a>
+  </div>
 </div>
 {% endblock %}
