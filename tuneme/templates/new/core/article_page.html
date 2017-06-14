@@ -49,5 +49,11 @@
   {% social_media_article %}
 </div>
 </div>
+{% has_questions self as questions %}
+{% if questions %}
+  <div class="article__polls">
+    {% poll_page_in_section page=self %}
+  </div>
+{% endif %}
 {% include "comments/comment_block.html" %}
 {% endblock %}
