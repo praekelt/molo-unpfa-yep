@@ -160,14 +160,14 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
 
         # check when user doesn't have an alias
         self.create_comment(article, 'test comment1 text')
-        response = self.client.get('/sections/your-mind/article-1/')
+        response = self.client.get(article.url)
         self.assertContains(response, "Anonymous")
 
         # check when user have an alias
         self.user.profile.alias = 'this is my alias'
         self.user.profile.save()
         self.create_comment(article, 'test comment2 text')
-        response = self.client.get('/sections/your-mind/article-1/')
+        response = self.client.get(article.url)
         self.assertContains(response, "this is my alias")
         self.assertNotContains(response, "tester")
 
@@ -266,13 +266,16 @@ class TestFrontEndCommentReplies(TestCase, MoloTestCaseMixin):
 
     def check_reply_exists(self, client):
         response = client.get(
-            '/sections/{0}/{1}/'.format(self.section.slug,
-                                        self.article.slug)
+            '/sections-main-1/{0}/{1}/'.format(
+                self.section.slug, self.article.slug)
         )
         self.assertTrue(response.status_code, 200)
         comment_reply_url = ('/commenting/molo/reply/{0}/'
                              .format(self.comment.pk))
-        reply_link = '<a href="{0}">Reply</a>'.format(comment_reply_url)
+        reply_link = (
+            '<a href="{0}#comment-form" class="call-to-action__nav-item '
+            'call-to-action__nav-item--response comment__'
+            'reply-meta-link">Reply</a>'.format(comment_reply_url))
         self.assertContains(response, reply_link, html=True)
 
         response = self.client.get(comment_reply_url)

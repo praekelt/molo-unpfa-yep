@@ -22,7 +22,7 @@
     {% else %}
       <p class="comments__body-small">{{ node.comment }}</p>
     {% endif %}
-    <span class="comments__date">{{ node.submit_date|timesince }} {% trans "Ago" %}</span>
+      <span class="comments__date">{{ node.submit_date|timesince }} {% trans "Ago" %}</span>
   {% if not node.user|is_in_admin_group %}
     <a href="{% url 'molo.commenting:molo-comments-report' node.pk %}?next={% url 'molo.commenting:report_response' node.pk %}" class="call-to-action__nav-item-text call-to-action__nav-item-text--report">
     {% trans "Report" %}
@@ -47,14 +47,14 @@
         {% endif %}
       </p>
     {% else %}
-    <a href="{% url 'molo.commenting:molo-comments-reply' node.pk %}#comment-form" class="call-to-action__nav-item-text">
-      {{ node.get_children.count }}
-      {% if node.get_children.count == 0 or node.get_children.count == 1 %}
-        {% trans "Reply"%}
-      {% else %}
-        {% trans "Replies"%}
-      {% endif %}
-    </a>
+      <a href="{% url 'molo.commenting:molo-comments-reply' node.pk %}#comment-form" class="call-to-action__nav-item-text">
+        {{ node.get_children.count }}
+        {% if node.get_children.count == 0 or node.get_children.count == 1 %}
+          {% trans "Reply"%}
+        {% else %}
+          {% trans "Replies"%}
+        {% endif %}
+      </a>
     {% endif %}
   </div>
   {% endif %}
