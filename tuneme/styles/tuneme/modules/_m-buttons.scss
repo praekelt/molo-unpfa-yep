@@ -8,6 +8,7 @@
     font-weight: bold;
     text-decoration: underline;
     padding: 0;
+    display: inline;
   }
   &__nav-item-primary {
     border: 0;
@@ -23,6 +24,11 @@
   }
   &__nav-item--back-home {
     padding: 10px 15px;
+  }
+  &__nav-item--password-recovery {
+    margin: 0 0 5px;
+    font-weight: bold;
+    text-decoration: underline;
   }
 }
 .call-to-action--surveys {

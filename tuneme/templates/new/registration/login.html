@@ -28,6 +28,9 @@
     <input type="submit" value="{% trans "Log in" %}">
   </form>
   <div class="call-to-action call-to-action--profiles">
+    <a href="{% url "molo.profiles:forgot_password" %}" class="call-to-action__nav-item call-to-action__nav-item--password-recovery">
+      {% trans "Forgotten your password?" %}
+    </a>
     <h5 class="call-to-action__challenge-heading">
     {% trans "Don't have an account?" %}</h5>
     <a href="{% url 'molo.profiles:user_register' %}" class="call-to-action__nav-item call-to-action__nav-item-primary">
