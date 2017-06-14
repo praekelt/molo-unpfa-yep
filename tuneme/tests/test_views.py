@@ -47,7 +47,7 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             site=Site.objects.get_current(),
             user=self.user,
             comment=comment,
-            parent=parent,
+            parent=None,
             submit_date=datetime.now())
 
     def test_default_dob_in_registration_done(self):
@@ -118,6 +118,7 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
 
         [c3row, c2row, replyrow, c1row] = html.find_all(
             class_='comment-list__item')
+        # print(c3row)
         self.assertTrue(comment3.comment in c3row.prettify())
         self.assertTrue(comment2.comment in c2row.prettify())
         self.assertTrue(reply.comment in replyrow.prettify())

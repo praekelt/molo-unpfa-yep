@@ -1,0 +1,36 @@
+.profiles {
+  &__terms {
+    display:inline;
+    width: auto;
+    text-decoration: underline;
+  }
+  &__forgotten-password {
+    display: block;
+  }
+  &__terms-conditions {
+    label, input {
+      margin-bottom: 0;
+      display:inline;
+      width: auto;
+      text-decoration: underline;
+    }
+  }
+}
+.profiles--content-body {
+  padding: 10px 15px;
+}
+
+.helptext {
+ font-weight: normal;
+ color: #999;
+ margin: 5px 0 10px;
+}
+
+.profiles__form {
+  padding: 0 15px;
+  input[type="submit"] {
+    width: auto;
+    margin: 1em 0;
+    border: 0;
+  }
+}

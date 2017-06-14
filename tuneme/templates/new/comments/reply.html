@@ -1,25 +1,39 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags comments mptt_tags molo_commenting_tags i18n %}
+{% load wagtailcore_tags core_tags mptt_tags comments molo_commenting_tags i18n %}
+
 {% block content %}
 {% get_comments_content_object for form as self %}
-<div class="title {{self.get_parent_section.get_effective_extra_style_hints}} align-left">
-<h6>{% trans "Reply" %}</h6>
+<div class="breadcrumbs">
+  {% block breadcrumbs %}
+    {% breadcrumbs %}
+  {% endblock %}
 </div>
-<div class="block {{self.articlepage.get_parent_section.get_effective_extra_style_hints}}">
-  <div class="comment">
-    <p class="by">{{comment.user_name}} <span class="date">{{comment.submit_date}}</span></p>
-    <p>{{comment.comment}}</p>
-  </div>
+<h1 class="heading heading--comment">Join The discussion</h1>
+<div class="comments comments{{self.get_parent_section.get_effective_extra_style_hints}}">
+  {% include "comments/comment.html" with node=comment do_not_link_replies=True %}
+  {% if do_not_link_replies or node.get_children.count == 0 %}
+    <h6 class="comments__body-title">
+      {% if page == 1 %}
+        {% trans "Recent replies" %}
+        {% else %}
+        {% trans "Earlier replies" %}
+      {% endif %}
+    </h6>
+  {% endif %}
+  {% for node in replies reversed %}
+    {% include "comments/comment.html" %}
+  {% endfor %}
 </div>
-<div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">
-  <div class="article-copy">
-  <div class="post-comment">
-    {% if request.user.is_authenticated %}
-      {% include "comments/form.html" with node=comment %}
-    {% else %}
-      <p>{% trans "Please " %}<a href="{% url 'molo.profiles:auth_login' %}">{% trans "log in" %}</a>{% trans " to leave a comment." %}</p>
-    {% endif %}
-	</div>
-  </div>
+{% include "patterns/basics/pagination/pagination-comments_replies.html"%}
+<div class="comments comments{{self.get_parent_section.get_effective_extra_style_hints}}">
+  <h1 class="heading heading--comment heading--comment-reply-form">Comment</h1>
+  <!-- On Submitting a reply the form needs to jump to Notification/top of the page instead of #comments-list -->
+  {% if request.user.is_authenticated %}
+    {% include "comments/form.html" with node=comment %}
+  {% else %}
+    <p class="call-to-action call-to-action--comments">{% trans "Please" %}
+    <a href="{% url 'molo.profiles:auth_login' %}?next={{ request.path }}">{% trans "log in" %}</a>
+    {% trans " to leave a comment." %}</p>
+  {% endif %}
 </div>
 {% endblock %}

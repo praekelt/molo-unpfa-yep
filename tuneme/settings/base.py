@@ -84,12 +84,12 @@ INSTALLED_APPS = [
     'molo.commenting',
     'molo.yourwords',
     'molo.servicedirectory',
-    'polls',
 
     'raven.contrib.django.raven_compat',
     'djcelery',
     'django_cas_ng',
     'compressor',
+    'notifications',
     'el_pagination',
 ]
 
@@ -98,6 +98,7 @@ COMMENTS_FLAG_THRESHHOLD = 3
 COMMENTS_HIDE_REMOVED = False
 
 SITE_ID = 1
+DEFAULT_SITE_PORT = 8000
 
 # We have multiple layouts: use `old` or `new` to switch between them.
 SITE_LAYOUT = environ.get('SITE_LAYOUT', 'new')
@@ -121,6 +122,7 @@ MIDDLEWARE_CLASSES = [
     'molo.core.middleware.MultiSiteRedirectToHomepage',
 ]
 
+# Template configuration
 AUTHENTICATION_BACKENDS = [
     'molo.core.backends.MoloModelBackend',
     'django.contrib.auth.backends.ModelBackend'
@@ -345,6 +347,15 @@ LOGIN_REDIRECT_URL = 'wagtailadmin_home'
 
 SITE_NAME = environ.get('SITE_NAME', "TuneMe")
 WAGTAIL_SITE_NAME = SITE_NAME
+
+FROM_EMAIL = environ.get('FROM_EMAIL', "support@moloproject.org")
+CONTENT_IMPORT_SUBJECT = environ.get(
+    'CONTENT_IMPORT_SUBJECT', 'Molo Content Import')
+CONTENT_COPY_SUBJECT = environ.get(
+    'CONTENT_COPY_SUBJECT', 'Molo Content Copy')
+CONTENT_COPY_FAILED_SUBJECT = environ.get(
+    'CONTENT_COPY_FAILED_SUBJECT', 'Molo Content Copy Failed')
+
 
 # Whether to use face/feature detection to improve image
 # cropping - requires OpenCV

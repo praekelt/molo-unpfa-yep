@@ -44,22 +44,6 @@ def move_sections_to_index_page(apps, schema_editor):
             page.move(index_page, pos='last-child')
 
 
-def move_polls_to_index_page(apps, schema_editor):
-    from molo.core.models import (LanguagePage, Main)
-    from polls.models import (Question, FreeTextQuestion, PollsIndexPage)
-    main = Main.objects.all().first()
-    current_language = LanguagePage.objects.live().first()
-
-    if main and current_language:
-        # Move existing questions
-        index_page = PollsIndexPage.objects.live().first()
-        for page in Question.objects.all().child_of(current_language):
-            page.move(index_page, pos='last-child')
-        # Move existing FreeTextQuestion
-        for page in FreeTextQuestion.objects.all().child_of(current_language):
-            page.move(index_page, pos='last-child')
-
-
 def move_yourwords_to_index_page(apps, schema_editor):
     from molo.core.models import (LanguagePage, Main)
     from molo.yourwords.models import (
@@ -84,6 +68,5 @@ class Migration(migrations.Migration):
         migrations.RunPython(move_banners_to_index_page),
         migrations.RunPython(move_footers_to_index_page),
         migrations.RunPython(move_sections_to_index_page),
-        migrations.RunPython(move_polls_to_index_page),
         migrations.RunPython(move_yourwords_to_index_page),
     ]
