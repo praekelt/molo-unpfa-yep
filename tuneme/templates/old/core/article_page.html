@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags comments mptt_tags molo_commenting_tags static poll_votings i18n %}
+{% load wagtailcore_tags wagtailimages_tags comments mptt_tags molo_commenting_tags static i18n %}
 
 {% block content %}
 
@@ -60,17 +60,6 @@
  <hr>
 </div>
 </div>
-
-{% has_questions self as questions %}
-{% if questions %}
-<div class="block {{self.get_parent_section.get_effective_extra_style_hints|default:"orange"}}">
-  <div class="title">
-    <div class="icon"><a href=""><img src="{% static 'old/img/polls.png' %}" alt="Have Your Say"></a></div>
-      <h6><a href="">{% trans "Have Your Say" %}</a></h6>
-  </div>
-{% poll_page_in_section page=self %}
-</div>
-{% endif %}
 
 {% if self.is_commenting_enabled %}
 <div class="block {{self.get_parent_section.get_effective_extra_style_hints}}">

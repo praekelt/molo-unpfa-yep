@@ -1,0 +1,16 @@
+
+.surveys__title {
+  color: #EF9955;
+  padding: 10px 15px 5px;
+}
+.surveys__intro {
+  padding: 0 15px;
+}
+
+.surveys__form {
+  input[type="submit"],
+  .call-to-action__nav-item--surveys {
+    font-weight: bold;
+    width: auto;
+  }
+}

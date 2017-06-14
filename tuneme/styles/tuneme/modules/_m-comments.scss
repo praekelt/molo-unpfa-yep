@@ -1,0 +1,95 @@
+.comments {
+  background: #ebebeb;
+  &-list__heading {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px 15px 10px;
+  }
+  &__alias-author {
+    font-weight: bold;
+  }
+  &__counter {
+    color: #000;
+    font-style: italic;
+    padding: 15px 15px 10px;
+    display: inline-block;
+    font-size: 15px;
+    float: right;
+  }
+  &__description {
+    font-weight: bold;
+  }
+  &__body-small {
+    margin: 0;
+  }
+  &__report a {
+    color: #000;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  &__date {
+    font-style: italic;
+  }
+  &__form {
+    padding: 0 15px;
+  }
+  &-list__item {
+    padding: 5px 15px 10px;
+  }
+
+  //Replies
+  &-list__item--reply {
+    background: #f3f3f3;
+  }
+  &__replies-title {
+    background: #f3f3f3;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px 15px 5px;
+  }
+
+  //Meta
+  &__reply-meta {
+    padding: 10px 0 0;
+  }
+
+  //Form
+  textarea {
+    width: 95%;
+    padding: 5px;
+    display: block;
+    border: $border;
+  }
+  textarea, input {
+    margin: 0 0 10px 0;
+  }
+
+  //Buttons
+  .call-to-action__nav-item-text {
+    color: #a4a4a4;
+    font-weight: bold;
+    padding: 0 10px 0 0;
+    display: inline-block;
+    margin: 0;
+  }
+}
+.call-to-action--comments {
+  padding: 10px 15px 20px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.comments-list__item--parent-comment {
+  //Comment and Comments template
+  //border-top: 2px solid #fff;
+}
+.heading--comment {
+  color: #000;
+  padding: 10px 15px;
+  margin: 0;
+  font-size: $font-medium;
+  display: inline-block;
+}
+.heading--comment-reply-form {
+  padding: 15px 15px 10px;
+}
