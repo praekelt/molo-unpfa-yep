@@ -1,0 +1,75 @@
+html, body {
+  margin: 0;
+  background: #fff;
+  color: #000;
+}
+html, body,
+h1, h2, h3, h4, h5, h6,
+input, select, textarea {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.3;
+}
+a {
+  color: #cd36f5;
+  text-decoration: none;
+}
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+img {
+  vertical-align: middle;
+  height: auto;
+}
+p {
+  margin: 0 0 1em 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: normal;
+}
+.errorlist, .error {
+  margin: 1em 0;
+  color: red;
+}
+fieldset {
+  border: none;
+  margin: 10px 0;
+  padding: 0;
+}
+label {
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 0 5px;
+}
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="search"] {
+  border: 1px #000 solid;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 10px;
+}
+textarea {
+  padding: 5px;
+  width: 95%;
+}
+input[type="submit"] {
+  background: #000;
+  border: 0;
+  color: #fff;
+  padding: 5px 15px;
+  text-transform: uppercase;
+}
+
+.copyright {
+  padding: 0 10px 15px 10px;
+  font-size: $font-x-small;
+}
