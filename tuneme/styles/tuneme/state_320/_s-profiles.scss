@@ -1,13 +1,5 @@
 .profiles {
   .call-to-action {
-    &--profiles {
-      border-top: 1px solid rgba(153,153,153,0.5);
-      padding: 15px 20px 15px;
-      .call-to-action__nav-item--login,
-      input[type="submit"] {
-        border-radius: 14px;
-      }
-    }
     &__link {
       color: $purple_flirt;
     }
@@ -20,4 +12,9 @@
       font-weight: normal;
     }
   }
+}
+
+.call-to-action--profiles {
+  border-top: 1px solid rgba(153,153,153,0.5);
+  padding: 15px 15% 0 0;
 }
