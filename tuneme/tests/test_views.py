@@ -150,6 +150,7 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             self.assertTrue(comment2.comment in c2row.prettify())
             self.assertTrue(reply.comment in replyrow.prettify())
             self.assertTrue(comment1.comment in c1row.prettify())
+            return response
 
     def test_comment_shows_user_display_name(self):
         self.yourmind = self.mk_section(
