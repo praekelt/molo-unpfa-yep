@@ -1,0 +1,37 @@
+
+.article-list--section {
+  border-bottom: $border;
+}
+.article-list__item {
+  padding: 5px 10px;
+  .article-list__item--anchor {
+    color: #000;
+    font-weight: bold;
+  }
+}
+
+.article-list__item--more-anchor {
+  color: #cd36f5;
+}
+.article-list__image {
+  display: block;
+  img {
+    float: none;
+    height: auto;
+    margin: 10px auto;
+    width: auto;
+  }
+}
+
+.article-list__image--section{
+  width: initial;
+}
+.article-list__title {
+  font-weight: bold;
+  padding: 10px 5px 0;
+}
+.article-list--latest-listing .article-list__item:first-child {
+  .article-list__title {
+    font-size: $font-x-large;
+  }
+}

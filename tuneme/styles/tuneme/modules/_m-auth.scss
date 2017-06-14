@@ -1,0 +1,21 @@
+.auth-tools {
+  padding: 10px;
+  input[type="submit"] {
+    width: auto;
+    margin: 1em 0;
+    border: 0;
+  }
+}
+
+.auth-tools--profiles {
+  padding: 0 15px;
+}
+
+.auth-tools__tandcs {
+  label, input {
+    margin-bottom: 0;
+    display:inline;
+    width: auto;
+    text-decoration: underline;
+  }
+}
