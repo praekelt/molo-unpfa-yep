@@ -47,7 +47,7 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             site=Site.objects.get_current(),
             user=self.user,
             comment=comment,
-            parent=None,
+            parent=parent,
             submit_date=datetime.now())
 
     def test_default_dob_in_registration_done(self):
@@ -114,11 +114,10 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         html = BeautifulSoup(response.content, 'html.parser')
 
         html.find_all(
-            class_='comments-list__item')
+            class_='comment-list__item')
 
         [c3row, c2row, replyrow, c1row] = html.find_all(
-            class_='comments-list__item')
-        # print(c3row)
+            class_='comment-list__item')
         self.assertTrue(comment3.comment in c3row.prettify())
         self.assertTrue(comment2.comment in c2row.prettify())
         self.assertTrue(reply.comment in replyrow.prettify())
@@ -145,12 +144,11 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             response = self.client.get(article.url)
             html = BeautifulSoup(response.content, 'html.parser')
             [c3row, c2row, replyrow, c1row] = html.find_all(
-                class_='comments-list__item')
+                class_='comment-list__item')
             self.assertTrue(comment3.comment in c3row.prettify())
             self.assertTrue(comment2.comment in c2row.prettify())
             self.assertTrue(reply.comment in replyrow.prettify())
             self.assertTrue(comment1.comment in c1row.prettify())
-            return response
 
     def test_comment_shows_user_display_name(self):
         self.yourmind = self.mk_section(
