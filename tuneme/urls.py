@@ -49,8 +49,6 @@ urlpatterns += patterns(
 
     url(r'', include('molo.core.urls')),
 
-    url(r'^polls/', include('polls.urls',
-                            namespace='polls')),
     url(
         r'^profiles/register/done/',
         login_required(RegistrationDone.as_view(
