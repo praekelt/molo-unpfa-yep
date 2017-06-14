@@ -38,6 +38,33 @@
       <p class="helptext">{% trans "Numbers only eg. 5656" %}</p>
     </fieldset>
 
+    {% if settings.profiles.UserProfilesSettings.activate_gender and settings.profiles.UserProfilesSettings.capture_gender_on_reg %}
+    <fieldset>
+      <label for="gender">{% trans "I indentify as:" %}</label>
+      {{ form.gender.errors}}
+      {{ form.gender }}
+      <p class="helptext">{% trans "Only you will see this" %}</p>
+    </fieldset>
+    {% endif %}
+
+    {% if settings.profiles.UserProfilesSettings.activate_location and settings.profiles.UserProfilesSettings.capture_location_on_reg %}
+    <fieldset>
+      <label for="location">{% trans "Where do you live?" %}</label>
+      {{ form.location.errors}}
+      {{ form.location }}
+      <p class="helptext">{% trans "Only you will see this" %}</p>
+    </fieldset>
+    {% endif %}
+
+    {% if settings.profiles.UserProfilesSettings.activate_education_level and settings.profiles.UserProfilesSettings.capture_education_level_on_reg %}
+    <fieldset>
+      <label for="education_level">{% trans "What is your highest level of education?" %}</label>
+      {{ form.education_level.errors}}
+      {{ form.education_level }}
+      <p class="helptext">{% trans "Only you will see this" %}</p>
+    </fieldset>
+    {% endif %}
+
     {% if settings.profiles.UserProfilesSettings.show_mobile_number_field and settings.profiles.UserProfilesSettings.country_code %}
     <fieldset>
       <label for="id_mobile_number">{% trans "Mobile number" %}</label>
@@ -55,6 +82,19 @@
       <p class="helptext">{% trans "(e.g. example@foo.com)" %}</p>
     </fieldset>
     {% endif %}
+
+    {% if settings.profiles.UserProfilesSettings.show_security_question_fields  %}
+      {% for field in form %}
+        {% if field in form.security_questions %}
+          <fieldset>
+            <label for="id_email">{% trans field.label_tag %}</label><br>
+            {{ field.errors}}
+            {{ field }}
+          </fieldset>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
 
     <fieldset class="profiles__terms-conditions">
       {{ form.terms_and_conditions }}
