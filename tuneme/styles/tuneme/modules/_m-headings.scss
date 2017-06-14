@@ -1,5 +1,5 @@
 .heading {
-  padding: 10px 20px;
+  padding: 10px 15px;
   margin: 5px 0 10px 0;
   font-size: $font-small;
   font-weight: bold;
@@ -39,13 +39,13 @@
   border-color: #000;
   text-transform: uppercase;
   font-weight: bold;
-  padding: 10px 20px;
-  margin: 0 0 15px;
+  padding: 10px 15px;
+  margin: 0 0 15px; //Might add to padding (Test)
 }
 
 .call-to-action__nav-item--challenge-heading,
 .call-to-action__nav-item--challenge {
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
 

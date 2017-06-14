@@ -1,0 +1,66 @@
+
+.call-to-action {
+  padding: 5px 15px;
+  &__nav-item {
+    display: block;
+    padding: 0 0 10px;
+  }
+  &__link {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  &__nav-item-primary {
+    background: #000;
+    color: #fff;
+    //color: #000;
+    margin: 20px 0;
+    padding: 5px 15px;
+    font-weight: normal;
+    display: inline-block;
+    text-transform: uppercase;
+    border: 0;
+    text-align: center;
+    text-decoration: underline;
+  }
+  &__nav-item--back-home {
+    padding: 10px 15px;
+    display: block;
+  }
+
+}
+
+.call-to-action--surveys {
+  padding: 15px 10px;
+  .call-to-action__nav-item--surveys {
+    color: #000;
+    text-decoration: underline;
+  }
+}
+
+
+
+//SOCIAL MEDIA SHARING
+.call-to-action__item-share {
+  display: block;
+  margin: 5px 15px;
+  padding: 0 10px 0 0;
+  text-align: center;
+}
+.call-to-action__item-share-with-image {
+  text-align: left;
+}
+.call-to-action__item-share-title {
+  font-size: 13px;
+  display: inline-block;
+  color: #000;
+  padding: 6px 5px;
+  text-decoration: underline;
+}
+.call-to-action__item-share--footer {
+  margin: 10px 0;
+  padding: 0;
+  .call-to-action__item-share-title {
+    color: #a3a3a3;
+  }
+}

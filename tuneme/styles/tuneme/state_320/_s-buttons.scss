@@ -1,8 +1,17 @@
-.call-to-action__nav-item--login {
-  border-radius: 14px;
-  margin: 20px;
-  display: inline-block;
+.call-to-action__nav-item-primary {
+    background: #000;
+    border: 0;
+    border-radius: 14px;
+    color: #fff;
+    display: inline-block;
+    display: block;
+    text-align: center;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    width: auto;
+    text-decoration: none;
 }
+
 
 .call-to-action--surveys {
   padding: 16px 0 0 20px;
@@ -11,24 +20,7 @@
   }
 }
 .call-to-action__nav-item--back {
-  padding: 0 20px;
-}
-.call-to-action--view-profile {
-  .call-to-action__nav-item--logout,
-  .call-to-action__nav-item--editprofile,
-  .call-to-action__nav-item--change-password {
-    background: #000;
-    border: 0;
-    border-radius: 14px;
-    color: #fff;
-    display: block;
-    padding: 2px 0;
-    text-align: center;
-    margin: 1em 0;
-    text-transform: uppercase;
-    width: auto;
-    text-decoration: none;
-  }
+  padding: 0 15px;
 }
 
 

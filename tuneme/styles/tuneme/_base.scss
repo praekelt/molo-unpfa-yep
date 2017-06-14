@@ -31,12 +31,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 .errorlist, .error {
-  margin: 1em 0;
+  margin: 5px 0 1em 0;
   color: red;
+  font-size: 14px;
 }
 fieldset {
   border: none;
-  margin: 10px 0;
+  margin: 10px 0 15px 0;
   padding: 0;
 }
 label {
@@ -65,11 +66,11 @@ input[type="submit"] {
   background: #000;
   border: 0;
   color: #fff;
-  padding: 5px 20px;
+  padding: 5px 15px;
   text-transform: uppercase;
 }
 
 .copyright {
-  padding: 0 10px 20px 10px;
+  padding: 0 10px 15px 10px;
   font-size: $font-x-small;
 }

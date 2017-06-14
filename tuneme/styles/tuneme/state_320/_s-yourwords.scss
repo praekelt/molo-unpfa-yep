@@ -7,12 +7,12 @@
     width: 90%;
   }
   .heading {
-    padding: 10px 20px;
+    padding: 10px 15px;
     text-align: center;
   }
   .heading--yourwords-subtitle {
     font-size: $font-large;
-    padding: 5px 20px 20px;
+    padding: 5px 15px 20px;
   }
   .yourwords--inner-content {
    .heading  {
@@ -25,7 +25,7 @@
   }
 
   .call-to-action__nav-item--back-home {
-    padding: 10px 20px;
+    padding: 10px 15px;
   }
 }
 
@@ -50,11 +50,11 @@
 
 .competition__title,
 .competition__title--description  {
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
 .yourwords--inner-content {
-  padding: 0 20px;
+  padding: 0 15px;
   a {
     text-decoration: underline;
     color: #000;
@@ -65,7 +65,7 @@
 }
 
 .yourwords-form {
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
 @each $name, $color in $color_list {
