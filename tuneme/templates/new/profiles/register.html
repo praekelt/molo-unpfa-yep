@@ -1,53 +1,112 @@
 {% extends "base.html" %}
 {% load i18n static core_tags wagtailsettings_tags wagtailcore_tags %}
+
 {% get_settings %}
 {% block content %}
-<h1 class="heading heading--auth">{% trans "Sign up" %}</h1>
-<div class="call-to-action call-to-action--profile">
-    <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge-heading">
-    {% trans "Not a member yet?" %}
-    {% trans "Join by signing up below. " %}
-    {% trans "Or" %}
-    <a href="{% url "molo.profiles:auth_login" %}" class="call-to-action__link">
-    {% trans "log in" %}</a>
-    {% trans "now if you've already joined" %}
-    </h5>
-</div>
-<div class="auth-tools auth-tools--profiles">
+<div class="profiles">
+  <h1 class="heading heading--auth">{% trans "Sign up" %}</h1>
+  <div class="call-to-action call-to-action--profiles">
+      <h5 class="call-to-action__challenge-title">{% trans "Not a member yet?" %}
+      {% trans "Join by signing up below. " %}{% trans "Or" %}
+      <a href="{% url "molo.profiles:auth_login" %}" class="call-to-action__nav-item call-to-action__nav-item--link">
+      {% trans "Log in" %}</a> {% trans "now if you've already joined" %}
+      </h5>
+  </div>
   <form method="post" action="{% url "molo.profiles:user_register" %}" class="profiles__form">
-    {% csrf_token %}
-    <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
-    <label for="id_username">{% trans "Username" %}</label>
-    {{ form.username.errors }}
-    {{ form.username }}
+  {% csrf_token %}
     <fieldset>
-    <label for="id_password">{% trans "4 digit pin" %}</label>
-    {{ form.password.errors }}
-    {{ form.password }}
-    <span class="input-hint">{% trans "Numbers only eg. 5656" %}</span>
+      <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
+      <label for="id_username">{% trans "Username" %}</label>
+      {{ form.username.errors }}
+      {{ form.username }}
     </fieldset>
+
+    {% if settings.profiles.UserProfilesSettings.activate_display_name and settings.profiles.UserProfilesSettings.capture_display_name_on_reg %}
+    <fieldset>
+      <label for="alias">{% trans "Display name" %}</label>
+      {{ form.alias.errors}}
+      {{ form.alias }}
+      <p class="helptext">{% trans "We value your online security, therefore we hide your username and allow you to comment and interact with the site anonymously." %}</p>
+      <p class="helptext">{% trans "If you would like to interact with other people, like your friends, to be able to see you as a username and not anonymous, update your username here or select to keep your username as your display name." %}</p>
+    </fieldset>
+    {% endif %}
+
+    <fieldset>
+      <label for="id_password">{% trans "4 digit pin" %}</label>
+      {{ form.password.errors }}
+      {{ form.password }}
+      <p class="helptext">{% trans "Numbers only eg. 5656" %}</p>
+    </fieldset>
+
+    {% if settings.profiles.UserProfilesSettings.activate_gender and settings.profiles.UserProfilesSettings.capture_gender_on_reg %}
+    <fieldset>
+      <label for="gender">{% trans "I indentify as:" %}</label>
+      {{ form.gender.errors}}
+      {{ form.gender }}
+      <p class="helptext">{% trans "Only you will see this" %}</p>
+    </fieldset>
+    {% endif %}
+
+    {% if settings.profiles.UserProfilesSettings.activate_location and settings.profiles.UserProfilesSettings.capture_location_on_reg %}
+    <fieldset>
+      <label for="location">{% trans "Where do you live?" %}</label>
+      {{ form.location.errors}}
+      {{ form.location }}
+      <p class="helptext">{% trans "Only you will see this" %}</p>
+    </fieldset>
+    {% endif %}
+
+    {% if settings.profiles.UserProfilesSettings.activate_education_level and settings.profiles.UserProfilesSettings.capture_education_level_on_reg %}
+    <fieldset>
+      <label for="education_level">{% trans "What is your highest level of education?" %}</label>
+      {{ form.education_level.errors}}
+      {{ form.education_level }}
+      <p class="helptext">{% trans "Only you will see this" %}</p>
+    </fieldset>
+    {% endif %}
+
     {% if settings.profiles.UserProfilesSettings.show_mobile_number_field and settings.profiles.UserProfilesSettings.country_code %}
     <fieldset>
       <label for="id_mobile_number">{% trans "Mobile number" %}</label>
       {{ form.mobile_number.errors}}
       {{ form.mobile_number }}
-      <span class="input-hint">{% trans "Please add your mobile number e.g. 0719009000" %}</span>
-    {% endif %}
+      <p class="helptext">{% trans "Please add your mobile number e.g. 0719009000" %}</p>
     </fieldset>
+    {% endif %}
+
     {% if settings.profiles.UserProfilesSettings.show_email_field %}
     <fieldset>
       <label for="id_email">{% trans "Enter your email address" %}</label>
       {{ form.email.errors}}
       {{ form.email }}
-      <span class="input-hint">{% trans "(e.g. example@foo.com)" %}</span>
+      <p class="helptext">{% trans "(e.g. example@foo.com)" %}</p>
     </fieldset>
     {% endif %}
-    <fieldset class="auth-tools__tandcs">
+
+    {% if settings.profiles.UserProfilesSettings.show_security_question_fields  %}
+      {% for field in form %}
+        {% if field in form.security_questions %}
+          <fieldset>
+            <label for="id_email">{% trans field.label_tag %}</label><br>
+            {{ field.errors}}
+            {{ field }}
+          </fieldset>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+
+    <fieldset class="profiles__terms-conditions">
       {{ form.terms_and_conditions }}
       {% if settings.profiles.UserProfilesSettings.terms_and_conditions %}
-        <a href="{% pageurl settings.profiles.UserProfilesSettings.terms_and_conditions %}" for="id_terms_and_conditions" class="profiles__terms">{% trans "I accept the Terms and Conditions" %}</a>
+      <label for="id_terms_and_conditions">
+        <a href="{% pageurl settings.profiles.UserProfilesSettings.terms_and_conditions %}">
+          {% trans "I accept the Terms and Conditions" %}</a>
+      </label>
       {% else %}
-          <label for="id_terms_and_conditions" class="profiles__terms">{% trans "I accept the Terms and Conditions" %}</label>
+        <label for="id_terms_and_conditions">
+          {% trans "I accept the Terms and Conditions" %}
+        </label>
       {% endif %}
       {% if form.terms_and_conditions.errors %}
         <p class="error">{% trans "Please accept the T&amp;Cs in order to complete the registration" %}</p>
@@ -56,12 +115,11 @@
     <input type="submit" value="{% trans "Sign up" %}"/>
     <input type="hidden" name="next" value="{% url "molo.profiles:registration_done" %}"/>
   </form>
-</div>
-<!-- Repeat Log Option -->
-<div class="call-to-action call-to-action--profile">
-    <h5 class="call-to-action__nav-item call-to-action__nav-item--challenge">
+  <div class="call-to-action call-to-action--profiles">
+    <h5 class="call-to-action__challenge-heading">
     {% trans "Already a member?" %}</h5>
-     <a href="{% url 'molo.profiles:auth_login' %}" class="call-to-action__nav-item call-to-action__nav-item--login">
+     <a href="{% url 'molo.profiles:auth_login' %}" class="call-to-action__nav-item call-to-action__nav-item-primary">
     {% trans "Log in" %}</a>
+  </div>
 </div>
 {% endblock %}

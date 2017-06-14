@@ -1,24 +1,35 @@
-
 .call-to-action {
   padding: 5px 15px;
-}
-.call-to-action__link {
-  font-weight: bold;
-  text-decoration: underline;
-}
-.call-to-action__nav-item--challenge {
-  font-size: $font-large;
-}
-.call-to-action__nav-item--login {
-  background: #000;
-  color: #fff;
-  margin: 20px 10px;
-  padding: 5px 15px;
-  font-weight: normal;
-  display: inline-block;
-  text-transform: uppercase;
-  border: 0;
-  text-align: center;
+  &__nav-item {
+    display: block;
+    padding: 0 0 10px;
+  }
+  &__nav-item--link {
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 0;
+    display: inline;
+  }
+  &__nav-item-primary {
+    border: 0;
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    margin: 20px 0;
+    padding: 5px 15px;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: underline;
+  }
+  &__nav-item--back-home {
+    padding: 10px 15px;
+  }
+  &__nav-item--password-recovery {
+    margin: 0 0 5px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
 }
 .call-to-action--surveys {
   padding: 15px 10px;
@@ -27,22 +38,10 @@
     text-decoration: underline;
   }
 }
-.call-to-action__nav-item--back-home {
-  padding: 10px 15px;
-  display: block;
-}
-.call-to-action--view-profile {
-  .call-to-action__nav-item--logout,
-  .call-to-action__nav-item--editprofile,
-  .call-to-action__nav-item--change-password {
-    text-decoration: underline;
-    color: #000;
-  }
-}
+
 
 
 //SOCIAL MEDIA SHARING
-
 .call-to-action__item-share {
   display: block;
   margin: 5px 15px;

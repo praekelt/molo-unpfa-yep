@@ -1,16 +1,21 @@
-
-.call-to-action--profile {
-  border-top: 1px solid rgba(153,153,153,0.5);
-  padding: 10px 0;
-  .call-to-action__nav-item--login,
-  input[type="submit"] {
-    border-radius: 14px;
+.profiles {
+  .call-to-action {
+    &__nav-item--link {
+      color: $purple_flirt;
+    }
+    &__challenge-heading {
+      font-weight: bold;
+      font-size: 20px;
+      padding: 0 0 10px;
+    }
+    &__challenge-title {
+      color: $dusty_grey;
+      font-weight: normal;
+    }
   }
 }
-.call-to-action__link {
-  color: $purple_flirt;
-}
-.call-to-action__nav-item--challenge-heading {
-  color: $dusty_grey;
-  font-weight: normal;
+
+.call-to-action--edit-profiles {
+  border-top: 1px solid rgba(153,153,153,0.5);
+  padding: 15px 15% 0 0;
 }
