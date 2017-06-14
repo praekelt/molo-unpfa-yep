@@ -2,9 +2,11 @@
 {% load wagtailcore_tags wagtailimages_tags comments mptt_tags molo_commenting_tags i18n %}
 {% block content %}
 <div class="comments comments{{self.get_parent_section.get_effective_extra_style_hints}}">
-  <h6 class="comments__description">{% trans "This comment has been reported." %}</h6>
+  <h6 class="comments__description">
+    {% trans "You have already reported this comment" as headingtext %}
+  </h6>
   <p class="comments__body-small">
-    {% trans "It will be reviewed by the Tune Me team and may be removed if it breaks our platform rules" %}
+    {% trans "The comment will be reviewed by the moderation team and may be removed if it breaks our Platform rules" %}
   </p>
 </div>
 <div class="call-to-action">

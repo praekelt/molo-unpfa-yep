@@ -1,5 +1,5 @@
 {% load comments i18n wagtailcore_tags wagtailimages_tags %}
-<form class="comments-form" action="{% url 'molo.commenting:molo-comments-post' %}" method="post">
+<form action="{% url 'molo.commenting:molo-comments-post' %}" method="post"  class="comments__form">
   {% csrf_token %}
   {% if form.comment.errors %}
     {{ form.comment.errors }}

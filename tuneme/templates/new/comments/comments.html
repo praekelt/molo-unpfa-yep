@@ -6,26 +6,20 @@
     {% breadcrumbs %}
   {% endblock %}
 </div>
-<div class="comments-list">
-  <h3 class="comments-list__heading">{% trans "Comments" %}</h3>
-  {% for node in comments %}
-  {% recursetree node %}
-    {% include "comments/comment.html" %}
-    {{ children }}
-  {% endrecursetree %}
-  {% endfor %}
+<h1 class="heading heading--comment">{% trans "Comments" %}</h1>
+<div class="comments comments{{self.get_parent_section.get_effective_extra_style_hints}}">
+  <div id="comments-list" class="comments__list">
+    {% for node in comments %}
+    {% recursetree node %}
+      {% include "comments/comment.html" %}
+      {{ children }}
+    {% endrecursetree %}
+    {% endfor %}
+  </div>
 </div>
-<div class="comments-list__pagination">
-  {% if page.has_previous %}
-    <a href="?p={{ page.previous_page_number }}">&lt;&ndash;&ndash;&ndash;</a>
-  {% endif %}
-  <span class="padding">
-    {{ page.number }} of {{ page.paginator.num_pages }}
-  </span>
-  {% if page.has_next %}
-    <a href="?p={{ page.next_page_number }}">&ndash;&ndash;&ndash;&gt;</a>
-  {% endif %}
-  <p><a href="{% pageurl self %}">{% trans "Back to article" %}</a>
-  </p>
+{% include "patterns/basics/pagination/pagination-comments.html"%}
+<div class="call-to-action">
+  <a href="{% pageurl self %}"  class="call-to-action__nav-item-text call-to-action__nav-item-text--back">
+    {% trans "Back to article" %}</a>
 </div>
 {% endblock %}
