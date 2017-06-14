@@ -1,2 +1,2 @@
-@media only screen and (min-width:320px){.menu__item a{border-radius:25px 0 0 25px}.yourwords .heading,.yourwords .heading--yourwords{text-align:inherit}.article-list--latest-listing .article-list__image,.article-list--section-listing .article-list__image{margin-right:0}}
+@media only screen and (min-width:320px){.menu__item a{border-bottom-right-radius:0;border-top-right-radius:0;border-bottom-left-radius:25px;border-top-left-radius:25px}.yourwords .heading,.yourwords .heading--yourwords{text-align:inherit}.article-list--latest-listing .article-list__image,.article-list--section-listing .article-list__image{margin-right:0}}
 /*# sourceMappingURL=maps/style-rtl.css.map */
