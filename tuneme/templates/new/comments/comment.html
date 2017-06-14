@@ -25,7 +25,7 @@
       <a href="{% url 'molo.commenting:molo-comments-report' node.pk %}?next={% url 'molo.commenting:report_response' node.pk %}" class="call-to-action__nav-item call-to-action__nav-item--response">
       {% trans "Report" %}</a>
     {% endif %}
------*******{{node.parent}}
+      {{node.parent}}
     {% if node.parent == None %}
       {% if do_not_link_replies or node.get_children.count == 0 %}
         <p class="comment__reply-meta-link comment__reply-meta-replies-list-disabled">{{ node.get_children.count }} {% trans "Replies" %}</p>
