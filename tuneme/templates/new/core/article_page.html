@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags core_tags mptt_tags comments molo_commenting_tags poll_votings static i18n %}
+{% load wagtailcore_tags wagtailimages_tags core_tags mptt_tags comments molo_commenting_tags static i18n %}
 {% block content %}
 <div class="breadcrumbs">
   {% block breadcrumbs %}
@@ -48,11 +48,5 @@
   {% social_media_article %}
 </div>
 </div>
-{% has_questions self as questions %}
-{% if questions %}
-  <div class="article__polls">
-    {% poll_page_in_section page=self %}
-  </div>
-{% endif %}
 {% include "comments/comment_block.html" %}
 {% endblock %}
