@@ -1,7 +1,7 @@
 .call-to-action {
   padding: 5px 15px;
   &__nav-item {
-    display: inline-block;
+    display: block;
     padding: 0 0 10px;
   }
   &__nav-item--link {
@@ -13,6 +13,7 @@
     border: 0;
     color: #000;
     cursor: pointer;
+    display: inline-block;
     margin: 20px 0;
     padding: 5px 15px;
     font-weight: normal;
