@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load core_tags wagtailcore_tags i18n %}
+{% block content %}
+<h1 class="heading heading--comment">{% trans "Comment Replies" %}</h1>
+<div class="comments comments{{self.get_parent_section.get_effective_extra_style_hints}}">
+  <div class="comments__list">
+  {% if unread_notifications %}
+    <h3 class="comments__replies-title comments__replies-cta-title">
+      {% trans "You have"%} {{number_unread_notifications}} {% trans "unread"%}
+      {% if number_unread_notifications == 1 %}
+        {% trans "Reply"%}
+      {% else %}
+        {% trans "Replies"%}
+      {% endif %}
+    </h3>
+    {% for notice in unread_notifications %}
+      {% include 'notifications/notice.html' %}
+    {% endfor %}
+  {% endif %}
+    {% if read_notifications %}
+    <h3 class="comments__replies-title comments__replies-cta-title">{% trans "Read replies"%}:</h3>
+    {% for notice in read_notifications %}
+      {% include 'notifications/notice.html' %}
+    {% endfor %}
+  {% endif %}
+  </div>
+</div>
+<div class="call-to-action">
+  <a href="{{request.site.root_page.url}}"  class="call-to-action__nav-item-text call-to-action__nav-item-text--back">Back home</a>
+</div>
+{% endblock %}
