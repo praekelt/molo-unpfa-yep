@@ -272,8 +272,7 @@ class TestFrontEndCommentReplies(TestCase, MoloTestCaseMixin):
         comment_reply_url = ('/commenting/molo/reply/{0}/'
                              .format(self.comment.pk))
         reply_link = (
-            '<a href="{0}#comment-form" class="call-to-action__nav-item-text '">
-            'Reply</a>'.format(comment_reply_url))
+            '<a href="{0}#comment-form" class="call-to-action__nav-item-text">Reply</a>'.format(comment_reply_url))
         self.assertContains(response, reply_link, html=True)
 
         response = self.client.get(comment_reply_url)
