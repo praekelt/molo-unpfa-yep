@@ -13,7 +13,7 @@ from wagtail.wagtailcore import urls as wagtail_urls
 
 from molo.profiles.views import RegistrationDone
 from tuneme.views import report_response
-from tuneme.forms import DateOfBirthForm
+from tuneme.forms import TunemeDoneForm
 from molo.core.views import upload_file, download_file
 
 
@@ -55,7 +55,7 @@ urlpatterns += patterns(
         r'^profiles/register/done/',
         login_required(RegistrationDone.as_view(
             template_name="profiles/done.html",
-            form_class=DateOfBirthForm
+            form_class=TunemeDoneForm
         )),
         name='registration_done'
     ),
