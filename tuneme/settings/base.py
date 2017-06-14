@@ -122,13 +122,13 @@ MIDDLEWARE_CLASSES = [
     'molo.core.middleware.MultiSiteRedirectToHomepage',
 ]
 
+# Template configuration
 AUTHENTICATION_BACKENDS = [
     'molo.core.backends.MoloModelBackend',
     'django.contrib.auth.backends.ModelBackend'
 ]
 
 # Template configuration
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -155,6 +155,7 @@ TEMPLATES = [
                 "django.template.loaders.app_directories.Loader",
             ]
         },
+
     },
 ]
 
@@ -331,6 +332,13 @@ MEDIA_URL = '/media/'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
+FROM_EMAIL = environ.get('FROM_EMAIL', "support@moloproject.org")
+CONTENT_IMPORT_SUBJECT = environ.get(
+    'CONTENT_IMPORT_SUBJECT', 'Molo Content Import')
+CONTENT_COPY_SUBJECT = environ.get(
+    'CONTENT_COPY_SUBJECT', 'Molo Content Copy')
+CONTENT_COPY_FAILED_SUBJECT = environ.get(
+    'CONTENT_COPY_FAILED_SUBJECT', 'Molo Content Copy Failed')
 
 # Wagtail settings
 
