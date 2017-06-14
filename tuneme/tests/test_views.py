@@ -114,10 +114,10 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         html = BeautifulSoup(response.content, 'html.parser')
 
         html.find_all(
-            class_='comment-list__item')
+            class_='comments-list__item')
 
         [c3row, c2row, replyrow, c1row] = html.find_all(
-            class_='comment-list__item')
+            class_='comments-list__item')
         self.assertTrue(comment3.comment in c3row.prettify())
         self.assertTrue(comment2.comment in c2row.prettify())
         self.assertTrue(reply.comment in replyrow.prettify())
@@ -144,7 +144,7 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             response = self.client.get(article.url)
             html = BeautifulSoup(response.content, 'html.parser')
             [c3row, c2row, replyrow, c1row] = html.find_all(
-                class_='comment-list__item')
+                class_='comments-list__item')
             self.assertTrue(comment3.comment in c3row.prettify())
             self.assertTrue(comment2.comment in c2row.prettify())
             self.assertTrue(reply.comment in replyrow.prettify())
