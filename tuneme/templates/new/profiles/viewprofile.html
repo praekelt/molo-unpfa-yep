@@ -39,7 +39,7 @@
   </fieldset>
   {% endif %}
 
-  <div class="call-to-action call-to-action--profiles">
+  <div class="call-to-action call-to-action--profiles call-to-action--edit-profiles">
     <a href="{% url "molo.profiles:auth_logout" %}" class="call-to-action__nav-item call-to-action__nav-item-primary">
       {% trans "log out" %}</a>
     <a href="{% url "molo.profiles:edit_my_profile" %}" class="call-to-action__nav-item call-to-action__nav-item-primary">{% trans "Edit My Profile" %}</a>

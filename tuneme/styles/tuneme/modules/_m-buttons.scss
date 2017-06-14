@@ -4,9 +4,10 @@
     display: inline-block;
     padding: 0 0 10px;
   }
-  &__link {
+  &__nav-item--link {
     font-weight: bold;
     text-decoration: underline;
+    padding: 0;
   }
   &__nav-item-primary {
     border: 0;
