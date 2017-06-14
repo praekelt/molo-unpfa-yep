@@ -7,6 +7,7 @@
     display: block;
     padding: 0 10px;
     text-decoration: underline;
+    font-weight: bold;
   }
   .service-list {
     .call-to-action__nav-item--change-search {
@@ -22,7 +23,6 @@
 }
 .call-to-action__nav-item--report {
   margin-bottom: 15px;
-  display: inline-block;
 }
 
 .service-dir-location {
