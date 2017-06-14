@@ -131,24 +131,23 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
             response = self.client.get('/')
             self.assertContains(response, 'Find a service')
 
-    def test_KKKKKomment_reply_in_artile(self):
+    def test_comment_reply_in_article(self):
             self.yourmind = self.mk_section(
                 self.section_index, title='Your mind')
             article = article = self.mk_article(
                 self.section, commenting_state='O')
-            comment1 = self.create_comment(article, 'test comment1 text')
+            self.create_comment(article, 'test comment1 text')
             comment2 = self.create_comment(article, 'test comment2 text')
             comment3 = self.create_comment(article, 'test comment3 text')
             reply = self.create_comment(article,
                                         'test reply text', parent=comment2)
             response = self.client.get(article.url)
             html = BeautifulSoup(response.content, 'html.parser')
-            [c3row, c2row, replyrow, c1row] = html.find_all(
+            [c3row, c2row, replyrow] = html.find_all(
                 class_='comments-list__item')
             self.assertTrue(comment3.comment in c3row.prettify())
             self.assertTrue(comment2.comment in c2row.prettify())
             self.assertTrue(reply.comment in replyrow.prettify())
-            self.assertTrue(comment1.comment in c1row.prettify())
 
     def test_comment_shows_user_display_name(self):
         self.yourmind = self.mk_section(
@@ -273,9 +272,8 @@ class TestFrontEndCommentReplies(TestCase, MoloTestCaseMixin):
                              .format(self.comment.pk))
         reply_link = (
             '<a href="{0}#comment-form" class="call-to-action__nav-item-text'
-            ' ">Reply</a>'.format(comment_reply_url))
+            '">Reply</a>'.format(comment_reply_url))
         self.assertContains(response, reply_link, html=True)
-
         response = self.client.get(comment_reply_url)
         self.assertTrue(response.status_code, 200)
 
