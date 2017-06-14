@@ -31,7 +31,7 @@
 
   {% if node.parent == None %}
   <div class="comments__reply-meta">
-    {% if request.user.is_authenticated%}
+    {% if request.user.is_authenticated %}
       <a href="{% url 'molo.commenting:molo-comments-reply' node.pk %}#comment-form" class="call-to-action__nav-item-text">
         {% trans "Reply"%}
       </a>
