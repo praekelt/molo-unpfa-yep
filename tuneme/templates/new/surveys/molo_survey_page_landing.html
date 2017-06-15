@@ -9,6 +9,10 @@
   {% else %}
 	  <h4 class="surveys__thank-you">{{ self.thank_you_text }}</h4>
   {% endif %}
+    <div class="call-to-action call-to-action--surveys">
+  		<a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
+  		{% trans "Back to Home page" %}</a>
+  	</div>
 	{% if self.show_results and results %}
 	  <h1 class="surveys__title">{% trans "Survey Results" %}</h1>
 	  <h4 class="surveys__intro">

@@ -1,5 +1,5 @@
 .surveys {
-  padding: 0 0 30px;
+  padding: 0 0 20px;
   .call-to-action__nav-item--back-home {
     color: #EF9955;
   }
@@ -18,10 +18,12 @@
     padding: 0 10px;
     font-weight: normal;
   }
+  &__question {
+    font-weight: bold;
+  }
   &__results {
     padding: 5px 16px;
     margin: 15px 0;
-    border-top: 1px solid #DEDEDE;
     border-bottom: 1px solid #DEDEDE;
   }
   &__helptext {
