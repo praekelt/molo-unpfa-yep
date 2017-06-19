@@ -1,5 +1,8 @@
 .comments {
   background: #ebebeb;
+  &--content-body {
+    padding: 0 15px;
+  }
   &-list__heading {
     font-weight: bold;
     font-size: 18px;
