@@ -58,10 +58,17 @@
   padding: 6px 5px;
   text-decoration: underline;
 }
+
 .call-to-action__item-share--footer {
   margin: 10px 0;
   padding: 0;
+  text-align: center;
+  display: inline-block;
+  .call-to-action__item-share-img {
+    border-radius: 50%;
+  }
   .call-to-action__item-share-title {
     color: #a3a3a3;
+    display: block;
   }
 }

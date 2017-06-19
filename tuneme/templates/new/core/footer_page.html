@@ -27,7 +27,6 @@
       {% image block.value width-280 jpegquality-70 as article_image %}
       <div class="article__image">
         <img src="{{ article_image.url }}" class="article-list__image"/>
-
       </div>
     {% elif block.block_type == 'numbered_list' %}
        <ol>
