@@ -6,7 +6,7 @@
     vertical-align: middle;
     width: 90%;
   }
-  .heading {
+  .heading--yourwords {
     padding: 10px 15px;
     text-align: center;
   }
@@ -14,16 +14,34 @@
     font-size: $font-large;
     padding: 5px 15px 20px;
   }
-  .yourwords--inner-content {
+  &--inner-content {
    .heading  {
-    padding: 0;
+     padding: 0;
    }
   }
-  .call-to-action__nav-item--login {
-    text-align: center;
-    display: block;
+  &--inner-content {
+    padding: 0 15px;
+    a {
+      text-decoration: underline;
+      color: #000;
+      font-weight: bold;
+      display: inline-block;
+      padding: 10px 0 0;
+    }
   }
-
+  &-form {
+    padding: 0 15px;
+  }
+  .call-to-action__nav-item--login {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    border-radius: 14px;
+    padding: 5px 15px;
+    font-weight: bold;
+    margin: 10px;
+  }
   .call-to-action__nav-item--back-home {
     padding: 10px 15px;
   }
@@ -34,7 +52,6 @@
   .heading {
     text-align: left;
   }
-
   .call-to-action__nav-item {
     text-decoration: underline;
   }
@@ -50,21 +67,6 @@
 
 .competition__title,
 .competition__title--description  {
-  padding: 0 15px;
-}
-
-.yourwords--inner-content {
-  padding: 0 15px;
-  a {
-    text-decoration: underline;
-    color: #000;
-    font-weight: bold;
-    display: inline-block;
-    padding: 10px 0 0;
-  }
-}
-
-.yourwords-form {
   padding: 0 15px;
 }
 
