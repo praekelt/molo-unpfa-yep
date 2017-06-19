@@ -12,13 +12,9 @@ from molo.core.models import (
 from django.utils.translation import ugettext_lazy as _
 
 
-SectionPage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
-ArticlePage.subpage_types += ['polls.Question', 'polls.FreeTextQuestion']
-
-
 class PollsIndexPage(Page, PreventDeleteMixin):
     parent_page_types = []
-    subpage_types = ['polls.Question', 'polls.FreeTextQuestion']
+    subpage_types = []
 
 
 class Question(TranslatablePageMixin, Page):
@@ -55,13 +51,6 @@ class Question(TranslatablePageMixin, Page):
         help_text=_(
             "Allows the user to choose more than one option.")
     )
-    content_panels = Page.content_panels + [FieldPanel('short_name')] + [
-        MultiFieldPanel([
-            FieldPanel('show_results'),
-            FieldPanel('randomise_options'),
-            FieldPanel('result_as_percentage'),
-            FieldPanel('allow_multiple_choice')], heading=_(
-                "Question Settings",))]
 
     def user_choice(self, user):
         return ChoiceVote.objects.get(
@@ -91,14 +80,6 @@ class Question(TranslatablePageMixin, Page):
         else:
             page = self.get_main_language_page()
             return page.specific.get_effective_extra_style_hints()
-
-
-Question.settings_panels = [
-    MultiFieldPanel(
-        [FieldRowPanel(
-            [FieldPanel('extra_style_hints')], classname="label-above")],
-        "Meta")
-]
 
 
 class FreeTextQuestion(Question):
