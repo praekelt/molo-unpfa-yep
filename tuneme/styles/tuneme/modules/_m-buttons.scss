@@ -1,5 +1,5 @@
 .call-to-action {
-  padding: 5px 15px;
+  padding: 10px 15px 5px;
   &__nav-item {
     display: block;
     padding: 0 0 10px;
@@ -22,22 +22,19 @@
     text-align: center;
     text-decoration: underline;
   }
-  &__nav-item--back-home {
-    padding: 10px 15px;
-  }
   &__nav-item--password-recovery {
     margin: 0 0 5px;
     font-weight: bold;
     text-decoration: underline;
   }
-}
-.call-to-action--surveys {
-  padding: 15px 10px;
-  .call-to-action__nav-item--surveys {
+  &__nav-item--surveys {
+    font-weight: bold;
     color: #000;
     text-decoration: underline;
+    
   }
 }
+
 
 
 
@@ -58,10 +55,17 @@
   padding: 6px 5px;
   text-decoration: underline;
 }
+
 .call-to-action__item-share--footer {
   margin: 10px 0;
   padding: 0;
+  text-align: center;
+  display: inline-block;
+  .call-to-action__item-share-img {
+    border-radius: 50%;
+  }
   .call-to-action__item-share-title {
     color: #a3a3a3;
+    display: block;
   }
 }
