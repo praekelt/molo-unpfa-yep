@@ -1,40 +1,34 @@
-.call-to-action__nav-item-primary {
+.call-to-action {
+  &__nav-item-primary {
     background: #000;
     border-radius: 14px;
     color: #fff;
     margin: 0 0 10px;
     width: auto;
     text-decoration: none;
-}
+  }
+  &__nav-item--surveys {
+    color: $turquoise;
 
-
-.call-to-action--surveys {
-  padding: 16px 0 0 20px;
-  .call-to-action__nav-item--surveys {
-    color: #EF9955;
+  }
+  &__item-share {
+    width: 65%;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    .call-to-action__item-share-img {
+      border-right-width: 1px;
+      border-right-style: solid;
+    }
+  }
+  &__item-share-title {
+    color: #fff;
+    padding: 6px 15px;
+    text-decoration: none;
   }
 }
-.call-to-action__nav-item--back {
-  padding: 0 15px;
-}
-
 
 //SOCIAL MEDIA SHARING
-.call-to-action__item-share {
-  width: 65%;
-  border-radius: 5px;
-  border-width: 1px;
-  border-style: solid;
-  .call-to-action__item-share-img {
-    border-right-width: 1px;
-    border-right-style: solid;
-  }
-}
-.call-to-action__item-share-title {
-  color: #fff;
-  padding: 6px 15px;
-  text-decoration: none;
-}
 .call-to-action__item-share--facebook {
   background: #3B5998;
   border-color: #2C4376;

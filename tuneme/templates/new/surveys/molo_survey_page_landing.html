@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="surveys">
+  {% if not self.thank_you_text %}
+    <h1 class="surveys__title">{{ self.title }}</h1>
+    <h4 class="surveys__intro">{{ self.intro }}</h4>
+  {% else %}
+	  <h4 class="surveys__thank-you">{{ self.thank_you_text }}</h4>
+  {% endif %}
+    <div class="call-to-action call-to-action--surveys">
+  		<a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
+  		{% trans "Back to Home page" %}</a>
+  	</div>
+	{% if self.show_results and results %}
+	  <h1 class="surveys__title">{% trans "Survey Results" %}</h1>
+	  <h4 class="surveys__intro">
+		  {% trans "Your survey has been completed successfully." %}
+      {% trans "Please see your submission results below." %}
+    </h4>
+
+	  <div class="surveys__results">
+	    {% for question, answers in results.items %}
+		    <h3 class="surveys__question">{{ question }}</h3>
+		    {% for answer, count in answers.items %}
+		      <div class="surveys__answer">
+			      <h6>{{ answer }}</h6>
+            <p class="surveys__answer--percent-bar">{{ count }}</p>
+		      </div>
+		    {% endfor %}
+	    {% endfor %}
+	  </div>
+    <div class="call-to-action call-to-action--surveys">
+      <a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
+      {% trans "Back to Home page" %}</a>
+    </div>
+	{% endif %}
+</div>
+{% endblock %}
