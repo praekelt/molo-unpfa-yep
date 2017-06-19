@@ -1,9 +1,8 @@
 from django.db import models
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailadmin.edit_handlers import (
-    FieldPanel, MultiFieldPanel, FieldRowPanel)
+    FieldPanel, MultiFieldPanel)
 from molo.core.models import (
-    ArticlePage,
     SectionPage,
     TranslatablePageMixin,
     SiteLanguage,
