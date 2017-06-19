@@ -69,6 +69,11 @@ urlpatterns += patterns(
     url(r'^servicedirectory/', include('molo.servicedirectory.urls',
         namespace='molo.servicedirectory')),
 
+    url(r'^surveys/',
+        include('molo.surveys.urls',
+                namespace='molo.surveys',
+                app_name='molo.surveys')),
+
     url(r'^comments/reported/(?P<comment_pk>\d+)/$',
         report_response, name='report_response'),
     url(r'^commenting/', include('molo.commenting.urls',

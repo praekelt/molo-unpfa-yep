@@ -1,16 +1,19 @@
-
-.surveys__title {
-  color: #EF9955;
-  padding: 10px 15px 5px;
-}
-.surveys__intro {
-  padding: 0 15px;
-}
-
-.surveys__form {
-  input[type="submit"],
-  .call-to-action__nav-item--surveys {
-    font-weight: bold;
-    width: auto;
+.surveys {
+  &__title {
+    color: $turquoise;
+    padding: 10px 15px 5px;
+  }
+  &__intro {
+    padding: 0 15px;
+  }
+  &__form {
+    input[type="submit"],
+    .call-to-action__nav-item--surveys {
+      font-weight: bold;
+      width: auto;
+    }
+  }
+  .call-to-action__nav-item--back-home {
+    color: $turquoise;
   }
 }
