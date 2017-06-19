@@ -6,22 +6,40 @@
     vertical-align: middle;
     width: 90%;
   }
-  .heading {
+  .heading--yourwords {
     padding: 10px 15px;
     text-align: center;
   }
   .heading--yourwords-subtitle {
     font-size: $font-large;
     padding: 5px 15px 20px;
+    text-align: center;
   }
-  .yourwords--inner-content {
+  &--inner-content {
    .heading  {
-    padding: 0;
+     padding: 0;
    }
   }
+  &--inner-content {
+    padding: 0 15px;
+    a {
+      text-decoration: underline;
+      color: #000;
+      font-weight: bold;
+      display: inline-block;
+      padding: 10px 0 0;
+    }
+  }
+  &-form {
+    padding: 0 15px;
+  }
   .call-to-action__nav-item--login {
-    text-align: center;
-    display: block;
+    background: #000;
+    color: #fff;
+    border-radius: 14px;
+    padding: 5px 15px;
+    font-weight: bold;
+    margin: 10px;
   }
 }
 
@@ -45,21 +63,6 @@
 
 .competition__title,
 .competition__title--description  {
-  padding: 0 15px;
-}
-
-.yourwords--inner-content {
-  padding: 0 15px;
-  a {
-    text-decoration: underline;
-    color: #000;
-    font-weight: bold;
-    display: inline-block;
-    padding: 10px 0 0;
-  }
-}
-
-.yourwords-form {
   padding: 0 15px;
 }
 
