@@ -28,7 +28,7 @@ def show_polls_entries_for_users_have_access(request, menu_items):
 
 
 @hooks.register('construct_explorer_page_queryset')
-def show_main_language_only(parent_page, pages, request):
+def hide_polls_index_page(parent_page, pages, request):
     polls_index_page_pk = PollsIndexPage.objects.descendant_of(
         request.site.root_page).first().pk
     return pages.exclude(pk=polls_index_page_pk)
