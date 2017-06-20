@@ -20,6 +20,9 @@
     font-weight: bold;
     font-size: $font-large;
   }
+  &--csrf {
+    padding: 0 15px;
+  }
 }
 .profiles--content-body {
   padding: 10px 15px;
