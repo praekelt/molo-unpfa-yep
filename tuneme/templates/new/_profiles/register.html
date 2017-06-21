@@ -38,6 +38,15 @@
       <p class="helptext">{% trans "Numbers only eg. 5656" %}</p>
     </fieldset>
 
+    {% if settings.profiles.UserProfilesSettings.activate_dob and settings.profiles.UserProfilesSettings.capture_dob_on_reg %}
+    <fieldset>
+      <label for="date_of_birth">{% trans "Select Date of Birth" %}</label><br>
+      {{ form.date_of_birth.errors}}
+      {{ form.date_of_birth }}
+      <span class="input-hint">{% trans "Let us know your birthday to get access to exclusive content." %}</span>
+    </fieldset>
+    {% endif %}
+
     {% if settings.profiles.UserProfilesSettings.activate_gender and settings.profiles.UserProfilesSettings.capture_gender_on_reg %}
     <fieldset>
       <label for="gender">{% trans "I indentify as:" %}</label>
@@ -94,7 +103,6 @@
         {% endif %}
       {% endfor %}
     {% endif %}
-
 
     <fieldset class="profiles__terms-conditions">
       {{ form.terms_and_conditions }}

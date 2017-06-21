@@ -26,6 +26,9 @@
 }
 .profiles--content-body {
   padding: 10px 15px;
+  .profiles__form {
+    padding: 0;
+  }
 }
 
 .helptext {
