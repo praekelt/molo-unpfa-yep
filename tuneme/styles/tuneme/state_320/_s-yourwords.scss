@@ -1,5 +1,4 @@
 .yourwords {
-  //Bemify Yourwords Templates
   img {
     border-radius: 3px;
     margin: 0 auto;
@@ -33,37 +32,35 @@
   &-form {
     padding: 0 15px;
   }
-  .call-to-action__nav-item--login {
-    background: #000;
-    color: #fff;
-    border-radius: 14px;
-    padding: 5px 15px;
-    font-weight: bold;
-    margin: 10px;
-  }
-}
-
-.yourwords--entries {
-  color: #000;
-  .heading {
-    text-align: left;
-  }
   .call-to-action__nav-item {
-    text-decoration: underline;
+    &--login {
+      background: #000;
+      color: #fff;
+      border-radius: 14px;
+      padding: 5px 15px;
+      font-weight: bold;
+      margin: 10px;
+    }
+    &--back-home {
+      padding: 0 15px;
+    }
   }
 }
-
-//Yourwords Page
 .heading-container  {
   .heading {
     color: #000;
     text-align: left;
   }
 }
-
 .competition__title,
 .competition__title--description  {
   padding: 0 15px;
+}
+.yourwords--entries {
+  color: #000;
+  .heading {
+    text-align: left;
+  }
 }
 
 @each $name, $color in $color_list {
