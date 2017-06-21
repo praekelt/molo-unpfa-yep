@@ -1,0 +1,17 @@
+.yourtips {
+  &--share-cta {
+    color: #000;
+    padding: 15px;
+  }
+  &__share--description {
+    font-weight: 400;
+    font-size: $font-large;
+  }
+  .call-to-action {
+    padding: 10px 0;
+    &__nav-item-text {
+      color: #000;
+      text-decoration: underline;
+    }
+  }
+}

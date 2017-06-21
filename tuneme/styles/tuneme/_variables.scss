@@ -33,15 +33,17 @@ $sea-orange           :           #EF9955;
 $dark_orange          :           #d46900;
 $rose_pink            :           #e60382;
 $green                :           #21E078;
+$lilac_pink           :           #D6A7CD;
 
 $color_list: (
-  purple    : $purple,
-  turquoise : $turquoise,
-  violet    : $violet,
-  red       : $red,
-  orange    : $orange,
-  rose_pink : $rose_pink,
-  gold      : $gold
+  purple              :           $purple,
+  turquoise           :           $turquoise,
+  violet              :           $violet,
+  red                 :           $red,
+  orange              :           $orange,
+  rose_pink           :           $rose_pink,
+  gold                :           $gold,
+  lilac_pink          :           $lilac_pink 
 );
 
 @mixin float-clear($value) {
