@@ -2,19 +2,15 @@
   background: #cd36f5;
   color: #fff;
   padding: 20px 15px;
-
   a {
     color: #fff;
     text-decoration: underline;
   }
-
   input[type="submit"] {
     background: #a023c1;
     font-weight: bold;
   }
-
   label {
-    cursor: pointer;
     display: block;
   }
 }
@@ -26,32 +22,26 @@
     color: #000;
   }
 }
-
 .poll-question__title {
   margin: 0 0 20px 0;
   font-weight: bold;
   font-size: $font-large;
 }
-
 .poll-free-text-input {
   width: 100%;
   margin: 0 0 20px 0;
 }
-
 .poll-choices {
   margin: 0 0 20px 0;
   overflow: hidden;
 }
-
 .poll-choices__item {
   font-weight: bold;
   margin-bottom: 15px;
 }
-
 .poll-choices__item--question-title {
   display: block;
 }
-
 .poll-choices__item--bar {
   border-radius: 25px;
   height: 27px;
