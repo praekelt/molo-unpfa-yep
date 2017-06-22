@@ -13,27 +13,27 @@
   		<a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
   		{% trans "Back to Home page" %}</a>
   	</div>
-	{% if self.show_results and results %}
-	  <h1 class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__title">{% trans "Survey Results" %}</h1>
-	  <h4 class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__intro">
-		  {% trans "Check out the results below!" %}
-    </h4>
+  	{% if self.show_results and results %}
+  	  <h1 class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__title">{% trans "Survey Results" %}</h1>
+  	  <h4 class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__intro">
+  		  {% trans "Check out the results below!" %}
+      </h4>
 
-	  <div class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__results">
-	    {% for question, answers in results.items %}
-		    <h3 class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__question">{{ question }}</h3>
-		    {% for answer, count in answers.items %}
-		      <div class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__answer">
-			      <h6>{{ answer }}</h6>
-            <p class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__answer--percent-bar">{{ count }}</p>
-		      </div>
-		    {% endfor %}
-	    {% endfor %}
-	  </div>
-    <div class="call-to-action call-to-action--{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}">
-      <a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
-      {% trans "Back to Home page" %}</a>
-    </div>
-	{% endif %}
+  	  <div class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__results">
+  	    {% for question, answers in results.items %}
+  		    <h3 class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__question">{{ question }}</h3>
+  		    {% for answer, count in answers.items %}
+  		      <div class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__answer">
+  			      <h6>{{ answer }}</h6>
+              <p class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__answer--percent-bar">{{ count }}</p>
+  		      </div>
+  		    {% endfor %}
+  	    {% endfor %}
+  	  </div>
+      <div class="call-to-action call-to-action--{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}">
+        <a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
+        {% trans "Back to Home page" %}</a>
+      </div>
+  	{% endif %}
 </div>
 {% endblock %}
