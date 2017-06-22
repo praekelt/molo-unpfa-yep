@@ -83,7 +83,6 @@ INSTALLED_APPS = [
     'django_comments',
     'molo.commenting',
     'molo.yourwords',
-    'molo.yourtips',
     'molo.servicedirectory',
     'polls',
 
