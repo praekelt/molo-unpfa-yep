@@ -15,8 +15,9 @@ $white                :           #ffffff;
 $wild_sand            :           #f4f4f4;
 $black                :           #000000;
 $alto                 :           #dddddd;
-$grey                 :           #333333;
-$dusty_grey           :           #999999;
+$gray                 :           #333333;
+$dusty_gray           :           #999999;
+$dusty_gray_light     :           #979797;
 $santas_gray          :           #a3a3a6;
 $light_gray           :           #cacaca;
 $turquoise            :           #21e0d8;
@@ -33,15 +34,17 @@ $sea-orange           :           #EF9955;
 $dark_orange          :           #d46900;
 $rose_pink            :           #e60382;
 $green                :           #21E078;
+$lilac_pink           :           #D6A7CD;
 
 $color_list: (
-  purple    : $purple,
-  turquoise : $turquoise,
-  violet    : $violet,
-  red       : $red,
-  orange    : $orange,
-  rose_pink : $rose_pink,
-  gold      : $gold
+  purple              :           $purple,
+  turquoise           :           $turquoise,
+  violet              :           $violet,
+  red                 :           $red,
+  orange              :           $orange,
+  rose_pink           :           $rose_pink,
+  gold                :           $gold,
+  lilac_pink          :           $lilac_pink
 );
 
 @mixin float-clear($value) {
