@@ -2,7 +2,6 @@
   display: block;
   border-radius: 10px;
 }
-
 @each $name, $color in $color_list {
   .article__content--#{$name} {
     .featured-articles {
@@ -10,6 +9,9 @@
     }
     .featured-articles__heading {
       border-color: $color;
+    }
+    .tag__item-anchor {
+      color: $color;
     }
   }
 }

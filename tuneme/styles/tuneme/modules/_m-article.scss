@@ -1,14 +1,11 @@
-
 .article__title {
   font-size: $font-large;
   font-weight: bold;
   padding: 10px 15px 0;
 }
-
 .article__subtitle {
   padding: 0 15px 20px 15px;
 }
-
 .article__image {
   display: block;
   img {
@@ -65,5 +62,15 @@
     li {
       margin-left: 0;
     }
+  }
+}
+
+.tags-list {
+  .tag-list__item {
+    display: inline-block;
+    margin: 0 10px 0 0;
+  }
+  .tag__item-anchor {
+    font-style: italic;
   }
 }
