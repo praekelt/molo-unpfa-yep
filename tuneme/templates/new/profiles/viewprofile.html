@@ -21,16 +21,36 @@
     </p>
   </fieldset>
 
-  {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
+  {% if settings.profiles.UserProfilesSettings.show_mobile_number_field and settings.profiles.UserProfilesSettings.country_code %}
 	<fieldset>
 		<label for="id_mobile_number">{% trans "Mobile number:" %}</label>
 		<p class="profile__mobile-number">{{ user.profile.mobile_number | default:"Not set" }}</p>
 		{{ form.mobile_number.errors }}
 		{{ form.mobile_number }}
-		<span class="input-hint">{% trans "(e.g. 0914556789)" %}</span>
+		<p class="input-hint">{% trans "(e.g. 0914556789)" %}</p>
 	</fieldset>
 	{% endif %}
 
+  {% if settings.profiles.UserProfilesSettings.activate_gender %}
+  <fieldset>
+    <label for="id_gender">{% trans "Gender:" %}</label>
+    <p class="profile__gender">{{ user.profile.gender | default:"Not set" }}</p>
+  </fieldset>
+  {% endif %}
+
+  {% if settings.profiles.UserProfilesSettings.activate_location %}
+  <fieldset>
+		<label for="id_location">{% trans "Location:" %}</label>
+		<p class="profile__location">{{ user.profile.location | default:"Not set" }}</p>
+  </fieldset>
+  {% endif %}
+
+  {% if settings.profiles.UserProfilesSettings.activate_education_level %}
+  <fieldset>
+    <label for="education_level">{% trans "Education Level:" %}</label>
+    <p class="profile__leducation_level">{{ user.profile.education_level | default:"Not set" }}</p>
+  </fieldset>
+  {% endif %}
 
   {% if settings.profiles.UserProfilesSettings.show_email_field %}
   <fieldset>
@@ -38,12 +58,12 @@
     <p class="profile__email">{{ user.email | default:"Not set" }}</p>
   </fieldset>
   {% endif %}
-
   <div class="call-to-action call-to-action--profiles call-to-action--edit-profiles">
     <a href="{% url "molo.profiles:auth_logout" %}" class="call-to-action__nav-item call-to-action__nav-item-primary">
       {% trans "log out" %}</a>
     <a href="{% url "molo.profiles:edit_my_profile" %}" class="call-to-action__nav-item call-to-action__nav-item-primary">{% trans "Edit My Profile" %}</a>
     <a href="{% url "molo.profiles:profile_password_change" %}" class="call-to-action__nav-item call-to-action__nav-item-primary">{% trans "Change My Password" %}</a>
+    <a href="/" class="call-to-action__nav-item">{% trans "Home Page" %}</a>
   </div>
 </div>
 {% endblock %}

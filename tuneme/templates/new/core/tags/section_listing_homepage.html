@@ -1,10 +1,11 @@
 {% load wagtailcore_tags wagtailimages_tags comments core_tags competition_tag i18n %}
 {% for section in sections %}
+  {% load_descendant_articles_for_section section featured_in_homepage=True count=2 as featured_articles %}
+  {% if featured_articles %}
   <h1 class="heading heading{{section.get_effective_extra_style_hints}}">
     <a href="{% pageurl section %}">{{section.title}}</a>
   </h1>
   <ul class="article-list article-list--section-listing article-list{{section.get_effective_extra_style_hints}}">
-    {% load_descendant_articles_for_section section featured_in_homepage=True count=2 as featured_articles %}
     {% for article in featured_articles %}
     <li class="article-list__item">
       <a href="{% pageurl article %}" class="article-list__item--anchor">
@@ -23,4 +24,5 @@
     <li class="article-list__item article-list__item--more"><a href="{% pageurl section %}" class="article-list__item--more-anchor">{% trans "More" %}</a></li>
   </ul>
   {% your_words_competition_in_section section %}
+  {% endif %}
 {% endfor %}

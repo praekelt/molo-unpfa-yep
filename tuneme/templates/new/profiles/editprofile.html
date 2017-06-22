@@ -70,4 +70,8 @@
   <input type="submit" value='{% trans "Update profile" %}'>
   </form>
 </div>
+<div class="call-to-action">
+  <a href="{% url "molo.profiles:view_my_profile" %}" class="call-to-action__nav-item">{% trans "Back" %}</a>
+  <a href="/" class="call-to-action__nav-item">{% trans "Home Page" %}</a>
+</div>
 {% endblock %}
