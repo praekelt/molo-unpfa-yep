@@ -38,7 +38,8 @@
 			{% else %}
 		    <div class="call-to-action call-to-action--{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}">
 		      <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="call-to-action__nav-item call-to-action__nav-item--{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}">
-            {% trans 'Please log in to take this survey' %}
+            {% trans 'Please log in to take this' %}
+            {% if not survey.display_survey_directly %}{% trans 'surveys' %}{% else %}{% trans 'poll' %}{% endif %}
           </a>
 		    </div>
 		{% endif %}
