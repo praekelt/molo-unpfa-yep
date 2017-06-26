@@ -1,7 +1,16 @@
 .yourtips {
+  .call-to-action {
+    padding: 10px 15px;
+    &__nav-item-text {
+      color: #000;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  }
   &--share-cta {
     color: #000;
     padding: 15px;
+    .call-to-action {padding: 10px 0;}
   }
   &__share--description {
     font-weight: 400;
@@ -10,26 +19,30 @@
   &__description {
     padding: 0 15px;
   }
+  .heading--yourtips {
+    margin: 0;
+  }
   &--entry-page {
-    .heading--yourtips {
-      margin: 0;
-      border-bottom: 1px solid $dusty_gray_light;
-    }
+
     .heading--yourtips-title {
       margin: 0;
+      font-size: $font-medium;
+      text-transform: inherit;
     }
   }
-
   //Form
   &-form {
     padding: 10px 15px;
   }
-  .call-to-action {
-    padding: 10px 0;
-    &__nav-item-text {
-      color: #000;
-      text-decoration: underline;
-    }
-  }
+}
 
+.yourtips-list {
+  padding: 30px 15px 20px;
+  color: #fff;
+  &:nth-child(even) {
+    background: $rose_pink;
+  }
+  &:nth-child(odd) {
+    background: $turquoise;
+  }
 }
