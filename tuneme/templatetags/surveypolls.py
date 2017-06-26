@@ -8,6 +8,7 @@ register = template.Library()
 def get_surveytype():
     return "surveys"
 
+
 @register.assignment_tag
 def get_pollstype():
     return "polls"
