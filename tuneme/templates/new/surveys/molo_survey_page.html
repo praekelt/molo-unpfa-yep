@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
-
-{% load i18n %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags surveypolls i18n %}
 
 {% block content %}
-<div class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}">
-  <h1 class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__title">{{ page.title }}</h1>
-  <h4 class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__intro">{{ page.intro }}</h4>
+{% if not survey.display_survey_directly %}
+  {% get_surveytype as surveytype %}
+{% else %}
+  {% get_pollstype as surveytype %}
+{% endif %}
+<div class="{{surveytype}}">
+  <h1 class="{{surveytype}}__title">{{ page.title }}</h1>
+  <h4 class="{{surveytype}}__intro">{{ page.intro }}</h4>
   {% if user.is_authenticated and user.is_active or request.is_preview or self.allow_anonymous_submissions %}
     {% if form %}
-      <form class="{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}__form" action="{% pageurl self %}{% if self.multi_step %}?p={{ fields_step.number|add:"1" }}{% endif %}" method="post">
+      <form class="{{surveytype}}__form" action="{% pageurl self %}{% if self.multi_step %}?p={{ fields_step.number|add:"1" }}{% endif %}" method="post">
         {% csrf_token %}
         {% for field in form %}
           <fieldset>
@@ -17,7 +20,7 @@
             <span class="surveys__helptext">{{ field.help_text }}</span>
             {{ field }}
             {% if field.errors %}
-              <ul class="error error--{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}">
+              <ul class="error error--{{surveytype}}">
               {% for error in field.errors %}
                 <li>{{ error }}</li>
               {% endfor %}
@@ -28,15 +31,15 @@
         <input type="submit" value="{% if is_intermediate_step %}{% trans 'Next Question' %}{% else %}{% trans 'Submit' %}{% endif %}" />
       </form>
     {% else %}
-      <p class="error error--{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}">{% trans "You've already complete this." %}</p>
-      <div class="call-to-action call-to-action--{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}">
+      <p class="error error--{{surveytype}}">{% trans "You've already complete this." %}</p>
+      <div class="call-to-action call-to-action--{{surveytype}}">
         <a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
         {% trans "Back to Home page" %}</a>
       </div>
     {% endif %}
   {% else %}
-    <div class="call-to-action call-to-action--{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}">
-      <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="call-to-action__nav-item call-to-action__nav-item--{% if not survey.display_survey_directly %}surveys{% else %}polls{% endif %}">
+    <div class="call-to-action call-to-action--{{surveytype}}">
+      <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="call-to-action__nav-item call-to-action__nav-item--{{surveytype}}">
       {% trans 'Please log in to take this survey' %}
       </a>
     </div>
