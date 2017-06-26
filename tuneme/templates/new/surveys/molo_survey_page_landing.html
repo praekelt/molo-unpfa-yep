@@ -8,39 +8,35 @@
   {% get_pollstype as surveytype %}
 {% endif %}
 <div class="{{surveytype}}">
-  {% if not self.thank_you_text %}
-    <h1 class="{{surveytype}}__title">{{ self.title }}</h1>
-    <h4 class="{{surveytype}}__intro">{{ self.intro }}</h4>
-  {% else %}
-	  <h4 class="{{surveytype}}__thank-you">{{ self.thank_you_text }}</h4>
-  {% endif %}
-    <div class="call-to-action call-to-action--{{surveytype}}">
-  		<a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
-  		{% trans "Back to Home page" %}</a>
-  	</div>
-
-  	{% if self.show_results and results %}
-  	  <h1 class="{{surveytype}}__title">{% trans "Survey Results" %}</h1>
-  	  <h4 class="{{surveytype}}__intro">
-  		  {% trans "Check out the results below!" %}
-      </h4>
-
-  	  <div class="{{surveytype}}__results">
-  	    {% for question, answers in results.items %}
-  		    <h3 class="{{surveytype}}__question">{{ question }}</h3>
-  		    {% for answer, count in answers.items %}
-  		      <div class="{{surveytype}}__answer">
-  			      <h6>{{ answer }}</h6>
-              <p class="{{surveytype}}__answer--percent-bar">{{ count }}</p>
-  		      </div>
-  		    {% endfor %}
-  	    {% endfor %}
-  	  </div>
-      <div class="call-to-action call-to-action--{{surveytype}}">
-        <a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
-        {% trans "Back to Home page" %}</a>
-      </div>
-  	{% endif %}
-
+{% if not self.thank_you_text %}
+  <h1 class="{{surveytype}}__title">{{ self.title }}</h1>
+  <h4 class="{{surveytype}}__intro">{{ self.intro }}</h4>
+{% else %}
+  <h4 class="{{surveytype}}__thank-you">{{ self.thank_you_text }}</h4>
+{% endif %}
+  <div class="call-to-action call-to-action--{{surveytype}}">
+    <a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
+		  {% trans "Back to Home page" %}
+    </a>
+  </div>
+{% if self.show_results and results %}
+  <h1 class="{{surveytype}}__title">{% trans "Survey Results" %}</h1>
+  <h4 class="{{surveytype}}__intro">{% trans "Check out the results below!" %}</h4>
+  <div class="{{surveytype}}__results">
+  {% for question, answers in results.items %}
+    <h3 class="{{surveytype}}__question">{{ question }}</h3>
+	  {% for answer, count in answers.items %}
+    <div class="{{surveytype}}__answer">
+      <h6>{{ answer }}</h6>
+      <p class="{{surveytype}}__answer--percent-bar">{{ count }}</p>
+    </div>
+	  {% endfor %}
+  {% endfor %}
+  </div>
+  <div class="call-to-action call-to-action--{{surveytype}}">
+    <a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
+    {% trans "Back to Home page" %}</a>
+  </div>
+{% endif %}
 </div>
 {% endblock %}
