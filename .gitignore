@@ -42,6 +42,8 @@ local.py
 /static/
 /media/
 db.sqlite3
+db.sqlite4
+db.sqlite4-journal
 docs/_build
 .DS_Store
 .cache/
