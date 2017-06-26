@@ -7,27 +7,24 @@
       font-weight: bold;
     }
   }
-  &--share-cta {
-    color: #000;
-    padding: 15px;
-    .call-to-action {padding: 10px 0;}
-  }
-  &__share--description {
-    font-weight: 400;
-    font-size: $font-large;
-  }
   &__description {
     padding: 0 15px;
   }
   .heading--yourtips {
     margin: 0;
   }
-  &--entry-page {
-
-    .heading--yourtips-title {
-      margin: 0;
-      font-size: $font-medium;
-      text-transform: inherit;
+  .heading--yourtips-title {
+    margin: 0;
+    font-size: $font-medium;
+    text-transform: inherit;
+  }
+  &--share-cta {
+    color: #000;
+    padding: 15px;
+    .call-to-action {padding: 10px 0;}
+    &__description {
+      font-weight: 400;
+      font-size: $font-large;
     }
   }
   //Form
