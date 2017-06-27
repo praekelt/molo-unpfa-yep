@@ -46,7 +46,10 @@
       text-align: center;
     }
   }
-
+  .error--surveys,
+  .error--polls {
+    padding: 0 15px;
+  }
   &__form {
     padding: 0 16px;
     label {
@@ -57,9 +60,12 @@
     .call-to-action__nav-item--surveys  {
       font-weight: bold;
     }
+    .error--surveys,
+    .error--polls {
+      padding: 0;
+    }
   }
 }
-
 .polls  {
   color: #000;
   &__title {border-top: none;}
@@ -75,4 +81,6 @@
     }
   }
 }
-.error--surveys {padding: 0 16px;}
+.error--polls {
+  color: $gold;
+}
