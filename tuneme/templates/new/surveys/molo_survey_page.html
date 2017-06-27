@@ -2,7 +2,7 @@
 {% load wagtailcore_tags surveypolls i18n %}
 
 {% block content %}
-{% if not survey.display_survey_directly %}
+{% if not self.display_survey_directly %}
   {% get_surveytype as surveytype %}
 {% else %}
   {% get_pollstype as surveytype %}
@@ -32,7 +32,7 @@
   </form>
   {% else %}
     <p class="error error--{{surveytype}}">
-      {% trans "You've already complete this." %}
+      {% trans "You've already complete" %} {{surveytype}}
     </p>
     <div class="call-to-action call-to-action--{{surveytype}}">
       <a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
@@ -43,7 +43,7 @@
   {% else %}
   <div class="call-to-action call-to-action--{{surveytype}}">
     <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="call-to-action__nav-item call-to-action__nav-item--{{surveytype}}">
-      {% trans 'Please log in to take this survey' %}
+      {% trans 'Please log in to take' %} {{surveytype}}
     </a>
   </div>
   {% endif %}
