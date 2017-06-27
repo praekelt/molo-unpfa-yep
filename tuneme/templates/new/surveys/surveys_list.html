@@ -40,14 +40,13 @@
     </form>
     {% else %}
 	<p class="error error--{{surveytype}}">
-         {% trans 'You have already completed this survey.' %}
+         {% trans 'You have already completed' %} {{surveytype}}
         </p>
     {% endif %}
     {% else %}
     <div class="call-to-action call-to-action--{{surveytype}}">
       <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="call-to-action__nav-item call-to-action__nav-item--{{surveytype}}">
-        {% trans 'Please log in to take this' %}
-        {% if not survey.display_survey_directly %}{% trans 'surveys' %}{% else %}{% trans 'poll' %}{% endif %}
+        {% trans 'Please log in to take' %} {{surveytype}}
       </a>
     </div>
   {% endif %}
