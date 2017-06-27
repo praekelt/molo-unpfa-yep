@@ -1,19 +1,53 @@
-.surveys {
+.surveys,
+.polls {
   &__title {
-    color: $turquoise;
+    border-top: 2px solid $sea-orange;
+    color: $sea-orange;
     padding: 10px 15px 5px;
   }
-  &__intro {
-    padding: 0 15px;
-  }
+  &__intro {padding: 0 15px;}
+  &__answer {background: $sea-orange;}
   &__form {
     input[type="submit"],
     .call-to-action__nav-item--surveys {
-      font-weight: bold;
+      background: $sea-orange;
       width: auto;
     }
   }
-  .call-to-action__nav-item--back-home {
-    color: $turquoise;
+  .call-to-action__nav-item--back-home {color: $sea-orange;}
+}
+.polls {
+  background: #cd36f5;
+  color: #fff;
+  &__title {
+    color: #fff;
+    border-top: 2px solid $purple_dark;
   }
+  &__answer {background: $purple_dark;}
+  &__form {
+    label {color: #fff;}
+    input[type="submit"],
+    .call-to-action__nav-item--polls {
+      background: $purple_dark;
+      color: #fff;
+      filter: grayscale(60%);
+    }
+  }
+  .call-to-action__nav-item--polls {
+    background: $purple_dark;
+    color: #fff;
+    filter: grayscale(60%);
+    border-radius: 14px;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+  }
+}
+.polls--feedback-page {
+  background: none;
+  color: #000;
+  .polls__title {
+    color: $purple_dark;
+  }
+  .call-to-action__nav-item--back-home {color: $purple_dark;}
 }
