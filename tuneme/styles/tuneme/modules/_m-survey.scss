@@ -1,7 +1,8 @@
-.surveys {
-  padding: 0 0 20px;
+.surveys,
+.polls {
+  padding: 0 0 15px;
   &__title {
-    border-top: 2px solid $turquoise;
+    border-top: 2px solid #000;
     padding: 20px 10px 5px;
     font-size: $font-large;
     font-weight: bold;
@@ -15,9 +16,7 @@
     padding: 0 10px;
     font-weight: normal;
   }
-  &__question {
-    font-weight: bold;
-  }
+  &__question {font-weight: bold;}
   &__results {
     padding: 5px 16px;
     margin: 15px 0;
@@ -30,7 +29,6 @@
     display: block;
   }
   &__answer {
-    background: $turquoise;
     color: #fff;
     border-radius: 5px;
     word-wrap: break-word;
@@ -55,13 +53,26 @@
       color: #000;
       padding: 0;
     }
-    input[type="submit"]  {
-      background: $turquoise;
+    input[type="submit"],
+    .call-to-action__nav-item--surveys  {
+      font-weight: bold;
     }
   }
 }
 
-.error--surveys {
-  padding: 0 16px;
-
+.polls  {
+  color: #000;
+  &__title {border-top: none;}
+  &__helptext {color: #fff;}
+  &__form {
+    label {
+      cursor: pointer;
+      display: block;
+    }
+    input[type="submit"],
+    .call-to-action__nav-item--polls {
+      font-weight: bold;
+    }
+  }
 }
+.error--surveys {padding: 0 16px;}
