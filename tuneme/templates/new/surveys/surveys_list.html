@@ -46,7 +46,7 @@
     {% else %}
     <div class="call-to-action call-to-action--{{surveytype}}">
       <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="call-to-action__nav-item call-to-action__nav-item--{{surveytype}}">
-        {% trans 'Please log in to submit' %}
+        {% trans 'Please log in to vote.' %}
       </a>
     </div>
   {% endif %}
