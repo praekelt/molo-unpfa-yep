@@ -39,14 +39,14 @@
        <input type="submit" value="{% if is_intermediate_step %}{% trans 'Next Question' %}{% else %}{% trans 'Submit' %}{% endif %}" />
     </form>
     {% else %}
-	<p class="error error--{{surveytype}}">
-         {% trans "You have already completed this" %} {{ surveytype|slice:":-1" }}
-        </p>
+	  <p class="error error--{{surveytype}}">
+      {% trans "You have already completed this" %} {{ surveytype|slice:":-1" }}
+    </p>
     {% endif %}
     {% else %}
     <div class="call-to-action call-to-action--{{surveytype}}">
       <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="call-to-action__nav-item call-to-action__nav-item--{{surveytype}}">
-        {% trans 'Please log in to take' %} {{surveytype}}
+        {% trans 'Please log in to submit' %}
       </a>
     </div>
   {% endif %}
