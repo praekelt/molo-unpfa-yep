@@ -20,7 +20,7 @@
     </a>
   </div>
 {% if self.show_results and results %}
-  <h1 class="{{surveytype}}__title">{% trans "Survey Results" %}</h1>
+  <h1 class="{{surveytype}}__title">{{surveytype}} {% trans "Results" %}</h1>
   <h4 class="{{surveytype}}__intro">{% trans "Check out the results below!" %}</h4>
   <div class="{{surveytype}}__results">
   {% for question, answers in results.items %}
