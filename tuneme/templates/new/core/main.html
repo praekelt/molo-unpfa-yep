@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static core_tags molo_survey_tags competition_tag i18n %}
+{% load static core_tags molo_survey_tags competition_tag tip_tags i18n %}
 {% block homepage-signup %}
   {% if user.is_authenticated %}
     <a href="{% url 'molo.profiles:view_my_profile' %}" class="header-nav__item header-nav__item--menu">
@@ -18,9 +18,11 @@
   {% include "core/language_block.html" %}
 {% endblock %}
 {% block content %}
+  {% your_tips_create_tip_on_homepage %}
   {% bannerpages %}
   {% latest_listing_homepage num_count=5 %}
   {% your_words_competition %}
+  {% your_tips_on_homepage %}
   {% surveys_list only_direct_surveys=True %}
   {% section_listing_homepage %}
   {% surveys_list only_linked_surveys=True %}
