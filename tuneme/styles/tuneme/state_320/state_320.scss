@@ -1,5 +1,11 @@
 
 @import "../_variables";
+@media only screen and (max-width: 240px) {
+  .call-to-action__item-share--footer {
+    .call-to-action__item-share-img {display: none;}
+    .call-to-action__item-share-title {display: block;}
+  }
+}
 @media only screen and (min-width: 320px) {
   html, body,
   h1, h2, h3, h4, h5, h6,
