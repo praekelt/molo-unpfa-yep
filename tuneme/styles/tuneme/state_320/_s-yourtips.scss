@@ -7,12 +7,14 @@
   &--banner {
     color: #fff;
     background: #e60382;
-    padding: 25px 15px 15px 15px;
-    //For Banner CTA
+    padding: 25px 0 15px;
     .call-to-action {
-      &__nav-item-text {
-        color: #fff;
-      }
+      &__nav-item-text {color: #fff;}
     }
   }
+}
+
+.yourtips-list {
+  &:nth-child(even) {background: $rose_pink;}
+  &:nth-child(odd) {background: $turquoise;}
 }
