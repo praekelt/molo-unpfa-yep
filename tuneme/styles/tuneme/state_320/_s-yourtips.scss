@@ -15,6 +15,19 @@
 }
 
 .yourtips-list {
+  .yourtips__description  {
+    padding: 0 30px;
+    &:before {
+      position: absolute;
+      margin: -10px 0 0 0;
+      left: 10px;
+    }
+    //IMPLEMENTED ON PHASE2
+    &:after {
+      position: absolute;
+      margin: 0 0 0 5px;
+    }
+  }
   &:nth-child(even) {background: $rose_pink;}
   &:nth-child(odd) {background: $turquoise;}
 }

@@ -27,11 +27,14 @@
     //Extra CMS markup - to be deleted
     .block-paragraph {
       display: inline;
-      padding: 10px 0 0;
-      p {display: inline;}
+      p {
+        display: inline;
+        margin: 0;
+      }
     }
+    //IMPLEMENTED ON PHASE2
     .block-paragraph:last-child {
-      display: block;
+      //display: block;
     }
   }
   &--banner {
@@ -62,8 +65,9 @@
   padding: 30px 0 20px;
   color: #000;
   .yourtips__description  {
+    position: relative;
     &:before, &:after {
-      display: inline-block;
+      display: inline;
       font-size: 30px;
       font-weight: bold;
     }
