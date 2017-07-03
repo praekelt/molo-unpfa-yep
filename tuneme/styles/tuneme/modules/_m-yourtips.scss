@@ -2,10 +2,17 @@
   color: #000;
   padding: 0 0 10px;
   .heading--yourtips {margin: 0;}
+  .heading--yourtips-page {
+    border-bottom: 1px solid #e7e7e7;
+    margin: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
   .heading--yourtips-title {
     margin: 0;
     font-size: $font-medium;
-    text-transform: inherit;
+    //text-transform: inherit;
+    text-transform: uppercase;
   }
   .call-to-action {
     padding: 10px 15px;
@@ -25,7 +32,7 @@
     }
   }
   &__description {
-    padding: 0 15px;
+    padding: 10px 15px 0;
     font-size: 17px;
     //Extra CMS markup - to be deleted
     .block-paragraph {
@@ -61,14 +68,6 @@
   }
   //Form
   &-form {padding: 10px 15px;}
-  &__posted-date {
-    color: #000;
-    font-size: 14px;
-    margin: 0;
-    padding: 10px 15px;
-    text-transform: capitalize;
-  }
-
   //YourTips List
   &-list {
     margin: 0;
@@ -90,5 +89,12 @@
       .yourtips__description-homepage {padding: 25px 15px 0;}
     }
   }
-  &__posted-date {background: #d8d8d8;}
+  &__posted-date {
+    background: #d8d8d8;
+    color: #000;
+    font-size: 14px;
+    margin: 0;
+    padding: 10px 15px;
+    text-transform: capitalize;
+  }
 }
