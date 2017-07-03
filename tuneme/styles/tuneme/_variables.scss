@@ -47,3 +47,7 @@ $color_list: (
   float: $value;
   clear: $value;
 }
+
+@mixin line-break-value($pos, $width, $color) {
+  border-#{$pos}: $width solid $color;
+}

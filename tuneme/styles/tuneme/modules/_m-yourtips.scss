@@ -3,16 +3,18 @@
   padding: 0 0 10px;
   .heading--yourtips {margin: 0;}
   .heading--yourtips-page {
-    border-bottom: 1px solid #e7e7e7;
     margin: 0;
     font-size: 14px;
     text-transform: uppercase;
+    @include line-break-value(bottom, 1px, #e7e7e7);
   }
   .heading--yourtips-title {
     margin: 0;
     font-size: $font-medium;
-    //text-transform: inherit;
     text-transform: uppercase;
+  }
+  .heading--line-break {
+    @include line-break-value(top, 1px, #979797);
   }
   .call-to-action {
     padding: 10px 15px;
@@ -32,7 +34,7 @@
     }
   }
   &__description {
-    padding: 10px 15px 0;
+    padding: 5px 15px 10px; //Does not work on Thank you page
     font-size: 17px;
     //Extra CMS markup - to be deleted
     .block-paragraph {
@@ -96,5 +98,12 @@
     margin: 0;
     padding: 10px 15px;
     text-transform: capitalize;
+  }
+
+  //YOURTIPS MENU
+  &-menu {
+    &__item {
+      
+    }
   }
 }
