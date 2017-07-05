@@ -11,7 +11,9 @@
 {% endblock %}
 {% block search-button %}{% endblock %}
 {% block search %}
- 	<h1 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h1>
+ 	<h1 class="header__search-title">
+    {% trans "Do you have questions on love, sex and relationships?" %}
+  </h1>
   {% include "search/search_block.html" %}
 {% endblock %}
 {% block language %}
