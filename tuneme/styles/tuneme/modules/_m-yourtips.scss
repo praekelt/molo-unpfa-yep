@@ -39,18 +39,10 @@
   &__description {
     padding: 5px 15px 10px; //Does not work on Thank you page
     font-size: 17px;
-    //Extra CMS markup - to be deleted
-    .block-paragraph {
-      display: inline;
-      p {
-        display: inline;
-        margin: 0;
-      }
-    }
-    //IMPLEMENTED ON PHASE2
-    .block-paragraph:last-child {
-      //display: block;
-    }
+  }
+  &__author {
+    padding: 15px;
+    margin: 0;
   }
   &--banner {
     color: #000;
@@ -94,7 +86,7 @@
       .yourtips__description-homepage {padding: 25px 15px 0;}
     }
   }
-  &__posted-date {
+  .likes, &__posted-date {
     background: #d8d8d8;
     color: #000;
     font-size: 14px;

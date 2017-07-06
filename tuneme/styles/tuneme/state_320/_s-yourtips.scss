@@ -18,7 +18,7 @@
   &-list {
     &__item {
       .yourtips__description  {
-        padding: 25px 30px;
+        padding: 25px 30px 0 30px;
         &:before {
           position: absolute;
           margin: -10px 0 0 0;
@@ -36,6 +36,9 @@
     &:nth-child(even) {background: $rose_pink;}
     &:nth-child(odd) {background: $turquoise;}
     }
+  }
+  &__author {
+    padding: 15px 30px 20px;
   }
 
   //YOURTIPS MENU

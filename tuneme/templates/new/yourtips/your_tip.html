@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags static tip_tags core_tags i18n %}
 {% block content %}
+<div class="yourtips">
   {% get_your_tip as your_tip %}
   <div class="breadcrumbs">
     <ul class="breadcrumbs-list">
@@ -14,7 +15,6 @@
   </div>
   <div class="yourtips">
     <ul class="yourtips-menu">
-    {% if article_tip %}
       <li class="yourtips-menu__item">
         <a href="{% url 'molo.yourtips:recent_tips' %}" class="call-to-action__nav-item">
           <img class="yourtips-menu__icon" src="{% static 'new/img/yourtips_icon.png' %}" alt="Recent Tips"/>
@@ -30,7 +30,6 @@
           <span class="yourtips-menu__desc">{% trans "See most liked advices" %}</span>
         </a>
       </li>
-    {% endif %}
       <li class="yourtips-menu__item">
         <a href="{% url 'molo.yourtips:tip_entry' 'your-tips-page' %}" class="call-to-action__nav-item">
           <img class="yourtips-menu__icon" src="{% static 'new/img/yourtips_icon.png' %}" alt="Recent Tips"/>
