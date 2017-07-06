@@ -2,7 +2,7 @@ from tuneme.settings import *  # noqa
 
 SITE_LAYOUT = 'new'
 TEMPLATES[0]['DIRS'] = [
-    join(PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT), ]   
+    join(PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT), ]
 
 DATABASES = {
     'default': {
