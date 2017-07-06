@@ -31,6 +31,9 @@
       outline: none;
       text-decoration: underline;
       font-weight: bold;
+      //Default button - to double check UI
+      display: block;
+      padding: 0 15px;
     }
   }
   &__description {

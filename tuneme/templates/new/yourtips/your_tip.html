@@ -14,6 +14,7 @@
   </div>
   <div class="yourtips">
     <ul class="yourtips-menu">
+    {% if article_tip %}
       <li class="yourtips-menu__item">
         <a href="{% url 'molo.yourtips:recent_tips' %}" class="call-to-action__nav-item">
           <img class="yourtips-menu__icon" src="{% static 'new/img/yourtips_icon.png' %}" alt="Recent Tips"/>
@@ -21,6 +22,7 @@
           <span class="yourtips-menu__desc">{% trans "See recently published tips" %}</span>
         </a>
       </li>
+      <!-- If Tips has higher number of likes -->
       <li class="yourtips-menu__item">
         <a href="{% url 'molo.yourtips:popular_tips' %}" class="call-to-action__nav-item">
           <img class="yourtips-menu__icon" src="{% static 'new/img/yourtips_icon.png' %}" alt="Recent Tips"/>
@@ -28,6 +30,7 @@
           <span class="yourtips-menu__desc">{% trans "See most liked advices" %}</span>
         </a>
       </li>
+    {% endif %}
       <li class="yourtips-menu__item">
         <a href="{% url 'molo.yourtips:tip_entry' 'your-tips-page' %}" class="call-to-action__nav-item">
           <img class="yourtips-menu__icon" src="{% static 'new/img/yourtips_icon.png' %}" alt="Recent Tips"/>

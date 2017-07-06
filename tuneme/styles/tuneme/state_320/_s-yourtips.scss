@@ -38,12 +38,20 @@
     }
   }
 
+  //YOURTIPS MENU
   &-menu {
     &__icon {
       float: left;
     }
-    &__desc {
+  }
 
-    }
+  //THANK YOU PAGE
+  &__thank-you-message:after {
+    background: url(/static/new/img/check-icon.png) no-repeat 0 0;
+    content: "";
+    display: block;
+    margin: 0 auto;
+    height: 118px;
+    width: 118px;
   }
 }
