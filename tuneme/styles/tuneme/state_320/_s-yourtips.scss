@@ -37,4 +37,13 @@
     &:nth-child(odd) {background: $turquoise;}
     }
   }
+
+  &-menu {
+    &__icon {
+      float: left;
+    }
+    &__desc {
+
+    }
+  }
 }

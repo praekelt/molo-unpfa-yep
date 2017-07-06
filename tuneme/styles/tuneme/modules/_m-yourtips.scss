@@ -103,7 +103,22 @@
   //YOURTIPS MENU
   &-menu {
     &__item {
-      
+      display: block;
+      margin: 5px 0;
+      overflow: auto;
+      .call-to-action__nav-item {
+        display: block;
+        text-decoration: none;
+      }
+    }
+    &__icon {
+      margin: 0 auto;
+      width: 40%;
+      padding: 0 10px 0 0;
+    }
+    &__desc {
+      display: block;
+      font-weight: normal;
     }
   }
 }
