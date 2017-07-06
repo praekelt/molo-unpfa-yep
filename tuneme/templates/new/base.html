@@ -128,7 +128,7 @@
       {% endfor %}
       {% get_your_tip as your_tip %}
       {% if your_tip %}
-      <li class="menu__item menu__item--service menu__item--default">
+      <li class="menu__item menu__item{{ your_tip.get_effective_extra_style_hints }}">
          <a href="{{ your_tip.url }}">{% trans your_tip.title %}</a>
         <span>{% trans your_tip.description %}</span>
        </li>
