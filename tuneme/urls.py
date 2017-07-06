@@ -69,7 +69,10 @@ urlpatterns += patterns(
                                 namespace='molo.yourtips')),
     url(r'^servicedirectory/', include('molo.servicedirectory.urls',
         namespace='molo.servicedirectory')),
-
+    url(r'^likes/',
+        include('likes.urls',
+                namespace='likes',
+                app_name='likes')),
     url(r'^surveys/',
         include('molo.surveys.urls',
                 namespace='molo.surveys',
