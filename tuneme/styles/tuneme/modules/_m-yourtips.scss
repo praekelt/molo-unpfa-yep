@@ -89,12 +89,24 @@
   .likes, &__posted-date {
     background: #d8d8d8;
     color: #000;
-    font-size: 14px;
+    font-size: 16px;
     margin: 0;
     padding: 10px 15px;
     text-transform: capitalize;
   }
 
+  .likes {
+    background: #d8d8d8;
+    font-size: 16px;
+    padding: 10px 15px;
+    text-transform: capitalize;
+    &__counter {display: inline-block;}
+    &__nav-item {
+      display: inline-block;
+      margin: 0;
+    }
+    &__nav-item-anchor {color: #000;}
+  }
   //YOURTIPS MENU
   &-menu {
     &__item {

@@ -28,7 +28,7 @@
       {% if your_tip.get_number_of_popular_tips %}
       <li class="yourtips-menu__item">
         <a href="{% url 'molo.yourtips:popular_tips' %}" class="call-to-action__nav-item">
-          <img class="yourtips-menu__icon" src="{% static 'new/img/yourtips_icon.png' %}" alt="Recent Tips"/>
+          <img class="yourtips-menu__icon" src="{% static 'new/img/yourtips_popular.png' %}" alt="Recent Tips"/>
           {% trans "Popular Tips" %}
           <span class="yourtips-menu__desc">{% trans "See most liked advices" %}</span>
         </a>
@@ -36,7 +36,7 @@
       {% endif %}
       <li class="yourtips-menu__item">
         <a href="{% url 'molo.yourtips:tip_entry' 'your-tips-page' %}" class="call-to-action__nav-item">
-          <img class="yourtips-menu__icon" src="{% static 'new/img/yourtips_icon.png' %}" alt="Recent Tips"/>
+          <img class="yourtips-menu__icon" src="{% static 'new/img/yourtips_submit.png' %}" alt="Recent Tips"/>
           {% trans "Submit a Tip!" %}
           <span class="yourtips-menu__desc">{% trans "Click here to share your advice with others" %}</span>
         </a>
