@@ -32,10 +32,11 @@
   }
 
   //YOURTIPS LIST
-  @each $name, $color in $color_list {
-    &__label--#{$name} {
-      background: $color;
-    }
+  &__label {
+    border-radius: 10px;
+  }
+  &__article-icon {
+    width: 10%;
   }
   &-list {
     &__item {
@@ -55,8 +56,20 @@
     .call-to-action__nav-item {
       padding: 15px 15px 25px;
     }
-    &:nth-child(even) {background: $rose_pink;}
-    &:nth-child(odd) {background: $turquoise;}
+    &:nth-child(even) {
+      background: $rose_pink;
+      .yourtips__label {
+        background: rgba($rose_pink);
+        filter: grayscale(60%);
+      }
+    }
+    &:nth-child(odd) {
+      background: $turquoise;
+      .yourtips__label {
+        background: rgba($turquoise);
+        filter: grayscale(60%);
+        }
+      }
     }
   }
   &__author {padding: 15px 30px 20px;}
