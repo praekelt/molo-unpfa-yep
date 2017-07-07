@@ -35,9 +35,6 @@
   &__label {
     border-radius: 10px;
   }
-  &__article-icon {
-    width: 10%;
-  }
   &-list {
     &__item {
       .yourtips__description  {
@@ -58,20 +55,13 @@
     }
     &:nth-child(even) {
       background: $rose_pink;
-      .yourtips__label {
-        background: rgba($rose_pink);
-        filter: grayscale(60%);
-      }
+      .yourtips__label {background: $rose_pink_dark;}
     }
     &:nth-child(odd) {
       background: $turquoise;
-      .yourtips__label {
-        background: rgba($turquoise);
-        filter: grayscale(60%);
-        }
+      .yourtips__label {background: $turquoise_light;}
       }
     }
   }
   &__author {padding: 15px 30px 20px;}
-
 }
