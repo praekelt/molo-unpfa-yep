@@ -112,9 +112,10 @@
     color: #000;
     &__item {
     margin: 0 0 20px;
+    overflow: auto;
     &:last-child {margin: 0;}
       .yourtips__description {
-        padding: 25px 15px;
+        padding: 15px 15px;
         position: relative;
         &:before, &:after {
           display: inline;
