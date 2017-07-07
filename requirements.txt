@@ -2,6 +2,7 @@ molo.core==5.4.6
 molo.profiles==5.1.0
 molo.commenting==5.0.2
 molo.yourwords==5.0.1
+molo.yourtips==0.0.1
 molo.servicedirectory==2.1.5
 molo.surveys==5.2.0
 elasticsearch==1.7.0
@@ -12,3 +13,5 @@ django_compressor==2.0
 celery<4.0
 django-google-analytics-app==2.1.6
 Unidecode==0.04.16
+django-secretballot==0.7.0
+django-likes==1.11

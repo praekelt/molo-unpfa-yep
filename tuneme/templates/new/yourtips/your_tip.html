@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static tip_tags core_tags i18n %}
+{% block content %}
+<div class="yourtips">
+  {% get_your_tip as your_tip %}
+  <div class="breadcrumbs">
+    <ul class="breadcrumbs-list">
+      <li class="breadcrumbs-list__item">
+        <a href="{{request.site.root_page.url}}" class="breadcrumbs-list__anchor">{% trans "Home" %}</a>
+      </li>
+      <li class="breadcrumbs-list__item">
+        <span class="breadcrumbs-list-with-bg__anchor is-active">{% trans your_tip.title %}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="yourtips">
+    <ul class="yourtips-menu">
+      <li class="yourtips-menu__item">
+        <a href="{% url 'molo.yourtips:recent_tips' %}" class="call-to-action__nav-item">
+          <img class="yourtips-menu__icon" src="{% static 'new/img/yourtips_icon.png' %}" alt="Recent Tips"/>
+          {% trans "Recent Tips" %}
+          <span class="yourtips-menu__desc">{% trans "See recently published tips" %}</span>
+        </a>
+      </li>
+      <!-- If Tips has higher number of likes -->
+      <li class="yourtips-menu__item">
+        <a href="{% url 'molo.yourtips:popular_tips' %}" class="call-to-action__nav-item">
+          <img class="yourtips-menu__icon" src="{% static 'new/img/yourtips_popular.png' %}" alt="Recent Tips"/>
+          {% trans "Popular Tips" %}
+          <span class="yourtips-menu__desc">{% trans "See most liked advices" %}</span>
+        </a>
+      </li>
+      <li class="yourtips-menu__item">
+        <a href="{% url 'molo.yourtips:tip_entry' 'your-tips-page' %}" class="call-to-action__nav-item">
+          <img class="yourtips-menu__icon" src="{% static 'new/img/yourtips_submit.png' %}" alt="Recent Tips"/>
+          {% trans "Submit a Tip!" %}
+          <span class="yourtips-menu__desc">{% trans "Click here to share your advice with others" %}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+{% endblock %}

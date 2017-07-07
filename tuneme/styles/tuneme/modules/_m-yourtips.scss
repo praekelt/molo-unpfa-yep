@@ -1,36 +1,131 @@
 .yourtips {
-  &--share-cta {
-    color: #000;
-    padding: 15px;
+  color: #000;
+  padding: 0 0 10px;
+  .heading--yourtips {margin: 0;}
+  .heading--yourtips-page {
+    margin: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    @include line-break-value(bottom, 1px, #e7e7e7);
   }
-  &__share--description {
-    font-weight: 400;
-    font-size: $font-large;
+  .heading--yourtips-title {
+    margin: 0;
+    font-size: $font-medium;
+    text-transform: uppercase;
   }
-  &__description {
-    padding: 0 15px;
+  .heading--line-break {
+    @include line-break-value(top, 1px, #979797);
   }
-  &--entry-page {
-    .heading--yourtips {
-      margin: 0;
-      border-bottom: 1px solid $dusty_gray_light;
-    }
-    .heading--yourtips-title {
-      margin: 0;
-    }
-  }
-
-  //Form
-  &-form {
-    padding: 10px 15px;
-  }
-
   .call-to-action {
-    padding: 10px 0;
-    &__nav-item-text {
+    padding: 10px 15px;
+    &__nav-item {
       color: #000;
+      display: inline-block;
+      padding: 10px 15px;
+      font-weight: bold;
+      outline: none;
       text-decoration: underline;
     }
+    &__nav-item-text {
+      color: #000;
+      outline: none;
+      text-decoration: underline;
+      font-weight: bold;
+      //Default button - to double check UI
+      display: block;
+      padding: 0 15px;
+    }
+  }
+  &__description {
+    padding: 5px 15px 10px; //Does not work on Thank you page
+    font-size: 17px;
+  }
+  &__author {
+    padding: 15px;
+    margin: 0;
+  }
+  &--banner {
+    color: #000;
+    padding: 15px 0;
+    .call-to-action {
+      &__nav-item-text {
+        text-decoration: underline;
+        padding: 10px 15px;
+        display: block;
+      }
+      &__nav-item {
+        padding: 0 15px 15px;
+        display: block;
+      }
+    }
+    .yourtips__description {
+      font-weight: 400;
+      font-size: $font-large;
+    }
+  }
+  //Form
+  &-form {padding: 10px 15px;}
+  //YourTips List
+  &-list {
+    margin: 0;
+    color: #000;
+    &__item {
+    margin: 0 0 20px;
+    &:last-child {margin: 0;}
+      .yourtips__description {
+        padding: 25px 15px;
+        position: relative;
+        &:before, &:after {
+          display: inline;
+          font-size: 30px;
+          font-weight: bold;
+        }
+        &:before {content: open-quote;}
+        &:after {content: close-quote;}
+      }
+      .yourtips__description-homepage {padding: 25px 15px 0;}
+    }
+  }
+  .likes, &__posted-date {
+    background: #d8d8d8;
+    color: #000;
+    font-size: 16px;
+    margin: 0;
+    padding: 10px 15px;
+    text-transform: capitalize;
   }
 
+  .likes {
+    background: #d8d8d8;
+    font-size: 16px;
+    padding: 10px 15px;
+    text-transform: capitalize;
+    &__counter {display: inline-block;}
+    &__nav-item {
+      display: inline-block;
+      margin: 0;
+    }
+    &__nav-item-anchor {color: #000;}
+  }
+  //YOURTIPS MENU
+  &-menu {
+    &__item {
+      display: block;
+      margin: 5px 0;
+      overflow: auto;
+      .call-to-action__nav-item {
+        display: block;
+        text-decoration: none;
+      }
+    }
+    &__icon {
+      margin: 0 auto;
+      width: 40%;
+      padding: 0 10px 0 0;
+    }
+    &__desc {
+      display: block;
+      font-weight: normal;
+    }
+  }
 }

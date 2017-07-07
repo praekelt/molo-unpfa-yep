@@ -1,13 +1,53 @@
 .yourtips {
-  &--share-cta {
-    color: #fff;
-    background: #e60382;
-    padding: 25px 15px 15px 15px;
-    .call-to-action {
-      &__nav-item-text {
-        color: #fff;
-      }
+  .call-to-action {
+    &__nav-item-text {
+     color: $rose_pink;
     }
   }
+  &--banner {
+    color: #fff;
+    background: #e60382;
+    padding: 25px 0 15px;
+    .call-to-action {
+      &__nav-item-text {color: #fff;}
+    }
+  }
+  &-form {padding: 10px 15px 30px;}
+  &-list {
+    &__item {
+      .yourtips__description  {
+        padding: 25px 30px 0 30px;
+        &:before {
+          position: absolute;
+          margin: -10px 0 0 0;
+          left: 10px;
+        }
+        &:after {
+          position: absolute;
+          margin: 0 0 0 5px;
+        }
+      }
+    .yourtips__description-homepage {padding: 25px 30px 0;}
+    .call-to-action__nav-item {
+      padding: 15px 15px 25px;
+    }
+    &:nth-child(even) {background: $rose_pink;}
+    &:nth-child(odd) {background: $turquoise;}
+    }
+  }
+  &__author {padding: 15px 30px 20px;}
 
+  //YOURTIPS MENU
+  &-menu {
+    &__icon {float: left;}
+  }
+  //THANK YOU PAGE
+  &__thank-you-message:after {
+    background: url(/static/new/img/check-icon.png) no-repeat 0 0;
+    content: "";
+    display: block;
+    margin: 0 auto;
+    height: 118px;
+    width: 118px;
+  }
 }

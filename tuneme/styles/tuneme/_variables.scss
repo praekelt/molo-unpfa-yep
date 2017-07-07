@@ -5,10 +5,6 @@ $font-medium    :   16px;
 $font-small     :   13px;
 $font-x-small   :   9px;
 
-
-
-
-
 $border: 1px #e7e7e7 solid;
 
 $white                :           #ffffff;
@@ -50,4 +46,8 @@ $color_list: (
 @mixin float-clear($value) {
   float: $value;
   clear: $value;
+}
+
+@mixin line-break-value($pos, $width, $color) {
+  border-#{$pos}: $width solid $color;
 }

@@ -83,6 +83,7 @@ INSTALLED_APPS = [
     'django_comments',
     'molo.commenting',
     'molo.yourwords',
+    'molo.yourtips',
     'molo.servicedirectory',
     'polls',
 
@@ -92,6 +93,9 @@ INSTALLED_APPS = [
     'compressor',
     'notifications',
     'el_pagination',
+
+    'secretballot',
+    'likes'
 ]
 
 COMMENTS_APP = 'molo.commenting'
@@ -120,6 +124,8 @@ MIDDLEWARE_CLASSES = [
     'molo.core.middleware.NoScriptGASessionMiddleware',
     'molo.core.middleware.MoloGoogleAnalyticsMiddleware',
     'molo.core.middleware.MultiSiteRedirectToHomepage',
+
+    'likes.middleware.SecretBallotUserIpUseragentMiddleware'
 ]
 
 AUTHENTICATION_BACKENDS = [

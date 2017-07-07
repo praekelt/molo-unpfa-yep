@@ -1,4 +1,4 @@
-{% load wagtailcore_tags compress wagtailuserbar core_tags static i18n %}
+{% load wagtailcore_tags compress wagtailuserbar core_tags tip_tags static i18n %}
 {% load wagtailsettings_tags wagtailimages_tags competition_tag comments molo_commenting_tags %}
 {% load google_analytics_tags %}
 {% get_settings %}
@@ -126,6 +126,13 @@
         <span>{{ section.description }}</span>
       </li>
       {% endfor %}
+      {% get_your_tip as your_tip %}
+      {% if your_tip %}
+      <li class="menu__item menu__item{{ your_tip.get_effective_extra_style_hints }}">
+         <a href="{{ your_tip.url }}">{% trans your_tip.title %}</a>
+        <span>{% trans your_tip.description %}</span>
+       </li>
+      {% endif %}
     </ul>
     <ul class="menu-items menu-items--alt">
       <li class="menu__item menu__item--default"><a href="#search-form">{% trans "Search" %}</a></li>
