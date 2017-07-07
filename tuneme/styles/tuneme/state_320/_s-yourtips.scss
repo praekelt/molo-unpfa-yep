@@ -12,9 +12,7 @@
       &__nav-item-text {color: #fff;}
     }
   }
-  &-form {
-    padding: 10px 15px 30px;
-  }
+  &-form {padding: 10px 15px 30px;}
   &-list {
     &__item {
       .yourtips__description  {
@@ -37,17 +35,12 @@
     &:nth-child(odd) {background: $turquoise;}
     }
   }
-  &__author {
-    padding: 15px 30px 20px;
-  }
+  &__author {padding: 15px 30px 20px;}
 
   //YOURTIPS MENU
   &-menu {
-    &__icon {
-      float: left;
-    }
+    &__icon {float: left;}
   }
-
   //THANK YOU PAGE
   &__thank-you-message:after {
     background: url(/static/new/img/check-icon.png) no-repeat 0 0;
