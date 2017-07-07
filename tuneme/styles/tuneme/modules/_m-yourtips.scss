@@ -31,23 +31,18 @@
       outline: none;
       text-decoration: underline;
       font-weight: bold;
+      //Default button - to double check UI
+      display: block;
+      padding: 0 15px;
     }
   }
   &__description {
     padding: 5px 15px 10px; //Does not work on Thank you page
     font-size: 17px;
-    //Extra CMS markup - to be deleted
-    .block-paragraph {
-      display: inline;
-      p {
-        display: inline;
-        margin: 0;
-      }
-    }
-    //IMPLEMENTED ON PHASE2
-    .block-paragraph:last-child {
-      //display: block;
-    }
+  }
+  &__author {
+    padding: 15px;
+    margin: 0;
   }
   &--banner {
     color: #000;
@@ -91,7 +86,7 @@
       .yourtips__description-homepage {padding: 25px 15px 0;}
     }
   }
-  &__posted-date {
+  .likes, &__posted-date {
     background: #d8d8d8;
     color: #000;
     font-size: 14px;
@@ -103,7 +98,22 @@
   //YOURTIPS MENU
   &-menu {
     &__item {
-      
+      display: block;
+      margin: 5px 0;
+      overflow: auto;
+      .call-to-action__nav-item {
+        display: block;
+        text-decoration: none;
+      }
+    }
+    &__icon {
+      margin: 0 auto;
+      width: 40%;
+      padding: 0 10px 0 0;
+    }
+    &__desc {
+      display: block;
+      font-weight: normal;
     }
   }
 }
