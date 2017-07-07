@@ -47,11 +47,9 @@
   {% endfor %}
   {% get_your_tip as your_tip %}
   {% if your_tip %}
-      <div class="yourtips yourtips-share-your-tip">
-          <a href="{% url 'molo.yourtips:tip_entry' your_tip_page_slug %}" class="call-to-action">
-            {% trans "Have a tip related to this?" %} <br /> {% trans "Share here" %}
-          </a>
-      </div>
+    <a href="{% url 'molo.yourtips:tip_entry' your_tip.slug %}" class="call-to-action__nav-item">
+      {% trans "Have a tip related to this?" %} {% trans "Share here" %}
+    </a>
   {% endif %}
   {% social_media_article %}
 </div>

@@ -6,25 +6,23 @@
     {% breadcrumbs %}
   {% endblock %}
 </div>
-
- {#{% your_tips_menu_in_section self %}#}
  {% your_words_competition_in_section self %}
-<ul class="article-list article-list{{self.get_effective_extra_style_hints}}">
-  {% load_child_articles_for_section self count=None as articles %}
-  {% for article in articles %}
-  <li class="article-list__item">
-   <a href="{% pageurl article %}" class="article-list__item--anchor">
-    {% if article.image %}
-      {% image article.image width-90 height-90 jpegquality-70 as article_image %}
-      <img src="{{ article_image.url }}" alt="{{ article_image.title }}" class="article-list__image article-list__image--section"/>
-    {% endif %}
-    <h1 class="article-list__title">{{article.title}}</h1>
-    <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
-    </a>
-  </li>
-  {% endfor %}
-  <li class="article-list__item article-list__item--more"><a href="{% pageurl self %}" class="article-list__item--more-anchor">{% trans "More" %}</a></li>
-</ul>
+  <ul class="article-list article-list{{self.get_effective_extra_style_hints}}">
+    {% load_child_articles_for_section self count=None as articles %}
+    {% for article in articles %}
+    <li class="article-list__item">
+     <a href="{% pageurl article %}" class="article-list__item--anchor">
+      {% if article.image %}
+        {% image article.image width-90 height-90 jpegquality-70 as article_image %}
+        <img src="{{ article_image.url }}" alt="{{ article_image.title }}" class="article-list__image article-list__image--section"/>
+      {% endif %}
+      <h1 class="article-list__title">{{article.title}}</h1>
+      <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
+      </a>
+    </li>
+    {% endfor %}
+    <li class="article-list__item article-list__item--more"><a href="{% pageurl self %}" class="article-list__item--more-anchor">{% trans "More" %}</a></li>
+  </ul>
 {% load_child_sections_for_section self as sections %}
 {% for section in sections %}
   <h1 class="heading heading--section-list heading{{section.get_effective_extra_style_hints}}">
