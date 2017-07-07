@@ -4,6 +4,8 @@
      color: $rose_pink;
     }
   }
+
+  //HOMEPAGE BANNER
   &--banner {
     color: #fff;
     background: #e60382;
@@ -12,7 +14,29 @@
       &__nav-item-text {color: #fff;}
     }
   }
+
+  //YOURTIPS MENU
+  &-menu {
+    &__icon {float: left;}
+  }
+
+  //FORM & THANK YOU
   &-form {padding: 10px 15px 30px;}
+  &__thank-you-message:after {
+    background: url(/static/new/img/check-icon.png) no-repeat 0 0;
+    content: "";
+    display: block;
+    margin: 0 auto;
+    height: 118px;
+    width: 118px;
+  }
+
+  //YOURTIPS LIST
+  @each $name, $color in $color_list {
+    &__label--#{$name} {
+      background: $color;
+    }
+  }
   &-list {
     &__item {
       .yourtips__description  {
@@ -37,17 +61,4 @@
   }
   &__author {padding: 15px 30px 20px;}
 
-  //YOURTIPS MENU
-  &-menu {
-    &__icon {float: left;}
-  }
-  //THANK YOU PAGE
-  &__thank-you-message:after {
-    background: url(/static/new/img/check-icon.png) no-repeat 0 0;
-    content: "";
-    display: block;
-    margin: 0 auto;
-    height: 118px;
-    width: 118px;
-  }
 }
