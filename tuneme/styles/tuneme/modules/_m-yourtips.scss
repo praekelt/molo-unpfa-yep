@@ -93,7 +93,12 @@
   }
 
   //FORM & THANK YOU
-  &-form {padding: 10px 15px;}
+  &-form {
+    padding: 10px 15px;
+    textarea {
+      height: 75px;
+    }
+  }
 
   //YOURTIPS LIST
   &__label {
