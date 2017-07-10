@@ -2,7 +2,7 @@ molo.core==5.4.6
 molo.profiles==5.1.0
 molo.commenting==5.0.2
 molo.yourwords==5.0.1
-molo.yourtips==0.0.1
+molo.yourtips==5.0.2
 molo.servicedirectory==2.1.5
 molo.surveys==5.2.0
 elasticsearch==1.7.0
