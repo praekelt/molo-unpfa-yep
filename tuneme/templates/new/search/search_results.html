@@ -8,15 +8,15 @@
 {% paginate 10 results as paginated_results %}
 {% for page in paginated_results %}
   {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
-    <a href="{% pageurl ancestor %}">
-      {% if ancestor.sectionpage.image %}
-        <h3 class="section-heading">
-          {{ancestor.title}}</h3>
-      {% else %}
-        <h3 class="section-heading">
-          {{parent_section.title}}</h3>
-      {% endif %}
-    </a>
+    {% if ancestor.sectionpage %}
+      <a href="{% pageurl ancestor %}">
+        <h3 class="section-heading">{{ancestor.title}}</h3>
+      </a>
+    {% else %}
+      <a href="{% pageurl parent_section %}">
+        <h3 class="section-heading">{{parent_section.title}}</h3>
+      </a>
+    {% endif %}
     <div class="section-article-list">
     <a href="{% pageurl page %}">
       <div class="section-article-list__item">
@@ -24,19 +24,23 @@
           {% image page.image width-80 jpegquality-70 as tmp_photo %}
           <img src="{{ tmp_photo.url }}" alt="{{ page.title }}" class="section-article-list__item--image"/>
         {% endif %}
+
         {% if page.title_highlight %}
           <h1 class="search--result__title search--result__title-highlight">{{page.title_highlight|safe}}</h1>
         {% else %}
           <h1 class="search--result__title">{{page.title}}</h1>
         {% endif %}
+
         {% if page.subtitle_highlight or page.body_highlight %}
-          {% if page.subtitle_highlight %}
-            <p class="section-article-list__item-description highlight-description">{{page.subtitle_highlight|safe}}</p>
-          {% elif page.body_highlight %}
-            <p class="section-article-list__item-description highlight-description">{{page.body_highlight|safe}}</p>
-          {% endif %}
+          <p class="section-article-list__item-description highlight-description">
+            {% if page.subtitle_highlight %}
+              {{page.subtitle_highlight|safe}}
+            {% elif page.body_highlight %}
+              {{page.body_highlight|safe}}
+            {% endif %}
+          </p>
         {% else %}
-            <p class="section-article-list__item-description">{{page.subtitle}}</p>
+          <p class="section-article-list__item-description">{{page.subtitle}}</p>
         {% endif %}
         </div>
       </a>
@@ -44,7 +48,11 @@
   {% endwith %}
 {% endfor %}
 </div>
+{% get_pages %}
 <div id="pagination" class="search-result pagination">
+  {% if pages.next %}
+   <a id="more-link" class="call-to-action call-to-action__item more-link" href="#" data-next="{% url 'search_index' %}?page={{pages.next.number}}&q={{search_query}}">Load More</a>
+  {% endif %}
   <div class="pagination-step-links">
     {% if search_results.has_previous %}
       <a href="?p={{ search_results.previous_page_number }}&amp;q={{search_query}}">&larr;</a>
@@ -57,22 +65,6 @@
     {% endif %}
   </div>
 </div>
-<!-- CHECK REPEATED PAGINATION -->
-  {% get_pages %}
-  {% if pages.next %}
-   <a id="more-link" class="call-to-action call-to-action__item more-link" href="#" data-next="{% url 'search_index' %}?page={{pages.next.number}}&q={{search_query}}">Load More</a>
-  {% endif %}
-  <div class="pagination-step-links">
-    {% if search_results.has_previous %}
-        <a href="?p={{ search_results.previous_page_number }}&amp;q={{search_query}}">&larr;</a>
-    {% endif %}
-    <span class="current">
-        Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}
-    </span>
-    {% if search_results.has_next %}
-        <a href="?p={{ search_results.next_page_number }}&amp;q={{search_query}}">&rarr;</a>
-    {% endif %}
-  </div>
 {% else %}
 <div class="search-results">
   <h2 class="section-heading section-heading--search f-medium">{% trans "Search" %}</h2>
