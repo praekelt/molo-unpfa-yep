@@ -54,6 +54,12 @@
   margin-bottom: 25px;
   text-transform: capitalize;
 }
-.search--result__title {
-  font-weight: bold;
+
+.search--result {
+  &__title {
+    font-weight: bold;
+  }
+  &__title-highlight {
+    font-style: italic;
+  }
 }

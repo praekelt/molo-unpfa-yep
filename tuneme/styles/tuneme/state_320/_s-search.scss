@@ -2,10 +2,10 @@
 .section-article-list__item--image {
   border-radius: 10px;
 }
-.search-results {
-  @each $name, $color in $color_list {
-   .section-heading--#{$name} {
-      color: $color;
-   }
+@each $name, $color in $color_list {
+  .search-results--#{$name {
+   .section-heading,
+   .search--result__title-highlight,
+   .highlight-description {color: $color;}
   }
 }
