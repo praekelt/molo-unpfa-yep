@@ -33,7 +33,7 @@
 
   //YOURTIPS LIST
   &__label {
-    border-radius: 10px;
+    border-radius: 30px;
   }
   &-list {
     &__item {
@@ -64,4 +64,8 @@
     }
   }
   &__author {padding: 15px 30px 20px;}
+  &__social-media {
+    .likes {float: left;}
+    .social-share {float: right;}
+  }
 }

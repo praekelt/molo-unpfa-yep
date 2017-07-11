@@ -130,7 +130,7 @@
         &:before {content: open-quote;}
         &:after {content: close-quote;}
       }
-      .yourtips__description-homepage {padding: 25px 15px 0;}
+      .yourtips__description-homepage {padding: 0 15px 0;}
     }
   }
   &__posted-date {
@@ -141,16 +141,32 @@
     padding: 10px 15px;
     text-transform: capitalize;
   }
-  .likes {
+  .yourtips__social-media {
     background: #d8d8d8;
-    font-size: 16px;
     padding: 10px 15px;
-    text-transform: capitalize;
-    &__counter {display: inline-block;}
-    &__nav-item {
-      display: inline-block;
-      margin: 0;
+    overflow: auto;
+    .likes {
+      display: inline;
+      font-size: 16px;
+      text-transform: capitalize;
+        &__counter {display: inline-block;}
+        &__nav-item {
+          display: inline-block;
+          margin: 0;
+        }
+        &__nav-item-anchor {color: #000;}
     }
-    &__nav-item-anchor {color: #000;}
+    .social-share {
+      display: inline;
+      font-size: 14px;
+      &-label {
+        display: inline-block;
+        margin: 0;
+      }
+      .call-to-action__item-share--yourtips {
+        color: #000;
+        margin: 0;
+      }
+    }
   }
 }
