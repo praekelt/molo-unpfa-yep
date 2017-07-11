@@ -3,21 +3,25 @@
 {% block title %}{% trans "Search" %}{% endblock %}
 {% block content %}
 {% if search_results %}
-<div class="search-results search-results{{page.get_parent_section.get_effective_extra_style_hints}}">
+<div class="search-results">
 <h2 class="section-heading section-heading--search f-medium">{% trans "your results:"%} {{search_query}}</h2>
 {% paginate 10 results as paginated_results %}
 {% for page in paginated_results %}
   {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
     {% if ancestor.sectionpage %}
       <a href="{% pageurl ancestor %}">
-        <h3 class="section-heading">{{ancestor.title}}</h3>
+        <h3 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
+          {{ancestor.title}}
+        </h3>
       </a>
     {% else %}
       <a href="{% pageurl parent_section %}">
-        <h3 class="section-heading">{{parent_section.title}}</h3>
+        <h3 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
+          {{parent_section.title}}
+        </h3>
       </a>
     {% endif %}
-    <div class="section-article-list">
+    <div class="section-article-list section-article-list{{page.get_parent_section.get_effective_extra_style_hints}}">
     <a href="{% pageurl page %}">
       <div class="section-article-list__item">
         {% if page.image %}

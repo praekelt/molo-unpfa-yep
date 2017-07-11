@@ -3,8 +3,8 @@
   border-radius: 10px;
 }
 @each $name, $color in $color_list {
-  .search-results--#{$name {
-   .section-heading,
+  .section-heading--#{$name {color: $color;}
+  .section-article-list--#{$name {
    .search--result__title-highlight,
    .highlight-description {color: $color;}
   }
