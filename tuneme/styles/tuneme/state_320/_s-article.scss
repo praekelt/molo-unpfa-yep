@@ -2,6 +2,9 @@
   display: block;
   border-radius: 10px;
 }
+.featured-articles--age-tag {
+  margin: 0 10px;
+}
 
 @each $name, $color in $color_list {
   .article__content--#{$name} {
