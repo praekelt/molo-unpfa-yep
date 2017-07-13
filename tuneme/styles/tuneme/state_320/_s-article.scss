@@ -2,16 +2,18 @@
   display: block;
   border-radius: 10px;
 }
+
 @each $name, $color in $color_list {
   .article__content--#{$name} {
-    .featured-articles {
-      color: $color;
-    }
-    .featured-articles__heading {
-      border-color: $color;
-    }
+    .call-to-action__nav-item-text,
     .tag__item-anchor {
       color: $color;
     }
+   .featured-articles__nav-item {
+     color: $color;
+   }
+   .featured-articles__heading {
+     border-color: $color;
+   }
   }
 }
