@@ -16,12 +16,12 @@
     {% endif %}
     </a>
     {% load_tags_for_article article as tags %}
-    <div class="article-list__item--age-tag">
-    {% if tags %}
-      {% for tag in tags %}
-        <span>{{ tag.title }}</span>
-      {% endfor %}
-    </div>
+      {% if tags %}
+      <div class="article-list__item--age-tag">
+        {% for tag in tags %}
+          <span>{{ tag.title }}</span>
+        {% endfor %}
+      </div>
     {% endif %}
   </li>
   {% endfor %}
