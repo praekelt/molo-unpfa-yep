@@ -8,6 +8,7 @@
 {% paginate 10 results as paginated_results %}
  {% for page in paginated_results %}
   {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
+  {% load_tags_for_article page as tags %}
     {% if ancestor.sectionpage %}
       <a href="{% pageurl ancestor %}">
         <h3 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
@@ -25,23 +26,23 @@
             {% image page.image width-80 jpegquality-70 as tmp_photo %}
             <img src="{{ tmp_photo.url }}" alt="{{ page.title }}" class="section-article-list__item--image"/>
           {% endif %}
+
           {% if page.title_highlight %}
             <h1 class="search--result__title search--result__title-highlight">{{page.title_highlight|safe}}</h1>
           {% else %}
             <h1 class="search--result__title">{{page.title}}</h1>
           {% endif %}
-        {% if page.subtitle_highlight or page.body_highlight %}
-          <p class="section-article-list__item-description highlight-description">
-            {% if page.subtitle_highlight %}
-              {{page.subtitle_highlight|safe}}
-            {% elif page.body_highlight %}
-              {{page.body_highlight|safe}}
-            {% endif %}
-          </p>
-        {% else %}
-          <p class="section-article-list__item-description">{{page.subtitle}}</p>
-        {% endif %}
-        {% load_tags_for_article page as tags %}
+          {% if page.subtitle_highlight or page.body_highlight %}
+            <p class="section-article-list__item-description highlight-description">
+              {% if page.subtitle_highlight %}
+                {{page.subtitle_highlight|safe}}
+              {% elif page.body_highlight %}
+                {{page.body_highlight|safe}}
+              {% endif %}
+            </p>
+          {% else %}
+            <p class="section-article-list__item-description">{{page.subtitle}}</p>
+          {% endif %}
           {% if tags %}
             <div class="article-list__item--age-tag">
               {% for tag in tags %}
@@ -49,7 +50,13 @@
               {% endfor %}
             </div>
           {% endif %}
-        </div>
+          </div>
+      </a>
+  {% else %}
+      <a href="{% pageurl parent_section %}">
+        <h3 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
+          {{parent_section.title}}
+        </h3>
       </a>
     <div class="section-article-list section-article-list{{page.get_parent_section.get_effective_extra_style_hints}}">
       <a href="{% pageurl page %}">
@@ -74,15 +81,13 @@
           {% else %}
             <p class="section-article-list__item-description">{{page.subtitle}}</p>
           {% endif %}
-          {% load_tags_for_article page as tags %}
-            {% if tags %}
-              <div class="article-list__item--age-tag">
-                {% for tag in tags %}
-                  <span>{{ tag.title }}</span>
-                {% endfor %}
-              </div>
-            {% endif %}
-          </div>
+          {% if tags %}
+            <div class="article-list__item--age-tag">
+              {% for tag in tags %}
+                <span>{{ tag.title }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
           </div>
         </a>
       </div>
