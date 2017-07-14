@@ -6,13 +6,15 @@
     {% breadcrumbs %}
   {% endblock %}
 </div>
-<div class="article__age-tag-banner">
   {% load_tags_for_article self as tags %}
-  {% for tag in tags %}
-    <p>{% trans "Note: Content appropriate for readers" %}
-    <span>{{ tag.title|slice:":-1" }}</span> {% trans "and older" %}</p>
-  {% endfor %}
-</div>
+  {% if tags %}
+    <div class="article__age-tag-banner">
+      {% for tag in tags %}
+        <p>{% trans "Note: Content appropriate for readers" %}
+        <span>{{ tag.title|slice:":-1" }}</span> {% trans "and older" %}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
 {% if self.image %}
   {% image self.image width-280 jpegquality-70 as article_image %}
   <div class="article__image">
@@ -49,12 +51,14 @@
     {% elif block.block_type = 'page' %}
     <div class="featured-articles">
         <a href="{% pageurl block.value %}" class="featured-articles__nav-item">{{ block.value }}</a>
+        {% load_tags_for_article block.value as tags %}
+        {% if tags %}
         <div class="article-list__item--age-tag featured-articles--age-tag">
-          {% load_tags_for_article block.value as tags %}
           {% for tag in tags %}
             <span>{{ tag.title }}</span>
           {% endfor %}
         </div>
+        {% endif %}
     </div>
     {% else %}
         {{ block }}
