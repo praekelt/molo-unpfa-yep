@@ -5,7 +5,8 @@
 {% if search_results %}
 <div class="search-results">
 <h2 class="section-heading section-heading--search f-medium">{% trans "your results:"%} {{search_query}}</h2>
-{% for page in search_results %}
+{% paginate 10 results as paginated_results %}
+ {% for page in paginated_results %}
   {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
     {% if ancestor.sectionpage %}
       <a href="{% pageurl ancestor %}">
