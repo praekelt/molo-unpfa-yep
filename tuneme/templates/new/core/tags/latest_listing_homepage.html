@@ -15,12 +15,14 @@
     <h3 class="article-list__subtitle">{{article.subtitle}}</h3>
     {% endif %}
     </a>
+    {% load_tags_for_article article as tags %}
     <div class="article-list__item--age-tag">
-      {% load_tags_for_article article as tags %}
+    {% if tags %}
       {% for tag in tags %}
         <span>{{ tag.title }}</span>
       {% endfor %}
     </div>
+    {% endif %}
   </li>
   {% endfor %}
 </ul>
