@@ -43,6 +43,12 @@
   .section-article-list  {
     padding: 0 15px 5px;
   }
+  .section-article-list__item {
+    padding: 0 0 10px;
+    &-description {
+      margin: 0;
+    }
+  }
   .section-heading--search  {
     padding: 15px;
   }
@@ -58,6 +64,7 @@
 .search--result {
   &__title {
     font-weight: bold;
+    margin: 10px 0 5px;
   }
   &__title-highlight {
     font-style: italic;

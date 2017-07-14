@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags comments el_pagination_tags i18n %}
+{% load wagtailcore_tags core_tags wagtailimages_tags comments el_pagination_tags i18n %}
 {% block title %}{% trans "Search" %}{% endblock %}
 {% block content %}
 {% if search_results %}
@@ -45,6 +45,14 @@
           </p>
         {% else %}
           <p class="section-article-list__item-description">{{page.subtitle}}</p>
+        {% endif %}
+        {% load_tags_for_article page as tags %}
+        {% if tags %}
+        <div class="article-list__item--age-tag">
+          {% for tag in tags %}
+            <span>{{ tag.title }}</span>
+          {% endfor %}
+        </div>
         {% endif %}
         </div>
       </a>
