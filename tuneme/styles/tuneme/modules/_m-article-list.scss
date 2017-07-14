@@ -1,37 +1,39 @@
-
-.article-list--section {
-  border-bottom: $border;
-}
-.article-list__item {
-  padding: 5px 10px;
-  .article-list__item--anchor {
-    color: #000;
+.article-list {
+  &__title {
     font-weight: bold;
+    padding: 10px 5px 0;
   }
-}
-
-.article-list__item--more-anchor {
-  color: #cd36f5;
-}
-.article-list__image {
-  display: block;
-  img {
-    float: none;
-    height: auto;
-    margin: 10px auto;
-    width: auto;
+  &--section { border-bottom: $border; }
+  &__image--section { width: initial; }
+  &__item {
+    padding: 5px 10px;
+    &--anchor {
+      color: #000;
+      font-weight: bold;
+    }
+    &--more-anchor { color: #cd36f5; }
+    &--age-tag {
+      background: #000;
+      color: #fff;
+      display: inline-block;
+      padding: 5px;
+      margin: 5px 0;
+    }
   }
-}
-
-.article-list__image--section{
-  width: initial;
-}
-.article-list__title {
-  font-weight: bold;
-  padding: 10px 5px 0;
-}
-.article-list--latest-listing .article-list__item:first-child {
-  .article-list__title {
-    font-size: $font-x-large;
+  &__image {
+    display: block;
+    img {
+      float: none;
+      height: auto;
+      margin: 10px auto;
+      width: auto;
+    }
+  }
+  &--latest-listing {
+    .article-list__item:first-child {
+      .article-list__title {
+        font-size: $font-x-large;
+      }
+    }
   }
 }

@@ -1,11 +1,17 @@
 {% extends "base.html" %}
-
 {% load wagtailcore_tags wagtailimages_tags core_tags mptt_tags comments molo_commenting_tags tip_tags static i18n %}
 {% block content %}
 <div class="breadcrumbs">
   {% block breadcrumbs %}
     {% breadcrumbs %}
   {% endblock %}
+</div>
+<div class="article__age-tag-banner">
+  {% load_tags_for_article self as tags %}
+  {% for tag in tags %}
+    <p>{% trans "Note: Content appropriate for readers" %}
+    <span>{{ tag.title|slice:":-1" }}</span> {% trans "and older" %}</p>
+  {% endfor %}
 </div>
 {% if self.image %}
   {% image self.image width-280 jpegquality-70 as article_image %}
@@ -17,6 +23,7 @@
 {% if self.subtitle %}
 <h2 class="article__subtitle">{{ self.subtitle }}</h2>
 {% endif %}
+
 <div class="article__content article__content{{ self.get_parent_section.get_effective_extra_style_hints }}">
   <div class="article__content--inner">
   {% for block in self.body %}
@@ -40,16 +47,25 @@
         {% endfor %}
       </ul>
     {% elif block.block_type = 'page' %}
-        <a href="{% pageurl block.value %}" class="featured-articles">{{ block.value }}</a>
+    <div class="featured-articles">
+        <a href="{% pageurl block.value %}" class="featured-articles__nav-item">{{ block.value }}</a>
+        <div class="article-list__item--age-tag featured-articles--age-tag">
+          {% load_tags_for_article block.value as tags %}
+          {% for tag in tags %}
+            <span>{{ tag.title }}</span>
+          {% endfor %}
+        </div>
+    </div>
     {% else %}
         {{ block }}
     {% endif %}
   {% endfor %}
   {% get_your_tip as your_tip %}
   {% if your_tip %}
-    <a href="{% url 'molo.yourtips:tip_entry' your_tip.slug %}" class="call-to-action__nav-item">
-      {% trans "Have a tip related to this?" %} {% trans "Share here" %}
-    </a>
+  <p class="call-to-action__nav-item">{% trans "Have a tip related to this?" %}
+    <a href="{% url 'molo.yourtips:tip_entry' your_tip.slug %}" class="call-to-action__nav-item-text">
+      {% trans "Share here" %}</a>
+  </p>
   {% endif %}
   {% social_media_article %}
 </div>
