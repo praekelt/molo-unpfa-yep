@@ -58,7 +58,6 @@
           {{parent_section.title}}
         </h3>
       </a>
-    <div class="section-article-list section-article-list{{page.get_parent_section.get_effective_extra_style_hints}}">
       <a href="{% pageurl page %}">
         <div class="section-article-list__item">
           {% if page.image %}
@@ -88,9 +87,8 @@
               {% endfor %}
             </div>
           {% endif %}
-          </div>
-        </a>
       </div>
+    </a>
     {% endif %}
   {% endwith %}
 {% endfor %}
