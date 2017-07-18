@@ -49,11 +49,4 @@ LOCALE_PATHS = (
     join(PROJECT_ROOT, "locale"),
 )
 
-# until we can specify ES host in cluster
-WAGTAILSEARCH_BACKENDS = {
-    'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.db',
-    }
-}
-
 ENABLE_SERVICE_DIRECTORY = bool_env('ENABLE_SERVICE_DIRECTORY')
