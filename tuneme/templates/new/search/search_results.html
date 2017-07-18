@@ -8,7 +8,7 @@
 {% paginate 10 results as paginated_results %}
  {% for page in paginated_results %}
   {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
-  {% load_tags_for_article page as tags %}
+  {% load_tags_for_article page as navigation_tags %}
     {% if ancestor.sectionpage %}
       <a href="{% pageurl ancestor %}">
         <h3 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
@@ -43,12 +43,14 @@
           {% else %}
             <p class="section-article-list__item-description">{{page.subtitle}}</p>
           {% endif %}
-          {% if tags %}
-            <div class="article-list__item--age-tag">
-              {% for tag in tags %}
-                <span>{{ tag.title }}</span>
-              {% endfor %}
-            </div>
+          {% if settings.core.SiteSettings.enable_tag_navigation %}
+            {% if navigation_tags %}
+              <div class="article-list__item--age-tag">
+                {% for tag in navigation_tags %}
+                  <span>{{ tag.title }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
           {% endif %}
           </div>
       </a>
@@ -80,12 +82,14 @@
           {% else %}
             <p class="section-article-list__item-description">{{page.subtitle}}</p>
           {% endif %}
-          {% if tags %}
-            <div class="article-list__item--age-tag">
-              {% for tag in tags %}
-                <span>{{ tag.title }}</span>
-              {% endfor %}
-            </div>
+          {% if settings.core.SiteSettings.enable_tag_navigation %}
+            {% if navigation_tags %}
+              <div class="article-list__item--age-tag">
+                {% for tag in navigation_tags %}
+                  <span>{{ tag.title }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
           {% endif %}
       </div>
     </a>
