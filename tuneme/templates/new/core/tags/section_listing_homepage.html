@@ -1,4 +1,5 @@
-{% load wagtailcore_tags core_tags wagtailimages_tags comments competition_tag i18n %}
+{% load wagtailcore_tags core_tags wagtailsettings_tags wagtailimages_tags  comments competition_tag i18n %}
+{% get_settings %}
 {% for section in sections %}
   {% load_descendant_articles_for_section section featured_in_homepage=True count=2 as featured_articles %}
   {% if featured_articles %}
@@ -19,13 +20,15 @@
       <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
       {% endif %}
       </a>
-      {% load_tags_for_article article as tags %}
-      {% if tags %}
-      <div class="article-list__item--age-tag">
-        {% for tag in tags %}
-          <span>{{ tag.title }}</span>
-        {% endfor %}
-      </div>
+      {% load_tags_for_article article as navigation_tags %}
+      {% if settings.core.SiteSettings.enable_tag_navigation %}
+        {% if navigation_tags %}
+          <div class="article-list__item--age-tag">
+            {% for tag in navigation_tags  %}
+              <span>{{ tag }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
       {% endif %}
     </li>
     {% endfor %}
