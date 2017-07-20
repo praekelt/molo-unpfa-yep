@@ -66,16 +66,16 @@
         {{ block }}
     {% endif %}
   {% endfor %}
-  {% get_your_tip as your_tip %}
-  {% if your_tip %}
-  <p class="call-to-action__nav-item">{% trans "Have a tip related to this?" %}
-    <a href="{% url 'molo.yourtips:tip_entry' your_tip.slug %}" class="call-to-action__nav-item-text">
-      {% trans "Share here" %}</a>
-  </p>
-  {% endif %}
   {% social_media_article %}
 </div>
 {% include "core/article_settings_tags.html" %}
 </div>
 {% include "comments/comment_block.html" %}
+{% get_your_tip as your_tip %}
+{% if your_tip %}
+<p class="call-to-action__nav-item">{% trans "Have a tip related to this?" %}
+  <a href="{% url 'molo.yourtips:tip_entry' your_tip.slug %}" class="call-to-action__nav-item-text">
+    {% trans "Share here" %}</a>
+</p>
+{% endif %}
 {% endblock %}
