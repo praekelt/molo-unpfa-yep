@@ -18,6 +18,10 @@
       display: inline-block;
       padding: 5px;
       margin: 5px 0;
+      &:after {
+        content: "+";
+        display: inline-block;
+      }
     }
   }
   &__image {
