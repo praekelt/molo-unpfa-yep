@@ -80,9 +80,10 @@
 }
 
 .tags-list {
-  &__item {
+  margin: 0;
+  .tag-list__item {
     display: inline-block;
     margin: 0 10px 0 0;
-    &-anchor { font-style: italic; }
+    .tag__item-anchor {font-style: italic;}
   }
 }

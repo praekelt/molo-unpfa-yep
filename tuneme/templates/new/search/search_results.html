@@ -8,7 +8,7 @@
 {% paginate 10 results as paginated_results %}
  {% for page in paginated_results %}
   {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
-  {% load_tags_for_article page as tags %}
+  {% load_tags_for_article page as navigation_tags %}
     {% if ancestor.sectionpage %}
       <a href="{% pageurl ancestor %}">
         <h3 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
@@ -60,7 +60,6 @@
           {{parent_section.title}}
         </h3>
       </a>
-    <div class="section-article-list section-article-list{{page.get_parent_section.get_effective_extra_style_hints}}">
       <a href="{% pageurl page %}">
         <div class="section-article-list__item">
           {% if page.image %}
@@ -92,9 +91,8 @@
               </div>
             {% endif %}
           {% endif %}
-          </div>
-        </a>
       </div>
+    </a>
     {% endif %}
   {% endwith %}
 {% endfor %}
