@@ -43,14 +43,6 @@
           {% else %}
             <p class="section-article-list__item-description">{{page.subtitle}}</p>
           {% endif %}
-<<<<<<< Updated upstream
-          {% if tags %}
-            <div class="article-list__item--age-tag">
-              {% for tag in tags %}
-                <span>{{ tag.title }}</span>
-              {% endfor %}
-            </div>
-=======
           {% if settings.core.SiteSettings.enable_tag_navigation %}
             {% if navigation_tags %}
               <div class="article-list__item--age-tag">
@@ -59,7 +51,6 @@
                 {% endfor %}
               </div>
             {% endif %}
->>>>>>> Stashed changes
           {% endif %}
           </div>
       </a>
@@ -92,14 +83,6 @@
           {% else %}
             <p class="section-article-list__item-description">{{page.subtitle}}</p>
           {% endif %}
-<<<<<<< Updated upstream
-          {% if tags %}
-            <div class="article-list__item--age-tag">
-              {% for tag in tags %}
-                <span>{{ tag.title }}</span>
-              {% endfor %}
-            </div>
-=======
           {% if settings.core.SiteSettings.enable_tag_navigation %}
             {% if navigation_tags %}
               <div class="article-list__item--age-tag">
@@ -108,7 +91,6 @@
                 {% endfor %}
               </div>
             {% endif %}
->>>>>>> Stashed changes
           {% endif %}
           </div>
         </a>

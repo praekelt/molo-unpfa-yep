@@ -15,15 +15,6 @@
     <h3 class="article-list__subtitle">{{article.subtitle}}</h3>
     {% endif %}
     </a>
-<<<<<<< Updated upstream
-    {% load_tags_for_article article as tags %}
-      {% if tags %}
-      <div class="article-list__item--age-tag">
-        {% for tag in tags %}
-          <span>{{ tag.title }}</span>
-        {% endfor %}
-      </div>
-=======
     {% load_tags_for_article article as navigation_tags %}
     {% if settings.core.SiteSettings.enable_tag_navigation %}
       {% if navigation_tags %}
@@ -33,7 +24,6 @@
           {% endfor %}
         </div>
       {% endif %}
->>>>>>> Stashed changes
     {% endif %}
   </li>
   {% endfor %}

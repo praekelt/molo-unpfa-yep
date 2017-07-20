@@ -51,15 +51,6 @@
     {% elif block.block_type = 'page' %}
     <div class="featured-articles">
         <a href="{% pageurl block.value %}" class="featured-articles__nav-item">{{ block.value }}</a>
-<<<<<<< Updated upstream
-        {% load_tags_for_article block.value as tags %}
-        {% if tags %}
-        <div class="article-list__item--age-tag featured-articles--age-tag">
-          {% for tag in tags %}
-            <span>{{ tag.title }}</span>
-          {% endfor %}
-        </div>
-=======
         {% load_tags_for_article block.value as navigation_tags %}
         {% if settings.core.SiteSettings.enable_tag_navigation %}
           {% if navigation_tags %}
@@ -69,7 +60,6 @@
               {% endfor %}
             </div>
           {% endif %}
->>>>>>> Stashed changes
         {% endif %}
     </div>
     {% else %}
