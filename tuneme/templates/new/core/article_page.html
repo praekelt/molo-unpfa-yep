@@ -11,7 +11,7 @@
     <div class="article__age-tag-banner">
       {% for tag in tags %}
         <p>{% trans "Note: Content appropriate for readers" %}
-        <span>{{ tag.title|slice:":-1" }}</span> {% trans "and older" %}</p>
+        <span>{{ tag }}</span> {% trans "and older" %}</p>
       {% endfor %}
     </div>
   {% endif %}
