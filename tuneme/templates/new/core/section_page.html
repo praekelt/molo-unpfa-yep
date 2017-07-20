@@ -19,6 +19,7 @@
         <h1 class="article-list__title">{{article.title}}</h1>
         <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
         </a>
+<<<<<<< Updated upstream
         {% load_tags_for_article article as tags %}
         {% if tags %}
         <div class="article-list__item--age-tag">
@@ -26,6 +27,17 @@
             <span>{{ tag.title }}</span>
           {% endfor %}
         </div>
+=======
+        {% load_tags_for_article article as navigation_tags %}
+        {% if settings.core.SiteSettings.enable_tag_navigation %}
+          {% if navigation_tags %}
+            <div class="article-list__item--age-tag">
+              {% for tag in navigation_tags %}
+                <span>{{ tag }} +</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+>>>>>>> Stashed changes
         {% endif %}
       </li>
     {% endfor %}
@@ -50,12 +62,25 @@
           <h4 class="article-list__subtitle">{{article.subtitle}}</h4>
           {% endif %}
         </a>
+<<<<<<< Updated upstream
         <div class="article-list__item--age-tag">
           {% load_tags_for_article article as tags %}
           {% for tag in tags %}
             <span>{{ tag.title }}</span>
           {% endfor %}
         </div>
+=======
+        {% load_tags_for_article article as navigation_tags %}
+        {% if settings.core.SiteSettings.enable_tag_navigation %}
+          {% if navigation_tags %}
+            <div class="article-list__item--age-tag">
+              {% for tag in navigation_tags %}
+                <span>{{ tag }} +</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endif %}
+>>>>>>> Stashed changes
       </li>
     {% endfor %}
   <li class="article-list__item article-list__item--more"><a href="{% pageurl section %}" class="article-list__item--more-anchor">{% trans "More" %} {{section.title}}</a></li>
