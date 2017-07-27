@@ -26,7 +26,6 @@
     padding: 0 15px 20px 15px;
   }
 }
-
 .article__content {
   ul, ol, p {
     padding: 0 15px;
@@ -83,6 +82,7 @@
   }
 }
 
+//Tag list
 .tags-list {
   margin: 0;
   .tag-list__item {
@@ -90,4 +90,9 @@
     margin: 0 10px 0 0;
     .tag__item-anchor {font-style: italic;}
   }
+}
+
+//Article teaser - Tags page
+.article-teaser {
+  padding: 0;
 }
