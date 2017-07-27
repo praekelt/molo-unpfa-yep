@@ -49,9 +49,10 @@
         {% endfor %}
       </ul>
     {% elif block.block_type = 'page' %}
-    <div class="featured-articles">
+    {% load_tags_for_article block.value as navigation_tags %}
+    <div class="featured-articles {% if navigation_tags%}featured-articles--tags{% endif %}">
         <a href="{% pageurl block.value %}" class="featured-articles__nav-item">{{ block.value }}</a>
-        {% load_tags_for_article block.value as navigation_tags %}
+
         {% if settings.core.SiteSettings.enable_tag_navigation %}
           {% if navigation_tags %}
             <div class="article-list__item--age-tag featured-articles--age-tag">
@@ -73,9 +74,10 @@
 {% include "comments/comment_block.html" %}
 {% get_your_tip as your_tip %}
 {% if your_tip %}
-<p class="call-to-action__nav-item">{% trans "Have a tip related to this?" %}
+<div class="call-to-action call-to-action--share-tip">
   <a href="{% url 'molo.yourtips:tip_entry' your_tip.slug %}" class="call-to-action__nav-item-text">
+    {% trans "Have a tip related to this?" %}
     {% trans "Share here" %}</a>
-</p>
+</div>
 {% endif %}
 {% endblock %}

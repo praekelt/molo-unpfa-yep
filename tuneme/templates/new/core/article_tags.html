@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags core_tags wagtailimages_tags competition_tag tip_tags static i18n el_pagination_tags %}
+{% block content %}
+  <div class="article-teaser">
+  <h1 class="article-teaser__heading">{{ tag.title }}</h1>
+  <ul class="article-list article-list{{self.get_effective_extra_style_hints}}">
+    {% paginate 10 object_list as articles %}
+    {% for each_article in articles %}
+    <li class="article-list__item">
+      <a href="{% pageurl each_article %}" class="article-list__item--anchor">
+      {% if each_article.get_effective_image %}
+        {% image each_article.get_effective_image fill-96x96 as teaser_thumbnail %}
+        <img src="{{ teaser_thumbnail.url }}" class="article-list__image article-list__image--section"/>
+      {% endif %}
+        <h1 class="article-list__title">
+          <a href="{% pageurl each_article %}" class="base-teaser__title-link">
+          {{ each_article.title }}</a>
+        </h1>
+        {% if each_article.subtitle %}
+        <h4 class="article-list__subtitle">{{ each_article.subtitle }}</h4>
+        {% endif %}
+      </a>
+    </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
