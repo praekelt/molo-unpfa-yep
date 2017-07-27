@@ -1,10 +1,7 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags core_tags wagtailimages_tags competition_tag tip_tags static i18n el_pagination_tags %}
-
-{% get_translation tag as translated_tag %}
 {% block content %}
   <div class="article-teaser">
-  <h1 class="heading heading__component">{{translated_tag.title}}</h1>
   <h1 class="article-teaser__heading">{{ tag.title }}</h1>
   <ul class="article-list article-list{{self.get_effective_extra_style_hints}}">
     {% paginate 10 object_list as articles %}
