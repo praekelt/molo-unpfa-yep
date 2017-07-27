@@ -1,4 +1,10 @@
 .call-to-action {
+  &--share-tip {
+    background: #ebebeb;
+    .call-to-action__nav-item-text {
+      padding: 10px 20% 10px 0;
+    }
+  }
   &__nav-item-primary {
     background: #000;
     border-radius: 14px;

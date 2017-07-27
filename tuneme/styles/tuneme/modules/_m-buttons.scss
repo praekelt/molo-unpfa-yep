@@ -1,5 +1,12 @@
 .call-to-action {
   padding: 10px 15px 5px;
+  &--share-tip {
+    .call-to-action__nav-item-text {
+      font-size: 17px;
+      display: inline-block;
+      text-decoration: underline;
+    }
+  }
   &__nav-item {
     display: block;
     padding: 0 0 10px;

@@ -74,9 +74,10 @@
 {% include "comments/comment_block.html" %}
 {% get_your_tip as your_tip %}
 {% if your_tip %}
-<p class="call-to-action__nav-item">{% trans "Have a tip related to this?" %}
+<div class="call-to-action call-to-action--share-tip">
   <a href="{% url 'molo.yourtips:tip_entry' your_tip.slug %}" class="call-to-action__nav-item-text">
+    {% trans "Have a tip related to this?" %}
     {% trans "Share here" %}</a>
-</p>
+</div>
 {% endif %}
 {% endblock %}
