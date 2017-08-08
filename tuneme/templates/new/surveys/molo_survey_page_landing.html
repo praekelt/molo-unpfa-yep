@@ -19,6 +19,7 @@
 		  {% trans "Back to Home page" %}
     </a>
   </div>
+
 {% if self.show_results and results %}
   <h1 class="{{surveytype}}__title">{{surveytype}} {% trans "Results" %}</h1>
   <h4 class="{{surveytype}}__intro">{% trans "Check out the results below!" %}</h4>
@@ -26,9 +27,9 @@
   {% for question, answers in results.items %}
     <h3 class="{{surveytype}}__question">{{ question }}</h3>
 	  {% for answer, count in answers.items %}
-    <div class="{{surveytype}}__answer">
-      <h6>{{ answer }}</h6>
-      <p class="{{surveytype}}__answer--percent-bar">{{ count }}</p>
+    <h6 class="{{surveytype}}__answer">{{ answer }}</h6>
+    <div class="{{surveytype}}__answer-bar {% if self.show_results_as_percentage %} {{surveytype}}__answer-bar-percentage" style="width: {{ count }}%;"{% endif %}>
+      <span class="{{surveytype}}__answer--percent-count">{{ count }}{% if self.show_results_as_percentage %}%{% endif %}</span>
     </div>
 	  {% endfor %}
   {% endfor %}
