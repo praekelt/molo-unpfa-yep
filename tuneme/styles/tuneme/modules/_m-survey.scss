@@ -44,17 +44,28 @@
     word-wrap: break-word;
     margin: 5px 0 10px 0;
     padding: 5px 10px;
-    &--percent-count {
-      margin: 5px auto;
+  }
+  &__answer-percentage {
+    display: inline-block;
+    &--count {
+      margin: 0;
       font-weight: bold;
-      padding: 3px 10px;
       display: inline-block;
-      text-align: center;
+    }
+    &--symbol {
+      display: inline-block;
     }
   }
-  &__answer-bar-percentage {
-    display: inline-block;
+  &__answer-percentage--no-bar {
+    min-width: 1%;
+    opacity: 0.4;
   }
+  &__answer-percentage--lower-bar {
+    opacity: 0.8;
+  }
+  &__answer-percentage--partial {opacity: 0.9;}
+  &__answer-percentage--winner{opacity: 1;}
+
   .error--surveys,
   .error--polls {
     padding: 0 15px;
