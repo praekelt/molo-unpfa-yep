@@ -40,21 +40,23 @@
   }
   &__answer-bar {
     color: #fff;
-    border-radius: 20px;
+    border-radius: 10px;
     word-wrap: break-word;
     margin: 5px 0 10px 0;
-    padding: 5px 10px;
+    padding: 5px 30px;
+    display: inline-block;
   }
   &__answer-percentage {
-    display: inline-block;
-    &--count {
-      margin: 0;
-      font-weight: bold;
-      display: inline-block;
-    }
+    border-radius: 20px;
+    padding: 5px 10px;
     &--symbol {
       display: inline-block;
     }
+  }
+  &__answer--count {
+    margin: 0;
+    font-weight: bold;
+    display: inline-block;
   }
   &__answer-percentage--no-bar {
     min-width: 1%;
