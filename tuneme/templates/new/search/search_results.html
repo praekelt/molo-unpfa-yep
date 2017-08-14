@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags core_tags wagtailimages_tags comments pagination i18n %}
+{% load wagtailcore_tags core_tags wagtailimages_tags comments i18n %}
 {% block title %}{% trans "Search" %}{% endblock %}
 {% block content %}
 {% if search_results %}
-<div class="search-results">
-<h2 class="section-heading section-heading--search f-medium">{% trans "your results:"%} {{search_query}}</h2>
- {% for page in search_results %}
-  {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
-  {% load_tags_for_article page as navigation_tags %}
+  <div class="search-results">
+    <h2 class="section-heading section-heading--search f-medium">{% trans "your results:"%} {{search_query}}</h2>
+    {% for page in search_results %}
+    {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
+    {% load_tags_for_article page as navigation_tags %}
     {% if ancestor.sectionpage %}
       <a href="{% pageurl ancestor %}">
         <h3 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
@@ -53,7 +53,7 @@
           {% endif %}
           </div>
       </a>
-  {% else %}
+    {% else %}
       <a href="{% pageurl parent_section %}">
         <h3 class="section-heading section-heading{{page.get_parent_section.get_effective_extra_style_hints}}">
           {{parent_section.title}}
@@ -91,25 +91,24 @@
             {% endif %}
           {% endif %}
       </div>
-    </a>
+      </a>
     {% endif %}
-  {% endwith %}
-{% endfor %}
-</div>
-
-<div class="search-result pagination">
-  <div class="pagination-step-links">
-    {% if search_results.has_previous %}
-      <a href="?p={{ search_results.previous_page_number }}&amp;q={{search_query}}">&larr;</a>
-    {% endif %}
-    <span class="current">
-      Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}
-    </span>
-    {% if search_results.has_next %}
-      <a href="?p={{ search_results.next_page_number }}&amp;q={{search_query}}">&rarr;</a>
-    {% endif %}
+    {% endwith %}
+    {% endfor %}
   </div>
-</div>
+  <div class="search-result pagination">
+    <div class="pagination-step-links">
+      {% if search_results.has_previous %}
+        <a href="?p={{ search_results.previous_page_number }}&amp;q={{search_query}}">&larr;</a>
+      {% endif %}
+      <span class="current">
+        Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}
+      </span>
+      {% if search_results.has_next %}
+        <a href="?p={{ search_results.next_page_number }}&amp;q={{search_query}}">&rarr;</a>
+      {% endif %}
+    </div>
+  </div>
 {% else %}
 <div class="search-results">
   <h2 class="section-heading section-heading--search f-medium">{% trans "Search" %}</h2>
