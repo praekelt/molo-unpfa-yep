@@ -11,18 +11,15 @@
   <meta name="description" content="Tune Me puts the power in your hands to make choices about your body, your rights, your love life and your sexual health." />
   <meta name="keywords" content="love, sex, relationships, advice, help, family planning, contraception, private" />
   <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="{% if self.social_media_title %}{{ self.social_media_title }}{% elif self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}"/>
-  <meta name="twitter:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
   {% image self.social_media_image width-300 as tmp_photo %}
   {% if self.image %}
     {% image self.image width-300 as article_photo %}
   {% endif %}
-  <meta name="twitter:image" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% else %}{{request.site.root_url}}{{ article_photo.url }}
-  {% endif %}"/>
   <meta property="og:title" content= "{% if self.social_media_title %}{{ self.social_media_title }}{% elif self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}" />
   <meta property="og:description" content="{% if self.social_media_description %}{{ self.social_media_description }}{% else %}{{ self.subtitle }}{% endif %}"/>
-  <meta property="og:image" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% else %}{{request.site.root_url}}{{ article_photo.url }}{% endif %}"/>
-  <meta property="og:image:url" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% else %}{{request.site.root_url}}{{ article_photo.url }}{% endif %}"/>
+  <meta property="og:image" content="{% if self.social_media_image %}{{ tmp_photo.url }}{% elif article_photo.url %}{{ article_photo.url }}{% else %}{{request.site.root_url}}{% static 'img/tuneme-fb-share.png' %}{% endif %}"/>
+  <meta property="og:image:width" content="280" />
+  <meta property="og:image:height" content="280" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui"/>
   <meta name="robots" content="all,index,follow" />
   <link rel="apple-touch-icon" sizes="57x57" href="{{ STATIC_URL }}new/favicon/apple-icon-57x57.png">
@@ -75,6 +72,7 @@
     {% endcompress %}
   {% endif %}
   <noscript>Your browser does not support JavaScript!</noscript>
+  <script src="{% static 'new/js/main.js' %}" type="text/javascript"></script>
 </head>
 <body {% if LANGUAGE_CODE|language_bidi == True %}dir="rtl"{% endif %}>
   <div class="header">
@@ -153,7 +151,7 @@
       {% footer_page %}
     </div>
   </div>
-  <div class="copyright">&copy; {% now "Y" %} UNFPA, Ford Foundation All Rights Reserved.</div>
+  <div class="copyright">&copy; {% now "Y" %} UNFPA, Ford Foundation</div>
   {% if GOOGLE_TAG_MANAGER_ACCOUNT %}
     <!-- Google Tag Manager -->
      <noscript><iframe src="//www.googletagmanager.com/ns.html?id={{GOOGLE_TAG_MANAGER_ACCOUNT}}&client_session_id={{request.session.MOLO_GA_SESSION_FOR_NOSCRIPT}}&page_title={% if self.seo_title %}{{ self.seo_title|urlencode }}{% else %}{{ self.title|urlencode }}{% endif %}{%if request.META.HTTP_X_IORG_FBS_UIP %}&freebasics_uip={{request.META.HTTP_X_IORG_FBS_UIP}}{%endif%}"
