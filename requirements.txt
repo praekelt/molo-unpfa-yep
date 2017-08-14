@@ -1,11 +1,11 @@
-molo.core==5.7.0
+molo.core==5.8.2
 molo.profiles==5.1.0
-molo.commenting==5.0.2
+molo.commenting==5.1.0
 molo.yourwords==5.0.1
-molo.yourtips==5.0.3
+molo.yourtips==5.0.5
 molo.servicedirectory==2.1.5
-molo.surveys==5.2.0
-elasticsearch>=2.0,<3.0
+molo.surveys==5.2.1
+elasticsearch==1.7.0
 django-modelcluster>=2.0,<3.0
 psycopg2
 gunicorn

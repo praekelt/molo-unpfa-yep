@@ -16,8 +16,12 @@
   &__intro {
     padding: 0 10px;
     font-weight: normal;
+    font-size: $font-large;
   }
-  &__question {font-weight: bold;}
+  &__question {
+    font-weight: bold;
+    font-size: $font-large;
+  }
   &__results {
     padding: 5px 16px;
     margin: 15px 0;
@@ -30,23 +34,40 @@
     display: block;
   }
   &__answer {
+    color: #000;
+    font-weight: bold;
+    padding: 5px 0 0;
+  }
+  &__answer-bar {
     color: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
     word-wrap: break-word;
-    margin: 10px 0;
-    padding: 0 5px;
-    h6 {
-      font-weight: bold;
+    margin: 5px 0 10px 0;
+    padding: 5px 30px;
+    display: inline-block;
+  }
+  &__answer-percentage {
+    border-radius: 20px;
+    padding: 5px 10px;
+    &--symbol {
       display: inline-block;
-    }
-    &--percent-bar {
-      margin: 5px auto;
-      font-weight: bold;
-      padding: 3px 10px;
-      display: inline-block;
-      text-align: center;
     }
   }
+  &__answer--count {
+    margin: 0;
+    font-weight: bold;
+    display: inline-block;
+  }
+  &__answer-percentage--no-bar {
+    min-width: 1%;
+    opacity: 0.4;
+  }
+  &__answer-percentage--lower-bar {
+    opacity: 0.8;
+  }
+  &__answer-percentage--partial {opacity: 0.9;}
+  &__answer-percentage--winner{opacity: 1;}
+
   .error--surveys,
   .error--polls {
     padding: 0 15px;

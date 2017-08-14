@@ -26,7 +26,6 @@
     padding: 0 15px 20px 15px;
   }
 }
-
 .article__content {
   ul, ol, p {
     padding: 0 15px;
@@ -61,16 +60,20 @@
     &-text { text-decoration: underline; }
   }
   .featured-articles {
-    padding: 0 15px 10px;
+    padding: 0 15px 0;
+    margin: 8px 0;
     &__nav-item {
       display: inline;
       color: #000;
       text-decoration: underline;
     }
     &--age-tag {
-      padding: 2px 10px;
-      margin: 10px 0;
+      padding: 2px 10px 0;
+      margin: 5px 0;
     }
+  }
+  .featured-articles--tags {
+    padding: 0 15px 0;
   }
   .menu-items .menu__item { margin-left: 0; }
   .footer-links ul {
@@ -79,6 +82,7 @@
   }
 }
 
+//Tag list
 .tags-list {
   margin: 0;
   .tag-list__item {
@@ -86,4 +90,9 @@
     margin: 0 10px 0 0;
     .tag__item-anchor {font-style: italic;}
   }
+}
+
+//Article teaser - Tags page
+.article-teaser {
+  padding: 0;
 }
