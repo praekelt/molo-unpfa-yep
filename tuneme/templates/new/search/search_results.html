@@ -1,12 +1,11 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags core_tags wagtailimages_tags comments el_pagination_tags i18n %}
+{% load wagtailcore_tags core_tags wagtailimages_tags comments pagination i18n %}
 {% block title %}{% trans "Search" %}{% endblock %}
 {% block content %}
 {% if search_results %}
 <div class="search-results">
 <h2 class="section-heading section-heading--search f-medium">{% trans "your results:"%} {{search_query}}</h2>
-{% paginate 10 results as paginated_results %}
- {% for page in paginated_results %}
+ {% for page in search_results %}
   {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
   {% load_tags_for_article page as navigation_tags %}
     {% if ancestor.sectionpage %}
@@ -97,7 +96,7 @@
   {% endwith %}
 {% endfor %}
 </div>
-{% get_pages %}
+
 <div class="search-result pagination">
   <div class="pagination-step-links">
     {% if search_results.has_previous %}
