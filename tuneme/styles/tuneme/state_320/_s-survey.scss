@@ -6,7 +6,7 @@
     padding: 10px 15px 5px;
   }
   &__intro {padding: 0 15px;}
-  &__answer {background: $sea-orange;}
+  &__answer-bar {background: $sea-orange;}
   &__form {
     input[type="submit"],
     .call-to-action__nav-item--surveys {
@@ -23,7 +23,7 @@
     color: #fff;
     border-top: 2px solid $purple_dark;
   }
-  &__answer {background: $purple_dark;}
+  &__answer-bar {background: $purple_dark;}
   &__form {
     label {color: #fff;}
     input[type="submit"],
