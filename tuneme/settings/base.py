@@ -94,7 +94,8 @@ INSTALLED_APPS = [
     'notifications',
 
     'secretballot',
-    'likes'
+    'likes',
+    'storages',
 ]
 
 COMMENTS_APP = 'molo.commenting'
