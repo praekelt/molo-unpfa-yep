@@ -6,7 +6,7 @@
   }
   .article-list__item {
     padding: 20px 15px;
-    border-bottom: 2px solid #ebebeb;
+    border-bottom: 2px solid $tint_gray;
     &:last-child {
       border-bottom: none;
     }
