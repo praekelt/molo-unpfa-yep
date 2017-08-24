@@ -1,0 +1,37 @@
+{% load wagtailcore_tags wagtailimages_tags core_tags i18n %}
+<div class="related-articles related-articles{{self.get_parent_section.get_effective_extra_style_hints}}">
+{% get_translation self.get_parent_section as section %}
+{% get_next_article self as next_article %}
+{% if next_article and self.get_parent_section.enable_next_section %}
+  <div class="related-articles-recommended related-articles-recommended{{self.get_parent_section.get_effective_extra_style_hints}}">
+    <h1 class="heading heading{{self.get_parent_section.get_effective_extra_style_hints}} related-articles-recommended__heading">
+          {% trans "What to read next:" %}
+    </h1>
+
+    <ul class="article-list article-list{{self.get_effective_extra_style_hints}} related-articles-recommended-list">
+      <li class="article-list__item">
+        <a href="{% pageurl next_article %}" class="article-list__item--anchor">
+          {% if next_article.image %}
+            {% image next_article.image width-90 height-90 jpegquality-70 as article_image %}
+            <img src="{{ article_image.url }}" alt="{{ article_image.title }}" class="article-list__image"/>
+          {% endif %}
+          <h1 class="article-list__title">{{next_article.title}}</h1>
+          {% if next_article.subtitle %}
+            <h4 class="article-list__subtitle">{{next_article.subtitle}}</h4>
+          {% endif %}
+        </a>
+        {% load_tags_for_article next_article as navigation_tags %}
+        {% if settings.core.SiteSettings.enable_tag_navigation %}
+          {% if navigation_tags %}
+            <div class="article-list__item--age-tag">
+              {% for tag in navigation_tags %}
+                <span>{{ tag }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endif %}
+      </li>
+    </ul>
+  </div>
+{% endif %}
+</div>

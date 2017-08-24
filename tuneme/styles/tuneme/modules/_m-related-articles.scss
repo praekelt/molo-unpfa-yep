@@ -1,0 +1,14 @@
+.related-articles-recommended {
+  &__heading {
+    font-size: $font-x-large;
+    text-transform: inherit;
+    padding: 35px 15px 0;
+  }
+  .article-list__item {
+    padding: 20px 15px;
+    border-bottom: 2px solid $tint_gray;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
