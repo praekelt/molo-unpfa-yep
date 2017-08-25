@@ -1,0 +1,11 @@
+{% load tip_tags %}
+{% block content %}
+  {% for block in tip_article.body %}
+    {% include "patterns/basics/promoted-tips/yourtips-article-tag.html"  %}
+    {% if block.block_type == 'paragraph' %}
+      <h3 class="yourtips__description">{{ block.value }}</h3>
+    {% elif block.block_type == 'heading' %}
+      <p class="yourtips__author">{{ block.value }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

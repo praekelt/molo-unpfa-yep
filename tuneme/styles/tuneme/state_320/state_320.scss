@@ -42,6 +42,7 @@
       font-weight: bold;
     }
   }
+
   @import "_s-header";
   @import "_s-heading";
   @import "_s-menu";
@@ -56,6 +57,11 @@
   @import "_s-yourtips";
   @import "_s-survey";
   @import "_s-service-dir";
+  .related-articles-recommended {
+    .article-list__image {
+      margin-bottom: 15%;
+    }
+  }
 }
 
 @media only screen and (min-width: 600px) {

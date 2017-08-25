@@ -10,7 +10,7 @@
   {% if tags %}
     <div class="article__age-tag-banner">
       {% for tag in tags %}
-        <p>{% trans "Note: Content appropriate for readers" %}
+        <p>{% trans "Content appropriate for readers" %}
         <span>{{ tag }}</span> {% trans "and older" %}</p>
       {% endfor %}
     </div>
@@ -52,7 +52,6 @@
     {% load_tags_for_article block.value as navigation_tags %}
     <div class="featured-articles {% if navigation_tags%}featured-articles--tags{% endif %}">
         <a href="{% pageurl block.value %}" class="featured-articles__nav-item">{{ block.value }}</a>
-
         {% if settings.core.SiteSettings.enable_tag_navigation %}
           {% if navigation_tags %}
             <div class="article-list__item--age-tag featured-articles--age-tag">
@@ -80,4 +79,6 @@
     {% trans "Share here" %}</a>
 </div>
 {% endif %}
+
+{% include "patterns/basics/articles/up-next-articles.html" %}
 {% endblock %}
