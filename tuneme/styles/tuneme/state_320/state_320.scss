@@ -50,6 +50,7 @@
   @import "_s-polls";
   @import "_s-article";
   @import "_s-article-list";
+  @import "_s-related-articles";
   @import "_s-comments";
   @import "_s-profiles";
   @import "_s-search";
@@ -57,11 +58,6 @@
   @import "_s-yourtips";
   @import "_s-survey";
   @import "_s-service-dir";
-  .related-articles-recommended {
-    .article-list__image {
-      margin-bottom: 15%;
-    }
-  }
 }
 
 @media only screen and (min-width: 600px) {
