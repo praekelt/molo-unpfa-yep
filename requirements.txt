@@ -1,4 +1,4 @@
-molo.core==5.10.0
+molo.core==5.13.0
 molo.profiles==5.1.0
 molo.commenting==5.1.0
 molo.yourwords==5.0.1
@@ -15,5 +15,3 @@ django-google-analytics-app==2.1.6
 Unidecode==0.04.16
 django-secretballot==0.7.0
 django-likes==1.11
-django-storages
-boto
