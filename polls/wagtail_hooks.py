@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from polls.admin import QuestionsModelAdmin
 from polls.admin_views import QuestionResultsAdminView
-from polls.models import PollsIndexPage
+# from polls.models import PollsIndexPage
 from wagtail.wagtailcore import hooks
 from wagtail.contrib.modeladmin.options import modeladmin_register
 from django.contrib.auth.models import User
