@@ -27,8 +27,8 @@ def show_polls_entries_for_users_have_access(request, menu_items):
             item for item in menu_items if item.name != 'polls']
 
 
-@hooks.register('construct_explorer_page_queryset')
-def hide_polls_index_page(parent_page, pages, request):
-    polls_index_page_pk = PollsIndexPage.objects.descendant_of(
-        request.site.root_page).first().pk
-    return pages.exclude(pk=polls_index_page_pk)
+# @hooks.register('construct_explorer_page_queryset')
+# def hide_polls_index_page(parent_page, pages, request):
+#     polls_index_page_pk = PollsIndexPage.objects.descendant_of(
+#         request.site.root_page).first().pk
+#     return pages.exclude(pk=polls_index_page_pk)
