@@ -107,11 +107,6 @@ class FreeTextVoteAdmin(admin.ModelAdmin):
     readonly_fields = ['question', 'answer', 'user', 'submission_date']
 
 
-admin.site.register(Question, QuestionAdmin)
-admin.site.register(Choice, ChoiceAdmin)
-admin.site.register(FreeTextVote, FreeTextVoteAdmin)
-
-
 # Below here is for Wagtail Admin
 class QuestionsModelAdmin(WagtailModelAdmin, QuestionAdmin):
     model = Question
