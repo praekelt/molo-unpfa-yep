@@ -4,7 +4,7 @@ import datetime
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
-from polls.models import Question, Choice, FreeTextVote
+from polls.models import Question, Choice
 from wagtail.contrib.modeladmin.options import ModelAdmin as WagtailModelAdmin
 
 
