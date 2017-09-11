@@ -4,7 +4,7 @@ import datetime
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
-from polls.models import Question, Choice, FreeTextVote
+from polls.models import Question, Choice
 from wagtail.contrib.modeladmin.options import ModelAdmin as WagtailModelAdmin
 
 
@@ -105,11 +105,6 @@ class FreeTextVoteAdmin(admin.ModelAdmin):
     list_display = ('question', 'answer', 'user', 'submission_date')
     list_filter = ('question', 'submission_date')
     readonly_fields = ['question', 'answer', 'user', 'submission_date']
-
-
-admin.site.register(Question, QuestionAdmin)
-admin.site.register(Choice, ChoiceAdmin)
-admin.site.register(FreeTextVote, FreeTextVoteAdmin)
 
 
 # Below here is for Wagtail Admin
