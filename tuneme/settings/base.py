@@ -97,6 +97,7 @@ INSTALLED_APPS = [
     'secretballot',
     'likes',
     'storages',
+    'import_export'
 ]
 
 COMMENTS_APP = 'molo.commenting'
@@ -130,6 +131,7 @@ MIDDLEWARE_CLASSES = [
 ]
 
 AUTHENTICATION_BACKENDS = [
+    'molo.profiles.backends.MoloProfilesModelBackend',
     'molo.core.backends.MoloModelBackend',
     'django.contrib.auth.backends.ModelBackend'
 ]
