@@ -16,7 +16,6 @@ def delete_polls_index_page(apps, schema_editor):
         Page.objects.using(db_alias).filter(content_type=ct_choice).delete()
         ct_choice.delete()
 
-
     ct_freetextquestion = ContentType.objects.using(db_alias).filter(
         model="freetextquestion", app_label="polls").first()
     if ct_freetextquestion:
