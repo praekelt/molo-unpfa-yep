@@ -44,5 +44,11 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunSQL("DELETE FROM polls_choicevote;"),
+        migrations.RunSQL("DELETE FROM polls_freetextvote;"),
+        migrations.RunSQL("DELETE FROM polls_choice;"),
+        migrations.RunSQL("DELETE FROM polls_freetextquestion;"),
+        migrations.RunSQL("DELETE FROM polls_question;"),
+        migrations.RunSQL("DELETE FROM polls_pollsindexpage;"),
         migrations.RunPython(delete_polls_index_page),
     ]
