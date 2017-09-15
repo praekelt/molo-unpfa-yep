@@ -1,4 +1,4 @@
-.yourwords {
+.yourwords, .competition {
   //Bemify Yourwords Templates
   img {
     display: block;
@@ -42,6 +42,9 @@
   &-form {
     padding: 0 10px 10px;
   }
+  .call-to-action {
+    padding: 0;
+  }
   .call-to-action__nav-item--login  {
     display: block;
     text-align: center;
@@ -52,7 +55,8 @@
    text-transform: none;
 }
 .competition__title,
-.competition__title--description  {
+.competition__title--description,
+.error  {
   padding: 0 10px;
 }
 .alert-error {

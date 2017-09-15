@@ -11,3 +11,8 @@ def get_surveytype():
 @register.assignment_tag
 def get_pollstype():
     return "polls"
+
+
+@register.assignment_tag
+def get_competitiontype():
+    return "competition"

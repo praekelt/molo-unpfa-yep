@@ -2,34 +2,38 @@
 {% load wagtailcore_tags surveypolls i18n %}
 
 {% block content %}
-{% if not self.display_survey_directly %}
+{% if self.your_words_competition %}
+  {% get_competitiontype as surveytype %}
+{% elif not self.display_survey_directly %}
   {% get_surveytype as surveytype %}
 {% else %}
   {% get_pollstype as surveytype %}
 {% endif %}
-<div class="{{surveytype}}">
-  <h1 class="{{surveytype}}__title">{{ page.title }}</h1>
-  <h4 class="{{surveytype}}__intro">{{ page.intro }}</h4>
+<div class="{{surveytype}} {% if self.your_words_competition %}yourwords--entries{% endif %}">
+  <h1 class="{{surveytype}}__title {% if self.your_words_competition %}heading heading--yourwords{% endif %}">{{ page.title }}</h1>
+  <h4 class="{{surveytype}}__intro competition__title--description">{{ page.intro }}</h4>
   {% if user.is_authenticated and user.is_active or request.is_preview or self.allow_anonymous_submissions %}
   {% if form %}
-  <form class="{{surveytype}}__form" action="{% pageurl self %}{% if self.multi_step %}?p={{ fields_step.number|add:"1" }}{% endif %}" method="post">
-  {% csrf_token %}
-  {% for field in form %}
-    <fieldset>
-      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-      <span class="surveys__helptext">{{ field.help_text }}</span>
-      {{ field }}
-      {% if field.errors %}
-        <ul class="error error--{{surveytype}}">
-        {% for error in field.errors %}
-          <li>{{ error }}</li>
-        {% endfor %}
-        </ul>
-      {% endif %}
-    </fieldset>
-  {% endfor %}
-    <input type="submit" value="{% if is_intermediate_step %}{% trans 'Next Question' %}{% else %}{% trans 'Submit' %}{% endif %}" />
-  </form>
+  <div class="{{surveytype}}--inner-content">
+    <form class="{{surveytype}}__form" action="{% pageurl self %}{% if self.multi_step %}?p={{ fields_step.number|add:"1" }}{% endif %}" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <fieldset>
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        <span class="surveys__helptext">{{ field.help_text }}</span>
+        {{ field }}
+        {% if field.errors %}
+          <ul class="error error--{{surveytype}}">
+          {% for error in field.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
+      {% endfor %}
+      <input type="submit" value="{% if is_intermediate_step %}{% trans 'Next Question' %}{% else %}{% trans 'Submit' %}{% endif %}" />
+    </form>
+  </div>
   {% else %}
     <p class="error error--{{surveytype}}">
       {% trans "You have already completed this" %} {{ surveytype|slice:":-1" }}

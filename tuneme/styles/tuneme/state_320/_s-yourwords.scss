@@ -1,4 +1,4 @@
-.yourwords {
+.yourwords, .competition  {
   img {
     border-radius: 3px;
     margin: 0 auto;
@@ -53,7 +53,8 @@
   }
 }
 .competition__title,
-.competition__title--description  {
+.competition__title--description,
+.error  {
   padding: 0 15px;
 }
 .yourwords--entries {

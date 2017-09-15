@@ -2,15 +2,20 @@
 {% load wagtailcore_tags surveypolls i18n %}
 
 {% block content %}
-{% if not self.display_survey_directly %}
+{% if self.your_words_competition %}
+  {% get_competitiontype as surveytype %}
+{% elif not self.display_survey_directly %}
   {% get_surveytype as surveytype %}
 {% else %}
   {% get_pollstype as surveytype %}
 {% endif %}
-<div class="{{surveytype}} {{surveytype}}--feedback-page">
+<div class="{{surveytype}} {{surveytype}}--feedback-page {% if self.your_words_competition %}yourwords--entries{% endif %}">
 {% if not self.thank_you_text %}
   <h1 class="{{surveytype}}__title">{{ self.title }}</h1>
   <h4 class="{{surveytype}}__intro">{{ self.intro }}</h4>
+{% elif self.your_words_competition %}
+  <h1 class="heading heading--yourwords">{% trans 'Thank you!' %}</h1>
+  <h4 class="heading heading--yourwords-description">  {{ self.thank_you_text }}</h4>
 {% else %}
   <h4 class="{{surveytype}}__thank-you">{{ self.thank_you_text }}</h4>
 {% endif %}
