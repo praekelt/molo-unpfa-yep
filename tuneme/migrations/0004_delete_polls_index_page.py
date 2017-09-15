@@ -10,19 +10,12 @@ def delete_polls_index_page(apps, schema_editor):
     ContentType = apps.get_model('contenttypes.ContentType')
     db_alias = schema_editor.connection.alias
 
-    ct_pollsindexpage = ContentType.objects.using(db_alias).filter(
-        model="pollsindexpage", app_label="polls").first()
-    if ct_pollsindexpage:
-        Page.objects.using(db_alias).filter(
-            content_type=ct_pollsindexpage).delete()
-        ct_pollsindexpage.delete()
+    ct_choice = ContentType.objects.using(db_alias).filter(
+        model="choice", app_label="polls").first()
+    if ct_choice:
+        Page.objects.using(db_alias).filter(content_type=ct_choice).delete()
+        ct_choice.delete()
 
-    ct_question = ContentType.objects.using(db_alias).filter(
-        model="question", app_label="polls").first()
-    if ct_question:
-        Page.objects.using(db_alias).filter(
-            content_type=ct_pollsindexpage).delete()
-        ct_question.delete()
 
     ct_freetextquestion = ContentType.objects.using(db_alias).filter(
         model="freetextquestion", app_label="polls").first()
@@ -31,11 +24,19 @@ def delete_polls_index_page(apps, schema_editor):
             content_type=ct_freetextquestion).delete()
         ct_freetextquestion.delete()
 
-    ct_choice = ContentType.objects.using(db_alias).filter(
-        model="choice", app_label="polls").first()
-    if ct_choice:
-        Page.objects.using(db_alias).filter(content_type=ct_choice).delete()
-        ct_choice.delete()
+    ct_question = ContentType.objects.using(db_alias).filter(
+        model="question", app_label="polls").first()
+    if ct_question:
+        Page.objects.using(db_alias).filter(
+            content_type=ct_question).delete()
+        ct_question.delete()
+
+    ct_pollsindexpage = ContentType.objects.using(db_alias).filter(
+        model="pollsindexpage", app_label="polls").first()
+    if ct_pollsindexpage:
+        Page.objects.using(db_alias).filter(
+            content_type=ct_pollsindexpage).delete()
+        ct_pollsindexpage.delete()
 
 
 class Migration(migrations.Migration):
