@@ -44,13 +44,12 @@ BASE_URL = 'http://example.com'
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.auth',
     'django.contrib.admin',
+    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'django_extensions',
 
     'taggit',
@@ -58,7 +57,13 @@ INSTALLED_APPS = [
 
     'tuneme',
     'molo.core',
-    'google_analytics',
+    'molo.profiles',
+    'molo.surveys',
+    'django_comments',
+    'molo.commenting',
+    'molo.yourwords',
+    'molo.yourtips',
+    'molo.servicedirectory',
 
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
@@ -78,13 +83,8 @@ INSTALLED_APPS = [
     'wagtail.contrib.wagtailsitemaps',
 
     'mptt',
-    'molo.surveys',
-    'molo.profiles',
-    'django_comments',
-    'molo.commenting',
-    'molo.yourwords',
-    'molo.yourtips',
-    'molo.servicedirectory',
+    'django.contrib.sites',
+    'google_analytics',
 
     'raven.contrib.django.raven_compat',
     'djcelery',
