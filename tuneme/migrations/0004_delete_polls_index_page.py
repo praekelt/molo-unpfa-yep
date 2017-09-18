@@ -38,12 +38,10 @@ def delete_polls_index_page(apps, schema_editor):
         ct_pollsindexpage.delete()
 
 
-class Migration(migrations.Migration):
-    dependencies = [
-        ('tuneme', '0003_move_pages_to_index_pages'),
-    ]
+def remove_tables_from_postgres(apps, schema_editor):
+    db_type = schema_editor.connection.vendor
 
-    operations = [
+    if db_type == 'postgres' or db_type == 'postgresql':
         migrations.RunSQL("DELETE FROM polls_choice_choice_votes;"),
         migrations.RunSQL("DELETE FROM polls_choicevote_choice;"),
         migrations.RunSQL("DELETE FROM polls_choicevote;"),
@@ -52,5 +50,14 @@ class Migration(migrations.Migration):
         migrations.RunSQL("DELETE FROM polls_freetextquestion;"),
         migrations.RunSQL("DELETE FROM polls_question;"),
         migrations.RunSQL("DELETE FROM polls_pollsindexpage;"),
+
+
+class Migration(migrations.Migration):
+    dependencies = [
+        ('tuneme', '0003_move_pages_to_index_pages'),
+    ]
+
+    operations = [
+        migrations.RunPython(remove_tables_from_postgres),
         migrations.RunPython(delete_polls_index_page),
     ]
