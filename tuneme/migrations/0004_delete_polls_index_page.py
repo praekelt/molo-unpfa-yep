@@ -41,7 +41,7 @@ def delete_polls_index_page(apps, schema_editor):
 def remove_tables_from_postgres(apps, schema_editor):
     db_type = schema_editor.connection.vendor
 
-    if ((db_type == 'postgres') or (db_type == 'postgresql')):
+    if db_type == 'postgres' or db_type == 'postgresql':
         migrations.RunSQL("DELETE FROM polls_choice_choice_votes;"),
         migrations.RunSQL("DELETE FROM polls_choicevote_choice;"),
         migrations.RunSQL("DELETE FROM polls_choicevote;"),
