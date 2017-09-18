@@ -7,7 +7,6 @@
     "build": "gulp"
   },
   "dependencies": {
-    "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.13",
     "gulp-gzip": "^1.4.0",
     "gulp-livereload": "^3.8.1",
@@ -17,7 +16,10 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-watch": "^4.3.9"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/praekelt/molo-tuneme.git"

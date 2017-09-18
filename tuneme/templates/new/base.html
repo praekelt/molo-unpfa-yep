@@ -2,6 +2,7 @@
 {% load wagtailsettings_tags wagtailimages_tags competition_tag comments molo_commenting_tags %}
 {% load google_analytics_tags %}
 {% get_settings %}
+{% load molo_pwa %}
 {% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
 <html class="no-js" lang="{{LANGUAGE_CODE}}">
@@ -74,6 +75,7 @@
   {% endif %}
   <noscript>Your browser does not support JavaScript!</noscript>
   <script src="{% static 'new/js/main.js' %}" type="text/javascript"></script>
+  {% molo_pwa_meta %}
 </head>
 <body {% if LANGUAGE_CODE|language_bidi == True %}dir="rtl"{% endif %}>
   <div class="header">
