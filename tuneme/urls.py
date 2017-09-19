@@ -40,7 +40,7 @@ urlpatterns += patterns(
     url(r'^django-admin/download_media/', download_file,
         name='molo_download_media'),
     url(r'^django-admin/', include(admin.site.urls)),
-
+    url(r'', include('molo.pwa.urls')),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^robots\.txt$', TemplateView.as_view(

@@ -8,8 +8,11 @@ var gulp              =   require('gulp'),
     gzip              =   require('gulp-gzip'),
     notify            =   require('gulp-notify'),
     sourcemaps        =   require('gulp-sourcemaps'),
-    livereload        =   require('gulp-livereload');
+    livereload        =   require('gulp-livereload'),
+    browserSync       =   require('browser-sync').create(),
+    reload            =   browserSync.reload;
 
+var templatesPath = 'tuneme/templates/new';
 var sassPaths = [
     'tuneme/styles/tuneme/opera_single_view.scss',
     'tuneme/styles/tuneme/style.scss',
@@ -48,10 +51,20 @@ gulp.task('styles:dev', function() {
   return styles('dev');
 });
 
+gulp.task('serve', function() {
+    browserSync.init({
+        'proxy': 'localhost:8000/'
+    });
+
+    gulp.watch(sassPaths + '/**/*.scss', ['styles:dev', 'styles:prd']);
+    gulp.watch(templatesPath + '/**/*.html').on('change', reload);
+});
+
 gulp.task('watch', function() {
     livereload.listen();
     gulp.watch('tuneme/client/css/*.scss', ['styles']);
 });
 
+
 gulp.task('styles', ['styles:dev', 'styles:prd']);
-gulp.task('default', ['styles', 'watch']);
+gulp.task('default', ['styles', 'serve', 'watch']);

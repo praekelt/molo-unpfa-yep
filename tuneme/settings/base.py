@@ -65,6 +65,9 @@ INSTALLED_APPS = [
     'molo.yourtips',
     'molo.servicedirectory',
 
+    'molo.pwa',
+    'fcm_django',
+
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
     'wagtail.wagtaildocs',
@@ -460,3 +463,35 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 if AWS_STORAGE_BUCKET_NAME and AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
     MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+PWA_SERVICE_WORKER_PATH = join(
+    PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT, 'serviceworker.js')
+PWA_NAME = 'Tuneme'
+PWA_DESCRIPTION = "Tuneme"
+PWA_THEME_COLOR = '#000000'
+PWA_DISPLAY = 'standalone'
+PWA_START_URL = '/'
+PWA_ICONS = [
+    {
+        "src": "static/new/favicon/android-icon-96x96.png",
+        "sizes": "96x96",
+        "type": "image/png"
+    },
+    {
+        "src": "static/new/favicon/android-icon-144x144.png",
+        "sizes": "144x144",
+        "type": "image/png"
+    },
+    {
+        "src": "static/new/favicon/android-icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    }
+]
+PWA_FCM_API_KEY = ''
+PWA_FCM_MSGSENDER_ID = ''
+FCM_DJANGO_SETTINGS = {
+    "FCM_SERVER_KEY": "",
+    "ONE_DEVICE_PER_USER": True,
+    "DELETE_INACTIVE_DEVICES": False,
+}
