@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'molo.yourwords',
     'molo.yourtips',
     'molo.servicedirectory',
+
     'molo.pwa',
     'fcm_django',
 
@@ -467,32 +468,30 @@ PWA_SERVICE_WORKER_PATH = join(
     PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT, 'serviceworker.js')
 PWA_NAME = 'Tuneme'
 PWA_DESCRIPTION = "Tuneme"
-PWA_THEME_COLOR = '#7300FF'
+PWA_THEME_COLOR = '#000000'
 PWA_DISPLAY = 'standalone'
 PWA_START_URL = '/'
 PWA_ICONS = [
     {
-        "src": "/static/img/appicons/springster_icon_96.png",
+        "src": "static/new/img/appicons/springster_icon_96.png",
         "sizes": "96x96",
         "type": "image/png"
     },
     {
-        "src": "/static/img/appicons/springster_icon_144.png",
+        "src": "static/new/img/appicons/springster_icon_144.png",
         "sizes": "144x144",
         "type": "image/png"
     },
     {
-        "src": "/static/img/appicons/springster_icon_192.png",
+        "src": "static/new/img/appicons/springster_icon_192.png",
         "sizes": "192x192",
         "type": "image/png"
     }
 ]
-PWA_FCM_API_KEY = 'AIzaSyCLtnDpYhzCabuUopYGDLZ4Z-OXRTxdfvg'
-PWA_FCM_MSGSENDER_ID = '158972131363'
+PWA_FCM_API_KEY = ''
+PWA_FCM_MSGSENDER_ID = ''
 FCM_DJANGO_SETTINGS = {
-    "FCM_SERVER_KEY": "AAAAJQN6OCM:APA91bFnGtnFFnKcuRZFimMgNCcNzes5QCBvNKVLR"
-                      "8NphCN5BhyyVcGxlqNff3ot1mlD-LX_FU2f70Wj6Z-GeHJuJ0QKH2F"
-                      "-JMpxsnKb9ljrPqfceJX8eRZujrCVVNFVvp0Gsjyg930o",
+    "FCM_SERVER_KEY": "",
     "ONE_DEVICE_PER_USER": True,
     "DELETE_INACTIVE_DEVICES": False,
 }
