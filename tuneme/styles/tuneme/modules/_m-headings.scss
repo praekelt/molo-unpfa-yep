@@ -14,7 +14,12 @@
   margin: 0;
   font-size: $font-large;
   padding: 15px 10px;
+  -ms-word-break: break-all;
+  word-break: break-all;
   word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+    hyphens: auto;
 }
 .heading--section-list {
   margin: 0;
@@ -48,7 +53,6 @@
 .call-to-action__nav-item--challenge {
   padding: 0 15px;
 }
-
 
 @each $name, $color in $color_list {
   .heading--#{$name} {
