@@ -473,17 +473,17 @@ PWA_DISPLAY = 'standalone'
 PWA_START_URL = '/'
 PWA_ICONS = [
     {
-        "src": "static/new/img/appicons/springster_icon_96.png",
+        "src": "static/new/favicon/android-icon-96x96.png",
         "sizes": "96x96",
         "type": "image/png"
     },
     {
-        "src": "static/new/img/appicons/springster_icon_144.png",
+        "src": "static/new/favicon/android-icon-144x144.png",
         "sizes": "144x144",
         "type": "image/png"
     },
     {
-        "src": "static/new/img/appicons/springster_icon_192.png",
+        "src": "static/new/favicon/android-icon-192x192.png",
         "sizes": "192x192",
         "type": "image/png"
     }

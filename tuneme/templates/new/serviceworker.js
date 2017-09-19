@@ -27,9 +27,9 @@ function precache() {
     return cache.addAll([
       '/',
       'static/offline.html',
-      'static/new/img/appicons/springster_icon_96.png',
-      'static/new/img/appicons/springster_icon_144.png',
-      'static/new/img/appicons/springster_icon_192.png'
+      'static/new/favicon/android-icon-96x96.png',
+      'static/new/favicon/android-icon-144x144.png',
+      'static/new/favicon/android-icon-192x192.png'
     ]);
   });
 }
