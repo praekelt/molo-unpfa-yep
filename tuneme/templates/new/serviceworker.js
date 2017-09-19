@@ -17,7 +17,7 @@ self.addEventListener('install', function(evt) {
 self.addEventListener('fetch', function(evt) {
   evt.respondWith(fetch(evt.request).catch(function () {
     return caches.open(CACHE).then(function(cache) {
-      return cache.match('offline.html');
+      return cache.match('static/offline.html');
     });
   }));
 });
@@ -26,7 +26,7 @@ function precache() {
   return caches.open(CACHE).then(function (cache) {
     return cache.addAll([
       '/',
-      'offline.html',
+      'static/offline.html',
       'static/new/img/appicons/springster_icon_96.png',
       'static/new/img/appicons/springster_icon_144.png',
       'static/new/img/appicons/springster_icon_192.png'
