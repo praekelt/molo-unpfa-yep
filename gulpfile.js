@@ -16,8 +16,8 @@ var gulp              =   require('gulp'),
 
 var templatesPath = 'tuneme/templates/new';
 var sassPaths = [
-    'tuneme/styles/tuneme/style_320/state_320.s+(a|c)ss',
-    'tuneme/styles/tuneme/style_opera.s+(a|c)ss',
+    'tuneme/styles/tuneme/style-320.s+(a|c)ss',
+    'tuneme/styles/tuneme/style-opera.s+(a|c)ss',
     'tuneme/styles/tuneme/style-rtl.s+(a|c)ss',
     'tuneme/styles/tuneme/style.s+(a|c)ss',
 ];
@@ -26,7 +26,6 @@ var sassDest = {
      prd: 'tuneme/static/new/css/prd',
      dev: 'tuneme/static/new/css/dev'
 };
-
 
 function styles(env) {
   var s = gulp.src(sassPaths);
@@ -37,9 +36,9 @@ function styles(env) {
     .pipe(sassGlob())
     .pipe(sass().on('error', sass.logError))
     .pipe(cleanCSSMinify())
-    .pipe(sassLint())
-    .pipe(sassLint.format())
-    .pipe(sassLint.failOnError());
+    //.pipe(sassLint())
+    //.pipe(sassLint.format())
+    //.pipe(sassLint.failOnError());
     if (isDev) s = s
         .pipe(sourcemaps.write('/maps'));
         return s

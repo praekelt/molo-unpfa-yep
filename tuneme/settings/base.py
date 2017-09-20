@@ -488,10 +488,12 @@ PWA_ICONS = [
         "type": "image/png"
     }
 ]
-PWA_FCM_API_KEY = ''
-PWA_FCM_MSGSENDER_ID = ''
+PWA_FCM_API_KEY = 'AIzaSyDZ2wk0aUry81OKqW7BqjXWOzLEUax279Q'
+PWA_FCM_MSGSENDER_ID = '756558445116'
 FCM_DJANGO_SETTINGS = {
-    "FCM_SERVER_KEY": "",
+    "FCM_SERVER_KEY": "AAAAsCZlujw:APA91bF4KmOWhc-rxeIM4C4Hq5kiLJDGH-D4EzRJPbR"
+                      "etJ8AZV0nICx8csbaTwR7zfIzNVbbjHlv6Fnp_bAxo23SEjGzv99YSW"
+                      "tFZucgQCKKoqgci8da-9eijVt56ikKZXhir0Xfonkv",
     "ONE_DEVICE_PER_USER": True,
     "DELETE_INACTIVE_DEVICES": False,
 }
