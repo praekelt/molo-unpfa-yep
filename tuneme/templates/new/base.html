@@ -110,7 +110,7 @@
     <ul class="menu-items">
       <li class="menu__item menu__item--default"><a href="#top">{% trans "Back to top" %}</a></li>
       <li class="menu__item menu__item--default"><a href="/">{% trans "Home" %}</a></li>
-      {% if ENABLE_SERVICE_DIRECTORY %}
+      {% if settings.core.SiteSettings.enable_service_directory or ENABLE_SERVICE_DIRECTORY %}
         <li class="menu__item menu__item--service menu__item--default">
          <a href="{% url 'molo.servicedirectory:home' %}">{% trans "Find a service" %}</a>
         <span>{% trans "Find me a clinic" %}</span>
