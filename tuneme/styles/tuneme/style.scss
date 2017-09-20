@@ -1,7 +1,5 @@
-
-@import "_variables";
+@import "util/*";
 @import "_base";
-@import "layout/layout";
-@import "modules/modules";
+@import "layout/*";
+@import "modules/*";
 @import "state/state";
-@import "versions";
