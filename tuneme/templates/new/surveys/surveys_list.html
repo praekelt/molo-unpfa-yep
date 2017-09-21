@@ -1,4 +1,4 @@
-{% load wagtailcore_tags core_tags surveypolls i18n %}
+{% load wagtailcore_tags core_tags surveypolls wagtailimages_tags i18n %}
 {% block content %}
 {% for survey in surveys %}
 {% with survey=survey.molo_survey_page form=survey.form %}
@@ -23,6 +23,11 @@
   {% if not survey.your_words_competition %}
   <h4 class="{{surveytype}}__intro">{{ survey.intro }}</h4>
   {% endif %}
+  {% if survey.image %}
+    {% image survey.image width-98 as tmp_photo_small %}
+    {% image survey.image width-320 as tmp_photo_large %}
+    <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.title }}" class="feature-image" />
+  {% endif %}
   {% if survey.your_words_competition %}
     {% if request.user.is_authenticated %}
     <a href="{% pageurl survey %}" class="call-to-action__nav-item call-to-action__nav-item--login">{{survey.homepage_button_text}}</a>
@@ -39,6 +44,31 @@
   </div>
   {% else %}
     {% if user.is_authenticated and user.is_active or request.is_preview or survey.allow_anonymous_submissions %}
+      <div class="{{surveytype}}--inner-content">
+        {% for block in survey.content %}
+          {% if block.block_type == 'heading' %}
+            <h1 class="heading">
+              {{ block.value }}
+            </h1>
+          {% elif block.block_type == 'image' %}
+            {% image block.value width-240 %}
+          {% elif block.block_type == 'numbered_list' %}
+            <ol>
+            {% for item in block.value %}
+              <li>{{ item|handle_markdown }}</li>
+            {% endfor %}
+            </ol>
+          {% elif block.block_type == 'list' %}
+            <ul>
+            {% for item in block.value %}
+              <li>{{ item|handle_markdown }}</li>
+            {% endfor %}
+            </ul>
+          {% else %}
+            {{ block }}
+          {% endif %}
+        {% endfor %}
+      </div>
     {% if form %}
     <form class="{{surveytype}}__form" action="{% pageurl survey %}{% if survey.multi_step %}?p={{ fields_step.number|add:"1" }}{% endif %}" method="post">
     {% csrf_token %}

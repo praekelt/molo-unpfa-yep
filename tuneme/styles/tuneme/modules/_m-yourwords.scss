@@ -2,7 +2,9 @@
   //Bemify Yourwords Templates
   img {
     display: block;
+    width: 100%;
     height: auto;
+    padding: 5px 0;
   }
   border-top: 1px solid #000;
   padding: 10px 0;
@@ -22,8 +24,12 @@
     display: inline;
   }
 
-  input[type="checkbox"]  {
-    display: inline;
+  label {
+    display: inline-block;
+    padding: 0;
+  }
+  input[type=checkbox] {
+    margin-right: 10px;
   }
 
   .heading-container  {
@@ -34,9 +40,27 @@
     }
   }
   &--inner-content {
+    padding: 0 10px;
+    ul {
+      margin: 10px 20px;
+      list-style: disc;
+    }
+    ol {
+      margin-left: 20px;
+      list-style: decimal;
+    }
+    fieldset {
+      ul {
+        margin: 0;
+        list-style: none;
+      }
+    }
     img {
       margin: 0;
       padding: 10px 0;
+    }
+    .surveys__helptext {
+      margin-top: 5px;
     }
   }
   &-form {
@@ -53,6 +77,11 @@
 .heading--yourwords-description {
   font-weight: normal;
    text-transform: none;
+}
+.competition__title {
+  font-size: $font-large;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 .competition__title,
 .competition__title--description,
