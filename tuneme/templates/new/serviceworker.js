@@ -11,7 +11,7 @@ var CACHE = 'app-cache';
 var filesToCache = [
       '/',
       'static/offline.html',
-      'static/new/img/logo_black.png',
+      'static/new/img/tuneme-fb-share.png',
       'static/new/favicon/android-icon-96x96.png',
       'static/new/favicon/android-icon-144x144.png',
       'static/new/favicon/android-icon-192x192.png'
