@@ -383,6 +383,50 @@ WAGTAILSEARCH_RESULTS_TEMPLATE = 'search/search_results.html'
 #     },
 # }
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'import_console': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'mail_admins'],
+            'level': 'INFO',
+        },
+        'py.warnings': {
+            'handlers': ['console'],
+        },
+        'import_logger': {
+            'handlers': ['import_console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    }
+}
+
 ES_HOST = environ.get('ES_HOST')
 ES_INDEX = environ.get('ES_INDEX')
 ES_VERSION = int(environ.get('ES_VERSION', 5))
@@ -434,6 +478,8 @@ GOOGLE_ANALYTICS_IGNORE_PATH = [
     '/media/', '/static/',
     # metrics URL used by promethius monitoring system
     '/metrics',
+    # REST API endpoints
+    '/api/',
 ]
 
 CUSTOM_GOOGLE_ANALYTICS_IGNORE_PATH = environ.get(
