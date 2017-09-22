@@ -16,7 +16,9 @@
   {% if survey.image %}
     {% image survey.image width-98 as tmp_photo_small %}
     {% image survey.image width-320 as tmp_photo_large %}
-    <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.title }}" class="feature-image" />
+    <div class="{{surveytype}}--inner-content">
+      <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.title }}" class="feature-image" />
+    </div>
   {% endif %}
   {% if survey.your_words_competition %}
     {% if request.user.is_authenticated %}
@@ -58,7 +60,6 @@
             {{ block }}
           {% endif %}
         {% endfor %}
-      </div>
     {% if form %}
     <form class="{{surveytype}}__form" action="{% pageurl survey %}{% if survey.multi_step %}?p={{ fields_step.number|add:"1" }}{% endif %}" method="post">
     {% csrf_token %}
@@ -78,6 +79,7 @@
        {% endfor %}
        <input type="submit" value="{% if is_intermediate_step %}{% trans 'Next Question' %}{% else %}{% trans 'Submit' %}{% endif %}" />
     </form>
+    </div>
     {% else %}
     <p class="error error--{{surveytype}}">
       {% trans "You have already completed this" %} {{ surveytype|slice:":-1" }}

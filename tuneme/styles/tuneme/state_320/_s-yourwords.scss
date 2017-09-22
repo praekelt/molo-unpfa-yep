@@ -1,12 +1,6 @@
 .yourwords, .competition  {
   padding: 10px 0;
   
-  img {
-    border-radius: 3px;
-    margin: 0 auto;
-    vertical-align: middle;
-    width: 90%;
-  }
   .heading--yourwords {
     padding: 10px 15px;
     text-align: center;
@@ -16,11 +10,7 @@
     padding: 5px 15px 20px;
     text-align: center;
   }
-  &--inner-content {
-   .heading  {
-     padding: 0;
-   }
-  }
+
   &--inner-content {
     padding: 0 15px;
     a {
@@ -29,6 +19,9 @@
       font-weight: bold;
       display: inline-block;
       padding: 10px 0 0;
+    }
+    .heading  {
+      padding: 0;
     }
   }
   &-form {
