@@ -1,5 +1,3 @@
-
-@import "../_variables";
 @media only screen and (max-width: 240px) {
   .call-to-action__item-share--footer {
     .call-to-action__item-share-img {display: none;}
@@ -42,22 +40,6 @@
       font-weight: bold;
     }
   }
-
-  @import "_s-header";
-  @import "_s-heading";
-  @import "_s-menu";
-  @import "_s-buttons";
-  @import "_s-polls";
-  @import "_s-article";
-  @import "_s-article-list";
-  @import "_s-related-articles";
-  @import "_s-comments";
-  @import "_s-profiles";
-  @import "_s-search";
-  @import "_s-yourwords";
-  @import "_s-yourtips";
-  @import "_s-survey";
-  @import "_s-service-dir";
 }
 
 @media only screen and (min-width: 600px) {

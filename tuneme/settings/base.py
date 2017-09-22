@@ -44,13 +44,12 @@ BASE_URL = 'http://example.com'
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.auth',
     'django.contrib.admin',
+    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'django_extensions',
 
     'taggit',
@@ -58,7 +57,16 @@ INSTALLED_APPS = [
 
     'tuneme',
     'molo.core',
-    'google_analytics',
+    'molo.profiles',
+    'molo.surveys',
+    'django_comments',
+    'molo.commenting',
+    'molo.yourwords',
+    'molo.yourtips',
+    'molo.servicedirectory',
+
+    'molo.pwa',
+    'fcm_django',
 
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
@@ -79,14 +87,8 @@ INSTALLED_APPS = [
     'wagtail_personalisation',
 
     'mptt',
-    'molo.surveys',
-    'molo.profiles',
-    'django_comments',
-    'molo.commenting',
-    'molo.yourwords',
-    'molo.yourtips',
-    'molo.servicedirectory',
-    'polls',
+    'django.contrib.sites',
+    'google_analytics',
 
     'raven.contrib.django.raven_compat',
     'djcelery',
@@ -98,6 +100,7 @@ INSTALLED_APPS = [
     'secretballot',
     'likes',
     'storages',
+    'import_export'
 ]
 
 COMMENTS_APP = 'molo.commenting'
@@ -131,6 +134,7 @@ MIDDLEWARE_CLASSES = [
 ]
 
 AUTHENTICATION_BACKENDS = [
+    'molo.profiles.backends.MoloProfilesModelBackend',
     'molo.core.backends.MoloModelBackend',
     'django.contrib.auth.backends.ModelBackend'
 ]
@@ -460,3 +464,37 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 if AWS_STORAGE_BUCKET_NAME and AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
     MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+PWA_SERVICE_WORKER_PATH = join(
+    PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT, 'serviceworker.js')
+PWA_NAME = 'Tuneme'
+PWA_DESCRIPTION = "Tuneme"
+PWA_THEME_COLOR = '#000000'
+PWA_DISPLAY = 'standalone'
+PWA_START_URL = '/'
+PWA_ICONS = [
+    {
+        "src": "static/new/favicon/android-icon-96x96.png",
+        "sizes": "96x96",
+        "type": "image/png"
+    },
+    {
+        "src": "static/new/favicon/android-icon-144x144.png",
+        "sizes": "144x144",
+        "type": "image/png"
+    },
+    {
+        "src": "static/new/favicon/android-icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    }
+]
+PWA_FCM_API_KEY = 'AIzaSyDZ2wk0aUry81OKqW7BqjXWOzLEUax279Q'
+PWA_FCM_MSGSENDER_ID = '756558445116'
+FCM_DJANGO_SETTINGS = {
+    "FCM_SERVER_KEY": "AAAAsCZlujw:APA91bF4KmOWhc-rxeIM4C4Hq5kiLJDGH-D4EzRJPbR"
+                      "etJ8AZV0nICx8csbaTwR7zfIzNVbbjHlv6Fnp_bAxo23SEjGzv99YSW"
+                      "tFZucgQCKKoqgci8da-9eijVt56ikKZXhir0Xfonkv",
+    "ONE_DEVICE_PER_USER": True,
+    "DELETE_INACTIVE_DEVICES": False,
+}

@@ -1,11 +1,12 @@
-
 @media only screen and (min-width: 320px) {
-//MENU LIST
-.menu__item a {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 25px;
-  border-top-left-radius: 25px;
+.menu__item {
+    a {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+
+      border-bottom-left-radius: 25px;
+      border-top-left-radius: 25px;
+    }
 }
 
 //HEADINGS
@@ -16,8 +17,11 @@
   }
 }
 
-//SECTION SUBSECTION: ARTICLE LISTING
-  .article-list--latest-listing,
+  .article-list--latest-listing {
+      .article-list__image {
+        margin-right: 0;
+      }
+  }
   .article-list--section-listing {
     .article-list__image {
       margin-right: 0;

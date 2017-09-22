@@ -3,6 +3,7 @@
 {% load google_analytics_tags %}
 {% get_settings %}
 {% get_current_language as LANGUAGE_CODE %}
+{% load molo_pwa %}
 <!DOCTYPE html>
 <html class="no-js" lang="{{LANGUAGE_CODE}}">
 <head>
@@ -36,21 +37,21 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ STATIC_URL }}new/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="{{ STATIC_URL }}new/favicon/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ STATIC_URL }}new/favicon/favicon-16x16.png">
-  <link rel="manifest" href="{{ STATIC_URL }}new/favicon/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   {% compress css %}
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/style.css">
   {% endcompress %}
+  {% molo_pwa_meta %}
   <script type="text/javascript">
     var CutsTheMustard = 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window,
         LargeScreen = ((window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) >= 200),
       operaMiniSingleView = '{% compress css %}{% spaceless %}
-       <link rel="stylesheet" type="text/css" media="handheld" href="{{ STATIC_URL }}new/css/{{ ENV }}/opera_single_view.css">
+       <link rel="stylesheet" type="text/css" media="handheld" href="{{ STATIC_URL }}new/css/{{ ENV }}/style-opera.css">
        {% endspaceless %}{% endcompress %}',
       smartStyles = '{% compress css %}{% spaceless %}
-       <link rel="stylesheet" type="text/css" media="(min-width: 20em)" href="{{ STATIC_URL }}new/css/{{ ENV }}/state_320.css">
+       <link rel="stylesheet" type="text/css" media="(min-width: 20em)" href="{{ STATIC_URL }}new/css/{{ ENV }}/style-320.css">
        {% endspaceless %}{% endcompress %}';
     if(CutsTheMustard === true) {if(LargeScreen) {document.write(smartStyles);}}
     if(LargeScreen === false) {document.write(operaMiniSingleView);}
@@ -73,7 +74,6 @@
     {% endcompress %}
   {% endif %}
   <noscript>Your browser does not support JavaScript!</noscript>
-  <script src="{% static 'new/js/main.js' %}" type="text/javascript"></script>
 </head>
 <body {% if LANGUAGE_CODE|language_bidi == True %}dir="rtl"{% endif %}>
   <div class="header">
@@ -110,7 +110,7 @@
     <ul class="menu-items">
       <li class="menu__item menu__item--default"><a href="#top">{% trans "Back to top" %}</a></li>
       <li class="menu__item menu__item--default"><a href="/">{% trans "Home" %}</a></li>
-      {% if ENABLE_SERVICE_DIRECTORY %}
+      {% if settings.core.SiteSettings.enable_service_directory or ENABLE_SERVICE_DIRECTORY %}
         <li class="menu__item menu__item--service menu__item--default">
          <a href="{% url 'molo.servicedirectory:home' %}">{% trans "Find a service" %}</a>
         <span>{% trans "Find me a clinic" %}</span>
