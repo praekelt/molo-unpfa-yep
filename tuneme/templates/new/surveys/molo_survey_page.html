@@ -3,92 +3,10 @@
 
 {% block content %}
 {% if self.your_words_competition %}
-  {% get_competitiontype as surveytype %}
+  {% include 'patterns/basics/surveys/molo_survey_page.html' with surveytype='competition' %}
 {% elif not self.display_survey_directly %}
-  {% get_surveytype as surveytype %}
+  {% include 'patterns/basics/surveys/molo_survey_page.html' with surveytype='surveys' %}
 {% else %}
-  {% get_pollstype as surveytype %}
+  {% include 'patterns/basics/surveys/molo_survey_page.html' with surveytype='polls' %}
 {% endif %}
-<div class="{{surveytype}} {% if self.your_words_competition %}yourwords--entries{% endif %}">
-  {% if self.your_words_competition %}
-  <h2 class="heading heading--yourwords">
-    {% trans "Share your story" %}
-  </h2>
-  {% endif %}
-  <h1 class="{{surveytype}}__title %}">{{ page.title }}</h1>
-  <h4 class="{{surveytype}}__intro competition__title--description">{{ page.intro }}</h4>
-  {% if page.image %}
-    {% image page.image width-98 as tmp_photo_small %}
-    {% image page.image width-320 as tmp_photo_large %}
-     <img src="{{ tmp_photo_small.url }}" srcset="{{ tmp_photo_large.url }}" alt="{{ self.title }}" class="feature-image" />
-  {% endif %}
-  {% if user.is_authenticated and user.is_active or request.is_preview or self.allow_anonymous_submissions %}
-  {% if form %}
-  <div class="{{surveytype}}--inner-content">
-    {% for block in page.content %}
-      {% if block.block_type == 'heading' %}
-      <h1 class="heading">
-        {{ block.value }}
-      </h1>
-      {% elif block.block_type == 'image' %}
-        {% image block.value width-240 %}
-      {% elif block.block_type == 'numbered_list' %}
-        <ol>
-        {% for item in block.value %}
-          <li>{{ item|handle_markdown }}</li>
-        {% endfor %}
-        </ol>
-      {% elif block.block_type == 'list' %}
-        <ul>
-        {% for item in block.value %}
-          <li>{{ item|handle_markdown }}</li>
-        {% endfor %}
-      </ul>
-      {% else %}
-          {{ block }}
-      {% endif %}
-    {% endfor %}
-    <form class="{{surveytype}}__form" action="{% pageurl self %}{% if self.multi_step %}?p={{ fields_step.number|add:"1" }}{% endif %}" method="post">
-    {% csrf_token %}
-    {% for field in form %}
-      <fieldset>
-        {% if field.field.widget|is_checkbox %}
-          {{ field }}
-          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-          <span class="surveys__helptext">{{ field.help_text }}</span>
-        {% else %}
-          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-          <span class="surveys__helptext">{{ field.help_text }}</span>
-          {{ field }}
-        {% endif %}
-        {% if field.errors %}
-          <ul class="error error--{{surveytype}}">
-          {% for error in field.errors %}
-            <li>{{ error }}</li>
-          {% endfor %}
-          </ul>
-        {% endif %}
-      </fieldset>
-      {% endfor %}
-      <input type="submit" value="{% if is_intermediate_step %}{% trans 'Next Question' %}{% else %}{% trans 'Submit' %}{% endif %}" />
-    </form>
-  </div>
-  {% else %}
-    <p class="error error--{{surveytype}}">
-      {% trans "You have already completed this" %} {{ surveytype|slice:":-1" }}
-    </p>
-    <div class="call-to-action call-to-action--{{surveytype}}">
-      <a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
-        {% trans "Back to Home page" %}
-      </a>
-    </div>
-  {% endif %}
-  {% else %}
-  <div class="call-to-action call-to-action--{{surveytype}}">
-    <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="call-to-action__nav-item call-to-action__nav-item--{{surveytype}}">
-      {% trans 'Please log in to take' %} {{surveytype}}
-    </a>
-  </div>
-  {% endif %}
-</div>
 {% endblock %}
