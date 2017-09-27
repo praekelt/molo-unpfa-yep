@@ -1,57 +1,15 @@
-{% load wagtailcore_tags core_tags surveypolls i18n %}
+{% load wagtailcore_tags core_tags surveypolls wagtailimages_tags i18n %}
+
 {% block content %}
 {% for survey in surveys %}
 {% with survey=survey.molo_survey_page form=survey.form %}
-
-{% if not survey.display_survey_directly %}
-  {% get_surveytype as surveytype %}
+{% if survey.your_words_competition %}
+  {% include 'patterns/basics/surveys/surveys_list.html' with surveytype='competition' %}
+{% elif not self.display_survey_directly %}
+  {% include 'patterns/basics/surveys/surveys_list.html' with surveytype='surveys' %}
 {% else %}
-  {% get_pollstype as surveytype %}
+  {% include 'patterns/basics/surveys/surveys_list.html' with surveytype='polls' %}
 {% endif %}
-<div class="{{surveytype}}">
-  <h1 class="{{surveytype}}__title">{{ survey.title }}</h1>
-  <h4 class="{{surveytype}}__intro">{{ survey.intro }}</h4>
-  {% if not survey.display_survey_directly %}
-  <div class="call-to-action call-to-action--{{surveytype}}">
-    <a href="{% pageurl survey %}" class="call-to-action__nav-item call-to-action__nav-item--{{surveytype}}">
-      {% trans 'Take The Survey' %}
-    </a>
-  </div>
-  {% else %}
-    {% if user.is_authenticated and user.is_active or request.is_preview or survey.allow_anonymous_submissions %}
-    {% if form %}
-    <form class="{{surveytype}}__form" action="{% pageurl survey %}{% if survey.multi_step %}?p={{ fields_step.number|add:"1" }}{% endif %}" method="post">
-    {% csrf_token %}
-	{% for field in form %}
-	<fieldset>
-	  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-          <span class="{{surveytype}}__helptext">{{ field.help_text }}</span>
-          {{ field }}
-          {% if field.errors %}
-            <ul class="error error--{{surveytype}}">
-            {% for error in field.errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-            </ul>
-          {% endif %}
-       </fieldset>
-       {% endfor %}
-       <input type="submit" value="{% if is_intermediate_step %}{% trans 'Next Question' %}{% else %}{% trans 'Submit' %}{% endif %}" />
-    </form>
-    {% else %}
-    <p class="error error--{{surveytype}}">
-      {% trans "You have already completed this" %} {{ surveytype|slice:":-1" }}
-    </p>
-    {% endif %}
-    {% else %}
-    <div class="call-to-action call-to-action--{{surveytype}}">
-      <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="call-to-action__nav-item call-to-action__nav-item--{{surveytype}}">
-        {% trans 'Please log in to vote.' %}
-      </a>
-    </div>
-  {% endif %}
-{% endif %}
-</div>
 {% endwith %}
 {% endfor %}
 {% endblock %}

@@ -63,7 +63,7 @@ gulp.task('serve', function() {
 
 gulp.task('watch', function() {
     livereload.listen();
-    gulp.watch('tuneme/client/css/*.scss', ['styles']);
+    gulp.watch('tuneme/styles/tuneme/**/**.scss', ['styles']);
 });
 
 gulp.task('styles', ['styles:dev', 'styles:prd']);

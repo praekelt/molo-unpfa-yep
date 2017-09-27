@@ -15,6 +15,10 @@
     }
   }
   .call-to-action__nav-item--back-home {color: $sea-orange;}
+  
+  &--inner-content {
+    padding: 0 15px;
+  }
 }
 .polls {
   background: #cd36f5;

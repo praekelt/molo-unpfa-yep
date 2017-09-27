@@ -1,47 +1,11 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags surveypolls i18n %}
-
 {% block content %}
-{% if not self.display_survey_directly %}
-  {% get_surveytype as surveytype %}
+{% if self.your_words_competition %}
+  {% include 'patterns/basics/surveys/molo_survey_page_landing.html' with surveytype='competition' %}
+{% elif not self.display_survey_directly %}
+  {% include 'patterns/basics/surveys/molo_survey_page_landing.html' with surveytype='surveys' %}
 {% else %}
-  {% get_pollstype as surveytype %}
+  {% include 'patterns/basics/surveys/molo_survey_page_landing.html' with surveytype='polls' %}
 {% endif %}
-<div class="{{surveytype}} {{surveytype}}--feedback-page">
-{% if not self.thank_you_text %}
-  <h1 class="{{surveytype}}__title">{{ self.title }}</h1>
-  <h4 class="{{surveytype}}__intro">{{ self.intro }}</h4>
-{% else %}
-  <h4 class="{{surveytype}}__thank-you">{{ self.thank_you_text }}</h4>
-{% endif %}
-  <div class="call-to-action call-to-action--{{surveytype}}">
-    <a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
-		  {% trans "Back to Home page" %}
-    </a>
-  </div>
-
-{% if self.show_results and results %}
-  <h1 class="{{surveytype}}__title">{{surveytype}} {% trans "Results" %}</h1>
-  <h4 class="{{surveytype}}__intro">{% trans "Check out the results below!" %}</h4>
-  <div class="{{surveytype}}__results">
-  {% for question, answers in results.items %}
-    <h3 class="{{surveytype}}__question">{{ question }}</h3>
-	  {% for answer, count in answers.items %}
-    <h6 class="{{surveytype}}__answer">{{ answer }}</h6>
-    <div class="{{surveytype}}__answer-bar {% if self.show_results_as_percentage %}{{surveytype}}__answer-percentage {% if count >= 0 and count <= 11 %}{{surveytype}}__answer-percentage--no-bar{% elif count > 11 and count <= 20 %} {{surveytype}}__answer-percentage--lower-bar{% elif count > 20 and count <= 70 %} {{surveytype}}__answer-percentage--partial{% elif count > 70 %} {{surveytype}}__answer-percentage--winner{% endif %}{% endif %}" {% if self.show_results_as_percentage %}style="{% if count >= 0 and count <= 11 %}width:11%;{% else %}width:{{ count }}%;{% endif %}"{% endif %}>
-      <p class="{{surveytype}}__answer--count">{{ count }}</p>
-      {% if self.show_results_as_percentage %}
-        <span class="{{surveytype}}__answer-percentage--symbol">%</span>
-        {% endif %}
-    </div>
-	  {% endfor %}
-  {% endfor %}
-  </div>
-  <div class="call-to-action call-to-action--{{surveytype}}">
-    <a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">
-      {% trans "Back to Home page" %}
-    </a>
-  </div>
-{% endif %}
-</div>
 {% endblock %}
