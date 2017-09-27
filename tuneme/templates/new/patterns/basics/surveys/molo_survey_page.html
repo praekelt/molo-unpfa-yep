@@ -41,6 +41,11 @@
           {{ block }}
       {% endif %}
     {% endfor %}
+    {% if page.terms_and_conditions.exists and page.terms_and_conditions.first.terms_and_conditions.live %}
+      <div class="surveys__terms">
+        <a href="{% pageurl page.terms_and_conditions.first.terms_and_conditions %}">{{page.terms_and_conditions.first.terms_and_conditions.title}}</a>
+      </div>
+    {% endif %}
     <form class="{{surveytype}}__form" action="{% pageurl self %}{% if self.multi_step %}?p={{ fields_step.number|add:"1" }}{% endif %}" method="post">
     {% csrf_token %}
     {% for field in form %}

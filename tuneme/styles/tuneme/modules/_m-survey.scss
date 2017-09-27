@@ -67,6 +67,9 @@
   }
   &__answer-percentage--partial {opacity: 0.9;}
   &__answer-percentage--winner{opacity: 1;}
+  &__terms {
+    margin: 10px 0;
+  }
 
   .error--surveys,
   .error--polls {

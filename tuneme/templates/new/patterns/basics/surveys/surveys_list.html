@@ -60,22 +60,33 @@
             {{ block }}
           {% endif %}
         {% endfor %}
+      {% if survey.terms_and_conditions.exists and survey.terms_and_conditions.first.terms_and_conditions.live %}
+        <div class="surveys__terms">
+          <a href="{% pageurl survey.terms_and_conditions.first.terms_and_conditions %}">{{survey.terms_and_conditions.first.terms_and_conditions.title}}</a>
+        </div>
+      {% endif %}
     {% if form %}
     <form class="{{surveytype}}__form" action="{% pageurl survey %}{% if survey.multi_step %}?p={{ fields_step.number|add:"1" }}{% endif %}" method="post">
     {% csrf_token %}
-	{% for field in form %}
-	<fieldset>
-	  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-          <span class="{{surveytype}}__helptext">{{ field.help_text }}</span>
-          {{ field }}
-          {% if field.errors %}
-            <ul class="error error--{{surveytype}}">
-            {% for error in field.errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-            </ul>
+      {% for field in form %}
+        <fieldset>
+          {% if field.field.widget|is_checkbox %}
+            {{ field }}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            <span class="surveys__helptext">{{ field.help_text }}</span>
+          {% else %}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            <span class="surveys__helptext">{{ field.help_text }}</span>
+            {{ field }}
           {% endif %}
-       </fieldset>
+            {% if field.errors %}
+              <ul class="error error--{{surveytype}}">
+              {% for error in field.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+         </fieldset>
        {% endfor %}
        <input type="submit" value="{% if is_intermediate_step %}{% trans 'Next Question' %}{% else %}{% trans 'Submit' %}{% endif %}" />
     </form>
