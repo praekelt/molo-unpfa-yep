@@ -544,3 +544,6 @@ FCM_DJANGO_SETTINGS = {
     "ONE_DEVICE_PER_USER": True,
     "DELETE_INACTIVE_DEVICES": False,
 }
+
+# https://github.com/wagtail/wagtail/issues/3883
+AWS_S3_FILE_OVERWRITE = False
