@@ -2,7 +2,7 @@ molo.core==5.20.0
 molo.profiles==5.4.1
 molo.commenting==5.1.0
 molo.yourwords==5.0.1
-molo.yourtips==5.0.6
+molo.yourtips==5.0.7
 molo.servicedirectory==2.2.0
 molo.surveys==5.6.4
 molo.pwa
