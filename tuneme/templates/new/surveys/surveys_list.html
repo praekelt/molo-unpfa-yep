@@ -2,14 +2,14 @@
 
 {% block content %}
 {% for survey in surveys %}
-{% with survey=survey.molo_survey_page form=survey.form %}
-{% if survey.your_words_competition %}
-  {% include 'patterns/basics/surveys/surveys_list.html' with surveytype='competition' %}
-{% elif not self.display_survey_directly %}
-  {% include 'patterns/basics/surveys/surveys_list.html' with surveytype='surveys' %}
-{% else %}
-  {% include 'patterns/basics/surveys/surveys_list.html' with surveytype='polls' %}
-{% endif %}
-{% endwith %}
+    {% with survey=survey.molo_survey_page form=survey.form %}
+        {% if survey.your_words_competition %}
+            {% include 'patterns/basics/surveys/surveys_list.html' with surveytype='competition' %}
+        {% elif not self.display_survey_directly %}
+            {% include 'patterns/basics/surveys/surveys_list.html' with surveytype='surveys' %}
+        {% else %}
+            {% include 'patterns/basics/surveys/surveys_list.html' with surveytype='polls' %}
+        {% endif %}
+    {% endwith %}
 {% endfor %}
 {% endblock %}
