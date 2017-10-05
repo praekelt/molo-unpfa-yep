@@ -15,10 +15,18 @@
     }
   }
   .call-to-action__nav-item--back-home {color: $sea-orange;}
-  
+
   &--inner-content {
     padding: 0 15px;
   }
+}
+.surveys {
+    &__terms-anchor {
+      color: #ef9955;
+      &:hover {
+          color: #a3a3a3;
+      }
+    }
 }
 .polls {
   background: #cd36f5;
@@ -35,6 +43,12 @@
       background: $purple_dark;
       color: #fff;
       filter: grayscale(60%);
+    }
+  }
+  &__terms-anchor {
+    color: #fff;
+    &:hover {
+        color: #a3a3a3;
     }
   }
   .call-to-action__nav-item--polls {

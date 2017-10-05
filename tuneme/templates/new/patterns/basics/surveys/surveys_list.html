@@ -1,7 +1,6 @@
 {% load wagtailcore_tags core_tags surveypolls wagtailimages_tags i18n %}
-<h5>HOMEPAGE SECTION</h5>
 
-<div class="{{surveytype}}">
+<div class="{{surveytype}} {% if survey.your_words_competition %}yourwords{{survey.get_effective_extra_style_hints}}{% endif %}">
   {% if survey.your_words_competition %}
     <h1 class="heading heading--yourwords heading--hero-yourwords">{% trans "Competition" %}</h1>
     <h2 class="heading heading--yourwords heading--yourwords-subtitle">{% trans "Share your story" %}</h2>
@@ -22,7 +21,13 @@
 
   {% if survey.your_words_competition %}
     {% if request.user.is_authenticated %}
-        <a href="{% pageurl survey %}" class="call-to-action__nav-item call-to-action__nav-item--login">{{survey.homepage_button_text}}</a>
+        <a href="{% pageurl survey %}" class="call-to-action__nav-item call-to-action__nav-item--login">
+            {% if survey.homepage_button_text %}
+                {{survey.homepage_button_text}}
+            {% else %}
+                {% trans "Log in to Enter" %}
+            {% endif %}
+        </a>
     {% else %}
         <a href="{% url 'molo.profiles:auth_login' %}?next={{request.path}}" class="call-to-action__nav-item call-to-action__nav-item--login">
       {% trans "Log in to Enter" %}
@@ -31,7 +36,11 @@
   {% elif not survey.display_survey_directly %}
     <div class="call-to-action call-to-action--{{surveytype}}">
         <a href="{% pageurl survey %}" class="call-to-action__nav-item call-to-action__nav-item--{{surveytype}}">
-            {% trans 'Take The Survey' %}
+            {% if survey.homepage_button_text %}
+                {{survey.homepage_button_text}}
+            {% else %}
+                    {% trans 'Take The Survey' %}
+            {% endif %}
         </a>
     </div>
   {% else %}
@@ -61,8 +70,8 @@
           {% endif %}
         {% endfor %}
         {% if survey.terms_and_conditions.exists and survey.terms_and_conditions.first.terms_and_conditions.live %}
-            <div class="surveys__terms">
-                <a href="{% pageurl survey.terms_and_conditions.first.terms_and_conditions %}">{{survey.terms_and_conditions.first.terms_and_conditions.title}}</a>
+            <div class="{{surveytype}}__terms">
+                <a href="{% pageurl survey.terms_and_conditions.first.terms_and_conditions %}" class="{{surveytype}}__terms-anchor">{{survey.terms_and_conditions.first.terms_and_conditions.title}}</a>
             </div>
         {% endif %}
 
@@ -91,7 +100,6 @@
                {% endfor %}
                <input type="submit" value="{% if is_intermediate_step %}{% trans 'Next Question' %}{% else %}{% trans 'Submit' %}{% endif %}" />
             </form>
-
         {% else %}
             <p class="error error--{{surveytype}}">
               {% trans "You have already completed this" %} {{ surveytype }}

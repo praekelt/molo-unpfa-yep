@@ -1,7 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags core_tags surveypolls i18n %}
-<h5>MAIN PAGE</h5>
 
-<div class="{{surveytype}} {% if self.your_words_competition %}yourwords--entries{% endif %}">
+<div class="{{surveytype}} {% if self.your_words_competition %}yourwords--entries yourwords{{self.get_effective_extra_style_hints}}{% endif %}">
   {% if self.your_words_competition %}
     <h2 class="heading heading--yourwords">{% trans "Share your story" %}</h2>
   {% endif %}
@@ -40,8 +39,8 @@
           {% endif %}
         {% endfor %}
         {% if page.terms_and_conditions.exists and page.terms_and_conditions.first.terms_and_conditions.live %}
-          <div class="surveys__terms">
-            <a href="{% pageurl page.terms_and_conditions.first.terms_and_conditions %}">{{page.terms_and_conditions.first.terms_and_conditions.title}}</a>
+          <div class="{{surveytype}}__terms">
+            <a href="{% pageurl page.terms_and_conditions.first.terms_and_conditions %}" class="{{surveytype}}__terms-anchor">{{page.terms_and_conditions.first.terms_and_conditions.title}}</a>
           </div>
         {% endif %}
     {% if form %}

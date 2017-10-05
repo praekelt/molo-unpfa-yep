@@ -1,7 +1,6 @@
 {% load wagtailcore_tags surveypolls i18n %}
-<h5>RESULTS</h5>
 
-<div class="{{surveytype}} {{surveytype}}--feedback-page {% if self.your_words_competition %}yourwords--entries{% endif %}">
+<div class="{{surveytype}} {{surveytype}}--feedback-page {% if self.your_words_competition %}yourwords--entries yourwords{{self.get_effective_extra_style_hints}}{% endif %}">
     {% if not self.thank_you_text %}
       <h1 class="{{surveytype}}__title">{{ self.title }}</h1>
       <h4 class="{{surveytype}}__intro">{{ self.intro }}</h4>
