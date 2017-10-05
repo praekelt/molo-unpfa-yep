@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags surveypolls i18n %}
 {% block content %}
-{% if self.your_words_competition %}
-  {% include 'patterns/basics/surveys/molo_survey_page_landing.html' with surveytype='competition' %}
-{% elif not self.display_survey_directly %}
-  {% include 'patterns/basics/surveys/molo_survey_page_landing.html' with surveytype='surveys' %}
-{% else %}
-  {% include 'patterns/basics/surveys/molo_survey_page_landing.html' with surveytype='polls' %}
-{% endif %}
+    {% if self.your_words_competition %}
+      {% include 'patterns/basics/surveys/molo_survey_page_landing.html' with surveytype='competition' %}
+    {% elif not self.display_survey_directly %}
+      {% include 'patterns/basics/surveys/molo_survey_page_landing.html' with surveytype='surveys' %}
+    {% else %}
+      {% include 'patterns/basics/surveys/molo_survey_page_landing.html' with surveytype='polls' %}
+    {% endif %}
 {% endblock %}
