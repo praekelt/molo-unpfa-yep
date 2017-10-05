@@ -69,6 +69,14 @@
   &__answer-percentage--winner{opacity: 1;}
   &__terms {
     margin: 10px 0;
+    &-anchor {
+        color: #000;
+        font-weight: bold;
+        text-decoration: underline;
+        &:hover {
+            color: #a3a3a3;
+        }
+    }
   }
 
   .error--surveys,
