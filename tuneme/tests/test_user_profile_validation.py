@@ -46,7 +46,7 @@ class UserProfileValidationTests(TestCase, MoloTestCaseMixin):
             'password': '1234',
         })
         self.assertContains(response,
-                            'Your username and password does not match.'
+                            'Your Username and PIN does not match.'
                             ' Please try again.')
 
         response = self.client.post(reverse('molo.profiles:auth_login'), {
@@ -54,5 +54,5 @@ class UserProfileValidationTests(TestCase, MoloTestCaseMixin):
             'password': 'wrong',
         })
         self.assertContains(response,
-                            'Your username and password does not match.'
+                            'Your Username and PIN does not match'
                             ' Please try again.')
