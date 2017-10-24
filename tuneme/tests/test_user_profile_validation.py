@@ -54,5 +54,5 @@ class UserProfileValidationTests(TestCase, MoloTestCaseMixin):
             'password': 'wrong',
         })
         self.assertContains(response,
-                            'Your Username and PIN does not match'
+                            'Your Username and PIN does not match.'
                             ' Please try again.')
