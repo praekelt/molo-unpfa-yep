@@ -70,7 +70,7 @@
         </form>
     {% else %}
         <p class="error error--{{surveytype}}">
-          {% trans "You have already completed this" %} {{ surveytype|slice:":-1" }}
+          {% trans "You have already completed this" %} {% if surveytype|default:""|slice:"-1:" == "s" %}{{ surveytype|slice:":-1" }}{% else %}{{ surveytype }}{% endif %}
         </p>
         <div class="call-to-action call-to-action--{{surveytype}}">
           <a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">

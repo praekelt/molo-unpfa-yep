@@ -24,7 +24,7 @@
   }
   &__results {
     padding: 5px 0;
-    margin: 15px 0;
+    margin: 15px;
     border-bottom: 1px solid #DEDEDE;
   }
   &__helptext {
@@ -49,6 +49,7 @@
   &__answer-percentage {
     border-radius: 20px;
     padding: 5px 10px;
+    box-sizing: border-box;
     &--symbol {
       display: inline-block;
     }
