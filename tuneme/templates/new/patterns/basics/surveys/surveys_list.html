@@ -102,7 +102,13 @@
             </form>
         {% else %}
             <p class="error error--{{surveytype}}">
-              {% trans "You have already completed this" %} {{ surveytype }}
+              {% if surveytype == 'surveys' %}
+                {% trans "You have already completed this survey." %}
+              {% elif surveytype == 'competition'%}
+                {% trans "You have already completed this competition." %}
+              {% elif surveytype == 'polls'%}
+                {% trans "You have already completed this poll." %}
+              {% endif %}
             </p>
         {% endif %}
     </div>
