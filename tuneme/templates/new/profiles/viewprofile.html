@@ -6,7 +6,7 @@
 <h1 class="heading heading--auth">{% trans "Hello" %} {{ user.profile.migrated_username|default:user.username }}</h1>
 <div class="profiles profiles--content-body">
   <fieldset>
-    <label>{% trans "As you type your name comment will appear as:" %}</label>
+    <label>{% trans "On the site, your name will appear as:" %}</label>
     <p class="profile__alias">{{ user.profile.alias | default:" Anonymous " }}</p>
   </fieldset>
 
@@ -62,7 +62,7 @@
     <a href="{% url "molo.profiles:auth_logout" %}" class="call-to-action__nav-item call-to-action__nav-item-primary">
       {% trans "log out" %}</a>
     <a href="{% url "molo.profiles:edit_my_profile" %}" class="call-to-action__nav-item call-to-action__nav-item-primary">{% trans "Edit My Profile" %}</a>
-    <a href="{% url "molo.profiles:profile_password_change" %}" class="call-to-action__nav-item call-to-action__nav-item-primary">{% trans "Change My Password" %}</a>
+    <a href="{% url "molo.profiles:profile_password_change" %}" class="call-to-action__nav-item call-to-action__nav-item-primary">{% trans "Change My PIN" %}</a>
     <a href="/" class="call-to-action__nav-item">{% trans "Home Page" %}</a>
   </div>
 </div>

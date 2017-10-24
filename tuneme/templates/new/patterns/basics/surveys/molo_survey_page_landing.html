@@ -1,14 +1,9 @@
 {% load wagtailcore_tags surveypolls i18n %}
 
 <div class="{{surveytype}} {{surveytype}}--feedback-page {% if self.your_words_competition %}yourwords--entries yourwords{{self.get_effective_extra_style_hints}}{% endif %}">
-    {% if not self.thank_you_text %}
-      <h1 class="{{surveytype}}__title">{{ self.title }}</h1>
-      <h4 class="{{surveytype}}__intro">{{ self.intro }}</h4>
-    {% elif self.your_words_competition %}
-      <h1 class="heading heading--yourwords">{% trans 'Thank you!' %}</h1>
-      <h4 class="heading heading--yourwords-description">  {{ self.thank_you_text }}</h4>
-    {% else %}
-      <h4 class="{{surveytype}}__thank-you">{{ self.thank_you_text }}</h4>
+    <h1 class="heading">{% trans 'Thank you!' %}</h1>
+    {% if self.thank_you_text %}
+      <h4 class="heading heading--yourwords-description">{{ self.thank_you_text }}</h4>
     {% endif %}
     <div class="call-to-action call-to-action--{{surveytype}}">
         <a href="{{request.site.root_page.url}}" class="call-to-action__nav-item call-to-action__nav-item--back-home">

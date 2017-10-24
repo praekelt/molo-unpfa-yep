@@ -14,14 +14,14 @@
   {% csrf_token %}
     <input type="hidden" name="next" value="{% if not request.GET.next %}/{% else %}{{ request.GET.next }}{% endif %}" />
     {% if form.errors %}
-      <p class="error">{% trans "Your username and password does not match. Please try again." %}</p>
+      <p class="error">{% trans "Your Username and PIN does not match. Please try again." %}</p>
     {% endif %}
     <fieldset>
       <label for="id_username">{% trans "Username" %}</label>
       {{ form.username }}
     </fieldset>
     <fieldset>
-      <label for="id_password">{% trans "4 digit pin" %}</label>
+      <label for="id_password">{% trans "4 digit PIN" %}</label>
       {{ form.password }}
       <p class="helptext">{% trans "Numbers only eg. 5656" %}</p>
     </fieldset>
@@ -29,7 +29,7 @@
   </form>
   <div class="call-to-action call-to-action--profiles">
     <a href="{% url "molo.profiles:forgot_password" %}" class="call-to-action__nav-item call-to-action__nav-item--password-recovery">
-      {% trans "Forgotten your password?" %}
+      {% trans "Forgotten your PIN?" %}
     </a>
     <h5 class="call-to-action__challenge-heading">
     {% trans "Don't have an account?" %}</h5>
