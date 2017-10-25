@@ -17,3 +17,5 @@ Unidecode==0.04.16
 django-secretballot==0.7.0
 django-likes==1.11
 django-import-export==0.5.1
+# Required by ImageHash, install a working version
+scipy==0.19.1
