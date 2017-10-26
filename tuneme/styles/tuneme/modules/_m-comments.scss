@@ -8,8 +8,16 @@
     font-size: 18px;
     padding: 5px 15px 10px;
   }
-  &__alias-author {
-    font-weight: bold;
+
+  &__alias {
+      &-author {font-weight: bold;}
+      &-staff {
+          &:before {
+              content: "*";
+              color: #f82353;
+              display: inline-block;
+          }
+      }
   }
   &__counter {
     color: #000;
