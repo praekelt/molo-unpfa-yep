@@ -1,7 +1,11 @@
 {% load i18n molo_commenting_tags %}
 <div class="comments-list__item {% if node.parent == None %} comments-list__item--parent-comment{% endif %}{% if node.parent %} comments-list__item--reply{% endif %}">
   <h4 class="comments__alias-author">
-    {% if node.user_name.lower == 'anonymous' %}
+    {% if node.user.is_staff %}
+        <span class="comments__alias-staff">
+          {% trans "TuneMe Moderator" %}
+        </span>
+    {% elif node.user_name.lower == 'anonymous' %}
       {{node.user_name}}
     {% else %}
       {% if not node.user.profile.alias %}
