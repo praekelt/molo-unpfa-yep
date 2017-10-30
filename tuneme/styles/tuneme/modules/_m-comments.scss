@@ -17,7 +17,11 @@
               color: #f82353;
               display: inline-block;
           }
+          &--expert {
+              color: $purple;
+          }
       }
+
   }
   &__counter {
     color: #000;

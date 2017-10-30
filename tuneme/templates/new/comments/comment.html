@@ -4,7 +4,11 @@
     <!-- Temporary Fix - Fix will be on commenting plugin release
          Profiles Users: User groups settings - Roles Groups if not Administrators
      -->
-    {% if node.user|is_in_group:"Moderators" or node.user|is_in_admin_group %}
+     {% if node.user|is_in_group:"Expert" %}
+         <span class="comments__alias-staff--expert">
+           {% trans "TuneMe Expert" %}<br/>
+         </span>
+    {% elif node.user|is_in_group:"Moderators" or node.user|is_in_admin_group %}
         <span class="comments__alias-staff">
           {% trans "TuneMe Moderator" %}
         </span>
@@ -21,7 +25,7 @@
 
 {% if node.is_removed %}
     <h6 class="comments__description">
-      {% trans "This comment has been removed by the community. Please read our platform rules." %}
+      {% trans "This comment has been removed b ~~ y the community. Please read our platform rules." %}
     </h6>
   {% else %}
     {% if truncate_comment %}
