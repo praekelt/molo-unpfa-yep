@@ -6,7 +6,7 @@
      -->
      {% if node.user|is_in_group:"Expert" %}
          <span class="comments__alias-staff--expert">
-           {% trans "Tune Me Expert" %}<br/>
+           {% trans "Tune Me Expert" %}
          </span>
     {% elif node.user|is_in_group:"Moderators" or node.user|is_in_admin_group %}
         <span class="comments__alias-staff">
