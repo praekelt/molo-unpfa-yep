@@ -6,11 +6,11 @@
      -->
      {% if node.user|is_in_group:"Expert" %}
          <span class="comments__alias-staff--expert">
-           {% trans "TuneMe Expert" %}<br/>
+           {% trans "Tune Me Expert" %}<br/>
          </span>
     {% elif node.user|is_in_group:"Moderators" or node.user|is_in_admin_group %}
         <span class="comments__alias-staff">
-          {% trans "TuneMe Moderator" %}
+          {% trans "Tune Me Moderator" %}
         </span>
     {% elif node.user_name.lower == 'anonymous' %}
       {{node.user_name}}
