@@ -13,7 +13,8 @@
     "gulp-notify": "^2.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^2.6.3"
+    "gulp-sourcemaps": "^2.6.3",
+    "marked": "0.3.9"
   },
   "devDependencies": {
     "browser-sync": "^2.18.13",
