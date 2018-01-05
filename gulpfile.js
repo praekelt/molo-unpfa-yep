@@ -30,13 +30,11 @@ function styles(env) {
   var s = gulp.src(sassPaths);
   var isDev = env === 'dev';
   if (isDev) s = s
-    .pipe(sourcemaps.init());
     s = s
     .pipe(sassGlob())
     .pipe(sass().on('error', sass.logError))
     .pipe(cleanCSSMinify())
     if (isDev) s = s
-        //.pipe(sourcemaps.write('/maps'));
         return s
         .pipe(gulp.dest(sassDest[env]))
         .pipe(notify({ message: `Styles task complete: ${env}` }));
