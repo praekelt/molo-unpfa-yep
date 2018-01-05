@@ -36,9 +36,6 @@ function styles(env) {
     .pipe(sassGlob())
     .pipe(sass().on('error', sass.logError))
     .pipe(cleanCSSMinify())
-    //.pipe(sassLint())
-    //.pipe(sassLint.format())
-    //.pipe(sassLint.failOnError());
     if (isDev) s = s
         .pipe(sourcemaps.write('/maps'));
         return s
