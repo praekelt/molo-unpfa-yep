@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'molo.yourwords',
     'molo.yourtips',
     'molo.servicedirectory',
+    'molo.globalsite',
 
     'molo.pwa',
     'fcm_django',
@@ -130,6 +131,8 @@ MIDDLEWARE_CLASSES = [
     'molo.core.middleware.MoloGoogleAnalyticsMiddleware',
     'molo.core.middleware.MultiSiteRedirectToHomepage',
 
+    'molo.globalsite.middleware.CountrySiteRedirectMiddleware',
+
     'likes.middleware.SecretBallotUserIpUseragentMiddleware'
 ]
 
@@ -158,6 +161,7 @@ TEMPLATES = [
                 'tuneme.context_processors.default_forms',
                 'tuneme.context_processors.add_tag_manager_account',
                 'tuneme.context_processors.enable_service_directory_context',
+                'tuneme.context_processors.detect_freebasics',
                 'tuneme.processors.compress_settings',
             ],
             "loaders": [
@@ -549,3 +553,7 @@ FCM_DJANGO_SETTINGS = {
 
 # https://github.com/wagtail/wagtail/issues/3883
 AWS_S3_FILE_OVERWRITE = False
+
+# Global Site
+GLOBAL_SITE_URL = environ.get('GLOBAL_SITE_URL', 'http://localhost:8000')
+GEOIP_PATH = join(dirname(dirname(abspath(__file__))), 'geoip_db')

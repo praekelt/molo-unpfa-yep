@@ -49,6 +49,11 @@ urlpatterns += patterns(
 
     url(r'', include('molo.core.urls')),
 
+    url(r'^globalsite/',
+        include('molo.globalsite.urls',
+                namespace='molo.globalsite',
+                app_name='molo.globalsite')),
+
     url(
         r'^profiles/register/done/',
         login_required(RegistrationDone.as_view(
