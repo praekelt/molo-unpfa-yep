@@ -42,6 +42,7 @@
   <meta name="theme-color" content="#ffffff">
   {% compress css %}
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/style.css">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/style-global_site.css">
   {% endcompress %}
   {% molo_pwa_meta %}
   <script type="text/javascript">
@@ -101,11 +102,12 @@
           {% include "search/search_block.html" %}
         </div>
       {% endblock %}
-      {% block language %}
-      {% endblock %}
+      {% block language %}{% endblock %}
       {% if not is_via_freebasics %}
-        {% trans "Country" %}: {{request.site}}
-        <a href="{% url 'molo.globalsite:change_country' %}">{% trans "Change your country" %}</a>
+        <div class="global-site__header-nav">
+          {% trans "Country" %}:<span class="global-site__nav--active">{{request.site}}<span>
+          <a href="{% url 'molo.globalsite:change_country' %}" class="global-site__nav">{% trans "Change your country" %}</a>
+        </div>
       {% endif %}
     </div>
     {% display_unread_notifications %}
@@ -153,12 +155,15 @@
         <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:user_register' %}">
           {% trans "Sign Up" %}</a></li>
         {% endif %}
+        {% if not is_via_freebasics %}
+          <li class="menu__item menu__item--global">
+            <p class="menu__item--global-title">{% trans "Country" %}: {{request.site}}</p>
+            <a href="{% url 'molo.globalsite:change_country' %}">{% trans "Change your country" %}</a>
+          </li>
+        {% endif %}
       </ul>
       {% include "core/language_block.html" %}
-      {% if not is_via_freebasics %}
-        {% trans "Country" %}: {{request.site}}
-        <a href="{% url 'molo.globalsite:change_country' %}">{% trans "Change your country" %}</a>
-      {% endif %}
+
       <div class="footer-links">
         {% footer_page %}
       </div>
