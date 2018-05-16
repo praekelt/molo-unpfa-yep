@@ -2,6 +2,15 @@
 {% load static core_tags %}
 {% load wagtailcore_tags wagtailimages_tags i18n %}
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+
+{% block header %}
+{% if settings.globalsite.GlobalSiteSettings.is_globalsite %}
+    {% include "patterns/basics/globalsite/header.html" %}
+{% else %}
+  {{ block.super }}
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <div class="breadcrumbs">
   {% block breadcrumbs %}
@@ -49,3 +58,12 @@
   </div>
 </div>
 {% endblock %}
+
+{% block footer %}
+{% if settings.globalsite.GlobalSiteSettings.is_globalsite %}
+    {% include "patterns/basics/globalsite/footer.html" %}
+{% else %}
+  {{ block.super }}
+{% endif %}
+{% endblock %}
+

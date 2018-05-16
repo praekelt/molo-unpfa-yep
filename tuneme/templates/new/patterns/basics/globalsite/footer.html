@@ -1,0 +1,12 @@
+{% block footer %}
+  <div class="menu global-site global-site__menu">
+    <div class="global-site__footer-logo">
+      <a href="/">
+        <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe"/>
+      </a>
+    </div>
+    <a href="/" class="nav__item--menu">{% trans "Home" %}</a>
+    {% footer_page %}
+  </div>
+  <div class="copyright">&copy; {% now "Y" %} UNFPA, Ford Foundation</div>
+{% endblock %}
