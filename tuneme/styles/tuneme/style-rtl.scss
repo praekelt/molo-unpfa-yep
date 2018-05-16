@@ -1,22 +1,19 @@
 @media only screen and (min-width: 320px) {
-.menu__item {
-    a {
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0;
-
-      border-bottom-left-radius: 25px;
-      border-top-left-radius: 25px;
-    }
-}
-
-//HEADINGS
-.yourwords, .competition {
-  .heading,
-  .heading--yourwords {
-    text-align: inherit;
+  .menu__item {
+      a {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 25px;
+        border-top-left-radius: 25px;
+      }
   }
-}
-
+  //HEADINGS
+  .yourwords, .competition {
+    .heading,
+    .heading--yourwords {
+      text-align: inherit;
+    }
+  }
   .article-list--latest-listing {
       .article-list__image {
         margin-right: 0;

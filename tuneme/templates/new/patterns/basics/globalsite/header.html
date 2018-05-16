@@ -1,0 +1,16 @@
+{% load wagtailimages_tags wagtailsettings_tags i18n static core_tags %}
+{% block header %}
+  <div class="header global-site">
+    <div class="header-nav">
+      <a href="/">
+        <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe"/>
+      </a>
+      <div class="menu-links__container">
+        <a href="/" class="nav__item--menu">
+          {% trans "Home" %}
+        </a>
+        {% footer_page %}
+        </div>
+    </div>
+  </div>
+{% endblock %}
