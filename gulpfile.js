@@ -20,6 +20,7 @@ var sassPaths = [
     'tuneme/styles/tuneme/style-opera.s+(a|c)ss',
     'tuneme/styles/tuneme/style-rtl.s+(a|c)ss',
     'tuneme/styles/tuneme/style.s+(a|c)ss',
+    'tuneme/styles/tuneme/style-global_site.s+(a|c)ss',
 ];
 
 var sassDest = {

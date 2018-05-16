@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailsettings_tags i18n static core_tags %}
+{% get_settings %}
+{% block header %}
+{% include "patterns/basics/globalsite/header.html" %}
+{% endblock %}
+{% block content %}
+  {% bannerpages %}
+<div class="global-site__body">
+  {% if settings.globalsite.GlobalSiteSettings.description %}
+    <h3 class="heading heading--global heading--global-description">
+      {{settings.globalsite.GlobalSiteSettings.description}}
+    </h3>
+  {% endif %}
+  <h1 class="heading heading--global">{% trans "Choose your country:" %}</h1>
+  <ul class="outer-list">
+    {% for region in regions %}
+    <li class="outer-list__item">
+      {% if country.image %}
+        {% image region.image width-60 as tmp_photo %}
+        <img src="{{ tmp_photo.url }}" alt="{{ region.image.title }}" />
+      {% endif %}
+      <h3 class="outer-list__title">{{region.name}}</h3>
+      <ul class="inner-list">
+        {% for country in region.country_sites.all %}
+          <li class="inner-list__item">
+            <a href="{% url 'molo.globalsite:set_country' country.code %}" class="inner-list__link">
+              <div class="inner-list__link-icon">
+                {% if country.flag %}
+                {% image country.flag width-30 as tmp_photo %}
+                  <img src="{{ tmp_photo.url }}" alt="{{ country.flag.title }}" />
+                {% endif %}
+              </div>
+              {{ country.name }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
+
+{% include "patterns/basics/globalsite/footer.html" %}

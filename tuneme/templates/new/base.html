@@ -42,6 +42,7 @@
   <meta name="theme-color" content="#ffffff">
   {% compress css %}
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/style.css">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/style-global_site.css">
   {% endcompress %}
   {% molo_pwa_meta %}
   <script type="text/javascript">
@@ -76,83 +77,99 @@
   <noscript>Your browser does not support JavaScript!</noscript>
 </head>
 <body {% if LANGUAGE_CODE|language_bidi == True %}dir="rtl"{% endif %}>
-  <div class="header">
-    <div class="header-nav">
-      <a href="/">
-        <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe"/>
-      </a>
-      <div class="menu-links__container">
-        {% block homepage-signup %}{% endblock %}
-        {% block search-button %}
-          <label class="search-bar__toggle-label  header-nav__item header-nav__item--search" for="search-bar__toggle">
-            {% trans "Search" %}
-          </label>
-        {% endblock %}
-        <a href="#menu" class="header-nav__item header-nav__item--menu">
-          {% trans "Menu" %}
+{% block header %}
+    <div class="header">
+      <div class="header-nav">
+        <a href="/">
+          <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe"/>
         </a>
+        <div class="menu-links__container">
+          {% block homepage-signup %}{% endblock %}
+          {% block search-button %}
+            <label class="search-bar__toggle-label  header-nav__item header-nav__item--search" for="search-bar__toggle">
+              {% trans "Search" %}
+            </label>
+          {% endblock %}
+          <a href="#menu" class="header-nav__item header-nav__item--menu">
+            {% trans "Menu" %}
+          </a>
+        </div>
       </div>
+      {% block search %}
+        <input id="search-bar__toggle" class="search-bar__toggle-input" type="checkbox">
+        <div class="search-bar--form">
+          <h1 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h1>
+          {% include "search/search_block.html" %}
+        </div>
+      {% endblock %}
+      {% block language %}{% endblock %}
+      {% if not is_via_freebasics %}
+        <div class="global-site__header-nav">
+          {% trans "Country" %}:<span class="global-site__nav--active">{{request.site}}<span>
+          <a href="{% url 'molo.globalsite:change_country' %}" class="global-site__nav">{% trans "Change your country" %}</a>
+        </div>
+      {% endif %}
     </div>
-    {% block search %}
-      <input id="search-bar__toggle" class="search-bar__toggle-input" type="checkbox">
-      <div class="search-bar--form">
-        <h1 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h1>
-        {% include "search/search_block.html" %}
-      </div>
-    {% endblock %}
-    {% block language %}
-    {% endblock %}
-  </div>
-  {% display_unread_notifications %}
+    {% display_unread_notifications %}
+  {% endblock %}
   {% block content %}
   {% endblock %}
-  <div class="menu" id="menu">
-    <ul class="menu-items">
-      <li class="menu__item menu__item--default"><a href="#top">{% trans "Back to top" %}</a></li>
-      <li class="menu__item menu__item--default"><a href="/">{% trans "Home" %}</a></li>
-      {% if settings.core.SiteSettings.enable_service_directory or ENABLE_SERVICE_DIRECTORY %}
-        <li class="menu__item menu__item--service menu__item--default">
-         <a href="{% url 'molo.servicedirectory:home' %}">{% trans "Find a service" %}</a>
-        <span>{% trans "Find me a clinic" %}</span>
-       </li>
-      {% endif %}
-      {% load_sections as sections %}
-      {% for section in sections %}
-      <li class="menu__item menu__item{{ section.get_effective_extra_style_hints }}">
-        <a href="{% pageurl section %}">
-          {{ section.title }}
-        </a>
-        <span>{{ section.description }}</span>
-      </li>
-      {% endfor %}
-      {% get_your_tip as your_tip %}
-      {% if your_tip and your_tip.show_in_menus %}
-      <li class="menu__item menu__item{{ your_tip.get_effective_extra_style_hints }}">
-         <a href="{{ your_tip.url }}">{% trans your_tip.title %}</a>
-        <span>{% trans your_tip.description %}</span>
-       </li>
-      {% endif %}
-    </ul>
-    <ul class="menu-items menu-items--alt">
-      <li class="menu__item menu__item--default"><a href="#search-form">{% trans "Search" %}</a></li>
-      {% if user.is_authenticated %}
-      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:view_my_profile' %}">
-        {% trans "Your Profile" %}</a></li>
-      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:auth_logout' %}">
-        {% trans "Log out" %}</a></li>
-      {% else %}
-      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:auth_login' %}">
-        {% trans "Log in" %}</a></li>
-      <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:user_register' %}">
-        {% trans "Sign Up" %}</a></li>
-      {% endif %}
-    </ul>
-    {% include "core/language_block.html" %}
-    <div class="footer-links">
-      {% footer_page %}
+  {% block footer %}
+    <div class="menu" id="menu">
+      <ul class="menu-items">
+        <li class="menu__item menu__item--default"><a href="#top">{% trans "Back to top" %}</a></li>
+        <li class="menu__item menu__item--default"><a href="/">{% trans "Home" %}</a></li>
+        {% if settings.core.SiteSettings.enable_service_directory or ENABLE_SERVICE_DIRECTORY %}
+          <li class="menu__item menu__item--service menu__item--default">
+          <a href="{% url 'molo.servicedirectory:home' %}">{% trans "Find a service" %}</a>
+          <span>{% trans "Find me a clinic" %}</span>
+        </li>
+        {% endif %}
+        {% load_sections as sections %}
+        {% for section in sections %}
+        <li class="menu__item menu__item{{ section.get_effective_extra_style_hints }}">
+          <a href="{% pageurl section %}">
+            {{ section.title }}
+          </a>
+          <span>{{ section.description }}</span>
+        </li>
+        {% endfor %}
+        {% get_your_tip as your_tip %}
+        {% if your_tip and your_tip.show_in_menus %}
+        <li class="menu__item menu__item{{ your_tip.get_effective_extra_style_hints }}">
+          <a href="{{ your_tip.url }}">{% trans your_tip.title %}</a>
+          <span>{% trans your_tip.description %}</span>
+        </li>
+        {% endif %}
+      </ul>
+      <ul class="menu-items menu-items--alt">
+        <li class="menu__item menu__item--default"><a href="#search-form">{% trans "Search" %}</a></li>
+        {% if user.is_authenticated %}
+        <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:view_my_profile' %}">
+          {% trans "Your Profile" %}</a></li>
+        <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:auth_logout' %}">
+          {% trans "Log out" %}</a></li>
+        {% else %}
+        <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:auth_login' %}">
+          {% trans "Log in" %}</a></li>
+        <li class="menu__item menu__item--default"><a href="{% url 'molo.profiles:user_register' %}">
+          {% trans "Sign Up" %}</a></li>
+        {% endif %}
+        {% if not is_via_freebasics %}
+          <li class="menu__item menu__item--global">
+            <p class="menu__item--global-title">{% trans "Country" %}: {{request.site}}</p>
+            <a href="{% url 'molo.globalsite:change_country' %}">{% trans "Change your country" %}</a>
+          </li>
+        {% endif %}
+      </ul>
+      {% include "core/language_block.html" %}
+
+      <div class="footer-links">
+        {% footer_page %}
+      </div>
     </div>
-  </div>
-  <div class="copyright">&copy; {% now "Y" %} UNFPA, Ford Foundation</div>
+    <div class="copyright">&copy; {% now "Y" %} UNFPA, Ford Foundation</div>
+  {% endblock %}
   {% if GOOGLE_TAG_MANAGER_ACCOUNT %}
     <!-- Google Tag Manager -->
      <noscript><iframe src="//www.googletagmanager.com/ns.html?id={{GOOGLE_TAG_MANAGER_ACCOUNT}}&client_session_id={{request.session.MOLO_GA_SESSION_FOR_NOSCRIPT}}&page_title={% if self.seo_title %}{{ self.seo_title|urlencode }}{% else %}{{ self.title|urlencode }}{% endif %}{%if request.META.HTTP_X_IORG_FBS_UIP %}&freebasics_uip={{request.META.HTTP_X_IORG_FBS_UIP}}{%endif%}"
