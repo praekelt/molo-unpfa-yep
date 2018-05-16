@@ -8,7 +8,9 @@
   {% bannerpages %}
 <div class="global-site__body">
   {% if settings.globalsite.GlobalSiteSettings.description %}
-    <p>{{settings.globalsite.GlobalSiteSettings.description}}</p>
+    <h3 class="heading heading--global heading--global-description">
+      {{settings.globalsite.GlobalSiteSettings.description}}
+    </h3>
   {% endif %}
   <h1 class="heading heading--global">{% trans "Choose your country:" %}</h1>
   <ul class="outer-list">
@@ -23,7 +25,7 @@
         {% for country in region.country_sites.all %}
           <li class="inner-list__item">
             <a href="{% url 'molo.globalsite:set_country' country.code %}" class="inner-list__link">
-              <div class="link__icon">
+              <div class="inner-list__link-icon">
                 {% if country.flag %}
                 {% image country.flag width-30 as tmp_photo %}
                   <img src="{{ tmp_photo.url }}" alt="{{ country.flag.title }}" />
