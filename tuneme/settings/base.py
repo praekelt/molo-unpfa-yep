@@ -557,3 +557,4 @@ AWS_S3_FILE_OVERWRITE = False
 # Global Site
 GLOBAL_SITE_URL = environ.get('GLOBAL_SITE_URL', '')
 GEOIP_PATH = join(dirname(dirname(abspath(__file__))), 'geoip_db')
+GLOBAL_SITE_IGNORE_PATH = environ.get('GLOBAL_SITE_IGNORE_PATH', '')
