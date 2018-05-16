@@ -105,7 +105,7 @@
       {% block language %}{% endblock %}
       {% if not is_via_freebasics %}
         <div class="global-site__header-nav">
-          {% trans "Country" %}:<span class="global-site__nav--active">{{request.site}}<span>
+          {% trans "Country" %}:<span class="global-site__nav--active"> {{request.site.site_name}}<span>
           <a href="{% url 'molo.globalsite:change_country' %}" class="global-site__nav">{% trans "Change your country" %}</a>
         </div>
       {% endif %}
@@ -157,7 +157,7 @@
         {% endif %}
         {% if not is_via_freebasics %}
           <li class="menu__item menu__item--global">
-            <p class="menu__item--global-title">{% trans "Country" %}: {{request.site}}</p>
+            <p class="menu__item--global-title">{% trans "Country" %}: {{request.site.site_name}}</p>
             <a href="{% url 'molo.globalsite:change_country' %}">{% trans "Change your country" %}</a>
           </li>
         {% endif %}

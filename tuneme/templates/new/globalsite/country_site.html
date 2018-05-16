@@ -23,7 +23,7 @@
       <h3 class="outer-list__title">{{region.name}}</h3>
       <ul class="inner-list">
         {% for country in region.country_sites.all %}
-          <li class="inner-list__item">
+          <li {% if not forloop.last %} class="inner-list__item"{% endif %}>
             <a href="{% url 'molo.globalsite:set_country' country.code %}" class="inner-list__link">
               <div class="inner-list__link-icon">
                 {% if country.flag %}
@@ -41,5 +41,6 @@
   </ul>
 </div>
 {% endblock %}
-
+{% block footer %}
 {% include "patterns/basics/globalsite/footer.html" %}
+{% endblock %}
