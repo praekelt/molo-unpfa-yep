@@ -5,7 +5,6 @@ molo.yourtips==6.0.0
 molo.servicedirectory==6.1.0
 molo.surveys==6.9.9
 molo.pwa==6.2.0
-molo.globalsite==6.0.0
 elasticsearch==1.7.0
 django-modelcluster==4.2
 psycopg2
@@ -16,7 +15,7 @@ django-google-analytics-app==4.3.3
 Unidecode==0.04.16
 django-secretballot==1.0.0
 django-likes==1.11
-molo.globalsite==6.0.0
+molo.globalsite==6.0.1
 django-import-export==1.0.1
 # Required by ImageHash, install a working version
 scipy==0.19.1
