@@ -320,9 +320,8 @@ EXTRA_LANG_INFO = {
     }
 }
 
-LANG_INFO = (
-    dict(django.conf.locale.LANG_INFO.items() + EXTRA_LANG_INFO.items()))
-django.conf.locale.LANG_INFO = LANG_INFO
+
+django.conf.locale.LANG_INFO.update(EXTRA_LANG_INFO)
 
 LOCALE_PATHS = [
     join(PROJECT_ROOT, "locale"),
