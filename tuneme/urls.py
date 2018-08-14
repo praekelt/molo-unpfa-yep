@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
+from wagtail.contrib.wagtailsitemaps.views import sitemap
 
 from molo.profiles.views import RegistrationDone
 from tuneme.views import report_response
@@ -43,7 +44,7 @@ urlpatterns += [
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^robots\.txt$', TemplateView.as_view(
         template_name='robots.txt', content_type='text/plain')),
-    url(r'^sitemap\.xml$', 'wagtail.contrib.wagtailsitemaps.views.sitemap'),
+    url(r'^sitemap\.xml$', sitemap),
 
     url(r'', include('molo.core.urls')),
 
