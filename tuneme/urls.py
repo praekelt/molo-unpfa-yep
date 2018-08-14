@@ -66,7 +66,8 @@ urlpatterns += [
 
     url(r'', include(core_urls)),
 
-    url(r'^globalsite/', include(
+    url(r'^globalsite/',
+        include(
             globalsite_urls,
             namespace='molo.globalsite', app_name='molo.globalsite'
         )),
