@@ -57,7 +57,7 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         year_25_ago = datetime.today().year - 25
         self.assertContains(
             response,
-            '<option value="%(year)s" selected="selected">%(year)s</option>' %
+            '<option value="%(year)s" selected>%(year)s</option>' %
             {'year': year_25_ago})
 
     def test_report_response(self):
