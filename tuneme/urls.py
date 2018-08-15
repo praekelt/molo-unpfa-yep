@@ -11,7 +11,7 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.contrib.wagtailsitemaps.views import sitemap
-
+from django_cas_ng.views import login, logout, callback
 from molo.profiles.views import RegistrationDone
 from tuneme.views import report_response
 from tuneme.forms import TunemeDoneForm
@@ -38,9 +38,9 @@ admin.autodiscover()
 # implement CAS URLs in a production setting
 if settings.ENABLE_SSO:
     urlpatterns = [
-        url(r'^admin/login/', 'django_cas_ng.views.login'),
-        url(r'^admin/logout/', 'django_cas_ng.views.logout'),
-        url(r'^admin/callback/', 'django_cas_ng.views.callback'),
+        url(r'^admin/login/', login),
+        url(r'^admin/logout/', logout),
+        url(r'^admin/callback/', callback),
     ]
 else:
     urlpatterns = []
