@@ -111,18 +111,22 @@ class AdminTestCase(TestCase, MoloTestCaseMixin):
         self.assertEqual(
             sorted([
                 body_elem['type'] for body_elem in article_stream_data]),
-            [u'paragraph', u'paragraph'],
+            [u'paragraph'],
         )
 
         self.assertEqual(
             sorted([
                 body_elem['value'] for body_elem in article_stream_data]),
-            [str(submission.created_at), 'python'],
+            ['python'],
         )
 
-        # more explicit assertion for username that its not imported
+        # explicit assertion for username and created_at that its not imported
         self.assertNotIn(
             username,
+            [body_elem['value'] for body_elem in article_stream_data])
+
+        self.assertNotIn(
+            str(submission.created_at),
             [body_elem['value'] for body_elem in article_stream_data])
 
         # first time it goes to the move page
