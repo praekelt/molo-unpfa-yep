@@ -1,6 +1,3 @@
-import json
-
-from django.core.serializers.json import DjangoJSONEncoder
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.test.client import Client
@@ -10,12 +7,8 @@ from molo.core.tests.base import MoloTestCaseMixin
 from molo.surveys.models import (
     MoloSurveyPage,
     MoloSurveyFormField,
-    SurveysIndexPage,
-    PersonalisableSurvey,
-    PersonalisableSurveyFormField,
+    SurveysIndexPage
 )
-from wagtail_personalisation.models import Segment
-from wagtail_personalisation.rules import UserIsLoggedInRule
 
 
 User = get_user_model()
@@ -88,10 +81,11 @@ class AdminTestCase(TestCase, MoloTestCaseMixin):
         response = self.client.post(
             molo_survey_page.url, {key: 'python'}, follow=True)
 
-        self.assertEquals(response.status_code, 302)
+        self.assertEquals(response.status_code, 200)
 
         self.client.logout()
-        self.client.login(username=username, password=password)
+        self.client.login(
+            username=self.super_user.username, password='password')
 
         # test shows convert to article button when no article created yet
         response = self.client.get(
