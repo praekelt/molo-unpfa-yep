@@ -33,7 +33,7 @@ def submission_article(request, survey_id, submission_id):
 
         body = []
         for key, value in submission.get_data().items():
-            if unicode(key) not in [u'username', u'created_at']:
+            if key not in [u'username', u'created_at']:
                 body.append({"type": "paragraph", "value": str(value)})
 
         article = ArticlePage(
