@@ -29,6 +29,8 @@ from molo.commenting import urls as commenting_urls
 from molo.servicedirectory import urls as servicedirectory_urls
 from django_comments import urls as django_comments_urls
 
+from tuneme.views import submission_article
+
 
 # Path to a custom template that will be used by the admin
 # site main index view.
@@ -98,6 +100,11 @@ urlpatterns += [
         likes_urls, namespace='likes', app_name='likes'
     )),
 
+    # override the surveys url with custom project specific view
+    url(
+        r'^surveys/submissions/(\d+)/article/(\d+)/$',
+        submission_article, name='article'
+    ),
     url(r'^surveys/', include(
         surveys_urls, namespace='molo.surveys', app_name='molo.surveys'
     )),
