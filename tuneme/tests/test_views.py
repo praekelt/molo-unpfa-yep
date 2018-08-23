@@ -1,3 +1,4 @@
+from mock import patch
 from datetime import datetime
 from bs4 import BeautifulSoup
 
@@ -13,6 +14,11 @@ from molo.core.tests.base import MoloTestCaseMixin
 from molo.core.models import SiteLanguageRelation, Main, Languages
 from molo.commenting.models import MoloComment
 from molo.commenting.forms import MoloCommentForm
+
+
+google_api = 'tuneme.views.make_request_to_google_api'
+servicedirectory_api =\
+    'tuneme.views.make_request_to_servicedirectory_api'
 
 
 class ViewsTestCase(TestCase, MoloTestCaseMixin):
@@ -168,6 +174,30 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         response = self.client.get(article.url)
         self.assertContains(response, "this is my alias")
         self.assertNotContains(response, "tester")
+
+    @patch(google_api)
+    @patch(servicedirectory_api)
+    def test_organisation_results_view(
+            self, servicedirectory_api_patch, google_api_patch):
+
+        url = reverse('organisation-results')
+        data = {
+            'search': 'test',
+            'location': '-33.921387,18.424101',
+            'place_id': '',
+            'place_latlng': '',
+            'place_formatted_address': ''
+        }
+        response = self.client.get(url, data=data)
+        self.assertTemplateUsed(
+            response, 'servicedirectory/organisation_results.html')
+
+        google_api_patch.return_value = {}
+        servicedirectory_api_patch.return_value = {}
+
+        response = self.client.get(url)
+        self.assertTemplateUsed(
+            response, 'servicedirectory/organisation_results.html')
 
 
 class TagManagerAccountTestCase(TestCase, MoloTestCaseMixin):
