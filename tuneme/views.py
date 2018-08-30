@@ -75,6 +75,9 @@ class TMOrganisationResultsView(OrganisationResultsView):
         place_formatted_address = self.request.GET.get(
             'place_formatted_address')
 
+        radius = self.request.GET.get(
+            'radius',  settings.SERVICE_DIRECTORY_RESULT_LOCATION_RADIUS)
+
         if place_latlng is None:
             google_query_parms = QueryDict('', mutable=True)
             google_query_parms['placeid'] = place_id
@@ -100,10 +103,7 @@ class TMOrganisationResultsView(OrganisationResultsView):
 
         service_directory_query_parms = QueryDict('', mutable=True)
         # set the radius in which we would like to restrict the result set by
-        # set exact_location bool to limit result set by the set location
-        service_directory_query_parms['radius'] = \
-            settings.SERVICE_DIRECTORY_RESULT_LOCATION_RADIUS
-        service_directory_query_parms['exact_location'] = True
+        service_directory_query_parms['radius'] = radius
         service_directory_query_parms['search_term'] = search_term
 
         if place_latlng is not None:
@@ -136,10 +136,11 @@ class TMOrganisationResultsView(OrganisationResultsView):
         location_query_parms['location'] = location_term
         location_query_parms['search'] = search_term
 
-        context['search_term'] = search_term
-        context['location_term'] = location_term
+        context['radius'] = radius
         context['place_id'] = place_id
+        context['search_term'] = search_term
         context['place_latlng'] = place_latlng
+        context['location_term'] = location_term
         context['place_formatted_address'] = place_formatted_address
         context['change_location_url'] = '{0}?{1}'.format(
             reverse('molo.servicedirectory:location-results'),

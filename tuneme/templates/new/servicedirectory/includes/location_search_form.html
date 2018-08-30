@@ -5,6 +5,18 @@
     <label class="service-dir-hero-label">In which village or town would you like to find a service?</label>
     <input type="text" name="location" value="{{ location_term }}" placeholder="Enter village or town..."/>
   <fieldset>
-  <input type="submit" value="Search" />
+
+  <fieldset>
+    <label class="service-dir-hero-label">Show me results within __ KMs away</label>
+    <select name="radius" value="{{ radius }}" >
+      {% for i in SERVICE_DIRECTORY_RADIUS_OPTIONS  %}
+      <option {% ifequal i  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %} value="{{ i }}">
+        {{ i }}
+      </option>
+      {% endfor %}
+    </select>
+  <fieldset>
+
+    <input type="submit" value="Search" />
   <input type="hidden" name="search" value="{{ search_term }}" />
 </form>

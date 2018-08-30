@@ -18,6 +18,21 @@ def enable_service_directory_context(request):
     }
 
 
+def service_directory_radius(request):
+
+    if 'servicedirectory' in request.path:
+        radius = request.GET.get(
+            'radius',
+            settings.SERVICE_DIRECTORY_RESULT_LOCATION_RADIUS
+        )
+        return {
+            'SERVICE_DIRECTORY_RADIUS_OPTIONS': [
+                5, 10, 15, 20, 25, 30, 50, 100, 200
+            ],
+            'SERVICE_DIRECTORY_RADIUS': int(radius)
+        }
+
+
 def add_tag_manager_account(request):
     site_settings = SiteSettings.for_site(request.site)
     return {
