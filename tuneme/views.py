@@ -76,7 +76,7 @@ class TMOrganisationResultsView(OrganisationResultsView):
             'place_formatted_address')
 
         radius = self.request.GET.get(
-            'radius',  settings.SERVICE_DIRECTORY_RESULT_LOCATION_RADIUS)
+            'radius', settings.SERVICE_DIRECTORY_RESULT_LOCATION_RADIUS)
 
         if place_latlng is None:
             google_query_parms = QueryDict('', mutable=True)

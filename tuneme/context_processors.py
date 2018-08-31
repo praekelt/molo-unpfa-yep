@@ -13,24 +13,32 @@ def default_forms(request):
 
 
 def enable_service_directory_context(request):
-    return {
+    ctx = {
         'ENABLE_SERVICE_DIRECTORY': settings.ENABLE_SERVICE_DIRECTORY,
     }
-
-
-def service_directory_radius(request):
 
     if 'servicedirectory' in request.path:
         radius = request.GET.get(
             'radius',
             settings.SERVICE_DIRECTORY_RESULT_LOCATION_RADIUS
         )
-        return {
-            'SERVICE_DIRECTORY_RADIUS_OPTIONS': [
-                5, 10, 15, 20, 25, 30, 50, 100, 200
-            ],
+
+        options = getattr(
+            settings,
+            'SERVICE_DIRECTORY_RADIUS_OPTIONS', (
+                (5, '5 KM'), (10, '10 KM'), (15, '15 KM'),
+                (20, '20 KM'), (25, '25 KM'), (30, '30 KM'),
+                (50, '50 KM'), (100, '100 KM'), (200, '200 KM'),
+                (500, '500 KM'), (1000, '1000 KM'), (None, 'Show All')
+            )
+        )
+
+        ctx.update({
+            'SERVICE_DIRECTORY_RADIUS_OPTIONS': options,
             'SERVICE_DIRECTORY_RADIUS': int(radius)
-        }
+        })
+
+    return ctx
 
 
 def add_tag_manager_account(request):

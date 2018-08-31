@@ -162,7 +162,6 @@ TEMPLATES = [
                 'tuneme.context_processors.add_tag_manager_account',
                 'tuneme.context_processors.enable_service_directory_context',
                 'tuneme.context_processors.detect_freebasics',
-                'tuneme.context_processors.service_directory_radius',
                 'tuneme.processors.compress_settings',
             ],
             "loaders": [

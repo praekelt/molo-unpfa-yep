@@ -9,9 +9,9 @@
   <fieldset>
     <label class="service-dir-hero-label">Show me results within __ KMs away</label>
     <select name="radius" value="{{ radius }}" >
-      {% for i in SERVICE_DIRECTORY_RADIUS_OPTIONS  %}
-      <option {% ifequal i  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %} value="{{ i }}">
-        {{ i }}
+      {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS  %}
+      <option {% ifequal value  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %} value="{{ value }}">
+        {{ label }}
       </option>
       {% endfor %}
     </select>
