@@ -6,6 +6,7 @@
     <input type="text" name="location" value="{{ location_term }}" placeholder="Enter village or town..."/>
   <fieldset>
 
+  {% if SERVICE_DIRECTORY_RADIUS  %}
   <fieldset>
     <label class="service-dir-hero-label">Show me results within __ KMs away</label>
     <select name="radius" value="{{ radius }}" >
@@ -16,7 +17,8 @@
       {% endfor %}
     </select>
   <fieldset>
+  {% endif %}
 
-    <input type="submit" value="Search" />
+  <input type="submit" value="Search" />
   <input type="hidden" name="search" value="{{ search_term }}" />
 </form>

@@ -29,7 +29,7 @@ from molo.commenting import urls as commenting_urls
 from molo.servicedirectory import urls as servicedirectory_urls
 from django_comments import urls as django_comments_urls
 
-from tuneme.views import submission_article, TMOrganisationResultsView
+from tuneme.views import submission_article
 
 
 # Path to a custom template that will be used by the admin
@@ -90,11 +90,6 @@ urlpatterns += [
     url(r'^yourtips/', include(
         yourtips_urls, namespace='molo.yourtips'
     )),
-
-    # Override servicedirectory url
-    url(r'^servicedirectory/organisation-results/$',
-        TMOrganisationResultsView.as_view(),
-        name='organisation-results'),
 
     url(r'^servicedirectory/', include(
         servicedirectory_urls,

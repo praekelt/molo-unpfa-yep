@@ -160,7 +160,7 @@ TEMPLATES = [
                 'wagtail.contrib.settings.context_processors.settings',
                 'tuneme.context_processors.default_forms',
                 'tuneme.context_processors.add_tag_manager_account',
-                'tuneme.context_processors.enable_service_directory_context',
+                'molo.servicedirectory.context_processors.enable_service_directory_context',
                 'tuneme.context_processors.detect_freebasics',
                 'tuneme.processors.compress_settings',
             ],
