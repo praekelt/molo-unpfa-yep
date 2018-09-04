@@ -1,9 +1,6 @@
 from __future__ import unicode_literals
 
 import json
-from django.conf import settings
-from django.http import QueryDict
-from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from wagtail.wagtailcore.models import Page
@@ -12,13 +9,6 @@ from wagtail.wagtailcore.utils import cautious_slugify
 from molo.core.models import ArticlePage
 from molo.commenting.models import MoloComment
 from molo.surveys.models import SurveysIndexPage
-from molo.servicedirectory.views import (
-    OrganisationResultsView,
-    make_request_to_google_api,
-    get_google_places_api_server_key,
-    get_service_directory_api_base_url,
-    make_request_to_servicedirectory_api,
-)
 
 
 def report_response(request, comment_pk):
@@ -59,4 +49,3 @@ def submission_article(request, survey_id, submission_id):
         submission.save()
         return redirect('/admin/pages/%d/move/' % article.id)
     return redirect('/admin/pages/%d/edit/' % submission.article_page.id)
-

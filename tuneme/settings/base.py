@@ -160,9 +160,11 @@ TEMPLATES = [
                 'wagtail.contrib.settings.context_processors.settings',
                 'tuneme.context_processors.default_forms',
                 'tuneme.context_processors.add_tag_manager_account',
-                'molo.servicedirectory.context_processors.enable_service_directory_context',
                 'tuneme.context_processors.detect_freebasics',
                 'tuneme.processors.compress_settings',
+
+                'molo.servicedirectory.context_processors'
+                '.enable_service_directory_context',
             ],
             "loaders": [
                 "django.template.loaders.filesystem.Loader",
