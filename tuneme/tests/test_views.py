@@ -16,11 +16,6 @@ from molo.core.models import (
     SiteLanguageRelation, Main, Languages, SiteSettings)
 
 
-google_api = 'tuneme.views.make_request_to_google_api'
-servicedirectory_api =\
-    'tuneme.views.make_request_to_servicedirectory_api'
-
-
 class ViewsTestCase(TestCase, MoloTestCaseMixin):
 
     def setUp(self):
