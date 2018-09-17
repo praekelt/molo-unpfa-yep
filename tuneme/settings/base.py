@@ -559,8 +559,8 @@ GEOIP_PATH = join(dirname(dirname(abspath(__file__))), 'geoip_db')
 GLOBAL_SITE_IGNORE_PATH = environ.get('GLOBAL_SITE_IGNORE_PATH', '')
 
 SERVICE_DIRECTORY_RADIUS_OPTIONS = (
-   (10, '10 km or less'),
-   (25, '25 km or less'),
-   (50, '50 km or less'),
-   (100, '100 km or less')
+    (10, '10 km or less'),
+    (25, '25 km or less'),
+    (50, '50 km or less'),
+    (100, '100 km or less')
 )
