@@ -1,177 +1,233 @@
-.service-directory {
-  p {
-    margin: 0;
+.service-dir {
+  &__banner {
+    text-align: center;
+    padding-top: 10px;
   }
+  &__breadcrumbs {
+    color: $green;
+    font-size: $font-large;
+    padding: 20px 15px 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  &__title {
+    padding: 0;
+    text-decoration: underline; //Why does title have an underline
+    color: #000;
+    display: block;
+    margin-bottom: 5px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: $font-large;
+  }
+  &__subtitle {
+    font-weight: bold;
+    padding: 0 15px;
+  }
+  &__body {
+    padding: 5px 15px;
+  }
+  &__form {
+    fieldset {
+      padding: 0 15px;
+      display: block;
+      position: relative;
+    }
+    label {
+      margin: 10px 0;
+      display: block;
+      font-size: $font-medium;
+      position: relative;
+    }
+
+    [type="checkbox"] {
+    visibility: hidden;
+      & + label {
+        &:before {
+          content: "";
+          background-color: #fff;
+          border: 2px solid #000;
+          color: #000;
+          width: 18px;
+          height: 18px;
+          display: inline-block;
+          border-radius: 2px;
+          position: absolute;
+          vertical-align: middle;
+          margin: 0 10px 0 0;
+          left: -30px;
+        }
+      }
+      &:checked + label {
+          &:before {
+            content: "";
+            background-color: #000;
+            color: #000;
+          }
+      }
+    }
+  }
+  &__form--service-rate {
+     padding: 0 10px 10px;
+  }
+
+  &__feedback-message {
+    border-bottom: 1px solid #000;
+    font-weight: bold;
+    padding: 0 10px 15px;
+  }
+  &__search-term {
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+  &__title--current-address {
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  //To Review
+  &__button {
+    display: block;
+    margin: 10px 0;
+    color: $white;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 14px;
+    background: $orange;
+  }
+  &__button--outline {
+    color: $orange;
+    background: $white;
+  }
+
+  &__contact {
+    padding: 0 20px;
+  }
+
+  &__location {
+    border-top: 1px solid  #000;
+    padding: 0 0 15px;
+  }
+
+  .call-to-action {
+    padding: 0 15px;
+    display: block;
+    margin: 20px 0;
+    &__item {
+      &--button {}
+    }
+  }
+}
+
+  //CTA
   .call-to-action__nav-item {
     color: #000;
     display: block;
     padding: 0 10px;
     text-decoration: underline;
     font-weight: bold;
-  }
-  .service-list {
-    .call-to-action__nav-item--change-search {
+    &--report {
+      margin-bottom: 15px;
+    }
+    &--back {
+      color: #000;
+      padding: 0 10px;
+    }
+    &--change-search {
       text-decoration: underline;
       padding: 0;
     }
   }
-}
 
-.call-to-action__nav-item--back {
-  color: #000;
-  padding: 0 10px;
-}
-.call-to-action__nav-item--report {
-  margin-bottom: 15px;
-}
-
-.service-dir-location {
-  border-top: 1px solid  #000;
-  padding: 0 0 15px;
-  .call-to-action__nav-item {
-    padding: 0;
+.heading {
+  &--service-dir {
+    &-title {
+      color: #000;
+      padding: 0 10px;
+    }
+    &-subtitle {
+      font-weight: bold;
+      padding: 0 10px 0;
+    }
+    &-organisation {
+      font-size: $font-large;
+    }
   }
 }
 
-.service-directory__banner {
-  text-align: center;
-  padding-top: 10px;
-}
-
-.service-directory__feedback-message {
-  border-bottom: 1px solid #000;
-  font-weight: bold;
-  padding: 0 10px 15px;
-}
-
-.heading--service-dir-title {
-  color: #000;
-  padding: 0 10px;
-}
-.heading--service-dir-subtitle {
-  font-weight: bold;
-  padding: 0 10px 0;
-}
-
-.service-directory__title {
-  color: #000;
-  display: block;
-  margin-bottom: 5px;
-  padding: 10px;
-  font-weight: bold;
-  font-size: $font-large;
-}
-.heading--service-dir-organisation {
-  font-size: $font-large; //Used on Clinics services results - where else?
-}
-.service-directory__search-term {
-  text-transform: capitalize;
-}
-.service-directory__title--current-address {
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.service-directory__form {
-  padding: 0 10px;
-  fieldset {
-    font-size: 100%;
-  }
-  label {
-    margin: 10px 0;
-    font-size: $font-medium;
-  }
-  .call-to-action__nav-item--login,
-  input[type="submit"] {
-    margin: 10px 0 20px;
-  }
-  .service-directory__title {
-    padding: 0;
-  }
-}
-.service-directory__form--service-rate {
-   padding: 0 10px 10px;
-}
-.service-dir-hero-label {
-  margin: 0;
-  padding: 0;
-}
 
 .service-list {
   padding: 0 10px;
-  .service-list__item {
+  &__listings {
+    padding: 0 10px;
+  }
+  &__item {
     display: block;
     color: #000;
     line-height: 2em;
-    a {
-      color: #000;
-    }
-  }
-}
-.service-directory__listings {
-  padding: 0 10px;
-
-  .service-directory__title {
-    padding: 0;
-    text-decoration: underline;
-  }
-  .service-list {
-    padding: 0;
-    //Make This a Priority?
-    .service-directory__search-term {
-      text-decoration: none;
-      text-transform: capitalize;
-    }
-  }
-}
-.service-directory__form--location-results {
-  .service-list {
-    padding: 0;
-  }
-}
-
-.service-list--results {
-  border-bottom: 1px solid #000;
-  .heading--service-dir-organisation {
-    padding: 0;
-    margin: 0;
-  }
-  .service-list__item {
     padding: 0 10px 10px 0;
     display: block;
-    .service-directory__title {
-      padding: 10px 0;
-    }
+  }
+  &--results {
+    border-bottom: 1px solid #000;
   }
 }
 
-.service-directory__contact {
-  padding: 0 20px;
-}
-.service-dir__button {
-  display: block;
-  margin: 10px 0;
-  color: $white!important;
-  line-height: 30px;
-  text-align: center;
-  border-radius: 14px;
-  background: $orange;
-}
-.service-dir__button--outline {
-  color: $orange!important;
-  background: $white;
-}
 
 //Services Feedback
-button.smiley.sad {background: url(/static/new/img/Not-helpful.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
-button.smiley.sad:hover {background: url(/static/new/img/Active-not-helpful.png); background-size: 100%;}
-button.smiley.sad:after{border: 0!important;}
-button.smiley.sad:before{border: 0!important;}
-button.smiley.neutral {background: url(/static/new/img/Im-neutral.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
-button.smiley.neutral:hover {background: url(/static/new/img/Active-im-neutral.png); background-size: 100%;}
-button.smiley.neutral:after{height: 0!important;}
-button.smiley.neutral:before{border: 0!important;}
-button.smiley.happy {background: url(/static/new/img/Very-helpful.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
-button.smiley.happy:hover {background: url(/static/new/img/Active-very-helpful.png); background-size: 100%;}
-button.smiley.happy:after{border: 0!important;}
-button.smiley.happy:before{border: 0!important;}
+button.smiley.sad {
+  background: url(/static/new/img/Not-helpful.png);
+  border: 0;
+  width: 60px;
+  height: 60px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  &:hover {
+    background: url(/static/new/img/Active-not-helpful.png);
+    background-size: 100%;
+  }
+  &:after {
+    border: none;
+  }
+  :before {
+    border: 0;
+  }
+}
+
+button.smiley.neutral {
+  background: url(/static/new/img/Im-neutral.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border: 0;
+  width: 60px;
+  height: 60px;
+  &:hover {
+    background: url(/static/new/img/Active-im-neutral.png);
+    background-size: 100%;
+  }
+  &:after {
+    height: 0;
+  }
+  &:before {
+    border: 0;
+  }
+}
+
+button.smiley.happy {
+  background: url(/static/new/img/Very-helpful.png);
+  border: 0;
+  width: 60px;
+  height: 60px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  &:hover {
+    background: url(/static/new/img/Active-very-helpful.png);
+    background-size: 100%;
+  }
+  &:after {
+    border: 0;
+  }
+  &:before{
+    border: 0;
+  }
+}

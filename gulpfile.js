@@ -10,10 +10,7 @@ var gulp              =   require('gulp'),
     gzip              =   require('gulp-gzip'),
     notify            =   require('gulp-notify'),
     sourcemaps        =   require('gulp-sourcemaps'),
-    livereload        =   require('gulp-livereload'),
-    browserSync       =   require('browser-sync').create(),
-    reload            =   browserSync.reload;
-
+    livereload        =   require('gulp-livereload');
 var templatesPath = 'tuneme/templates/new';
 var sassPaths = [
     'tuneme/styles/tuneme/style-320.s+(a|c)ss',

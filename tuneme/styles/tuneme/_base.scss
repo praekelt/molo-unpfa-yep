@@ -51,6 +51,13 @@ input[type="checkbox"] + label,
 input[type="radio"] + label  {
   display: inline;
 }
+input[type="checkbox"],
+input[type="radio"]  {
+  display: inline-block;
+  margin-left: 10px;
+  position: initial;
+  visibility: initial;
+}
 input[type="text"],
 input[type="number"],
 input[type="password"],
@@ -76,6 +83,7 @@ input[type="submit"] {
   padding: 5px 15px;
   text-transform: uppercase;
 }
+
 
 .copyright {
   padding: 0 10px 15px 10px;
