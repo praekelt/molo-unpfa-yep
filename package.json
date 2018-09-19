@@ -9,6 +9,8 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
+    "glob": "^7.1.2",
+    "gulp-bless": "^4.0.1",
     "gulp-minify": "^2.1.0",
     "gulp-sass-glob": "^1.0.8",
     "gulp-sass-lint": "^1.3.4",

@@ -1,6 +1,8 @@
 'use strict';
 
 var gulp              =   require('gulp'),
+    glob              =   require('glob'),
+    bless             =   require('gulp-bless'),
     sass              =   require('gulp-sass'),
     sassLint          =   require('gulp-sass-lint'),
     sassGlob          =   require('gulp-sass-glob'),
@@ -33,6 +35,7 @@ function styles(env) {
     s = s
     .pipe(sassGlob())
     .pipe(sass().on('error', sass.logError))
+    .pipe(bless())
     .pipe(cleanCSSMinify())
     if (isDev) s = s
         .pipe(sourcemaps.write('/maps'));

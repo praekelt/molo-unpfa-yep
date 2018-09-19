@@ -49,14 +49,13 @@ label {
 }
 input[type="checkbox"] + label,
 input[type="radio"] + label  {
-  display: inline;
+  display: inline-block;
 }
 input[type="checkbox"],
 input[type="radio"]  {
   display: inline-block;
   margin-left: 10px;
-  position: initial;
-  visibility: initial;
+  visibility: hidden;
 }
 input[type="text"],
 input[type="number"],
@@ -83,7 +82,6 @@ input[type="submit"] {
   padding: 5px 15px;
   text-transform: uppercase;
 }
-
 
 .copyright {
   padding: 0 10px 15px 10px;

@@ -1,15 +1,24 @@
 .service-dir {
+  &__heading {
+    margin: 0;
+  }
   &__banner {
+    background-color: $green;
     text-align: center;
     padding-top: 10px;
   }
-  &__breadcrumbs {
+  &__image {
+    background: no-repeat center/contain url("/static/new/img/clinic-finder.png");
+    height: 100px;
+  }
+  &__pagination {
     color: $green;
     font-size: $font-large;
-    padding: 20px 15px 10px;
+    padding: 5px 15px 10px;
     font-weight: bold;
     text-transform: uppercase;
   }
+
   &__title {
     padding: 0;
     text-decoration: underline; //Why does title have an underline
@@ -28,16 +37,21 @@
     padding: 5px 15px;
   }
   &__form {
+    .fieldset-group {
+      border-top: 1px solid $green;
+      position: relative;
+      margin: 10px 0;
+      padding: 10px 15px 0;
+    }
     fieldset {
-      padding: 0 15px;
       display: block;
       position: relative;
     }
     label {
-      margin: 10px 0;
-      display: block;
       font-size: $font-medium;
       position: relative;
+      vertical-align: middle;
+      //width: 85%;
     }
 
     [type="checkbox"] {
@@ -61,6 +75,10 @@
       &:checked + label {
           &:before {
             content: "";
+            background-image: url('/static/new/img/check-box.png');
+            background-position: center center;
+            background-size: 70%;
+            background-repeat: no-repeat;
             background-color: #000;
             color: #000;
           }
@@ -108,6 +126,16 @@
     border-top: 1px solid  #000;
     padding: 0 0 15px;
   }
+  .keywords {
+    &-list {
+      padding: 0 15px 10px;
+    }
+    &__item {
+      font-weight: bold;
+      display: block;
+    };
+    &__term {};
+  }
 
   .call-to-action {
     padding: 0 15px;
@@ -115,6 +143,11 @@
     margin: 20px 0;
     &__item {
       &--button {}
+    }
+    &--breadcrumbs {
+      margin: 0;
+      padding: 10px 15px;
+      background-color: #8eff9d;
     }
   }
 }
@@ -140,94 +173,50 @@
   }
 
 .heading {
-  &--service-dir {
-    &-title {
-      color: #000;
-      padding: 0 10px;
-    }
-    &-subtitle {
-      font-weight: bold;
-      padding: 0 10px 0;
-    }
-    &-organisation {
-      font-size: $font-large;
-    }
+  &-title {
+    color: #000;
+    padding: 0 10px;
+  }
+  &-subtitle {
+    font-weight: bold;
+    padding: 0 10px 0;
+  }
+  &-organisation {
+    font-size: $font-large;
   }
 }
 
-
 .service-list {
-  padding: 0 10px;
-  &__listings {
-    padding: 0 10px;
-  }
+  display: block;
+  $block: unquote("#{&}");
   &__item {
-    display: block;
     color: #000;
-    line-height: 2em;
-    padding: 0 10px 10px 0;
+    padding: 0 15px;
+  }
+  &__category {
+    color: $green;
+    font-weight: bold;
+  }
+  &__keyword {
+    color: #000;
+  }
+  &__load-more {
+    color: #000;
     display: block;
+    padding: 10px 30px;
+    text-decoration: underline;
+  }
+  &--outer {
+    #{$block}__item {
+      border-top: 1px solid $green;
+    }
+  }
+  &--inner {
+    #{$block}__item {
+      border-top: none;
+    }
   }
   &--results {
     border-bottom: 1px solid #000;
-  }
-}
-
-
-//Services Feedback
-button.smiley.sad {
-  background: url(/static/new/img/Not-helpful.png);
-  border: 0;
-  width: 60px;
-  height: 60px;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  &:hover {
-    background: url(/static/new/img/Active-not-helpful.png);
-    background-size: 100%;
-  }
-  &:after {
-    border: none;
-  }
-  :before {
-    border: 0;
-  }
-}
-
-button.smiley.neutral {
-  background: url(/static/new/img/Im-neutral.png);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  border: 0;
-  width: 60px;
-  height: 60px;
-  &:hover {
-    background: url(/static/new/img/Active-im-neutral.png);
-    background-size: 100%;
-  }
-  &:after {
-    height: 0;
-  }
-  &:before {
-    border: 0;
-  }
-}
-
-button.smiley.happy {
-  background: url(/static/new/img/Very-helpful.png);
-  border: 0;
-  width: 60px;
-  height: 60px;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  &:hover {
-    background: url(/static/new/img/Active-very-helpful.png);
-    background-size: 100%;
-  }
-  &:after {
-    border: 0;
-  }
-  &:before{
-    border: 0;
   }
 }

@@ -1,0 +1,57 @@
+//Services Feedback
+button.smiley.sad {
+  background: url(/static/new/img/Not-helpful.png);
+  border: 0;
+  width: 60px;
+  height: 60px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  &:hover {
+    background: url(/static/new/img/Active-not-helpful.png);
+    background-size: 100%;
+  }
+  &:after {
+    border: none;
+  }
+  :before {
+    border: 0;
+  }
+}
+
+button.smiley.neutral {
+  background: url(/static/new/img/Im-neutral.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border: 0;
+  width: 60px;
+  height: 60px;
+  &:hover {
+    background: url(/static/new/img/Active-im-neutral.png);
+    background-size: 100%;
+  }
+  &:after {
+    height: 0;
+  }
+  &:before {
+    border: 0;
+  }
+}
+
+button.smiley.happy {
+  background: url(/static/new/img/Very-helpful.png);
+  border: 0;
+  width: 60px;
+  height: 60px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  &:hover {
+    background: url(/static/new/img/Active-very-helpful.png);
+    background-size: 100%;
+  }
+  &:after {
+    border: 0;
+  }
+  &:before{
+    border: 0;
+  }
+}

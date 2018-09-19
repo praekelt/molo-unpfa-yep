@@ -2,9 +2,24 @@
 {% load i18n %}
 
 {% block inner_content %}
-<div class="service-dir">
-  <h6 class="service-dir__breadcrumbs">{% trans "Step 1 of 4" %}</h6>
+  {% block inner_banner %}
+    <div class="service-dir__banner">
+      <div class="service-dir__image"></div>
+      <h1 class="heading service-dir__heading">{% trans "Clinic Service Finder" %}</h1>
+    </div>
+  {% endblock %}
+  {% block sd_breadcrumbs %}
+    <div class="service-dir__breadcrumbs">
+      {% if search_term %}
+        <span class="service-dir__subtitle">
+          {{ search_term }}
+        </span>
+      {% endif %}
+    </div>
+  {% endblock %}
+
   {% comment %}Not a clickable breadcrumb indicator{% endcomment %}
+  <h6 class="service-dir__pagination">{% trans "Step 1 of 4" %}</h6>
   <h3 class="service-dir__subtitle">{% trans "Choose the service you need" %}</h3>
   <p class="service-dir__body">{% trans "What kind of help are you looking for at the clinic?" %}</p>
   <p class="service-dir__body">{% blocktrans %}Select as many services as you need from the list below.
@@ -14,45 +29,42 @@
   <form action="{% url 'molo.servicedirectory:location-search' %}" method="get" class="service-dir__form">
     {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
       {% for category in categories_keywords %}
-        <h3 class="service-dir__subtitle">Category keywords</h3>
           {% for keyword in category.keywords %}
+          <div class="fieldset-group">
             <fieldset>
-            <input type="checkbox" id="{{ keyword.split|join:"_"|lower }}" name="keywords[]" value="{{ keyword }}" {% if keyword in keywords %}checked="checked"{% endif %}/>
-            <label for="{{ keyword.split|join:"_"|lower }}">{{ keyword|title }}</label>
+              <input type="checkbox" id="{{ keyword.split|join:"_"|lower }}" name="keywords[]" value="{{ keyword }}" {% if keyword in keywords %}checked="checked"{% endif %}/>
+              <label for="{{ keyword.split|join:"_"|lower }}">{{ keyword|title }}</label>
             </fieldset>
+          </div>
           {% endfor %}
       {% endfor %}
-
       {% if categories %}
-        <h3 class="service-dir__subtitle">Category</h3>
         {% for category in categories  %}
           <input type="hidden" name="categories[]" value="{{ category }}">
         {% endfor %}
       {% endif %}
     {% endif %}
+    {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
+      <ul class="service-list service-list--outer">
+      {% for category in categories_keywords  %}
+        <li class="service-list__item">
+          <a class="service-list__category" href="{% url 'molo.servicedirectory:location-search' %}?search={{ category.name }}">{{ category.name }}</a>
+          <ul class="service-list service-list--inner">
+          {% for keyword in category.keywords %}
+            <li class="service-list__item">
+              <a href="{% url 'molo.servicedirectory:location-search' %}?search={{ keyword }}" class="service-list__keyword">{{ keyword }}</a>
+            </li>
+          {% endfor %}
+          </ul>
+        </li>
+          {% if and_more %}
+            <a href="{% url 'molo.servicedirectory:home' %}?category={{ category.name }}" class="service-list__load-more">{% trans "Load more" %}</a>
+          {% endif %}
+      {% endfor %}
+      </ul>
+    {% endif %}
     <span class="call-to-action">
       <input type="submit" value="{% trans 'Next' %}" class="call-to-action__item--button" />
     </span>
   </form>
-  {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
-  <div class="service-dir__listings">
-      {% for category in categories_keywords  %}
-      <a class="service-dir__title" href="{% url 'molo.servicedirectory:location-search' %}?search={{ category.name }}">{{ category.name }}</a>
-      <ul class="service-list">
-        {% for keyword in category.keywords %}
-        <li class="service-list__item">
-          <a href="{% url 'molo.servicedirectory:location-search' %}?search={{ keyword }}" class="service-directory__search-term">{{ keyword }}</a>
-        </li>
-        {% endfor %}
-        <li class="service-list__item">
-          {% if and_more %}
-            <a href="{% url 'molo.servicedirectory:home' %}?category={{ category.name }}">
-            {% trans "and more" %}...</a>
-          {% endif %}
-        </li>
-      </ul>
-      {% endfor %}
-    </div>
-  {% endif %}
-</div>
 {% endblock %}
