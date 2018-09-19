@@ -160,9 +160,11 @@ TEMPLATES = [
                 'wagtail.contrib.settings.context_processors.settings',
                 'tuneme.context_processors.default_forms',
                 'tuneme.context_processors.add_tag_manager_account',
-                'tuneme.context_processors.enable_service_directory_context',
                 'tuneme.context_processors.detect_freebasics',
                 'tuneme.processors.compress_settings',
+
+                'molo.servicedirectory.context_processors'
+                '.enable_service_directory_context',
             ],
             "loaders": [
                 "django.template.loaders.filesystem.Loader",
@@ -465,8 +467,6 @@ ADMIN_LANGUAGE_CODE = environ.get('ADMIN_LANGUAGE_CODE', "en")
 GOOGLE_TAG_MANAGER_ACCOUNT = environ.get('GOOGLE_TAG_MANAGER_ACCOUNT')
 CUSTOM_UIP_HEADER = 'HTTP_X_IORG_FBS_UIP'
 
-ENABLE_SERVICE_DIRECTORY = False
-
 GOOGLE_ANALYTICS = {}
 GOOGLE_ANALYTICS_IGNORE_PATH = [
     # health check used by marathon
@@ -557,3 +557,10 @@ AWS_S3_FILE_OVERWRITE = False
 GLOBAL_SITE_URL = environ.get('GLOBAL_SITE_URL', '')
 GEOIP_PATH = join(dirname(dirname(abspath(__file__))), 'geoip_db')
 GLOBAL_SITE_IGNORE_PATH = environ.get('GLOBAL_SITE_IGNORE_PATH', '')
+
+SERVICE_DIRECTORY_RADIUS_OPTIONS = (
+    (10, '10 km or less'),
+    (25, '25 km or less'),
+    (50, '50 km or less'),
+    (100, '100 km or less')
+)

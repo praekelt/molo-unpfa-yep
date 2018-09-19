@@ -1,1 +1,1 @@
-{"version":3,"sources":["style-opera.scss"],"names":[],"mappings":"AAAA,KACE,WAAY,KACZ,MAAO,KAET,kBACE,MAAO","file":"../style-opera.css","sourcesContent":["body {\n  background: #fff;\n  color: #000;\n}\n.header .logo img {\n  width: 100%;\n}\n"]}
+{"version":3,"sources":["style-opera.scss"],"names":[],"mappings":"AAAA,KACE,WAAA,KACA,MAAA,KAEF,kBACE,MAAA","file":"../style-opera.css","sourcesContent":["body {\n  background: #fff;\n  color: #000;\n}\n.header .logo img {\n  width: 100%;\n}\n"]}

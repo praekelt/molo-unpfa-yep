@@ -1,8 +1,8 @@
-molo.core==6.9.5
+molo.core==6.9.21
 molo.commenting==6.3.0
 molo.yourwords==6.4.1
 molo.yourtips==6.0.1
-molo.servicedirectory==6.1.0
+molo.servicedirectory==6.1.5
 molo.surveys==6.9.9
 molo.pwa==6.2.0
 elasticsearch==1.7.0
@@ -19,4 +19,3 @@ molo.globalsite==6.0.1
 django-import-export==1.0.1
 # Required by ImageHash, install a working version
 scipy==0.19.1
-

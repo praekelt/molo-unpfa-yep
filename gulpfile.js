@@ -1,6 +1,8 @@
 'use strict';
 
 var gulp              =   require('gulp'),
+    glob              =   require('glob'),
+    bless             =   require('gulp-bless'),
     sass              =   require('gulp-sass'),
     sassLint          =   require('gulp-sass-lint'),
     sassGlob          =   require('gulp-sass-glob'),
@@ -10,10 +12,7 @@ var gulp              =   require('gulp'),
     gzip              =   require('gulp-gzip'),
     notify            =   require('gulp-notify'),
     sourcemaps        =   require('gulp-sourcemaps'),
-    livereload        =   require('gulp-livereload'),
-    browserSync       =   require('browser-sync').create(),
-    reload            =   browserSync.reload;
-
+    livereload        =   require('gulp-livereload');
 var templatesPath = 'tuneme/templates/new';
 var sassPaths = [
     'tuneme/styles/tuneme/style-320.s+(a|c)ss',
@@ -36,6 +35,7 @@ function styles(env) {
     s = s
     .pipe(sassGlob())
     .pipe(sass().on('error', sass.logError))
+    .pipe(bless())
     .pipe(cleanCSSMinify())
     if (isDev) s = s
         .pipe(sourcemaps.write('/maps'));

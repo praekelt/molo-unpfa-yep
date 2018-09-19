@@ -1,0 +1,27 @@
+{% extends 'servicedirectory/content_base.html' %}
+{% load i18n %}
+{% block inner_content %}
+  {% block inner_banner %}
+    <div class="service-dir__banner">
+      <h1 class="heading service-dir__heading">{% trans "Clinic Service Finder" %}</h1>
+      <ul class="keywords-list">
+        {% if search_term %}
+          <li class="keywords__item">{% trans "Service" %}:
+            <span class="keywords__term">{{ search_term }}</span>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  {% endblock %}
+  {% block sd_breadcrumbs %}
+    <div class="call-to-action call-to-action--breadcrumbs">
+      <a href="{% url 'molo.servicedirectory:home' %}" class="call-to-action__nav-item call-to-action__nav-item--back">Back</a>
+    </div>
+  {% endblock %}
+  <h6 class="service-dir__pagination">{% trans "Step 2 of 4" %}</h6>
+  <h3 class="service-dir__subtitle">{% trans "Enter the village/town" %}</h3>
+  <p class="service-dir__body">
+    {% trans "In which village or town would you like to find a service?" %}
+  </p>
+   {% include 'servicedirectory/includes/location_search_form.html' %}
+{% endblock %}

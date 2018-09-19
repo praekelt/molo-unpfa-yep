@@ -1,177 +1,245 @@
-.service-directory {
-  p {
+.service-dir {
+  &__heading {
     margin: 0;
   }
+  &__banner {
+    background-color: $green;
+    text-align: center;
+    padding-top: 10px;
+  }
+  &__image {
+    background: no-repeat center/contain url("/static/new/img/clinic-finder.png");
+    height: 100px;
+  }
+  &__pagination {
+    color: $green;
+    font-size: $font-large;
+    padding: 5px 15px 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    padding: 0;
+    text-decoration: underline; //Why does title have an underline
+    color: #000;
+    display: block;
+    margin-bottom: 5px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: $font-large;
+  }
+  &__subtitle {
+    font-weight: bold;
+    padding: 0 15px;
+  }
+  &__body {
+    padding: 5px 15px;
+    margin: 0;
+  }
+  &__address {
+    &-title {
+      font-weight: bold;
+      font-size: $font-x-large;
+      padding: 10px 15px 0;
+    }
+    &-anchor {
+      color: #000;
+      font-weight: bold;
+      border-bottom: 1px solid #000;
+    }
+  }
+  &__form {
+    .fieldset-group {
+      position: relative;
+      &--categories {
+        border-top: 1px solid $green;
+        margin: 10px 0;
+      }
+    }
+    fieldset {
+      position: relative;
+    }
+    label {
+      font-size: $font-medium;
+      position: relative;
+      vertical-align: middle;
+      font-weight: normal;
+    }
+    select {
+      background: #fafafa url("/static/new/img/icons/dropdown.png") 98% 50%/20px no-repeat;
+      padding: 5px 10px;
+    }
+    select[value="value"] {
+      text-transform: capitalize;
+    }
+    [type="checkbox"] {
+    visibility: hidden;
+      & + label {
+        &:before {
+          content: "";
+          background-color: #fff;
+          border: 2px solid #000;
+          color: #000;
+          width: 18px;
+          height: 18px;
+          display: inline-block;
+          border-radius: 2px;
+          position: absolute;
+          vertical-align: middle;
+          margin: 0 10px 0 0;
+          left: -30px;
+        }
+      }
+      &:checked + label {
+          &:before {
+            content: "";
+            background-image: url('/static/new/img/check-box.png');
+            background-position: center center;
+            background-size: 70%;
+            background-repeat: no-repeat;
+            background-color: #000;
+            color: #000;
+          }
+      }
+    }
+  }
+  &__form--service-rate {
+     padding: 0 10px 10px;
+  }
+
+
+  //To Review
+  &__button {
+    display: block;
+    margin: 10px 0;
+    color: $white;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 14px;
+    background: $orange;
+    &--outline {
+      color: $orange;
+      background: $white;
+    }
+  }
+
+  &__contact {
+    padding: 0 20px;
+  }
+  &__location {
+    border-top: 1px solid $green;
+    padding: 30px 0 10px;
+  }
+  .keywords {
+    &-list {
+      padding: 0 15px 10px;
+    }
+    &__item {
+      font-weight: bold;
+      display: block;
+    };
+    &__term {};
+  }
+
+  .call-to-action {
+    padding: 0 15px;
+    display: block;
+    margin: 20px 0;
+    &__nav-item {
+      &--button {
+        background: #000;
+        border: 0;
+        color: #fff;
+        cursor: pointer;
+        padding: 10px 15px;
+        text-transform: uppercase;
+        border-radius: 14px;
+        text-decoration: none;
+        width: 100%;
+      }
+      &--back {
+        &:before {
+          content: "❮";
+          display: inline-block;
+          margin-right: 5px;
+        }
+      }
+    }
+    &--breadcrumbs {
+      margin: 0;
+      padding: 10px 15px;
+      background-color: #8eff9d;
+    }
+  }
+}
+
+  //CTA
   .call-to-action__nav-item {
     color: #000;
     display: block;
     padding: 0 10px;
     text-decoration: underline;
     font-weight: bold;
-  }
-  .service-list {
-    .call-to-action__nav-item--change-search {
+    &--report {
+      margin-bottom: 15px;
+    }
+    &--back {
+      color: #000;
+      padding: 0 10px;
+    }
+    &--change-search {
       text-decoration: underline;
       padding: 0;
     }
   }
-}
 
-.call-to-action__nav-item--back {
-  color: #000;
-  padding: 0 10px;
-}
-.call-to-action__nav-item--report {
-  margin-bottom: 15px;
-}
-
-.service-dir-location {
-  border-top: 1px solid  #000;
-  padding: 0 0 15px;
-  .call-to-action__nav-item {
-    padding: 0;
+.heading {
+  &-title {
+    color: #000;
+    padding: 0 10px;
   }
-}
-
-.service-directory__banner {
-  text-align: center;
-  padding-top: 10px;
-}
-
-.service-directory__feedback-message {
-  border-bottom: 1px solid #000;
-  font-weight: bold;
-  padding: 0 10px 15px;
-}
-
-.heading--service-dir-title {
-  color: #000;
-  padding: 0 10px;
-}
-.heading--service-dir-subtitle {
-  font-weight: bold;
-  padding: 0 10px 0;
-}
-
-.service-directory__title {
-  color: #000;
-  display: block;
-  margin-bottom: 5px;
-  padding: 10px;
-  font-weight: bold;
-  font-size: $font-large;
-}
-.heading--service-dir-organisation {
-  font-size: $font-large; //Used on Clinics services results - where else?
-}
-.service-directory__search-term {
-  text-transform: capitalize;
-}
-.service-directory__title--current-address {
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.service-directory__form {
-  padding: 0 10px;
-  fieldset {
-    font-size: 100%;
+  &-subtitle {
+    font-weight: bold;
+    padding: 0 10px 0;
   }
-  label {
-    margin: 10px 0;
-    font-size: $font-medium;
+  &-organisation {
+    font-size: $font-large;
   }
-  .call-to-action__nav-item--login,
-  input[type="submit"] {
-    margin: 10px 0 20px;
-  }
-  .service-directory__title {
-    padding: 0;
-  }
-}
-.service-directory__form--service-rate {
-   padding: 0 10px 10px;
-}
-.service-dir-hero-label {
-  margin: 0;
-  padding: 0;
 }
 
 .service-list {
-  padding: 0 10px;
-  .service-list__item {
-    display: block;
+  display: block;
+  $block: unquote("#{&}");
+  &__item {
     color: #000;
-    line-height: 2em;
-    a {
+    padding: 10px 15px;
+  }
+  &__anchor {
+    color: $green;
+    font-weight: bold;
+    &--keyword {
       color: #000;
     }
   }
-}
-.service-directory__listings {
-  padding: 0 10px;
-
-  .service-directory__title {
-    padding: 0;
+  &__load-more {
+    color: #000;
+    display: block;
+    padding: 0 30px 10px;
     text-decoration: underline;
   }
-  .service-list {
-    padding: 0;
-    //Make This a Priority?
-    .service-directory__search-term {
-      text-decoration: none;
-      text-transform: capitalize;
+  &--outer {
+    #{$block}__item {
+      border-top: 1px solid $green;
     }
   }
-}
-.service-directory__form--location-results {
-  .service-list {
-    padding: 0;
-  }
-}
-
-.service-list--results {
-  border-bottom: 1px solid #000;
-  .heading--service-dir-organisation {
-    padding: 0;
-    margin: 0;
-  }
-  .service-list__item {
-    padding: 0 10px 10px 0;
-    display: block;
-    .service-directory__title {
-      padding: 10px 0;
+  &--inner {
+    #{$block}__item {
+      border-top: none;
+      padding: 0 15px;
     }
   }
+  &--results {
+    border-bottom: 1px solid #000;
+  }
 }
-
-.service-directory__contact {
-  padding: 0 20px;
-}
-.service-dir__button {
-  display: block;
-  margin: 10px 0;
-  color: $white!important;
-  line-height: 30px;
-  text-align: center;
-  border-radius: 14px;
-  background: $orange;
-}
-.service-dir__button--outline {
-  color: $orange!important;
-  background: $white;
-}
-
-//Services Feedback
-button.smiley.sad {background: url(/static/new/img/Not-helpful.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
-button.smiley.sad:hover {background: url(/static/new/img/Active-not-helpful.png); background-size: 100%;}
-button.smiley.sad:after{border: 0!important;}
-button.smiley.sad:before{border: 0!important;}
-button.smiley.neutral {background: url(/static/new/img/Im-neutral.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
-button.smiley.neutral:hover {background: url(/static/new/img/Active-im-neutral.png); background-size: 100%;}
-button.smiley.neutral:after{height: 0!important;}
-button.smiley.neutral:before{border: 0!important;}
-button.smiley.happy {background: url(/static/new/img/Very-helpful.png); border: 0; width: 60px; height: 60px; background-size: 100%; background-repeat: no-repeat;}
-button.smiley.happy:hover {background: url(/static/new/img/Active-very-helpful.png); background-size: 100%;}
-button.smiley.happy:after{border: 0!important;}
-button.smiley.happy:before{border: 0!important;}
