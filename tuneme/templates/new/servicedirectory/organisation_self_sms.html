@@ -1,14 +1,16 @@
 {% extends 'servicedirectory/content_base.html' %}
-
+{% load i18n %}
 {% block inner_content %}
-    <h1 class="heading heading--service-dir-subtitle">Do you want to send this service to yourself? It's free!</h1>
-    <form action="{% url 'molo.servicedirectory:organisation-sms' organisation_id %}" method="post" class="service-directory__form">
+    <h1 class="service-dir__subtitle">
+      {% trans "Do you want to send this service to yourself? It's free!" %}
+    </h1>
+    <form action="{% url 'molo.servicedirectory:organisation-sms' organisation_id %}" method="post" class="service-dir__form">
     {% csrf_token %}
-        <fieldset>
-            <label for="cell_number">Your cellphone number</label>
-            <input type="tel" id="cell_number" name="cell_number" required/>
-            <span class="input-hint">*This number is safe with us</span>
-        </fieldset>
-        <input type="submit" name="send" value="Send" />
+      <fieldset>
+        <label for="cell_number">{% trans "Your cellphone number" %}</label>
+        <input type="tel" id="cell_number" name="cell_number" required/>
+        <span class="input-hint">*{% trans "This number is safe with us" %}</span>
+      </fieldset>
+      <input type="submit" name="send" value="Send" />
     </form>
 {% endblock %}

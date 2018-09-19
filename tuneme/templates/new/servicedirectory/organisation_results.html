@@ -1,53 +1,49 @@
 {% extends 'servicedirectory/content_base.html' %}
-
+{% load i18n %}
 {% block inner_content %}
-  <a href="{{ change_location_url }}" class="call-to-action__nav-item call-to-action__nav-item--back">
-  &lt; Back</a>
-
-  <form action="{% url 'molo.servicedirectory:organisation-results' %}" method="get" class="service-directory__form">
-  <fieldset>
-    <input type="text" name="search" value="{{ search_term }}" />
-  </fieldset>
-  <input type="submit" value="Search" />
-  <input type="hidden" name="location" value="{{ location_term }}" />
-  <input type="hidden" name="place_id" value="{{ place_id }}" />
-
-  {% if SERVICE_DIRECTORY_RADIUS  %}
-  <fieldset>
-    <label class="service-dir-hero-label">Show me results within __ KMs away</label>
-    <select name="radius" value="{{ SERVICE_DIRECTORY_RADIUS }}" >
-      {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS  %}
-      <option {% ifequal value  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %} value="{{ value }}">
-        {{ label }}
-      </option>
-      {% endfor %}
-    </select>
-  <fieldset>
-  {% endif %}
-
-  {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
-  {% for category in categories  %}
-    <input type="hidden" name="categories[]" value="{{ category }}">
-  {% endfor %}
-
-  {% for keyword in keywords  %}
-    <input type="hidden" name="keywords[]" value="{{ keyword }}">
-  {% endfor %}
-  {% endif %}
-
-  {% if place_latlng %}
-    <input type="hidden" name="place_latlng" value="{{ place_latlng }}">
-  {% endif %}
-
-  {% if place_formatted_address %}
-    <input type="hidden" name="place_formatted_address" value="{{ place_formatted_address }}">
-  {% endif %}
+  {% block sd_breadcrumbs %}
+    <div class="call-to-action call-to-action--breadcrumbs">
+      <a href="{{ change_location_url }}" class="call-to-action__nav-item call-to-action__nav-item--back">{% trans "Back" %}</a>
+    </div>
+  {% endblock %}
+  <form action="{% url 'molo.servicedirectory:organisation-results' %}" method="get" class="service-dir__form">
+    <fieldset>
+      <input type="text" name="search" value="{{ search_term }}" />
+    </fieldset>
+    <input type="submit" value="Search" />
+    <input type="hidden" name="location" value="{{ location_term }}" />
+    <input type="hidden" name="place_id" value="{{ place_id }}" />
+    {% if SERVICE_DIRECTORY_RADIUS  %}
+    <fieldset>
+      <label class="service-dir__subtitle">{% trans "Show me results within" %} {% if value == "" %}__{% else %}{{ value }}{% endif %} {% trans "KMs away" %}</label>
+      <select name="radius" value="{{ SERVICE_DIRECTORY_RADIUS }}" >
+        {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS  %}
+        <option {% ifequal value  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %} value="{{ value }}">
+          {{ label }}
+        </option>
+        {% endfor %}
+      </select>
+    <fieldset>
+    {% endif %}
+    {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
+    {% for category in categories  %}
+      <input type="hidden" name="categories[]" value="{{ category }}">
+    {% endfor %}
+    {% for keyword in keywords  %}
+      <input type="hidden" name="keywords[]" value="{{ keyword }}">
+    {% endfor %}
+    {% endif %}
+    {% if place_latlng %}
+      <input type="hidden" name="place_latlng" value="{{ place_latlng }}">
+    {% endif %}
+    {% if place_formatted_address %}
+      <input type="hidden" name="place_formatted_address" value="{{ place_formatted_address }}">
+    {% endif %}
   </form>
-
-    <div class="service-dir-location">
-     <h3 class="service-directory__title service-directory__title--current-address">
+    <div class="service-dir__location">
+     <h3 class="service-directory__title">
      {{ place_formatted_address }}</h3>
-     <a class="call-to-action__nav-item call-to-action__nav-item--change-search" href="{{ change_location_url }}">Change area</a>
+     <a class="call-to-action__nav-item call-to-action__nav-item--change-search" href="{{ change_location_url }}">{% trans "Change area" %}</a>
     </div>
     <ul class="service-list service-list--results">
     {% for organisation in search_results %}
@@ -65,14 +61,14 @@
     </li>
     {% empty %}
     <li class="service-list__item">
-      <h3 class="service-directory__title">
-        We couldn't find any services for 
-        <span class="service-directory__search-term">"{{ search_term }}"</span>
+      <h3 class="service-dir__title">
+        {% trans "We couldn't find any services for" %}
+        <span class="service-dir__term">"{{ search_term }}"</span>
       </h3>
-      <p>Try one of the following things:</p>
-      <p>Check your spelling</p>
-      <a class="call-to-action__nav-item call-to-action__nav-item--change-search" href="{% url 'molo.servicedirectory:home' %}">Search for something else</a>
-      <h3 class="service-directory__title">Search a category:</h3>
+      <p>{% trans "Try one of the following things" %}:</p>
+      <p>{% trans "Check your spelling" %}</p>
+      <a class="call-to-action__nav-item" href="{% url 'molo.servicedirectory:home' %}">{% trans "Search for something else" %}</a>
+      <h3 class="service-dir__title">{% trans "Search a category" %}:</h3>
       <ul class="service-list service-list--no-results">
         {% for category in categories_keywords %}
         <li class="service-list__item">

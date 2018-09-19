@@ -1,6 +1,5 @@
 {% extends 'servicedirectory/content_base.html' %}
 {% load i18n %}
-
 {% block inner_content %}
   {% block inner_banner %}
     <div class="service-dir__banner">
@@ -25,7 +24,6 @@
   <p class="service-dir__body">{% blocktrans %}Select as many services as you need from the list below.
     This will help refine your search for the clinic.{% endblocktrans %}
   </p>
-
   <form action="{% url 'molo.servicedirectory:location-search' %}" method="get" class="service-dir__form">
     {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
       {% for category in categories_keywords %}
