@@ -46,11 +46,11 @@
       <ul class="service-list service-list--outer">
       {% for category in categories_keywords  %}
         <li class="service-list__item">
-          <a class="service-list__category" href="{% url 'molo.servicedirectory:location-search' %}?search={{ category.name }}">{{ category.name }}</a>
+          <a class="service-list__anchor" href="{% url 'molo.servicedirectory:location-search' %}?search={{ category.name }}">{{ category.name }}</a>
           <ul class="service-list service-list--inner">
           {% for keyword in category.keywords %}
             <li class="service-list__item">
-              <a href="{% url 'molo.servicedirectory:location-search' %}?search={{ keyword }}" class="service-list__keyword">{{ keyword }}</a>
+              <a href="{% url 'molo.servicedirectory:location-search' %}?search={{ keyword }}" class="service-list__anchor--keyword">{{ keyword }}</a>
             </li>
           {% endfor %}
           </ul>
@@ -61,8 +61,8 @@
       {% endfor %}
       </ul>
     {% endif %}
-    <span class="call-to-action">
+    <div class="call-to-action">
       <input type="submit" value="{% trans 'Next' %}" class="call-to-action__item--button" />
-    </span>
+    </div>
   </form>
 {% endblock %}

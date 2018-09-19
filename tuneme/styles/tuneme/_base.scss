@@ -38,8 +38,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 fieldset {
   border: none;
-  margin: 10px 0 15px 0;
-  padding: 0;
+  display: block;
+  padding: 10px 15px 0;
 }
 label {
   cursor: pointer;
@@ -63,12 +63,27 @@ input[type="password"],
 input[type="email"],
 input[type="tel"],
 input[type="url"],
-input[type="search"] {
+input[type="search"],
+select {
+  background: #fafafa;
   border: 1px #000 solid;
   display: block;
-  width: 100%;
   box-sizing: border-box;
-  padding: 6px 10px;
+  padding: 5px 10px;
+  width: 100%;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -webkit-border-radius: 0;
+  outline: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 textarea {
   padding: 5px;

@@ -19,5 +19,9 @@
     </div>
   {% endblock %}
   <h6 class="service-dir__pagination">{% trans "Step 2 of 4" %}</h6>
+  <h3 class="service-dir__subtitle">{% trans "Enter the village/town" %}</h3>
+  <p class="service-dir__body">
+    {% trans "In which village or town would you like to find a service?" %}
+  </p>
    {% include 'servicedirectory/includes/location_search_form.html' %}
 {% endblock %}

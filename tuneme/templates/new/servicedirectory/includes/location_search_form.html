@@ -1,11 +1,7 @@
 {% load i18n %}
-<h3 class="service-dir__subtitle">{% trans "Enter the village/town" %}</h3>
 <form action="{% url 'molo.servicedirectory:location-results'  %}" method="get" class="service-dir__form">
   <div class="fieldset-group">
     <fieldset>
-      <label>
-        {% trans "In which village or town would you like to find a service?" %}
-      </label>
       <input type="text" name="location" value="{{ location_term }}" placeholder="Enter village or town..."/>
     <fieldset>
   </div>
@@ -23,6 +19,8 @@
       <fieldset>
     {% endif %}
   </div>
-  <input type="submit" value="Search" />
-  <input type="hidden" name="search" value="{{ search_term }}" />
+  <div class="call-to-action">
+    <input type="submit" value="Search" />
+    <input type="hidden" name="search" value="{{ search_term }}" />
+  </div>
 </form>
