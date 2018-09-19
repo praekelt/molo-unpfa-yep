@@ -64,7 +64,7 @@
   {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT %}
     {% for prediction in autocomplete_suggestions.predictions|slice:"1:" %}
       <li class="service-list__item">
-        <a class="service-dir__anchor"
+        <a class="service-list__anchor"
            href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}">
             {{ prediction.description }}
         </a>
