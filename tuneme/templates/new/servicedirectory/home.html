@@ -28,7 +28,7 @@
     {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
       {% for category in categories_keywords %}
           {% for keyword in category.keywords %}
-          <div class="fieldset-group">
+          <div class="fieldset-group fieldset-group--categories">
             <fieldset>
               <input type="checkbox" id="{{ keyword.split|join:"_"|lower }}" name="keywords[]" value="{{ keyword }}" {% if keyword in keywords %}checked="checked"{% endif %}/>
               <label for="{{ keyword.split|join:"_"|lower }}">{{ keyword|title }}</label>
