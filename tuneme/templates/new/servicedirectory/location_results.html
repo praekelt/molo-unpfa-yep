@@ -24,28 +24,35 @@
   <p class="service-dir__body">
     {% trans "Please confirm that you are looking for a clinic in" %}:
   </p>
-  <h6 class="service-dir__address-title">
-    {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT %}
-      {% with autocomplete_suggestions.predictions|first as topPrediction %}
-        <a class="service-dir__address-anchor"
-           href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}">
-            {{ topPrediction.description }}
-          </a>
-      {% endwith %}
-    {% else %}
-      {% with autocomplete_suggestions.predictions|first as topPrediction %}
+  {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT %}
+    {% with autocomplete_suggestions.predictions|first as topPrediction %}
+    <h6 class="service-dir__address-title">
+      <a class="service-dir__address-anchor"
+         href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}">
+          {{ topPrediction.description }}
+      </a>
+    </h6>
+    <span class="call-to-action">
+      <a url="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}" class="call-to-action__nav-item call-to-action__nav-item--button">
+        {% trans 'Next' %}
+      </a>
+    </span>
+    {% endwith %}
+  {% else %}
+    {% with autocomplete_suggestions.predictions|first as topPrediction %}
+      <h6 class="service-dir__address-title">
         <a class="service-dir__address-anchor"
             href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}">
           {{ topPrediction.description }}
         </a>
-      {% endwith %}
-    {% endif %}
-  </h6>
-  <div class="call-to-action">
-    <button type="submit" url="{% url 'molo.servicedirectory:location-results'  %}" class="call-to-action__nav-item call-to-action__nav-item--button">
-      {% trans 'Next' %}
-    </button>
-  </div>
+      </h6>
+      <span class="call-to-action">
+        <a url="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}" class="call-to-action__nav-item call-to-action__nav-item--button">
+          {% trans 'Next' %}
+        </a>
+      </span>
+    {% endwith %}
+  {% endif %}
 
   <!----------------------------------------------------------------------------------->
   {% if autocomplete_suggestions.status != 'OK' %}

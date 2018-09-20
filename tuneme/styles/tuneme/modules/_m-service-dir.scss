@@ -104,26 +104,6 @@
       }
     }
   }
-  &__form--service-rate {
-     padding: 0 10px 10px;
-  }
-
-
-  //To Review
-  &__button {
-    display: block;
-    margin: 10px 0;
-    color: $white;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 14px;
-    background: $orange;
-    &--outline {
-      color: $orange;
-      background: $white;
-    }
-  }
-
   &__contact {
     padding: 0 20px;
   }
@@ -152,11 +132,14 @@
         border: 0;
         color: #fff;
         cursor: pointer;
-        padding: 10px 15px;
+        //font-family: 'Quicksand', sans-serif;
+        //font-size: 16px;
+        padding: 8px 15px;
         text-transform: uppercase;
-        border-radius: 14px;
+        border-radius: 15px;
         text-decoration: none;
-        width: 100%;
+        font-weight: normal;
+        text-align: center;
       }
       &--back {
         &:before {
@@ -172,6 +155,24 @@
       background-color: #8eff9d;
     }
   }
+  &__form--service-rate {
+     padding: 0 10px 10px;
+  }
+  //To Review
+  &__button {
+    display: block;
+    margin: 10px 0;
+    color: $white;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 14px;
+    background: $orange;
+    &--outline {
+      color: $orange;
+      background: $white;
+    }
+  }
+
 }
 
   //CTA

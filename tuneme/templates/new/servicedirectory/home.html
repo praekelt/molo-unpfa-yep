@@ -20,22 +20,23 @@
   {% comment %}Not a clickable breadcrumb indicator{% endcomment %}
   <h6 class="service-dir__pagination">{% trans "Step 1 of 4" %}</h6>
   <h3 class="service-dir__subtitle">{% trans "Choose the service you need" %}</h3>
-  <p class="service-dir__body">{% trans "What kind of help are you looking for at the clinic?" %}</p>
+  <p class="service-dir__body">
+    {% trans "What kind of help are you looking for at the clinic?" %}</p>
   <p class="service-dir__body">{% blocktrans %}Select as many services as you need from the list below.
     This will help refine your search for the clinic.{% endblocktrans %}
   </p>
   <form action="{% url 'molo.servicedirectory:location-search' %}" method="get" class="service-dir__form">
     {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
-
         {% for keyword in keyword_list %}
-        <div class="fieldset-group fieldset-group--categories">
-          <fieldset>
-            <input type="checkbox" id="{{ keyword.name.split|join:"_"|lower }}" name="keywords[]" value="{{ keyword.name }}" {% if keyword.name in keywords %}checked="checked"{% endif %}/>
-            <label for="{{ keyword.name.split|join:"_"|lower }}">{{ keyword.name|title }}</label>
-          </fieldset>
-        </div>
+          <div class="fieldset-group fieldset-group--categories">
+            <fieldset>
+              <input type="checkbox" id="{{ keyword.name.split|join:"_"|lower }}" name="keywords[]" value="{{ keyword.name }}" {% if keyword.name in keywords %}checked="checked"{% endif %}/>
+              <label for="{{ keyword.name.split|join:"_"|lower }}">
+                {{ keyword.name|title }}
+              </label>
+            </fieldset>
+          </div>
         {% endfor %}
-
       {% if categories %}
         {% for category in categories  %}
           <input type="hidden" name="categories[]" value="{{ category }}">
@@ -55,9 +56,9 @@
           {% endfor %}
           </ul>
         </li>
-          {% if and_more %}
-            <a href="{% url 'molo.servicedirectory:home' %}?category={{ category.name }}" class="service-list__load-more">{% trans "Load more" %}</a>
-          {% endif %}
+        {% if and_more %}
+          <a href="{% url 'molo.servicedirectory:home' %}?category={{ category.name }}" class="service-list__load-more">{% trans "Load more" %}</a>
+        {% endif %}
       {% endfor %}
       </ul>
     {% endif %}
