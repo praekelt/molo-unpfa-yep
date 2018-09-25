@@ -6,18 +6,26 @@
     <fieldset>
   </div>
   <div class="fieldset-group">
-    {% if SERVICE_DIRECTORY_RADIUS  %}
+  {% if SERVICE_DIRECTORY_RADIUS  %}
+    {% with SERVICE_DIRECTORY_RADIUS as radius %}
       <fieldset>
-        <label class="service-dir-hero-label">{% trans "Show me results within" %} {% if value == "" %}__{% else %}{{ value }}{% endif %} {% trans "KMs away" %}</label>
-        <select name="radius" value="{{ radius }}" >
+        <label class="service-dir-hero-label">
+          {% trans "Show me results within" %}
+          <span class="service-dir__radius">
+            <p id="radius_option">{{radius}}</p>{% trans "KMs away" %}
+          </span>
+        </label>
+
+        <select id="select_radius" name="radius">
           {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS  %}
-          <option {% ifequal value  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %} value="{{ value }}">
-            {{ label }}
-          </option>
+            <option value="{{ value }}">
+              {{ label }}
+            </option>
           {% endfor %}
         </select>
       <fieldset>
-    {% endif %}
+    {% endwith %}
+  {% endif %}
   </div>
   <div class="call-to-action">
     <input type="submit" value="Search" />

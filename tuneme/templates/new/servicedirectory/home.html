@@ -39,6 +39,7 @@
         {% endfor %}
       {% if categories %}
         {% for category in categories  %}
+        {{categories}}
           <input type="hidden" name="categories[]" value="{{ category }}">
         {% endfor %}
       {% endif %}
