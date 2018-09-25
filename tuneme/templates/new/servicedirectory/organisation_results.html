@@ -7,10 +7,12 @@
     </div>
   {% endblock %}
   <form action="{% url 'molo.servicedirectory:organisation-results' %}" method="get" class="service-dir__form">
+    {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
     <fieldset>
       <input type="text" name="search" value="{{ search_term }}" />
     </fieldset>
-    <input type="submit" value="Search" />
+    {% endif %}
+
     <input type="hidden" name="location" value="{{ location_term }}" />
     <input type="hidden" name="place_id" value="{{ place_id }}" />
     {% if SERVICE_DIRECTORY_RADIUS  %}
@@ -23,7 +25,8 @@
         </option>
         {% endfor %}
       </select>
-    <fieldset>
+    </fieldset>
+
     {% endif %}
     {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
     {% for category in categories  %}
@@ -39,6 +42,10 @@
     {% if place_formatted_address %}
       <input type="hidden" name="place_formatted_address" value="{{ place_formatted_address }}">
     {% endif %}
+
+    <fieldset>
+      <input type="submit" value="Search" />
+    </fieldset>
   </form>
     <div class="service-dir__location">
      <h3 class="service-directory__title">

@@ -31,7 +31,7 @@
         <div class="fieldset-group fieldset-group--categories">
           <fieldset>
             <input type="checkbox" id="{{ keyword.name.split|join:"_"|lower }}" name="keywords[]" value="{{ keyword.name }}" {% if keyword.name in keywords %}checked="checked"{% endif %}/>
-            <label for="{{ keyword.name.split|join:"_"|lower }}">{{ keyword.name|title }}</label>
+            <label for="{{ keyword.name.split|join:"_"|lower }}">{{ keyword.name|truncatechars:30|title }}</label>
           </fieldset>
         </div>
         {% endfor %}
