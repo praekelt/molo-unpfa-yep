@@ -42,9 +42,30 @@
     {% endif %}
   </h6>
   <div class="call-to-action">
-    <button type="submit" url="{% url 'molo.servicedirectory:location-results'  %}" class="call-to-action__nav-item call-to-action__nav-item--button">
-      {% trans 'Next' %}
-    </button>
+    <form action="{% url 'molo.servicedirectory:organisation-results'  %}">
+      <input type="hidden" name="location" value="{{ location_term }}">
+
+      {% if SERVICE_DIRECTORY_RADIUS  %}
+      <input type="hidden" name="radius" value="{{ SERVICE_DIRECTORY_RADIUS }}">
+      {% endif %}
+
+      {% for prediction in autocomplete_suggestions.predictions|slice:"1:" %}
+      <input type="hidden" name="place_id" value="{{ prediction.place_id }}">
+      {% endfor %}
+
+      {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
+        {% for category in categories  %}
+          <input type="hidden" name="categories[]" value="{{ category }}">
+        {% endfor %}
+
+        {% for keyword in keywords  %}
+          <input type="hidden" name="keywords[]" value="{{ keyword }}">
+        {% endfor %}
+      {% endif %}
+      <button type="submit" class="call-to-action__nav-item call-to-action__nav-item--button">
+        {% trans 'Next' %}
+      </button>
+    </form>
   </div>
 
   <!----------------------------------------------------------------------------------->
