@@ -1,7 +1,4 @@
 .service-dir {
-  &__heading {
-    margin: 0;
-  }
   &__banner {
     background-color: $green;
     text-align: center;
@@ -18,10 +15,10 @@
     font-weight: bold;
     text-transform: uppercase;
   }
-
+  &__heading {
+    margin: 0;
+  }
   &__title {
-    padding: 0;
-    text-decoration: underline;
     color: #000;
     display: block;
     margin-bottom: 5px;
@@ -29,27 +26,24 @@
     font-weight: bold;
     font-size: $font-large;
   }
+  &__anchor {
+    color: #000;
+    border-bottom: 1px solid #000;
+  }
   &__subtitle {
     font-weight: bold;
-    padding: 0 15px;
+    padding: 0 10px;
   }
   &__body {
-    padding: 5px 15px;
+    padding: 5px 10px;
     margin: 0;
-  }
-  &__address {
-    &-title {
+    &-bold {
       font-weight: bold;
-      font-size: $font-x-large;
-      padding: 10px 15px 0;
-    }
-    &-anchor {
-      color: #000;
-      font-weight: bold;
-      border-bottom: 1px solid #000;
     }
   }
+
   &__form {
+    padding-bottom: 10px;
     .fieldset-group {
       position: relative;
       &--categories {
@@ -104,12 +98,12 @@
       }
     }
   }
+
   &__contact {
     padding: 0 20px;
   }
   &__location {
-    border-top: 1px solid $green;
-    padding: 30px 0 10px;
+    padding: 0 15px 10px;
   }
   &__radius {
     font-style: italic;
@@ -119,7 +113,9 @@
       display: inline;
     }
   }
-
+  &__results-list {
+    padding: 20px 0 0;
+  }
   .keywords {
     &-list {
       padding: 0 15px 10px;
@@ -128,7 +124,9 @@
       font-weight: bold;
       display: block;
     };
-    &__term {};
+    &__term {
+      font-weight: bold;
+    };
   }
   &__form--service-rate {
      padding: 0 10px 10px;
@@ -150,22 +148,21 @@
   }
 }
 
-//CTA
 .call-to-action {
   color: #000;
   display: block;
-  padding: 0 15px;
-  text-decoration: underline;
   font-weight: bold;
-  //margin: 20px 0;
+  margin: 20px 0;
+  padding: 0 15px;
   &__nav-item {
+    color: #000;
+    font-weight: bold;
+    text-decoration: underline;
     &--button {
       background: #000;
       border: 0;
       color: #fff;
       cursor: pointer;
-      //font-family: 'Quicksand', sans-serif;
-      //font-size: 16px;
       padding: 8px 15px;
       text-transform: uppercase;
       border-radius: 15px;
@@ -190,10 +187,19 @@
       padding: 0;
     }
   }
+  &__load-more {
+    color: #000;
+    display: block;
+    padding: 0 30px 10px;
+    text-decoration: underline;
+  }
   &--breadcrumbs {
     margin: 0;
-    padding: 10px 15px;
+    padding: 10px 10px;
     background-color: #8eff9d;
+  }
+  input[type="submit"]:disabled {
+    background: #dddddd;
   }
 }
 
@@ -216,7 +222,7 @@
   $block: unquote("#{&}");
   &__item {
     color: #000;
-    padding: 10px 15px;
+    padding: 10px 10px;
   }
   &__anchor {
     color: $green;
@@ -224,12 +230,6 @@
     &--keyword {
       color: #000;
     }
-  }
-  &__load-more {
-    color: #000;
-    display: block;
-    padding: 0 30px 10px;
-    text-decoration: underline;
   }
   &--outer {
     #{$block}__item {
@@ -239,10 +239,26 @@
   &--inner {
     #{$block}__item {
       border-top: none;
-      padding: 0 15px;
+      padding: 0 10px;
     }
   }
-  &--results {
-    border-bottom: 1px solid #000;
+  &--clinics {
+    padding: 10px;
+    #{$block}__item {
+      display: inline;
+      padding: 0;
+    }
+    .service-dir__body {
+      display: inline;
+      padding: 0 5px 0 0;
+      &:before {
+        background: url("/static/new/img/arrow.png") no-repeat 3px 2px/50%;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 10px;
+        height: 15px;
+      }
+    }
   }
 }

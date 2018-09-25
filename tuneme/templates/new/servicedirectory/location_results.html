@@ -18,7 +18,7 @@
       <a href="{% url 'molo.servicedirectory:home' %}" class="call-to-action__nav-item call-to-action__nav-item--back">Back</a>
     </div>
   {% endblock %}
-  <!----------------------------------------------------------------------------------->
+
   <h6 class="service-dir__pagination">{% trans "Step 3 of 4" %}</h6>
   <h3 class="service-dir__subtitle">{% trans "Confirm the village/town" %}</h3>
   <p class="service-dir__body">
@@ -32,11 +32,11 @@
           {{ topPrediction.description }}
       </a>
     </h6>
-    <span class="call-to-action">
+    <div class="call-to-action">
       <a url="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}" class="call-to-action__nav-item call-to-action__nav-item--button">
         {% trans 'Next' %}
       </a>
-    </span>
+    </div>
     {% endwith %}
   {% else %}
     {% with autocomplete_suggestions.predictions|first as topPrediction %}
@@ -46,48 +46,48 @@
           {{ topPrediction.description }}
         </a>
       </h6>
-      <span class="call-to-action">
+      <div class="call-to-action">
         <a url="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}" class="call-to-action__nav-item call-to-action__nav-item--button">
           {% trans 'Next' %}
         </a>
-      </span>
+      </div>
     {% endwith %}
   {% endif %}
-
-  <!----------------------------------------------------------------------------------->
-  {% if autocomplete_suggestions.status != 'OK' %}
-    <h3 class="service-dir__subtitle {% if autocomplete_suggestions.status != 'ZERO_RESULTS' %} error{% endif %}">
-      {% if autocomplete_suggestions.status == 'ZERO_RESULTS' %}
-          {% trans "No results. Please try changing your search." %}
-      {% else %}
-          {{ autocomplete_suggestions.error_message }}
-      {% endif %}
-    </h3>
-  {% else %}
-    <h3 class="service-dir__subtitle">{% trans "Did you mean a different location?" %}</h3>
-    <p class="service-dir__body">Please choose the correct location:</p>
-  {% endif %}
-  <ul class="service-list service-list--outer">
-  {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT %}
-    {% for prediction in autocomplete_suggestions.predictions|slice:"1:" %}
-      <li class="service-list__item">
-        <a class="service-list__anchor"
-           href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}">
-            {{ prediction.description }}
-        </a>
-      </li>
-    {% endfor %}
-  {% else %}
-    {% for prediction in autocomplete_suggestions.predictions|slice:"1:" %}
-      <li class="service-list__item">
-        <a class="service-list__anchor"
-            href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}">
-            {{ prediction.description }}
-        </a>
-      </li>
-    {% endfor %}
-  {% endif %}
-  </ul>
+  <div class="service-dir__results-list">
+    {% if autocomplete_suggestions.status != 'OK' %}
+      <h3 class="service-dir__subtitle {% if autocomplete_suggestions.status != 'ZERO_RESULTS' %} error{% endif %}">
+        {% if autocomplete_suggestions.status == 'ZERO_RESULTS' %}
+            {% trans "No results. Please try changing your search." %}
+        {% else %}
+            {{ autocomplete_suggestions.error_message }}
+        {% endif %}
+      </h3>
+    {% else %}
+      <h3 class="service-dir__subtitle">{% trans "Did you mean a different location?" %}</h3>
+      <p class="service-dir__body">Please choose the correct location:</p>
+    {% endif %}
+    <ul class="service-list service-list--outer">
+    {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT %}
+      {% for prediction in autocomplete_suggestions.predictions|slice:"1:" %}
+        <li class="service-list__item">
+          <a class="service-list__anchor"
+             href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}">
+              {{ prediction.description }}
+          </a>
+        </li>
+      {% endfor %}
+    {% else %}
+      {% for prediction in autocomplete_suggestions.predictions|slice:"1:" %}
+        <li class="service-list__item">
+          <a class="service-list__anchor"
+              href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}">
+              {{ prediction.description }}
+          </a>
+        </li>
+      {% endfor %}
+    {% endif %}
+    </ul>
+  </div>
   <div class="service-dir__location">
     <h3 class="service-dir__subtitle">{% trans "Can't find what you are looking for?" %}</h3>
     <p class="service-dir__body">

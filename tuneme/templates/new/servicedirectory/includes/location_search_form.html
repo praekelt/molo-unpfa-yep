@@ -9,15 +9,14 @@
   {% if SERVICE_DIRECTORY_RADIUS  %}
     {% with SERVICE_DIRECTORY_RADIUS as radius %}
       <fieldset>
-        <label class="service-dir-hero-label">
+        <label>
           {% trans "Show me results within" %}
           <span class="service-dir__radius">
             <p id="radius_option">{{radius}}</p>{% trans "KMs away" %}
           </span>
         </label>
-
         <select id="select_radius" name="radius">
-          {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS  %}
+          {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS %}
             <option value="{{ value }}">
               {{ label }}
             </option>
@@ -28,7 +27,7 @@
   {% endif %}
   </div>
   <div class="call-to-action">
-    <input type="submit" value="Search" />
+    <input type="submit" value="Search" class="call-to-action__nav-item--button" />
     <input type="hidden" name="search" value="{{ search_term }}" />
   </div>
 </form>

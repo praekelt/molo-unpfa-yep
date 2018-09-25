@@ -13,32 +13,40 @@
       <a href="{% url 'molo.servicedirectory:home' %}" class="call-to-action__nav-item call-to-action__nav-item--back">Back</a>
     </div>
   {% endblock %}
-
+  <h6 class="service-dir__pagination">{% trans "Step 4 of 4" %}</h6>
+  <h3 class="service-dir__subtitle">{% trans "Choose a clinic to visit" %}</h3>
+  <p class="service-dir__body">
+    {% trans "Here are clinic in" %}:</p>
   <form action="{% url 'molo.servicedirectory:organisation-results' %}" method="get" class="service-dir__form">
-    <div class="fieldset-group fieldset-group--categories">
+    <div class="fieldset-group">
       <fieldset>
         <input type="text" name="search" value="{{ search_term }}" />
-      </fieldset>
+      <fieldset>
     </div>
-    <input type="submit" value="Search" class="call-to-action__nav-item call-to-action__nav-item--button" />
-    <input type="hidden" name="location" value="{{ location_term }}" />
-    <input type="hidden" name="place_id" value="{{ place_id }}" />
-
-    {% if SERVICE_DIRECTORY_RADIUS  %}
-      <fieldset>
-        <label class="service-dir__subtitle">
-          {% trans "Show me results within" %} {% if value == "" %}__{% else %}{{ value }}{% endif %} {% trans "KMs away" %}
-        </label>
-        <select name="radius" value="{{ SERVICE_DIRECTORY_RADIUS }}" >
-          {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS  %}
-          <option {% ifequal value  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %} value="{{ value }}">
-            {{ label }}
-          </option>
-          {% endfor %}
-        </select>
-      <fieldset>
-    {% endif %}
-
+    <div class="fieldset-group">
+      {% if SERVICE_DIRECTORY_RADIUS  %}
+        <fieldset>
+          <label>
+            {% trans "Show me results within" %}
+            <span class="service-dir__radius">
+              <p id="radius_option">{{radius}}</p> {% trans "KMs away" %}
+            </span>
+          </label>
+          <select name="radius">
+            {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS %}
+              <option {% ifequal value  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %} value="{{ value }}">
+                  {{ label }}
+              </option>
+            {% endfor %}
+          </select>
+        </fieldset>
+      {% endif %}
+    </div>
+    <div class="call-to-action">
+      <input type="submit" value="Update search" class="call-to-action__nav-item call-to-action__nav-item--button" disabled="disabled" />
+      <input type="hidden" name="location" value="{{ location_term }}" />
+      <input type="hidden" name="place_id" value="{{ place_id }}" />
+    </div>
     {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
       {% for category in categories  %}
         <input type="hidden" name="categories[]" value="{{ category }}">
@@ -54,6 +62,7 @@
       <input type="hidden" name="place_formatted_address" value="{{ place_formatted_address }}">
     {% endif %}
   </form>
+<!------------------------------------------------------------------------------------------>
   <div class="service-dir__location">
     <h3 class="service-dir__title">
     {{ place_formatted_address }}</h3>
@@ -61,40 +70,48 @@
       {% trans "Change area" %}
     </a>
   </div>
-    <ul class="service-list service-list--results">
-    {% for organisation in search_results %}
-      <li class="service-list__item">
-        <a class="service-dir-location__detail-link" href="{% url 'molo.servicedirectory:organisation-detail' organisation.id %}">
-            <h1 class="heading heading--service-dir-organisation">{{ organisation.name }}</h1>
-            {% if organisation.verified_as %}
-              <span class="service-dir-location__verified">[ Verified ]</span>
-            {% endif %}
+
+  <ul class="service-list service-list--outer">
+  {% for organisation in search_results %}
+    <li class="service-list__item">
+      <h1 class="service-dir__title">
+        <a class="service-dir__anchor" href="{% url 'molo.servicedirectory:organisation-detail' organisation.id %}">
+          {{ organisation.name }}
         </a>
-        <span class="service-dir-location__address">{{ organisation.address }}</span>
-        {% if organisation.distance %}
-        <span class="service-dir-location__distance">{{ organisation.distance }}</span>
+        {% if organisation.verified_as %}
+          <span class="service-dir__verified">[ Verified ]</span>
         {% endif %}
+      </h1>
+      <p class="service-dir__body">{{ organisation.address }}</p>
+      {% if organisation.distance %}
+        <p class="service-dir__body">
+          <span class="service-dir__body-bold">{% trans "Distance" %}:</span>
+          {{ organisation.distance }}
+        </p>
+      {% endif %}
     </li>
-    {% empty %}
+  {% empty %}
     <li class="service-list__item">
       <h3 class="service-dir__title">
         {% trans "We couldn't find any services for" %}
         <span class="service-dir__term">"{{ search_term }}"</span>
       </h3>
-      <p>{% trans "Try one of the following things" %}:</p>
-      <p>{% trans "Check your spelling" %}</p>
-      <a class="call-to-action__nav-item" href="{% url 'molo.servicedirectory:home' %}">{% trans "Search for something else" %}</a>
+      <p class="service-dir__body">{% trans "Try one of the following things" %}</p>
+      <p class="service-dir__body">{% trans "Check your spelling" %}</p>
+      <a href="{% url 'molo.servicedirectory:home' %}" class="call-to-action__nav-item">
+        {% trans "Search for something else" %}
+      </a>
       <h3 class="service-dir__title">{% trans "Search a category" %}:</h3>
-      <ul class="service-list service-list--no-results">
+      <ul class="service-list service-list--inner">
         {% for category in categories_keywords %}
-        <li class="service-list__item">
-          <a href="{% url 'molo.servicedirectory:organisation-results' %}?search={{ category.name }}&location={{ location_term }}&place_id={{ place_id }}{% if place_latlng %}&place_latlng={{ place_latlng }}{% endif %}{% if place_formatted_address %}&place_formatted_address={{ place_formatted_address }}{% endif %}">
-            {{ category.name }}
-          </a>
-        </li>
+          <li class="service-list__item">
+            <a href="{% url 'molo.servicedirectory:organisation-results' %}?search={{ category.name }}&location={{ location_term }}&place_id={{ place_id }}{% if place_latlng %}&place_latlng={{ place_latlng }}{% endif %}{% if place_formatted_address %}&place_formatted_address={{ place_formatted_address }}{% endif %}" class="call-to-action__nav-item">
+              {{ category.name }}
+            </a>
+          </li>
         {% endfor %}
       </ul>
-      </li>
-    {% endfor %}
-    </ul>
+    </li>
+  {% endfor %}
+  </ul>
 {% endblock %}
