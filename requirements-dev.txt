@@ -3,3 +3,4 @@ pytest-django==3.1.2
 pytest-cov
 pytest-xdist
 flake8
+Markdown<3.0
