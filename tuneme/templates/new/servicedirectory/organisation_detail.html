@@ -18,7 +18,7 @@
       {{ message }}
     </div>
   {% endif %}
-  <h1 class="service-dir__title">{{ organisation.name }}</h1>
+  <h1 class="service-dir__heading">{{ organisation.name }}</h1>
   <h2 class="service-dir__subtitle">{% trans "Services they can provide" %}</h2>
   <ul class="service-list service-list--clinics">
     {% for category in organisation.categories %}
@@ -28,7 +28,7 @@
     {% endfor %}
   </ul>
   {% if organisation.telephone or organisation.email or organisation.web %}
-    <h3 class="service-dir__title">{% trans "Contact" %}</h3>
+    <h2 class="service-dir__title">{% trans "Contact" %}</h2>
     <h6 class="service-dir__contact">
       {% if organisation.telephone %}
         <a href="tel:{{ organisation.telephone }}" class="service-dir__anchor">
@@ -50,7 +50,7 @@
   {% endif %}
 
   {% if organisation.address %}
-  <h3 class="service-dir__title">{% trans "Address" %}</h3>
+  <h2 class="service-dir__title">{% trans "Address" %}</h2>
   <ul class="service-list">
     <li class="service-list__item">
         <p class="service-dir__body">
@@ -60,7 +60,7 @@
   {% endif %}
 
   {% if organisation.availability_hours %}
-  <h3 class="service-dir__title">{% trans "Trading Hours" %}</h3>
+  <h2 class="service-dir__title">{% trans "Trading Hours" %}</h2>
   <ul class="service-list">
     <li class="service-list__item">
       <p class="service-dir__body">

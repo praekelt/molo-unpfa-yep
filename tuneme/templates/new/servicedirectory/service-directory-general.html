@@ -73,12 +73,12 @@
 <ul class="service-list service-list--outer">
 {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT %}
   {% with autocomplete_suggestions.predictions|first as topPrediction %}
-  <h6 class="service-dir__title">
+  <h2 class="service-dir__title">
     <a class="service-dir__anchor"
        href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}">
         {{ topPrediction.description }}
     </a>
-  </h6>
+  </h2>
   <div class="call-to-action">
     <a url="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}" class="call-to-action__nav-item call-to-action__nav-item--button">
       {% trans 'Next' %}
@@ -87,12 +87,12 @@
   {% endwith %}
 {% else %}
   {% with autocomplete_suggestions.predictions|first as topPrediction %}
-    <h6 class="service-dir__title">
+    <h2 class="service-dir__title">
       <a class="service-dir__anchor"
           href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}">
         {{ topPrediction.description }}
       </a>
-    </h6>
+    </h2>
     <div class="call-to-action">
       <a url="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}" class="call-to-action__nav-item call-to-action__nav-item--button">
         {% trans 'Next' %}

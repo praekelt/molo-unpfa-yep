@@ -14,7 +14,7 @@
     </div>
   {% endblock %}
   <h6 class="service-dir__pagination">{% trans "Step 4 of 4" %}</h6>
-  <h3 class="service-dir__title">{% trans "Choose a clinic to visit" %}</h3>
+  <h2 class="service-dir__title">{% trans "Choose a clinic to visit" %}</h2>
   <h2 class="service-dir__title">
     {{ place_formatted_address }}
   </h2>
@@ -23,7 +23,7 @@
     <fieldset>
       <!-- What is this {{ search_term }}: A service / category / location? -->
       <!-- Use of singular vs plural -->
-      <label>{% trans "Here are clinics in" %}</label>
+      <label>{% trans "Here are clinics in:" %}</label>
       <input type="text" name="search" value="{{ search_term }}" />
     </fieldset>
     {% endif %}
@@ -34,7 +34,7 @@
         <fieldset>
           <!-- Use of singular vs plural -->
           <label>
-            {% trans "that are within the distance of" %}
+            {% trans "that are within the distance of:" %}
             <span class="service-dir__radius">
               <p id="radius_option">{{radius}}</p>{% trans "KMs away" %}
             </span>
@@ -69,6 +69,7 @@
     </div>
   </form>
 <!------------------------------------------------------------------------------------------>
+
   <div class="service-dir__location">
     <div class="call-to-action">
       <a class="call-to-action__nav-item call-to-action__nav-item--button" href="{{ change_location_url }}">
@@ -77,47 +78,51 @@
     </div>
   </div>
 
-  <ul class="service-list service-list--outer">
-  {% for organisation in search_results %}
-    <li class="service-list__item">
-      <h1 class="service-dir__title">
-        <a class="service-dir__anchor" href="{% url 'molo.servicedirectory:organisation-detail' organisation.id %}">
-          {{ organisation.name }}
-        </a>
-        {% if organisation.verified_as %}
-          <span class="service-dir__verified">[ Verified ]</span>
+  {% if search_results %}
+    {% for organisation in search_results %}
+      <div class="service-dir__organisation-results">
+        <h1 class="service-dir__heading">
+          <a class="service-dir__anchor" href="{% url 'molo.servicedirectory:organisation-detail' organisation.id %}">
+            {{ organisation.name }}
+          </a>
+          {% if organisation.verified_as %}
+            <span class="service-dir__verified">[ Verified ]</span>
+          {% endif %}
+        </h1>
+        <p class="service-dir__body">{{ organisation.address }}</p>
+        {% if organisation.distance %}
+          <p class="service-dir__body">
+            <span class="service-dir__body-bold">
+              {% trans "Distance" %}:
+            </span>
+            {{ organisation.distance }}
+          </p>
         {% endif %}
-      </h1>
-      <p class="service-dir__body">{{ organisation.address }}</p>
-      {% if organisation.distance %}
-        <p class="service-dir__body">
-          <span class="service-dir__body-bold">{% trans "Distance" %}:</span>
-          {{ organisation.distance }}
-        </p>
-      {% endif %}
-    </li>
-  {% empty %}
-    <li class="service-list__item">
-      <h3 class="service-dir__title">
-        {% trans "We couldn't find any services for" %}
-        <span class="service-dir__term">"{{ search_term }}"</span>
-      </h3>
-      <p class="service-dir__body">{% trans "Try one of the following things" %}</p>
-      <p class="service-dir__body">{% trans "Check your spelling" %}</p>
-      <a href="{% url 'molo.servicedirectory:home' %}" class="call-to-action__nav-item">
-        {% trans "Search for something else" %}
-      </a>
-      <h3 class="service-dir__title">{% trans "Search a category" %}:</h3>
-      <ul class="service-list service-list--inner">
-        {% for category in categories_keywords %}
-          <li class="service-list__item">
-            <a href="{% url 'molo.servicedirectory:organisation-results' %}?search={{ category.name }}&location={{ location_term }}&place_id={{ place_id }}{% if place_latlng %}&place_latlng={{ place_latlng }}{% endif %}{% if place_formatted_address %}&place_formatted_address={{ place_formatted_address }}{% endif %}" class="call-to-action__nav-item">
-              {{ category.name }}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </li>
-  {% endfor %}
-  </ul>
+    </div>
+    {% empty %}
+    <div class="service-dir__organisation-results--empty">
+      <li class="service-list__item">
+        <h2 class="service-dir__title">
+          {% trans "We couldn't find any services for" %}
+          <span class="service-dir__term">"{{ search_term }}"</span>
+        </h3>
+        <p class="service-dir__body">{% trans "Try one of the following things" %}</p>
+        <p class="service-dir__body">{% trans "Check your spelling" %}</p>
+        <a href="{% url 'molo.servicedirectory:home' %}" class="call-to-action__nav-item">
+          {% trans "Search for something else" %}
+        </a>
+        <h2 class="service-dir__title">{% trans "Search a category" %}:</h2>
+          <ul class="service-list service-list--inner">
+            {% for category in categories_keywords %}
+              <li class="service-list__item">
+                <a href="{% url 'molo.servicedirectory:organisation-results' %}?search={{ category.name }}&location={{ location_term }}&place_id={{ place_id }}{% if place_latlng %}&place_latlng={{ place_latlng }}{% endif %}{% if place_formatted_address %}&place_formatted_address={{ place_formatted_address }}{% endif %}" class="call-to-action__nav-item">
+                  {{ category.name }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+      </li>
+    </div>
+    {% endfor %}
+  {% endif %}
 {% endblock %}
