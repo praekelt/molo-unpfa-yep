@@ -32,45 +32,45 @@
 
   <h6 class="service-dir__pagination">{% trans "Step 3 of 4" %}</h6>
   <h3 class="service-dir__subtitle">{% trans "Confirm the village/town" %}</h3>
-  <p class="service-dir__body">
-    {% trans "Please confirm that you are looking for a clinic in" %}:
-  </p>
-  <h6 class="service-dir__title">
-    {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT %}
-      {% with autocomplete_suggestions.predictions|first as topPrediction %}
-        <a class="service-dir__anchor"
-           href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}">
-            {{ topPrediction.description }}
-          </a>
-      {% endwith %}
-    {% else %}
+  {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT %}
+    <p class="service-dir__body">
+      {% trans "Please confirm that you are looking for a clinic in" %}:
+    </p>
+    <h6 class="service-dir__title">
+    {% with autocomplete_suggestions.predictions|first as topPrediction %}
+      <a class="service-dir__anchor"
+         href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}">
+          {{ topPrediction.description }}
+      </a>
+    {% endwith %}
+  </h6>
+  {% else %}
+    <h6 class="service-dir__title">
+      <p class="service-dir__body">
+        {% trans "Please confirm that you are looking for a clinic in" %}:
+      </p>
       {% with autocomplete_suggestions.predictions|first as topPrediction %}
         <a class="service-dir__anchor"
             href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}">
           {{ topPrediction.description }}
         </a>
       {% endwith %}
-    {% endif %}
-  </h6>
-
+    </h6>
+  {% endif %}
 
   <div class="call-to-action">
     <form action="{% url 'molo.servicedirectory:organisation-results'  %}">
       <input type="hidden" name="location" value="{{ location_term }}">
-
       {% if SERVICE_DIRECTORY_RADIUS  %}
       <input type="hidden" name="radius" value="{{ SERVICE_DIRECTORY_RADIUS }}">
       {% endif %}
-
       {% for prediction in autocomplete_suggestions.predictions|slice:"1:" %}
       <input type="hidden" name="place_id" value="{{ prediction.place_id }}">
       {% endfor %}
-
       {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
         {% for category in categories  %}
           <input type="hidden" name="categories[]" value="{{ category }}">
         {% endfor %}
-
         {% for keyword in keywords  %}
           <input type="hidden" name="keywords[]" value="{{ keyword }}">
         {% endfor %}
@@ -80,7 +80,7 @@
   </div>
 
   <!----------------------------------------------------------------------------------->
-  
+
   <div class="service-dir__results-list">
     {% if autocomplete_suggestions.status != 'OK' %}
       <h3 class="service-dir__subtitle {% if autocomplete_suggestions.status != 'ZERO_RESULTS' %} error{% endif %}">
