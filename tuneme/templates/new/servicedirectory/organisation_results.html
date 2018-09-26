@@ -14,18 +14,23 @@
     </div>
   {% endblock %}
   <h6 class="service-dir__pagination">{% trans "Step 4 of 4" %}</h6>
-  <h3 class="service-dir__subtitle">{% trans "Choose a clinic to visit" %}</h3>
+  <h3 class="service-dir__subtitle">{% trans "Choose a clinic to visit in" %}</h3>
+  <h2 class="service-dir__title">
+    {{ place_formatted_address }}
+  </h2>
   <p class="service-dir__body">
     {% trans "Here are clinic in" %}:</p>
   <form action="{% url 'molo.servicedirectory:organisation-results' %}" method="get" class="service-dir__form">
     {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
     <fieldset>
+      {% comment %}
+        <!-- What is this {{ search_term }}: A service / category / location? -->
+      {% endcomment %}
       <input type="text" name="search" value="{{ search_term }}" />
     </fieldset>
     {% endif %}
     <input type="hidden" name="location" value="{{ location_term }}" />
     <input type="hidden" name="place_id" value="{{ place_id }}" />
-
     {% if SERVICE_DIRECTORY_RADIUS  %}
     <fieldset>
       <label>
@@ -60,12 +65,16 @@
     </div>
   </form>
 <!------------------------------------------------------------------------------------------>
+  {% comment %}
+    <!-- Duplicate location research -->
+  {% endcomment %}
   <div class="service-dir__location">
-    <h3 class="service-dir__title">
-    {{ place_formatted_address }}</h3>
-    <a class="call-to-action__nav-item call-to-action__nav-item--button" href="{{ change_location_url }}">
-      {% trans "Change area" %}
-    </a>
+
+    <div class="call-to-action">
+      <a class="call-to-action__nav-item call-to-action__nav-item--button" href="{{ change_location_url }}">
+        {% trans "Change area" %}
+      </a>
+    </div>
   </div>
 
   <ul class="service-list service-list--outer">
