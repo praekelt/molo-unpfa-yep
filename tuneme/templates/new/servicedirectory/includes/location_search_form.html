@@ -23,7 +23,8 @@
           {% endfor %}
         </select>
       <fieldset>
-    {% endif %}
+    {% endwith %}
+  {% endif %}
 
     {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
       {% for category in categories  %}
@@ -34,8 +35,8 @@
         <input type="hidden" name="keywords[]" value="{{ keyword }}">
       {% endfor %}
     {% endif %}
-
   </div>
+
   <div class="call-to-action">
     <input type="submit" value="Search" class="call-to-action__nav-item--button" />
     <input type="hidden" name="search" value="{{ search_term }}" />

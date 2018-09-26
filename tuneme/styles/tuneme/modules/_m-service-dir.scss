@@ -43,7 +43,7 @@
   }
 
   &__form {
-    padding-bottom: 10px;
+    //padding-bottom: 10px;
     .fieldset-group {
       position: relative;
       &--categories {
@@ -103,7 +103,7 @@
     padding: 0 20px;
   }
   &__location {
-    padding: 0 15px 10px;
+    //padding: 0 15px 10px;
   }
   &__radius {
     font-style: italic;
@@ -190,7 +190,7 @@
   &__load-more {
     color: #000;
     display: block;
-    padding: 0 30px 10px;
+    padding: 0 20px 10px;
     text-decoration: underline;
   }
   &--breadcrumbs {

@@ -1,6 +1,7 @@
 {% extends 'servicedirectory/content_base.html' %}
 {% load i18n %}
 {% block inner_content %}
+
   {% block inner_banner %}
     <div class="service-dir__banner">
       <div class="service-dir__image"></div>
@@ -15,6 +16,7 @@
         </span>
       {% endif %}
     </div>
+
   {% endblock %}
 
   {% comment %}Not a clickable breadcrumb indicator{% endcomment %}
@@ -25,9 +27,9 @@
   <p class="service-dir__body">{% blocktrans %}Select as many services as you need from the list below.
     This will help refine your search for the clinic.{% endblocktrans %}
   </p>
+
   <form action="{% url 'molo.servicedirectory:location-search' %}" method="get" class="service-dir__form">
     {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
-
         {% for keyword in keyword_list %}
         <div class="fieldset-group fieldset-group--categories">
           <fieldset>
@@ -36,12 +38,11 @@
           </fieldset>
         </div>
         {% endfor %}
-
-      {% if categories %}
-        {% for category in categories  %}
-          <input type="hidden" name="categories[]" value="{{ category }}">
-        {% endfor %}
-      {% endif %}
+        {% if categories %}
+          {% for category in categories  %}
+            <input type="hidden" name="categories[]" value="{{ category }}">
+          {% endfor %}
+        {% endif %}
     {% endif %}
     {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
       <ul class="service-list service-list--outer">
@@ -56,31 +57,13 @@
           {% endfor %}
           </ul>
         </li>
-          {% if and_more %}
-            <a href="{% url 'molo.servicedirectory:home' %}?category={{ category.name }}" class="service-list__load-more">{% trans "Load more" %}</a>
-          {% endif %}
+        {% if and_more %}
+          <a href="{% url 'molo.servicedirectory:home' %}?category={{ category.name }}" class="call-to-action__load-more">{% trans "Load more" %}</a>
+        {% endif %}
       {% endfor %}
+      </ul>
     {% endif %}
-  {% endif %}
-  {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
-    <ul class="service-list service-list--outer">
-    {% for category in categories_keywords  %}
-      <li class="service-list__item">
-        <a class="service-list__anchor" href="{% url 'molo.servicedirectory:location-search' %}?search={{ category.name }}">{{ category.name }}</a>
-        <ul class="service-list service-list--inner">
-        {% for keyword in category.keywords %}
-          <li class="service-list__item">
-            <a href="{% url 'molo.servicedirectory:location-search' %}?search={{ keyword }}" class="service-list__anchor--keyword">{{ keyword }}</a>
-          </li>
-        {% endfor %}
-        </ul>
-      </li>
-      {% if and_more %}
-        <a href="{% url 'molo.servicedirectory:home' %}?category={{ category.name }}" class="call-to-action__load-more">{% trans "Load more" %}</a>
-      {% endif %}
-    {% endfor %}
-    </ul>
-  {% endif %}
+
   <div class="call-to-action">
     <input type="submit" value="{% trans 'Next' %}" class="call-to-action__nav-item--button" />
   </div>

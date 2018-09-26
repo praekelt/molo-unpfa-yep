@@ -23,12 +23,14 @@
       <input type="text" name="search" value="{{ search_term }}" />
     </fieldset>
     {% endif %}
-
     <input type="hidden" name="location" value="{{ location_term }}" />
     <input type="hidden" name="place_id" value="{{ place_id }}" />
+
     {% if SERVICE_DIRECTORY_RADIUS  %}
     <fieldset>
-      <label class="service-dir__subtitle">{% trans "Show me results within" %} {% if value == "" %}__{% else %}{{ value }}{% endif %} {% trans "KMs away" %}</label>
+      <label>
+        {% trans "Show me results within" %} {{ value }} {% trans "KMs away" %}
+      </label>
       <select name="radius" value="{{ SERVICE_DIRECTORY_RADIUS }}" >
         {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS  %}
         <option {% ifequal value  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %} value="{{ value }}">
@@ -38,6 +40,7 @@
       </select>
     </fieldset>
     {% endif %}
+
     {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
       {% for category in categories  %}
         <input type="hidden" name="categories[]" value="{{ category }}">
