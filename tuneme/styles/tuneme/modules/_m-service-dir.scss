@@ -114,6 +114,10 @@
   &__results-list {
     padding: 20px 0 0;
   }
+  &__term {
+    font-weight: bold;
+    font-style: italic;
+  };
   .keywords {
     &-list {
       padding: 0 10px;
@@ -124,6 +128,7 @@
     };
     &__term {
       font-weight: bold;
+      font-style: italic;
     };
   }
   &__form--service-rate {
@@ -156,6 +161,7 @@
     color: #000;
     font-weight: bold;
     text-decoration: underline;
+    padding: 0 15px;
     &--button {
       background: #000;
       border: 0;
