@@ -18,35 +18,26 @@
   <p class="service-dir__body">
     {% trans "Here are clinic in" %}:</p>
   <form action="{% url 'molo.servicedirectory:organisation-results' %}" method="get" class="service-dir__form">
-    <div class="fieldset-group">
-      <fieldset>
-        <input type="text" name="search" value="{{ search_term }}" />
-      <fieldset>
-    </div>
-    <div class="fieldset-group">
-      {% if SERVICE_DIRECTORY_RADIUS  %}
-        <fieldset>
-          <label>
-            {% trans "Show me results within" %}
-            <span class="service-dir__radius">
-              <p id="radius_option">{{radius}}</p> {% trans "KMs away" %}
-            </span>
-          </label>
-          <select name="radius">
-            {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS %}
-              <option {% ifequal value  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %} value="{{ value }}">
-                  {{ label }}
-              </option>
-            {% endfor %}
-          </select>
-        </fieldset>
-      {% endif %}
-    </div>
-    <div class="call-to-action">
-      <input type="submit" value="Update search" class="call-to-action__nav-item call-to-action__nav-item--button" disabled="disabled" />
-      <input type="hidden" name="location" value="{{ location_term }}" />
-      <input type="hidden" name="place_id" value="{{ place_id }}" />
-    </div>
+    {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
+    <fieldset>
+      <input type="text" name="search" value="{{ search_term }}" />
+    </fieldset>
+    {% endif %}
+
+    <input type="hidden" name="location" value="{{ location_term }}" />
+    <input type="hidden" name="place_id" value="{{ place_id }}" />
+    {% if SERVICE_DIRECTORY_RADIUS  %}
+    <fieldset>
+      <label class="service-dir__subtitle">{% trans "Show me results within" %} {% if value == "" %}__{% else %}{{ value }}{% endif %} {% trans "KMs away" %}</label>
+      <select name="radius" value="{{ SERVICE_DIRECTORY_RADIUS }}" >
+        {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS  %}
+        <option {% ifequal value  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %} value="{{ value }}">
+          {{ label }}
+        </option>
+        {% endfor %}
+      </select>
+    </fieldset>
+    {% endif %}
     {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
       {% for category in categories  %}
         <input type="hidden" name="categories[]" value="{{ category }}">
@@ -61,6 +52,9 @@
     {% if place_formatted_address %}
       <input type="hidden" name="place_formatted_address" value="{{ place_formatted_address }}">
     {% endif %}
+    <div class="call-to-action">
+      <input type="submit" value="Update search" class="call-to-action__nav-item call-to-action__nav-item--button" disabled="disabled" />
+    </div>
   </form>
 <!------------------------------------------------------------------------------------------>
   <div class="service-dir__location">

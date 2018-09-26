@@ -5,9 +5,20 @@
     <div class="service-dir__banner">
       <h1 class="heading service-dir__heading">{% trans "Clinic Service Finder" %}</h1>
       <ul class="keywords-list">
-        {% if search_term %}
+        {% if search_term and not search_term == 'None' %}
           <li class="keywords__item">{% trans "Service" %}:
             <span class="keywords__term">{{ search_term }}</span>
+          </li>
+        {% elif keywords %}
+          <li class="keywords__item">{% trans "Service" %}:
+            <span class="keywords__term">
+              {% for keyword in keywords|slice:":4"  %}
+                {% if forloop.counter < 4 %}
+                  {{ keyword }}{% if not forloop.last and forloop.counter < 3  %}, {% endif %}
+                {% endif %}
+                {% if not forloop.last and forloop.counter == 3 %}...{% endif %}
+              {% endfor %}
+            </span>
           </li>
         {% endif %}
       </ul>
