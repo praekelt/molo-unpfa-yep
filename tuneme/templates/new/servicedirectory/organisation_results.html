@@ -18,7 +18,7 @@
   <h2 class="service-dir__title">
     {{ place_formatted_address }}
   </h2>
-  <form action="{% url 'molo.servicedirectory:organisation-results' %}" method="get" class="service-dir__form">
+  <form action="{% url 'molo.servicedirectory:organisation-results' %}" method="get" class="service-dir__form" novalidate>
     {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
     <fieldset>
       <!-- What is this {{ search_term }}: A service / category / location? -->

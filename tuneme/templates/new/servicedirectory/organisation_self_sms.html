@@ -4,7 +4,7 @@
     <h1 class="service-dir__subtitle">
       {% trans "Do you want to send this service to yourself? It's free!" %}
     </h1>
-    <form action="{% url 'molo.servicedirectory:organisation-sms' organisation_id %}" method="post" class="service-dir__form">
+    <form action="{% url 'molo.servicedirectory:organisation-sms' organisation_id %}" method="post" class="service-dir__form" novalidate>
     {% csrf_token %}
       <fieldset>
         <label for="cell_number">{% trans "Your cellphone number" %}</label>

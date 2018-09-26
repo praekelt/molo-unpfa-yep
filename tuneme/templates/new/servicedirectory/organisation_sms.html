@@ -3,7 +3,7 @@
 {% block inner_content %}
   <h1 class="service-dir__subtitle">
     {% trans "Who do you want to send this service to? It's free!" %}</h1>
-  <form method="post" class="service-dir__form">
+  <form method="post" class="service-dir__form" novalidate>
   {% csrf_token %}
     <fieldset>
         <label for="your_name">{% trans "Your Name" %}</label>

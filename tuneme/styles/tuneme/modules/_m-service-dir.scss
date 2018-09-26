@@ -195,6 +195,7 @@
     display: block;
     padding: 0 20px 10px;
     text-decoration: underline;
+    font-weight: bold;
   }
   &--breadcrumbs {
     margin: 0;
@@ -232,6 +233,16 @@
     font-weight: bold;
     &--keyword {
       color: #000;
+    }
+    &--keyword-general {
+      &:before {
+        background: url("/static/new/img/arrow.png") no-repeat 3px 2px/50%;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 10px;
+        height: 15px;
+      }
     }
   }
   &--outer {

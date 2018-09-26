@@ -28,7 +28,7 @@
     This will help refine your search for the clinic.{% endblocktrans %}
   </p>
 
-  <form action="{% url 'molo.servicedirectory:location-search' %}" method="get" class="service-dir__form">
+  <form action="{% url 'molo.servicedirectory:location-search' %}" method="get" class="service-dir__form" novalidate>
     {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
         {% for keyword in keyword_list %}
         <div class="fieldset-group fieldset-group--categories">
@@ -43,6 +43,9 @@
             <input type="hidden" name="categories[]" value="{{ category }}">
           {% endfor %}
         {% endif %}
+        <div class="call-to-action">
+          <input type="submit" value="{% trans 'Next' %}" class="call-to-action__nav-item--button" />
+        </div>
     {% endif %}
     {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
       <ul class="service-list service-list--outer">
@@ -52,7 +55,7 @@
           <ul class="service-list service-list--inner">
           {% for keyword in category.keywords %}
             <li class="service-list__item">
-              <a href="{% url 'molo.servicedirectory:location-search' %}?search={{ keyword }}" class="service-list__anchor--keyword">{{ keyword }}</a>
+              <a href="{% url 'molo.servicedirectory:location-search' %}?search={{ keyword }}" class="service-list__anchor--keyword service-list__anchor--keyword-general">{{ keyword }}</a>
             </li>
           {% endfor %}
           </ul>
@@ -63,9 +66,5 @@
       {% endfor %}
       </ul>
     {% endif %}
-
-  <div class="call-to-action">
-    <input type="submit" value="{% trans 'Next' %}" class="call-to-action__nav-item--button" />
-  </div>
   </form>
 {% endblock %}

@@ -1,5 +1,5 @@
 {% load i18n %}
-<form action="{% url 'molo.servicedirectory:location-results'  %}" method="get" class="service-dir__form">
+<form action="{% url 'molo.servicedirectory:location-results'  %}" method="get" class="service-dir__form" novalidate>
   <div class="fieldset-group">
     <fieldset>
       <input type="text" name="location" value="{{ location_term }}" placeholder="Enter village or town..."/>
