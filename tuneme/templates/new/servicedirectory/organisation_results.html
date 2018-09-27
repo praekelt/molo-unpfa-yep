@@ -37,14 +37,12 @@
     {{ place_formatted_address }}
   </h2>
   <form action="{% url 'molo.servicedirectory:organisation-results' %}" method="get" class="service-dir__form" novalidate>
-    {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
+    {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT %}{% endif %}
     <fieldset>
-      <!-- What is this {{ search_term }}: A service / category / location? -->
-      <!-- Use of singular vs plural -->
       <label>{% trans "Here are clinics in:" %}</label>
       <input type="text" name="search" value="{{ search_term }}" />
     </fieldset>
-    {% endif %}
+
     <input type="hidden" name="location" value="{{ location_term }}" />
     <input type="hidden" name="place_id" value="{{ place_id }}" />
     {% if SERVICE_DIRECTORY_RADIUS  %}

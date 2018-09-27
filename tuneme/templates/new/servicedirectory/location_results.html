@@ -32,7 +32,6 @@
 
   <h6 class="service-dir__pagination">{% trans "Step 3 of 4" %}</h6>
   <h2 class="service-dir__title">{% trans "Confirm the village/town" %}</h2>
-  <!-- Validated when there is not search term input. -->
   {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT %}
     <h3 class="service-dir__subtitle">
       {% trans "Please confirm that you are looking for a clinic in" %}:
@@ -40,7 +39,7 @@
     {% with autocomplete_suggestions.predictions|first as topPrediction %}
       <h2 class="service-dir__title">
         <a class="service-dir__anchor"
-           href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}">
+           href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ topPrediction.place_id }}&location={{ location_term }}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}">
             {{ topPrediction.description }}
         </a>
       </h2>
@@ -95,7 +94,6 @@
     {% else %}
       <h3 class="service-dir__subtitle">{% trans "Did you mean a different location?" %}</h3>
       <p class="service-dir__body">Please choose the correct location:</p>
-
       {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT %}
         <ul class="service-list service-list--location-list">
           {% for prediction in autocomplete_suggestions.predictions|slice:"1:" %}
@@ -130,5 +128,4 @@
     </p>
     {% include 'servicedirectory/includes/location_search_form.html' %}
   </div>
-
 {% endblock %}
