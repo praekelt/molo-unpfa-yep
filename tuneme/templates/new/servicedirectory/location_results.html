@@ -51,7 +51,7 @@
     {% with autocomplete_suggestions.predictions|first as topPrediction %}
     <h2 class="service-dir__title">
       <a class="service-dir__anchor"
-          href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ prediction.place_id }}&location={{ location_term }}&search={{ search_term }}">
+          href="{% url 'molo.servicedirectory:organisation-results' %}?place_id={{ topPrediction.place_id }}&location={{ location_term }}&search={{ search_term }}">
         {{ topPrediction.description }}
       </a>
     </h2>
