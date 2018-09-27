@@ -1,83 +1,106 @@
 {% extends 'servicedirectory/content_base.html' %}
 {% load staticfiles i18n %}
 {% block inner_content %}
+  {% block inner_banner %}
+    <div class="service-dir__banner">
+      <h1 class="heading service-dir__heading">
+        {% trans "Clinic Service Finder" %}
+      </h1>
+    </div>
+  {% endblock %}
+  {% block sd_breadcrumbs %}
+    <div class="call-to-action call-to-action--breadcrumbs">
+      <a href="{% url 'molo.servicedirectory:home' %}" class="call-to-action__nav-item call-to-action__nav-item--back">Back</a>
+    </div>
+  {% endblock %}
   {% if message %}
     <div class="service-dir__feedback">
-      {{ message }}
+      <h3 class="service-dir__title">{{ message }}</h3>
     </div>
   {% endif %}
-  <h1 class="service-dir__subtitle">{{ organisation.name }}</h1>
-  <h2 class="service-directory__title">{% trans "Services" %}</h2>
-  <ul class="service-list">
+  <h1 class="service-dir__heading">{{ organisation.name }}</h1>
+  <h2 class="service-dir__subtitle">{% trans "Services they can provide" %}</h2>
+  <ul class="service-list service-list--clinics">
     {% for category in organisation.categories %}
       <li class="service-list__item">
-        {{ category.name }}
+        <p class="service-dir__body">{{ category.name }}</p>
       </li>
     {% endfor %}
   </ul>
   {% if organisation.telephone or organisation.email or organisation.web %}
-    <h3 class="service-dir__subtitle">{% trans "Contact" %}</h3>
-    <h6 class="service-directory__contact">
+    <h2 class="service-dir__title">{% trans "Contact" %}</h2>
+    <h6 class="service-dir__contact">
       {% if organisation.telephone %}
-        <a href="tel:{{ organisation.telephone }}">{{ organisation.telephone }}</a>
+        <a href="tel:{{ organisation.telephone }}" class="service-dir__anchor">
+          {{ organisation.telephone }}</a>
       {% endif %}
       {% if organisation.emergency_telephone %}
-        <a href="tel:{{ organisation.emergency_telephone }}" target="_blank">
+        <a href="tel:{{ organisation.emergency_telephone }}" class="service-dir__anchor">
           {{ organisation.emergency_telephone }}</a>
       {% endif %}
       {% if organisation.email %}
-        <a href="mailto:{{ organisation.email }}">{{ organisation.email }}</a>
+        <a href="mailto:{{ organisation.email }}" class="service-dir__anchor">
+          {{ organisation.email }}</a>
       {% endif %}
       {% if organisation.web %}
-        <a href="{{ organisation.web }}" target="_blank">{{ organisation.web }}</a>
+        <a href="{{ organisation.web }}" class="service-dir__anchor">
+          {{ organisation.web }}</a>
       {% endif %}
     </h6>
   {% endif %}
 
   {% if organisation.address %}
-  <h3 class="service-dir__subtitle">{% trans "Address" %}</h3>
-  <ul class="service-list">
-    <li class="service-list__item">
-        {{ organisation.address }}
-    </li>
-  </ul>
+    <h2 class="service-dir__title">{% trans "Address" %}</h2>
+    <p class="service-dir__body">{{ organisation.address }}</p>
   {% endif %}
 
   {% if organisation.availability_hours %}
-  <h3 class="service-dir__subtitle">{% trans "Trading Hours" %}</h3>
-  <ul class="service-list">
-    <li class="service-list__item">
-      {{ organisation.availability_hours }}
-    </li>
-  </ul>
+    <h2 class="service-dir__title">{% trans "Trading Hours" %}</h2>
+    <p class="service-list__body">{{ organisation.availability_hours }}</p>
   {% endif %}
 
   {% if organisation.age_range_min and organisation.age_range_max %}
-  <ul class="service-list">
-    <li class="service-list__item">
-      {{ organisation.age_range_min }}-{{ organisation.age_range_max }} years
-    </li>
-  </ul>
+    <p class="service-list__body">{{ organisation.age_range_min }}-{{ organisation.age_range_max }}
+      {% trans "years" %}
+    </p>
   {% endif %}
+  <div class="call-to-action">
+    <a href="{% url 'molo.servicedirectory:organisation-report' organisation.id %}?org_name={{ organisation.name | urlencode }}" class="call-to-action__nav-item">
+      {% trans "Report incorrect info" %}
+    </a>
+    <a href="{% url 'molo.servicedirectory:organisation-sms' organisation.id %}" class="call-to-action__nav-item">
+      {% trans "Send Service to Someone" %}
+    </a>
+    <a href="{% url 'molo.servicedirectory:organisation-sms-self' organisation.id %}" class="call-to-action__nav-item">
+      {% trans "Send This Service to Yourself" %}
+    </a>
+  </div>
 
-  <a class="call-to-action__nav-item call-to-action__nav-item--report" href="{% url 'molo.servicedirectory:organisation-report' organisation.id %}?org_name={{ organisation.name | urlencode }}">{% trans "Report incorrect info" %}</a>
-  <a class="call-to-action__nav-item" href="{% url 'molo.servicedirectory:organisation-sms' organisation.id %}" class="sd-sms-button primary">{% trans "Send Service to Someone" %}</a>
-  <a class="call-to-action__nav-item" href="{% url 'molo.servicedirectory:organisation-sms-self' organisation.id %}" class="sd-sms-button secondary">{% trans "Send This Service to Yourself" %}</a>
-
-  <form method="post" action="{% url 'molo.servicedirectory:organisation-rate' organisation.id %}" class="service-dir__form">
+  <form method="post" action="{% url 'molo.servicedirectory:organisation-rate' organisation.id %}" class="service-dir__form" novalidate>
   {% csrf_token %}
-  <label class="service-dir__subtitle">{% trans "How helpful was this?" %}</label>
-    <fieldset>
-      <button type="submit" name="rating" value="good" class="smiley happy"></button>
-      <label>{% trans "Very helpful" %}</label>
+    <h2 class="service-dir__title">
+      {% trans "How helpful was this service directory entry?" %}
+    </h2>
+    <fieldset class="service-dir__reaction">
+      <label for="good">
+        <button id="good" type="submit" name="rating" value="good" class="smiley good">
+        </button>
+        {% trans "Very helpful" %}
+      </label>
     </fieldset>
-    <fieldset>
-      <button type="submit" name="rating" value="average" class="smiley neutral"></button>
-      <label>{% trans "I'm neutral" %}</label>
+    <fieldset class="service-dir__reaction">
+      <label for="average">
+        <button id="average" type="submit" name="rating" value="average" class="smiley average">
+        </button>
+        {% trans "I'm neutral" %}
+      </label>
     </fieldset>
-    <fieldset>
-      <button type="submit" name="rating" value="poor" class="smiley sad"></button>
-      <label>{% trans "Not helpful" %}</label>
+    <fieldset class="service-dir__reaction">
+      <label for="poor">
+        <button id="poor" type="submit" name="rating" value="poor" class="smiley poor">
+        </button>
+        {% trans "Not helpful" %}
+      </label>
     </fieldset>
   </form>
 {% endblock %}

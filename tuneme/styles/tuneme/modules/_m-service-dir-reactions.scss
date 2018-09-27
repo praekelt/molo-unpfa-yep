@@ -1,15 +1,20 @@
-//Services Feedback
-button.smiley.sad {
-  background: url(/static/new/img/Not-helpful.png);
-  border: 0;
-  width: 60px;
-  height: 60px;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  &:hover {
-    background: url(/static/new/img/Active-not-helpful.png);
-    background-size: 100%;
+.service-dir__reaction {
+  padding: 10px 15px;
+  border-bottom: 1px solid $green;
+  &:last-child {
+    border-bottom: none;
   }
+  label {
+    display: block;
+    cursor: pointer !important;
+  }
+}
+
+.smiley {
+  border: 0;
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
   &:after {
     border: none;
   }
@@ -17,41 +22,21 @@ button.smiley.sad {
     border: 0;
   }
 }
-
-button.smiley.neutral {
-  background: url(/static/new/img/Im-neutral.png);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  border: 0;
-  width: 60px;
-  height: 60px;
+#good {
+  background: url("/static/new/img/green-smile.png")no-repeat  0 0/100%;
   &:hover {
-    background: url(/static/new/img/Active-im-neutral.png);
-    background-size: 100%;
-  }
-  &:after {
-    height: 0;
-  }
-  &:before {
-    border: 0;
+    background: url("/static/new/img/green-smile-hover.png") no-repeat 0 0 / 100%;
   }
 }
-
-button.smiley.happy {
-  background: url(/static/new/img/Very-helpful.png);
-  border: 0;
-  width: 60px;
-  height: 60px;
-  background-size: 100%;
-  background-repeat: no-repeat;
+#average {
+  background: url("/static/new/img/green-neutral.png") no-repeat 0 0 / 100%;
   &:hover {
-    background: url(/static/new/img/Active-very-helpful.png);
-    background-size: 100%;
+    background: url("/static/new/img/green-neutral-hover.png") no-repeat 0 0 / 100%;
   }
-  &:after {
-    border: 0;
-  }
-  &:before{
-    border: 0;
+}
+#poor {
+  background: url("/static/new/img/green-sad.png") no-repeat 0 0 / 100%;
+  &:hover {
+    background: url("/static/new/img/green-sad-hover.png") no-repeat 0 0 / 100%;
   }
 }

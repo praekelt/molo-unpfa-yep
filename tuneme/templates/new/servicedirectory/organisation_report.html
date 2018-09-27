@@ -5,7 +5,7 @@
     {% trans "Which of the following information is incorrect for" %}
     <span class="svc-org-name">{{ organisation_name }}</span>?
   </h1>
-  <form method="post" class="service-dir__form">
+  <form method="post" class="service-dir__form" novalidate>
   {% csrf_token %}
     <fieldset>
         <input type="checkbox" id="contact_details" name="contact_details" value="true"/>
@@ -28,6 +28,7 @@
           {% trans "If other, please specify" %}:</label>
         <textarea id="other_detail" name="other_detail" rows="3"></textarea>
     </fieldset>
-    <input type="submit" name="send-report" value="Send Report" />
+    <div class="call-to-action">
+      <input type="submit" name="send-report" value="Send Report" class="call-to-action__nav-item call-to-action__nav-item--button" />
   </form>
 {% endblock %}

@@ -1,37 +1,43 @@
 {% load i18n %}
-<form action="{% url 'molo.servicedirectory:location-results'  %}" method="get" class="service-dir__form">
+<form action="{% url 'molo.servicedirectory:location-results'  %}" method="get" class="service-dir__form" novalidate>
   <div class="fieldset-group">
     <fieldset>
       <input type="text" name="location" value="{{ location_term }}" placeholder="Enter village or town..."/>
     <fieldset>
   </div>
   <div class="fieldset-group">
-    {% if SERVICE_DIRECTORY_RADIUS  %}
+  {% if SERVICE_DIRECTORY_RADIUS  %}
+    {% with SERVICE_DIRECTORY_RADIUS as radius %}
       <fieldset>
-        <label class="service-dir-hero-label">{% trans "Show me results within" %} {% if value == "" %}__{% else %}{{ value }}{% endif %} {% trans "KMs away" %}</label>
-        <select name="radius" value="{{ radius }}" >
-          {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS  %}
-          <option {% ifequal value  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %} value="{{ value }}">
-            {{ label }}
-          </option>
+        <label>
+          {% trans "Show me results within" %}
+          <span class="service-dir__radius">
+            <p id="radius_option">{{radius}}</p>{% trans "KMs away" %}
+          </span>
+        </label>
+        <select id="select_radius" name="radius">
+          {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS %}
+            <option value="{{ value }}" {% ifequal value  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %}>
+              {{ label }}
+            </option>
           {% endfor %}
         </select>
       <fieldset>
-    {% endif %}
+    {% endwith %}
+  {% endif %}
 
-    {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
-      {% for category in categories  %}
-        <input type="hidden" name="categories[]" value="{{ category }}">
-      {% endfor %}
+  {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
+    {% for category in categories  %}
+      <input type="hidden" name="categories[]" value="{{ category }}">
+    {% endfor %}
+    {% for keyword in keywords  %}
+      <input type="hidden" name="keywords[]" value="{{ keyword }}">
+    {% endfor %}
+  {% endif %}
+</div>
 
-      {% for keyword in keywords  %}
-        <input type="hidden" name="keywords[]" value="{{ keyword }}">
-      {% endfor %}
-    {% endif %}
-
-  </div>
   <div class="call-to-action">
-    <input type="submit" value="Search" />
+    <input type="submit" value="Search" class="call-to-action__nav-item--button" />
     <input type="hidden" name="search" value="{{ search_term }}" />
   </div>
 </form>

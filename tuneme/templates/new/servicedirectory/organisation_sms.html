@@ -1,9 +1,21 @@
 {% extends 'servicedirectory/content_base.html' %}
 {% load i18n %}
 {% block inner_content %}
-  <h1 class="service-dir__subtitle">
-    {% trans "Who do you want to send this service to? It's free!" %}</h1>
-  <form method="post" class="service-dir__form">
+  {% block inner_banner %}
+    <div class="service-dir__banner">
+      <h1 class="heading service-dir__heading">
+        {% trans "Clinic Service Finder" %}
+      </h1>
+    </div>
+  {% endblock %}
+  {% block sd_breadcrumbs %}
+    <div class="call-to-action call-to-action--breadcrumbs">
+      <a href="{% url 'molo.servicedirectory:home' %}" class="call-to-action__nav-item call-to-action__nav-item--back">Home</a>
+    </div>
+  {% endblock %}
+  <h2 class="service-dir__title">
+    {% trans "Who do you want to send this service to? It's free!" %}</h2>
+  <form method="post" class="service-dir__form" novalidate>
   {% csrf_token %}
     <fieldset>
         <label for="your_name">{% trans "Your Name" %}</label>
@@ -14,6 +26,8 @@
         <input type="tel" id="cell_number" name="cell_number" required/>
         <span class="input-hint">*{% trans "This number is safe with us" %}</span>
     </fieldset>
-    <input type="submit" name="send-to-someone" value="Send to Someone" />
+    <div class="call-to-action">
+      <input type="submit" name="send-to-someone" value="Send to Someone" class="call-to-action__nav-item call-to-action__nav-item--button" />
+    </div>
   </form>
 {% endblock %}

@@ -1,7 +1,6 @@
 .service-dir {
-  &__heading {
-    margin: 0;
-  }
+  $block: unquote("#{&}");
+  p { margin: 0; }
   &__banner {
     background-color: $green;
     text-align: center;
@@ -14,39 +13,40 @@
   &__pagination {
     color: $green;
     font-size: $font-large;
-    padding: 5px 15px 10px;
+    padding: 5px 10px 10px;
     font-weight: bold;
     text-transform: uppercase;
   }
-
+  &__heading {
+    font-size: $font-xx-large;
+    margin: 0;
+    padding: 10px;
+  }
   &__title {
-    padding: 0;
-    text-decoration: underline; //Why does title have an underline
     color: #000;
     display: block;
     margin-bottom: 5px;
     padding: 10px;
     font-weight: bold;
     font-size: $font-large;
+    &--location-label {
+      margin: 0;
+      padding: 0 10px;
+    }
+  }
+  &__anchor {
+    color: #000;
+    border-bottom: 1px solid #000;
   }
   &__subtitle {
     font-weight: bold;
-    padding: 0 15px;
+    padding: 0 10px;
   }
   &__body {
-    padding: 5px 15px;
+    padding: 5px 10px;
     margin: 0;
-  }
-  &__address {
-    &-title {
+    &-bold {
       font-weight: bold;
-      font-size: $font-x-large;
-      padding: 10px 15px 0;
-    }
-    &-anchor {
-      color: #000;
-      font-weight: bold;
-      border-bottom: 1px solid #000;
     }
   }
   &__form {
@@ -59,8 +59,10 @@
     }
     fieldset {
       position: relative;
+      padding: 10px 10px 0;
     }
     label {
+      cursor: auto;
       font-size: $font-medium;
       position: relative;
       vertical-align: middle;
@@ -104,95 +106,122 @@
       }
     }
   }
-  &__form--service-rate {
-     padding: 0 10px 10px;
-  }
-
-
-  //To Review
-  &__button {
-    display: block;
-    margin: 10px 0;
-    color: $white;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 14px;
-    background: $orange;
-    &--outline {
-      color: $orange;
-      background: $white;
-    }
-  }
-
   &__contact {
     padding: 0 20px;
   }
-  &__location {
-    border-top: 1px solid $green;
-    padding: 30px 0 10px;
+  &__location {}
+  &__radius {
+    font-style: italic;
+    font-weight: bold;
+    #radius_option {
+      margin: 0;
+      display: inline;
+    }
+  }
+  &__term {
+    font-weight: bold;
+    font-style: italic;
+  };
+  &__form--service-rate {
+     padding: 0 10px 10px;
+  }
+  &-org-results-list {
+    padding: 20px 0 0;
+    #{$block}__title {
+      padding: 10px 10px 0;
+    }
+    #{$block}__anchor {
+      color: $green;
+      border-bottom: none;
+    }
+    &__item {
+      border-top: 1px solid $green;
+      padding: 10px 0;
+    }
   }
   .keywords {
     &-list {
-      padding: 0 15px 10px;
+      padding: 0 10px;
     }
     &__item {
       font-weight: bold;
       display: block;
     };
-    &__term {};
-  }
-
-  .call-to-action {
-    padding: 0 15px;
-    display: block;
-    margin: 20px 0;
-    &__nav-item {
-      &--button {
-        background: #000;
-        border: 0;
-        color: #fff;
-        cursor: pointer;
-        padding: 10px 15px;
-        text-transform: uppercase;
-        border-radius: 14px;
-        text-decoration: none;
-        width: 100%;
-      }
-      &--back {
-        &:before {
-          content: "❮";
-          display: inline-block;
-          margin-right: 5px;
-        }
-      }
-    }
-    &--breadcrumbs {
-      margin: 0;
-      padding: 10px 15px;
-      background-color: #8eff9d;
-    }
+    &__term {
+      font-weight: bold;
+      font-style: italic;
+    };
   }
 }
 
-  //CTA
-  .call-to-action__nav-item {
+//To Review
+.service-dir__button {
+  display: block;
+  margin: 10px 0;
+  color: $white;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 14px;
+  background: $orange;
+  &--outline {
+    color: $orange;
+    background: $white;
+  }
+}
+.call-to-action {
+  color: #000;
+  display: block;
+  font-weight: bold;
+  margin: 20px 0;
+  padding: 0 10px;
+  &__nav-item {
     color: #000;
-    display: block;
-    padding: 0 10px;
-    text-decoration: underline;
     font-weight: bold;
+    text-decoration: underline;
+    &--button {
+      background: #000;
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+      padding: 8px 10px;
+      text-transform: uppercase;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: normal;
+      text-align: center;
+    }
     &--report {
       margin-bottom: 15px;
     }
     &--back {
       color: #000;
-      padding: 0 10px;
+      &:before {
+        content: "❮";
+        display: inline-block;
+        margin-right: 5px;
+      }
     }
     &--change-search {
       text-decoration: underline;
       padding: 0;
     }
   }
+  &__load-more {
+    color: #000;
+    display: block;
+    padding: 0 20px 10px;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  &--breadcrumbs {
+    margin: 0;
+    padding: 10px 10px;
+    background-color: #8eff9d;
+  }
+  input[type="submit"]:disabled {
+    background: #dddddd;
+  }
+}
 
 .heading {
   &-title {
@@ -207,13 +236,12 @@
     font-size: $font-large;
   }
 }
-
 .service-list {
   display: block;
   $block: unquote("#{&}");
   &__item {
     color: #000;
-    padding: 10px 15px;
+    padding: 10px 10px;
   }
   &__anchor {
     color: $green;
@@ -221,12 +249,16 @@
     &--keyword {
       color: #000;
     }
-  }
-  &__load-more {
-    color: #000;
-    display: block;
-    padding: 0 30px 10px;
-    text-decoration: underline;
+    &--keyword-general {
+      &:before {
+        background: url("/static/new/img/arrow.png") no-repeat 3px 2px/50%;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 10px;
+        height: 15px;
+      }
+    }
   }
   &--outer {
     #{$block}__item {
@@ -236,10 +268,38 @@
   &--inner {
     #{$block}__item {
       border-top: none;
-      padding: 0 15px;
+      padding: 0 10px;
     }
   }
-  &--results {
-    border-bottom: 1px solid #000;
+  &--location-list {
+    padding: 10px 0 30px;
+    #{$block}__item {
+      border-bottom: 1px solid $green;
+      &:first-child {
+        border-top: 1px solid $green;
+      }
+    }
+    #{$block}__anchor {
+      color: #000;
+    }
+  }
+  &--clinics {
+    padding: 10px;
+    #{$block}__item {
+      display: inline;
+      padding: 0;
+    }
+    .service-dir__body {
+      display: inline;
+      padding: 0 5px 0 0;
+      &:before {
+        background: url("/static/new/img/arrow.png") no-repeat 3px 2px/50%;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 10px;
+        height: 15px;
+      }
+    }
   }
 }
