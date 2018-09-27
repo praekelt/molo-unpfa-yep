@@ -17,7 +17,7 @@
         </label>
         <select id="select_radius" name="radius">
           {% for value, label in SERVICE_DIRECTORY_RADIUS_OPTIONS %}
-            <option value="{{ value }}">
+            <option value="{{ value }}" {% ifequal value  SERVICE_DIRECTORY_RADIUS %}selected="selected"{% endifequal %}>
               {{ label }}
             </option>
           {% endfor %}

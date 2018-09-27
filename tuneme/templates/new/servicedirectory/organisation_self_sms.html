@@ -1,16 +1,30 @@
 {% extends 'servicedirectory/content_base.html' %}
 {% load i18n %}
 {% block inner_content %}
-    <h1 class="service-dir__subtitle">
-      {% trans "Do you want to send this service to yourself? It's free!" %}
-    </h1>
-    <form action="{% url 'molo.servicedirectory:organisation-sms' organisation_id %}" method="post" class="service-dir__form" novalidate>
-    {% csrf_token %}
-      <fieldset>
-        <label for="cell_number">{% trans "Your cellphone number" %}</label>
-        <input type="tel" id="cell_number" name="cell_number" required/>
-        <span class="input-hint">*{% trans "This number is safe with us" %}</span>
-      </fieldset>
-      <input type="submit" name="send" value="Send" />
-    </form>
+  {% block inner_banner %}
+    <div class="service-dir__banner">
+      <h1 class="heading service-dir__heading">
+        {% trans "Clinic Service Finder" %}
+      </h1>
+    </div>
+  {% endblock %}
+  {% block sd_breadcrumbs %}
+    <div class="call-to-action call-to-action--breadcrumbs">
+      <a href="{% url 'molo.servicedirectory:home' %}" class="call-to-action__nav-item call-to-action__nav-item--back">Home</a>
+    </div>
+  {% endblock %}
+  <h2 class="service-dir__title">
+    {% trans "Do you want to send this service to yourself? It's free!" %}
+  </h2>
+  <form action="{% url 'molo.servicedirectory:organisation-sms' organisation_id %}" method="post" class="service-dir__form" novalidate>
+  {% csrf_token %}
+    <fieldset>
+      <label for="cell_number">{% trans "Your cellphone number" %}</label>
+      <input type="tel" id="cell_number" name="cell_number" required/>
+      <span class="input-hint">*{% trans "This number is safe with us" %}</span>
+    </fieldset>
+    <div class="call-to-action">
+      <input type="submit" name="send" value="Send" class="call-to-action__nav-item call-to-action__nav-item--button" />
+    </div>
+  </form>
 {% endblock %}

@@ -79,28 +79,29 @@
   </div>
 
   {% if search_results %}
-    {% for organisation in search_results %}
-      <div class="service-dir__organisation-results">
-        <h1 class="service-dir__heading">
-          <a class="service-dir__anchor" href="{% url 'molo.servicedirectory:organisation-detail' organisation.id %}">
-            {{ organisation.name }}
-          </a>
-          {% if organisation.verified_as %}
-            <span class="service-dir__verified">[ Verified ]</span>
-          {% endif %}
-        </h1>
-        <p class="service-dir__body">{{ organisation.address }}</p>
-        {% if organisation.distance %}
+    <div class="service-dir__org-results">
+      <ul class="service-dir-org-results-list">
+      {% for organisation in search_results %}
+        <li class="service-dir-org-results-list__item">
+          <h1 class="service-dir__title">
+            <a class="service-dir__anchor" href="{% url 'molo.servicedirectory:organisation-detail' organisation.id %}">
+              {{ organisation.name }}
+            </a>
+            {% if organisation.verified_as %}
+              <span class="service-dir__verified">[ Verified ]</span>
+            {% endif %}
+          </h1>
           <p class="service-dir__body">
-            <span class="service-dir__body-bold">
-              {% trans "Distance" %}:
-            </span>
-            {{ organisation.distance }}
-          </p>
-        {% endif %}
-    </div>
+            <span class="service-dir__body-bold">{% trans "Address" %}:</span>
+            {{ organisation.address }}</p>
+          {% if organisation.distance %}
+            <p class="service-dir__body">
+              <span class="service-dir__body-bold">{% trans "Distance" %}:</span>
+              {{ organisation.distance }}
+            </p>
+          {% endif %}
+        </li>
     {% empty %}
-    <div class="service-dir__organisation-results--empty">
       <li class="service-list__item">
         <h2 class="service-dir__title">
           {% trans "We couldn't find any services for" %}
@@ -121,8 +122,9 @@
               </li>
             {% endfor %}
           </ul>
-      </li>
-    </div>
+        </li>
     {% endfor %}
+    </ul>
+  </div>
   {% endif %}
 {% endblock %}

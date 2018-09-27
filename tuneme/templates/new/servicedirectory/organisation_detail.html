@@ -50,31 +50,19 @@
   {% endif %}
 
   {% if organisation.address %}
-  <h2 class="service-dir__title">{% trans "Address" %}</h2>
-  <ul class="service-list">
-    <li class="service-list__item">
-        <p class="service-dir__body">
-          {{ organisation.address }}</p>
-    </li>
-  </ul>
+    <h2 class="service-dir__title">{% trans "Address" %}</h2>
+    <p class="service-dir__body">{{ organisation.address }}</p>
   {% endif %}
 
   {% if organisation.availability_hours %}
-  <h2 class="service-dir__title">{% trans "Trading Hours" %}</h2>
-  <ul class="service-list">
-    <li class="service-list__item">
-      <p class="service-dir__body">
-        {{ organisation.availability_hours }}</p>
-    </li>
-  </ul>
+    <h2 class="service-dir__title">{% trans "Trading Hours" %}</h2>
+    <p class="service-list__body">{{ organisation.availability_hours }}</p>
   {% endif %}
 
   {% if organisation.age_range_min and organisation.age_range_max %}
-  <ul class="service-list">
-    <li class="service-list__item">
-      <p class="service-dir__body">{{ organisation.age_range_min }}-{{ organisation.age_range_max }} {% trans "years" %}</p>
-    </li>
-  </ul>
+    <p class="service-list__body">{{ organisation.age_range_min }}-{{ organisation.age_range_max }}
+      {% trans "years" %}
+    </p>
   {% endif %}
   <div class="call-to-action">
     <a href="{% url 'molo.servicedirectory:organisation-report' organisation.id %}?org_name={{ organisation.name | urlencode }}" class="call-to-action__nav-item">
@@ -95,19 +83,22 @@
     </h2>
     <fieldset class="service-dir__reaction">
       <label for="good">
-        <button id="good" type="submit" name="rating" value="good" class="smiley good"></button>
+        <button id="good" type="submit" name="rating" value="good" class="smiley good">
+        </button>
         {% trans "Very helpful" %}
       </label>
     </fieldset>
     <fieldset class="service-dir__reaction">
       <label for="average">
-        <button id="average" type="submit" name="rating" value="average" class="smiley average"></button>
+        <button id="average" type="submit" name="rating" value="average" class="smiley average">
+        </button>
         {% trans "I'm neutral" %}
       </label>
     </fieldset>
     <fieldset class="service-dir__reaction">
       <label for="poor">
-        <button id="poor" type="submit" name="rating" value="poor" class="smiley poor"></button>
+        <button id="poor" type="submit" name="rating" value="poor" class="smiley poor">
+        </button>
         {% trans "Not helpful" %}
       </label>
     </fieldset>

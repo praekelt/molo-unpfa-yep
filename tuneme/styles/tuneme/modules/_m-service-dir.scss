@@ -1,4 +1,6 @@
 .service-dir {
+  $block: unquote("#{&}");
+  p { margin: 0; }
   &__banner {
     background-color: $green;
     text-align: center;
@@ -16,8 +18,9 @@
     text-transform: uppercase;
   }
   &__heading {
-    margin: 0;
     font-size: $font-xx-large;
+    margin: 0;
+    padding: 10px;
   }
   &__title {
     color: #000;
@@ -46,7 +49,6 @@
       font-weight: bold;
     }
   }
-
   &__form {
     .fieldset-group {
       position: relative;
@@ -104,7 +106,6 @@
       }
     }
   }
-
   &__contact {
     padding: 0 20px;
   }
@@ -117,13 +118,27 @@
       display: inline;
     }
   }
-  &__results-list {
-    padding: 20px 0 0;
-  }
   &__term {
     font-weight: bold;
     font-style: italic;
   };
+  &__form--service-rate {
+     padding: 0 10px 10px;
+  }
+  &-org-results-list {
+    padding: 20px 0 0;
+    #{$block}__title {
+      padding: 10px 10px 0;
+    }
+    #{$block}__anchor {
+      color: $green;
+      border-bottom: none;
+    }
+    &__item {
+      border-top: 1px solid $green;
+      padding: 10px 0;
+    }
+  }
   .keywords {
     &-list {
       padding: 0 10px;
@@ -136,9 +151,6 @@
       font-weight: bold;
       font-style: italic;
     };
-  }
-  &__form--service-rate {
-     padding: 0 10px 10px;
   }
 }
 
@@ -156,7 +168,6 @@
     background: $white;
   }
 }
-
 .call-to-action {
   color: #000;
   display: block;
@@ -167,7 +178,6 @@
     color: #000;
     font-weight: bold;
     text-decoration: underline;
-    padding: 0 15px;
     &--button {
       background: #000;
       border: 0;
@@ -226,7 +236,6 @@
     font-size: $font-large;
   }
 }
-
 .service-list {
   display: block;
   $block: unquote("#{&}");
@@ -293,5 +302,4 @@
       }
     }
   }
-
 }
