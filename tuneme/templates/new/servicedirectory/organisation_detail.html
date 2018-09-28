@@ -10,23 +10,32 @@
   {% endblock %}
   {% block sd_breadcrumbs %}
     <div class="call-to-action call-to-action--breadcrumbs">
-      <a href="{% url 'molo.servicedirectory:home' %}" class="call-to-action__nav-item call-to-action__nav-item--back">Back</a>
+      <a href="{% url 'molo.servicedirectory:organisation-results' %}?search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}" class="call-to-action__nav-item call-to-action__nav-item--back">Back</a>
     </div>
   {% endblock %}
   {% if message %}
     <div class="service-dir__feedback">
       <h3 class="service-dir__title">{{ message }}</h3>
     </div>
+  {% else %}
+    <h1 class="service-dir__heading">{{ organisation.name }}</h1>
+    <h2 class="service-dir__subtitle">{% trans "Services they can provide" %}</h2>
+    <ul class="service-list service-list--clinics">
+      {% for keyword in organisation.keywords %}
+        <li class="service-list__item">
+          <p class="service-dir__body">{{ keyword.name }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+    <ul class="service-list service-list--clinics">
+      {% for category in organisation.categories %}
+        <li class="service-list__item">
+          <p class="service-dir__body">{{ category.name }}</p>
+        </li>
+      {% endfor %}
+    </ul>
   {% endif %}
-  <h1 class="service-dir__heading">{{ organisation.name }}</h1>
-  <h2 class="service-dir__subtitle">{% trans "Services they can provide" %}</h2>
-  <ul class="service-list service-list--clinics">
-    {% for category in organisation.categories %}
-      <li class="service-list__item">
-        <p class="service-dir__body">{{ category.name }}</p>
-      </li>
-    {% endfor %}
-  </ul>
+
   {% if organisation.telephone or organisation.email or organisation.web %}
     <h2 class="service-dir__title">{% trans "Contact" %}</h2>
     <h6 class="service-dir__contact">
@@ -64,7 +73,7 @@
       {% trans "years" %}
     </p>
   {% endif %}
-  <div class="call-to-action">
+  <div class="call-to-action call-to-action--org-details">
     <a href="{% url 'molo.servicedirectory:organisation-report' organisation.id %}?org_name={{ organisation.name | urlencode }}" class="call-to-action__nav-item">
       {% trans "Report incorrect info" %}
     </a>
