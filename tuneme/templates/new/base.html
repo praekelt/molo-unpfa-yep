@@ -101,10 +101,25 @@
         </div>
       {% endif %}
     </div>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     {% display_unread_notifications %}
+
   {% endblock %}
+
   {% block content %}
   {% endblock %}
+
   {% block footer %}
     <div class="menu" id="menu">
       <ul class="menu-items">
@@ -132,6 +147,7 @@
           <span>{% trans your_tip.description %}</span>
         </li>
         {% endif %}
+
       </ul>
       <ul class="menu-items menu-items--alt">
         <li class="menu__item menu__item--default"><a href="#search-form">{% trans "Search" %}</a></li>
@@ -153,6 +169,7 @@
           </li>
         {% endif %}
       </ul>
+
       {% include "core/language_block.html" %}
 
       <div class="footer-links">
