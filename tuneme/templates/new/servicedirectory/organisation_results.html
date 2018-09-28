@@ -28,7 +28,7 @@
   {% endblock %}
   {% block sd_breadcrumbs %}
     <div class="call-to-action call-to-action--breadcrumbs">
-      <a href="{% url 'molo.servicedirectory:location-results' %}?search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}" class="call-to-action__nav-item call-to-action__nav-item--back">Back</a>
+      <a href="{% url 'molo.servicedirectory:location-results' %}?location={{location}}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}" class="call-to-action__nav-item call-to-action__nav-item--back">Back</a>
     </div>
   {% endblock %}
   <h6 class="service-dir__pagination">{% trans "Step 4 of 4" %}</h6>
