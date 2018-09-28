@@ -1,6 +1,17 @@
 .service-dir {
   $block: unquote("#{&}");
   p { margin: 0; }
+  &__messages {
+    .error {
+      font-weight: bold;
+    }
+    .success {
+      padding: 10px;
+    }
+    .notify {
+      text-transform: uppercase;
+    }
+  }
   &__banner {
     background-color: $green;
     text-align: center;
@@ -62,7 +73,7 @@
       padding: 10px 10px 0;
     }
     label {
-      cursor: auto;
+      cursor: pointer;
       font-size: $font-medium;
       position: relative;
       vertical-align: middle;

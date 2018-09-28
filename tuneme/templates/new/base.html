@@ -68,53 +68,53 @@
   <noscript>Your browser does not support JavaScript!</noscript>
 </head>
 <body {% if LANGUAGE_CODE|language_bidi == True %}dir="rtl"{% endif %}>
-{% block header %}
+  {% block header %}
     <div class="header">
-      <div class="header-nav">
-        <a href="/">
-          <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe"/>
-        </a>
-        <div class="menu-links__container">
-          {% block homepage-signup %}{% endblock %}
-          {% block search-button %}
-            <label class="search-bar__toggle-label  header-nav__item header-nav__item--search" for="search-bar__toggle">
-              {% trans "Search" %}
-            </label>
-          {% endblock %}
-          <a href="#menu" class="header-nav__item header-nav__item--menu">
-            {% trans "Menu" %}
+        <div class="header-nav">
+          <a href="/">
+            <img class="logo" src="{% static 'new/img/logo.png' %}" alt="TuneMe"/>
           </a>
+          <div class="menu-links__container">
+            {% block homepage-signup %}{% endblock %}
+            {% block search-button %}
+              <label class="search-bar__toggle-label  header-nav__item header-nav__item--search" for="search-bar__toggle">
+                {% trans "Search" %}
+              </label>
+            {% endblock %}
+            <a href="#menu" class="header-nav__item header-nav__item--menu">
+              {% trans "Menu" %}
+            </a>
+          </div>
         </div>
+        {% block search %}
+          <input id="search-bar__toggle" class="search-bar__toggle-input" type="checkbox">
+          <div class="search-bar--form">
+            <h1 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h1>
+            {% include "search/search_block.html" %}
+          </div>
+        {% endblock %}
+        {% block language %}{% endblock %}
+        {% if settings.globalsite.GlobalSiteSettings.show_country and not is_via_freebasics %}
+          <div class="global-site__header-nav">
+            {% trans "Country" %}:<span class="global-site__nav--active"> {{request.site.site_name}}<span>
+            <a href="{% url 'molo.globalsite:change_country' %}" class="global-site__nav">{% trans "Change your country" %}</a>
+          </div>
+        {% endif %}
       </div>
-      {% block search %}
-        <input id="search-bar__toggle" class="search-bar__toggle-input" type="checkbox">
-        <div class="search-bar--form">
-          <h1 class="header__search-title">{% trans "Do you have questions on love, sex and relationships?" %}</h1>
-          {% include "search/search_block.html" %}
-        </div>
-      {% endblock %}
-      {% block language %}{% endblock %}
-      {% if settings.globalsite.GlobalSiteSettings.show_country and not is_via_freebasics %}
-        <div class="global-site__header-nav">
-          {% trans "Country" %}:<span class="global-site__nav--active"> {{request.site.site_name}}<span>
-          <a href="{% url 'molo.globalsite:change_country' %}" class="global-site__nav">{% trans "Change your country" %}</a>
-        </div>
+    {% block messages %}
+      {% if messages %}
+        <ul class="service-dir__messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                  <p class="notify">{% trans "Important:" %}<p>
+                {% endif %}{{ message }}
+            </li>
+            {% endfor %}
+        </ul>
       {% endif %}
-    </div>
-
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
-            {{ message }}
-        </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-
+    {% endblock %}
     {% display_unread_notifications %}
-
   {% endblock %}
 
   {% block content %}

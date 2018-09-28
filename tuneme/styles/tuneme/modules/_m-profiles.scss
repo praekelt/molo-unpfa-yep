@@ -31,7 +31,7 @@
   }
 }
 .profiles--content-body {
-  padding: 10px 15px;
+  padding: 10px 10px;
   .profiles__form {
     padding: 0;
   }
@@ -43,11 +43,21 @@
  margin: 5px 0 10px;
 }
 
+.profiles__terms-conditions {
+  input[type=checkbox]+label,
+  input[type=radio]+label {
+    display: inline;
+  }
+  input[type=checkbox],
+  input[type=radio] {
+    visibility: visible;
+  }
+}
+
 .profiles__form {
-  padding: 0 15px;
   input[type="submit"] {
     width: auto;
-    margin: 1em 0;
+    margin: 1em 10px;
     border: 0;
   }
 }
