@@ -132,7 +132,7 @@
           <li>
       </ul>
       <div class="call-to-action">
-        <a href="{% url 'molo.servicedirectory:location-search' %}" class="call-to-action__nav-item call-to-action__nav-item--button">
+        <a href="{% url 'molo.servicedirectory:location-search' %}?search={{ keyword }}" class="call-to-action__nav-item call-to-action__nav-item--button">
           {% trans "Choose area" %}
         </a>
       </div>
