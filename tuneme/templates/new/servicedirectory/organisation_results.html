@@ -44,13 +44,14 @@
         <label>{% trans "Here are clinics in:" %}</label>
         <input type="text" name="search" value="{{ search_term }}" />
       </fieldset>
+      <input type="hidden" name="location" value="{{ location_term }}" />
     {% else %}
       <fieldset>
         <label>{% trans "Here are clinics in:" %}</label>
         <input type="text" name="location" value="{{ location_term }}" />
       </fieldset>
     {% endif %}
-    <input type="hidden" name="location" value="{{ location_term }}" />
+
     <input type="hidden" name="place_id" value="{{ place_id }}" />
     {% if SERVICE_DIRECTORY_RADIUS  %}
       {% with SERVICE_DIRECTORY_RADIUS as radius %}
@@ -121,7 +122,11 @@
     <div class="service-dir__org-results">
       <h2 class="service-dir__title">
         {% trans "We couldn't find any services for" %}
+        {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
         <span class="service-dir__term">"{{ search_term }}"</span>
+        {% else %}
+        <span class="service-dir__term">"{% for keyword in keywords|slice:":4"  %}{% if forloop.counter < 4 %}{{ keyword }}{% if not forloop.last and forloop.counter < 3  %}, {% endif %}{% endif %}{% if not forloop.last and forloop.counter == 3 %}...{% endif %}{% endfor %}"</span>
+        {% endif %}
       </h2>
       <ul class="service-list service-list--inner">
           <li class="service-list__item">
@@ -132,9 +137,15 @@
           <li>
       </ul>
       <div class="call-to-action">
+        {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT %}
         <a href="{% url 'molo.servicedirectory:location-search' %}?search={{ keyword }}" class="call-to-action__nav-item call-to-action__nav-item--button">
           {% trans "Choose area" %}
         </a>
+        {% else %}
+        <a href="{% url 'molo.servicedirectory:location-search' %}?location={{location_term}}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}" class="call-to-action__nav-item call-to-action__nav-item--button">
+          {% trans "Choose area" %}
+        </a>
+        {% endif %}
       </div>
       <h1 class="service-dir__heading">{% trans "Search a category" %}:</h1>
       <ul class="service-list service-list--inner">
