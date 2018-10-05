@@ -8,13 +8,16 @@ from django.db import migrations
 def add_25_km_as_default(apps, schema_editor):
     model = apps.get_model('core', 'SiteSettings')
     instance = model.objects.first()
-    instance.default_service_directory_radius = 25
-    instance.save()
+
+    if instance:
+        instance.default_service_directory_radius = 25
+        instance.save()
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('core', '0003_auto_20180831_1312'),
         ('tuneme', '0004_delete_polls_index_page'),
     ]
 
