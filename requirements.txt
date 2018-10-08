@@ -20,3 +20,4 @@ django-import-export==1.0.1
 # Required by ImageHash, install a working version
 scipy==0.19.1
 python-cas==1.2.0
+Markdown<3.0
