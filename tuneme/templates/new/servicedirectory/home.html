@@ -29,6 +29,12 @@
 
   <form action="{% url 'molo.servicedirectory:location-search' %}" method="get" class="service-dir__form" novalidate>
     {% if SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
+        <div class="fieldset-group fieldset-group--categories">
+          <fieldset>
+            <input type="checkbox" id="all_keywords" name="keywords[]" value="all_keywords" {% if 'all_keywords' in keywords %}checked="checked"{% endif %}/>
+            <label for="all_keywords">{% trans "Select All" %}</label>
+          </fieldset>
+        </div>
         {% for keyword in keyword_list %}
         <div class="fieldset-group fieldset-group--categories">
           <fieldset>
