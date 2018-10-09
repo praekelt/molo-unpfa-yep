@@ -1,4 +1,4 @@
-molo.core==6.9.21
+molo.core==6.10.0
 molo.commenting==6.3.0
 molo.yourwords==6.4.1
 molo.yourtips==6.0.1
@@ -20,4 +20,3 @@ django-import-export==1.0.1
 # Required by ImageHash, install a working version
 scipy==0.19.1
 python-cas==1.2.0
-Markdown<3.0
