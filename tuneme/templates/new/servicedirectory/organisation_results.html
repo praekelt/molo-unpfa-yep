@@ -14,12 +14,16 @@
         {% elif keywords %}
           <li class="keywords__item">{% trans "Service" %}:
             <span class="keywords__term">
-              {% for keyword in keywords|slice:":4"  %}
-                {% if forloop.counter < 4 %}
-                  {{ keyword }}{% if not forloop.last and forloop.counter < 3  %}, {% endif %}
-                {% endif %}
-                {% if not forloop.last and forloop.counter == 3 %}...{% endif %}
-              {% endfor %}
+              {% if 'all_keywords' in keywords%}
+                Select All
+              {% else %}
+                {% for keyword in keywords|slice:":4"  %}
+                  {% if forloop.counter < 4 %}
+                    {{ keyword }}{% if not forloop.last and forloop.counter < 3  %}, {% endif %}
+                  {% endif %}
+                  {% if not forloop.last and forloop.counter == 3 %}...{% endif %}
+                {% endfor %}
+              {% endif %}
             </span>
           </li>
         {% endif %}
