@@ -21,19 +21,42 @@
     <h1 class="service-dir__heading">{{ organisation.name }}</h1>
     <h2 class="service-dir__subtitle">{% trans "Services they can provide" %}</h2>
     <ul class="service-list service-list--clinics">
-      {% for keyword in organisation.keywords %}
-        <li class="service-list__item">
-          <p class="service-dir__body">{{ keyword.name }}</p>
-        </li>
-      {% endfor %}
+      {% if not request.GET.view_keywords %}
+        {% for keyword in organisation.keywords|slice:":3" %}
+          <li class="service-list__item">
+            <p class="service-dir__body">{{ keyword.name }}</p>
+          </li>
+        {% endfor %}
+      {% else %}
+        {% for keyword in organisation.keywords %}
+          <li class="service-list__item">
+            <p class="service-dir__body">{{ keyword.name }}</p>
+          </li>
+        {% endfor %}
+      {% endif %}
     </ul>
+    {% if organisation.keywords.count > 3 and not request.GET.view_keywords %}
+    <a class="service-list service-list__item service-list__anchor" href="?view_keywords=1">View More</a>
+    {% endif %}
+
     <ul class="service-list service-list--clinics">
-      {% for category in organisation.categories %}
-        <li class="service-list__item">
-          <p class="service-dir__body">{{ category.name }}</p>
-        </li>
-      {% endfor %}
+      {% if not request.GET.view_categories %}
+        {% for category in organisation.categories|slice:":3" %}
+          <li class="service-list__item">
+            <p class="service-dir__body">{{ category.name }}</p>
+          </li>
+        {% endfor %}
+      {% else %}
+        {% for category in organisation.categories %}
+          <li class="service-list__item">
+            <p class="service-dir__body">{{ category.name }}</p>
+          </li>
+        {% endfor %}
+      {% endif %}
     </ul>
+    {% if organisation.categories.count > 3 and not request.GET.view_categories %}
+    <a class="service-list service-list__item service-list__anchor" href="?view_categories=1">View More</a>
+    {% endif %}
   {% endif %}
 
   {% if organisation.telephone or organisation.email or organisation.web %}
@@ -73,6 +96,7 @@
       {% trans "years" %}
     </p>
   {% endif %}
+
   <div class="call-to-action call-to-action--org-details">
     <a href="{% url 'molo.servicedirectory:organisation-report' organisation.id %}?org_name={{ organisation.name | urlencode }}" class="call-to-action__nav-item">
       {% trans "Report incorrect info" %}
