@@ -10,5 +10,9 @@ class Command(BaseCommand):
                 is_active=True, is_main_language=True).first()
             if main_lang:
                 for page in Page.objects.descendant_of(main):
-                    LanguageRelation.objects.get_or_create(
-                        page=page, language=main_lang)
+                    relation, created = LanguageRelation.objects.get_or_create(
+                        page=page, language=main_lang
+                    )
+                    page = Page.objects.get(pk=relation.page.pk).specific
+                    page.language = relation.language
+                    page.save()

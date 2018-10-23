@@ -26,13 +26,14 @@ class CommandsTestCase(TestCase, MoloTestCaseMixin):
             locale='en',
             is_active=True)
         self.section = self.mk_section(
-            self.section_index, title='test section')
+            self.section_index,
+            title='test section')
         self.article = self.mk_article(
             self.section,
             title='article 1')
 
     def test_linking_pages_to_main_language(self):
-        # test that when deleting a site langauge, it delets the language
+        # test that when deleting a site language, it deletes the language
         # relations
         self.assertContains(self.client.get('/'), self.section.title)
         self.assertNotEquals(LanguageRelation.objects.all().count(), 0)
