@@ -31,6 +31,7 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+
   {% compress css %}
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/style.css">
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}new/css/{{ ENV }}/style-global_site.css">
@@ -178,6 +179,11 @@
     </div>
     <div class="copyright">&copy; {% now "Y" %} UNFPA, Ford Foundation</div>
   {% endblock %}
+
+  {% compress js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}new/js/main.js"></script>
+  {% endcompress %}
+
   {% if GOOGLE_TAG_MANAGER_ACCOUNT %}
     <!-- Google Tag Manager -->
      <noscript><iframe src="//www.googletagmanager.com/ns.html?id={{GOOGLE_TAG_MANAGER_ACCOUNT}}&client_session_id={{request.session.MOLO_GA_SESSION_FOR_NOSCRIPT}}&page_title={% if self.seo_title %}{{ self.seo_title|urlencode }}{% else %}{{ self.title|urlencode }}{% endif %}{%if request.META.HTTP_X_IORG_FBS_UIP %}&freebasics_uip={{request.META.HTTP_X_IORG_FBS_UIP}}{%endif%}"

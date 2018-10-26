@@ -67,6 +67,9 @@
         border-top: 1px solid $green;
         margin: 10px 0;
       }
+      &__select-all {
+        display: none;
+      }
     }
     fieldset {
       position: relative;
