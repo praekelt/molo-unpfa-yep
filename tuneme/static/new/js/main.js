@@ -6,7 +6,14 @@
 
   domReady(function() {
     var selectRadius = document.getElementById('select_radius');
-    console.log(selectRadius[selectRadius.selectedIndex].value);
+    if(selectRadius){
+        console.log(selectRadius[selectRadius.selectedIndex].value);
+        // get selected option in sel (reference obtained above)
+        var optFunc = getSelectedOption(selectRadius);
+        selectRadius.addEventListener('click', function() {
+          console.log( optFunc.value," - ", optFunc.text);
+        });
+    }
 
     function getSelectedOption(sel) {
       var opt;
@@ -20,12 +27,6 @@
       }
       return opt;
     }
-
-    // get selected option in sel (reference obtained above)
-    var optFunc = getSelectedOption(selectRadius);
-    selectRadius.addEventListener('click', function() {
-      console.log( optFunc.value," - ", optFunc.text);
-    });
 
     // Display select all field set
     // toggle selection on click
