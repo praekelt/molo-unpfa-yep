@@ -14,12 +14,16 @@
         {% elif keywords %}
           <li class="keywords__item">{% trans "Service" %}:
             <span class="keywords__term">
-              {% for keyword in keywords|slice:":4"  %}
-                {% if forloop.counter < 4 %}
-                  {{ keyword }}{% if not forloop.last and forloop.counter < 3  %}, {% endif %}
-                {% endif %}
-                {% if not forloop.last and forloop.counter == 3 %}...{% endif %}
-              {% endfor %}
+              {% if 'all_keywords' in keywords%}
+                Select All
+              {% else %}
+                {% for keyword in keywords|slice:":4"  %}
+                  {% if forloop.counter < 4 %}
+                    {{ keyword }}{% if not forloop.last and forloop.counter < 3  %}, {% endif %}
+                  {% endif %}
+                  {% if not forloop.last and forloop.counter == 3 %}...{% endif %}
+                {% endfor %}
+              {% endif %}
             </span>
           </li>
         {% endif %}
@@ -125,7 +129,7 @@
         {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
         <span class="service-dir__term">"{{ search_term }}"</span>
         {% else %}
-        <span class="service-dir__term">"{% for keyword in keywords|slice:":4"  %}{% if forloop.counter < 4 %}{{ keyword }}{% if not forloop.last and forloop.counter < 3  %}, {% endif %}{% endif %}{% if not forloop.last and forloop.counter == 3 %}...{% endif %}{% endfor %}"</span>
+        <span class="service-dir__term">"{% if 'all_keywords' in keywords %}Select All{% else %}{% for keyword in keywords|slice:":4"  %}{% if forloop.counter < 4 %}{{ keyword }}{% if not forloop.last and forloop.counter < 3  %}, {% endif %}{% endif %}{% if not forloop.last and forloop.counter == 3 %}...{% endif %}{% endfor %}{% endif %}"</span>
         {% endif %}
       </h2>
       <ul class="service-list service-list--inner">
