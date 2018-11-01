@@ -1,5 +1,5 @@
 {% extends 'servicedirectory/content_base.html' %}
-{% load staticfiles i18n %}
+{% load staticfiles i18n servicedirectory_tags %}
 {% block inner_content %}
   {% block inner_banner %}
     <div class="service-dir__banner">
@@ -10,7 +10,7 @@
   {% endblock %}
   {% block sd_breadcrumbs %}
     <div class="call-to-action call-to-action--breadcrumbs">
-      <a href="{% url 'molo.servicedirectory:organisation-results' %}?search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}" class="call-to-action__nav-item call-to-action__nav-item--back">Back</a>
+      <a href="{% url 'molo.servicedirectory:organisation-results' %}?{% url_params request %}" class="call-to-action__nav-item call-to-action__nav-item--back">Back</a>
     </div>
   {% endblock %}
   {% if message %}
