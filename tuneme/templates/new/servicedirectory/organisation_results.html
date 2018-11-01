@@ -1,5 +1,5 @@
 {% extends 'servicedirectory/content_base.html' %}
-{% load i18n %}
+{% load i18n servicedirectory_tags %}
 {% block inner_content %}
   {% block inner_banner %}
     <div class="service-dir__banner">
@@ -32,7 +32,7 @@
   {% endblock %}
   {% block sd_breadcrumbs %}
     <div class="call-to-action call-to-action--breadcrumbs">
-      <a href="{% url 'molo.servicedirectory:location-results' %}?location={{location_term}}&search={{ search_term }}{% for category in categories  %}&categories[]={{ category }}{% endfor %}{% for keyword in keywords  %}&keywords[]={{ keyword }}{% endfor %}" class="call-to-action__nav-item call-to-action__nav-item--back">Back</a>
+      <a href="{% url 'molo.servicedirectory:location-results' %}?{% url_params request %}" class="call-to-action__nav-item call-to-action__nav-item--back">Back</a>
     </div>
   {% endblock %}
   <h6 class="service-dir__pagination">{% trans "Step 4 of 4" %}</h6>
@@ -102,7 +102,7 @@
       {% for organisation in search_results %}
         <li class="service-dir-org-results-list__item">
           <h1 class="service-dir__title">
-            <a class="service-dir__anchor" href="{% url 'molo.servicedirectory:organisation-detail' organisation.id %}">
+            <a class="service-dir__anchor" href="{% url 'molo.servicedirectory:organisation-detail' organisation.id %}?{% url_params request %}">
               {{ organisation.name }}
             </a>
             {% if organisation.verified_as %}
