@@ -25,6 +25,11 @@
     <p class="service-dir__body">{{ organisation.address }}</p>
   {% endif %}
 
+  {% if organisation.distance %}
+    <h2 class="service-dir__title">{% trans "Distance" %}</h2>
+    <p class="service-dir__body">{{ organisation.distance }}</p>
+  {% endif %}
+
   {% if organisation.telephone or organisation.email or organisation.web %}
     <h2 class="service-dir__title">{% trans "Contact" %}</h2>
     <h6 class="service-dir__contact">
@@ -45,11 +50,6 @@
           {{ organisation.web }}</a>
       {% endif %}
     </h6>
-  {% endif %}
-
-  {% if organisation.distance %}
-    <h2 class="service-dir__title">{% trans "Distance" %}</h2>
-    <p class="service-dir__body">{{ organisation.distance }}</p>
   {% endif %}
 
   {% if organisation.availability_hours %}
