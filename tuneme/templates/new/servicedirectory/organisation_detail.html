@@ -79,7 +79,7 @@
         {% endfor %}
       {% endif %}
     </ul>
-    {% if organisation.keywords.count > 3 and not request.GET.view_keywords %}
+    {% if organisation.keywords|length > 3 and not request.GET.view_keywords %}
     <a class="service-list service-list__item service-list__anchor" href="?{% url_params request %}&view_keywords=1">View More</a>
     {% endif %}
 
@@ -98,7 +98,7 @@
         {% endfor %}
       {% endif %}
     </ul>
-    {% if organisation.categories.count > 3 and not request.GET.view_categories %}
+    {% if organisation.categories|length > 3 and not request.GET.view_categories %}
     <a class="service-list service-list__item service-list__anchor" href="?{% url_params request %}&view_categories=1">View More</a>
     {% endif %}
   {% endif %}
