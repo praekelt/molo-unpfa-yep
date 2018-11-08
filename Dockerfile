@@ -6,6 +6,7 @@ ENV DJANGO_SETTINGS_MODULE=tuneme.settings.docker \
 
 RUN LANGUAGE_CODE=en SECRET_KEY=compilemessages-key django-admin compilemessages && \
     SECRET_KEY=collectstatic-key django-admin collectstatic --noinput && \
-    SECRET_KEY=compress-key django-admin compress
+    SECRET_KEY=compress-key django-admin compress && \
+    SECRET_KEY=compress-key django-admin clear_cache
 
 CMD ["tuneme.wsgi:application", "--timeout", "1800"]
