@@ -49,7 +49,7 @@
           <li>{{ item|handle_markdown }}</li>
         {% endfor %}
     </ul>
-    {% elif block.block_type = 'page' %}
+    {% elif block.block_type == 'page' %}
         <a href="{% pageurl block.value %}" class="featured-articles">{{ block.value }}</a>
     {% else %}
         {{ block }}
