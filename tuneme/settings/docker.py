@@ -65,7 +65,6 @@ if CAS_SERVER_URL:
         'molo.core.middleware.Custom403Middleware',
     ]
 
-
     AUTHENTICATION_BACKENDS = [
         'molo.profiles.backends.MoloProfilesModelBackend',
         'django.contrib.auth.backends.ModelBackend',
