@@ -17,7 +17,6 @@ from django.utils.translation import ugettext_lazy as _
 import dj_database_url
 import djcelery
 from celery.schedules import crontab
-from google.oauth2 import service_account
 djcelery.setup_loader()
 
 # Absolute filesystem path to the Django project directory:
@@ -519,9 +518,12 @@ if AWS_STORAGE_BUCKET_NAME and AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
 
 # Google cloud bucket settings
 GS_BUCKET_NAME = environ.get('GS_BUCKET_NAME', '')
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file('/tmp/unfpa-independent-applications-94b28914554d.json')
+GS_CREDENTIALS_FILE = environ.get('GS_CREDENTIALS_FILE', '')
 
-if GS_BUCKET_NAME and GS_CREDENTIALS
+if GS_BUCKET_NAME and GS_CREDENTIALS_FILE:
+    from google.oauth2 import service_account
+    GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+        GS_CREDENTIALS_FILE)
     MEDIA_URL = "https://storage.cloud.google.com/%s/" % GS_BUCKET_NAME
     DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 
