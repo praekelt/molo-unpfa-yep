@@ -17,6 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 import dj_database_url
 import djcelery
 from celery.schedules import crontab
+from google.oauth2 import service_account
 djcelery.setup_loader()
 
 # Absolute filesystem path to the Django project directory:
@@ -506,7 +507,7 @@ AWS_HEADERS = {
     'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
     'Cache-Control': 'max-age=94608000',
 }
-
+# Amazon S3 bucket settings
 AWS_STORAGE_BUCKET_NAME = environ.get('AWS_STORAGE_BUCKET_NAME', '')
 AWS_ACCESS_KEY_ID = environ.get('AWS_ACCESS_KEY_ID', '')
 AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY', '')
@@ -515,6 +516,14 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 if AWS_STORAGE_BUCKET_NAME and AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
     MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+# Google cloud bucket settings
+GS_BUCKET_NAME = environ.get('GS_BUCKET_NAME', '')
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file('/tmp/unfpa-independent-applications-94b28914554d.json')
+
+if GS_BUCKET_NAME and GS_CREDENTIALS
+    MEDIA_URL = "https://storage.cloud.google.com/%s/" % GS_BUCKET_NAME
+    DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 
 PWA_SERVICE_WORKER_PATH = join(
     PROJECT_ROOT, 'tuneme', 'templates', SITE_LAYOUT, 'serviceworker.js')
