@@ -49,10 +49,28 @@ LOCALE_PATHS = (
     join(PROJECT_ROOT, "locale"),
 )
 
-
 # until we can specify ES host in cluster
 WAGTAILSEARCH_BACKENDS = {
     'default': {
         'BACKEND': 'wagtail.wagtailsearch.backends.db',
     }
 }
+
+# Setup for CAS
+if CAS_SERVER_URL:
+    ENABLE_SSO = True
+
+    MIDDLEWARE_CLASSES += [
+        'molo.core.middleware.MoloCASMiddleware',
+        'molo.core.middleware.Custom403Middleware',
+    ]
+
+    AUTHENTICATION_BACKENDS = [
+        'molo.profiles.backends.MoloProfilesModelBackend',
+        'django.contrib.auth.backends.ModelBackend',
+        'molo.core.backends.MoloCASBackend',
+    ]
+
+    CAS_ADMIN_PREFIX = '/admin/'
+    LOGIN_URL = 'molo.profiles:auth_login'
+    CAS_VERSION = '3'
