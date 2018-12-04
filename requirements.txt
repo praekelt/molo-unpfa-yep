@@ -20,4 +20,5 @@ django-import-export==1.0.1
 # Required by ImageHash, install a working version
 scipy==0.19.1
 python-cas==1.2.0
-google-cloud-storage
+google-cloud-storage 
+django-storages==1.6.6
