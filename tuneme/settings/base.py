@@ -207,15 +207,10 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_IMPORTS = ('molo.profiles.task', 'molo.core.tasks',
                   'google_analytics.tasks')
-BROKER_URL = environ.get('BROKER_URL', 'redis://localhost:6379/0')
+BROKER_URL = environ.get('BROKER_URL', '')
 CELERY_RESULT_BACKEND = environ.get(
-    'CELERY_RESULT_BACKEND', 'redis://localhost:6379/0')
+    'CELERY_RESULT_BACKEND', '')
 CELERYBEAT_SCHEDULE = {
-    # Executes every morning at 8:00 A.M GMT+2
-    # 'add-every-morning': {
-    #     'task': 'molo.profiles.task.send_user_data_to_slack',
-    #     'schedule': crontab(minute=0, hour=8)
-    # },
     'rotate_content': {
         'task': 'molo.core.tasks.rotate_content',
         'schedule': crontab(minute=0),
