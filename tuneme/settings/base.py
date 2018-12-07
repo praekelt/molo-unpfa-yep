@@ -343,7 +343,7 @@ MEDIA_URL = '/media/'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
-FROM_EMAIL = environ.get('FROM_EMAIL', "support@moloproject.org")
+FROM_EMAIL = environ.get('FROM_EMAIL', "tuneme@unfpa.org")
 CONTENT_IMPORT_SUBJECT = environ.get(
     'CONTENT_IMPORT_SUBJECT', 'Molo Content Import')
 CONTENT_COPY_SUBJECT = environ.get(
