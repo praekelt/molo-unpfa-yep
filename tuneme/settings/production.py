@@ -74,7 +74,7 @@ EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = environ.get(
     'DEFAULT_FROM_EMAIL', 'support@moloproject.org')
-EMAIL_USE_SSL = environ.get('EMAIL_USE_SSL', False)
+EMAIL_USE_SSL = environ.get('EMAIL_USE_SSL', 'false').lower() == 'true'
 
 try:
     from .local import *  # noqa
