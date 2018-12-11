@@ -46,9 +46,8 @@
     {% if not SERVICE_DIRECTORY_MULTI_CATEGORY_SELECT  %}
       <fieldset>
         <label>{% trans "Here are clinics in:" %}</label>
-        <input type="text" name="search" value="{{ search_term }}" />
+        <input type="text" name="location" value="{{ location_term }}" />
       </fieldset>
-      <input type="hidden" name="location" value="{{ location_term }}" />
     {% else %}
       <fieldset>
         <label>{% trans "Here are clinics in:" %}</label>
