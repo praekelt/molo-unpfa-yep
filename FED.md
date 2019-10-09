@@ -79,7 +79,7 @@
     * $medium_violet - #B62A99;
 
 #### FILE PATH: /styles/app-name/
-    * /layout/
+    * /layout
       * _l-header.scss
       * _l-footer.scss
       * _l-layout.scss | @import all layout compoments
@@ -103,7 +103,6 @@
     * /static/css/dev with sourcemaps /maps
       * /static/css/prd
 
-
 #### CSS / BEM Linting
   https://github.com/postcss/postcss-bem-linter
   * - Enforce coding standard rules
@@ -115,11 +114,11 @@
 
   * - npm install gulp-cli -g
 
-  For asset bundling & processing, concatenating and minification file:
+  For asset bundling & processing, concatenating and minification file scripts:
   * - gulpfile.js
   * - package.json
 
-#### Commands:
+#### On your Command Line run the following commands on the app:
   * - npm install [Node](https://nodejs.org/en/)
   * - gulp [Node](https://nodejs.org/en/)
 
