@@ -138,22 +138,22 @@ class ViewsTestCase(TestCase, MoloTestCaseMixin):
         self.assertContains(response, 'Find a service')
 
     def test_comment_reply_in_article(self):
-            self.yourmind = self.mk_section(
-                self.section_index, title='Your mind')
-            article = article = self.mk_article(
-                self.section, commenting_state='O')
-            self.create_comment(article, 'test comment1 text')
-            comment2 = self.create_comment(article, 'test comment2 text')
-            comment3 = self.create_comment(article, 'test comment3 text')
-            reply = self.create_comment(article,
-                                        'test reply text', parent=comment2)
-            response = self.client.get(article.url)
-            html = BeautifulSoup(response.content, 'html.parser')
-            [c3row, c2row, replyrow] = html.find_all(
-                class_='comments-list__item')
-            self.assertTrue(comment3.comment in c3row.prettify())
-            self.assertTrue(comment2.comment in c2row.prettify())
-            self.assertTrue(reply.comment in replyrow.prettify())
+        self.yourmind = self.mk_section(
+            self.section_index, title='Your mind')
+        article = article = self.mk_article(
+            self.section, commenting_state='O')
+        self.create_comment(article, 'test comment1 text')
+        comment2 = self.create_comment(article, 'test comment2 text')
+        comment3 = self.create_comment(article, 'test comment3 text')
+        reply = self.create_comment(article,
+                                    'test reply text', parent=comment2)
+        response = self.client.get(article.url)
+        html = BeautifulSoup(response.content, 'html.parser')
+        [c3row, c2row, replyrow] = html.find_all(
+            class_='comments-list__item')
+        self.assertTrue(comment3.comment in c3row.prettify())
+        self.assertTrue(comment2.comment in c2row.prettify())
+        self.assertTrue(reply.comment in replyrow.prettify())
 
     def test_comment_shows_user_display_name(self):
         self.yourmind = self.mk_section(
